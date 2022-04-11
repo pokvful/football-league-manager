@@ -67,16 +67,16 @@ Leerdoelen:
 ### Elmar Wiese
 
 Persoonlijke kwaliteiten:
-1. voorbeeld
-2. voorbeeld
+1. Luisteren ik kan.
+2. Gemotiveerd
 
 Vakkundige kwaliteiten:
-1. voorbeeld
-2. voorbeeld
+1. SQL
+2. Diagram maken
 
 Leerdoelen:
-1. voorbeeld
-2. voorbeeld
+1. W.I.P.
+2. Presenteren
 
 ---
 
