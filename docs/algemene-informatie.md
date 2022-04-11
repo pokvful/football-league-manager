@@ -51,16 +51,16 @@ Leerdoelen:
 ### Thom Kraaijvanger
 
 Persoonlijke kwaliteiten:
-1. voorbeeld
-2. voorbeeld
+1. Flexibel
+2. Stressbestendig
 
 Vakkundige kwaliteiten:
-1. voorbeeld
-2. voorbeeld
+1. Al eerder Spting Boot API gemaakt (Handig indien back-end met java)
+2. DMDD Casus met een hoog cijfer afgerond, veel goede voorbeelden voor documentatie
 
 Leerdoelen:
-1. voorbeeld
-2. voorbeeld
+1. Dagelijks logboek bijhouden voor meer overzicht en inzicht
+2. Voortouw nemen in goed en regelematig contact met opdrachtgever
 
 ---
 
