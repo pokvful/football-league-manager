@@ -35,16 +35,16 @@ Leerdoelen:
 ### Oktay Soytürk
 
 Persoonlijke kwaliteiten:
-1. voorbeeld
-2. voorbeeld
+1. Perfectionist
+2. Goede luisteraar
 
 Vakkundige kwaliteiten:
-1. voorbeeld
-2. voorbeeld
+1. Datamodellen en documentatie maken
+2. SQL en Java op gemiddelde niveau
 
 Leerdoelen:
-1. voorbeeld
-2. voorbeeld
+1. Meer betrokken zijn bij gesprekken
+2. Vragen stellen wanneer ik iets niet begrijp
 
 ---
 
