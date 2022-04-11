@@ -18,8 +18,8 @@
 
 Persoonlijke kwaliteiten:
 
-1. Gemotiveerd;
-2. Graag mensen helpen.
+1. Graag mensen willen helpen;
+2. Gemotiveerd.
 
 Vakkundige kwaliteiten:
 
@@ -27,8 +27,8 @@ Vakkundige kwaliteiten:
 
 Leerdoelen:
 
-1. voorbeeld
-2. voorbeeld
+1. Ik wil op tijd beginnen aan mijn persoonlijke verslag;
+2. Niet te veel mijn manier van werken op groepsgenoten forceren.
 
 ---
 
