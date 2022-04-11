@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  db:
+    build: .
+    environment:
+      ACCEPT_EULA: Y
+      SA_PASSWORD: Football!
+      MSSQL_PID: enterprise
+    volumes:
+      - ./dockerFiles:/data/sql-files
+    ports:
+      - 14330:1433
