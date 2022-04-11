@@ -17,14 +17,16 @@
 ### Joram Buitenhuis
 
 Persoonlijke kwaliteiten:
-1. voorbeeld
-2. voorbeeld
+
+1. Gemotiveerd;
+2. Graag mensen helpen.
 
 Vakkundige kwaliteiten:
-1. voorbeeld
-2. voorbeeld
+
+1. Veel technische kennis (bv. SQL, Docker, git).
 
 Leerdoelen:
+
 1. voorbeeld
 2. voorbeeld
 
