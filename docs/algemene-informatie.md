@@ -75,7 +75,7 @@ Vakkundige kwaliteiten:
 2. Diagram maken
 
 Leerdoelen:
-1. W.I.P.
+1. Logboek om overzicht te houden wat is gedaan.
 2. Presenteren
 
 ---
