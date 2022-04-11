@@ -82,17 +82,17 @@ Leerdoelen:
 
 ### Tim Meuwsen
 
-Persoonlijke kwaliteiten:
-1. voorbeeld
-2. voorbeeld
+Persoonlijke kwaliteitseisen:
+1. Gemotiveerd (als het nodig is ben ik bereid lange dagen te maken. (9 tot 5)
+2. Sta open voor feedback van teamgenoten.
 
-Vakkundige kwaliteiten:
-1. voorbeeld
-2. voorbeeld
+Vakkundige kwaliteitseisen:
+1. Serverside programmeren met java.
+2. Niet veel diepgaande kennis maar wel verspreid over verschillende talen.
 
 Leerdoelen:
-1. voorbeeld
-2. voorbeeld
+1. Sneller vragen stellen zodra ik vastloop.
+2. Meer gebruik maken van projectrol.
 
 ---
 
