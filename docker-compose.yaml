@@ -10,4 +10,4 @@ services:
     volumes:
       - ./dockerFiles:/data/sql-files
     ports:
-      - 14330:1433
+      - ${DATABASE_PORT:-1433}:1433
