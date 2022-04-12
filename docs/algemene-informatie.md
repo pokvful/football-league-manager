@@ -99,13 +99,13 @@ Leerdoelen:
 ### Junjie Juan
 
 Persoonlijke kwaliteiten:
-1. voorbeeld
-2. voorbeeld
+1. Flexibel
+2. Hardwerkend
 
 Vakkundige kwaliteiten:
-1. voorbeeld
-2. voorbeeld
+1. Front-end
+2. SQL
 
 Leerdoelen:
-1. voorbeeld
-2. voorbeeld
+1. Meer zelfonderzoek doen en minder snel vragen om hulp
+2. Logboek bijhouden
