@@ -103,8 +103,8 @@ Persoonlijke kwaliteiten:
 2. Hardwerkend
 
 Vakkundige kwaliteiten:
-1. Front-end
-2. SQL
+1. SQL
+2. Diagram maken
 
 Leerdoelen:
 1. Meer zelfonderzoek doen en minder snel vragen om hulp
