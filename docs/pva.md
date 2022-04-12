@@ -46,11 +46,14 @@ Al die gegevens moeten worden opgeslagen.
 Doelstelling:
 
 Het bedrijf wil een database waar alle informatie kan worden opgeslagen  en uit worden gehaald over voetbalcompetities.
-Daarbij moet er een staging area worden gemaakt om als gebruiker bij de database gegevens te komen.
-De data moet in JSON geleverd kunnen worden.
 
 
 Opdracht:
+
+Daarbij moet er een staging area worden gemaakt om als gebruiker bij de database gegevens te komen.
+De data moet in JSON geleverd kunnen worden.
+Ook moet vanuit de database een current league table en top score lijst worden gegenereerd.
+De gebruikers kunnen alleen gegevens lezen.
 
 Resultaat:
 
@@ -75,8 +78,19 @@ De dagen dat A4 niet aanwezig is zijn:
 - 27 april 2022, koningsdag
 - 2 mei t/m 6 mei 2022, mei vakantie
 
-Voor het project zijn bepaalde tools gegeven doro school die wij moeten gebruiken binnen dit project:
+Voor het project zijn bepaalde methode en tools gegeven door school die wij moeten gebruiken binnen dit project:
+- Projectmethode RUP.
+- Jira om taken te plannen.
+- BitBucket voor het managen van code.
 
+Deze methode en tools moeten gebruikt worden binnen het project en er mag geen alternatief worden ingezet.
+
+Team a4 gaat in ieder geval gebruik maken van  Microsoft SQL, docker, docker compose.
+Verder wordt er eerst onderzoek gekeken naar mongodb.
+
+De transision 
+
+Voor het project moet ieder lid een eigen verslag inleveren hiervoor is er gepland dat ieder week op vrijdga na een uur in de middag tijd is om aan persoonlijk verslag tewerken.
 
 Gek genoeg geeft opschrijven wat je nét niet meer doet in je project vaak heel veel helderheid over wat je juist wél gaat doen.  Hierdoor kun je ook voorkomen dat stakeholders tijdens het project met eisen komen die echt buiten de opdracht vallen. In deze paragraaf baken je je project dus af. In elk geval ga je hierbij in op:
 
@@ -88,20 +102,10 @@ Gek genoeg geeft opschrijven wat je nét niet meer doet in je project vaak heel 
 In dit hoofdstuk worden de randvoorwaarden beschreven, hierin staat wat er geregeld moet worden om het project mogelijk te maken.
 
 - De HAN levert beschikbare ruimtes met stroom en internet gedurende het project
-- De HAN voorziet toegang tot Jira, BitBucket en MSSQL gedurende kantooruren.
-
-
-
-
-Succesvol zijn gaat maar zelden ‘zomaar’. Bij randvoorwaarden geef je SMART aan welke zaken door anderen voor jou geregeld moeten zijn zodat je zelf vlot door kunt werken. Denk bijvoorbeeld aan:
-
-- Schoolritme dicteert (denk hierbij bijvoorbeeld aan inleverdeadlines) externe opdrachtgevers
-- Schoolopdracht gaat voor (externe opdrachtgevers)
-- Beschikbaarheid begeleider bedrijf. Is hij bijvoorbeeld op de juiste momenten beschikbaar voor het geven van feedback en het tijdig nemen van beslissingen?
-- Welke resources (b.v. soft- of hardware) moeten er zijn om te kunnen werken? Denk aan toegang tot systemen, ontwikkelsoftware, aanschaffen van benodigde licenties.
-
-Gebruik bij het SMART maken de relevante aspecten van 5xW 1xH: Wie moet Wanneer Wat, Waar, Waarom en Hoe geregeld
-hebben zodat jouw project niet in gevaar komt.
+- De HAN voorziet toegang tot Jira, BitBucket en MSSQL gedurende kantooruren
+- De opdrachtgever, procesbegeleider en professional skills docent zijn bereikbaar gedurende het project
+- ISE ritme dicteert (denk hierbij bijvoorbeeld aan inleverdeadlines) NUTMEG
+- ISE casusopdracht gaat voor de wensen van NUTMEG
 
 # Op te leveren producten en kwaliteitseisen
 
@@ -114,9 +118,12 @@ In dit hoofdstuk behandel je alle producten die je in hoofdstuk 4 beschreven heb
 
 Voor ieder van de beschreven producten definieer je vervolgens meetbare (SMART) kwaliteitseisen. Je bedenkt welke activiteiten je moet doen om de producten volgens die kwaliteitseisen te maken en hoe je ervoor zorgt dat die kwaliteit ook in het proces bewaakt wordt (proceskwaliteitseisen). Dit breng je onder in een tabel. Hieronder staat een voorbeeld, dat expres niet uitputtend is ingevuld, ook zijn de kwaliteitseisen nog niet SMART geformuleerd. En… realiseer je dat het slechts een voorbeeld is!
 
+In dit hoofdstuk zullen de op te leveren producten worden behandeld. Hierbij worden de productkwaliteitseisen benoemd die worden gebruikt om te beoordelen of een product klaar is om opgeleverd te worden.
 # Ontwikkelmethoden
 
 Tijdens dit project zal de RUP-ontwikkelmethode toegepast worden, deze methode wordt namelijk vanuit de HAN voorgeschreven.
+
+Vanaf de Elaboratie-fase zullen elementen vanuit SCRUM overgenomen worden, bijvoorbeeld de Daily Stand-up en het gebruik van een SCRUM-board.
 
 
 
@@ -144,21 +151,39 @@ Nu de verlangde resultaten en ontwikkelmethode bekend zijn kun je pas de project
 
 In dit hoofdstuk wordt duidelijk wie er bij het project betrokken zijn, wat hun taak is en op welke manier deze bereikt kunnen worden.
 
+
+Overzicht van fasen, met per fase
+belangrijkste doelen 
+aantal iteraties
+(verwachte) start- en einddatum
+Overzicht van globale iteratiedoelen
+Overzicht van opleveringen
+Projectagenda: globaal overzicht van belangrijke afrondingsdata in project
+
+
 ## Begeleiders
 
 | Persoon           | Rol               | Contact                                                                       | Beschikbaarheid    |
 |-------------------|-------------------|-------------------------------------------------------------------------------|--------------------|
-| Michael Koolwaaij | Opdracht gever    | Bericht in teams of [michel.koolwaaij@han.nl](mailto:michel.koolwaaij@han.nl) | Dinsdag en Vrijdag |
 | Nils Bijleveld    | Procesbegeleider  | [nils.bijleveld@han.nl](mailto:nils.bijleveld@han.nl)                         | Nog onbekend       |
 | Chris Scholten    | Projectbegeleider | [chris.scholten@han.nl](mailto:chris.scholten@han.nl)                         | Nog onbekend       |
 
 ## Opdrachtgever
 
-
+| Persoon           | Rol              | Contact                                                                       | Beschikbaarheid    |
+|-------------------|------------------|-------------------------------------------------------------------------------|--------------------|
+| Michael Koolwaaij | Opdrachtgever    | Bericht in teams of [michel.koolwaaij@han.nl](mailto:michel.koolwaaij@han.nl) | Dinsdag en Vrijdag |
 
 ## Rolverdeling
 
-
+| Persoon           | Rol                | Wat | Contact |
+|-------------------|--------------------|-----|---------|
+| Elmar Wiese       | Software architect |     | [o.soyturk@student.han.nl](mailto:o.soyturk@student.han.nl) |
+| Joram Buitenhuis  | Programmeur        |     | [jej.buitenhuis@student.han.nl](mailto:jej.buitenhuis@student.han.nl) |
+| Junjie Juan       | Use case designer  |     | [jj.juan@student.han.nl](mailto:jj.juan@student.han.nl) |
+| Oktay Soytürk     | Tester             |     | [jj.juan@student.han.nl](mailto:o.soyturk@student.han.nl) |
+| Thom Kraaijvanger | Informatieanalist  |     | [t.kraaijvanger1@student.han.nl](mailto:t.kraaijvanger1@student.han.nl) |
+| Tim Meuwsen       | Programmeur        |     | [t.meuwsen@student.han.nl](mailto:t.meuwsen@student.han.nl) |
 
 ## Afspraken
 
@@ -179,3 +204,27 @@ Dit hoofdstuk is een soort ‘final check’. Je vraagt je af ‘wat kan er nu n
 | Risico | Kans (groot-middel-klein) | Impact (groot-middel-klein) | Tegenmaatregel | Uitwijkstrategie |
 |--------|-------------------------- | ----------------------------|----------------|------------------|
 | 1      | 1                         | 1                           | 1              | 1                |
+
+# Bijlagen
+
+## Bijlage I - Rollenbeschrijvingen
+
+### Informatieanalist
+
+De rol van Informatieanalist is verantwoordelijk voor het helder krijgen van requirements en het modelleren van Use Cases, waardoor hij de functionaliteit en grenzen van het te bouwen systeem bepaalt en bewaakt.
+
+### Use case designer
+
+De rol van Use Case Designer is verantwoordelijk voor het specificeren van Use Cases, inclusief schermontwerpen en schermverloop.
+
+### Software architect
+
+De rol van Softwarearchitect is verantwoordelijk voor het maken, beargumenteren en documenteren van de technische keuzes in het project, die de architectuur en dus de technische grenzen en mogelijkheden voor de te bouwen applicatie bepalen. Tevens draagt de Softwarearchitect de verantwoordelijkheid voor het communiceren van de architectuur en ziet hij erop toe dat deze ook wordt geïmplementeerd.
+
+### Programmeur
+
+De rol van Programmeur is verantwoordelijk voor het technisch ontwerpen, ontwikkelen, documenteren en (het automatiseren van) testen van software.
+
+### Tester
+
+De rol van Tester is verantwoordelijk voor het specificeren van test cases en het vastleggen daarvan in een Testontwerp. Daarnaast draagt hij zorg voor het uitvoeren ervan.
