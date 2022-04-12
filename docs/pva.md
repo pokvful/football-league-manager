@@ -126,22 +126,6 @@ In dit hoofdstuk worden de randvoorwaarden beschreven, hierin staat wat er gereg
 
 # 5. Op te leveren producten en kwaliteitseisen
 
-In dit hoofdstuk behandel je alle producten die je in hoofdstuk 4 beschreven hebt en moet opleveren, zoveel mogelijk in detail. Het gaat dan zowel om producten die je aan je opdrachtgever levert, als om de producten die school van je vraagt. Daarin rafel je de resultaten die je moet opleveren uiteen in kleinere (deel)producten. Zo kan het resultaat ‘een stuk werkende code’ bestaan uit een ontwerp, code, een testrapport en overdrachtsdocumentatie, etc.  In elk geval staan de volgende zaken ook op die lijst:
-
-- Een projectverslag (projecten)
-- Afstudeerverslag (afstuderen)
-- Eindpresentatie (projecten en afstuderen)
-- Bijlagen (waarnaar je in de hoofdtekst correct verwijst)
-
-Voor ieder van de beschreven producten definieer je vervolgens meetbare (SMART) kwaliteitseisen. Je bedenkt welke activiteiten je moet doen om de producten volgens die kwaliteitseisen te maken en hoe je ervoor zorgt dat die kwaliteit ook in het proces bewaakt wordt (proceskwaliteitseisen). Dit breng je onder in een tabel. Hieronder staat een voorbeeld, dat expres niet uitputtend is ingevuld, ook zijn de kwaliteitseisen nog niet SMART geformuleerd. En… realiseer je dat het slechts een voorbeeld is!
-
-In dit hoofdstuk zullen de op te leveren producten worden behandeld. Hierbij worden de productkwaliteitseisen benoemd die worden gebruikt om te beoordelen of een product klaar is om opgeleverd te worden.
-
-Voor alle opgeleverde producten gelden de volgende proceskwaliteitseisen:
-- Na wijzigen van een deelproduct worden de wijzigingen gereviewd door een teamgenoot.
-- Bij het reviewen past de reviewer het originele werk niet aan. De reviewer plaatst comments, welke door de originele auteur worden opgelost.
-- Voor alle geschreven documentatie geldt dat ze moeten voldoen aan de AIM-controlekaart. (Hogeschool Arnhem Nijmegen, 2019)
-
 Iedere FO gerelateerde taak wordt na uitvoering gereviewd door minimaal 2 leden van team Pearl. De taken zijn te vinden op het JIRA bord van team Pearl. Het reviewen vindt plaats op Confluence en er wordt gecontroleerd op inhoud, spelling, taal en grammatica volgens de Definition of Done. Fouten worden direct verbeterd, als er fouten in een diagram wordt gevonden wordt er in overleg met het teamlid dat het diagram heeft gemaakt een oplossing bedacht.
 
 
