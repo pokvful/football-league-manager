@@ -5,7 +5,7 @@ set -m # turn on job control (https://unix.stackexchange.com/a/637004/430375)
 function run_sql_files {
 	find ./sql-files/ -type f \( -iname "*.sql" -not -iname "create_database.sql" \) \
 		| sort -n -t / -k 3.1 \
-		| xargs -I {} /opt/mssql-tools/bin/sqlcmd -S "localhost" -U "sa" -P "Football!" -d "fml" -i {}
+		| xargs -I {} /opt/mssql-tools/bin/sqlcmd -S "localhost" -U "sa" -P "Football!" -d "flm" -i {}
 }
 
 # from https://github.com/twright-msft/mssql-node-docker-demo-app/blob/master/import-data.sh
