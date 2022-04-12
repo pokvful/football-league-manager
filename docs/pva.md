@@ -133,9 +133,14 @@ Voor alle opgeleverde producten gelden de volgende proceskwaliteitseisen:
 
 | Product           | Productkwaliteitseisen (SMART(T))              | Benodigde activiteiten om te komen tot het product                                                                       | Proceskwaliteitseisen (5xW 1xH)    |
 |-------------------|------------------|-------------------------------------------------------------------------------|--------------------|
-| FO | - Bevat een korte samenvatting van de op te leveren functionaliteit
-- 
-    | Bericht in teams of [michel.koolwaaij@han.nl](mailto:michel.koolwaaij@han.nl) | Dinsdag en Vrijdag |
+| FO 				| - Bevat een korte samenvatting van de op te leveren functionaliteit
+- FO is up-to-date met huidige implementatie. - De functionele requirements zijn uitgewerkt in de vorm use cases.
+- Bevat een Conceptual Domain Model
+
+
+    | - Requirements uitvragen
+	- Functionele requirements uitwerken in use cases
+	CDM maken|  |
 # Ontwikkelmethoden
 
 Tijdens dit project zal de RUP-ontwikkelmethode toegepast worden, deze methode wordt namelijk vanuit de HAN voorgeschreven.
@@ -146,11 +151,6 @@ We hebben ervoor gekozen om de Elaboratie-fase op te delen in twee fases. Tijden
 
 Tijdens de Construction-fase zal iedere iteratie een SCRUM-sprint gehouden worden.
 
-De volgende RUP-rollen worden in dit project toegekend:
-- Informatieanalist
-- Programmeur
-- Tester
-- Use
 
 # Projectorganisatie en communicatie
 
@@ -193,22 +193,24 @@ Projectagenda: globaal overzicht van belangrijke afrondingsdata in project
 ## Rolverdeling
 
 | Persoon           | Rol                | Wat | Contact |
-|-------------------|--------------------|-----|---------|
-| Elmar Wiese       | Software architect |  Zie []| [o.soyturk@student.han.nl](mailto:o.soyturk@student.han.nl) |
-| Joram Buitenhuis  | Programmeur        |     | [jej.buitenhuis@student.han.nl](mailto:jej.buitenhuis@student.han.nl) |
-| Junjie Juan       | Use case designer  |     | [jj.juan@student.han.nl](mailto:jj.juan@student.han.nl) |
-| Oktay Soytürk     | Tester             |     | [jj.juan@student.han.nl](mailto:o.soyturk@student.han.nl) |
-| Thom Kraaijvanger | Informatieanalist  |     | [t.kraaijvanger1@student.han.nl](mailto:t.kraaijvanger1@student.han.nl) |
-| Tim Meuwsen       | Programmeur        |     | [t.meuwsen@student.han.nl](mailto:t.meuwsen@student.han.nl) |
+|-------------------|--------------------|--------------------------------------------------------------------------------------------------------------------------------|---------|
+| Oktay Soytürk     | Tester             |  Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Tester](#bijlagei---rollenbeschrijvingen---tester)| [jj.juan@student.han.nl](mailto:o.soyturk@student.han.nl) |
+| Thom Kraaijvanger | Informatieanalist  |  Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Informatieanalist](#bijlage-i---rollenbeschrijvingen---informatieanalist)|   [t.kraaijvanger1@student.han.nl](mailto:t.kraaijvanger1@student.han.nl) |
+| Tim Meuwsen       | Programmeur        |  Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Programmeur](#bijlage-i---rollenbeschrijvingen---programmeur)              | [t.meuwsen@student.han.nl](mailto:t.meuwsen@student.han.nl) |
 
 ## Afspraken
 Tijdens het project zijn er meerdere afspraken gemaakt binnen de groep.
 
 - Bij afwezigheid geeft de des betreffende persoon het op zijn minst een week van te voren aan.
+
+- Bij afwezigheid door ziekte moet de persoon voor 9 uur aangeven voor absent.
+- Als de persoon thuis is vanwege ziekete wordt er via teams gewerkt, mits hij er toe in staat is.
 - Op einde van de dag moet alles gepushed zijn naar de bij behorende branch.
+
+- Elke dag is er een pauze van 12:00 tot 13:00.
+- Bij conflicten worden de personen appart gehouden en uitgepraat totdat de conflict opgelost is.
 - 
-Bij afwezigheid door ziekte moet de persoon voor 9 uur aangeven voor afwezigheid.
-- 
+
 
 
 ## Gesprekken opdrachtgever
@@ -218,14 +220,29 @@ Bij afwezigheid door ziekte moet de persoon voor 9 uur aangeven voor afwezigheid
 # Planning
 
 
-Dit is de planning die bij het project hoort volgens RUP.
+Het ISE-project vindt plaats op 11-04-2022 t/m 09-06-2022. Binnen deze periode staat er een vakantie van 02-05-2022 t/m 08-05-2022 gepland. Hierdoor is de totale duur van het project acht weken. De ontwikkelmethode waar gebruik van wordt gemaakt is RUP.
+
+## Globale planning
 
 | Fase |        Start | Eind | 
-|------|--------------|------|-
+
+------|--------------|------|-
 |  Inception   | OW-0  | OW-1  |
 | Elaboration | OW-2  | OW-4  |
 | Construction| OW-5  | OW-8  |
 | Transition  | OW-9  | OW-10 |
+
+
+## Inleverdata
+
+| In te leveren                               | Datum | Tijd  |
+|---------------------------------------------|-------|-------|
+| Individuele projectvoorbereiding            | OW-0  | OW-1  |
+| Groepsbeoordeling tussentijds               | OW-2  | OW-4  |
+| Verantwoording projectbijdrage tussentijds  | OW-5  | OW-8  |
+| Groepsbeoordeling aan het eind              | OW-9  | OW-10 |
+| Verantwoording projectbijdrage aan het eind |
+
 
 
 # Risico’s
@@ -238,7 +255,10 @@ Dit hoofdstuk is een soort ‘final check’. Je vraagt je af ‘wat kan er nu n
 
 ## Risk List
 
-| 
+| Risico | Tegenmaatregel | Uitwijkstrategie |
+|--------|----------------|-------------------|
+| Mongo Database opzetten | 1 | 1 |
+| Mongo database koppellen aan SQL server | 1 | 23
 
 
 # Bijlagen
