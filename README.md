@@ -1,5 +1,5 @@
 # Football League Manager
 
-[[TOC]]
+[TOC]
 
 ## Test
