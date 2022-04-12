@@ -25,13 +25,10 @@ Bij elk van deze risico's zijn haalbare maatregelen ten behoeven van het voortze
 
 # Achtergrond van het project
 
-In de achtergrond geef je aan waar en voor wie jij de opdracht uitvoert en wat voor hen het belang van het project is.
-Denk in elk geval aan:
-
-- Beschrijving bedrijf/organisatie in je eigen woorden (geen teksten letterlijk overnemen van website)
-- De belangrijkste groepen van stakeholders: wie hebben er –naast de opdrachtgever en de projectgroep- te maken met (de resultaten van) het project?
-- Indien relevant: organisatiestructuur van het onderdeel waar opdracht betrekking op heeft
-- De aanleiding voor het project: Wat is de urgentie van het project, de reden dat het bedrijf juist nu dit project wil laten uitvoeren (en niet een ander –mogelijk ook belangwekkend- project)?
+NUTMEG is een nieuw startup bedrijf dat van plan is om voetbalcompetitie informatie te verkopen.
+Ze specialiseren zich nu alleen in leagues.
+Andere bedrijven willen de voetbal gegevens opvragen voor vele verschillende doeleinden.
+Het bedrijf heeft nog geen database en ze hebben er een nodig.
 
 # Doelstelling, opdracht en op te leveren resultaten voor het bedrijf
 
@@ -194,7 +191,11 @@ Projectagenda: globaal overzicht van belangrijke afrondingsdata in project
 
 | Persoon           | Rol                | Wat | Contact |
 |-------------------|--------------------|--------------------------------------------------------------------------------------------------------------------------------|---------|
-| Oktay Soytürk     | Tester             |  Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Tester](#bijlagei---rollenbeschrijvingen---tester)| [jj.juan@student.han.nl](mailto:o.soyturk@student.han.nl) |
+
+| Elmar Wise        | Software Architect | Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Software architect](#bijlage-i---rollenbeschrijvingen---software-architect) |
+| Joram Buitenhuis  | Programmeur        | Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Programmeur](#bijlage-i---rollenbeschrijvingen---programmeur)               |
+| Junjie Juan       | Use case designer  | Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Use case designer](#bijlage-i---rollenbeschrijvingen---use-case-designer)   |
+| Oktay Soytürk     | Tester             |  Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Tester](#bijlagei---rollenbeschrijvingen---tester)                         | [jj.juan@student.han.nl](mailto:o.soyturk@student.han.nl) |
 | Thom Kraaijvanger | Informatieanalist  |  Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Informatieanalist](#bijlage-i---rollenbeschrijvingen---informatieanalist)|   [t.kraaijvanger1@student.han.nl](mailto:t.kraaijvanger1@student.han.nl) |
 | Tim Meuwsen       | Programmeur        |  Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Programmeur](#bijlage-i---rollenbeschrijvingen---programmeur)              | [t.meuwsen@student.han.nl](mailto:t.meuwsen@student.han.nl) |
 
@@ -235,13 +236,24 @@ Het ISE-project vindt plaats op 11-04-2022 t/m 09-06-2022. Binnen deze periode s
 
 ## Inleverdata
 
-| In te leveren                               | Datum | Tijd  |
-|---------------------------------------------|-------|-------|
-| Individuele projectvoorbereiding            | OW-0  | OW-1  |
-| Groepsbeoordeling tussentijds               | OW-2  | OW-4  |
-| Verantwoording projectbijdrage tussentijds  | OW-5  | OW-8  |
-| Groepsbeoordeling aan het eind              | OW-9  | OW-10 |
-| Verantwoording projectbijdrage aan het eind |
+| In te leveren                               | Datum      | Tijd  |
+|---------------------------------------------|------------|-------|
+| Individuele projectvoorbereiding            | 15-04-2022 | 16:00 |
+| Groepsbeoordeling tussentijds               | 13-05-2022 | 16:00 |
+| Verantwoording projectbijdrage tussentijds  | 13-05-2022 | 16:00 |
+| Groepsbeoordeling aan het eind              | 09-06-2022 | 16:00 |
+| Verantwoording projectbijdrage aan het eind | 09-06-2022 | 16:00 |
+
+## Meetings
+
+### Opdrachtgever
+
+
+
+### Procesbegeleider
+
+### Professional Skills begeleider
+
 
 
 
