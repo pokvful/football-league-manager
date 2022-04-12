@@ -247,14 +247,14 @@ Dit hoofdstuk is een soort ‘final check’. Je vraagt je af ‘wat kan er nu n
 
 | Risico | Kans (groot-middel-klein) | Impact (groot-middel-klein) | Tegenmaatregel | Uitwijkstrategie |
 |--------|-------------------------- | ----------------------------|----------------|------------------|
-| 1      | 1                         | 1                           | 1              | 1                
+| De toolstack is niet meer beschikbaar      | klein                         | groot                           | -              | Met projectbegeleider en opdrachtgever bespreken hoe het nu verder moet.                
 
 ## 9.1 Risk List
 
 | Risico                                  | Tegenmaatregel | Uitwijkstrategie |
 |-----------------------------------------|----------------|------------------|
-| Mongo Database opzetten                 | 1              | 1                |
-| Mongo database koppellen aan SQL server | 1              | 23               |
+| Mongo Database opzetten                 | PoC voor docker omgeving mac  |  De macgebruikers moeten windows of linux runnen. Anders andere laptop regelen.            |
+| Mongo database koppellen aan SQL server | PoC maken voor de koppeling  | Staging area veranderen naar spring boot.  |
 
 # Bijlagen
 
@@ -284,5 +284,6 @@ De rol van Tester is verantwoordelijk voor het specificeren van test cases en he
 # Literatuurlijst
 
 - *Naslagsite 2011*. (2011). RUP Op Maat. Geraadpleegd op 12 april 2022, van [http://rupopmaat.nl/naslagsite2011/](http://rupopmaat.nl/naslagsite2011/)
-- *Hogeschool Arnhem Nijmegen*. (2019, 2 september). AIM controlekaart. Onderwijs Online. Geraadpleegd op 9 november 2021, van [https://onderwijsonline.han.nl/elearning/content/oNkklGNj](https://onderwijsonline.han.nl/elearning/content/oNkklGNj)
-- *HAN.* (2021). Organisatie - Project Cheatsheet - Slagen voor het OOSE project S1 2021-2022. OnderwijsOnline. Geraadpleegd op 11 november 2021, van https://onderwijsonline.han.nl/elearning/lesson/WNEZBj7y
+- *Hogeschool Arnhem Nijmegen*. (2019, 2 september). AIM controlekaart. Onderwijs Online. Geraadpleegd op 12 april 2022, van [https://onderwijsonline.han.nl/elearning/content/oNkklGNj](https://onderwijsonline.han.nl/elearning/content/oNkklGNj)
+- *HAN1). Organisatie - Project Cheatsheet - Studiehandleiding ISE-project 2021-2022. OnderwijsOnline. Geraadpleegd op 12 april 2022, van [https://han.onderwijsonline.nl/elearning/lesson/Xyrrjkjy](https://han.onderwijsonline.nl/elearning/lesson/Xyrrjkjy)
+- 
