@@ -15,22 +15,25 @@ Opdrachtgever: Michel Koolwaaij
 
 # Inleiding
 
-Het bedrijf NUTMEG heeft ons de opdracht geven de back-end voor het informatiesysteem "Football League Manager" te ontwikkelen. Door middel van dit systeem kunnen gebruikers informatie van voetbalwedstrijden toevoegen en bestaande informatie uitlezen.
+Het bedrijf NUTMEG heeft ons de opdracht geven de back-end voor het informatiesysteem "Football League Manager" te ontwikkelen. Met dit systeem kunnen gebruikers informatie van voetbalwedstrijden toevoegen en bestaande informatie uitlezen.
 
 Binnen dit document zal eerst de concrete opdracht worden toegelicht. Vervolgens zal er in worden gegaan op de doelstelling van de opdracht en welke resultaten er opgeleverd gaan worden. Ook worden projectgrenzen en randvoorwaarden gesteld om de verantwoordelijkheid van het ontwikkelteam duidelijk te maken. Voor het waarborgen van de kwaliteit van het gehele product zijn ook kwaliteitseisen benoemd.
 
-Verder wordt de ontwikkelmethode die het ontwikkelteam gaat gebruiken (RUP) toegelicht, evenals hoe deelnemers en stakeholders tijdens het project communiceren. Aan het einde van het document is een planning te vinden, met daarbij een opsomming van mogelijke risico's die het verloop van het project kunnen verstoren.
+Verder wordt de ontwikkelmethode die het ontwikkelteam gaat gebruiken (RUP) toegelicht, evenals hoe deelnemers en betrokken partijen tijdens het project communiceren. Aan het einde van het document is een planning te vinden, met daarbij een opsomming van mogelijke risico's die het verloop van het project kunnen verstoren.
 
-Bij elk van deze risico's zijn haalbare maatregelen ten behoeven van het voortzetten van het project vastgelegd om afwijkingen van de planning en doelstelling van het project tot een minimum te beperken.
+Bij elk van deze risico's zijn haalbare maatregelen ten hoeven van het voortzetten van het project vastgelegd om afwijkingen van de planning en doelstelling van het project tot een minimum te beperken.
 
-# Achtergrond van het project
+# 1. Achtergrond van het project
 
 NUTMEG is een nieuw startup bedrijf dat van plan is om voetbalcompetitie informatie te verkopen.
+
 Ze specialiseren zich nu alleen in leagues.
+
 Andere bedrijven willen de voetbal gegevens opvragen voor vele verschillende doeleinden.
+
 Het bedrijf heeft nog geen database en ze hebben er een nodig.
 
-# Doelstelling, opdracht en op te leveren resultaten voor het bedrijf
+# 2. Doelstelling, opdracht en op te leveren resultaten voor het bedrijf
 
 Probleem:
 
@@ -76,31 +79,33 @@ Resultaat:
 
 - testrapport en bijbehorende tests.
 
-# Projectgrenzen
+# 3. Projectgrenzen
 
 De periode waarin we werken aan het project is van 11 april 2022 t/m 9 juni 2022.
 
 Tijdens het project is team a4 aanwezig op de han op maandag t/m vrijdag van 9:00 t/m 17:00 uur. Hierbij is er uitzonderingen voor paar feestdagen en een vakantie.
 
 De dagen dat A4 niet werkt aan het project zijn:
-- 15 april 2022, goeie vrijdag
-- 18 april 2022, 2e Paasdag
-- 27 april 2022, koningsdag
-- 2 mei t/m 6 mei 2022, mei vakantie
+
+- 15 april 2022, goeie vrijdag;
+- 18 april 2022, 2e Paasdag;
+- 27 april 2022, koningsdag;
+- 2 mei t/m 6 mei 2022, mei vakantie.
 
 Voor het project zijn bepaalde methode en tools gegeven door school die wij moeten gebruiken binnen dit project:
-- Projectmethode RUP.
-- Jira om taken te plannen.
+
+- Projectmethode RUP;
+- Jira om taken te plannen;
 - BitBucket voor het managen van code.
 
 Deze methode en tools moeten gebruikt worden binnen het project en er mag geen alternatief worden ingezet.
 
-Team a4 gaat in ieder geval gebruik maken van  Microsoft SQL, docker, docker compose.
+Team a4 gaat in ieder geval gebruik maken van  Microsoft SQL, docker en docker compose.
 Verder wordt er eerst onderzoek gekeken naar mongodb.
 
-De opdrachtgever kan tijdens transition fase geen nieuwe requiremens of functionaliteiten meer geven. In deze tijd wordt er gewerkt om het project af te ronden.
+De opdrachtgever kan tijdens de transition fase geen nieuwe requiremens of functionaliteiten meer geven. In deze tijd wordt er gewerkt om het project af te ronden.
 
-# Randvoorwaarden
+# 4. Randvoorwaarden
 
 In dit hoofdstuk worden de randvoorwaarden beschreven, hierin staat wat er geregeld moet worden om het project mogelijk te maken.
 
@@ -110,7 +115,7 @@ In dit hoofdstuk worden de randvoorwaarden beschreven, hierin staat wat er gereg
 - ISE ritme dicteert (denk hierbij bijvoorbeeld aan inleverdeadlines) NUTMEG
 - ISE casusopdracht gaat voor de wensen van NUTMEG
 
-# Op te leveren producten en kwaliteitseisen
+# 5. Op te leveren producten en kwaliteitseisen
 
 In dit hoofdstuk behandel je alle producten die je in hoofdstuk 4 beschreven hebt en moet opleveren, zoveel mogelijk in detail. Het gaat dan zowel om producten die je aan je opdrachtgever levert, als om de producten die school van je vraagt. Daarin rafel je de resultaten die je moet opleveren uiteen in kleinere (deel)producten. Zo kan het resultaat ‘een stuk werkende code’ bestaan uit een ontwerp, code, een testrapport en overdrachtsdocumentatie, etc.  In elk geval staan de volgende zaken ook op die lijst:
 
@@ -128,17 +133,18 @@ Voor alle opgeleverde producten gelden de volgende proceskwaliteitseisen:
 - Bij het reviewen past de reviewer het originele werk niet aan. De reviewer plaatst comments, welke door de originele auteur worden opgelost.
 - Voor alle geschreven documentatie geldt dat ze moeten voldoen aan de AIM-controlekaart. (Hogeschool Arnhem Nijmegen, 2019)
 
-| Product           | Productkwaliteitseisen (SMART(T))              | Benodigde activiteiten om te komen tot het product                                                                       | Proceskwaliteitseisen (5xW 1xH)    |
-|-------------------|------------------|-------------------------------------------------------------------------------|--------------------|
-| FO 				| - Bevat een korte samenvatting van de op te leveren functionaliteit
-- FO is up-to-date met huidige implementatie. - De functionele requirements zijn uitgewerkt in de vorm use cases.
-- Bevat een Conceptual Domain Model
+| Product         | Productkwaliteitseisen  (SMART)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Benodigde activiteiten om te komen tot het product                                                                                                                                                                                                                                                                                                                                                                                                                             | Proceskwaliteitseisen  (5XW 1xH)                                                                                                                                                                                                                                                                                                                               |
+|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Eindapplicatie  | De applicatie is gedocumenteerd in de hieronder beschreven documenten. (FO, TO, testplan en testrapport).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |  Geteste code pushen naar BitBucket.   Uitvoeren van planningpoker voor inschatten tijden taken. (Dit wordt voor elke sprint planning uitgevoerd).   Tijdens de start van elke sprint (sprint planning), afspreken welke use cases gerealiseerd moeten worden in die specifieke sprint.   Tijdens verloop van sprint(s) werken aan functionaliteiten die zijn uitgekozen in de sprint planning.  Controleren of product voldoet aan de opgestelde use cases. (sprint review)   | Oplevering en goedkeuring van tussenproducten door opdrachtgever aan het einde van iedere sprint.                                                                                                                                                                                                                                                 			   |
+| FO              | Bevat een korte samenvatting van de op te leveren functionaliteit. FO is up-to-date met de huidige implementatie.  Bevat een domeinmodel met alle domeinconcepten van de applicatie.   Bevat een glossary met alle concepten en attributen uit het domeinmodel.  De functionele requirements zijn uitgewerkt in de vorm van usecases.  De niet-ingeplande usecases uit de backlog zijn uitgewerkt in brief format.   De geplande usecases zijn uitgewerkt in fully-dressed format.   Bevat een CDM (Conceptual Domain Model). Per usecase dient het volgende te zijn beschreven: Primaire actor. Stakeholders en per stakeholder zijn interesses. Brief description (brief format). Preconditie (concreet booleaans m.b.t. het domeinmodel). Postconditie (concreet booleaans m.b.t. het domeinmodel). Happy flow. Optionele alternative flows. | Requirements uitvragen. Functionele requirements uitwerken in use cases. Niet-functionele requirements uitwerken. Use cases uitschrijven in brief-format.  Bij oppakken van een brief-format use case, deze fully dressed uitwerken.                                                                                                                                                                                                                                           | Oplevering en goedkeuring van  opdrachtgever aan het einde van iedere sprint.                                                                                                                                                                                                                                                                                  |
+| TO              | TO is up-to-date met de huidige implementatie. Bevat een PDM (Physical Domain Model). Bevat een databaseontwerp. Bevat beargumentatie van de ontwerpkeuzes weergegeven in de bovengenoemde diagrammen.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Use cases opstellen Database design opstellen. PDM opstellen.                                                                                                                                                                                                                                                                                                                                                                                                                  | Oplevering door opdrachtgever aan het einde van iedere sprint.                                                                                                                                                                                                                                                                                                 |
+| Code            | Voldoet aan opgestelde eisen binnen DOD (Definition of Done).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Schrijven van code voor functionaliteiten die afgesproken is te realiseren tijdens de sprint review (dit gebeurt per sprint). Unittests schrijven.                                                                                                                                                                                                                                                                                                                             | Requirements die zijn gerealiseerd testen, dit vervolgens omzetten naar een testrapport. Aanmaken van pull request naar development branch  zodra je klaar bent met je taak, deze wordt vervolgens nagekeken d.m.v.  een pull request van bitbucket. (Dit doet iemand anders, dus de persoon  die de pull request maakt, mag niet zijn eigen code goedkeuren). |
+| Plan van Aanpak | Is geschreven volgens de Toelichting op het plan van aanpak (Praktijkbureau AIM, Professional Skills, 2020).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Introductiegesprek met opdrachtgever. In kaart brengen van de requirements. Afspraken maken over ontwikkelmethode. Compleetheid van PvA bespreken met inhoudelijk begeleider en professional skills begeleider.                                                                                                                                                                                                                                                                | Oplevering en goedkeuring door opdrachtgever en inhoudelijk begeleider.                                                                                                                                                                                                                                                                                        |
+| Eindverslag     | Voldoet aan opgestelde eisen binnen document: "Studiehandeling ISE-project 2021-2022 S2" (HAN Project Cheatsheet).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Bijhouden van competenties binnen projectperiode, deze vervolgens toelichten in het verslag.                                                                                                                                                                                                                                                                                                                                                                                   | Goedkeuring door inhoudelijk begeleider, zowel tussentijds als eind van projectperiode.                                                                                                                                                                                                                                                                        |
+| Testrapport     | Voldoet aan opgestelde eisen binnen document: "Studiehandeling ISE-project 2021-2022 S2" (HAN Project Cheatsheet).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Beschrijven wat de uitslagen zijn van de testen in het testplan.                                                                                                                                                                                                                                                                                                                                                                                                               | Oplevering en goedkeuring door opdrachtgever en inhoudelijk begeleider.                                                                                                                                                                                                                                                                                        |
+| Testplan        | Voldoet aan opgestelde eisen binnen document: "Studiehandeling ISE-project 2021-2022 S2" (HAN Project Cheatsheet).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Beschrijven welke testen zijn opgesteld en hoe ze getest gaan worden.                                                                                                                                                                                                                                                                                                                                                                                                          | Oplevering en goedkeuring door opdrachtgever en inhoudelijk begeleider.                                                                                                                                                                                                                                                                                        |
 
-
-    | - Requirements uitvragen
-	- Functionele requirements uitwerken in use cases
-	CDM maken|  |
-# Ontwikkelmethoden
+# 6. Ontwikkelmethoden
 
 Tijdens dit project zal de RUP-ontwikkelmethode toegepast worden, deze methode wordt namelijk vanuit de HAN voorgeschreven.
 
@@ -148,8 +154,10 @@ We hebben ervoor gekozen om de Elaboratie-fase op te delen in twee fases. Tijden
 
 Tijdens de Construction-fase zal iedere iteratie een SCRUM-sprint gehouden worden.
 
+Tevens moet het team ook persoonlijke ontwikkeling gedurende het project bijhouden. Dit vermindert de tijd die uiteindelijk aan het product besteed kan worden. Het team heeft ingescaht één middag per week kwijt te zijn aan het bijhouden van de persoonlijke ontwikkeling. 
 
-# Projectorganisatie en communicatie
+
+# 7. Projectorganisatie en communicatie
 
 Nu de verlangde resultaten en ontwikkelmethode bekend zijn kun je pas de projectorganisatie ( in 9.) en de planning (in 10.) behandelen. Dit is een heel praktisch hoofdstuk dat inzicht geeft in contactfrequenties tussen jou, de organisatie en de schoolbegeleider(s). Ga in elk geval in op:
 
@@ -174,67 +182,55 @@ Overzicht van opleveringen
 Projectagenda: globaal overzicht van belangrijke afrondingsdata in project
 
 
-## Begeleiders
+## 7.1 Begeleiders
 
-| Persoon           | Rol               | Contact                                                                       | Beschikbaarheid    |
-|-------------------|-------------------|-------------------------------------------------------------------------------|--------------------|
-| Nils Bijleveld    | Procesbegeleider  | [nils.bijleveld@han.nl](mailto:nils.bijleveld@han.nl)                         | Nog onbekend       |
-| Chris Scholten    | Projectbegeleider | [chris.scholten@han.nl](mailto:chris.scholten@han.nl)                         | Nog onbekend       |
+| Persoon           | Rol               | Contact                                               | Beschikbaarheid    |
+|-------------------|-------------------|-------------------------------------------------------|--------------------|
+| Nils Bijleveld    | Procesbegeleider  | [nils.bijleveld@han.nl](mailto:nils.bijleveld@han.nl) | Nog onbekend       |
+| Chris Scholten    | Projectbegeleider | [chris.scholten@han.nl](mailto:chris.scholten@han.nl) | Nog onbekend       |
 
-## Opdrachtgever
+## 7.2 Opdrachtgever
 
 | Persoon           | Rol              | Contact                                                                       | Beschikbaarheid    |
 |-------------------|------------------|-------------------------------------------------------------------------------|--------------------|
 | Michael Koolwaaij | Opdrachtgever    | Bericht in teams of [michel.koolwaaij@han.nl](mailto:michel.koolwaaij@han.nl) | Dinsdag en Vrijdag |
 
-## Rolverdeling
+## 7.3 Rolverdeling
 
-| Persoon           | Rol                | Wat | Contact |
-|-------------------|--------------------|--------------------------------------------------------------------------------------------------------------------------------|---------|
+| Persoon           | Rol                | Wat                                                                                                                            | Contact                                                                 |
+|-------------------|--------------------|--------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| Elmar Wise        | Software Architect | Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Software architect](#bijlage-i---rollenbeschrijvingen---software-architect) | [ej.wiese@student.han.nl](mailto:ej.wiese@student.han.nl)               |
+| Joram Buitenhuis  | Programmeur        | Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Programmeur](#bijlage-i---rollenbeschrijvingen---programmeur)               | [jej.buitenhuis@student.han.nl](mailto:jej.buitenhuis@studnet.han.nl)   |
+| Junjie Juan       | Use case designer  | Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Use case designer](#bijlage-i---rollenbeschrijvingen---use-case-designer)   | [jj.juan@student.han.nl](mailto:jj.juan@student.han.nl)                 |
+| Oktay Soytürk     | Tester             | Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Tester](#bijlagei---rollenbeschrijvingen---tester)                          | [o.soyturk@student.han.nl](mailto:o.soyturk@student.han.nl)               |
+| Thom Kraaijvanger | Informatieanalist  | Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Informatieanalist](#bijlage-i---rollenbeschrijvingen---informatieanalist)   | [t.kraaijvanger1@student.han.nl](mailto:t.kraaijvanger1@student.han.nl) |
+| Tim Meuwsen       | Programmeur        | Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Programmeur](#bijlage-i---rollenbeschrijvingen---programmeur)               | [t.meuwsen@student.han.nl](mailto:t.meuwsen@student.han.nl)             |
 
-| Elmar Wise        | Software Architect | Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Software architect](#bijlage-i---rollenbeschrijvingen---software-architect) |
-| Joram Buitenhuis  | Programmeur        | Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Programmeur](#bijlage-i---rollenbeschrijvingen---programmeur)               |
-| Junjie Juan       | Use case designer  | Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Use case designer](#bijlage-i---rollenbeschrijvingen---use-case-designer)   |
-| Oktay Soytürk     | Tester             |  Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Tester](#bijlagei---rollenbeschrijvingen---tester)                         | [jj.juan@student.han.nl](mailto:o.soyturk@student.han.nl) |
-| Thom Kraaijvanger | Informatieanalist  |  Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Informatieanalist](#bijlage-i---rollenbeschrijvingen---informatieanalist)|   [t.kraaijvanger1@student.han.nl](mailto:t.kraaijvanger1@student.han.nl) |
-| Tim Meuwsen       | Programmeur        |  Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Programmeur](#bijlage-i---rollenbeschrijvingen---programmeur)              | [t.meuwsen@student.han.nl](mailto:t.meuwsen@student.han.nl) |
+## 7.4 Afspraken
 
-## Afspraken
 Tijdens het project zijn er meerdere afspraken gemaakt binnen de groep.
 
 - Bij afwezigheid geeft de des betreffende persoon het op zijn minst een week van te voren aan.
-
 - Bij afwezigheid door ziekte moet de persoon voor 9 uur aangeven voor absent.
 - Als de persoon thuis is vanwege ziekete wordt er via teams gewerkt, mits hij er toe in staat is.
 - Op einde van de dag moet alles gepushed zijn naar de bij behorende branch.
-
 - Elke dag is er een pauze van 12:00 tot 13:00.
 - Bij conflicten worden de personen appart gehouden en uitgepraat totdat de conflict opgelost is.
-- 
 
-
-
-## Gesprekken opdrachtgever
-
-
-
-# Planning
-
+# 8. Planning
 
 Het ISE-project vindt plaats op 11-04-2022 t/m 09-06-2022. Binnen deze periode staat er een vakantie van 02-05-2022 t/m 08-05-2022 gepland. Hierdoor is de totale duur van het project acht weken. De ontwikkelmethode waar gebruik van wordt gemaakt is RUP.
 
-## Globale planning
+## 8.1 Globale planning
 
-| Fase |        Start | Eind | 
-
-------|--------------|------|-
-|  Inception   | OW-0  | OW-1  |
+| Fase        | Start | Eind  |
+|-------------|-------|-------|
+| Inception   | OW-0  | OW-1  |
 | Elaboration | OW-2  | OW-4  |
 | Construction| OW-5  | OW-8  |
 | Transition  | OW-9  | OW-10 |
 
-
-## Inleverdata
+## 8.2 Inleverdata
 
 | In te leveren                               | Datum      | Tijd  |
 |---------------------------------------------|------------|-------|
@@ -244,34 +240,21 @@ Het ISE-project vindt plaats op 11-04-2022 t/m 09-06-2022. Binnen deze periode s
 | Groepsbeoordeling aan het eind              | 09-06-2022 | 16:00 |
 | Verantwoording projectbijdrage aan het eind | 09-06-2022 | 16:00 |
 
-## Meetings
 
-### Opdrachtgever
-
-
-
-### Procesbegeleider
-
-### Professional Skills begeleider
-
-
-
-
-# Risico’s
+# 9. Risico’s
 
 Dit hoofdstuk is een soort ‘final check’. Je vraagt je af ‘wat kan er nu nog mis gaan?’. Een risico is iets wat buiten je macht/invloed op kan treden, en als het optreedt dan wordt de doelstelling van het project niet gehaald. Het project wordt dan te laat, met budgetoverschrijding of met (sterk) verminderde functionaliteit opgeleverd. Iets wat kan optreden maar wat planmatig bestreden kan worden is dus geen risico. Dit soort zaken neem je op in je planning, je randvoorwaarden, of daar waar het in het plan van aanpak thuishoort. Denk bijvoorbeeld aan voldoende overlegmomenten met je opdrachtgever.  Alléén de risico’s die je niet vooraf kunt beïnvloeden neem je op in deze paragraaf. Een voorbeeld: als je weet dat je tijdens je project gaat verhuizen kun je in je planning opnemen op welke dagen je niet werkt. Afwezigheid door verhuizing is dus geen risico.  Maar, als je afhankelijk bent van de levering van een server door een nieuwe leverancier, kan het anders zijn. Natuurlijk neem je eerst in de planning op dat je er nog een keer extra achter aan belt (dit noemen we een tegenmaatregel), maar je vraagt je ook af wat je gaat doen als het onverhoopt tóch misgaat (je uitwijkstrategie). Dit geef je weer in een tabel die er zo uit kan zien:
 
 | Risico | Kans (groot-middel-klein) | Impact (groot-middel-klein) | Tegenmaatregel | Uitwijkstrategie |
 |--------|-------------------------- | ----------------------------|----------------|------------------|
-| 1      | 1                         | 1                           | 1              | 1                |
+| 1      | 1                         | 1                           | 1              | 1                
 
-## Risk List
+## 9.1 Risk List
 
-| Risico | Tegenmaatregel | Uitwijkstrategie |
-|--------|----------------|-------------------|
-| Mongo Database opzetten | 1 | 1 |
-| Mongo database koppellen aan SQL server | 1 | 23
-
+| Risico                                  | Tegenmaatregel | Uitwijkstrategie |
+|-----------------------------------------|----------------|------------------|
+| Mongo Database opzetten                 | 1              | 1                |
+| Mongo database koppellen aan SQL server | 1              | 23               |
 
 # Bijlagen
 
@@ -302,3 +285,4 @@ De rol van Tester is verantwoordelijk voor het specificeren van test cases en he
 
 - *Naslagsite 2011*. (2011). RUP Op Maat. Geraadpleegd op 12 april 2022, van [http://rupopmaat.nl/naslagsite2011/](http://rupopmaat.nl/naslagsite2011/)
 - *Hogeschool Arnhem Nijmegen*. (2019, 2 september). AIM controlekaart. Onderwijs Online. Geraadpleegd op 9 november 2021, van [https://onderwijsonline.han.nl/elearning/content/oNkklGNj](https://onderwijsonline.han.nl/elearning/content/oNkklGNj)
+- *HAN.* (2021). Organisatie - Project Cheatsheet - Slagen voor het OOSE project S1 2021-2022. OnderwijsOnline. Geraadpleegd op 11 november 2021, van https://onderwijsonline.han.nl/elearning/lesson/WNEZBj7y
