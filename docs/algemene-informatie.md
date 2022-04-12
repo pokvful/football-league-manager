@@ -19,7 +19,7 @@
 Persoonlijke kwaliteiten:
 
 1. Graag mensen willen helpen;
-2. Gemotiveerd.
+2. Gepassioneerd.
 
 Vakkundige kwaliteiten:
 
