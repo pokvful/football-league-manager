@@ -6,16 +6,50 @@ Projectleden:
 - Elmar Wiese (654870)
 - Junjie Juan (637823)
 
-Projectgroep: A4
-Klas: ITA-ISE-A-f
-Datum: 15-04-2022
-Versienummer: 1.0
-Organisatie: NUTMEG
-Opdrachtgever: Michel Koolwaaij
+**Projectgroep**: A4
+
+**Klas**: ITA-ISE-A-f
+
+**Datum**: 15-04-2022
+
+**Versienummer**: 1.0
+
+**Organisatie**: NUTMEG
+
+**Opdrachtgever**: Michel Koolwaaij
 
 # Inhoudsopgave
 
-<!-- TODO: -->
+- [Inhoudsopgave](#inhoudsopgave)
+- [Inleiding](#inleiding)
+- [1. Achtergrond van het project](#1-achtergrond-van-het-project)
+- [2. Doelstelling, opdracht en op te leveren resultaten voor het bedrijf](#2-doelstelling-opdracht-en-op-te-leveren-resultaten-voor-het-bedrijf)
+	- [Probleem](#probleem)
+	- [Doelstelling](#doelstelling)
+	- [Opdracht](#opdracht)
+	- [Resultaat](#resultaat)
+- [3. Projectgrenzen](#3-projectgrenzen)
+- [4. Randvoorwaarden](#4-randvoorwaarden)
+- [5. Op te leveren producten en kwaliteitseisen](#5-op-te-leveren-producten-en-kwaliteitseisen)
+- [6. Ontwikkelmethoden](#6-ontwikkelmethoden)
+- [7. Projectorganisatie en communicatie](#7-projectorganisatie-en-communicatie)
+	- [7.1 Begeleiders](#71-begeleiders)
+	- [7.2 Opdrachtgever](#72-opdrachtgever)
+	- [7.3 Rolverdeling](#73-rolverdeling)
+	- [7.4 Afspraken](#74-afspraken)
+- [8. Planning](#8-planning)
+	- [8.1 Globale planning](#81-globale-planning)
+	- [8.2 Inleverdata](#82-inleverdata)
+- [9. Risico’s](#9-risicos)
+	- [9.1 Risk List](#91-risk-list)
+- [Bijlagen](#bijlagen)
+	- [Bijlage I - Rollenbeschrijvingen](#bijlage-i---rollenbeschrijvingen)
+		- [Bijlage I - Rollenbeschrijvingen - Informatieanalist](#bijlage-i---rollenbeschrijvingen---informatieanalist)
+		- [Bijlage I - Rollenbeschrijvingen - Use case designer](#bijlage-i---rollenbeschrijvingen---use-case-designer)
+		- [Bijlage I - Rollenbeschrijvingen - Software architect](#bijlage-i---rollenbeschrijvingen---software-architect)
+		- [Bijlage I - Rollenbeschrijvingen - Programmeur](#bijlage-i---rollenbeschrijvingen---programmeur)
+		- [Bijlage I - Rollenbeschrijvingen - Tester](#bijlage-i---rollenbeschrijvingen---tester)
+- [Literatuurlijst](#literatuurlijst)
 
 # Inleiding
 
@@ -29,7 +63,7 @@ Bij elk van deze risico's zijn haalbare maatregelen ten hoeven van het voortzett
 
 # 1. Achtergrond van het project
 
-NUTMEG is een nieuw startup bedrijf dat van plan is om voetbalcompetitie informatie te verkopen. 
+NUTMEG is een nieuw startup bedrijf dat van plan is om voetbalcompetitie informatie te verkopen.
 
 Ze specialiseren zich nu alleen in leagues.
 
@@ -39,53 +73,27 @@ Het bedrijf heeft nog geen database en ze hebben er een nodig.
 
 # 2. Doelstelling, opdracht en op te leveren resultaten voor het bedrijf
 
-Probleem:
+## Probleem
 
-NUTMEG is een startup bedrijf dat voetbal (competitie) informatie verkoopt.
+NUTMEG is een startup bedrijf dat voetbal (competitie) informatie verkoopt. De informatie veranderd constant en ze krijgen constant nieuwe informatie. Al die gegevens moeten worden opgeslagen.
 
-De informatie veranderd constant en ze krijgen constant nieuwe informatie.
-
-Al die gegevens moeten worden opgeslagen.
-<br>
-<br>
-Doelstelling:
+## Doelstelling
 
 Het bedrijf wil een database waar alle informatie kan worden opgeslagen en uit worden gehaald over voetbalcompetities.
-<br>
-<br>
-Opdracht:
 
-Een database waarin voetbalcompetitie kan worden opgeslagen en beheerd.
+## Opdracht
 
-De beheerder kan direct verbinding maken met de database om zo bijvoorbeeld bestaande data aan te passen of nieuwe data toe te voegen.
+Een database waarin voetbalcompetitie kan worden opgeslagen en beheerd. De beheerder kan direct verbinding maken met de database om zo bijvoorbeeld bestaande data aan te passen of nieuwe data toe te voegen. Daarbij moet er een staging area worden gemaakt, zodat gebruikers gegevens die in de database staan uit kunnen lezen. De data moet in JSON geleverd kunnen worden. Ook moet vanuit de database een current league table en top score lijst worden gegenereerd. De gebruikers kunnen alleen gegevens lezen. De database moet openstaan voor eventuele uitbreidingen.
 
-Daarbij moet er een staging area worden gemaakt, zodat gebruikers gegevens die in de database staan uit kunnen lezen.
-
-De data moet in JSON geleverd kunnen worden.
-
-Ook moet vanuit de database een current league table en top score lijst worden gegenereerd.
-
-De gebruikers kunnen alleen gegevens lezen.
-
-De database moet openstaan voor eventuele uitbreidingen.
-<br>
-<br>
-Resultaat:
+## Resultaat
 
 - PvA met daarin ook Software Development Plan en Risk List.
-
 - De gemaakte Iteratieplannen.
-
 - FO, TO waarbij de diagrammen zijn gemaakt in PowerDesigner.
-
 - MSSQL server database.
-
 - MongoDB staging area.
-
 - De gemaakte proof of concepts.
-
 - Testplan.
-
 - Testrapport en bijbehorende tests.
 
 # 3. Projectgrenzen
@@ -109,8 +117,7 @@ Voor het project zijn bepaalde methode en tools gegeven door school die wij moet
 
 Deze methode en tools moeten gebruikt worden binnen het project en er mag geen alternatief worden ingezet.
 
-Team A4 gaat in ieder geval gebruik maken van MSSQL en Docker.
-Verder wordt er eerst onderzoek gedaan naar MongoDB, hieruit zal blijken of MongoDB ook gebruikt gaat worden voor het realiseren van het eindproduct.
+Team A4 gaat in ieder geval gebruik maken van MSSQL en Docker. Verder wordt er eerst onderzoek gedaan naar MongoDB, hieruit zal blijken of MongoDB ook gebruikt gaat worden voor het realiseren van het eindproduct.
 
 De opdrachtgever kan tijdens de transition fase geen nieuwe requirements of functionaliteiten meer geven. In deze tijd wordt er gewerkt om het project af te ronden.
 
@@ -127,8 +134,6 @@ In dit hoofdstuk worden de randvoorwaarden beschreven, hierin staat wat er gereg
 # 5. Op te leveren producten en kwaliteitseisen
 
 Iedere FO gerelateerde taak wordt na uitvoering gereviewd door minimaal 2 leden van team Pearl. De taken zijn te vinden op het JIRA bord van team Pearl. Het reviewen vindt plaats op Confluence en er wordt gecontroleerd op inhoud, spelling, taal en grammatica volgens de Definition of Done. Fouten worden direct verbeterd, als er fouten in een diagram wordt gevonden wordt er in overleg met het teamlid dat het diagram heeft gemaakt een oplossing bedacht.
-
-
 
 | Product         | Productkwaliteitseisen  (SMART)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Benodigde activiteiten om te komen tot het product                                                                                                                                                                                   | Proceskwaliteitseisen  (5XW 1xH)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -150,7 +155,7 @@ We hebben ervoor gekozen om de Elaboratie-fase op te delen in twee fases. Tijden
 
 Tijdens de Construction-fase zal iedere iteratie een SCRUM-sprint gehouden worden (elk sprint zal ongeveer bestaan uit 1,5 week)
 
-Tevens moet het team ook persoonlijke ontwikkeling gedurende het project bijhouden. Dit vermindert de tijd die uiteindelijk aan het product besteed kan worden. Het team heeft ingeschat één middag per week kwijt te zijn aan het bijhouden van de persoonlijke ontwikkeling. 
+Tevens moet het team ook persoonlijke ontwikkeling gedurende het project bijhouden. Dit vermindert de tijd die uiteindelijk aan het product besteed kan worden. Het team heeft ingeschat één middag per week kwijt te zijn aan het bijhouden van de persoonlijke ontwikkeling.
 
 
 # 7. Projectorganisatie en communicatie
@@ -185,10 +190,10 @@ Tijdens het project zijn er meerdere afspraken gemaakt binnen de groep.
 
 - Bij afwezigheid geeft de des betreffende persoon het op zijn minst een week van te voren aan.
 - Bij afwezigheid door ziekte moet de persoon voor 9 uur aangeven voor absent.
-- Als de persoon thuis is vanwege ziekete wordt er via teams gewerkt, mits hij er toe in staat is.
+- Als de persoon thuis is vanwege ziekte wordt er via teams gewerkt, mits hij er toe in staat is.
 - Op einde van de dag moet alles gepushed zijn naar de bij behorende branch.
 - Elke dag is er een pauze van 12:00 tot 13:00.
-- Bij conflicten worden de personen appart gehouden en uitgepraat totdat het conflict opgelost is.
+- Bij conflicten worden de personen apart gehouden en uitgepraat totdat het conflict opgelost is.
 
 # 8. Planning
 
@@ -217,14 +222,14 @@ Het ISE-project vindt plaats op 11-04-2022 t/m 09-06-2022. Binnen deze periode s
 # 9. Risico’s
 | Risico | Kans (groot-middel-klein) | Impact (groot-middel-klein) | Tegenmaatregel | Uitwijkstrategie |
 |--------|-------------------------- | ----------------------------|----------------|------------------|
-| De toolstack is niet meer beschikbaar      | klein                         | groot                           | -              | Met projectbegeleider en opdrachtgever bespreken hoe het nu verder moet.                
+| De toolstack is niet meer beschikbaar      | klein                         | groot                           | -              | Met projectbegeleider en opdrachtgever bespreken hoe het nu verder moet. |
 
 ## 9.1 Risk List
 
 | Risico                                  | Tegenmaatregel | Uitwijkstrategie |
 |-----------------------------------------|----------------|------------------|
-| Mongo Database opzetten                 | PoC voor docker omgeving mac  |  De macgebruikers moeten windows of linux runnen. Anders andere laptop regelen.            |
-| Mongo database koppellen aan SQL server | PoC maken voor de koppeling  | Staging area veranderen naar spring boot.  |
+| Mongo Database opzetten                 | PoC voor docker omgeving mac  |  De macgebruikers moeten windows of linux runnen. Anders andere laptop regelen. |
+| Mongo database koppellen aan SQL server | PoC maken voor de koppeling  | Staging area veranderen naar spring boot. |
 
 # Bijlagen
 
@@ -249,7 +254,6 @@ De rol van Programmeur is verantwoordelijk voor het technisch ontwerpen, ontwikk
 ### Bijlage I - Rollenbeschrijvingen - Tester
 
 De rol van Tester is verantwoordelijk voor het specificeren van test cases en het vastleggen daarvan in een Testontwerp. Daarnaast draagt hij zorg voor het uitvoeren ervan (Naslagsite 2011, 2011).
-
 
 # Literatuurlijst
 
