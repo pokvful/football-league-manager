@@ -51,7 +51,8 @@ Data uitlezen moet in MongoDB en niet rechtstreeks in MSSQL.
 **Vraag 5: Nog eventuele randvoorwaarden? Extra eisen van de opdrachtgever?**
 1. Unittests op contraints, triggers en stored procedures.
 2. History bijhouden van wijzigingen en updates die in de database plaatsvinden.
-3. Tabelnamen in het Engels en data in het Nederlands.
+3. Alle informatierequests worden opgeslagen.
+4. Tabelnamen in het Engels en data in het Nederlands.
 
 **Vraag 6: Hoe houden we contact?**
 
