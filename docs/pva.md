@@ -1,6 +1,4 @@
-# Plan van aanpak
-
-> Football league manager
+# Plan van aanpak - Football league manager
 
 **Projectleden:**
 - Joram Buitenhuis (653253)
@@ -26,14 +24,13 @@
 
 # Inhoudsopgave
 
-- [Inhoudsopgave](#inhoudsopgave)
 - [Inleiding](#inleiding)
 - [1. Achtergrond van het project](#1-achtergrond-van-het-project)
 - [2. Doelstelling, opdracht en op te leveren resultaten voor het bedrijf](#2-doelstelling-opdracht-en-op-te-leveren-resultaten-voor-het-bedrijf)
-	- [Probleem](#probleem)
-	- [Doelstelling](#doelstelling)
-	- [Opdracht](#opdracht)
-	- [Resultaat](#resultaat)
+	- [2.1 Probleem](#21-probleem)
+	- [2.2 Doelstelling](#22-doelstelling)
+	- [2.3 Opdracht](#23-opdracht)
+	- [2.4 Resultaat](#24-resultaat)
 - [3. Projectgrenzen](#3-projectgrenzen)
 - [4. Randvoorwaarden](#4-randvoorwaarden)
 - [5. Op te leveren producten en kwaliteitseisen](#5-op-te-leveren-producten-en-kwaliteitseisen)
