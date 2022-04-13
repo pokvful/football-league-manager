@@ -1,3 +1,7 @@
+# Plan van aanpak
+
+> Football league manager
+
 **Projectleden:**
 - Joram Buitenhuis (653253)
 - Tim Meuwsen (652989)
@@ -10,13 +14,15 @@
 
 **Klas**: ITA-ISE-A-f
 
-**Datum**: 15-04-2022
+**Datum**: 14-04-2022
 
-**Versienummer**: 1.0
+**Versienummer**: 1.1
 
 **Organisatie**: NUTMEG
 
 **Opdrachtgever**: Michel Koolwaaij
+
+---
 
 # Inhoudsopgave
 
@@ -73,25 +79,26 @@ Het bedrijf heeft nog geen database en ze hebben er een nodig.
 
 # 2. Doelstelling, opdracht en op te leveren resultaten voor het bedrijf
 
-## Probleem
+## 2.1 Probleem
 
 NUTMEG is een startup bedrijf dat voetbal (competitie) informatie verkoopt. De informatie veranderd constant en ze krijgen constant nieuwe informatie. Al die gegevens moeten worden opgeslagen.
 
-## Doelstelling
+## 2.2 Doelstelling
 
 Het bedrijf wil een database waar alle informatie kan worden opgeslagen en uit worden gehaald over voetbalcompetities.
 
-## Opdracht
+## 2.3 Opdracht
 
-Een database waarin voetbalcompetitie kan worden opgeslagen en beheerd. De beheerder kan direct verbinding maken met de database om zo bijvoorbeeld bestaande data aan te passen of nieuwe data toe te voegen. Daarbij moet er een staging area worden gemaakt, zodat gebruikers gegevens die in de database staan uit kunnen lezen. De data moet in JSON geleverd kunnen worden. Ook moet vanuit de database een current league table en top score lijst worden gegenereerd. De gebruikers kunnen alleen gegevens lezen. De database moet openstaan voor eventuele uitbreidingen.
+Een database waarin data omtrent voetbal kan worden opgeslagen en beheerd. De beheerder kan direct verbinding maken met de database om zo bijvoorbeeld bestaande data aan te passen of nieuwe data toe te voegen. Daarbij moet er een staging area worden gemaakt, zodat gebruikers gegevens die in de database staan uit kunnen lezen. De data moet in JSON geleverd kunnen worden. Ook moet vanuit de database een current league table en top score lijst worden gegenereerd. De gebruikers kunnen alleen gegevens lezen. De database moet openstaan voor eventuele uitbreidingen.
 
-## Resultaat
+## 2.4 Resultaat
 
 - PvA met daarin ook Software Development Plan en Risk List.
 - De gemaakte Iteratieplannen.
-- FO, TO waarbij de diagrammen zijn gemaakt in PowerDesigner.
+- Functioneel ontwerp.
+- Technisch ontwerp.
 - MSSQL server database.
-- MongoDB staging area.
+- Staging area.
 - De gemaakte proof of concepts.
 - Testplan.
 - Testrapport en bijbehorende tests.
@@ -125,15 +132,24 @@ De opdrachtgever kan tijdens de transition fase geen nieuwe requirements of func
 
 In dit hoofdstuk worden de randvoorwaarden beschreven, hierin staat wat er geregeld moet worden om het project mogelijk te maken.
 
-- De HAN levert beschikbare ruimtes met stroom en internet gedurende het project
-- De HAN voorziet toegang tot Jira en BitBucket gedurende kantooruren
-- De opdrachtgever, procesbegeleider en professional skills docent zijn minimaal één keer per week bereikbaar gedurende het project
-- ISE ritme dicteert (denk hierbij bijvoorbeeld aan inleverdeadlines)
-- NUTMEG erkent dat opgaven gegeven door de HAN prioriteit hebben over het project
+- De HAN levert beschikbare ruimtes met stroom en internet gedurende het project.
+- De HAN voorziet toegang tot Jira en BitBucket gedurende kantooruren.
+- De opdrachtgever, procesbegeleider en professional skills docent zijn minimaal één keer per week bereikbaar gedurende het project.
+- ISE ritme dicteert (denk hierbij bijvoorbeeld aan inleverdeadlines).
+- NUTMEG erkent dat opgaven gegeven door de HAN prioriteit hebben over het project.
 
 # 5. Op te leveren producten en kwaliteitseisen
 
-Iedere FO gerelateerde taak wordt na uitvoering gereviewd door minimaal 2 leden van team Pearl. De taken zijn te vinden op het JIRA bord van team Pearl. Het reviewen vindt plaats op Confluence en er wordt gecontroleerd op inhoud, spelling, taal en grammatica volgens de Definition of Done. Fouten worden direct verbeterd, als er fouten in een diagram wordt gevonden wordt er in overleg met het teamlid dat het diagram heeft gemaakt een oplossing bedacht.
+In dit hoofdstuk worden de op te leveren producten en de bijbehorende kwaliteitseisen besproken.
+
+Algemene eisen aan producten zijn gespecificeerd in de Definition of Done (DoD). In de kolom 'Product Kwaliteitseisen' zijn product specifieke eisen opgesteld.
+
+De volgende tabel beschrijft:
+
+- De op te leveren producten;
+- De kwaliteitseisen waaraan de producten moeten voldoen;
+- Wat het team moet uitvoeren om tot een succesvol product te komen;
+- Hoe het team ervoor zorgt dat kwaliteitseisen behaald worden.
 
 | Product         | Productkwaliteitseisen  (SMART)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Benodigde activiteiten om te komen tot het product                                                                                                                                                                                   | Proceskwaliteitseisen  (5XW 1xH)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -153,7 +169,7 @@ Vanaf de Elaboratie-fase zullen elementen vanuit SCRUM overgenomen worden, bijvo
 
 We hebben ervoor gekozen om de Elaboratie-fase op te delen in twee fases. Tijdens de eerste week zullen we veel gaan timeboxen om zo kennis te maken met technieken die nieuw voor ons zijn, zoals staging in MongoDB. In de tweede week zullen we een korte SCRUM-sprint houden om doelgericht onderzoek te kunnen doen.
 
-Tijdens de Construction-fase zal iedere iteratie een SCRUM-sprint gehouden worden (elk sprint zal ongeveer bestaan uit 1,5 week)
+Tijdens de Construction-fase zal iedere iteratie een SCRUM-sprint gehouden worden (elke sprint zal ongeveer bestaan uit 1,5 week)
 
 Tevens moet het team ook persoonlijke ontwikkeling gedurende het project bijhouden. Dit vermindert de tijd die uiteindelijk aan het product besteed kan worden. Het team heeft ingeschat één middag per week kwijt te zijn aan het bijhouden van de persoonlijke ontwikkeling.
 
@@ -177,7 +193,7 @@ Tevens moet het team ook persoonlijke ontwikkeling gedurende het project bijhoud
 
 | Persoon           | Rol                | Wat                                                                                                                            | Contact                                                                 |
 |-------------------|--------------------|--------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| Elmar Wise        | Software Architect | Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Software architect](#bijlage-i---rollenbeschrijvingen---software-architect) | [ej.wiese@student.han.nl](mailto:ej.wiese@student.han.nl)               |
+| Elmar Wiese        | Software Architect | Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Software architect](#bijlage-i---rollenbeschrijvingen---software-architect) | [ej.wiese@student.han.nl](mailto:ej.wiese@student.han.nl)               |
 | Joram Buitenhuis  | Programmeur        | Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Programmeur](#bijlage-i---rollenbeschrijvingen---programmeur)               | [jej.buitenhuis@student.han.nl](mailto:jej.buitenhuis@studnet.han.nl)   |
 | Junjie Juan       | Use case designer  | Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Use case designer](#bijlage-i---rollenbeschrijvingen---use-case-designer)   | [jj.juan@student.han.nl](mailto:jj.juan@student.han.nl)                 |
 | Oktay Soytürk     | Tester             | Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Tester](#bijlagei---rollenbeschrijvingen---tester)                          | [o.soyturk@student.han.nl](mailto:o.soyturk@student.han.nl)               |
@@ -188,12 +204,14 @@ Tevens moet het team ook persoonlijke ontwikkeling gedurende het project bijhoud
 
 Tijdens het project zijn er meerdere afspraken gemaakt binnen de groep.
 
+- De groep werkt iedere maandag t/m vrijdag van 9:00 t/m 17:00.
 - Bij afwezigheid geeft de des betreffende persoon het op zijn minst een week van te voren aan.
-- Bij afwezigheid door ziekte moet de persoon voor 9 uur aangeven voor absent.
-- Als de persoon thuis is vanwege ziekte wordt er via teams gewerkt, mits hij er toe in staat is.
+- Bij afwezigheid door ziekte moet de persoon dit voor 9 uur aangeven.
+	- Als de persoon thuis is vanwege ziekte wordt er via teams gewerkt, mits hij hier toe in staat is.
 - Op einde van de dag moet alles gepushed zijn naar de bij behorende branch.
 - Elke dag is er een pauze van 12:00 tot 13:00.
 - Bij conflicten worden de personen apart gehouden en uitgepraat totdat het conflict opgelost is.
+- Er wordt iedere werkdag, tijdens de elaboration- en construction fase, een daily stand-up gehouden om 9:15 en duurt maximaal 15 minuten.
 
 # 8. Planning
 
@@ -222,14 +240,14 @@ Het ISE-project vindt plaats op 11-04-2022 t/m 09-06-2022. Binnen deze periode s
 # 9. Risico’s
 | Risico | Kans (groot-middel-klein) | Impact (groot-middel-klein) | Tegenmaatregel | Uitwijkstrategie |
 |--------|-------------------------- | ----------------------------|----------------|------------------|
-| De toolstack is niet meer beschikbaar      | klein                         | groot                           | -              | Met projectbegeleider en opdrachtgever bespreken hoe het nu verder moet. |
+| De toolstack is (tijdelijk) niet beschikbaar      | klein                         | groot                           | -              | Met projectbegeleider en opdrachtgever bespreken hoe het nu verder moet. |
 
 ## 9.1 Risk List
 
 | Risico                                  | Tegenmaatregel | Uitwijkstrategie |
 |-----------------------------------------|----------------|------------------|
-| Mongo Database opzetten                 | PoC voor docker omgeving mac  |  De macgebruikers moeten windows of linux runnen. Anders andere laptop regelen. |
-| Mongo database koppellen aan SQL server | PoC maken voor de koppeling  | Staging area veranderen naar spring boot. |
+| Mongo Database opzetten                 | PoC voor docker omgeving mac  |  De mac-gebruikers moeten windows of linux runnen. Anders andere laptop regelen. |
+| Mongo database koppelen aan SQL server | PoC maken voor de koppeling  | Staging area veranderen naar spring boot. |
 
 # Bijlagen
 
