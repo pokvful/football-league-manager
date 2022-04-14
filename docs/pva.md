@@ -14,7 +14,7 @@
 
 **Datum**: 14-04-2022
 
-**Versienummer**: 1.1
+**Versienummer**: 1.2
 
 **Organisatie**: NUTMEG
 
@@ -24,27 +24,30 @@
 
 # Inhoudsopgave
 
-- [Inleiding](#inleiding)
-- [1. Achtergrond van het project](#1-achtergrond-van-het-project)
-- [2. Doelstelling, opdracht en op te leveren resultaten voor het bedrijf](#2-doelstelling-opdracht-en-op-te-leveren-resultaten-voor-het-bedrijf)
-	- [2.1 Probleem](#21-probleem)
-	- [2.2 Doelstelling](#22-doelstelling)
-	- [2.3 Opdracht](#23-opdracht)
-	- [2.4 Resultaat](#24-resultaat)
-- [3. Projectgrenzen](#3-projectgrenzen)
-- [4. Randvoorwaarden](#4-randvoorwaarden)
-- [5. Op te leveren producten en kwaliteitseisen](#5-op-te-leveren-producten-en-kwaliteitseisen)
-- [6. Ontwikkelmethoden](#6-ontwikkelmethoden)
-- [7. Projectorganisatie en communicatie](#7-projectorganisatie-en-communicatie)
-	- [7.1 Begeleiders](#71-begeleiders)
-	- [7.2 Opdrachtgever](#72-opdrachtgever)
-	- [7.3 Rolverdeling](#73-rolverdeling)
-	- [7.4 Afspraken](#74-afspraken)
-- [8. Planning](#8-planning)
-	- [8.1 Globale planning](#81-globale-planning)
-	- [8.2 Inleverdata](#82-inleverdata)
-- [9. Risico’s](#9-risicos)
-	- [9.1 Risk List](#91-risk-list)
+- [Plan van aanpak - Football league manager](#plan-van-aanpak---football-league-manager)
+- [Inhoudsopgave](#inhoudsopgave)
+- [1. Inleiding](#1-inleiding)
+- [2. Achtergrond van het project](#2-achtergrond-van-het-project)
+- [3. Doelstelling, opdracht en op te leveren resultaten voor het bedrijf](#3-doelstelling-opdracht-en-op-te-leveren-resultaten-voor-het-bedrijf)
+	- [3.1 Probleem](#31-probleem)
+	- [3.2 Doelstelling](#32-doelstelling)
+	- [3.3 Opdracht](#33-opdracht)
+	- [3.4 Resultaat](#34-resultaat)
+- [4. Projectgrenzen](#4-projectgrenzen)
+- [5. Randvoorwaarden](#5-randvoorwaarden)
+- [6. Op te leveren producten en kwaliteitseisen](#6-op-te-leveren-producten-en-kwaliteitseisen)
+- [7. Ontwikkelmethoden](#7-ontwikkelmethoden)
+- [8. Projectorganisatie en communicatie](#8-projectorganisatie-en-communicatie)
+	- [8.1 Begeleiders](#81-begeleiders)
+	- [8.2 Opdrachtgever](#82-opdrachtgever)
+	- [8.3 Rolverdeling](#83-rolverdeling)
+	- [8.4 Afspraken](#84-afspraken)
+- [9. Planning](#9-planning)
+	- [9.1 Globale planning](#91-globale-planning)
+	- [9.2 Inleverdata](#92-inleverdata)
+- [10. Risico’s](#10-risicos)
+	- [10.1 Risk List](#101-risk-list)
+- [Literatuurlijst](#literatuurlijst)
 - [Bijlagen](#bijlagen)
 	- [Bijlage I - Rollenbeschrijvingen](#bijlage-i---rollenbeschrijvingen)
 		- [Bijlage I - Rollenbeschrijvingen - Informatieanalist](#bijlage-i---rollenbeschrijvingen---informatieanalist)
@@ -52,9 +55,8 @@
 		- [Bijlage I - Rollenbeschrijvingen - Software architect](#bijlage-i---rollenbeschrijvingen---software-architect)
 		- [Bijlage I - Rollenbeschrijvingen - Programmeur](#bijlage-i---rollenbeschrijvingen---programmeur)
 		- [Bijlage I - Rollenbeschrijvingen - Tester](#bijlage-i---rollenbeschrijvingen---tester)
-- [Literatuurlijst](#literatuurlijst)
 
-# Inleiding
+# 1. Inleiding
 
 Het bedrijf NUTMEG heeft ons de opdracht gegeven de back-end voor het informatiesysteem "Football League Manager" te ontwikkelen. Met dit systeem kunnen gebruikers informatie van voetbalwedstrijden toevoegen en bestaande informatie uitlezen.
 
@@ -64,31 +66,31 @@ Verder wordt de ontwikkelmethode die het ontwikkelteam gaat gebruiken (RUP) toeg
 
 Bij elk van deze risico's zijn haalbare maatregelen ten hoeven van het voortzetten van het project vastgelegd om afwijkingen van de planning en doelstelling van het project tot een minimum te beperken.
 
-# 1. Achtergrond van het project
+# 2. Achtergrond van het project
 
-NUTMEG is een nieuw startup bedrijf dat van plan is om voetbalcompetitie informatie te verkopen.
+NUTMEG verzamelt sportdata en verkoopt deze vervolgens aan sportclubs. Ze hebben al klanten in sporten als atletiek en zwemmen, maar willen nu ook data gaan aanbieden voor voetbalclubs.
 
-Ze specialiseren zich nu alleen in leagues.
+Hiervoor moet een database opgesteld worden met relevante data over voetbalcompetities en eventueel knock-out tournaments. De database moet makkelijk uitbreidbaar zijn.
 
-Andere bedrijven willen de voetbal gegevens opvragen voor vele verschillende doeleinden.
+De eindgebruikers van de database zijn data analisten die via een API data opvragen. Deze API moet ook opgesteld worden.
 
-Het bedrijf heeft nog geen database en ze hebben er een nodig.
+Team A4 is ingeschakeld om deze opdracht uit te voeren.
 
-# 2. Doelstelling, opdracht en op te leveren resultaten voor het bedrijf
+# 3. Doelstelling, opdracht en op te leveren resultaten voor het bedrijf
 
-## 2.1 Probleem
+## 3.1 Probleem
 
-NUTMEG is een startup bedrijf dat voetbal (competitie) informatie verkoopt. De informatie veranderd constant en ze krijgen constant nieuwe informatie. Al die gegevens moeten worden opgeslagen.
+NUTMEG wilt voetbaldata gaan verkopen aan voetbalclubs. Hiervoor moet de database inclusief bijpassende API voor het opvragen van data nog opgesteld worden.
 
-## 2.2 Doelstelling
+## 3.2 Doelstelling
 
-Het bedrijf wil een database waar alle informatie kan worden opgeslagen en uit worden gehaald over voetbalcompetities.
+Een database met informatie over voetbalcomeptities (en eventueel knock-out tournaments) inclusief bijpassende API waarmee data opgevraagd kan worden data analisten.
 
-## 2.3 Opdracht
+## 3.3 Opdracht
 
 Een database waarin data omtrent voetbal kan worden opgeslagen en beheerd. De beheerder kan direct verbinding maken met de database om zo bijvoorbeeld bestaande data aan te passen of nieuwe data toe te voegen. Daarbij moet er een staging area worden gemaakt, zodat gebruikers gegevens die in de database staan uit kunnen lezen. De data moet in JSON geleverd kunnen worden. Ook moet vanuit de database een current league table en top score lijst worden gegenereerd. De gebruikers kunnen alleen gegevens lezen. De database moet openstaan voor eventuele uitbreidingen.
 
-## 2.4 Resultaat
+## 3.4 Resultaat
 
 - PvA met daarin ook Software Development Plan en Risk List.
 - De gemaakte Iteratieplannen.
@@ -100,7 +102,7 @@ Een database waarin data omtrent voetbal kan worden opgeslagen en beheerd. De be
 - Testplan.
 - Testrapport en bijbehorende tests.
 
-# 3. Projectgrenzen
+# 4. Projectgrenzen
 
 De periode waarin we werken aan het project is van 11 april 2022 t/m 9 juni 2022.
 
@@ -125,7 +127,7 @@ Team A4 gaat in ieder geval gebruik maken van MSSQL en Docker. Verder wordt er e
 
 De opdrachtgever kan tijdens de transition fase geen nieuwe requirements of functionaliteiten meer geven. In deze tijd wordt er gewerkt om het project af te ronden.
 
-# 4. Randvoorwaarden
+# 5. Randvoorwaarden
 
 In dit hoofdstuk worden de randvoorwaarden beschreven, hierin staat wat er geregeld moet worden om het project mogelijk te maken.
 
@@ -135,7 +137,7 @@ In dit hoofdstuk worden de randvoorwaarden beschreven, hierin staat wat er gereg
 - ISE ritme dicteert (denk hierbij bijvoorbeeld aan inleverdeadlines).
 - NUTMEG erkent dat opgaven gegeven door de HAN prioriteit hebben over het project.
 
-# 5. Op te leveren producten en kwaliteitseisen
+# 6. Op te leveren producten en kwaliteitseisen
 
 In dit hoofdstuk worden de op te leveren producten en de bijbehorende kwaliteitseisen besproken.
 
@@ -158,7 +160,7 @@ De volgende tabel beschrijft:
 | Testrapport     | Wanneer het document wordt opgeleverd, toont het document het slagingspercentage van de geteste code. Ook beschrijft het document redenen voor eventuele gefaalde tests.                                                                                                                                                                                                                                                                                                                                                             | Er zijn testdoelen opgesteld. Resultaten van tests zijn genoteerd. De redenen voor gefaalde tests zijn uitgeschreven.                                                                                                                         | Er wordt gebruik gemaakt van tSQLt om de applicatie te testen, de resultaten hiervan worden verwerkt in het testrapport.                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | Testplan        | Wanneer het document wordt opgeleverd, geeft het document de stappen weer om de gewenste code coverage te behalen. Ook geeft het document het doel van alle tests weer en geeft het document weer hoe er getest wordt.                                                                                                                                                                                                                                                                                                               | Methoden die gebruikt worden om te testen zijn uitgeschreven. Gewenste input en resultaten zij opgesteld.                                                                                                                                     | Het testplan wordt door het hele team gereviewed. Feedback uit deze reviews wordt binnen 1 werkdag verwerkt.                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 
-# 6. Ontwikkelmethoden
+# 7. Ontwikkelmethoden
 
 Tijdens dit project zal de RUP-ontwikkelmethode toegepast worden, deze methode wordt namelijk vanuit de HAN voorgeschreven.
 
@@ -171,22 +173,22 @@ Tijdens de Construction-fase zal iedere iteratie een SCRUM-sprint gehouden worde
 Tevens moet het team ook persoonlijke ontwikkeling gedurende het project bijhouden. Dit vermindert de tijd die uiteindelijk aan het product besteed kan worden. Het team heeft ingeschat één middag per week kwijt te zijn aan het bijhouden van de persoonlijke ontwikkeling.
 
 
-# 7. Projectorganisatie en communicatie
+# 8. Projectorganisatie en communicatie
 
-## 7.1 Begeleiders
+## 8.1 Begeleiders
 
-| Persoon           | Rol               | Contact                                               | Beschikbaarheid    |
-|-------------------|-------------------|-------------------------------------------------------|--------------------|
-| Nils Bijleveld    | Procesbegeleider  | [nils.bijleveld@han.nl](mailto:nils.bijleveld@han.nl) | Nog onbekend       |
-| Chris Scholten    | Projectbegeleider | [chris.scholten@han.nl](mailto:chris.scholten@han.nl) | Nog onbekend       |
+| Persoon           | Rol               | Contact                                               | Beschikbaarheid                  |
+|-------------------|-------------------|-------------------------------------------------------|----------------------------------|
+| Nils Bijleveld    | Procesbegeleider  | [nils.bijleveld@han.nl](mailto:nils.bijleveld@han.nl) | Nog onbekend                     |
+| Chris Scholten    | Projectbegeleider | [chris.scholten@han.nl](mailto:chris.scholten@han.nl) | Fysiek: Di/Do Digitaal: Ma/Wo/Vr |
 
-## 7.2 Opdrachtgever
+## 8.2 Opdrachtgever
 
 | Persoon           | Rol              | Contact                                                                       | Beschikbaarheid    |
 |-------------------|------------------|-------------------------------------------------------------------------------|--------------------|
 | Michael Koolwaaij | Opdrachtgever    | Bericht in teams of [michel.koolwaaij@han.nl](mailto:michel.koolwaaij@han.nl) | Dinsdag en Vrijdag |
 
-## 7.3 Rolverdeling
+## 8.3 Rolverdeling
 
 | Persoon           | Rol                | Wat                                                                                                                            | Contact                                                                 |
 |-------------------|--------------------|--------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
@@ -197,7 +199,7 @@ Tevens moet het team ook persoonlijke ontwikkeling gedurende het project bijhoud
 | Thom Kraaijvanger | Informatieanalist  | Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Informatieanalist](#bijlage-i---rollenbeschrijvingen---informatieanalist)   | [t.kraaijvanger1@student.han.nl](mailto:t.kraaijvanger1@student.han.nl) |
 | Tim Meuwsen       | Programmeur        | Zie de bijlage [Bijlage I - Rollenbeschrijvingen - Programmeur](#bijlage-i---rollenbeschrijvingen---programmeur)               | [t.meuwsen@student.han.nl](mailto:t.meuwsen@student.han.nl)             |
 
-## 7.4 Afspraken
+## 8.4 Afspraken
 
 Tijdens het project zijn er meerdere afspraken gemaakt binnen de groep.
 
@@ -210,11 +212,11 @@ Tijdens het project zijn er meerdere afspraken gemaakt binnen de groep.
 - Bij conflicten worden de personen apart gehouden en uitgepraat totdat het conflict opgelost is.
 - Er wordt iedere werkdag, tijdens de elaboration- en construction fase, een daily stand-up gehouden om 9:15 en duurt maximaal 15 minuten.
 
-# 8. Planning
+# 9. Planning
 
 Het ISE-project vindt plaats op 11-04-2022 t/m 09-06-2022. Binnen deze periode staat er een vakantie van 02-05-2022 t/m 08-05-2022 gepland. Hierdoor is de totale duur van het project acht weken. De ontwikkelmethode waar gebruik van wordt gemaakt is RUP.
 
-## 8.1 Globale planning
+## 9.1 Globale planning
 
 | Fase        | Start | Eind  |
 |-------------|-------|-------|
@@ -223,7 +225,7 @@ Het ISE-project vindt plaats op 11-04-2022 t/m 09-06-2022. Binnen deze periode s
 | Construction| OW-5  | OW-8  |
 | Transition  | OW-9  | OW-10 |
 
-## 8.2 Inleverdata
+## 9.2 Inleverdata
 
 | In te leveren                               | Datum      | Tijd  |
 |---------------------------------------------|------------|-------|
@@ -234,17 +236,24 @@ Het ISE-project vindt plaats op 11-04-2022 t/m 09-06-2022. Binnen deze periode s
 | Verantwoording projectbijdrage aan het eind | 09-06-2022 | 16:00 |
 
 
-# 9. Risico’s
+# 10. Risico’s
 | Risico | Kans (groot-middel-klein) | Impact (groot-middel-klein) | Tegenmaatregel | Uitwijkstrategie |
 |--------|-------------------------- | ----------------------------|----------------|------------------|
 | De toolstack is (tijdelijk) niet beschikbaar      | klein                         | groot                           | -              | Met projectbegeleider en opdrachtgever bespreken hoe het nu verder moet. |
 
-## 9.1 Risk List
+## 10.1 Risk List
 
 | Risico                                  | Tegenmaatregel | Uitwijkstrategie |
 |-----------------------------------------|----------------|------------------|
 | Mongo Database opzetten                 | PoC voor docker omgeving mac  |  De mac-gebruikers moeten windows of linux runnen. Anders andere laptop regelen. |
 | Mongo database koppelen aan SQL server | PoC maken voor de koppeling  | Staging area veranderen naar spring boot. |
+
+# Literatuurlijst
+
+- *Naslagsite 2011*. (2011). RUP Op Maat. Geraadpleegd op 12 april 2022, van [http://rupopmaat.nl/naslagsite2011/](http://rupopmaat.nl/naslagsite2011/)
+- *Hogeschool Arnhem Nijmegen*. (2019, 2 september). AIM controlekaart. Onderwijs Online. Geraadpleegd op 12 april 2022, van [https://onderwijsonline.han.nl/elearning/content/oNkklGNj](https://onderwijsonline.han.nl/elearning/content/oNkklGNj)
+- *HAN*. Organisatie - Project Cheatsheet - Studiehandleiding ISE-project 2021-2022. OnderwijsOnline. Geraadpleegd op 12 april 2022, van [https://han.onderwijsonline.nl/elearning/lesson/Xyrrjkjy](https://han.onderwijsonline.nl/elearning/lesson/Xyrrjkjy)
+- *Praktijkbureau AIM, Hogeschool Arnhem Nijmegen*. (2020, september).  Hoe kom je tot een goed plan van aanpak en wat moet erin staan? [Handleiding]. Onderwijs Online. Geraadpleegd op 12 april 2022,  [https://onderwijsonline.han.nl/elearning/lessonfile/XD5kJg1N/eyJpdiI6InNFQW5lNHRzRDh5SWpVeWg4K1pPWkE9PSIsInZhbHVlIjoiMEdEalZsQmJyajR2RmJFRlR4dTVWcy9VWGE4cmdGenJGWTFYQTZQajZxbTdjNFVQM1JsQTBneWYxMjZKMWs1MCIsIm1hYyI6ImRiYzEyNTkzMWZlMjVjZjRiNDBkODc1ODk4MjZhZDNhMjliYTg1ZGFkMTU3ZjhlMzJhZjVlZTllM2M5YzAwZWUifQ==](https://onderwijsonline.han.nl/elearning/lessonfile/XD5kJg1N/eyJpdiI6InNFQW5lNHRzRDh5SWpVeWg4K1pPWkE9PSIsInZhbHVlIjoiMEdEalZsQmJyajR2RmJFRlR4dTVWcy9VWGE4cmdGenJGWTFYQTZQajZxbTdjNFVQM1JsQTBneWYxMjZKMWs1MCIsIm1hYyI6ImRiYzEyNTkzMWZlMjVjZjRiNDBkODc1ODk4MjZhZDNhMjliYTg1ZGFkMTU3ZjhlMzJhZjVlZTllM2M5YzAwZWUifQ==)
 
 # Bijlagen
 
@@ -270,9 +279,3 @@ De rol van Programmeur is verantwoordelijk voor het technisch ontwerpen, ontwikk
 
 De rol van Tester is verantwoordelijk voor het specificeren van test cases en het vastleggen daarvan in een Testontwerp. Daarnaast draagt hij zorg voor het uitvoeren ervan (Naslagsite 2011, 2011).
 
-# Literatuurlijst
-
-- *Naslagsite 2011*. (2011). RUP Op Maat. Geraadpleegd op 12 april 2022, van [http://rupopmaat.nl/naslagsite2011/](http://rupopmaat.nl/naslagsite2011/)
-- *Hogeschool Arnhem Nijmegen*. (2019, 2 september). AIM controlekaart. Onderwijs Online. Geraadpleegd op 12 april 2022, van [https://onderwijsonline.han.nl/elearning/content/oNkklGNj](https://onderwijsonline.han.nl/elearning/content/oNkklGNj)
-- *HAN*. Organisatie - Project Cheatsheet - Studiehandleiding ISE-project 2021-2022. OnderwijsOnline. Geraadpleegd op 12 april 2022, van [https://han.onderwijsonline.nl/elearning/lesson/Xyrrjkjy](https://han.onderwijsonline.nl/elearning/lesson/Xyrrjkjy)
-- *Praktijkbureau AIM, Hogeschool Arnhem Nijmegen*. (2020, september).  Hoe kom je tot een goed plan van aanpak en wat moet erin staan? [Handleiding]. Onderwijs Online. Geraadpleegd op 12 april 2022,  [https://onderwijsonline.han.nl/elearning/lessonfile/XD5kJg1N/eyJpdiI6InNFQW5lNHRzRDh5SWpVeWg4K1pPWkE9PSIsInZhbHVlIjoiMEdEalZsQmJyajR2RmJFRlR4dTVWcy9VWGE4cmdGenJGWTFYQTZQajZxbTdjNFVQM1JsQTBneWYxMjZKMWs1MCIsIm1hYyI6ImRiYzEyNTkzMWZlMjVjZjRiNDBkODc1ODk4MjZhZDNhMjliYTg1ZGFkMTU3ZjhlMzJhZjVlZTllM2M5YzAwZWUifQ==](https://onderwijsonline.han.nl/elearning/lessonfile/XD5kJg1N/eyJpdiI6InNFQW5lNHRzRDh5SWpVeWg4K1pPWkE9PSIsInZhbHVlIjoiMEdEalZsQmJyajR2RmJFRlR4dTVWcy9VWGE4cmdGenJGWTFYQTZQajZxbTdjNFVQM1JsQTBneWYxMjZKMWs1MCIsIm1hYyI6ImRiYzEyNTkzMWZlMjVjZjRiNDBkODc1ODk4MjZhZDNhMjliYTg1ZGFkMTU3ZjhlMzJhZjVlZTllM2M5YzAwZWUifQ==)
