@@ -80,11 +80,11 @@ Team A4 is ingeschakeld om deze opdracht uit te voeren.
 
 ## 2.1 Probleem
 
-NUTMEG is een startup bedrijf dat voetbal (competitie) informatie verkoopt. De informatie veranderd constant en ze krijgen constant nieuwe informatie. Al die gegevens moeten worden opgeslagen.
+NUTMEG wilt voetbaldata gaan verkopen aan voetbalclubs. Hiervoor moet de database inclusief bijpassende API voor het opvragen van data nog opgesteld worden.
 
 ## 2.2 Doelstelling
 
-Het bedrijf wil een database waar alle informatie kan worden opgeslagen en uit worden gehaald over voetbalcompetities.
+Een database met informatie over voetbalcomeptities (en eventueel knock-out tournaments) inclusief bijpassende API waarmee data opgevraagd kan worden data analisten.
 
 ## 2.3 Opdracht
 
@@ -177,10 +177,10 @@ Tevens moet het team ook persoonlijke ontwikkeling gedurende het project bijhoud
 
 ## 7.1 Begeleiders
 
-| Persoon           | Rol               | Contact                                               | Beschikbaarheid    |
-|-------------------|-------------------|-------------------------------------------------------|--------------------|
-| Nils Bijleveld    | Procesbegeleider  | [nils.bijleveld@han.nl](mailto:nils.bijleveld@han.nl) | Nog onbekend       |
-| Chris Scholten    | Projectbegeleider | [chris.scholten@han.nl](mailto:chris.scholten@han.nl) | Nog onbekend       |
+| Persoon           | Rol               | Contact                                               | Beschikbaarheid                  |
+|-------------------|-------------------|-------------------------------------------------------|----------------------------------|
+| Nils Bijleveld    | Procesbegeleider  | [nils.bijleveld@han.nl](mailto:nils.bijleveld@han.nl) | Nog onbekend                     |
+| Chris Scholten    | Projectbegeleider | [chris.scholten@han.nl](mailto:chris.scholten@han.nl) | Fysiek: Di/Do Digitaal: Ma/Wo/Vr |
 
 ## 7.2 Opdrachtgever
 
