@@ -24,8 +24,6 @@
 
 # Inhoudsopgave
 
-- [Plan van aanpak - Football league manager](#plan-van-aanpak---football-league-manager)
-- [Inhoudsopgave](#inhoudsopgave)
 - [1. Inleiding](#1-inleiding)
 - [2. Achtergrond van het project](#2-achtergrond-van-het-project)
 - [3. Doelstelling, opdracht en op te leveren resultaten voor het bedrijf](#3-doelstelling-opdracht-en-op-te-leveren-resultaten-voor-het-bedrijf)
@@ -88,7 +86,7 @@ Een database met informatie over voetbalcomeptities (en eventueel knock-out tour
 
 ## 3.3 Opdracht
 
-Een database waarin data omtrent voetbalcompetities kan worden beheerd, de specfieke data is te vinden in de bijlage onder de naam 'Opzet Databehoeften'.
+Een database waarin data omtrent voetbalcompetities kan worden beheerd, de specfieke data is te vinden in de bijlage onder de naam 'opzet_databehoeften.md'.
 
 Data analisten kunnen middels een bijpassende API data opvragen uit de database, deze data komt niet direct uit MS SQL Server maar gaat eerst door een staging area. De opdrachtgever adviseert het gebruik van MongoDB voor de staging area, hier zal nog nader onderzoek naar gedaan worden.
 
@@ -141,7 +139,7 @@ In dit hoofdstuk worden de randvoorwaarden beschreven, hierin staat wat er gereg
 
 - De HAN levert beschikbare ruimtes met stroom en internet gedurende het project.
 - De HAN voorziet toegang tot Jira en BitBucket gedurende kantooruren.
-- De opdrachtgever, procesbegeleider en professional skills docent zijn minimaal één keer per week bereikbaar gedurende het project.
+- De opdrachtgever, procesbegeleider en professional skills docent zijn minimaal één keer per week beschikbaar op locatie gedurende het project.
 - ISE ritme dicteert (denk hierbij bijvoorbeeld aan inleverdeadlines).
 - NUTMEG erkent dat opgaven gegeven door de HAN prioriteit hebben over het project.
 
@@ -254,7 +252,7 @@ Het ISE-project vindt plaats op 11-04-2022 t/m 09-06-2022. Binnen deze periode s
 | Risico                                  | Tegenmaatregel | Uitwijkstrategie |
 |-----------------------------------------|----------------|------------------|
 | Mongo Database opzetten                 | PoC voor docker omgeving mac  |  De mac-gebruikers moeten windows of linux runnen. Anders andere laptop regelen. |
-| Mongo database koppelen aan SQL server | PoC maken voor de koppeling  | Staging area veranderen naar spring boot. |
+| Mongo database koppelen aan MSSQL server | PoC maken voor de koppeling  | Staging area veranderen naar spring boot. |
 
 # Literatuurlijst
 
