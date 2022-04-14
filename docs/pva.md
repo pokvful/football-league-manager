@@ -24,6 +24,8 @@
 
 # Inhoudsopgave
 
+- [Plan van aanpak - Football league manager](#plan-van-aanpak---football-league-manager)
+- [Inhoudsopgave](#inhoudsopgave)
 - [Inleiding](#inleiding)
 - [1. Achtergrond van het project](#1-achtergrond-van-het-project)
 - [2. Doelstelling, opdracht en op te leveren resultaten voor het bedrijf](#2-doelstelling-opdracht-en-op-te-leveren-resultaten-voor-het-bedrijf)
@@ -66,13 +68,13 @@ Bij elk van deze risico's zijn haalbare maatregelen ten hoeven van het voortzett
 
 # 1. Achtergrond van het project
 
-NUTMEG is een nieuw startup bedrijf dat van plan is om voetbalcompetitie informatie te verkopen.
+NUTMEG verzamelt sportdata en verkoopt deze vervolgens aan sportclubs. Ze hebben al klanten in sporten als atletiek en zwemmen, maar willen nu ook data gaan aanbieden voor voetbalclubs.
 
-Ze specialiseren zich nu alleen in leagues.
+Hiervoor moet een database opgesteld worden met relevante data over voetbalcompetities en eventueel knock-out tournaments. De database moet makkelijk uitbreidbaar zijn.
 
-Andere bedrijven willen de voetbal gegevens opvragen voor vele verschillende doeleinden.
+De eindgebruikers van de database zijn data analisten die via een API data opvragen. Deze API moet ook opgesteld worden.
 
-Het bedrijf heeft nog geen database en ze hebben er een nodig.
+Team A4 is ingeschakeld om deze opdracht uit te voeren.
 
 # 2. Doelstelling, opdracht en op te leveren resultaten voor het bedrijf
 
