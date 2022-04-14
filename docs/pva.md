@@ -84,11 +84,19 @@ NUTMEG wilt voetbaldata gaan verkopen aan voetbalclubs. Hiervoor moet de databas
 
 ## 3.2 Doelstelling
 
-Een database met informatie over voetbalcomeptities (en eventueel knock-out tournaments) inclusief bijpassende API waarmee data opgevraagd kan worden data analisten.
+Een database met informatie over voetbalcomeptities (en eventueel knock-out tournaments) inclusief bijpassende API waarmee data opgevraagd kan worden door data analisten.
 
 ## 3.3 Opdracht
 
-Een database waarin data omtrent voetbal kan worden opgeslagen en beheerd. De beheerder kan direct verbinding maken met de database om zo bijvoorbeeld bestaande data aan te passen of nieuwe data toe te voegen. Daarbij moet er een staging area worden gemaakt, zodat gebruikers gegevens die in de database staan uit kunnen lezen. De data moet in JSON geleverd kunnen worden. Ook moet vanuit de database een current league table en top score lijst worden gegenereerd. De gebruikers kunnen alleen gegevens lezen. De database moet openstaan voor eventuele uitbreidingen.
+Een database waarin data omtrent voetbalcompetities kan worden beheerd, de specfieke data is te vinden in de bijlage onder de naam 'Opzet Databehoeften'.
+
+Data analisten kunnen middels een bijpassende API data opvragen uit de database, deze data komt niet direct uit MS SQL Server maar gaat eerst door een staging area. De opdrachtgever adviseert het gebruik van MongoDB voor de staging area, hier zal nog nader onderzoek naar gedaan worden.
+
+het moet op iedere moment mogelijk zijn om een tussenstand van de competite en en lijst van topscorers te generen.
+
+Data die uit de API komt wordt in JSON aangeleverd. 
+
+Data analisten kunnen alleen data lezen via de api, administrators kunnen direct op de MS SQL Server-database schrijven en lezen.
 
 ## 3.4 Resultaat
 
