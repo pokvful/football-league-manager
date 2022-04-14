@@ -134,7 +134,7 @@ Deze methode en tools moeten gebruikt worden binnen het project en er mag geen a
 Team A4 gaat in ieder geval gebruik maken van MSSQL en Docker. Verder wordt er eerst onderzoek gedaan naar MongoDB, hieruit zal blijken of MongoDB ook gebruikt gaat worden voor het realiseren van het eindproduct.
 
 De opdrachtgever kan tijdens de transition fase geen nieuwe requirements of functionaliteiten meer geven. In deze tijd wordt er gewerkt om het project af te ronden.
-
+Tijdens het project is de proces begeleider twee keer per week beschikbaar voor een meeting en is hij contacteerbaar via teams.
 # 5. Randvoorwaarden
 
 In dit hoofdstuk worden de randvoorwaarden beschreven, hierin staat wat er geregeld moet worden om het project mogelijk te maken.
