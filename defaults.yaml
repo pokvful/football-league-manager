@@ -1,0 +1,5 @@
+variables:
+  papersize: a4
+  numbersections: false
+  geometry:
+    - margin=1in

@@ -1,9 +1,3 @@
----
-geometry: margin=1in
-papersize: a4
-numbersections: false
----
-
 # Plan van aanpak - Football league manager
 
 **Projectleden:**
