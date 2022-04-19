@@ -53,7 +53,11 @@
 	- Speler
 	- Tijdstip
 - Buitenspel 
+	- Speler
+	- Tijdstip
 - Hoekschoppen
+	- Speler 
+	- Tijdstip
 - Wissels (Aantallen weer op basis van deze data)
 	- Speler in
 	- Speler uit
