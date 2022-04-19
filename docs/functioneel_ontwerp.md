@@ -6,7 +6,7 @@
 
 ### Naam
 
-Er bestaat een competitie Eredivise.
+Er bestaat een competitie Eredivisie.
 
 Er bestaat een competitie Champions League.
 
@@ -14,11 +14,11 @@ Er bestaat een competitie Champions League.
 
 De club Manchester United doet mee aan de competitie Eredivisie.
 
-De club Vitesse doet mee aan de competitie Eredivise.
+De club Vitesse doet mee aan de competitie Eredivisie.
 
 ### Seizoen
 
-De competitie Eredivise wordt gespeeld in het seizoen 18/19.
+De competitie Eredivisie wordt gespeeld in het seizoen 18/19.
 
 De competitie Champions League wordt gespeeld in het seizoen 20/21.
 
@@ -26,7 +26,7 @@ De competitie Champions League wordt gespeeld in het seizoen 20/21.
 
 * Op basis van VOETBALWEDSTRIJD
 
-### Toplijsten
+### Top lijsten
 
 * Op basis van VOETBALWEDSTRIJD
 
@@ -46,11 +46,11 @@ Tijdens de voetbalwedstrijd op 23 maart 2019 heeft de speler Edinson Cavani in d
 
 Tijdens de voetbalwedstrijd op 23 maart 2019 heeft de speler Edinson Cavani in de 75ste minuut gescoord.
 
-### Balbezit 
+### Balbezit
 
 Tijdens de voetbalwedstrijd op 23 maart 2019 had de speler Edinson Cavani een balbezit van 9%.
 
-Tijdens de voetbalwedstrijd op 23 maart 2019 had de speler Edinson Cavani een balbezet van 5%.
+Tijdens de voetbalwedstrijd op 23 maart 2019 had de speler Edinson Cavani een balbezit van 5%.
 
 ### Aantal passes
 
