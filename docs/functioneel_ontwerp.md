@@ -192,10 +192,10 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 # Business Rules
 
-- Van een lopende competitie mag de selectie clubs worden aangepast.
-  
-- Van een lopende competitie mag de speeldatum van een wedstrijd worden aangepast.
+- Van een lopende competitie mag alleen de selectie clubs en de speeldatum van een wedstrijd worden aangepast.
   
 - Van elk gespeelde voetbalronde moeten de posities, schoten, schoten op goal, hoekschoppen en overtredingen worden opgeslagen.
+
+- Een thuis club mag maximaal een keer tegen een uit club spelen binnen een seizoen.
 
   
