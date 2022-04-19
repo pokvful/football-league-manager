@@ -65,7 +65,7 @@
  
 # MATCHDAY:
 
-- Speeldronde
+- Speelronde
 	- VOETBALWEDSTRIJD
 		- Scheidsrechter
 		- Club Thuis
