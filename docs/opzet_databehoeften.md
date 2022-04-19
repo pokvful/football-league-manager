@@ -70,7 +70,7 @@
 			- Selectie
 		- DateTime
 		- Uitslag
-		- Capaciteit
+		- Aantal toeschouwers
  
 # CLUB:
 
