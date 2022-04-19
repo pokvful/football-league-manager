@@ -189,3 +189,23 @@ De speler Jesse Lingard van Manchester United is aanvaller.
 De speler Mason Greenswood van Manchester United heeft in 17 wedstrijden gespeeld.
 
 De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
+
+
+## Functionele requirements.
+
+
+| Functional Requirement                              	| MoSCoW 	|
+|-----------------------------------------------------	|--------	|
+| Bij een lopende competitie mag alleen de speeldatum of speler selectie van een wedstrijd worden veranderd. | M |
+| Het moet mogelijk zijn om een current league table te generaten. | M |
+| Het moet mogelijk zijn om een top score lijst van een league te genereren. | S |
+| De gegevens moet bereikbaar zijn via een online API in JSON formaat. | S |
+| Een \[gebruiker\] kan inhoudelijke gegevens uitlezen. 	| M |
+| Een \[admin\] kan inhoudelijke gegevens uitlezen. 	| S   	|
+| Een \[admin\] kan inhoudelijke gegevens verwijderen. 	| S   	|
+| Een \[admin\] kan inhoudelijke gegevens aanpassen. 	| S   	|
+| Een \[admin\] kan inhoudelijke gegevens aanmaken. 	| S   	|
+| Een \[admin\] kan database schema aanmaken. 	| S   	|
+| Een \[admin\] kan database schema lezen. 	| C   	|
+| Een \[admin\] kan database schema verwijderen. 	| S   	|
+| Een \[admin\] kan database schema aanpassen. 	| S   	|
