@@ -198,4 +198,20 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 - Een thuis club mag maximaal een keer tegen een uit club spelen binnen een seizoen.
 
-  
+## Functionele requirements.
+
+| Functional Requirement                              	| MoSCoW 	|
+|-----------------------------------------------------	|--------	|
+| Bij een lopende competitie mag alleen de speeldatum of speler selectie van een wedstrijd worden veranderd. | M |
+| Het moet mogelijk zijn om een current league table te generaten. | M |
+| Het moet mogelijk zijn om een top score lijst van een league te genereren. | S |
+| De gegevens moet bereikbaar zijn via een online API in JSON formaat. | S |
+| Een \[gebruiker\] kan inhoudelijke gegevens uitlezen. 	| M |
+| Een \[admin\] kan inhoudelijke gegevens uitlezen. 	| S   	|
+| Een \[admin\] kan inhoudelijke gegevens verwijderen. 	| S   	|
+| Een \[admin\] kan inhoudelijke gegevens aanpassen. 	| S   	|
+| Een \[admin\] kan inhoudelijke gegevens aanmaken. 	| S   	|
+| Een \[admin\] kan database schema aanmaken. 	| S   	|
+| Een \[admin\] kan database schema lezen. 	| C   	|
+| Een \[admin\] kan database schema verwijderen. 	| S   	|
+| Een \[admin\] kan database schema aanpassen. 	| S   	|
