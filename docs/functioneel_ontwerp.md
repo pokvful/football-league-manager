@@ -189,3 +189,13 @@ De speler Jesse Lingard van Manchester United is aanvaller.
 De speler Mason Greenswood van Manchester United heeft in 17 wedstrijden gespeeld.
 
 De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
+
+# Business Rules
+
+- Van een lopende competitie mag de selectie clubs worden aangepast.
+  
+- Van een lopende competitie mag de speeldatum van een wedstrijd worden aangepast.
+  
+- Van elk gespeelde voetbalronde moeten de posities, schoten, schoten op goal, hoekschoppen en overtredingen worden opgeslagen.
+
+  
