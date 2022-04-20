@@ -199,6 +199,10 @@ Att: Position -->
 
 Een voetbalwedstrijd wordt gespeeld tijdens een competitie
 
+Een wedstrijd wordt tussen FC Barcelona en FC Madrid gespeeld op 19 april 2002 in de speelronde 10.
+
+
+
 ### Schoten
 
 Tijdens de voetbalwedstrijd tussen FC Barcelona en club FC Madrid in de speelronde 20 seizoen 10 in competitie LaLiga heeft de speler 55 in de 45ste minuut <u>op</u> het doel geschoten.
@@ -270,11 +274,20 @@ Tijdens de wedstijd tussen club \<club_1\> en club \<club_2\> in speelronde \<sp
 
 ## Match day
 
+## Editie
+
+In seizoen 17/18 wordt de Bundes Liga gespeeld.
+In seizoen 20/21 wordt de Bundes Liga gespeeld.
+
 ### Speelronde
 
-Binnen de competitie Eredivisie seizoen 17/18 is een speelronde 2.
+<!-- Binnen de competitie Eredivisie seizoen 17/18 is een speelronde 2.
 
-Binnen de competitie <u>Eredivisie</u> seizoen <u>20/21</u> is een speelronde <u>1</u>.
+Binnen de competitie <u>Eredivisie</u> seizoen <u>20/21</u> is een speelronde <u>1</u>. -->
+
+In seizoen 20/21 wordt de Bundes Liga gespeeld daarin komt voor speeldronde 10.
+In seizoen 17/18 wordt de Bundes Liga gespeeld daarin komt voor speeldronde 11.
+
 
 #### Scheidsrechter
 
