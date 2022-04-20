@@ -265,6 +265,8 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 | Klant - Data Analist | x                 | ✓               | x                  | x                 | x                |
 | NUTMEG - Admin       | ✓                 | ✓               | ✓                  | ✓                 | ✓                |
 
+Extra toelichting: Database beheren houdt in dat je de sysadmin rol krijgt en elke activiteit op de server kan uitvoeren.
+
 # Toelichting Datakwaliteit
 Voor dit project is geen data aangeleverd. Alle data in de database wordt gemockt en zoveel mogelijk gebaseerd op voorbeelddata.
 
