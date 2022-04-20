@@ -89,4 +89,3 @@
 	- Geboortedatum
 	- Nationaliteit
 	- Positie (Linie)
-	- Gespeeld
