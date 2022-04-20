@@ -1,5 +1,9 @@
 # Functioneel ontwerp
 
+# Use cases
+
+![Use case diagram](./images/UseCase\ Diagram\ NUTMEG\ v1.png)
+
 ## Fully-Dressed Use-cases
 
 |Naam               |Read Data                                  	|
