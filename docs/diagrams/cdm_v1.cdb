@@ -1330,7 +1330,7 @@ DESTINATION 0 Arial,8,N</a:FontList>
 </o:RelationshipSymbol>
 <o:InheritanceRootLinkSymbol Id="o71">
 <a:ModificationDate>1650453098</a:ModificationDate>
-<a:Rect>((-15655,5526), (-4542,7929))</a:Rect>
+<a:Rect>((-15655,5510), (-4542,7929))</a:Rect>
 <a:ListOfPoints>((-4942,7304),(-15255,7304))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
