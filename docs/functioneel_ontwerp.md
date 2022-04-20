@@ -360,10 +360,11 @@ Manager
 - Toplijsten afhankelijk van entiteit Voetbalwedstrijd
 - Match afhankelijk van matchday 
 
-## Check constraint
+## Check constraints
 
-- Maximaal 22 posities per match (11 per club)
-- Minimaal 11 spelers per club
-- Minimaal 1 coach per club
-- Minmaal 1 keeper per match
-- Maximaal 52 speelrondes per competitie.
+- Maximaal 22 posities per match (11 per club);
+- Minimaal 11 spelers per club;
+- Minimaal 1 coach per club;
+- Minmaal 1 keeper per match;
+- Maximaal 52 speelrondes per competitie;
+- Een rugnummer van een speler mag niet groter zijn dan 99.
