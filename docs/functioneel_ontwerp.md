@@ -257,3 +257,10 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 | Een \[admin\] kan database schema lezen. 	| C   	|
 | Een \[admin\] kan database schema verwijderen. 	| S   	|
 | Een \[admin\] kan database schema aanpassen. 	| S   	|
+
+# Rechtenstructuur
+
+|                      | Create (entiteit) | Read (entiteit) | Update  (entiteit) | Delete (entiteit) | Database beheren |
+|----------------------|-------------------|-----------------|--------------------|-------------------|------------------|
+| Klant - Data Analist | x                 | ✓               | x                  | x                 | x                |
+| NUTMEG - Admin       | ✓                 | ✓               | ✓                  | ✓                 | ✓                |
