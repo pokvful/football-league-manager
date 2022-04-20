@@ -2,7 +2,7 @@
 
 # Use cases
 
-![Use case diagram](./images/UseCase\ Diagram\ NUTMEG\ v1.png)
+![Use case diagram](images/usecase_diagram_nutmeg.png)
 
 ## Fully-Dressed Use-cases
 
@@ -239,9 +239,7 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 # Business Rules
 
 - Van een lopende competitie mag alleen de selectie clubs en de speeldatum van een wedstrijd worden aangepast.
-  
 - Van elk gespeelde voetbalronde moeten de posities, schoten, schoten op goal, hoekschoppen en overtredingen worden opgeslagen.
-
 - Een thuis club mag maximaal een keer tegen een uit club spelen binnen een seizoen.
 
 ## Functionele requirements.
@@ -261,3 +259,8 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 | Een \[admin\] kan database schema lezen. 	| C   	|
 | Een \[admin\] kan database schema verwijderen. 	| S   	|
 | Een \[admin\] kan database schema aanpassen. 	| S   	|
+
+# Ontwerp keuzes
+
+- Een speler kan maar 1 positie (aanvaller, keeper, etc) hebben;
+- Er wordt maar 1 coach/trainer vastgelegd;
