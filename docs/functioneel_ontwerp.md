@@ -352,7 +352,7 @@ Manager
 
 ## Spelers
 
-- Persoon id
+- Persoon ID
 
 ### Foreign key constraints
 
