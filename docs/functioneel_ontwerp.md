@@ -274,43 +274,43 @@ Dit kopje is in aanbouw, wordt uitgebreid + verbeterd na realisatie van CDM.
 
 ## Voetbalwedstrijd
 
-- Speler ID + datum + tijd van schot
+- Persoon ID + datum + tijd van schot
 
 Goals
 
-- Speler ID + datum + tijd van goal
+- Persoon ID + datum + tijd van goal
 
 Balbezit
 
-- Speler ID + datum + balbezit percentage
+- Persoon ID + datum + balbezit percentage
 
 Aantal passes
 
-- Speler ID + datum + aantal passes
+- Persoon ID + datum + aantal passes
 
 Overtredingen
 
-- Speler ID + datum + tijd van overtreding
+- Persoon ID + datum + tijd van overtreding
 
 Gele kaarten
 
-- Speler ID + datum + tijd van gele kaart
+- Persoon ID + datum + tijd van gele kaart
 
 Rode kaarten
 
-- Speler ID + datum + tijd van rode kaart
+- Persoon ID + datum + tijd van rode kaart
 
 Buitenspel
 
-- Speler ID + datum + tijd van buitenspel
+- Persoon ID + datum + tijd van buitenspel
 
 Hoekschoppen
 
-- Speler ID + datum + tijd van hoekschop
+- Persoon ID + datum + tijd van hoekschop
 
 Wissels
 
-- Oude speler ID + nieuwe speler ID + datum + tijd van wissel
+- Oude persoon ID + nieuwe persoon ID + datum + tijd van wissel
 
 ## Speelronde
 
@@ -328,7 +328,7 @@ Club uit
 
 Selectie
 
-- Competitie naam + seizoen + speelronde + datum + speler ID
+- Competitie naam + seizoen + speelronde + datum + persoon ID
 
 Uitslag
 
