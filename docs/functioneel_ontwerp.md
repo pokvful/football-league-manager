@@ -1,5 +1,9 @@
 # Functioneel ontwerp
 
+# Use cases
+
+![Use case diagram](images/usecase_diagram_nutmeg.png)
+
 ## Fully-Dressed Use-cases
 
 |Naam               |Read Data                                  	|
