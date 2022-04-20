@@ -114,7 +114,6 @@ Tijdens de voetbalwedstrijd op 23 maart 2019 had de speler Edinson Cavani 1 gele
 
 Tijdens de voetbalwedstrijd op 23 maart 2019 had de speler Edinson Cavani 1 rode kaart gekregen in de 70ste minuut.
 
-
 ### Rode kaarten
 
 Tijdens de voetbalwedstrijd op 23 maart 2019 had de speler Edinson Cavani 1 rode kaart gekregen in de 70ste minuut.
@@ -138,7 +137,6 @@ Tijdens de voetbalwedstrijd op 23 maart 2019 had de speler Edinson Cavani in de 
 Tijdens de voetbalwedstrijd op 23 maart 2019 was de speler Juan Mata ingewisseld voor Scott McTominay in de 30ste minuut.
 
 Tijdens de voetbalwedstrijd op 23 maart 2019 was de speler Scott McTominay ingewisseld voor Paul Pogba in de 70ste minuut.
-
 
 ## Match day
 
@@ -257,3 +255,110 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 | Een \[admin\] kan database schema lezen. 	| C   	|
 | Een \[admin\] kan database schema verwijderen. 	| S   	|
 | Een \[admin\] kan database schema aanpassen. 	| S   	|
+
+## Constraints
+
+### Primary key constraints
+
+Dit kopje is in aanbouw, wordt uitgebreid + verbeterd na realisatie van CDM.
+## Voetbalwedstrijd
+
+## Club
+
+- Clubnaam + persoon ID
+
+## Competitie
+
+- Competitie naam
+
+## Voetbalwedstrijd
+
+- Speler ID + datum + tijd van schot
+
+Goals
+
+- Speler ID + datum + tijd van goal
+
+Balbezit
+
+- Speler ID + datum + balbezit percentage
+
+Aantal passes
+
+- Speler ID + datum + aantal passes
+
+Overtredingen
+
+- Speler ID + datum + tijd van overtreding
+
+Gele kaarten
+
+- Speler ID + datum + tijd van gele kaart
+
+Rode kaarten
+
+- Speler ID + datum + tijd van rode kaart
+
+Buitenspel
+
+- Speler ID + datum + tijd van buitenspel
+
+Hoekschoppen
+
+- Speler ID + datum + tijd van hoekschop
+
+Wissels
+
+- Oude speler ID + nieuwe speler ID + datum + tijd van wissel
+
+## Speelronde
+
+Scheidsrechter
+
+- Competitie naam + seizoen + speelronde + datum + persoon ID
+
+Club thuis
+
+- Competitie naam + seizoen + speelronde + datum + club thuis
+
+Club uit
+
+- Competitie naam + seizoen + speelronde + datum + club uit
+
+Selectie
+
+- Competitie naam + seizoen + speelronde + datum + speler ID
+
+Uitslag
+
+- Competitie naam + seizoen + speelronde + datum
+
+Aantal toeschouwers
+
+- Competitie naam + seizoen + speelronde + datum
+
+Thuisstad
+
+- Clubnaam + stad
+
+Stadion
+
+- Stadion naam
+
+Manager
+
+- Club naam + persoon ID
+
+## Spelers
+
+- Speler naam + rugnummer of gewoon persoon ID met type speler?
+
+### Check constraints
+
+- 
+
+### Foreign key constraints
+
+- Standen afhankelijk van entiteit Voetbalwedstrijd
+- Toplijsten afhankelijk van entiteit Voetbalwedstrijd
+- Match afhankelijk van matchday 
