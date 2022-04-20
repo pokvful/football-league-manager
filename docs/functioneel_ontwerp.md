@@ -261,6 +261,7 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 ### Primary key constraints
 
 Dit kopje is in aanbouw, wordt uitgebreid + verbeterd na realisatie van CDM.
+
 ## Voetbalwedstrijd
 
 ## Club
@@ -353,12 +354,16 @@ Manager
 
 - Speler naam + rugnummer of gewoon persoon ID met type speler?
 
-### Check constraints
-
-- 
-
 ### Foreign key constraints
 
 - Standen afhankelijk van entiteit Voetbalwedstrijd
 - Toplijsten afhankelijk van entiteit Voetbalwedstrijd
 - Match afhankelijk van matchday 
+
+## Check constraint
+
+- Maximaal 22 posities per match (11 per club)
+- Minimaal 11 spelers per club
+- Minimaal 1 coach per club
+- Minmaal 1 keeper per match
+- Maximaal 52 speelrondes per competitie.
