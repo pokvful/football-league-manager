@@ -257,3 +257,15 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 | Een \[admin\] kan database schema lezen. 	| C   	|
 | Een \[admin\] kan database schema verwijderen. 	| S   	|
 | Een \[admin\] kan database schema aanpassen. 	| S   	|
+
+
+## Interactiemodel
+|  Usecases \ Entiteiten    | Alle  Entiteiten	|
+|--------------	|-------	|
+| Create Data  	| C     	|
+| Read Data    	| R     	|
+| Update Data  	| U     	|
+| Delete Data  	| D     	|
+| Alter Schema 	| n.v.t 	|
+
+Bij Alter Schema is de CRUD matrix van de entiteiten niet van toepassingen, want daarmee wordt de database zelf aangepast.
