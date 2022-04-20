@@ -266,7 +266,7 @@ Dit kopje is in aanbouw, wordt uitgebreid + verbeterd na realisatie van CDM.
 
 ## Club
 
-- Clubnaam + persoon ID
+- Clubnaam
 
 ## Competitie
 
@@ -352,7 +352,7 @@ Manager
 
 ## Spelers
 
-- Speler naam + rugnummer of gewoon persoon ID met type speler?
+- Persoon id
 
 ### Foreign key constraints
 
