@@ -288,11 +288,11 @@ Bij Alter Schema is de CRUD matrix van de entiteiten niet van toepassingen, want
 
 # Onderbouwing concepten CDM
 
-## Tabel PERSON
+## Entiteit PERSON
 
-De tabel PERSOON bevat informatie over een persoon, zoals de voornaam, achternaam, tussenvoegsel(s), geboortedatum en een nummer om de persoon te identificeren in de database.
+De entiteit PERSOON bevat informatie over een persoon, zoals de voornaam, achternaam, tussenvoegsel(s), geboortedatum en een nummer om de persoon te identificeren in de database.
 
-| Kolom | Omschrijving |
+| Attribuut | Omschrijving |
 |---|---|
 | Person\_id | Het nummer waar een persoon mee geïdentificeerd kan worden |
 | First\_name | De voornaam van de persoon |
@@ -300,97 +300,97 @@ De tabel PERSOON bevat informatie over een persoon, zoals de voornaam, achternaa
 | Middle\_name | Een eventueel tussenvoegsel tussen de voor- en achternaam van de persoon |
 | Birth\_date | De geboortedatum van de persoon |
 
-## Tabel PLAYER
+## Entiteit PLAYER
 
-De PLAYER tabel neemt alle kolommen uit de PERSON tabel over en krijgt vervolgens ook nog een rugnummer.
+De PLAYER entiteit neemt alle kolommen uit de PERSON entiteit over en krijgt vervolgens ook nog een rugnummer.
 
-| Kolom | Omschrijving |
+| Attribuut | Omschrijving |
 |---|---|
 | Jersey | Het rugnummer van de speler |
 
-## Tabel REFEREE
+## Entiteit REFEREE
 
-De REFEREE tabel heeft geen extra kolommen ten opzichte van PLAYER. Deze tabel wordt dus alleen gebruikt om aan te geven dat een persoon een scheidsrechter is.
+De REFEREE entiteit heeft geen extra kolommen ten opzichte van PLAYER. Deze entiteit wordt dus alleen gebruikt om aan te geven dat een persoon een scheidsrechter is.
 
-## Tabel COACH
+## Entiteit COACH
 
-De COACH tabel heeft geen extra kolommen ten opzichte van PLAYER. Deze tabel wordt dus alleen gebruikt om aan te geven dat een persoon een coach is.
+De COACH entiteit heeft geen extra kolommen ten opzichte van PLAYER. Deze entiteit wordt dus alleen gebruikt om aan te geven dat een persoon een coach is.
 
-## Tabel COUNTRY
+## Entiteit COUNTRY
 
-In de COUNTRY tabel staan alle landen opgeslagen.
+In de COUNTRY entiteit staan alle landen opgeslagen.
 
-| Kolom | Omschrijving |
+| Attribuut | Omschrijving |
 |---|---|
 | Country\_name | De naam van het land |
 
-## Tabel CITY
+## Entiteit CITY
 
-In de COUNTRY tabel staan alle steden en dorpen opgeslagen.
+In de COUNTRY entiteit staan alle steden en dorpen opgeslagen.
 
-| Kolom | Omschrijving |
+| Attribuut | Omschrijving |
 |---|---|
 | City\_name | De naam van de stad of het dorp |
 
-## Tabel CLUB
+## Entiteit CLUB
 
-In de CLUB tabel staan alle clubs opgeslagen.
+In de CLUB entiteit staan alle clubs opgeslagen.
 
-| Kolom | Omschrijving |
+| Attribuut | Omschrijving |
 |---|---|
 | Club\_name | De nama van de voetbal club |
 
-## Tabel STADIUM
+## Entiteit STADIUM
 
-In de tabel STADIUM staan alle stadionnen van alle clubs.
+In de entiteit STADIUM staan alle stadionnen van alle clubs.
 
-| Kolom | Omschrijving |
+| Attribuut | Omschrijving |
 |---|---|
 | Stadium\_name | De naam van het stadion |
 | Capacity | Het aantal toeschouwers dat in het stadion aanwezig kunnen zijn totdat het vol is |
 
-## Tabel COMPETITION
+## Entiteit COMPETITION
 
-In de tabel COMPETITION worden alle competities vastgelegd.
+In de entiteit COMPETITION worden alle competities vastgelegd.
 
-| Kolom | Omschrijving |
+| Attribuut | Omschrijving |
 |---|---|
 | Competition\_name | De naam van de competitie |
 
-## Tabel SEASON
+## Entiteit SEASON
 
-In de tabel SEASON worden alle seizoenen vastgelegd.
+In de entiteit SEASON worden alle seizoenen vastgelegd.
 
-| Kolom | Omschrijving |
+| Attribuut | Omschrijving |
 |---|---|
 | Season\_name | De naam van het seizoen |
 
-## Tabel EDITION
+## Entiteit EDITION
 
-In de tabel EDITION worden de edities van een competitie in een seizoen vastgelegd.
+In de entiteit EDITION worden de edities van een competitie in een seizoen vastgelegd.
 
-## Tabel ROUND
+## Entiteit ROUND
 
-De tabel ROUND bevat alle speelronden van een editie.
+De entiteit ROUND bevat alle speelronden van een editie.
 
-| Kolom | Omschrijving |
+| Attribuut | Omschrijving |
 |---|---|
 | Start\_date | De startdatum van de speelronde |
 | End\_date | De einddatum van de speelronde |
 
-## Tabel MATCHDAY
+## Entiteit MATCHDAY
 
-De MATCHDAY tabel bevat informatie over een speeldag in een speelronde.
+De MATCHDAY entiteit bevat informatie over een speeldag in een speelronde.
 
-| Kolom | Omschrijving |
+| Attribuut | Omschrijving |
 |---|---|
 | Match\_day | De datum (een dag) wanneer de speeldag plaats vind |
 
-## Tabel MATCH
+## Entiteit MATCH
 
-In de tabel MATCH worden een aantal statistieken bijgehouden van de wedstrijd. Denk hier aan het aantal passes, het balbezit, het aantal schoten (op doel), het aantal overtredingen en het aantal corners.
+In de entiteit MATCH worden een aantal statistieken bijgehouden van de wedstrijd. Denk hier aan het aantal passes, het balbezit, het aantal schoten (op doel), het aantal overtredingen en het aantal corners.
 
-| Kolom | Omschrijving |
+| Attribuut | Omschrijving |
 |---|---|
 | Ball\_possession\_home | Het percentage balbezit van de thuis spelende club |
 | Ball\_possession\_out | Het percentage balbezit van de uit spelende club |
@@ -407,46 +407,46 @@ In de tabel MATCH worden een aantal statistieken bijgehouden van de wedstrijd. D
 | Corners\_home | Het aantal corners van de thuis spelende club |
 | Corners\_out | Het aantal corners van de thuis spelende club |
 
-## Tabel POSITION
+## Entiteit POSITION
 
-De tabel POSITION houd bij welke speler in welke wedstrijd op welke positie speelt.
+De entiteit POSITION houd bij welke speler in welke wedstrijd op welke positie speelt.
 
-## Tabel KEEPER
+## Entiteit KEEPER
 
-In de KEEPER tabel staan alle spelers die in een wedstrijd als keeper gespeeld hebben.
+In de KEEPER entiteit staan alle spelers die in een wedstrijd als keeper gespeeld hebben.
 
-## Tabel DEFENDER
+## Entiteit DEFENDER
 
-In de DEFENDER tabel staan alle spelers die in een wedstrijd als verdediger gespeeld hebben.
+In de DEFENDER entiteit staan alle spelers die in een wedstrijd als verdediger gespeeld hebben.
 
-## Tabel MIDFIELDER
+## Entiteit MIDFIELDER
 
-In de MIDFIELDER tabel staan alle spelers die in een wedstrijd als middenvelder gespeeld hebben.
+In de MIDFIELDER entiteit staan alle spelers die in een wedstrijd als middenvelder gespeeld hebben.
 
-## Tabel ATTACKER
+## Entiteit ATTACKER
 
-In de ATTACKER tabel staan alle spelers die in een wedstrijd als aanvaller gespeeld hebben.
+In de ATTACKER entiteit staan alle spelers die in een wedstrijd als aanvaller gespeeld hebben.
 
-## Tabel EVENT
+## Entiteit EVENT
 
-In de EVENT tabel worden gebeurtenissen tijdens een wedstrijd bijgehouden. Deze gebeurtenissen gebeuren in een bepaalde minuut in de wedstrijd.
+In de EVENT entiteit worden gebeurtenissen tijdens een wedstrijd bijgehouden. Deze gebeurtenissen gebeuren in een bepaalde minuut in de wedstrijd.
 
-| Kolom | Omschrijving |
+| Attribuut | Omschrijving |
 |---|---|
 | Time | De minuut in de wedstrijd wanneer het event heeft plaatsgevonden |
 
-## Tabel SUBSTITUTE
+## Entiteit SUBSTITUTE
 
-In de tabel SUBSTITUTE staan alle momenten wanneer een speler voor een andere speler wordt vervangen.
+In de entiteit SUBSTITUTE staan alle momenten wanneer een speler voor een andere speler wordt vervangen.
 
-## Tabel GOAL
+## Entiteit GOAL
 
-In de tabel GOAL staan alle momenten wanneer er een goal is gemaakt in een wedstrijd.
+In de entiteit GOAL staan alle momenten wanneer er een goal is gemaakt in een wedstrijd.
 
-## Tabel RED_CARD
+## Entiteit RED_CARD
 
-In de tabel RED_CARD staan alle momenten wanneer een speler een rode kaart krijgt in een wedstrijd.
+In de entiteit RED_CARD staan alle momenten wanneer een speler een rode kaart krijgt in een wedstrijd.
 
-## Tabel YELLOW_CARD
+## Entiteit YELLOW_CARD
 
-In de tabel YELLOW_CARD staan alle momenten wanneer een speler een gele kaart krijgt in een wedstrijd.
+In de entiteit YELLOW_CARD staan alle momenten wanneer een speler een gele kaart krijgt in een wedstrijd.
