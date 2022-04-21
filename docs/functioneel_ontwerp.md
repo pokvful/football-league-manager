@@ -260,12 +260,22 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 # Rechtenstructuur
 
-|                      | Create (entiteit) | Read (entiteit) | Update  (entiteit) | Delete (entiteit) | Database beheren |
-|----------------------|-------------------|-----------------|--------------------|-------------------|------------------|
-| Klant - Data Analist | x                 | ✓               | x                  | x                 | x                |
-| NUTMEG - Admin       | ✓                 | ✓               | ✓                  | ✓                 | ✓                |
+| Use Cases                 | Entiteit(en)                                  | Rechten        |
+|---------------------------|-----------------------------------------------|----------------|
+| Ophalen Top-lijst         | Event (inc. subtypes), Match, Person, Club    | Klant en Admin |
+| Ophalen Tussenstand Comp  | Competition, Edition, Season, Round           | Klant en Admin |
+| Ophalen Club Info         | Club, Person, City, Competition, Coach        | Klant en Admin | 
+| Ophalen Match Info        | Match, Person, Matchday, Club, Stadium, Event | Klant en Admin |
+| Ophalen Speelronde Info   | Round, Matchday, Edition                      | Klant en Admin |
+| Ophalen Matchday Info     | Matchday, Round, Match                        | Klant en Admin |
+| Invoeren Match Data       | Match, Event, Matchday, Stadium, Club, Person | Admin          |
+| Updaten Club Info         | Club, Player, Coach, City, Match              | Admin          |
+| Start Nieuwe Seizoen Comp | Season, Competition, Edition, Round, Matchday | Admin          |
+| Toevoegen Nieuwe Persoon  | Person                                        | Admin          |
 
-Extra toelichting: Database beheren houdt in dat je de sysadmin rol krijgt en elke activiteit op de server kan uitvoeren.
+Klant: Data-analist bij een sportclub
+
+Admin: Werknemer bij NUTMEG
 
 # Toelichting Datakwaliteit
 Voor dit project is geen data aangeleverd. Alle data in de database wordt gemockt en zoveel mogelijk gebaseerd op voorbeelddata.
