@@ -260,99 +260,45 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 ### Primary key constraints
 
-Dit kopje is in aanbouw, wordt uitgebreid + verbeterd na realisatie van CDM.
+## Person
 
-## Voetbalwedstrijd
+PK: Person ID
+
+## Match
+
+PK: Club_name + club_name + match_day + start_date + end_date + competition_name + season_name
 
 ## Club
 
-- Clubnaam
+PK: Club_name
 
-## Competitie
+## City
 
-- Competitie naam
+PK: City_name
 
-## Voetbalwedstrijd
+## Country 
 
-- Persoon ID + datum + tijd van schot
+PK: Country_name
 
-Goals
+## Competition
 
-- Persoon ID + datum + tijd van goal
+PK: Competition_name
 
-Balbezit
+## Season
 
-- Persoon ID + datum + balbezit percentage
+PK: Season_name
 
-Aantal passes
+## Round
 
-- Persoon ID + datum + aantal passes
+PK: Start_date + end_date
 
-Overtredingen
+## Matchday
 
-- Persoon ID + datum + tijd van overtreding
+PK: Match_day + start_date + end_date + competition_name + season_name
 
-Gele kaarten
+## Event
 
-- Persoon ID + datum + tijd van gele kaart
-
-Rode kaarten
-
-- Persoon ID + datum + tijd van rode kaart
-
-Buitenspel
-
-- Persoon ID + datum + tijd van buitenspel
-
-Hoekschoppen
-
-- Persoon ID + datum + tijd van hoekschop
-
-Wissels
-
-- Oude persoon ID + nieuwe persoon ID + datum + tijd van wissel
-
-## Speelronde
-
-Scheidsrechter
-
-- Competitie naam + seizoen + speelronde + datum + persoon ID
-
-Club thuis
-
-- Competitie naam + seizoen + speelronde + datum + club thuis
-
-Club uit
-
-- Competitie naam + seizoen + speelronde + datum + club uit
-
-Selectie
-
-- Competitie naam + seizoen + speelronde + datum + persoon ID
-
-Uitslag
-
-- Competitie naam + seizoen + speelronde + datum
-
-Aantal toeschouwers
-
-- Competitie naam + seizoen + speelronde + datum
-
-Thuisstad
-
-- Clubnaam + stad
-
-Stadion
-
-- Stadion naam
-
-Manager
-
-- Club naam + persoon ID
-
-## Spelers
-
-- Persoon ID
+PK: Time + club_name + club_name + match_day + start_date + end_date + competition_name + season_name
 
 ### Foreign key constraints
 
