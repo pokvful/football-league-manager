@@ -21,6 +21,8 @@ Voor dit project worden alleen unit tests geschreven.
 Deze unit tests worden geschreven voor iedere Stored Procedure, Trigger en Check-constraint dat in dit project wordt gemaakt in MSSQL Server.
 Deze testen worden gemaakt nadat de code zelf is geschreven om de code te testen.
 
+Daarnaast worden er testen geschreven voor de security of dat de aangemaakte de rollen de rechten hebben die zijn afgesproken.
+
 Er worden geen tests geschreven voor de HISTORY tabellen.
 
 ## Benodigdheden
@@ -47,10 +49,10 @@ De volgorde van de code in de test is:
 - ACT: de geteste actie
 - ASSERT: wat zou het scenario moeten zijn.
 
-De uiteindelijke template is:
+De template van een losse test is:
 
 ```SQL
-CREATE OR ALTER PROCEDURE [naam_wat_wordt_getest].[test [naam test]]
+CREATE OR ALTER PROCEDURE [testklasse].[test [naam test]]
 AS
 BEGIN
 	--ARRANGE
@@ -65,3 +67,20 @@ END
 
 ## Waarover worden de testen geschreven
 
+Er worden bij de test zoveel mogelijke verschillende succes en faal scenario's behandeld.
+
+Hierbij wordt rekening gehouden met de randvoorwaarden.
+
+Als voorbeeld met de check: leeftijd > 18
+
+- Een succes test is dit checken met leeftijd = 19.
+- Een faal test is dit checken met leeftijd = 18.
+
+Er wordt gecontroleerd of de afgesproken errors gegooid worden wanneer ze moeten, daarbij ook dat ze niet erroren wanneer het niet moet.
+
+Als er waardes worden aangepast wordt er gecontroleerd of de aanpassingen die moeten gebeuren juist worden uitgevoerd (dat niet teveel gegevens worden aangepast).
+
+Als er waardes worden teruggegeven dan wordt gecontroleerd of die correct zijn.
+## Achteraf
+
+Nadat de code is getest met behulp van de geschreven unit tests worden de tests gereviewed. Als de tests worden goed gekeurd wordt in het testrapport het bewijs van het slagen van de tests neergezet met de datum.
