@@ -22,17 +22,17 @@
 |-------------------|-----------------------------------------------------------------------------------------------------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin																				|
 |Preconditie        |<!--- evt. club bevat informatie ofzo, maar lijkt me overbodig --->													|
-|Postconditie       |Systeeem toont informatie over de gewenste club																		|
+|Postconditie       |Systeem toont informatie over de gewenste club																		|
 |Brief Description  |Actor haalt het team, de coach, de thuisstad, het stadion en de capaciteit van het stadion van een gewenste club op	|
 |Happy Flow         |1.Actor geeft aan informatie over een gewenste club te willen zien. <br> 2.Systeem toont clubinformatie over de gewenste club	|
 
-|Naam               |	|
-|-------------------|-------------------------------------------------------------------------------|
-|Actors             |	|
-|Preconditie        |	|
-|Postconditie       |	|
-|Brief Description  |	|
-|Happy Flow         |	|
+|Naam               |Ophalen matchinfo									|
+|-------------------|---------------------------------------------------|
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin			|
+|Preconditie        |De match is gespeeld								|
+|Postconditie       |Systeem toont de informatie van de gewenste match	|
+|Brief Description  |Actor haalt per team balbezit, passes, schoten, schoten op doel, passprecisie, overtredingen, corners, goals, kaarten en wissels van de gewenste match	op	|
+|Happy Flow         |1.Actor geef aan informatie over een gewenste match te willen zien. <br> 2.Systeem toont de informatie van de match	|
 
 |Naam               |	|
 |-------------------|-------------------------------------------------------------------------------|
