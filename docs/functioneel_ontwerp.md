@@ -8,15 +8,23 @@
 |Preconditie        |Er zijn wedstrijden gepseeld waarop de relevante data gebaseerd kan worden		|
 |Postconditie       |Systeem toont de gewenste top-lijst											|
 |Brief Description  |Actor haalt een top-lijst met gewenste informatiebehoefte op uit het systeem	|
-|Happy Flow         |1.Actor geeft aan een top-lijst met de gewenste informatiebehoefte op te vragen. <br> 2.Systeem toont de data 	|
+|Happy Flow         |1.Actor geeft aan een top-lijst met de gewenste informatiebehoefte op te vragen. <br> 2.Systeem toont de top-lijst 	|
 
-|Naam               |Ophalen tussenstand competitie	|
-|-------------------|-------------------------------------------------------|
-|Actors             |Data-analist Klant / NUTMEG Voetbal Admin	|
-|Preconditie        |Er zijn wedstrijden gespeeld in de gewenste competite tijdens het gewenste seizoen	|
+|Naam               |Ophalen tussenstand competitie															|
+|-------------------|---------------------------------------------------------------------------------------|
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin												|
+|Preconditie        |Er zijn wedstrijden gespeeld in de gewenste competite tijdens het gewenste seizoen		|
 |Postconditie       |Systeem toont de tussenstand van de gewenste competitie tijdens het gewenste seizoen	|
+|Brief Description  |Actor haalt de tussenstand van een gewenste competitie tijdens een gewenst seizoen op	|
+|Happy Flow         |1.Actor geeft aan de tussenstand van een gewenste competitie tijdens een gewenst seizoen te willen zien. <br> 2.Systeem toont de tussenstand	|
+
+|Naam               |	|
+|-------------------|-------------------------------------------------------|
+|Actors             |	|
+|Preconditie        |	|
+|Postconditie       |	|
 |Brief Description  |	|
-|Happy Flow         |1.	|
+|Happy Flow         |	|
 
 |Naam               |	|
 |-------------------|-------------------------------------------------------|
