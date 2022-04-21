@@ -1,8 +1,8 @@
 # COMPETITIE:
 
-- Naam
-- Seizoen
-- Clubs
+- Naam -
+- Seizoen -
+- Clubs -
 	- (Informatie uit CLUB)
 - Standen (op basis van VOETBALWEDSTRIJD)
 	- Rang
@@ -29,8 +29,8 @@
 		- Passes
 		- Clean Sheets
 		- Voorzetten
-		- Gele Kaarten
-		- Rode Kaarten
+		- Gele Kaarten -
+		- Rode Kaarten -
  
 # VOETBALWEDSTRIJD:
 
@@ -41,34 +41,34 @@
 - Goals (Aantallen weer op basis van deze data)
 	- Tijdstip
 	- Scorer
-- Balbezit (Percentage)
-- Aantal passes
-- Overtredingen (Aantallen weer op basis van deze data)
+- Balbezit (Percentage) -
+- Aantal passes -
+- Overtredingen (Aantallen weer op basis van deze data) -
 	- Speler
 	- Tijdstip
-- Gele kaarten (Aantallen weer op basis van deze data)
+- Gele kaarten (Aantallen weer op basis van deze data) -
 	- Speler
 	- Tijdstip
-- Rode kaarten (Aantallen weer op basis van deze data)
+- Rode kaarten (Aantallen weer op basis van deze data) -
 	- Speler
 	- Tijdstip
-- Buitenspel 
+- Buitenspel -
 	- Speler
 	- Tijdstip
-- Hoekschoppen
+- Hoekschoppen -
 	- Speler 
 	- Tijdstip
-- Wissels (Aantallen weer op basis van deze data)
+- Wissels (Aantallen weer op basis van deze data)-
 	- Speler in
 	- Speler uit
 	- Tijdstip
  
 # MATCHDAY:
 
-- Speelronde
-	- VOETBALWEDSTRIJD
+- Speelronde -
+	- VOETBALWEDSTRIJD -
 		- Scheidsrechter
-		- Club Thuis
+		- Club Thuis -
 			- Selectie
 		- Club Uit
 			- Selectie
