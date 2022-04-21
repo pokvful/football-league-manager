@@ -1,7 +1,7 @@
 # Functioneel ontwerp
 
 # Fully-Dressed Use-cases
-
+<!--- Staging area bij alles nog weggelaten, updaten na onderzoek --->
 |Naam               |Ophalen top-lijst                                  							|
 |-------------------|-------------------------------------------------------------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin  									|
@@ -39,36 +39,36 @@
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin	|
 |Preconditie        |De speelronde is al gespeeld	|
 |Postconditie       |Systeem toont de informatie van de gewenste speelronde	|
-|Brief Description  |Actor de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde op	|
+|Brief Description  |Actor haalt de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde op	|
 |Happy Flow         |1.Actor geeft aan de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde te willen zien. <br> 2.Systeemm toont de uitslagen en speeldagen van wedstrijden tijdens de gewenste speelronde	|
 
-|Naam               |	|
+|Naam               |Invoeren matchdata	|
 |-------------------|-------------------------------------------------------------------------------|
-|Actors             |	|
-|Preconditie        |	|
-|Postconditie       |	|
+|Actors             |NUTMEG Voetbal Admin	|
+|Preconditie        |<!--- je zou kunnen zeggen match is gespeeld maar is niet per se een preconditie, toch> --->	|
+|Postconditie       |De match met al zijn gegevens staat geregistreerd in het systeem	|
+|Brief Description  |Actor	voert matchdata van een gespeelde wedstrijd in|
+|Happy Flow         |1.Actor voert de matchdata in in STORED PROCEDURE 2.Match staat opgeslagen in systeem	|
+
+|Naam               |Updaten clubinfo	|
+|-------------------|-------------------------------------------------------------------------------|
+|Actors             |NUTMEG Voetbal Admin	|
+|Preconditie        |De club bestaat al	|
+|Postconditie       |De updated clubinformatie is opgeslagen in het systeem	|
+|Brief Description  |Actor update de clubinformatie. Hieronder wordt het team, de coach, de thusistad of het stadian (en zijn capaciteit) verstaan.	|
+|Happy Flow         |1.Actor geeft de informatie mee die |
+
+|Naam               |Start nieuw seizoen competitie	|
+|-------------------|-------------------------------------------------------------------------------|
+|Actors             |NUTMEG Voetbal Admin	|
+|Preconditie        |Het vorige seizoen is afgelopen <!--- iets met speelrondes ofzo? 2x aantal clubs --->	|
+|Postconditie       |De juiste clubs zijn gedegradeerd/gepromoveert. Een nieuw seizoen is gestart	|
 |Brief Description  |	|
 |Happy Flow         |	|
 
 |Naam               |	|
 |-------------------|-------------------------------------------------------------------------------|
-|Actors             |	|
-|Preconditie        |	|
-|Postconditie       |	|
-|Brief Description  |	|
-|Happy Flow         |	|
-
-|Naam               |	|
-|-------------------|-------------------------------------------------------------------------------|
-|Actors             |	|
-|Preconditie        |	|
-|Postconditie       |	|
-|Brief Description  |	|
-|Happy Flow         |	|
-
-|Naam               |	|
-|-------------------|-------------------------------------------------------------------------------|
-|Actors             |	|
+|Actors             |NUTMEG Voetbal Admin	|
 |Preconditie        |	|
 |Postconditie       |	|
 |Brief Description  |	|
