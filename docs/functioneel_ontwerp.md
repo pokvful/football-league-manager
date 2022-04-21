@@ -260,43 +260,43 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 ### Primary key constraints
 
-## Person
+#### Person
 
 PK: Person ID
 
-## Match
+#### Match
 
 PK: Club_name + club_name + match_day + start_date + end_date + competition_name + season_name
 
-## Club
+#### Club
 
 PK: Club_name
 
-## City
+#### City
 
 PK: City_name
 
-## Country 
+#### Country 
 
 PK: Country_name
 
-## Competition
+#### Competition
 
 PK: Competition_name
 
-## Season
+#### Season
 
 PK: Season_name
 
-## Round
+#### Round
 
 PK: Start_date + end_date
 
-## Matchday
+#### Matchday
 
 PK: Match_day + start_date + end_date + competition_name + season_name
 
-## Event
+#### Event
 
 PK: Time + club_name + club_name + match_day + start_date + end_date + competition_name + season_name
 
@@ -307,7 +307,7 @@ PK: Time + club_name + club_name + match_day + start_date + end_date + competiti
 - Match afhankelijk van matchday 
 
 * Handig om dit pas uit te werken na het maken van het PDM?
-## Check constraints
+### Check constraints
 
 - Maximaal 22 posities per match (11 per club);
 - Minimaal 11 spelers per club;
