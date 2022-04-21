@@ -266,11 +266,11 @@ In dit hoofdstuk gaan de verschillende ontwerp keuzes verwoord worden om het mod
 
 ## Entiteit: Persoon
 
-De entiteit Persoon heeft drie subtypes (coach, referee en player). Hier is voor gekozen zodat elk persoon in de database gekoppeld  kan worden aan een type persoon. Hierdoor is het mogelijk om voor elk persoon specifieke data op te slaan.
+De entiteit Persoon heeft drie subtypes (coach, referee en player). Hier is voor gekozen zodat elk persoon in de database gekoppeld kan worden aan een type persoon. Hierdoor is het mogelijk om voor elk persoon specifieke data op te slaan.
 
 ## Entiteit: Event
 
-Voor de verschillende events (rode kaart, gele kaart, wissel, doelpunt) die tijdens een voetbalwedstrijd plaatsvinden is de entiteit Event voor bedacht. Deze events zijn als subtype gekoppeld aan Event, zodat elke event gekoppeld kan worden aan een speler met daarbij het minuut waarin het is gebeurd. Hierdoor is het mogelijk om specifieke data op te halen over bepaalde events gekoppeld aan een speler.
+Voor de verschillende events (rode kaart, gele kaart, wissel, doelpunt) die tijdens een voetbalwedstrijd plaatsvinden is de entiteit Event bedacht. Deze events zijn als subtype gekoppeld aan Event, zodat elke event gekoppeld kan worden aan een speler met daarbij de minuut waarin het is gebeurd. Hierdoor is het mogelijk om specifieke data op te halen voor spelers.
 
 ## Entiteit: Position
 
