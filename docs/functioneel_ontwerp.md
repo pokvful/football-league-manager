@@ -306,6 +306,7 @@ PK: Time + club_name + club_name + match_day + start_date + end_date + competiti
 - Toplijsten afhankelijk van entiteit Voetbalwedstrijd
 - Match afhankelijk van matchday 
 
+* Handig om dit pas uit te werken na het maken van het PDM?
 ## Check constraints
 
 - Maximaal 22 posities per match (11 per club);
