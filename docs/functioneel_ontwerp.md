@@ -309,6 +309,7 @@ PI: Time + club_name + club_name + match_day + start_date + end_date + competiti
 - Minimaal en maximaal 1 coach per club;
 - Maximaal 52 speelrondes per competitie;
 - Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1.
+
 # Ontwerp keuzes
 
 In dit hoofdstuk gaan de verschillende ontwerp keuzes verwoord worden om het model duidelijk te krijgen. Deze specfieke keuzes staan hieronder uitgelegd.
