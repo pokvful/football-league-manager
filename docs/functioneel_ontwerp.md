@@ -262,5 +262,20 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 # Ontwerp keuzes
 
-- Een speler kan maar 1 positie (aanvaller, keeper, etc) hebben;
-- Er wordt maar 1 coach/trainer vastgelegd;
+In dit hoofdstuk gaan de verschillende ontwerp keuzes verwoord worden om het model duidelijk te krijgen. Deze specfieke keuzes staan hieronder uitgelegd.
+
+## Entiteit: Persoon
+
+De entiteit Persoon heeft drie subtypes (coach, referee en player). Hier is voor gekozen zodat elk persoon in de database gekoppeld  kan worden aan een type persoon. Hierdoor is het mogelijk om voor elk persoon specifieke data op te slaan.
+
+## Entiteit: Event
+
+Voor de verschillende events (rode kaart, gele kaart, wissel, doelpunt) die tijdens een voetbalwedstrijd plaatsvinden is de entiteit Event voor bedacht. Deze events zijn als subtype gekoppeld aan Event, zodat elke event gekoppeld kan worden aan een speler met daarbij het minuut waarin het is gebeurd. Hierdoor is het mogelijk om specifieke data op te halen over bepaalde events gekoppeld aan een speler.
+
+## Entiteit: Position
+
+Voor entiteit Position hebben we vier subtypes (keeper, verdediger, middenvelder, aanvaller) bedacht. Dit zorgt ervoor dat we elke Speler kunnen koppelen aan een positie. Hierdoor is het mogelijk om voor elke positie de bijhorende spelers op te halen.
+
+## Entiteit: Match
+
+De entiteit Match bevat alle informatie (balbezit, passes, schoten, schoten op doel, passnauwkeurigheid, overtredingen en corners) over de thuis en uit clubs die tegen elkaar spelen. Hij is afhankelijk van de entiteit Club, want die bepaald wie de thuis en uit clubs zijn. Daarnaast is hij ook afhankelijk van de entiteit Matchday, want die specificeert de dag waarop de wedstrijd gespeeld wordt. Door het zo specifiek mogelijk op te slaan, is het mogelijk om data voor elke club nauwkeurig uit te lezen.
