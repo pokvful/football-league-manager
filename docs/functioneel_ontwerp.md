@@ -18,8 +18,16 @@
 |Brief Description  |Actor haalt de tussenstand van een gewenste competitie tijdens een gewenst seizoen op	|
 |Happy Flow         |1.Actor geeft aan de tussenstand van een gewenste competitie tijdens een gewenst seizoen te willen zien. <br> 2.Systeem toont de tussenstand	|
 
+|Naam               |Ophalen clubinfo																										|
+|-------------------|-----------------------------------------------------------------------------------------------------------------------|
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin																				|
+|Preconditie        |<!--- evt. club bevat informatie ofzo, maar lijkt me overbodig --->													|
+|Postconditie       |Systeeem toont informatie over de gewenste club																		|
+|Brief Description  |Actor haalt het team, de coach, de thuisstad, het stadion en de capaciteit van het stadion van een gewenste club op	|
+|Happy Flow         |1.Actor geeft aan informatie over een gewenste club te willen zien. <br> 2.Systeem toont clubinformatie over de gewenste club	|
+
 |Naam               |	|
-|-------------------|-------------------------------------------------------|
+|-------------------|-------------------------------------------------------------------------------|
 |Actors             |	|
 |Preconditie        |	|
 |Postconditie       |	|
@@ -27,7 +35,7 @@
 |Happy Flow         |	|
 
 |Naam               |	|
-|-------------------|-------------------------------------------------------|
+|-------------------|-------------------------------------------------------------------------------|
 |Actors             |	|
 |Preconditie        |	|
 |Postconditie       |	|
