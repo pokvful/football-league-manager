@@ -24,8 +24,6 @@
 
 # Inhoudsopgave
 
-- [Plan van aanpak - Football league manager](#plan-van-aanpak---football-league-manager)
-- [Inhoudsopgave](#inhoudsopgave)
 - [1. Inleiding](#1-inleiding)
 - [2. Achtergrond van het project](#2-achtergrond-van-het-project)
 - [3. Doelstelling, opdracht en op te leveren resultaten voor het bedrijf](#3-doelstelling-opdracht-en-op-te-leveren-resultaten-voor-het-bedrijf)
