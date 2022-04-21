@@ -332,12 +332,18 @@ De entiteit Match bevat alle informatie (balbezit, passes, schoten, schoten op d
 
 # Rechtenstructuur
 
-|                      | Create (entiteit) | Read (entiteit) | Update  (entiteit) | Delete (entiteit) | Database beheren |
-|----------------------|-------------------|-----------------|--------------------|-------------------|------------------|
-| Klant - Data Analist | x                 | ✓               | x                  | x                 | x                |
-| NUTMEG - Admin       | ✓                 | ✓               | ✓                  | ✓                 | ✓                |
-
-Extra toelichting: Database beheren houdt in dat je de sysadmin rol krijgt en elke activiteit op de server kan uitvoeren.
+| Use Cases                 | Entiteit(en)                                  | Rechten               |
+|---------------------------|-----------------------------------------------|-----------------------|
+| Ophalen Top-lijst         | Event (inc. subtypes), Match, Person, Club    | Data-Analist en Admin |
+| Ophalen Tussenstand Comp  | Competition, Edition, Season, Round           | Data-Analist en Admin |
+| Ophalen Club Info         | Club, Person, City, Competition, Coach        | Data-Analist en Admin | 
+| Ophalen Match Info        | Match, Person, Matchday, Club, Stadium, Event | Data-Analist en Admin |
+| Ophalen Speelronde Info   | Round, Matchday, Edition                      | Data-Analist en Admin |
+| Ophalen Matchday Info     | Matchday, Round, Match                        | Data-Analist en Admin |
+| Invoeren Match Data       | Match, Event, Matchday, Stadium, Club, Person | Admin                 |
+| Updaten Club Info         | Club, Player, Coach, City, Match              | Admin                 |
+| Start Nieuwe Seizoen Comp | Season, Competition, Edition, Round, Matchday | Admin                 |
+| Toevoegen Nieuwe Persoon  | Person                                        | Admin                 |
 
 # Toelichting Datakwaliteit
 Voor dit project is geen data aangeleverd. Alle data in de database wordt gemockt en zoveel mogelijk gebaseerd op voorbeelddata.
