@@ -32,7 +32,39 @@
 |Preconditie        |De match is gespeeld								|
 |Postconditie       |Systeem toont de informatie van de gewenste match	|
 |Brief Description  |Actor haalt per team balbezit, passes, schoten, schoten op doel, passprecisie, overtredingen, corners, goals, kaarten en wissels van de gewenste match	op	|
-|Happy Flow         |1.Actor geef aan informatie over een gewenste match te willen zien. <br> 2.Systeem toont de informatie van de match	|
+|Happy Flow         |1.Actor geeft aan informatie over een gewenste match te willen zien. <br> 2.Systeem toont de informatie van de match	|
+
+|Naam               |Ophalen speelrondeinfo	|
+|-------------------|-------------------------------------------------------------------------------|
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin	|
+|Preconditie        |De speelronde is al gespeeld	|
+|Postconditie       |Systeem toont de informatie van de gewenste speelronde	|
+|Brief Description  |Actor de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde op	|
+|Happy Flow         |1.Actor geeft aan de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde te willen zien. <br> 2.Systeemm toont de uitslagen en speeldagen van wedstrijden tijdens de gewenste speelronde	|
+
+|Naam               |	|
+|-------------------|-------------------------------------------------------------------------------|
+|Actors             |	|
+|Preconditie        |	|
+|Postconditie       |	|
+|Brief Description  |	|
+|Happy Flow         |	|
+
+|Naam               |	|
+|-------------------|-------------------------------------------------------------------------------|
+|Actors             |	|
+|Preconditie        |	|
+|Postconditie       |	|
+|Brief Description  |	|
+|Happy Flow         |	|
+
+|Naam               |	|
+|-------------------|-------------------------------------------------------------------------------|
+|Actors             |	|
+|Preconditie        |	|
+|Postconditie       |	|
+|Brief Description  |	|
+|Happy Flow         |	|
 
 |Naam               |	|
 |-------------------|-------------------------------------------------------------------------------|
