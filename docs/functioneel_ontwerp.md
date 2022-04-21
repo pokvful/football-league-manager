@@ -275,6 +275,7 @@ Het schema is gebaseerd op een opzet met informatiebehoeften dat met de opdracht
 Relevante keuzes betreft het includeren of uitsluiten van feiten in het schema staan omschreven in het hoofdstuk ontwerpkeuzes.
 
 ## Interactiemodel
+
 |  Usecases \ Entiteiten    | Alle  Entiteiten	|
 |--------------	|-------	|
 | Create Data  	| C     	|
@@ -289,7 +290,7 @@ Bij Alter Schema is de CRUD matrix van de entiteiten niet van toepassingen, want
 
 ## Tabel PERSON
 
-bla
+De tabel PERSOON bevat informatie over een persoon, zoals de voornaam, achternaam, tussenvoegsel(s), geboortedatum en een nummer om de persoon te identificeren in de database.
 
 | Kolom | Omschrijving |
 |---|---|
@@ -301,7 +302,7 @@ bla
 
 ## Tabel PLAYER
 
-bla
+De PLAYER tabel neemt alle kolommen uit de PERSON tabel over en krijgt vervolgens ook nog een rugnummer.
 
 | Kolom | Omschrijving |
 |---|---|
@@ -309,15 +310,15 @@ bla
 
 ## Tabel REFEREE
 
-bla
+De REFEREE tabel heeft geen extra kolommen ten opzichte van PLAYER. Deze tabel wordt dus alleen gebruikt om aan te geven dat een persoon een scheidsrechter is.
 
 ## Tabel COACH
 
-bla
+De COACH tabel heeft geen extra kolommen ten opzichte van PLAYER. Deze tabel wordt dus alleen gebruikt om aan te geven dat een persoon een coach is.
 
 ## Tabel COUNTRY
 
-bla
+In de COUNTRY tabel staan alle landen opgeslagen.
 
 | Kolom | Omschrijving |
 |---|---|
@@ -325,15 +326,15 @@ bla
 
 ## Tabel CITY
 
-bla
+In de COUNTRY tabel staan alle steden en dorpen opgeslagen.
 
 | Kolom | Omschrijving |
 |---|---|
-| City\_name | De naam van de stad |
+| City\_name | De naam van de stad of het dorp |
 
 ## Tabel CLUB
 
-bla
+In de CLUB tabel staan alle clubs opgeslagen.
 
 | Kolom | Omschrijving |
 |---|---|
@@ -341,7 +342,7 @@ bla
 
 ## Tabel STADIUM
 
-bla
+In de tabel STADIUM staan alle stadionnen van alle clubs.
 
 | Kolom | Omschrijving |
 |---|---|
@@ -350,7 +351,7 @@ bla
 
 ## Tabel COMPETITION
 
-bla
+In de tabel COMPETITION worden alle competities vastgelegd.
 
 | Kolom | Omschrijving |
 |---|---|
@@ -358,7 +359,7 @@ bla
 
 ## Tabel SEASON
 
-bla
+In de tabel SEASON worden alle seizoenen vastgelegd.
 
 | Kolom | Omschrijving |
 |---|---|
@@ -366,11 +367,11 @@ bla
 
 ## Tabel EDITION
 
-bla
+In de tabel EDITION worden de edities van een competitie in een seizoen vastgelegd.
 
 ## Tabel ROUND
 
-bla
+De tabel ROUND bevat alle speelronden van een editie.
 
 | Kolom | Omschrijving |
 |---|---|
@@ -379,7 +380,7 @@ bla
 
 ## Tabel MATCHDAY
 
-bla
+De MATCHDAY tabel bevat informatie over een speeldag in een speelronde.
 
 | Kolom | Omschrijving |
 |---|---|
@@ -387,7 +388,7 @@ bla
 
 ## Tabel MATCH
 
-bla
+In de tabel MATCH worden een aantal statistieken bijgehouden van de wedstrijd. Denk hier aan het aantal passes, het balbezit, het aantal schoten (op doel), het aantal overtredingen en het aantal corners.
 
 | Kolom | Omschrijving |
 |---|---|
@@ -408,44 +409,44 @@ bla
 
 ## Tabel POSITION
 
-bla
+De tabel POSITION houd bij welke speler in welke wedstrijd op welke positie speelt.
 
 ## Tabel KEEPER
 
-bla
+In de KEEPER tabel staan alle spelers die in een wedstrijd als keeper gespeeld hebben.
 
 ## Tabel DEFENDER
 
-bla
+In de DEFENDER tabel staan alle spelers die in een wedstrijd als verdediger gespeeld hebben.
 
 ## Tabel MIDFIELDER
 
-bla
+In de MIDFIELDER tabel staan alle spelers die in een wedstrijd als middenvelder gespeeld hebben.
 
 ## Tabel ATTACKER
 
-bla
+In de ATTACKER tabel staan alle spelers die in een wedstrijd als aanvaller gespeeld hebben.
 
 ## Tabel EVENT
 
-bla
+In de EVENT tabel worden gebeurtenissen tijdens een wedstrijd bijgehouden. Deze gebeurtenissen gebeuren in een bepaalde minuut in de wedstrijd.
 
 | Kolom | Omschrijving |
 |---|---|
-| Time | De minuut in de webstrijd wanneer het event heeft plaatsgevonden |
+| Time | De minuut in de wedstrijd wanneer het event heeft plaatsgevonden |
 
 ## Tabel SUBSTITUTE
 
-bla
+In de tabel SUBSTITUTE staan alle momenten wanneer een speler voor een andere speler wordt vervangen.
 
 ## Tabel GOAL
 
-bla
+In de tabel GOAL staan alle momenten wanneer er een goal is gemaakt in een wedstrijd.
 
 ## Tabel RED_CARD
 
-bla
+In de tabel RED_CARD staan alle momenten wanneer een speler een rode kaart krijgt in een wedstrijd.
 
 ## Tabel YELLOW_CARD
 
-bla
+In de tabel YELLOW_CARD staan alle momenten wanneer een speler een gele kaart krijgt in een wedstrijd.
