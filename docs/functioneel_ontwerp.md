@@ -284,3 +284,168 @@ Relevante keuzes betreft het includeren of uitsluiten van feiten in het schema s
 | Alter Schema 	| n.v.t 	|
 
 Bij Alter Schema is de CRUD matrix van de entiteiten niet van toepassingen, want daarmee wordt de database zelf aangepast.
+
+# Onderbouwing concepten CDM
+
+## Tabel PERSON
+
+bla
+
+| Kolom | Omschrijving |
+|---|---|
+| Person\_id | Het nummer waar een persoon mee geïdentificeerd kan worden |
+| First\_name | De voornaam van de persoon |
+| Last\_name | De achternaam van de persoon |
+| Middle\_name | Een eventueel tussenvoegsel tussen de voor- en achternaam van de persoon |
+| Birth\_date | De geboortedatum van de persoon |
+
+## Tabel PLAYER
+
+bla
+
+| Kolom | Omschrijving |
+|---|---|
+| Jersey | Het rugnummer van de speler |
+
+## Tabel REFEREE
+
+bla
+
+## Tabel COACH
+
+bla
+
+## Tabel COUNTRY
+
+bla
+
+| Kolom | Omschrijving |
+|---|---|
+| Country\_name | De naam van het land |
+
+## Tabel CITY
+
+bla
+
+| Kolom | Omschrijving |
+|---|---|
+| City\_name | De naam van de stad |
+
+## Tabel CLUB
+
+bla
+
+| Kolom | Omschrijving |
+|---|---|
+| Club\_name | De nama van de voetbal club |
+
+## Tabel STADIUM
+
+bla
+
+| Kolom | Omschrijving |
+|---|---|
+| Stadium\_name | De naam van het stadion |
+| Capacity | Het aantal toeschouwers dat in het stadion aanwezig kunnen zijn totdat het vol is |
+
+## Tabel COMPETITION
+
+bla
+
+| Kolom | Omschrijving |
+|---|---|
+| Competition\_name | De naam van de competitie |
+
+## Tabel SEASON
+
+bla
+
+| Kolom | Omschrijving |
+|---|---|
+| Season\_name | De naam van het seizoen |
+
+## Tabel EDITION
+
+bla
+
+## Tabel ROUND
+
+bla
+
+| Kolom | Omschrijving |
+|---|---|
+| Start\_date | De startdatum van de speelronde |
+| End\_date | De einddatum van de speelronde |
+
+## Tabel MATCHDAY
+
+bla
+
+| Kolom | Omschrijving |
+|---|---|
+| Match\_day | De datum (een dag) wanneer de speeldag plaats vind |
+
+## Tabel MATCH
+
+bla
+
+| Kolom | Omschrijving |
+|---|---|
+| Ball\_possession\_home | Het percentage balbezit van de thuis spelende club |
+| Ball\_possession\_out | Het percentage balbezit van de uit spelende club |
+| Pass\_count\_home | Het aantal passes binnen de thuis spelende club |
+| Pass\_count\_out | Het aantal passes binnen de uit spelende club |
+| Shots\_home | Het totaal aantal schoten binnen de thuis spelende club |
+| Shots\_out | Het totaal aantal schoten binnen de uit spelende club |
+| Shots\_on\_goal\_home | Het aantal schoten op goal binnen de thuis spelende club |
+| Shots\_on\_goal\_out | Het aantal schoten op goal binnen de uit spelende club |
+| Pass\_accuracy\_home | Hoeveel procent van het aantal passes dat goed is aangekomen bij een medespeler van de thuis spelende club |
+| Pass\_accuracy\_out | Hoeveel procent van het aantal passes dat goed is aangekomen bij een medespeler van de uit spelende club |
+| Fouls\_home | Het aantal overtredingen van de thuis spelende club |
+| Fouls\_out | Het aantal overtredingen van de thuis spelende club |
+| Corners\_home | Het aantal corners van de thuis spelende club |
+| Corners\_out | Het aantal corners van de thuis spelende club |
+
+## Tabel POSITION
+
+bla
+
+## Tabel KEEPER
+
+bla
+
+## Tabel DEFENDER
+
+bla
+
+## Tabel MIDFIELDER
+
+bla
+
+## Tabel ATTACKER
+
+bla
+
+## Tabel EVENT
+
+bla
+
+| Kolom | Omschrijving |
+|---|---|
+| Time | De minuut in de webstrijd wanneer het event heeft plaatsgevonden |
+
+## Tabel SUBSTITUTE
+
+bla
+
+## Tabel GOAL
+
+bla
+
+## Tabel RED_CARD
+
+bla
+
+## Tabel YELLOW_CARD
+
+bla
