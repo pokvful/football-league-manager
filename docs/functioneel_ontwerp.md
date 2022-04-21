@@ -118,7 +118,6 @@ Tijdens de voetbalwedstrijd op 23 maart 2019 had de speler Edinson Cavani 1 gele
 
 Tijdens de voetbalwedstrijd op 23 maart 2019 had de speler Edinson Cavani 1 rode kaart gekregen in de 70ste minuut.
 
-
 ### Rode kaarten
 
 Tijdens de voetbalwedstrijd op 23 maart 2019 had de speler Edinson Cavani 1 rode kaart gekregen in de 70ste minuut.
@@ -142,7 +141,6 @@ Tijdens de voetbalwedstrijd op 23 maart 2019 had de speler Edinson Cavani in de 
 Tijdens de voetbalwedstrijd op 23 maart 2019 was de speler Juan Mata ingewisseld voor Scott McTominay in de 30ste minuut.
 
 Tijdens de voetbalwedstrijd op 23 maart 2019 was de speler Scott McTominay ingewisseld voor Paul Pogba in de 70ste minuut.
-
 
 ## Match day
 
@@ -259,6 +257,58 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 | Een \[admin\] kan database schema lezen. 	| C   	|
 | Een \[admin\] kan database schema verwijderen. 	| S   	|
 | Een \[admin\] kan database schema aanpassen. 	| S   	|
+
+## Constraints
+
+### Primary key constraints
+
+#### Person
+
+PI: Person ID
+
+#### Match
+
+PI: Club_name + club_name + match_day + start_date + end_date + competition_name + season_name
+
+#### Club
+
+PI: Club_name
+
+#### City
+
+PI: City_name
+
+#### Country 
+
+PI: Country_name
+
+#### Competition
+
+PI: Competition_name
+
+#### Season
+
+PI: Season_name
+
+#### Round
+
+PI: Start_date + end_date
+
+#### Matchday
+
+PI: Match_day + start_date + end_date + competition_name + season_name
+
+#### Event
+
+PI: Time + club_name + club_name + match_day + start_date + end_date + competition_name + season_name
+
+### Check constraints
+
+- Maximaal 22 posities per match (11 per club);
+- Minimaal 11 spelers per club;
+- Minimaal en maximaal 1 coach per club;
+- Maximaal 52 speelrondes per competitie;
+- Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1.
 
 # Ontwerp keuzes
 

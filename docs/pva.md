@@ -24,8 +24,6 @@
 
 # Inhoudsopgave
 
-- [Plan van aanpak - Football league manager](#plan-van-aanpak---football-league-manager)
-- [Inhoudsopgave](#inhoudsopgave)
 - [1. Inleiding](#1-inleiding)
 - [2. Achtergrond van het project](#2-achtergrond-van-het-project)
 - [3. Doelstelling, opdracht en op te leveren resultaten voor het bedrijf](#3-doelstelling-opdracht-en-op-te-leveren-resultaten-voor-het-bedrijf)
@@ -179,7 +177,6 @@ We hebben ervoor gekozen om de Elaboratie-fase op te delen in twee fases. Tijden
 Tijdens de Construction-fase zal iedere iteratie een SCRUM-sprint gehouden worden (elke sprint zal ongeveer bestaan uit 1,5 week)
 
 Tevens moet het team ook persoonlijke ontwikkeling gedurende het project bijhouden. Dit vermindert de tijd die uiteindelijk aan het product besteed kan worden. Het team heeft ingeschat één middag per week kwijt te zijn aan het bijhouden van de persoonlijke ontwikkeling.
-
 
 # 8. Projectorganisatie en communicatie
 
