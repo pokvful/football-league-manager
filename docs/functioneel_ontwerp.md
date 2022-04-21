@@ -260,22 +260,18 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 # Rechtenstructuur
 
-| Use Cases                 | Entiteit(en)                                  | Rechten        |
-|---------------------------|-----------------------------------------------|----------------|
-| Ophalen Top-lijst         | Event (inc. subtypes), Match, Person, Club    | Klant en Admin |
-| Ophalen Tussenstand Comp  | Competition, Edition, Season, Round           | Klant en Admin |
-| Ophalen Club Info         | Club, Person, City, Competition, Coach        | Klant en Admin | 
-| Ophalen Match Info        | Match, Person, Matchday, Club, Stadium, Event | Klant en Admin |
-| Ophalen Speelronde Info   | Round, Matchday, Edition                      | Klant en Admin |
-| Ophalen Matchday Info     | Matchday, Round, Match                        | Klant en Admin |
-| Invoeren Match Data       | Match, Event, Matchday, Stadium, Club, Person | Admin          |
-| Updaten Club Info         | Club, Player, Coach, City, Match              | Admin          |
-| Start Nieuwe Seizoen Comp | Season, Competition, Edition, Round, Matchday | Admin          |
-| Toevoegen Nieuwe Persoon  | Person                                        | Admin          |
-
-Klant: Data-analist bij een sportclub
-
-Admin: Werknemer bij NUTMEG
+| Use Cases                 | Entiteit(en)                                  | Rechten               |
+|---------------------------|-----------------------------------------------|-----------------------|
+| Ophalen Top-lijst         | Event (inc. subtypes), Match, Person, Club    | Data-Analist en Admin |
+| Ophalen Tussenstand Comp  | Competition, Edition, Season, Round           | Data-Analist en Admin |
+| Ophalen Club Info         | Club, Person, City, Competition, Coach        | Data-Analist en Admin | 
+| Ophalen Match Info        | Match, Person, Matchday, Club, Stadium, Event | Data-Analist en Admin |
+| Ophalen Speelronde Info   | Round, Matchday, Edition                      | Data-Analist en Admin |
+| Ophalen Matchday Info     | Matchday, Round, Match                        | Data-Analist en Admin |
+| Invoeren Match Data       | Match, Event, Matchday, Stadium, Club, Person | Admin                 |
+| Updaten Club Info         | Club, Player, Coach, City, Match              | Admin                 |
+| Start Nieuwe Seizoen Comp | Season, Competition, Edition, Round, Matchday | Admin                 |
+| Toevoegen Nieuwe Persoon  | Person                                        | Admin                 |
 
 # Toelichting Datakwaliteit
 Voor dit project is geen data aangeleverd. Alle data in de database wordt gemockt en zoveel mogelijk gebaseerd op voorbeelddata.
