@@ -91,7 +91,7 @@ Een database waarin data omtrent voetbalcompetities kan worden beheerd, de specf
 
 Data analisten kunnen middels een bijpassende API data opvragen uit de database, deze data komt niet direct uit MSSQL Server maar gaat eerst door een staging area. De opdrachtgever adviseert het gebruik van MongoDB voor de staging area, hier zal nog nader onderzoek naar gedaan worden.
 
-Het moet op iedere moment mogelijk zijn om een tussenstand van de competite en en lijst van topscorers te generen.
+Het moet op ieder moment mogelijk zijn om een tussenstand van de competite en en lijst van topscorers te generen.
 
 Data die uit de API komt wordt in JSON aangeleverd. 
 
