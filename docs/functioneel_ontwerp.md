@@ -14,7 +14,7 @@ Er bestaat een competitie <u>Champions League</u>.
 
 ET COMPETITION
 
-ID: Att: Name
+ID: Att: Na`me`
 
 ### Clubs
 
@@ -171,7 +171,7 @@ RT PERSON_born_in_COUNTRY tussen PLAYER en COUNTRY.
 
 De speler 90 van Manchester United is geboren op 01/10/2001.
 
-De speler <u>91</u> van <u>Manchester United</u> is geboren op <u>15/12/1992</u>.
+De speler <u>91</u> van is geboren op <u>15/12/1992</u>.
 
 ---
 
@@ -226,13 +226,24 @@ Tijdens de voetbalwedstrijd op 5 januari 2020 tussen thuis team FC Barcelona en 
 Tijdens de voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> heeft het thuis team <u>10</u> goals gescored. 
 
 ET:voetbalwedstrijd
-match
+ID: ET:match_date + ET: club + ET: seizoen + ET:
+
+ID: ATT: speelronde
+ET:speelronde_date
+
+ET COMPETITION
+
+MATCH
+
 
 ### Balbezit
 
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 32% balbezit.
 
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het thuis team 68% balbezit.
+
+ET:voetbalwedstrijd
+MATCH
 
 ### aantal passes
 
