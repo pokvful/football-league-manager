@@ -1,6 +1,6 @@
 # Functioneel ontwerp
 
-## Fully-Dressed Use-cases
+# Fully-Dressed Use-cases
 
 |Naam               |Read Data                                  	|
 |-------------------|-----------------------------------------------|
@@ -238,7 +238,7 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 - Een thuis club mag maximaal een keer tegen een uit club spelen binnen een seizoen.
 
-## Functionele requirements.
+# Functionele requirements.
 
 | Functional Requirement                              	| MoSCoW 	|
 |-----------------------------------------------------	|--------	|
@@ -316,3 +316,29 @@ PK: Time + club_name + club_name + match_day + start_date + end_date + competiti
 - Minmaal 1 keeper per match;
 - Maximaal 52 speelrondes per competitie;
 - Een rugnummer van een speler mag niet groter zijn dan 99.
+# Rechtenstructuur
+
+|                      | Create (entiteit) | Read (entiteit) | Update  (entiteit) | Delete (entiteit) | Database beheren |
+|----------------------|-------------------|-----------------|--------------------|-------------------|------------------|
+| Klant - Data Analist | x                 | ✓               | x                  | x                 | x                |
+| NUTMEG - Admin       | ✓                 | ✓               | ✓                  | ✓                 | ✓                |
+
+Extra toelichting: Database beheren houdt in dat je de sysadmin rol krijgt en elke activiteit op de server kan uitvoeren.
+
+# Toelichting Datakwaliteit
+Voor dit project is geen data aangeleverd. Alle data in de database wordt gemockt en zoveel mogelijk gebaseerd op voorbeelddata.
+
+
+Het schema is gebaseerd op een opzet met informatiebehoeften dat met de opdrachtgever is afgestemed. Het schema is vervolgens ontworpen op basis van deze informatiebehoeften.
+Relevante keuzes betreft het includeren of uitsluiten van feiten in het schema staan omschreven in het hoofdstuk ontwerpkeuzes.
+
+## Interactiemodel
+|  Usecases \ Entiteiten    | Alle  Entiteiten	|
+|--------------	|-------	|
+| Create Data  	| C     	|
+| Read Data    	| R     	|
+| Update Data  	| U     	|
+| Delete Data  	| D     	|
+| Alter Schema 	| n.v.t 	|
+
+Bij Alter Schema is de CRUD matrix van de entiteiten niet van toepassingen, want daarmee wordt de database zelf aangepast.
