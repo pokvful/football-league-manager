@@ -5,8 +5,8 @@
 - Clubs -
 	- (Informatie uit CLUB)
 - Standen (op basis van VOETBALWEDSTRIJD)
-	- Rang
-	- Club
+	- Rang -
+	- Club -
 	- Gespeeld
 	- Winst
 	- Gelijk
@@ -18,7 +18,6 @@
 - Toplijsten (op basis van VOETBALWEDSTRIJD)
 	- Spelers
 		- Topscorers
-		- Assists
 		- Passes
 		- Voorzetten
 		- Clean Sheets
@@ -78,14 +77,14 @@
  
 # CLUB:
 
-- Thuisstad
-- Stadion
-	- Capaciteit
-- Manager
+- Thuisstad -
+- Stadion -
+	- Capaciteit -
+- Manager -
 - Spelers
-	- Rugnummer
+	- Rugnummer -
 	- Voornaam
-	- Achternaam
-	- Geboortedatum
+	- Achternaam -
+	- Geboortedatum -
 	- Nationaliteit
 	- Positie (Linie)

@@ -201,83 +201,98 @@ Een voetbalwedstrijd wordt gespeeld tijdens een competitie
 
 Een wedstrijd wordt tussen FC Barcelona en FC Madrid gespeeld op 19 april 2002 in de speelronde 10.
 
+## Editie
 
+In seizoen 17/18 vond er een editie eredivisie plaats
+In seizoen <u>19/20</u> vond er een editie van <u>WK</u> plaats
+
+ET: editie
+ID: et seizoen      +       ET competitie
+ID: Periode             MATCH
 
 ### Schoten
 
-Tijdens de voetbalwedstrijd tussen FC Barcelona en club FC Madrid in de speelronde 20 seizoen 10 in competitie LaLiga heeft de speler 55 in de 45ste minuut <u>op</u> het doel geschoten.
+Tijdens de voetbalwedstrijd tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde week 5 in het seizoen 19/20 in competitie LaLiga heeft het uit team 5 goals gescored.
+Tijdens de editie 20/21 eredivisie tussen FC Barcelona en club FC Madrid heeft de club FC Madrid 23 keer geschoten.
+Tijdens de <u>editie> tussen <u>wedstrijd>ajax en psv heeft psv <u>schoten</u> keer geschoten.
 
-Tijdens de voetbalwedstrijd tussen FC Barcelona en club FC Madrid in de speelronde 20 seizoen 10 in competitie LaLiga heeft de speler 55 in de 60ste minuut <u>naast</u> het doel geschoten.
+ET: editie      ET:Schoten
+MATCH           ID:aantal
 
 ### Goals
 
-Tijdens de voetbalwedstrijd tussen FC Barcelona en club FC Madrid in de speelronde 20 seizoen 10 in competitie LaLiga heeft de speler 55 in de 39ste minuut gescoord.
+Tijdens de voetbalwedstrijd op 5 januari 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 januari 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 5 goals gescored.
 
-Tijdens de voetbalwedstrijd tussen FC Barcelona en club FC Madrid in de speelronde 20 seizoen 10 in competitie LaLiga heeft de speler 55 in de 75ste minuut gescoord.
+Tijdens de voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> heeft het thuis team <u>10</u> goals gescored. 
+
+ET:voetbalwedstrijd
+match
 
 ### Balbezit
 
-Tijdens de voetbalwedstrijd tussen FC Barcelona en club FC Madrid in de speelronde 20 seizoen 10 in competitie LaLiga had de speler 55 een balbezit van 9%.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 32% balbezit.
 
-Tijdens de voetbalwedstrijd tussen FC Barcelona en club FC Madrid in de speelronde 20 seizoen 10 in competitie LaLiga had de speler 44 een balbezit van 5%.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het thuis team 68% balbezit.
 
-### Aantal passes
+### aantal passes
 
-Tijdens de voetbalwedstrijd tussen FC Barcelona en club FC Madrid in de speelronde 20 seizoen 10 in competitie LaLiga heeft de speler 55 25 keer de bal gepaast.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 874 passes gemaakt.
 
-Tijdens de voetbalwedstrijd tussen FC Barcelona en club FC Madrid in de speelronde 20 seizoen 10 in competitie LaLiga heeft de speler 44 30 keer de bal gepaast.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het thuis team 947 passes gemaakt.
+
+### precisie passes
+
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 67% passes precisie.
+
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het thuis team 77% passes precisie.
 
 ### Overtredingen
 
-Tijdens de voetbalwedstrijd tussen FC Barcelona en club FC Madrid in de speelronde 20 seizoen 10 in competitie LaLiga heeft de speler 55 een speler getackeld in  de 12de minuut.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 een speler getackeld in  de 12de minuut.
 
-Tijdens de voetbalwedstrijd tussen FC Barcelona en club FC Madrid in de speelronde 20 seizoen 10 in competitie LaLiga heeft de speler 55 een speler getackeld in  de 70ste minuut.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 een speler getackeld in  de 70ste minuut.
 
-Tijdens de voetbalwedstrijd op 23 maart 2019 had de speler Jesse Lingard 1 gele kaart gekregen in 30ste minuut.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft heeft de speler Jesse Lingard 1 gele kaart gekregen in 30ste minuut.
 
 ### Gele kaarten
 
-Tijdens de voetbalwedstrijd tussen FC Barcelona en club FC Madrid in de speelronde 20 seizoen 10 in competitie LaLiga had de speler 55 1 gele kaart gekregen in 12de minuut.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 1 gele kaart gekregen in de 12de minuut.
 
-Tijdens de voetbalwedstrijd tussen FC Barcelona en club FC Madrid in de speelronde 20 seizoen 10 in competitie LaLiga had de speler 55 1 gele kaart gekregen in de 70ste minuut.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 1 gele kaart gekregen in de 70ste minuut.
 
 
 ### Rode kaarten
 
-Tijdens de voetbalwedstrijd tussen FC Barcelona en club FC Madrid in de speelronde 20 seizoen 10 in competitie LaLiga had de speler 55 1 rode kaart gekregen in de 70ste minuut.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 1 rode kaart gekregen in de 70ste minuut.
 
-Tijdens de voetbalwedstrijd tussen FC Barcelona en club FC Madrid in de speelronde 20 seizoen 10 in competitie LaLiga had de speler 55 1 rode kaart gekregen in de 70ste minuut.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 24 1 rode kaart gekregen in de 56ste minuut.
 
 ### Buitenspel
 
-Tijdens de voetbalwedstrijd tussen FC Barcelona en club FC Madrid in de speelronde 20 seizoen 10 in competitie LaLiga was de speler 55 buitenspel in de 60ste minuut.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga was de speler 55 buitenspel in de 60ste minuut.
 
-Tijdens de voetbalwedstrijd tussen FC Barcelona en club FC Madrid in de speelronde 20 seizoen 10 in competitie LaLiga was de speler 55 buitenspel in de 81ste minuut.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga was de speler 55 buitenspel in de 81ste minuut.
 
 ### Hoekschoppen
 
-Tijdens de voetbalwedstrijd tussen FC Barcelona en club FC Madrid in de speelronde 20 seizoen 10 in competitie LaLiga heeft de speler 33 in de 34ste minuut een hoekschop getrapt.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 33 in de 34ste minuut een hoekschop getrapt.
 
-Tijdens de voetbalwedstrijd tussen FC Barcelona en club FC Madrid in de speelronde 20 seizoen 10 in competitie LaLiga heeft de speler 55 in de 70ste minuut een hoekschop getrapt.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 in de 70ste minuut een hoekschop getrapt.
 
 ### Wissels
 
 <!-- Tijdens de voetbalwedstrijd op 23 maart 2019 was de speler Juan Mata ingewisseld voor Scott McTominay in de 30ste minuut. -->
 
-Tijdens de voetbalwedstrijd tussen FC Barcelona en club FC Madrid in de speelronde 20 seizoen 10 in competitie LaLiga werdt de speler 33 ingewisseld voor speler 1111 in de 30ste minuut.  
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga werdt de speler 33 ingewisseld voor speler 1111 in de 30ste minuut.  
 
 <!-- Tijdens de voetbalwedstrijd op 23 maart 2019 was de speler Scott McTominay ingewisseld voor Paul Pogba in de 70ste minuut. -->
 
-Tijdens de voetbalwedstrijd tussen Sparta en Feyenoord in de speelronde 22 in seizoen 11 in competitie Eredivisie werdt de speler 55 ingewisseld voor speler 66 in de 40ste minuut. 
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga werdt de speler 55 ingewisseld voor speler 66 in de 40ste minuut. 
 
 Tijdens de wedstijd tussen club \<club_1\> en club \<club_2\> in speelronde \<speelronde_nummer\> in seizoen \<seizoen_nummer\> in competitie \<competitie_naam\> werdt de speler \<speler_1\> ingewisseld voor speler \<speler_2\> in de \<minuut\>ste minuut.
 
 ## Match day
 
-## Editie
-
-In seizoen 17/18 wordt de Bundes Liga gespeeld.
-In seizoen 20/21 wordt de Bundes Liga gespeeld.
 
 ### Speelronde
 
@@ -290,11 +305,11 @@ In seizoen 17/18 wordt de Bundes Liga gespeeld daarin komt voor speeldronde 11.
 
 
 #### Scheidsrechter
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga was Bas Neijnhuis de scheidsrechter.
 
-Binnen de competitie Eredivisie seizoen 17/18 in speelronde 2 was tijdens de voetbalwedstrijd op 30 maart de scheidsrechter Bas Neijnhuis.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga was <u>Danny Makkelie</u> de scheidsrechter.
 
 Binnen de competitie <u>Eredivisie</u> seizoen <u>20/21</u> in speelronde <u>1</u> was tijdens de voetbalwedstrijd op <u>30 maart</u> de scheidsrechter <u>Danny Makkelie</u>.
-
 ---
 
 ET ROUND
@@ -309,32 +324,15 @@ ET MATCH
 
 ID: ET: ROUND + Att: Date
 
-#### Club thuis
-
-Binnen de competitie Eredivisie seizoen 20/21 in speelronde 1 tijdens de voetbalwedstrijd op 30 maart speelde Manchester United thuis.
-
-Binnen de competitie Eredivisie seizoen 20/21 in speelronde 2 tijdens de voetbalwedstrijd op 25 maart speelde Vitesse thuis.
-
-#### Club uit
-
-Binnen de competitie Eredivisie seizoen 17/18 in speelronde 1 tijdens de voetbalwedstrijd op 30 maart speelde Vitesse uit.
-
-Binnen de competitie Eredivisie seizoen 20/21 in speelronde 2 tijdens de voetbalwedstrijd op 30 maart speelde Manchester United uit.
-
 ### Selectie
 
-Binnen de competitie Eredivisie seizoen 20/21 in speelronde 2 tijdens de voetbalwedstrijd op 30 maart speelde Phil Jones in de selectie.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga speelde Phil Jones in de selectie.
 
-Binnen de competitie Eredivisie seizoen 20/21 in speelronde 2 tijdens de voetbalwedstrijd op 30 maart speelde Luke Shaw in de selectie.
-
-#### Uitslag
-
-Binnen de competitie Eredivisie seizoen 20/21 in speelronde 2 tijdens de voetbalwedstrijd op 30 maart was de eindstand 3-1.
-
-Binnen de competitie Eredivisie seizoen 20/21 in speelronde 2 tijdens de voetbalwedstrijd op 30 maart was de eindstand 1-2.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga speelde Luke Shaw in de selectie.
 
 #### Aantal toeschouwers
 
-Binnen de competitie Eredivisie seizoen 20/21 in speelronde 1 tijdens de voetbalwedstrijd op 30 maart was het aantal toeschouwers 40000.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga was het aantal toeschouwers 40000.
 
-Binnen de competitie Eredivisie seizoen 20/21 in speelronde 2 tijdens de voetbalwedstrijd op 23 maart was het aantal toeschouwers 30000.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga was het aantal toeschouwers 30000.
+
