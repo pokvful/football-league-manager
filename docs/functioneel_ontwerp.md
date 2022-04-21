@@ -347,6 +347,7 @@ Het schema is gebaseerd op een opzet met informatiebehoeften dat met de opdracht
 Relevante keuzes betreft het includeren of uitsluiten van feiten in het schema staan omschreven in het hoofdstuk ontwerpkeuzes.
 
 ## Interactiemodel
+
 |  Usecases \ Entiteiten    | Alle  Entiteiten	|
 |--------------	|-------	|
 | Create Data  	| C     	|
@@ -357,6 +358,171 @@ Relevante keuzes betreft het includeren of uitsluiten van feiten in het schema s
 
 Bij Alter Schema is de CRUD matrix van de entiteiten niet van toepassingen, want daarmee wordt de database zelf aangepast.
 
-## Testplan
+# Onderbouwing concepten CDM
+
+## Entiteit PERSON
+
+De entiteit PERSOON bevat informatie over een persoon, zoals de voornaam, achternaam, tussenvoegsel(s), geboortedatum en een nummer om de persoon te identificeren in de database.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Person\_id | Het nummer waar een persoon mee geïdentificeerd kan worden |
+| First\_name | De voornaam van de persoon |
+| Last\_name | De achternaam van de persoon |
+| Middle\_name | Een eventueel tussenvoegsel tussen de voor- en achternaam van de persoon |
+| Birth\_date | De geboortedatum van de persoon |
+
+## Entiteit PLAYER
+
+De PLAYER entiteit neemt alle kolommen uit de PERSON entiteit over en krijgt vervolgens ook nog een rugnummer.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Jersey | Het rugnummer van de speler |
+
+## Entiteit REFEREE
+
+De REFEREE entiteit heeft geen extra kolommen ten opzichte van PLAYER. Deze entiteit wordt dus alleen gebruikt om aan te geven dat een persoon een scheidsrechter is.
+
+## Entiteit COACH
+
+De COACH entiteit heeft geen extra kolommen ten opzichte van PLAYER. Deze entiteit wordt dus alleen gebruikt om aan te geven dat een persoon een coach is.
+
+## Entiteit COUNTRY
+
+In de COUNTRY entiteit staan alle landen opgeslagen.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Country\_name | De naam van het land |
+
+## Entiteit CITY
+
+In de COUNTRY entiteit staan alle steden en dorpen opgeslagen.
+
+| Attribuut | Omschrijving |
+|---|---|
+| City\_name | De naam van de stad of het dorp |
+
+## Entiteit CLUB
+
+In de CLUB entiteit staan alle clubs opgeslagen.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Club\_name | De nama van de voetbal club |
+
+## Entiteit STADIUM
+
+In de entiteit STADIUM staan alle stadionnen van alle clubs.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Stadium\_name | De naam van het stadion |
+| Capacity | Het aantal toeschouwers dat in het stadion aanwezig kunnen zijn totdat het vol is |
+
+## Entiteit COMPETITION
+
+In de entiteit COMPETITION worden alle competities vastgelegd.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Competition\_name | De naam van de competitie |
+
+## Entiteit SEASON
+
+In de entiteit SEASON worden alle seizoenen vastgelegd.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Season\_name | De naam van het seizoen |
+
+## Entiteit EDITION
+
+In de entiteit EDITION worden de edities van een competitie in een seizoen vastgelegd.
+
+## Entiteit ROUND
+
+De entiteit ROUND bevat alle speelronden van een editie.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Start\_date | De startdatum van de speelronde |
+| End\_date | De einddatum van de speelronde |
+
+## Entiteit MATCHDAY
+
+De MATCHDAY entiteit bevat informatie over een speeldag in een speelronde.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Match\_day | De datum (een dag) wanneer de speeldag plaats vind |
+
+## Entiteit MATCH
+
+In de entiteit MATCH worden een aantal statistieken bijgehouden van de wedstrijd. Denk hier aan het aantal passes, het balbezit, het aantal schoten (op doel), het aantal overtredingen en het aantal corners.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Ball\_possession\_home | Het percentage balbezit van de thuis spelende club |
+| Ball\_possession\_out | Het percentage balbezit van de uit spelende club |
+| Pass\_count\_home | Het aantal passes binnen de thuis spelende club |
+| Pass\_count\_out | Het aantal passes binnen de uit spelende club |
+| Shots\_home | Het totaal aantal schoten binnen de thuis spelende club |
+| Shots\_out | Het totaal aantal schoten binnen de uit spelende club |
+| Shots\_on\_goal\_home | Het aantal schoten op goal binnen de thuis spelende club |
+| Shots\_on\_goal\_out | Het aantal schoten op goal binnen de uit spelende club |
+| Pass\_accuracy\_home | Hoeveel procent van het aantal passes dat goed is aangekomen bij een medespeler van de thuis spelende club |
+| Pass\_accuracy\_out | Hoeveel procent van het aantal passes dat goed is aangekomen bij een medespeler van de uit spelende club |
+| Fouls\_home | Het aantal overtredingen van de thuis spelende club |
+| Fouls\_out | Het aantal overtredingen van de thuis spelende club |
+| Corners\_home | Het aantal corners van de thuis spelende club |
+| Corners\_out | Het aantal corners van de thuis spelende club |
+
+## Entiteit POSITION
+
+De entiteit POSITION houd bij welke speler in welke wedstrijd op welke positie speelt.
+
+## Entiteit KEEPER
+
+In de KEEPER entiteit staan alle spelers die in een wedstrijd als keeper gespeeld hebben.
+
+## Entiteit DEFENDER
+
+In de DEFENDER entiteit staan alle spelers die in een wedstrijd als verdediger gespeeld hebben.
+
+## Entiteit MIDFIELDER
+
+In de MIDFIELDER entiteit staan alle spelers die in een wedstrijd als middenvelder gespeeld hebben.
+
+## Entiteit ATTACKER
+
+In de ATTACKER entiteit staan alle spelers die in een wedstrijd als aanvaller gespeeld hebben.
+
+## Entiteit EVENT
+
+In de EVENT entiteit worden gebeurtenissen tijdens een wedstrijd bijgehouden. Deze gebeurtenissen gebeuren in een bepaalde minuut in de wedstrijd.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Time | De minuut in de wedstrijd wanneer het event heeft plaatsgevonden |
+
+## Entiteit SUBSTITUTE
+
+In de entiteit SUBSTITUTE staan alle momenten wanneer een speler voor een andere speler wordt vervangen.
+
+## Entiteit GOAL
+
+In de entiteit GOAL staan alle momenten wanneer er een goal is gemaakt in een wedstrijd.
+
+## Entiteit RED_CARD
+
+In de entiteit RED_CARD staan alle momenten wanneer een speler een rode kaart krijgt in een wedstrijd.
+
+## Entiteit YELLOW_CARD
+
+In de entiteit YELLOW_CARD staan alle momenten wanneer een speler een gele kaart krijgt in een wedstrijd.
+
+# Testplan
 
 Staat in bijlage Testplan.
