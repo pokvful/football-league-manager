@@ -284,3 +284,7 @@ Relevante keuzes betreft het includeren of uitsluiten van feiten in het schema s
 | Alter Schema 	| n.v.t 	|
 
 Bij Alter Schema is de CRUD matrix van de entiteiten niet van toepassingen, want daarmee wordt de database zelf aangepast.
+
+## Testplan
+
+Staat in bijlage Testplan.
