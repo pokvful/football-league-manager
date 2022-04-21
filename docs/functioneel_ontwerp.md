@@ -2,13 +2,13 @@
 
 # Fully-Dressed Use-cases
 
-|Naam               |Ophalen top-lijst                                  	|
-|-------------------|---------------------------------------------------|
-|Actors             |Data-analist Klant / NUTMEG Voetbal Admin  		|
-|Preconditie        |													|
-|Postconditie       |De gewenste top-lijst is opgehaald uit de database	|
-|Brief Description  |	|
-|Happy Flow         |1. \<Actor\> vraagt een top-lijst van het gewenste type data op in de database. <br> 2.Systeem toont data 	|
+|Naam               |Ophalen top-lijst                                  							|
+|-------------------|-------------------------------------------------------------------------------|
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin  									|
+|Preconditie        |Er zijn wedstrijden gepseeld waarop de relevante data gebaseerd kan worden		|
+|Postconditie       |Systeem toont de gewenste top-lijst											|
+|Brief Description  |Actor haalt een top-lijst met gewenste informatiebehoefte op uit het systeem	|
+|Happy Flow         |1.Actor vraagt een top-lijst met de gewenste informatiebehoefte op in de database. <br> 2.Systeem toont de opgevraagte data 	|
 
 |Naam               |	|
 |-------------------|-------------------------------------------------------|
