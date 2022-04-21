@@ -182,7 +182,6 @@ Tijdens de Construction-fase zal iedere iteratie een SCRUM-sprint gehouden worde
 
 Tevens moet het team ook persoonlijke ontwikkeling gedurende het project bijhouden. Dit vermindert de tijd die uiteindelijk aan het product besteed kan worden. Het team heeft ingeschat één middag per week kwijt te zijn aan het bijhouden van de persoonlijke ontwikkeling.
 
-
 # 8. Projectorganisatie en communicatie
 
 ## 8.1 Begeleiders

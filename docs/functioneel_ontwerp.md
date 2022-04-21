@@ -262,60 +262,52 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 #### Person
 
-PK: Person ID
+PI: Person ID
 
 #### Match
 
-PK: Club_name + club_name + match_day + start_date + end_date + competition_name + season_name
+PI: Club_name + club_name + match_day + start_date + end_date + competition_name + season_name
 
 #### Club
 
-PK: Club_name
+PI: Club_name
 
 #### City
 
-PK: City_name
+PI: City_name
 
 #### Country 
 
-PK: Country_name
+PI: Country_name
 
 #### Competition
 
-PK: Competition_name
+PI: Competition_name
 
 #### Season
 
-PK: Season_name
+PI: Season_name
 
 #### Round
 
-PK: Start_date + end_date
+PI: Start_date + end_date
 
 #### Matchday
 
-PK: Match_day + start_date + end_date + competition_name + season_name
+PI: Match_day + start_date + end_date + competition_name + season_name
 
 #### Event
 
-PK: Time + club_name + club_name + match_day + start_date + end_date + competition_name + season_name
-
-### Foreign key constraints
-
-- Standen afhankelijk van entiteit Voetbalwedstrijd
-- Toplijsten afhankelijk van entiteit Voetbalwedstrijd
-- Match afhankelijk van matchday 
-
-* Handig om dit pas uit te werken na het maken van het PDM?
+PI: Time + club_name + club_name + match_day + start_date + end_date + competition_name + season_name
 
 ### Check constraints
 
 - Maximaal 22 posities per match (11 per club);
 - Minimaal 11 spelers per club;
-- Minimaal 1 coach per club;
-- Minmaal 1 keeper per match;
+- Minimaal en maximaal 1 coach per club;
 - Maximaal 52 speelrondes per competitie;
-- Een rugnummer van een speler mag niet groter zijn dan 99.
+- Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1.
+
 # Rechtenstructuur
 
 |                      | Create (entiteit) | Read (entiteit) | Update  (entiteit) | Delete (entiteit) | Database beheren |
