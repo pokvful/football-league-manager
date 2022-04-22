@@ -12,61 +12,39 @@ Er bestaat een competitie <u>Champions League</u>.
 
 ---
 
-ET COMPETITION
+ET COMPETITIE
 
-ID: Att: Na`me`
+ID: Att: NAAM`
+
+## Editie
+
+In seizoen 17/18 vond er een editie eredivisie plaats
+In seizoen <u>19/20</u> vond er een editie van <u>WK</u> plaats
+
+ET: EDITIE
+ID: ET SEIZOEN     +       ET: COMPETITIE
+ID: ATT:SEIZOEN_NAAM             MATCH
+
+RT COMPETITIE_VAN_EDITIE tussen EDITIE(afhankelijk) en COMPETITIE
+RT SEIZOEN_VAN_EDITIE tussen EDITIE(afhankelijk) en SEIZOEN
 
 ### Clubs
 
-De club Manchester United doet mee aan de competitie Eredivisie.
+De club Manchester United doet mee aan de competitie Eredivisie in het seizoen 17/18.
 
-De club <u>Vitesse</u> doet mee aan de competitie <u>*Eredivisie*</u>.
+De club <u>Vitesse</u> doet mee aan de competitie <u>*Eredivisie*</u> in het <u>seizoen 17/18</u>.
 
 ---
 
 ET CLUB
 
-ID: Att: Name
+ID: Att: NAAM
 
 ---
-
-ET *COMPETITION*
-
+ETT: EDITIE
 MATCH
 
-RT CLUB_plays_in_COMPETITION tussen CLUB en COMPETITION.
-
-### Seizoen
-
-De competitie Eredivisie wordt gespeeld in het seizoen 18/19.
-
-De competitie <u>Champions League</u> wordt gespeeld in het seizoen <u>*20/21*</u>.
-
----
-
-ET COMPETITION
-
-MATCH
-
----
-
-ET *SEASON*
-
-ID: Att: Year
-
---
-RT EDITIE tussen COMPETITIE en SEASON
-
-
-### Standen
-
-* Op basis van VOETBALWEDSTRIJD
-
-### Top lijsten
-
-* Op basis van VOETBALWEDSTRIJD
-
-## Club
+RT CLUB_speelt_in_COMPETITIE tussen CLUB en EDITIE.
 
 ### Thuisstad
 
@@ -78,17 +56,17 @@ De club <u>Vitesse</u> heeft als thuisstad <u>*Arnhem*</u>.
 
 ET CLUB
 
-ID: Att: Name
+Att: stadnaam
 
 ---
 
-ET *CITY*
+ET STAD
 
-ID: Att: Name
+ID: Att: Naam
 
 ---
 
-RT: CLUB_in_CITY tussen CLUB en CITY.
+RT: CLUB_in_STAD tussen CLUB en STAD.
 
 ### Stadion
 
@@ -98,11 +76,42 @@ Het stadion <u>Gelredome</u> bevat <u>28.000</u> stoelen.
 
 ---
 
-ET: STADIUM
+ET: STADION
 
-ID: Att: Name
+ID: Att: Naam
 
 Att: Seat_capacity
+
+### personen
+De persoon 45 heeft als voornaam henk.
+De persoon <u>7</u> heeft als naam <u>Elmar</u>
+
+ET: PERSOON
+ID: ATT: PERSOONNUMMER
+----
+ATT: VOORNAAM
+### persoonachternaam
+
+de persoon 7 heeft als achternaam Wiese.
+De persoon <u>45</u> heeft als achternaam <u>Boss</u>.
+
+ET: PERSOON
+MATCH
+----
+ATT: ACHTERNAAM
+
+### persoon middelnaam
+
+De persoon 123 heeft als middelnaam stoel.
+De persoon <u>45</u> heeft als middelnaam <u>de</u>.
+ET: PERSOON
+MATCH
+----
+ATT: MIDDELNAAM
+
+### GEBOORTEDATUM
+
+De persoon 
 
 ### Manager
 
@@ -118,7 +127,7 @@ ET: CLUB
 MATCH
 
 ET: COACH
-    [moet nog]
+    subtype of PERSOON
 
 
 RT COACH_of_CLUB tussen CLUB en COACH
@@ -222,15 +231,6 @@ Een voetbalwedstrijd wordt gespeeld tijdens een competitie
 
 Een voetbalwedstrijd wordt tussen <u>FC Barcelona</u> en <u>FC Madrid</u> gespeeld op <u>19 april 2002</u> in de <u>speelronde 10</u>.
 
-## Editie
-
-In seizoen 17/18 vond er een editie eredivisie plaats
-In seizoen <u>19/20</u> vond er een editie van <u>WK</u> plaats
-
-ET: editie
-ID: et seizoen      +       ET: Compitition
-ID: Periode             MATCH
-
 ### Schoten
 
 Tijdens de voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> heeft het uit team 5 goals geschoten.
@@ -271,6 +271,7 @@ ET:VOETBALWEDSTRIJD
 MATCH
 
 ATT: SCHOTEN_OP_DOEL_THUIS
+
 ### Goals
 
 Tijdens de voetbalwedstrijd op 5 januari 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 januari 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 5 goals gescored.
