@@ -233,65 +233,124 @@ ID: Periode             MATCH
 
 ### Schoten
 
-Tijdens de voetbalwedstrijd tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde week 5 in het seizoen 19/20 in competitie LaLiga heeft het uit team 5 goals gescored.
-Tijdens de editie 20/21 eredivisie tussen FC Barcelona en club FC Madrid heeft de club FC Madrid 23 keer geschoten.
-Tijdens de <u>editie> tussen <u>wedstrijd>ajax en psv heeft psv <u>schoten</u> keer geschoten.
+Tijdens de voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> heeft het uit team 5 goals geschoten.
 
-ET: editie      ET:Schoten
-MATCH           ID:aantal
+ET:VOETBALWEDSTRIJD
 
+ID: ET: MATCHDAY
+        ID: ET: SPEELRONDE + ATT: Match_datum
+                MATCH
+
++ ET: CLUB
+  MATCH
++ ET:CLUB
+  MATCH
+
+RT VOETBALWEDSTRIJD_SPEELDAG tussen VOETBALWEDSTRIJD(afhankelijk) en MATCHDAY
+RT VOETBALWEDSTRIJD_thuis_CLUB tussen VOETBALWEDSTRIJD(afhankelijk) en CLUB
+RT VOETBALWEDSTRIJD_uit_CLUB tussen VOETBALWDSTRIJD(afhankelijk) en CLUB
+-----
+
+ATT: schoten_totaal_thuis
+
+
+### Schoten_op_Doel_UIT
+
+Tijdens de voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> heeft het uit team <u>5</u> schoten op doel gemaakt.
+
+ET:VOETBALWEDSTRIJD 
+    MATCH
+
+ATT: SCHOTEN_OP_DOEL_UIT
+
+### Schoten_op_Doel_THUIS
+
+Tijdens de voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> heeft het thuis team <u>7</u> schoten op doel gemaakt.
+
+ET:VOETBALWEDSTRIJD
+MATCH
+
+ATT: SCHOTEN_OP_DOEL_THUIS
 ### Goals
 
 Tijdens de voetbalwedstrijd op 5 januari 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 januari 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 5 goals gescored.
 
-Tijdens de voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> heeft het thuis team <u>10</u> goals gescored. 
+Tijdens de voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> heeft speler <u>55</u> gescored op <u>48ste</u> minuut. 
 
-ET:voetbalwedstrijd
+ET: VOETBALWEDSTRIJD
+    MATCH
 
-ID: ET:match_date + ET: club1 + ET:Club2 + ET:speelronde + ET: seizoen + ET: COMPETITION
-    MATCH            MATCH      MATCH                       MATCH          MATCH
+ET: SPELER
+    MATCH
 
-RT 
-### Balbezit
+ID: ET: GOAL
+    subtype of ET: EVENT
+    ID: ET: VOETBALWEDSTRIJD + ATT: TIME
 
+
+### Balbezit_UIT
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie NK heeft de uit team 36 balbezit
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 32% balbezit.
 
-Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het thuis team <u>68%</u> balbezit.
-
-ET:voetbalwedstrijd
+ET: VOETBALWEDSTRIJD
 MATCH
 
-ATT: ballbezit
+ATT: BALBEZIT_UIT
 
-### aantal passes
+### Balbezit_thuis
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie NK heeft de thuis team 36 balbezit
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het thuis team <u>68%</u> balbezit.
 
-Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 874 passes gemaakt.
+ET: VOETBALWEDSTRIJD
+MATCH
 
-Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het thuis team 947 passes gemaakt.
+ATT: BALBEZIT_THUIS
 
-ET:voetbalwedstrijd
+### aantal passes thuis
+
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie NK heeft het thuis team 874 passes gemaakt.
+
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het thuis team <u>947</U> passes gemaakt.
+
+ET: VOETBALWEDSTRIJD
 MATCH
 
 ATT: passes
 
-### precisie passes
+### aantal passes uit
 
-Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 67% passes precisie.
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie NK heeft het uit team 434 passes gemaakt.
 
-Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> heeft het thuis team <u>77%</u> passes precisie.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team <u>823</U> passes gemaakt.
 
-ET:voetbalwedstrijd
+ET: VOETBALWEDSTRIJD
 MATCH
 
-ATT: precisie_passes
+ATT: passes
+
+### preciesie passes thuis
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie NK heeft het thuis team 65% passes precisie
+Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> heeft het thuis team <u>77%</u> passes precisie.
+
+ET: VOETBALWEDSTRIJD
+MATCH
+
+ATT: PRECISIE_PASSES_THUIS
+
+### preciesie passes thuis
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie NK heeft het uit team 35% passes precisie
+Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> heeft het uit team <u>33%</u> passes precisie.
+
+ET: VOETBALWEDSTRIJD
+MATCH
+
+ATT: PRECISIE_PASSES_UIT
 
 ### Overtredingen
 
-Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 een speler getackeld in  de 12de minuut.
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie NK heeft de speler 55 een speler getackeld in  de 12de minuut.
 
-Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 een speler getackeld in  de 70ste minuut.
-
-Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> heeft de speler <u>Jesse Lingard</u> <u>1 gele kaart</u> gekregen in <u>30ste minuut</u>.
+Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> heeft de speler <u>Son Heung-min</u> een speler getackeld in  de <u>70ste</u> minuut.
 
 ET:voetbalwedstrijd
 MATCH
@@ -299,7 +358,7 @@ MATCH
 ET:Player_Name
 MATCH
 
-ATT:Offence
+ATT: FALSE_UIT
 
 ATT: Time
 
@@ -308,7 +367,7 @@ ATT: Time
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 1 gele kaart gekregen in de 12de minuut.
 
 Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> heeft <u>de speler 55</u> <u>1 gele kaart</u> gekregen in de <u>70ste</u> minuut.
-
+Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> heeft de speler <u>Jesse Lingard</u> <u>1 gele kaart</u> gekregen in <u>30ste minuut</u>.
 ET:voetbalwedstrijd
 MATCH
 
@@ -316,7 +375,8 @@ ET:Player_Name
 MATCH
 
 ID: ETT: Yellow_card
-    ATT: Total
+    subtype of EVENT
+    MATCH
 
 ATT: Time
 
@@ -333,39 +393,31 @@ ET: PLAYER
 MATCH
 
 ID: ETT: Red_card
-ATT: Total
+    subtype of EVENT
+    MATCH
 
 ATT: Time
 
-### Buitenspel
+### Hoekschoppen_UIT
 
-Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga was de speler 55 buitenspel in de 60ste minuut.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team ajax en uit team PSV in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de uit team 23 hoekschoppen gemaakt.
 
-Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> was de speler <u>55</u> buitenspel in de <u>81ste</u> minuut.
+Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> heeft de uit team <u>26</u> hoekschoppen gemaakt.
 
 ET:voetbalwedstrijd
 MATCH
 
-ET: PLAYER
-MATCH
+ATT: HOEKSCHOP_UIT
 
-ID: ETT: Offside 
-ATT: Time
-
-### Hoekschoppen
-
-Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 33 in de 34ste minuut een hoekschop getrapt.
-
-Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> heeft de speler <u>55</u> in de <u>70ste</u> minuut een hoekschop getrapt.
+### Hoekschoppen_THUIS
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team ajax en uit team PSV in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de thuis team 23 hoekschoppen gemaakt.
+Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> heeft de thuis team <u>36</u> hoekschoppen gemaakt.
 
 ET:voetbalwedstrijd
 MATCH
 
-ET: PLAYER
-MATCH
+ATT: HOEKSCHOP_THUIS
 
-ID: ETT: Corner_kick
-ATT: Time
 
 ### Wissels
 
