@@ -18,16 +18,16 @@
 
 ### Doel(en):
 
-- Kennismaken met de opdrachtgever
-- Onduidelijkheden over de casus verhelderen
+- Duidelijk beeld over datamodel geven aan opdrachtgever
+- Knock-out tournooi bespreken
 
 ### Agendapunt(en):
 
 | Tijd   | Item                                 | Persoon           | Notities                        |
 |--------|--------------------------------------|-------------------|---------------------------------|
 | 3 min  | Inleiding                            | Joram Buitenhuis  |                                 |
-| 5 min  | CDM bespreken                        | Als Team          |                                 |
-| 10 min | Vragen over knock-out toernooien     | Als Team          |                                 |
+| 10 min | CDM bespreken                        | Als Team          |                                 |
+| 5 min  | Vragen over knock-out toernooien     | Als Team          |                                 |
 | 5 min  | Vragen over de staging area          | Als Team          |                                 |
 | 2 min  | Afsluiten                            | Joram Buitenhuis  |                                 |
 
@@ -45,7 +45,7 @@
 
 antwoord:
 
-
+antwoord bij vraag 2.
 
 **2. Hoe wordt er tegen MongoDB aangepraat?**
 
@@ -56,9 +56,21 @@ antwoord:
 
 antwoord:
 
+Makkelijkste optie is dat we in MongoDB iets starten die data ophaalt. Realtime hoeft niet, maar haal het periodiek op. Misschien is het mogelijk
+om data vanuit een stored procedure richting MongoDB te sturen. Maar ik vind het prima dat je het via MongoDB ophaalt. Los Python script mag ook.
 
 
 **3. Moeten knock-out toernooien ook in de database opgenomen worden?**
 
 antwoord:
 
+Begin nu met de huidige CDM als versie 1 en kijk later uit naar of je het kan uitbreiden.
+
+**4. Hoe komen de mensen bij de data die in MongoDB staan?**
+
+antwoord:
+
+Geen REST API of iets dergelijks, maar gewoon in Mongo een script die uitgevoerd moet worden.
+
+**5. Moeten we de events uitbreiden?, want we hadden nu alleen kaarten, wissels en goals**
+Fijn om te weten hoeveel goede passes een speler geeft.
