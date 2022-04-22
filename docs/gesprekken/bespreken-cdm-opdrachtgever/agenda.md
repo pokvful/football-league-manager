@@ -1,3 +1,0 @@
-- CDM bespreken;
-- Vragen over knock-out toernooien;
-- Vragen over staging area.
