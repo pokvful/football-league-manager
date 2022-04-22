@@ -66,13 +66,13 @@
 |Brief Description  |Actor update de correcte clubs in de nieuwe editie, start vervolgens een leeg seizoen (lege matches, speeldrondes en een nieuwe editie).	|
 |Happy Flow         |1.Actor geeft aan welke clubs gedegradeerd/gepromoveert worden middels STORED PROCEDURE en start daarmee het nieuwe seizeoen. 2.Systeem zet de correcte clubs in de nieuwe editie 3.Systeem maakt matches, speelrondes en een nieuwe editie aan.	|
 
-|Naam               |	|
+|Naam               |Toevoegen nieuwe persoon	|
 |-------------------|-------------------------------------------------------------------------------|
 |Actors             |NUTMEG Voetbal Admin	|
-|Preconditie        |	|
-|Postconditie       |	|
-|Brief Description  |	|
-|Happy Flow         |	|
+|Preconditie        |Geen	|
+|Postconditie       |Nieuw persoon staat in het systeem	|
+|Brief Description  |Actor zet een nieuw persoon in het systeem	|
+|Happy Flow         |1.Actor geeft informatie van niewe persoon op en geeft aan deze op te willen slaan in het systeem. 2.Nieuw persoon staat in het systeem.	|
 
 # Verwoordingen feittypen
 
