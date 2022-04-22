@@ -56,15 +56,15 @@
 |Preconditie        |De club bestaat al	|
 |Postconditie       |De updated clubinformatie is opgeslagen in het systeem	|
 |Brief Description  |Actor update de clubinformatie. Hieronder wordt het team, de coach, de thusistad of het stadian (en zijn capaciteit) verstaan.	|
-|Happy Flow         |1.Actor geeft de informatie mee die |
+|Happy Flow         |1.Actor geeft de informatie mee die geüpdatet moet worden. 2.Systeem update de informatie |
 
 |Naam               |Start nieuw seizoen competitie	|
 |-------------------|-------------------------------------------------------------------------------|
 |Actors             |NUTMEG Voetbal Admin	|
 |Preconditie        |Het vorige seizoen is afgelopen <!--- iets met speelrondes ofzo? 2x aantal clubs --->	|
 |Postconditie       |De juiste clubs zijn gedegradeerd/gepromoveert. Een nieuw seizoen is gestart	|
-|Brief Description  |	|
-|Happy Flow         |	|
+|Brief Description  |Actor update de correcte clubs in de nieuwe editie, start vervolgens een leeg seizoen (lege matches, speeldrondes en een nieuwe editie).	|
+|Happy Flow         |1.Actor geeft aan welke clubs gedegradeerd/gepromoveert worden middels STORED PROCEDURE en start daarmee het nieuwe seizeoen. 2.Systeem zet de correcte clubs in de nieuwe editie 3.Systeem maakt matches, speelrondes en een nieuwe editie aan.	|
 
 |Naam               |	|
 |-------------------|-------------------------------------------------------------------------------|
