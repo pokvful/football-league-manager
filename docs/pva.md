@@ -189,9 +189,9 @@ Tevens moet het team ook persoonlijke ontwikkeling gedurende het project bijhoud
 
 ## 8.2 Opdrachtgever
 
-| Persoon           | Rol              | Contact                                                                       | Beschikbaarheid    |
-|-------------------|------------------|-------------------------------------------------------------------------------|--------------------|
-| Michael Koolwaaij | Opdrachtgever    | Bericht in teams of [michel.koolwaaij@han.nl](mailto:michel.koolwaaij@han.nl) | Dinsdag en Vrijdag |
+| Persoon          | Rol              | Contact                                                                       | Beschikbaarheid    |
+|------------------|------------------|-------------------------------------------------------------------------------|--------------------|
+| Michel Koolwaaij | Opdrachtgever    | Bericht in teams of [michel.koolwaaij@han.nl](mailto:michel.koolwaaij@han.nl) | Dinsdag en Vrijdag |
 
 ## 8.3 Rolverdeling
 
