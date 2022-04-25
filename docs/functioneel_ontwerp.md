@@ -268,9 +268,29 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 # Business Rules
 
-- Van een lopende competitie mag alleen de selectie clubs en de speeldatum van een wedstrijd worden aangepast.
-- Van elk gespeelde voetbalronde moeten de posities, schoten, schoten op goal, hoekschoppen en overtredingen worden opgeslagen.
-- Een thuis club mag maximaal een keer tegen een uit club spelen binnen een seizoen.
+BR1 Van een lopende competitie mag alleen de selectie clubs en de speeldatum van een wedstrijd worden aangepast.
+
+BR2 Een thuis club mag maximaal een keer tegen een uit club spelen binnen een normaal competitie seizoen.
+
+BR3 De startdatum van een ronde moet in het seizoen liggen.
+
+BR4 De speeldag moet na de gekoppelde startdatum van de speelronde liggen.
+
+BR5 De speeldag moet voor de de startdatum van de opvolgende ronde van de gekoppelde ronde.
+
+BR6 Een speler die op het veld staat kan een keeper, verdediger, aanvaller of middenvelder zijn.
+
+BR7 Een thuis club mag maximaal een keer tegen een uit club spelen binnen een fase van een knockout competitie.
+
+BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een van de spelende clubs.
+
+BR9 Clubs mogen alleen een match spelen als ze meedoen aan de editie.
+
+BR10 Gele en Rode kaarten mogen alleen worden gegeven aan Spelers en Coaches.
+
+BR11 Voor alleen spelende spelers wordt opgeslagen of ze hebben geschoten, pases gemaakt, gewisseld, overtredingen, corners, gescored in een voetbalwedstrijd.
+
+BR12 Er moeten 22 spelers op het veld ingedeeld zijn bij een wedstrijd.
 
 # Functionele requirements.
 
