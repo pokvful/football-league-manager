@@ -313,6 +313,7 @@ BR21 Een speler kan niet in een competitie spelen voor zijn 10 verjaardag.
 BR22 Aantal toeschouwers mag niet groter zijn dan de capiciteit van een stadion.
 
 BR23 Hoeveelste minuut mag niet negatief zijn.
+
 # Functionele requirements.
 
 | Functional Requirement                              	| MoSCoW 	|
