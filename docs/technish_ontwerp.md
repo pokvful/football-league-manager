@@ -14,8 +14,6 @@
 ## Reliability, availability, maintainability
 
 - De data wordt opgeslagen in MSSQL en periodiek overgezet naar MongoDB
-- MSSQL maakt elke dag een back-up
-- MSSQL zal 99% geen overload ervaren
 
 ## Security
 
@@ -28,5 +26,4 @@
 
 ## Usability
 
-- Data-analisten kunnen met MongoDB Shell data uitlezen
-- Fouten kunnen alleen ontstaan door het verkeerd schrijven van een MongoDB Shell
+- Data-analisten kunnen via de MongoDB shell data uitlezen van de staging area
