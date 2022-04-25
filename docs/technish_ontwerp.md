@@ -4,7 +4,7 @@
 
 ## Performance and scalability
 
-- Data uitlezen wordt gedaan via een staging area met mongoDB, hierdoor wordt de load op de MSSQL database verlaagd.
+- Data uitlezen wordt gedaan via een staging area met mongoDB, hierdoor wordt de load op de MSSQL database verlaagd
 
 ## Portability and compatibility
 
