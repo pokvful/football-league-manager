@@ -298,6 +298,21 @@ BR14 Bij welke wedstrijden een persoon scheidst wordt alleen opgeslagen voor sch
 
 BR15 Of een persoon in de reserve staat bij een wedstrijd wordt alleen opgeslagen voor spelers.
 
+BR16 Maximaal 52 speelrondes per competitie;
+
+BR17 Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1.
+
+BR18 Minimaal 11 spelers per club.
+
+BR19 Minimaal en maximaal 1 coach per club.
+
+BR20 Een speler mag niet jonger zijn dan 10 jaar.
+
+BR21 Een speler kan niet in een competitie spelen voor zijn 10 verjaardag.
+
+BR22 Aantal toeschouwers mag niet groter zijn dan de capiciteit van een stadion.
+
+BR23 Hoeveelste minuut mag niet negatief zijn.
 # Functionele requirements.
 
 | Functional Requirement                              	| MoSCoW 	|
