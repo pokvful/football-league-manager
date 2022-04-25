@@ -278,7 +278,7 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 |------------------------------------------------------------------------------------------------------------|--------|
 | Bij een lopende competitie mag alleen de speeldatum of speler selectie van een wedstrijd worden veranderd. | M      |
 | Het moet mogelijk zijn om de tussenstand van een competitie op te halen.                                   | M      |
-| Het moet mogelijk zijn om een top lijst van een competitie te genereren.                                   | S      |
+| Het moet mogelijk zijn om een top lijst van een editie te genereren.                                   	 | S      |
 | De gegevens moeten bereikbaar zijn via een staging area in JSON formaat.                         			 | M      |
 | Een \[analist\] kan inhoudelijke gegevens via de staging area uitlezen.                                    | M      |
 | Een \[admin\] kan matchdata invoeren in de database.                                                       | S      |
