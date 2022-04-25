@@ -274,21 +274,17 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 # Functionele requirements.
 
-| Functional Requirement                              	| MoSCoW 	|
-|-----------------------------------------------------	|--------	|
-| Bij een lopende competitie mag alleen de speeldatum of speler selectie van een wedstrijd worden veranderd. | M |
-| Het moet mogelijk zijn om een current league table te generaten. | M |
-| Het moet mogelijk zijn om een top score lijst van een league te genereren. | S |
-| De gegevens moet bereikbaar zijn via een online API in JSON formaat. | S |
-| Een \[gebruiker\] kan inhoudelijke gegevens uitlezen. 	| M |
-| Een \[admin\] kan inhoudelijke gegevens uitlezen. 	| S   	|
-| Een \[admin\] kan inhoudelijke gegevens verwijderen. 	| S   	|
-| Een \[admin\] kan inhoudelijke gegevens aanpassen. 	| S   	|
-| Een \[admin\] kan inhoudelijke gegevens aanmaken. 	| S   	|
-| Een \[admin\] kan database schema aanmaken. 	| S   	|
-| Een \[admin\] kan database schema lezen. 	| C   	|
-| Een \[admin\] kan database schema verwijderen. 	| S   	|
-| Een \[admin\] kan database schema aanpassen. 	| S   	|
+| Functional Requirements                                                                                    | MoSCoW |
+|------------------------------------------------------------------------------------------------------------|--------|
+| Bij een lopende competitie mag alleen de speeldatum of speler selectie van een wedstrijd worden veranderd. | M      |
+| Het moet mogelijk zijn om de tussenstand van een competitie op te halen.                                   | M      |
+| De gegevens moeten bereikbaar zijn via een staging area in JSON formaat.                         			 | M      |
+| Een \[analist\] kan inhoudelijke gegevens via de staging area uitlezen.                                    | M      |
+| Het moet mogelijk zijn om een top lijst van een editie te genereren.                                   	 | S      |
+| Een \[admin\] kan matchdata invoeren in de database.                                                       | S      |
+| Een \[admin\] kan clubinfo updaten.                                                                        | S      |
+| Een \[admin\] kan een nieuwe seizoen competitie starten.                                                   | S      |
+| Een \[admin\] kan nieuwe personen toevoegen aan de database.                                               | S      |
 
 ## Constraints
 
