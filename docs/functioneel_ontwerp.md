@@ -420,18 +420,6 @@ Voor dit project is geen data aangeleverd. Alle data in de database wordt gemock
 Het schema is gebaseerd op een opzet met informatiebehoeften dat met de opdrachtgever is afgestemed. Het schema is vervolgens ontworpen op basis van deze informatiebehoeften.
 Relevante keuzes betreft het includeren of uitsluiten van feiten in het schema staan omschreven in het hoofdstuk ontwerpkeuzes.
 
-## Interactiemodel
-
-|  Usecases \ Entiteiten    | Alle  Entiteiten	|
-|--------------	|-------	|
-| Create Data  	| C     	|
-| Read Data    	| R     	|
-| Update Data  	| U     	|
-| Delete Data  	| D     	|
-| Alter Schema 	| n.v.t 	|
-
-Bij Alter Schema is de CRUD matrix van de entiteiten niet van toepassingen, want daarmee wordt de database zelf aangepast.
-
 # Onderbouwing concepten CDM
 
 ## Entiteit PERSON
