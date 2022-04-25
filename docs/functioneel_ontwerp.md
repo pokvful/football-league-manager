@@ -292,6 +292,12 @@ BR11 Voor alleen spelende spelers wordt opgeslagen of ze hebben geschoten, pases
 
 BR12 Er moeten 22 spelers op het veld ingedeeld zijn bij een wedstrijd.
 
+BR13 Bij welke club een persoon coacht wordt alleen opgeslagen voor coaches.
+
+BR14 Bij welke wedstrijden een persoon scheidst wordt alleen opgeslagen voor scheidsrechters.
+
+BR15 Of een persoon in de reserve staat bij een wedstrijd wordt alleen opgeslagen voor spelers.
+
 # Functionele requirements.
 
 | Functional Requirement                              	| MoSCoW 	|
