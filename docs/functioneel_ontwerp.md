@@ -50,7 +50,7 @@
 |Brief Description  |Actor haalt de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde op	|
 |Happy Flow         |1.Actor geeft aan de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde te willen zien. <br> 2.Systeemm toont de uitslagen en speeldagen van wedstrijden tijdens de gewenste speelronde.	|
 <!--- Onderstaande alternative flows zijn gemaakt voordat er een CDM_V2 is gemaakt.--->
-<!--- Alternative Flow A is misschine iets te implementatie gericht--->
+<!--- Alternative Flow A is misschien iets te implementatie gericht--->
 
 
 |Naam               |Invoeren matchdata	                                                                            |
@@ -90,7 +90,7 @@
 |Postconditie       |Nieuw persoon staat in het systeem	|
 |Brief Description  |Actor zet een nieuw persoon in het systeem	|
 |Happy Flow         |1.Actor geeft informatie van niewe persoon op en geeft aan deze op te willen slaan in het systeem. 2.Nieuw persoon staat in het systeem.	|
-|Alternative Flow	|2B.Systeem geeft aan dat informatie onvolledig is  <br> 3B.Ga terug naar stap 1
+|Alternative Flow	|2A.Systeem geeft aan dat informatie onvolledig is  <br> 3A.Ga terug naar stap 1
 
 # Verwoordingen feittypen
 
