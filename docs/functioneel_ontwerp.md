@@ -39,7 +39,7 @@
 |Preconditie        |De match is gespeeld								|
 |Postconditie       |Systeem toont de informatie van de gewenste match	|
 |Brief Description  |Actor haalt per team balbezit, passes, schoten, schoten op doel, passprecisie, overtredingen, corners, goals, kaarten en wissels van de gewenste match	op	|
-|Happy Flow         |1.Actor geeft aan informatie over een gewenste match te willen zien. <br> 2.Systeem toont de informatie van de. match.	|
+|Happy Flow         |1.Actor geeft aan informatie over een gewenste match te willen zien. <br> 2.Systeem toont de informatie van de match.	|
 
 
 |Naam               |Ophalen speelrondeinfo	                                                                    |
