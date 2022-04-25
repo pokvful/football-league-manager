@@ -276,7 +276,7 @@ BR3 De startdatum van een ronde moet in het seizoen liggen.
 
 BR4 De speeldag moet na de gekoppelde startdatum van de speelronde liggen.
 
-BR5 De speeldag moet voor de de startdatum van de opvolgende ronde van de gekoppelde ronde.
+BR5 De startdatum van een speeldag moet voor de startdatum van een opvolgende ronde bestaan.
 
 BR6 Een speler die op het veld staat kan een keeper, verdediger, aanvaller of middenvelder zijn.
 
