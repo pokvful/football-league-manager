@@ -14,7 +14,7 @@ Er bestaat een competitie <u>Champions League</u>.
 
 ET COMPETITIE
 
-ID: Att: NAAM`
+ID: Att: NAME
 
 ## Editie
 
@@ -22,8 +22,8 @@ In seizoen 17/18 vond er een editie eredivisie plaats
 In seizoen <u>19/20</u> vond er een editie van <u>WK</u> plaats
 
 ET: EDITIE
-ID: ET SEIZOEN     +       ET: COMPETITIE
-ID: ATT:SEIZOEN_NAAM             MATCH
+ID: ET SEASON     +       ET: COMPETITIE
+ID: ATT:SEAZON_NAME             MATCH
 
 RT COMPETITIE_VAN_EDITIE tussen EDITIE(afhankelijk) en COMPETITIE
 RT SEIZOEN_VAN_EDITIE tussen EDITIE(afhankelijk) en SEIZOEN
@@ -38,7 +38,7 @@ De club <u>Vitesse</u> doet mee aan de competitie <u>*Eredivisie*</u> in het <u>
 
 ET CLUB
 
-ID: Att: NAAM
+ID: Att: NAME
 
 ---
 ETT: EDITIE
@@ -56,13 +56,13 @@ De club <u>Vitesse</u> heeft als thuisstad <u>*Arnhem*</u>.
 
 ET CLUB
 
-Att: stadnaam
+Att: CITYNAME
 
 ---
 
-ET STAD
+ET CITY
 
-ID: Att: Naam
+ID: Att: NAME
 
 ---
 
@@ -78,7 +78,7 @@ Het stadion <u>Gelredome</u> bevat <u>28.000</u> stoelen.
 
 ET: STADION
 
-ID: Att: Naam
+ID: Att: NAME
 
 Att: Seat_capacity
 
@@ -86,50 +86,50 @@ Att: Seat_capacity
 De persoon 45 heeft als voornaam henk.
 De persoon <u>7</u> heeft als naam <u>Elmar</u>
 
-ET: PERSOON
-ID: ATT: PERSOONNUMMER
+ET: PERSON
+ID: ATT: PERSONID
 ----
-ATT: VOORNAAM
+ATT: FIRSTNAME
 
 ### persoonachternaam
 
 de persoon 7 heeft als achternaam Wiese.
 De persoon <u>45</u> heeft als achternaam <u>Boss</u>.
 
-ET: PERSOON
+ET: PERSON
 MATCH
 ----
-ATT: ACHTERNAAM
+ATT: LASTNAME
 
 ### persoon middelnaam
 
 De persoon 123 heeft als middelnaam stoel.
 De persoon <u>45</u> heeft als middelnaam <u>de</u>.
-ET: PERSOON
+ET: PERSON
 MATCH
 ----
-ATT: MIDDELNAAM
+ATT: MIDDELNAME
 
 ### GEBOORTEDATUM
 
 De persoon 11 is geboren op 11 februari 1996.
 De persoon <u>364524144</u> is geboren op <u>8 Maart 1929</u>.
 
-ET: PERSOON
+ET: PERSON
 MATCH
 ----
-ATT: GEBOORTEDATUM
+ATT: BIRTHDATE
 
 ### NATIONALITEIT
 
 De persoon 11 heeft een nederlandse paspoord.
 De persoon <u>122343</u> heeft een <u>Zuid-Africa</u> paspoort
 
-ET: PERSOON
+ET: PERSON
 MATCH
 ----
-ET: LAND
-ID: ATT: Landnaam
+ET: COUNTRY
+ID: ATT: COUNTRYNAME
     
 RT LAND_van_PERSOON tussen PERSOON en LAND
 
@@ -139,13 +139,13 @@ De stad Amsterdam zit in de land Nederland.
 
 De stad <u>Londen</u> zit in de land <u>Engeland</u>.
 
-ET: STAD
+ET: CITY
 MATCH
 
-ET: LAND
+ET: COUNTRY
 MATCH
 
-RT STAD_in_LAND tussen STAD en LAND
+RT STAD_in_LAND tussen CITY en COUNTRY
 
 ### Coach
 
@@ -161,7 +161,7 @@ ET: CLUB
 MATCH
 
 ET: COACH
-    subtype of PERSOON
+    subtype of PERSON
                 MATCH
 
 
@@ -177,8 +177,8 @@ De speler <u>56</u> heeft rugnummer <u>14</u>.
 
 ---
 
-ET: SPELER
-    subtype of PERSOON
+ET: PLAYER
+    subtype of PERSON
 ---
 
 Att: Jersey_nummer
@@ -188,23 +188,23 @@ Att: Jersey_nummer
 De speler <u>12</u> zit in club <u>ajax</u>.
 De speler <u>1234132412</u> zit in <u>psv</u>.
 
-ET: SPELER
+ET: PLAYER
 MATCH
 
 ET: CLUB
 MATCH
 
-RT SPELER_in_CLUB tussen SPELER en CLUB
+RT SPELER_in_CLUB tussen PLAYER en CLUB
 
 ## Voetbalwedstrijd
 
 Er is een voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>Ajax</u> thuis en uit team <u>psv</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>keuken kampioen divisie</u>
 Er is een voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> geweest.
 
-ET:VOETBALWEDSTRIJD
+ET:FOOTBAL_MATCH
 
 ID: ET: MATCHDAY
-        ID: ET: SPEELRONDE + ATT: Match_datum
+        ID: ET: GAMEROUNDE + ATT: Match_datum
                 MATCH
 
 + ET: CLUB
@@ -223,16 +223,16 @@ De speler <u>91</u> van <u>Manchester United</u> is aanvaller.
 
 Tijdens de voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> heeft de speler <u>21</u> de positie <u>middenvelder</U>
 ---
-ET MIDDENVELDER
+ET MIDFIELDER
     subtype van POSITIE
-                ID: ET VOETBALWEDSTRIJD + ET SPELER
+                ID: ET VOETBALWEDSTRIJD + ET PLAYER
                         MATCH                MATCH
 
 ### RESERVE
 
 Tijdens de voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> was de speler <u>1223</u> reserve.
 
-ET: VOETBALWEDSTRIJD
+ET: FOOTBAL_MATCH
 MATCH
 
 ET: SPELER
@@ -242,30 +242,30 @@ MATCH
 
 Tijdens de voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> heeft het uit team 5 goals geschoten.
 
-ET:VOETBALWEDSTRIJD
+ET:FOOTBAL_MATCH
 MATCH
 -----
 
-ATT: schoten_totaal_thuis
+ATT: SHOOT_TOTAL_HOME
 
 
 ### Schoten_op_Doel_UIT
 
 Tijdens de voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> heeft het uit team <u>5</u> schoten op doel gemaakt.
 
-ET:VOETBALWEDSTRIJD 
+ET:FOOTBAL_MATCH
     MATCH
 
-ATT: SCHOTEN_OP_DOEL_UIT
+ATT: SHOOT_TOTAL_OUT
 
 ### Schoten_op_Doel_THUIS
 
 Tijdens de voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> heeft het thuis team <u>7</u> schoten op doel gemaakt.
 
-ET:VOETBALWEDSTRIJD
+ET:FOOTBAL_MATCH
 MATCH
 
-ATT: SCHOTEN_OP_DOEL_THUIS
+ATT: SHOOT_ON_GOAL_HOME
 
 ### Goals
 
@@ -273,34 +273,34 @@ Tijdens de voetbalwedstrijd op 5 januari 2020 tussen thuis team FC Barcelona en 
 
 Tijdens de voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> heeft speler <u>55</u> gescored op <u>48ste</u> minuut. 
 
-ET: VOETBALWEDSTRIJD
+ET: FOOTBAL_MATCH
     MATCH
 
-ET: SPELER
+ET: PLAYER
     MATCH
 
 ID: ET: GOAL
     subtype of ET: EVENT
-    ID: ET: VOETBALWEDSTRIJD + ATT: TIME
+    ID: ET: FOOTBAL_MATCH + ATT: TIME
 
 
 ### Balbezit_UIT
 Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft de uit team 36 balbezit
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 32% balbezit.
 
-ET: VOETBALWEDSTRIJD
+ET: FOOTBAL_MATCH
 MATCH
 
-ATT: BALBEZIT_UIT
+ATT: BALPOSSESION_OUT
 
 ### Balbezit_thuis
 Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft de thuis team 36 balbezit
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het thuis team <u>68%</u> balbezit.
 
-ET: VOETBALWEDSTRIJD
+ET: FOOTBAL_MATCH
 MATCH
 
-ATT: BALBEZIT_THUIS
+ATT: BALPOSSESION_HOME
 
 ### aantal passes thuis
 
@@ -308,7 +308,7 @@ Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv
 
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het thuis team <u>947</U> passes gemaakt.
 
-ET: VOETBALWEDSTRIJD
+ET: FOOTBAL_MATCH
 MATCH
 
 ATT: passes
@@ -319,7 +319,7 @@ Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv
 
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team <u>823</U> passes gemaakt.
 
-ET: VOETBALWEDSTRIJD
+ET: FOOTBAL_MATCH
 MATCH
 
 ATT: passes
@@ -328,19 +328,19 @@ ATT: passes
 Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft het thuis team 65% passes precisie
 Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> heeft het thuis team <u>77%</u> passes precisie.
 
-ET: VOETBALWEDSTRIJD
+ET: FOOTBAL_MATCH
 MATCH
 
-ATT: PRECISIE_PASSES_THUIS
+ATT: precision_PASSES_THUIS
 
 ### preciesie passes thuis
 Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft het uit team 35% passes precisie
 Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> heeft het uit team <u>33%</u> passes precisie.
 
-ET: VOETBALWEDSTRIJD
+ET: FOOTBAL_MATCH
 MATCH
 
-ATT: PRECISIE_PASSES_UIT
+ATT: precision_PASSES_OUT
 
 ### Overtredingen
 
@@ -348,7 +348,7 @@ Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv
 
 Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> heeft de speler <u>Son Heung-min</u> een speler getackeld in  de <u>70ste</u> minuut.
 
-ET:voetbalwedstrijd
+ET: FOOTBAL_MATCH
 MATCH
 
 ET:Player_Name
@@ -400,19 +400,19 @@ Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team ajax en uit team P
 
 Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> heeft de uit team <u>26</u> hoekschoppen gemaakt.
 
-ET:voetbalwedstrijd
+ET: FOOTBAL_MATCH
 MATCH
 
-ATT: HOEKSCHOP_UIT
+ATT: CORNERKICK_OUT
 
 ### Hoekschoppen_THUIS
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team ajax en uit team PSV in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de thuis team 23 hoekschoppen gemaakt.
 Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> heeft de thuis team <u>36</u> hoekschoppen gemaakt.
 
-ET:voetbalwedstrijd
+ET: FOOTBAL_MATCH
 MATCH
 
-ATT: HOEKSCHOP_THUIS
+ATT: CORNERKICK_HOME
 
 
 ### Wissels
@@ -425,7 +425,7 @@ Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en ui
 
 Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> werdt de speler <u>55</u> ingewisseld voor speler <u>66</u> in de <u>40ste</u> minuut. 
 
-ET:voetbalwedstrijd
+ET: FOOTBAL_MATCH
 MATCH
 
 ET: PLAYER
@@ -444,7 +444,7 @@ Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en ui
 
 Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> was <u>Danny Makkelie</u> de scheidsrechter.
 
-ET:voetbalwedstrijd
+ET: FOOTBAL_MATCH
 MATCH
 
 ID: ET: referee
@@ -471,7 +471,8 @@ Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en ui
 
 Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> speelde Luke Shaw in de selectie.
 
-ET: voetbalwedstrijd
+ET: FOOTBAL_MATCH
+MATCH
 
 ET:Selection
 ATT: player
@@ -483,7 +484,7 @@ Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en ui
 
 Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> was het aantal toeschouwers 30000.
 
-ET:voetbalwedstrijd
+ET: FOOTBAL_MATCH
 MATCH
 
 Att: Seat_Occupied
