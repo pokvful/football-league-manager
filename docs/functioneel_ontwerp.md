@@ -268,27 +268,49 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 # Business Rules
 
-- Van een lopende competitie mag alleen de selectie clubs en de speeldatum van een wedstrijd worden aangepast.
-- Van elk gespeelde voetbalronde moeten de posities, schoten, schoten op goal, hoekschoppen en overtredingen worden opgeslagen.
-- Een thuis club mag maximaal een keer tegen een uit club spelen binnen een seizoen.
+BR1 Van een lopende competitie mag alleen de selectie clubs en de speeldatum van een wedstrijd worden aangepast.
+
+BR2 Een thuis club mag maximaal een keer tegen een uit club spelen binnen een normaal competitie seizoen.
+
+BR3 De startdatum van een ronde moet in het seizoen liggen.
+
+BR4 De speeldag moet na de gekoppelde startdatum van de speelronde liggen.
+
+BR5 De startdatum van een speeldag moet voor de startdatum van een opvolgende ronde bestaan.
+
+BR6 Een speler die op het veld staat kan een keeper, verdediger, aanvaller of middenvelder zijn.
+
+BR7 Een thuis club mag maximaal een keer tegen een uit club spelen binnen een fase van een knockout competitie.
+
+BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een van de spelende clubs.
+
+BR9 Clubs mogen alleen een match spelen als ze meedoen aan de editie.
+
+BR10 Gele en Rode kaarten mogen alleen worden gegeven aan Spelers en Coaches.
+
+BR11 Voor alleen spelende spelers wordt opgeslagen of ze hebben geschoten, pases gemaakt, gewisseld, overtredingen, corners, gescored in een voetbalwedstrijd.
+
+BR12 Er moeten 22 spelers op het veld ingedeeld zijn bij een wedstrijd.
+
+BR13 Bij welke club een persoon coacht wordt alleen opgeslagen voor coaches.
+
+BR14 Bij welke wedstrijden een persoon scheidst wordt alleen opgeslagen voor scheidsrechters.
+
+BR15 Of een persoon in de reserve staat bij een wedstrijd wordt alleen opgeslagen voor spelers.
 
 # Functionele requirements.
 
-| Functional Requirement                              	| MoSCoW 	|
-|-----------------------------------------------------	|--------	|
-| Bij een lopende competitie mag alleen de speeldatum of speler selectie van een wedstrijd worden veranderd. | M |
-| Het moet mogelijk zijn om een current league table te generaten. | M |
-| Het moet mogelijk zijn om een top score lijst van een league te genereren. | S |
-| De gegevens moet bereikbaar zijn via een online API in JSON formaat. | S |
-| Een \[gebruiker\] kan inhoudelijke gegevens uitlezen. 	| M |
-| Een \[admin\] kan inhoudelijke gegevens uitlezen. 	| S   	|
-| Een \[admin\] kan inhoudelijke gegevens verwijderen. 	| S   	|
-| Een \[admin\] kan inhoudelijke gegevens aanpassen. 	| S   	|
-| Een \[admin\] kan inhoudelijke gegevens aanmaken. 	| S   	|
-| Een \[admin\] kan database schema aanmaken. 	| S   	|
-| Een \[admin\] kan database schema lezen. 	| C   	|
-| Een \[admin\] kan database schema verwijderen. 	| S   	|
-| Een \[admin\] kan database schema aanpassen. 	| S   	|
+| Functional Requirements                                                                                    | MoSCoW |
+|------------------------------------------------------------------------------------------------------------|--------|
+| Bij een lopende competitie mag alleen de speeldatum of speler selectie van een wedstrijd worden veranderd. | M      |
+| Het moet mogelijk zijn om de tussenstand van een competitie op te halen.                                   | M      |
+| De gegevens moeten bereikbaar zijn via een staging area in JSON formaat.                         			 | M      |
+| Een \[analist\] kan inhoudelijke gegevens via de staging area uitlezen.                                    | M      |
+| Het moet mogelijk zijn om een top lijst van een editie te genereren.                                   	 | S      |
+| Een \[admin\] kan matchdata invoeren in de database.                                                       | S      |
+| Een \[admin\] kan clubinfo updaten.                                                                        | S      |
+| Een \[admin\] kan een nieuwe seizoen competitie starten.                                                   | S      |
+| Een \[admin\] kan nieuwe personen toevoegen aan de database.                                               | S      |
 
 ## Constraints
 
