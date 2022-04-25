@@ -90,6 +90,7 @@ ET: PERSOON
 ID: ATT: PERSOONNUMMER
 ----
 ATT: VOORNAAM
+
 ### persoonachternaam
 
 de persoon 7 heeft als achternaam Wiese.
@@ -111,13 +112,46 @@ ATT: MIDDELNAAM
 
 ### GEBOORTEDATUM
 
-De persoon 
+De persoon 11 is geboren op 11 februari 1996.
+De persoon <u>364524144</u> is geboren op <u>8 Maart 1929</u>.
 
-### Manager
+ET: PERSOON
+MATCH
+----
+ATT: GEBOORTEDATUM
 
-De coach van Manchester United is Ralf Rangnick.
+### NATIONALITEIT
 
-De coach van <u>Vitesse</u> is <u>Thomas Letsch</u>.
+De persoon 11 heeft een nederlandse paspoord.
+De persoon <u>122343</u> heeft een <u>Zuid-Africa</u> paspoort
+
+ET: PERSOON
+MATCH
+----
+ET: LAND
+ID: ATT: Landnaam
+    
+RT LAND_van_PERSOON tussen PERSOON en LAND
+
+### land van stad
+
+De stad Amsterdam zit in de land Nederland.
+
+De stad <u>Londen</u> zit in de land <u>Engeland</u>.
+
+ET: STAD
+MATCH
+
+ET: LAND
+MATCH
+
+RT STAD_in_LAND tussen STAD en LAND
+
+### Coach
+
+De coach van Manchester United is 3.
+
+De coach van <u>Vitesse</u> is <u>9876</u>.
 
 ---
 
@@ -128,6 +162,7 @@ MATCH
 
 ET: COACH
     subtype of PERSOON
+                MATCH
 
 
 RT COACH_of_CLUB tussen CLUB en COACH
@@ -136,104 +171,35 @@ RT COACH_of_CLUB tussen CLUB en COACH
 
 #### Rugnummer, voornaam en achternaam
 
-De speler 90 van Manchester United heeft rugnummer 26.
+De speler 90 heeft rugnummer 26.
 
-De speler <u>56</u> van <u>Manchester United</u> heeft rugnummer <u>14</u>.
-
----
-
-ET CLUB_OF_PLAYER
-
-ID: ET: PLAYER + ET: CLUB
-
-RT CLUB_has_PLAYER tussen CLUB_OF_PLAYER(afhankelijk) en CLUB
-RT PLAYER_part_of_CLUB tussen CLUB_OF_PLAYER(afhankelijk) en PLAYER
----
-
-MATCH
-
-Att: Jersey_number
-
-### Nationaliteit
-
-De persoon 44 is geboren in Engeland.
-
-De persoon <u>33</u> is geboren in <u>*Engeland*</u>.
+De speler <u>56</u> heeft rugnummer <u>14</u>.
 
 ---
 
-ET PERSON
-
-MATCH
-
+ET: SPELER
+    subtype of PERSOON
 ---
 
-ET COUNTRY
+Att: Jersey_nummer
 
-ID: Att: Name
+### Speler in club
 
----
+De speler <u>12</u> zit in club <u>ajax</u>.
+De speler <u>1234132412</u> zit in <u>psv</u>.
 
-RT PERSON_born_in_COUNTRY tussen PLAYER en COUNTRY.
-
-### naam
-
-
-De speler <u>7</u> van <u>Tottemham Hotspur</u> heet <u>Son Heung-min</u>
-
-ET: PLAYER
-
+ET: SPELER
 MATCH
 
-ET:Club
-
+ET: CLUB
 MATCH
 
-ET:Player_Name
-
-ID: Att: Name
-
-#### Geboortedatum
-
-De speler 90 van Manchester United is geboren op 01/10/2001.
-
-De speler <u>7</u> van <u>Tottemham Hotspur</u> is geboren op <u>08/07/1992</u>.
-
----
-
-ET: PLAYER
-
-MATCH
-
-ET:Club
-
-MATCH
-
-Att: Birth_date
-
-#### Positie
-<!-- 
-De speler 90 van Manchester United is verdediger.
-
-De speler <u>91</u> van <u>Manchester United</u> is aanvaller.
-
----
-(type bepaling)
-ET: PLAYER
-
-MATCH
-
-Att: Position -->
+RT SPELER_in_CLUB tussen SPELER en CLUB
 
 ## Voetbalwedstrijd
 
-Een voetbalwedstrijd wordt gespeeld tijdens een competitie
-
-Een voetbalwedstrijd wordt tussen <u>FC Barcelona</u> en <u>FC Madrid</u> gespeeld op <u>19 april 2002</u> in de <u>speelronde 10</u>.
-
-### Schoten
-
-Tijdens de voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> heeft het uit team 5 goals geschoten.
+Er is een voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>Ajax</u> thuis en uit team <u>psv</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>keuken kampioen divisie</u>
+Er is een voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> geweest.
 
 ET:VOETBALWEDSTRIJD
 
@@ -249,6 +215,35 @@ ID: ET: MATCHDAY
 RT VOETBALWEDSTRIJD_SPEELDAG tussen VOETBALWEDSTRIJD(afhankelijk) en MATCHDAY
 RT VOETBALWEDSTRIJD_thuis_CLUB tussen VOETBALWEDSTRIJD(afhankelijk) en CLUB
 RT VOETBALWEDSTRIJD_uit_CLUB tussen VOETBALWDSTRIJD(afhankelijk) en CLUB
+
+#### Positie
+De speler 90 van Manchester United is verdediger.
+
+De speler <u>91</u> van <u>Manchester United</u> is aanvaller.
+
+Tijdens de voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> heeft de speler <u>21</u> de positie <u>middenvelder</U>
+---
+ET MIDDENVELDER
+    subtype van POSITIE
+                ID: ET VOETBALWEDSTRIJD + ET SPELER
+                        MATCH                MATCH
+
+### RESERVE
+
+Tijdens de voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> was de speler <u>1223</u> reserve.
+
+ET: VOETBALWEDSTRIJD
+MATCH
+
+ET: SPELER
+MATCH
+
+### Schoten
+
+Tijdens de voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> heeft het uit team 5 goals geschoten.
+
+ET:VOETBALWEDSTRIJD
+MATCH
 -----
 
 ATT: schoten_totaal_thuis
@@ -290,7 +285,7 @@ ID: ET: GOAL
 
 
 ### Balbezit_UIT
-Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie NK heeft de uit team 36 balbezit
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft de uit team 36 balbezit
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 32% balbezit.
 
 ET: VOETBALWEDSTRIJD
@@ -299,7 +294,7 @@ MATCH
 ATT: BALBEZIT_UIT
 
 ### Balbezit_thuis
-Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie NK heeft de thuis team 36 balbezit
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft de thuis team 36 balbezit
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het thuis team <u>68%</u> balbezit.
 
 ET: VOETBALWEDSTRIJD
@@ -309,7 +304,7 @@ ATT: BALBEZIT_THUIS
 
 ### aantal passes thuis
 
-Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie NK heeft het thuis team 874 passes gemaakt.
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft het thuis team 874 passes gemaakt.
 
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het thuis team <u>947</U> passes gemaakt.
 
@@ -320,7 +315,7 @@ ATT: passes
 
 ### aantal passes uit
 
-Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie NK heeft het uit team 434 passes gemaakt.
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft het uit team 434 passes gemaakt.
 
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team <u>823</U> passes gemaakt.
 
@@ -330,7 +325,7 @@ MATCH
 ATT: passes
 
 ### preciesie passes thuis
-Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie NK heeft het thuis team 65% passes precisie
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft het thuis team 65% passes precisie
 Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> heeft het thuis team <u>77%</u> passes precisie.
 
 ET: VOETBALWEDSTRIJD
@@ -339,7 +334,7 @@ MATCH
 ATT: PRECISIE_PASSES_THUIS
 
 ### preciesie passes thuis
-Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie NK heeft het uit team 35% passes precisie
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft het uit team 35% passes precisie
 Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> heeft het uit team <u>33%</u> passes precisie.
 
 ET: VOETBALWEDSTRIJD
@@ -349,7 +344,7 @@ ATT: PRECISIE_PASSES_UIT
 
 ### Overtredingen
 
-Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie NK heeft de speler 55 een speler getackeld in  de 12de minuut.
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft de speler 55 een speler getackeld in  de 12de minuut.
 
 Tijdens de voetbalwedstrijd op <u>4 maart 2020</u> tussen thuis team <u>FC Barcelona</u> en uit team <u>FC Madrid</u> in de speelronde <u>3 maart 2020</u> in het seizoen <u>19/20</u> in competitie <u>LaLiga</u> heeft de speler <u>Son Heung-min</u> een speler getackeld in  de <u>70ste</u> minuut.
 
