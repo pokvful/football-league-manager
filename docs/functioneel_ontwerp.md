@@ -14,25 +14,27 @@ Er bestaat een competitie <u>Champions League</u>.
 
 ET COMPETITIE
 
-ID: Att: NAME
+ID: Att Name
+
+Predicate: Er bestaat een competitie \<Name\>.
 
 ## Editie
 
-In seizoen 17/18 vond er een editie van de eredivisie plaats
+In seizoen 17/18 vond er een editie van de eredivisie plaats.
 
-In seizoen *<u>19/20</u> vond er een editie van de <u>WK</u>* plaats
+In seizoen *<u>19/20</u> vond er een editie van de <u>WK</u>* plaats.
 
 ---
 
 ET: SEASON
 
-ID: Att: Season_name
+ID: Att Season_name
 
 ---
 
 ET: *EDITION*
 
-ID: ET: SEASON + ET: COMPETITION
+ID: ET SEASON + ET COMPETITION
 
 MATCH MATCH
 
@@ -41,6 +43,8 @@ MATCH MATCH
 RT EDITION_of_COMPETITION tussen EDITION(afhankelijk) en COMPETITION.
 
 RT EDITION_in_SEASON tussen EDITION(afhankelijk) en SEASON.
+
+Predicate: In seizoen \<Season_name\> vond er een editie van de \<Name\> plaats.
 
 ### Clubs
 
@@ -52,7 +56,7 @@ De club <u>*Vitesse*</u> doet mee aan de competitie <u>Eredivisie in het seizoen
 
 ET *CLUB*
 
-ID: Att: Name
+ID: Att Name
 
 ---
 
@@ -64,6 +68,8 @@ MATCH
 
 RT CLUB_plays_in_EDITION tussen CLUB en EDITION.
 
+Predicate: \<Name\> doet mee aan de competitie \<Competion_name\>.
+
 ### Thuisstad
 
 De club Manchester United heeft als thuisstad Manchester.
@@ -74,17 +80,19 @@ De club <u>Vitesse</u> heeft als thuisstad <u>*Arnhem*</u>.
 
 ET CLUB
 
-Att: CLub_name
+Att: Club_name
 
 ---
 
 ET *CITY*
 
-ID: Att: City_name
+ID: Att City_name
 
 ---
 
 RT: CLUB_in_CITY tussen CLUB en CITY.
+
+Predicate: De club \<Club_name\> heeft als thuisstad \<City_name\>.
 
 ### Stadion
 
@@ -96,23 +104,27 @@ Het stadion <u>Gelredome</u> bevat <u>28.000</u> stoelen.
 
 ET: STADIUM
 
-ID: Att: Stadium_name
+ID: Att Stadium_name
 
 Att: Capacity
+
+Predicate: Het stadion \<Stadium_name\> bevat \<Capacity\> stoelen.
 
 ### personen
 
 De persoon 45 heeft als voornaam henk.
 
-De persoon <u>7</u> heeft als naam <u>Elmar</u>
+De persoon <u>7</u> heeft als naam <u>Elmar</u>.
 
 ---
 
 ET: PERSON
 
-ID: Att: Person_id
+ID: Att Person_id
 
 Att: First_name
+
+Predicate: De persoon \<Person_id\> heeft als naam \<First_name\>.
 
 ### persoonachternaam
 
@@ -125,6 +137,8 @@ ET: PERSON
 MATCH
 
 Att: Last_name
+
+Predicate: De persoon \<Person_id\> heeft als achternaam \<Last_name\>.
 
 ### persoon middelnaam
 
@@ -140,6 +154,8 @@ MATCH
 
 Att: Middle_name
 
+Predicate: De persoon \<Person_id\> heeft als tussenvoegsel \<Middle_name\>.
+
 ### GEBOORTEDATUM
 
 De persoon 11 is geboren op 11 februari 1996.
@@ -150,7 +166,9 @@ ET: PERSON
 
 MATCH
 
-ATT: Birth_date
+Att: Birth_date
+
+Predicate: De persoon \<Person_id\> is geboren op \<Birth_date\>.
 
 ### NATIONALITEIT
 
@@ -166,11 +184,13 @@ MATCH
 
 ET: *COUNTRY*
 
-ID: ATT: Country_name
+ID: Att Country_name
 
 ---
 
 RT PERSON_nationality_of_COUNTRY tussen PERSON en COUNTRY.
+
+Predicate: De persoon <u>122343</u> heeft een <u>*Zuid-Africa*</u> paspoort
 
 ### land van stad
 
@@ -194,6 +214,8 @@ MATCH
 
 RT CITY_located_in_COUNTRY tussen CITY en COUNTRY.
 
+Predicate: De stad \<City_name\> ligt in het land \<Country_name\>.
+
 ### Coach
 
 De coach van Manchester United is persoon 3.
@@ -215,6 +237,8 @@ MATCH
 ---
 
 RT COACH_of_CLUB tussen CLUB en COACH.
+
+Predicate: De coach van \<Club_name\> is persoon \<Person_id\>.
 
 ### Spelers
 
