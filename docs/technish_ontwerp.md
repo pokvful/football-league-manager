@@ -29,6 +29,111 @@
 
 - Data-analisten kunnen via de MongoDB shell data uitlezen van de staging area
 
+# Beschrijving Tabellen en Kolommen
+
+## Tabel: PERSON
+
+Deze tabel bevat alle informatie van personen in de database.
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
+| Person_id| Unieke persoonsnummer |
+| Country_name| Naam van nationaliteit|
+|First_name | Voornaam van persoon|
+|Last_name| Achternaam van persoon|
+|Middle_name| Tussenvoegsel van persoon|
+|Birth_date| Wanneer de persoon is geboren|
+
+## Tabel: REFEREE
+
+Deze tabel bevat alle personen die ook scheidsrechters zijn.
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
+|Person_id| Unieke persoonsnummer|
+
+## Tabel: COACH
+
+Deze tabel bevat alle personen die ook coaches zijn.
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
+|Person_id| Unieke persoonsnummer|
+|Club_name|Naam van de club waarin deze speler speelt|
+|Jersey|Rugnummer van deze speler|
+
+## Tabel: COUNTRY
+
+Deze tabel bevat alle landen.
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
+|Country_name| Naam van het desbetrefende land|
+
+## Tabel: CITY
+
+Deze tabel bevat alle steden.
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
+|Country_name|Het land waarin deze stad ligt|
+|City_name|De naam van deze stad|
+
+## Tabel: STADIUM
+
+Deze tabel bevat alle stadions
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
+|Stadium_name|Naam van dit stadion|
+|Capacity|Het max aantal personen die in dit stadion kunnen|
+
+## Tabel: PLAYER
+
+Deze tabel bevat alle personen die ook spelers zijn.
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
+|Person_id | Unieke persoonsnummer
+
+## Tabel: CLUB
+
+Deze tabel bevat alle clubs die wedstrijden kunnen spelen.
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
+|Club_name|Naam van deze club|
+|Stadium_name|Naam van het stadion van deze club|
+|Country_name|Land waarin deze club ligt|
+|City_name| Stad waarin deze club ligt|
+|Coach_person_id|het id van de (hoofd)coach van deze club|
+
+## Tabel: SEASON
+
+## Tabel: DOMESTIC_LEAGUE 
+
+## Tabel: EDITION
+
+## Tabel: ROUND
+
+## Tabel: CLUB_plays_in_EDITION
+
+## Tabel: MATCHDAY
+
+## Tabel: MATCH
+
+## Tabel: POSITION
+
+## Tabel: PLAYER_as_reserve_in_MATCH
+
+## Tabel: SUBSTITUTE
+
+## Tabel: CORNER
+
+## Tabel: FOUL
+
+## Tabel: SHOT
+
+## Tabel: GOAL
+
+## Tabel: PASS
+
+## Tabel: YELLOW_CARD
+
+## Tabel: RED_CARD
+
 # Ontwerkpeuzes
 
 ## MATCH id
