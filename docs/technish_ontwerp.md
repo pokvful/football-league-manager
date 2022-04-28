@@ -102,38 +102,91 @@ Deze tabel bevat alle clubs die wedstrijden kunnen spelen.
 
 ## Tabel: SEASON
 
+Voor uitleg zie FO
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
+
 ## Tabel: DOMESTIC_LEAGUE 
+
+Voor uitleg zie FO
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
 
 ## Tabel: EDITION
 
+Voor uitleg zie FO
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
 ## Tabel: ROUND
 
+Voor uitleg zie FO
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
 ## Tabel: CLUB_plays_in_EDITION
 
+Voor uitleg zie FO
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
 ## Tabel: MATCHDAY
 
+Voor uitleg zie FO
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
 ## Tabel: MATCH
 
+Voor uitleg zie FO
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
 ## Tabel: POSITION
 
+Voor uitleg zie FO
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
 ## Tabel: PLAYER_as_reserve_in_MATCH
 
+Voor uitleg zie FO
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
 ## Tabel: SUBSTITUTE
 
+Voor uitleg zie FO
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
 ## Tabel: CORNER
 
+Voor uitleg zie FO
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
 ## Tabel: FOUL
 
+Voor uitleg zie FO
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
 ## Tabel: SHOT
 
+Voor uitleg zie FO
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
 ## Tabel: GOAL
 
+Voor uitleg zie FO
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
 ## Tabel: PASS
 
+Voor uitleg zie FO
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
 ## Tabel: YELLOW_CARD
 
+Voor uitleg zie FO
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
 ## Tabel: RED_CARD
 
+Voor uitleg zie FO
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
 # Ontwerkpeuzes
 
 ## MATCH id
