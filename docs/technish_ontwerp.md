@@ -94,7 +94,7 @@ Deze tabel bevat alle personen die ook spelers zijn.
 Deze tabel bevat alle clubs die wedstrijden kunnen spelen.
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
-|Club_name|Naam van deze club|
+|Club_name|Unieke naam van deze club|
 |Stadium_name|Naam van het stadion van deze club|
 |Country_name|Land waarin deze club ligt|
 |City_name| Stad waarin deze club ligt|
@@ -105,38 +105,66 @@ Deze tabel bevat alle clubs die wedstrijden kunnen spelen.
 Voor uitleg zie FO
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
+|Season_name|Unieke naam van een bepaald speel seizoen|
 
 ## Tabel: DOMESTIC_LEAGUE 
 
 Voor uitleg zie FO
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
+|Competition_name|Unieke naam van deze competitie|
 
 ## Tabel: EDITION
 
 Voor uitleg zie FO
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
+|Season_name|Naam van het seizoen van deze editie|
+|Competition_name|Naam van de competitie die deze editie heeft|
+
 ## Tabel: ROUND
 
 Voor uitleg zie FO
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
+|Season_name|Naam van het seizoen waarin deze ronde wordt gespeeld|
+|Competition_name|Naam van de competitie waarin deze ronde wordt gespeeld|
+|Start_date|Startdatum van deze specifieke ronde|
+
 ## Tabel: CLUB_plays_in_EDITION
 
-Voor uitleg zie FO
+In deze tabel staat welke clubs participeren in een specifieke editie.
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
+|Season_name|Naam van het seizoen waarin een club speelt|
+|Competition_name|Naam van de competitie waarin een club speelt|
+|Club_name|Naam van de club die in een editie speelt|
 ## Tabel: MATCHDAY
 
 Voor uitleg zie FO
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
+|Season_name|Naam van het seizoen waarin deze speeldag wordt gespeeld|
+|Competition_name|Naam van de competitie waarin deze speeldag wordt gespeeld|
+|Start_date|Startdatum van de ronde waarin deze speeldag wordt gespeeld|
+|Match_day|Een unieke speeldag datum|
 ## Tabel: MATCH
 
 Voor uitleg zie FO
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
+|Match_id|Unieke gegenereerde id waarde van een wedstrijd|
+|Season_name|Naam van het seizoen waarin deze wedstrijd wordt gespeeld|
+|Competition_name|Naam van de competitie waarin deze competitie wordt gespeeld|
+|Start_date|Startdatum van de ronde waarin deze wedstrijd wordt gespeeld|
+|Match_day|Datum van de westrijd|
+|Home_club_name|Naam van de thuisclub die deze wedstrijd speelt|
+|Out_club_name|Naam van de uitclub die deze wedstrijd speelt|
+|Referee_person_id|Id verwijzing naar de scheids van deze wedstrijd|
+|Ball_possession_home|Hoeveel de thuisclub de bal in bezit heeft in procenten|
+|Ball_possession_out|Hoeveel de uitclub de bal in bezit heeft in procenten|
+|Spectators|Aantal toeschouwers die naar deze wedstrijd zijn geweest|
+
 ## Tabel: POSITION
 
 Voor uitleg zie FO
