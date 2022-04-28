@@ -81,7 +81,7 @@ NUTMEG wil voetbaldata gaan verkopen aan voetbalclubs. Hiervoor moet de database
 
 ## 3.2 Doelstelling
 
-Een database met informatie over voetbalcompetities (en eventueel knock-out tournaments), inclusief bijpassende API waarmee data opgevraagd kan worden door data analisten.
+De doelstelling van het bedrijf NUTMEG is om zo veel mogelijk data over verschillende sport branches te verzamelen om klanten te voorzien van analytische informatie. Ze willen dit project realiseren om een groter doelgroep te bereiken, zodat ze uiteindelijk ook meer omzet kunnen maken. NUTMEG zal hierdoor data-analisten bereiken die geïnteresseerd zijn in voetbaldata, waardoor ze ook steeds dichter bij het grote doel komen.
 
 ## 3.3 Opdracht
 
