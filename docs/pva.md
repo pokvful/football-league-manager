@@ -65,13 +65,13 @@ Bij elk van deze risico's zijn haalbare maatregelen ten hoeven van het voortzett
 
 # 2. Achtergrond van het project
 
-NUTMEG verzamelt sportdata en verkoopt deze vervolgens aan sportclubs. Ze hebben al klanten in sporten als atletiek en zwemmen, maar willen nu ook data gaan aanbieden voor voetbalclubs.
+Projectgroep A4 van de hogeschool Arnhem Nijmegen is in opdracht om een informatiesysteem te ontwikkelen en zijn verantwoordelijk voor het gehele project. Het team bestaat uit IT’ers die gespecialiseerd zijn in Data Modulering, Database Design en Database-implementatie. 
 
-Hiervoor moet een database opgesteld worden met relevante data over voetbalcompetities en eventueel knock-out tournaments. De database moet makkelijk uitbreidbaar zijn.
+Dit project wordt uitgevoerd voor het bedrijf NUTMEG met als opdrachtgever Michel Koolwaaij. NUTMEG is een organisatie die sportdata verzamelt en verkoopt aan sportclubs. Data-analisten binnen die sportclubs kunnen die data dan analyseren.
 
-De eindgebruikers van de database zijn data analisten die via een API data opvragen. Deze API moet ook opgesteld worden.
-
-Team A4 is ingeschakeld om deze opdracht uit te voeren.
+Dit project is een vervolg van eerdere projecten. Ze hebben klanten in verschillende sporten als atletiek en zwemmen, maar willen nu ook data gaan aanbieden voor voetbalclubs. Hiervoor moet een database opgesteld worden met belangrijke data over voetbalcompetities en eventueel knock-out toernooien.
+ 
+De belanghebbende partijen van het project zijn de klanten van NUTMEG, want ze krijgen hierdoor de mogelijkheid om data over de club te analyseren. Dit heeft positieve invloed op beide partijen, want NUTMEG kan hierdoor geld verdienen en klanten (data-analisten) kunnen hierdoor de club analyseren.
 
 # 3. Doelstelling, opdracht en op te leveren resultaten voor het bedrijf
 
