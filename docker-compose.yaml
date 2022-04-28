@@ -2,7 +2,7 @@ version: "3"
 
 services:
   db_mssql:
-    build: .
+    build: ./dockerFiles/mssql
     environment:
       ACCEPT_EULA: Y
       SA_PASSWORD: Football!
@@ -22,3 +22,9 @@ services:
       - ./dockerFiles/mongo:/docker-entrypoint-initdb.d
     ports:
       - ${DATABASE_PORT_MONGO:-27017}:27017
+
+  transporter:
+    build: ./transport
+    depends_on:
+      - db_mssql
+      - db_mongo

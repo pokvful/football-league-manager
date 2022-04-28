@@ -6,7 +6,7 @@ WORKDIR /data
 
 RUN apt update && apt install dos2unix -y
 
-COPY ./dockerFiles/mssql/entrypoint.sh ./
+COPY ./entrypoint.sh ./
 
 # Because windows is an amazing OS
 RUN dos2unix ./entrypoint.sh
