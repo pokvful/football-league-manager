@@ -19,6 +19,7 @@ def main():
 
 	cursor = mssql_connection.cursor()
 
+	# get all the tables and views in the database
 	cursor.execute("SELECT table_name FROM INFORMATION_SCHEMA.TABLES")
 	rows = cursor.fetchall()
 	table = []
@@ -31,16 +32,21 @@ def main():
 	for table in table:
 		result = ""
 
+		# get all the data in the table as json
 		cursor.execute("SELECT * FROM %s FOR JSON AUTO, INCLUDE_NULL_VALUES" % table)
 		rows = cursor.fetchall()
 
+		# the result is spread over multiple rows, so we need to loop over
+		# every row and concat them together. The following code does that
 		result = "".join([ row[0] for row in rows ])
 
+		# convert the json string to a python dictionary (object)
 		data[table] = json.loads(result)
 
 	for table in data:
 		print("Recreating \"%s\"" % table)
 
+		# insert all the data into mongo
 		mongo_connection.drop_collection(table)
 		mongo_connection.create_collection(table)
 		mongo_connection[table].insert_many( data[table] )
