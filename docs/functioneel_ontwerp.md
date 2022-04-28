@@ -190,7 +190,7 @@ ID: Att Country_name
 
 RT PERSON_nationality_of_COUNTRY tussen PERSON en COUNTRY.
 
-Predicate: De persoon <u>122343</u> heeft een <u>*Zuid-Africa*</u> paspoort
+Predicate: De persoon \<Person_id\> heeft een \<Country_name\> paspoort.
 
 ### land van stad
 
@@ -254,11 +254,13 @@ ET: PLAYER
 
 Att: Jersey
 
+Predicate: De speler \<Person_id\> heeft rugnummer \<Jersey\>.
+
 ### Speler in club
 
-De speler <u>12</u> zit in club <u>ajax</u>.
+De speler <u>12</u> zit in club <u>Ajax</u>.
 
-De speler <u>1234132412</u> zit in <u>*psv*</u>.
+De speler <u>1234132412</u> zit in <u>*PSV*</u>.
 
 ---
 
@@ -276,6 +278,8 @@ MATCH
 
 RT PLAYER_in_CLUB tussen PLAYER en CLUB.
 
+Predicate: De speler \<Person_id\> zit in \<Club_name\>.
+
 ## Voetbalwedstrijd
 
 Er is een voetbalwedstrijd op 5 januari 2020 tussen thuis team Ajax thuis en uit team psv uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie keuken kampioen divisie
@@ -286,7 +290,7 @@ Er is een voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barc
 ET: MATCH
 
 ID: ET: MATCHDAY
-        ID: ET: GAMEROUNDE + ATT: Match_datum
+        ID: ET: GAMEROUNDE + ATT: Match_day
                 MATCH
 
 + ET: CLUB
@@ -299,6 +303,8 @@ RT VOETBALWEDSTRIJD_SPEELDAG tussen VOETBALWEDSTRIJD(afhankelijk) en MATCHDAY.
 RT VOETBALWEDSTRIJD_thuis_CLUB tussen VOETBALWEDSTRIJD(afhankelijk) en CLUB.
 
 RT VOETBALWEDSTRIJD_uit_CLUB tussen VOETBALWDSTRIJD(afhankelijk) en CLUB.
+
+Predicate: Er is een voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> geweest.
 
 ### Positie
 
@@ -317,6 +323,8 @@ MATCH MATCH
 RT PLAYER_plays_on_POSITION tussen POSITION en PLAYER.
 
 RT POSITION_in_MATCH tussen POSITION en MATCH.
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<Speler_id\> de positie \<Position\>.
 
 ### RESERVE
 
@@ -338,6 +346,8 @@ MATCH
 
 RT PLAYER_as_reserve_in_MATCH tussen PLAYER en MATCH.
 
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was de speler \<Speler_id\> reserve.
+
 ### Schoten thuis
 
 Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> heeft het thuis team <u>5</u> goals gemaakt.
@@ -349,6 +359,8 @@ ET: MATCH
 MATCH
 
 Att: Shots_home
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het thuis team \<Shots_home\> goals gemaakt.
 
 ### Schoten uit
 
@@ -362,6 +374,8 @@ MATCH
 
 Att: Shots_out
 
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<Shots_out\> goals gemaakt.
+
 ### Schoten op doel thuis
 
 Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> heeft het thuis team <u>5</u> schoten op doel gemaakt.
@@ -374,6 +388,8 @@ MATCH
 
 Att: Shots_on_goal_home
 
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het thuis team \<Shots_on_goal_home\> schoten op doel gemaakt.
+
 ### Schoten op doel uit
 
 Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> heeft het uit team <u>5</u> schoten op doel gemaakt.
@@ -385,6 +401,8 @@ ET: MATCH
 MATCH
 
 Att: Shots_on_goal_out
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<Shots_on_goal_out\> schoten op doel gemaakt.
 
 ### Balbezit uit
 
@@ -400,6 +418,8 @@ MATCH
 
 Att: Ball_possession_out
 
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<Ball_possession_out\> balbezit.
+
 ### Balbezit thuis
 
 Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft de thuis team 36 balbezit
@@ -413,6 +433,8 @@ ET: MATCH
 MATCH
 
 ATT: Ball_possession_home
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het thuis team \<Ball_possession_home\> balbezit.
 
 ### Aantal passes thuis
 
@@ -428,6 +450,8 @@ MATCH
 
 ATT: Pass_count_home
 
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het thuis team \<Pass_count_home\> passes gemaakt.
+
 ### aantal passes uit
 
 Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft het uit team 434 passes gemaakt.
@@ -440,7 +464,9 @@ ET: MATCH
 
 MATCH
 
-ATT: Pass_count_home
+ATT: Pass_count_out
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<Pass_count_out\> passes gemaakt.
 
 ### Precisie passes thuis
 
@@ -456,7 +482,9 @@ MATCH
 
 ATT: Pass_accuracy_home
 
-### preciesie passes thuis
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het thuis team \<Pass_accuracy_home\> passes precisie.
+
+### Preciesie passes uit
 Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft het uit team 35% passes precisie
 
 Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft het uit team <u>33%</u> passes precisie.
@@ -467,7 +495,9 @@ ET: MATCH
 
 MATCH
 
-ATT: Pass_accuracy_home
+ATT: Pass_accuracy_out
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<Pass_accuracy_out\> passes precisie.
 
 ### Overtredingen
 
@@ -484,9 +514,9 @@ MATCH
 ET:Player_Name
 MATCH
 
-ATT: FALSE_UIT
-
 ATT: Time
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<Person_id\> een speler getackeld in de \<Time\> minuut.
 
 ### Hoekschoppen_UIT
 
@@ -502,6 +532,8 @@ MATCH
 
 Att: Corners_out
 
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<Corners_out\> hoekschoppen gemaakt.
+
 ### Hoekschoppen_THUIS
 
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team ajax en uit team PSV in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de thuis team 23 hoekschoppen gemaakt.
@@ -516,13 +548,15 @@ MATCH
 
 Att: Corners_home
 
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de thuis team \<Corners_home\> hoekschoppen gemaakt.
+
 ## Events
 
 ### Goals
 
 Tijdens de voetbalwedstrijd op 5 januari 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 januari 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 5 goals gescored.
 
-Tijdens de voetbalwedstrijd op <u>*5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga*</u> heeft speler <u>**55**</u> gescoort in de <u>48ste</u> minuut.
+Tijdens de voetbalwedstrijd op <u>*5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga*</u> heeft speler <u>**55**</u> gescoord in de <u>48ste</u> minuut.
 
 ---
 
@@ -545,6 +579,8 @@ ID: ET: *MATCH* + ET: **PLAYER** + Att: Time
 ---
 
 RT GOAL_scored_by_PERSON tussen GOAL en PERSON.
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft speler \<Person_id\> gescoord in de \<Time\> minuut.
 
 ### Gele kaarten
 
@@ -576,6 +612,8 @@ MATCH
 
 RT YELLOW_CARD_for_PERSON tussen YELLOW_CARD en PERSON.
 
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<Person_id\> gele kaart gekregen in \<Time\> minuut.
+
 ### Rode kaarten
 
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 1 rode kaart gekregen in de 70ste minuut.
@@ -603,6 +641,8 @@ ID: ET: *MATCH* + ET: **PLAYER** + Att: Time
 ---
 
 RT RED_CARD_for_PERSON tussen RED_CARD en PERSON.
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<Person_id\> rode kaart gekregen in \<Time\> minuut.
 
 ### Wissels
 
@@ -639,6 +679,8 @@ ID: ET: *MATCH* + ET: **PLAYER** + ET: ***PLAYER*** + Att: Time
 RT PERSON_out_SUBSTITUTE tussen PERSON en SUBSTITUTE.
 RT PERSON_in_SUBSTITUTE tussen PERSON en SUBSTITUTE.
 
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> werd de speler \<Person_id\> ingewisseld voor de speler \<Person_id\> in de \<Time\> minuut.
+
 #### Scheidsrechter
 
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga was Bas Neijnhuis de scheidsrechter.
@@ -659,6 +701,8 @@ ET: REFEREE
 
 RT REFEREE_enforcing_MATCH tussen REFEREE en MATCH.
 
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was \<Person_id\> de scheidsrechter.
+
 ### Aantal toeschouwers
 
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga was het aantal toeschouwers 40000.
@@ -672,3 +716,5 @@ ET: MATCH
 MATCH
 
 Att: Spectator_count
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was het aantal toeschouwers \<Spectator_count\>.
