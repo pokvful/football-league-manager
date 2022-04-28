@@ -82,3 +82,6 @@ fabric.properties
 /workspace.xml
 
 .env
+
+*.lock
+*.bak
