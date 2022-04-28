@@ -39,3 +39,26 @@ Om een persoon van een daadwerkelijk van een unieke identifier te voorzien moete
 
 ## 0..22 Position
 Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echter worden wedstrijden als vastgesteld en aangemaakt ver voordat de opstelling bekend zijn. Hierom hebben ervoor gekozen het ook mogelijk te 0 tot 22 spelers op te stellen. Met een trigger wordt gecheckt of er wel 22 spelers zijn opgesteld voordat de wedstrijd daadwerkelijk start.
+
+# Toelichting Domeinen
+
+|Domein				|Datatype		|Toelichting									|
+|-------------------|---------------|-----------------------------------------------|
+|PERSON_ID			|bigint			|Auto gegenereerd ID	|
+|COUNTRY_NAME		|varchar()		||
+|NAME				|varchar(128)	||
+|DATE				|Date			||
+|CLUB_NAME			|varchar(128)	||
+|CITY_NAME			|varchar(128)	||
+|COUNTRY_NAME		|varchar(128)	||
+|STADIUM_NAME		|varchar(60)	||
+|COMPETITON_NAME	|varchar(128)	||
+|CAPACITY			|bigint			||
+|PERCENTAGE			|numeric(5,2)	||
+|COUNT				|bigint			||
+|BOOLEAN			|bit			||
+|EVENTY_TYPE		|varchar(128)	||
+|MINUTE IN MATCH	|numeric(6,3)	||
+|JERSEY_NUMBER		|numeric(2,0)	||
+|POSITION_TYPE		|varchar(128)	|(Aanvaller, Middenvelder, Verdediger, Keeper)	|
+|SEASON_NAME		|char(5)		|Altijd twee getallen met een slash				|
