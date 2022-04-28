@@ -1008,3 +1008,12 @@ insert into MOCK_DATA (id, first_name, last_name, email, gender, ip_address, a_b
 insert into MOCK_DATA (id, first_name, last_name, email, gender, ip_address, a_big_number) values (998, 'Genia', 'Fancourt', 'gfancourtrp@java.com', 'Female', '129.134.137.228', 910);
 insert into MOCK_DATA (id, first_name, last_name, email, gender, ip_address, a_big_number) values (999, 'Helsa', 'Spellicy', 'hspellicyrq@virginia.edu', 'Female', '209.186.108.178', 579);
 insert into MOCK_DATA (id, first_name, last_name, email, gender, ip_address, a_big_number) values (1000, 'Gertrude', 'Heaford', 'gheafordrr@tiny.cc', 'Genderfluid', '106.159.8.94', 134);
+GO
+
+create view VW_TestView
+AS (
+	SELECT *
+		FROM MOCK_DATA
+		WHERE a_big_number >= 500
+);
+GO
