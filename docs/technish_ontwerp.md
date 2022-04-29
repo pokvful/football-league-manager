@@ -42,3 +42,31 @@ Om een persoon van een daadwerkelijk van een unieke identifier te voorzien moete
 ## 0..22 Position
 
 Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echter worden wedstrijden als vastgesteld en aangemaakt ver voordat de opstelling bekend zijn. Hierom hebben ervoor gekozen het ook mogelijk te 0 tot 22 spelers op te stellen. Met een trigger wordt gecheckt of er wel 22 spelers zijn opgesteld voordat de wedstrijd daadwerkelijk start.
+
+# Integrity rules
+
+## IR1 komt overeen met C1 en BR12
+
+- Omschrijving: Er zijn maximaal 22 spelers aan een match verbonden (11 per club);
+- Implementatie: Een trigger TRG_CHECK_PLAYER_COUNT op de tabel POSITION.
+
+## IR2 komt overeen met C2 en BR18
+
+<!-- TODO: Hoe doen we dit wanneer er b.v. een nieuwe club wordt aangemaakt, want dan beginnen ze met < 11 spelers... -->
+- Omschrijving: Er zijn minimaal 11 spelers aan een club verbonden;
+- Implementatie: Een trigger TRG_MINIMUM_PLAYERS_IN_CLUB op de tabel PLAYER.
+
+## IR3 komt overeen met C3 en BRBR19
+
+- Omschrijving: Een club heeft altijd percies 1 coach;
+- Implementatie: Een trigger TRG_ONE_COACH_PER_CLUB op de tabel COACH.
+
+## IR4 komt overeen met C4 en BR16
+
+- Omschrijving: Er zijn maximaal 52 speelrondes per editie van een competitie;
+- Implementatie: Een trigger TRG_CHECK_MAXIMUM_ROUNDS_OF_EDITION op de tabel ROUND.
+
+## IR5 komt overeen met C5 en BR17
+
+- Omschrijving: Een rugnummer van een speler moet hoger zijn dan 0 (mag niet 0 zijn) en mag niet hoger zijn dan 99 (mag wel 99 zijn);
+- Implementatie: Een check-constraint CHK_VALID_JERSEY op de tabel PLAYER.
