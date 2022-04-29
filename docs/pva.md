@@ -139,7 +139,7 @@ Tijdens het project is de proces begeleider twee keer per week beschikbaar voor 
 In dit hoofdstuk worden de randvoorwaarden beschreven, hierin staat wat er geregeld moet worden om het project mogelijk te maken.
 
 - De HAN levert beschikbare ruimtes met stroom en internet gedurende het project.
-- De HAN voorziet toegang tot Jira en BitBucket gedurende kantooruren.
+- De HAN voorziet toegang tot Jira en BitBucket gedurende kantooruren. (Jira en BitBucket behoren tot de toolstack).
 - De opdrachtgever, procesbegeleider en professional skills docent zijn minimaal één keer per week beschikbaar op locatie gedurende het project.
 - ISE ritme dicteert (denk hierbij bijvoorbeeld aan inleverdeadlines).
 - Opdrachten die door de HAN zijn opgesteld krijgen prioriteit over opdrachten van NUTMEG.
