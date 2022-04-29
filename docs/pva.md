@@ -132,8 +132,6 @@ De opdrachtgever kan tijdens de transition fase geen nieuwe requirements of func
 
 Het laatste moment waarop requirements gewijzigd kunnen worden is tijdens de start van de laatste iteratie binnen de constructie fase.
 
-Tijdens het project is de proces begeleider twee keer per week beschikbaar voor een meeting en is hij contacteerbaar via teams.
-
 # 5. Randvoorwaarden
 
 In dit hoofdstuk worden de randvoorwaarden beschreven, hierin staat wat er geregeld moet worden om het project mogelijk te maken.
@@ -183,10 +181,12 @@ Tevens moet het team ook persoonlijke ontwikkeling gedurende het project bijhoud
 
 ## 8.1 Begeleiders
 
+Tijdens het project is de procesbegeleider twee keer per week beschikbaar voor een meeting en is hij contacteerbaar via teams.
+
 | Persoon           | Rol               | Contact                                               | Beschikbaarheid                  |
 |-------------------|-------------------|-------------------------------------------------------|----------------------------------|
-| Nils Bijleveld    | Procesbegeleider  | [nils.bijleveld@han.nl](mailto:nils.bijleveld@han.nl) | Fysiek: Do                       |
-| Chris Scholten    | Projectbegeleider | [chris.scholten@han.nl](mailto:chris.scholten@han.nl) | Fysiek: Di/Do Digitaal: Ma/Wo/Vr |
+| Nils Bijleveld    | Professional Skills Docent  | [nils.bijleveld@han.nl](mailto:nils.bijleveld@han.nl) | Fysiek: Do                       |
+| Chris Scholten    | Procesbegeleider | [chris.scholten@han.nl](mailto:chris.scholten@han.nl) | Fysiek: Di/Do Digitaal: Ma/Wo/Vr |
 
 ## 8.2 Opdrachtgever
 
