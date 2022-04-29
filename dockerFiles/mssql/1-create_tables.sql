@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     29/04/2022 11:05:11                          */
+/* Created on:     29/04/2022 11:41:35                          */
 /*==============================================================*/
 
 
@@ -836,10 +836,6 @@ if exists(select 1 from systypes where name='COUNTRY_NAME')
    drop type COUNTRY_NAME
 go
 
-if exists(select 1 from systypes where name='DATE')
-   drop type DATE
-go
-
 if exists(select 1 from systypes where name='EVENT_TYPE')
    drop type EVENT_TYPE
 go
@@ -884,8 +880,12 @@ if exists(select 1 from systypes where name='STADIUM_NAME')
    drop type STADIUM_NAME
 go
 
-if exists(select 1 from systypes where name='TIME')
-   drop type TIME
+if exists(select 1 from systypes where name='_DATE_')
+   drop type _DATE_
+go
+
+if exists(select 1 from systypes where name='_TIME_')
+   drop type _TIME_
 go
 
 /*==============================================================*/
@@ -935,13 +935,6 @@ go
 /*==============================================================*/
 create type COUNTRY_NAME
    from varchar(128)
-go
-
-/*==============================================================*/
-/* Domain: DATE                                                 */
-/*==============================================================*/
-create type DATE
-   from date
 go
 
 /*==============================================================*/
@@ -1022,9 +1015,16 @@ create type STADIUM_NAME
 go
 
 /*==============================================================*/
-/* Domain: TIME                                                 */
+/* Domain: _DATE_                                               */
 /*==============================================================*/
-create type TIME
+create type _DATE_
+   from date
+go
+
+/*==============================================================*/
+/* Domain: _TIME_                                               */
+/*==============================================================*/
+create type _TIME_
    from time
 go
 
@@ -1281,8 +1281,8 @@ create table MATCH (
    MATCH_ID             G_IDENTITY           identity,
    SEASON_NAME          SEASON_NAME          not null,
    COMPETITION_NAME     COMPETITION_NAME     not null,
-   START_DATE           DATE                 not null,
-   MATCH_DAY            DATE                 not null,
+   START_DATE           _DATE_               not null,
+   MATCH_DAY            _DATE_               not null,
    HOME_CLUB_NAME       CLUB_NAME            not null,
    OUT_CLUB_NAME        CLUB_NAME            not null,
    STADIUM_NAME         STADIUM_NAME         not null,
@@ -1354,8 +1354,8 @@ go
 create table MATCHDAY (
    SEASON_NAME          SEASON_NAME          not null,
    COMPETITION_NAME     COMPETITION_NAME     not null,
-   START_DATE           DATE                 not null,
-   MATCH_DAY            DATE                 not null,
+   START_DATE           _DATE_               not null,
+   MATCH_DAY            _DATE_               not null,
    constraint PK_MATCHDAY primary key (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY)
 )
 go
@@ -1413,7 +1413,7 @@ create table PERSON (
    FIRST_NAME           NAME                 not null,
    LAST_NAME            NAME                 not null,
    MIDDLE_NAME          NAME                 null,
-   BIRTH_DATE           DATE                 not null,
+   BIRTH_DATE           _DATE_               not null,
    constraint PK_PERSON primary key (PERSON_ID)
 )
 go
@@ -1556,7 +1556,7 @@ go
 create table ROUND (
    SEASON_NAME          SEASON_NAME          not null,
    COMPETITION_NAME     COMPETITION_NAME     not null,
-   START_DATE           DATE                 not null,
+   START_DATE           _DATE_               not null,
    constraint PK_ROUND primary key (SEASON_NAME, COMPETITION_NAME, START_DATE)
 )
 go
@@ -1801,13 +1801,11 @@ go
 alter table MATCH
    add constraint FK_MATCH_MATCH_IN__STADIUM foreign key (STADIUM_NAME)
       references STADIUM (STADIUM_NAME)
-         on update cascade
 go
 
 alter table MATCH
    add constraint FK_MATCH_MATCH_OUT_CLUB foreign key (OUT_CLUB_NAME)
       references CLUB (CLUB_NAME)
-         on update cascade
 go
 
 alter table MATCH
@@ -1837,7 +1835,6 @@ go
 alter table PERSON
    add constraint FK_PERSON_PERSON_NA_COUNTRY foreign key (COUNTRY_NAME)
       references COUNTRY (COUNTRY_NAME)
-         on update cascade
 go
 
 alter table PLAYER
@@ -1855,7 +1852,6 @@ go
 alter table PLAYER_AS_RESERVE_IN_MATCH
    add constraint FK_PLAYER_A_PLAYER_AS_PLAYER foreign key (PLAYER_PERSON_ID)
       references PLAYER (PERSON_ID)
-         on update cascade
 go
 
 alter table PLAYER_AS_RESERVE_IN_MATCH
@@ -1873,7 +1869,6 @@ go
 alter table POSITION
    add constraint FK_POSITION_POSITIONS_MATCH foreign key (MATCH_ID)
       references MATCH (MATCH_ID)
-         on update cascade
 go
 
 alter table RED_CARD
@@ -1891,7 +1886,6 @@ go
 alter table REFEREE
    add constraint FK_REFEREE_IS_A_PERS_PERSON foreign key (PERSON_ID)
       references PERSON (PERSON_ID)
-         on update cascade
 go
 
 alter table ROUND
@@ -1921,13 +1915,11 @@ go
 alter table SUBSTITUTE
    add constraint FK_SUBSTITU_PERSON_OUT_PERSON foreign key (OUT_PERSON_ID)
       references PERSON (PERSON_ID)
-         on update cascade
 go
 
 alter table SUBSTITUTE
    add constraint FK_SUBSTITU_PERSON_IN_PERSON foreign key (IN_PERSON_ID)
       references PERSON (PERSON_ID)
-         on update cascade
 go
 
 alter table YELLOW_CARD
