@@ -819,28 +819,29 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 # Business Rules
 
-- BR1 Van een lopende competitie mag alleen de selectie clubs en de speeldatum van een wedstrijd worden aangepast.
-- BR2 Een thuis club mag maximaal een keer tegen een uit club spelen binnen een normaal competitie seizoen.
-- BR3 De startdatum van een ronde moet in het seizoen liggen.
-- BR4 De speeldag moet na de gekoppelde startdatum van de speelronde liggen.
-- BR5 De startdatum van een speeldag moet voor de startdatum van een opvolgende ronde bestaan.
-- BR6 Een speler die op het veld staat kan een keeper, verdediger, aanvaller of middenvelder zijn.
-- BR7 Een thuis club mag maximaal een keer tegen een uit club spelen binnen een fase van een knockout competitie.
-- BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een van de spelende clubs.
-- BR9 Clubs mogen alleen een match spelen als ze meedoen aan de editie.
-- BR10 Gele en Rode kaarten mogen alleen worden gegeven aan Spelers en Coaches.
-- BR11 Voor alleen spelende spelers wordt opgeslagen of ze hebben geschoten, pases gemaakt, gewisseld, overtredingen, corners, gescored in een voetbalwedstrijd.
-- BR12 Er moeten 22 spelers op het veld ingedeeld zijn bij een wedstrijd.
-- BR13 Bij welke club een persoon coacht wordt alleen opgeslagen voor coaches.
-- BR14 Bij welke wedstrijden een persoon scheidst wordt alleen opgeslagen voor scheidsrechters.
-- BR15 Of een persoon in de reserve staat bij een wedstrijd wordt alleen opgeslagen voor spelers.
+- BR1 Van een lopende competitie mag alleen de selectie clubs en de speeldatum van een wedstrijd worden aangepast;
+- BR2 Een thuis club mag maximaal een keer tegen een uit club spelen binnen een normaal competitie seizoen;
+- BR3 De startdatum van een ronde moet in het seizoen liggen;
+- BR4 De speeldag moet na de gekoppelde startdatum van de speelronde liggen;
+- BR5 De startdatum van een speeldag moet voor de startdatum van een opvolgende ronde bestaan, maar hetzelfde of na de startdatum van de gekoppelde ronde;
+- BR6 Een speler die op het veld staat kan een keeper, verdediger, aanvaller of middenvelder zijn;
+- BR7 Een thuis club mag maximaal een keer tegen een uit club spelen binnen een fase van een knockout competitie;
+- BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een van de spelende clubs;
+- BR9 Clubs mogen alleen een match spelen als ze meedoen aan de editie;
+- BR10 Gele en Rode kaarten mogen alleen worden gegeven aan Spelers en Coaches;
+- BR11 Voor alleen spelende spelers wordt opgeslagen of ze hebben geschoten, pases gemaakt, gewisseld, overtredingen, corners, gescored in een voetbalwedstrijd;
+- BR12 Er moeten 22 spelers op het veld ingedeeld zijn bij een wedstrijd;
+- BR13 Bij welke club een persoon coacht wordt alleen opgeslagen voor coaches;
+- BR14 Bij welke wedstrijden een persoon scheidst wordt alleen opgeslagen voor scheidsrechters;
+- BR15 Of een persoon in de reserve staat bij een wedstrijd wordt alleen opgeslagen voor spelers;
 - BR16 Maximaal 52 speelrondes per editie van een competitie;
-- BR17 Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1.
-- BR18 Minimaal 11 spelers per club.
-- BR19 Minimaal en maximaal 1 coach per club.
-- BR20 Een speler mag niet jonger zijn dan 10 jaar.
-- BR21 Een speler kan niet in een competitie spelen voor zijn 10 verjaardag.
-- BR22 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion.
+- BR17 Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1;
+- BR18 Minimaal 11 spelers per club;
+- BR19 Minimaal en maximaal 1 coach per club;
+- BR20 Een speler mag niet jonger zijn dan 10 jaar;
+<!-- dubbelop met die hierboven? (als deze wordt verwijdert, verander dan ook de getallen bij de IR's) -->
+- BR21 Een speler kan niet in een competitie spelen voor zijn 10 verjaardag;
+- BR22 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
 - BR23 Hoeveelste minuut mag niet negatief zijn.
 
 # Functionele requirements.
@@ -907,7 +908,16 @@ PI: Time + club_name + club_name + match_day + start_date + end_date + competiti
 - C2 Minimaal 11 spelers per club;
 - C3 Minimaal en maximaal 1 coach per club;
 - C4 Maximaal 52 speelrondes per editie van een competitie;
-- C5 Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1.
+- C5 Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1;
+- C6 De startdatum van een speelronde ligt binnen de start- en einddatum van het bijbehorende seizoen; <!-- TODO: SEASON heeft geen start datum -->
+- C7 De startdatum van een speeldag moet voor de startdatum van een opvolgende speelronde zijn, maar hetzelfde of na de startdatum van de gekoppelde speelronde;
+- C8 Een speler in een wedstrijd moet op dat moment lid zijn van de thuis- of uitspelende club;
+- C9 Een club mag alleen meedoen aan een wedstrijd als ze ook aan de bijbehorende editie;
+- C10 Een gele of rode kaart mag alleen aan een speler of een coach gegeven worden;
+- C11 Alleen voor spelende spelers in een wedstrijd worden het aantal schoten, het aantal passes, de wissels, de overtredingen, de corners en of de persoon heeft gescoord bijgehouden;
+- C12 Een speler mag niet jonger zijn dan 10 jaar oud;
+- C13 Het aantal toeschouwers mag niet groter zijn dan de capaciteit van het stadion waar de wedstrijd wordt gehouden;
+- C14 De minuut in een wedstrijd mag niet negatief zijn.
 
 # Ontwerp keuzes
 
