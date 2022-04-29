@@ -56,6 +56,14 @@ Deze tabel bevat alle personen die ook coaches zijn.
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Person_id| Unieke persoonsnummer|
+|Club_name|De naam van de club waar deze coach werkt|
+
+## Tabel: PLAYER
+
+Deze tabel bevat alle personen die ook spelers zijn.
+|*Kolom*|*Omschrijving*|
+|-------|--------------|
+|Person_id | Unieke persoonsnummer|
 |Club_name|Naam van de club waarin deze speler speelt|
 |Jersey|Rugnummer van deze speler|
 
@@ -82,13 +90,6 @@ Deze tabel bevat alle stadions
 |Stadium_name|Naam van dit stadion|
 |Capacity|Het max aantal personen die in dit stadion kunnen|
 
-## Tabel: PLAYER
-
-Deze tabel bevat alle personen die ook spelers zijn.
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Person_id | Unieke persoonsnummer
-
 ## Tabel: CLUB
 
 Deze tabel bevat alle clubs die wedstrijden kunnen spelen.
@@ -98,7 +99,6 @@ Deze tabel bevat alle clubs die wedstrijden kunnen spelen.
 |Stadium_name|Naam van het stadion van deze club|
 |Country_name|Land waarin deze club ligt|
 |City_name| Stad waarin deze club ligt|
-|Coach_person_id|het id van de (hoofd)coach van deze club|
 
 ## Tabel: SEASON
 
@@ -139,6 +139,7 @@ In deze tabel staat welke clubs participeren in een specifieke editie.
 |Season_name|Naam van het seizoen waarin een club speelt|
 |Competition_name|Naam van de competitie waarin een club speelt|
 |Club_name|Naam van de club die in een editie speelt|
+
 ## Tabel: MATCHDAY
 
 Voor uitleg zie FO
@@ -148,6 +149,7 @@ Voor uitleg zie FO
 |Competition_name|Naam van de competitie waarin deze speeldag wordt gespeeld|
 |Start_date|Startdatum van de ronde waarin deze speeldag wordt gespeeld|
 |Match_day|Een unieke speeldag datum|
+
 ## Tabel: MATCH
 
 Voor uitleg zie FO
@@ -173,6 +175,7 @@ Voor uitleg zie FO
 |Player_person_id|Unieke id van een persoon dat speler is|
 |Match_id|Unieke id van de wedstrijd|
 |Position_type|Geeft aan op welke positie een speler staat op het veld bij de wedstrijd (aanvaller, verdediger etc.)|
+
 ## Tabel: PLAYER_as_reserve_in_MATCH
 
 In dit tabel staan alle spelers die in de reserve staan bij een bepaalde wedstrijd.
@@ -199,6 +202,7 @@ Voor uitleg zie FO
 |Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
 |Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
 |Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
+
 ## Tabel: FOUL
 
 Voor uitleg zie FO
@@ -207,6 +211,7 @@ Voor uitleg zie FO
 |Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
 |Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
 |Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
+
 ## Tabel: SHOT
 
 Voor uitleg zie FO
@@ -216,6 +221,7 @@ Voor uitleg zie FO
 |Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
 |Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
 |On_goal|Hiermee wordt aangegeven of het schot naar het doel is geschoten|
+
 ## Tabel: GOAL
 
 Voor uitleg zie FO
@@ -224,6 +230,7 @@ Voor uitleg zie FO
 |Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
 |Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
 |Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
+
 ## Tabel: PASS
 
 Voor uitleg zie FO
@@ -233,6 +240,7 @@ Voor uitleg zie FO
 |Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
 |Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
 |Succes|Hiermee wordt aangegeven dat de paas is aangekomen|
+
 ## Tabel: YELLOW_CARD
 
 Voor uitleg zie FO
@@ -241,6 +249,7 @@ Voor uitleg zie FO
 |Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
 |Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
 |Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
+
 ## Tabel: RED_CARD
 
 Voor uitleg zie FO
@@ -249,6 +258,7 @@ Voor uitleg zie FO
 |Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
 |Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
 |Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
+
 # Ontwerkpeuzes
 
 ## MATCH id
