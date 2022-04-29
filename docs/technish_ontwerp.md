@@ -39,3 +39,21 @@ Om een persoon van een daadwerkelijk van een unieke identifier te voorzien moete
 
 ## 0..22 Position
 Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echter worden wedstrijden als vastgesteld en aangemaakt ver voordat de opstelling bekend zijn. Hierom hebben ervoor gekozen het ook mogelijk te 0 tot 22 spelers op te stellen. Met een trigger wordt gecheckt of er wel 22 spelers zijn opgesteld voordat de wedstrijd daadwerkelijk start.
+
+# Technische realisatie interface
+
+Voor het omzetten van data in MSSQL Server naar MongoDB wordt gebruik gemaakt van een Python script.
+
+Hieronder staat toegelicht hoe dit script in elkaar zit:
+
+Het script begint met een timer van 15 seconden, de reden hiervoor is omdat MSSQL en MongoDB opgestart moeten zijn voordat ermee verbonden kan worden. Ook moet MSSQL een (groot) aantal create- en insert scripts uitvoeren, waar ook op gewacht moet worden.
+
+Wanneer de verbindingen met de databases zijn gemaakt, wordt aan MSSQL opgevraagt welke tabellen en views er in de database staan. Vervolgens wordt alle data als JSON uit deze tabellen en views getrokken en wordt dit opgeslagen.
+
+Zodra dit is gebeurd, wordt er over alle opgehaalde tabellen en views heen geloopt en worden deze als collections in MongoDB geplaatst.
+
+## Input
+
+## Output
+
+TODO: Hier mooie plaatjes toevoegen
