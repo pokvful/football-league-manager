@@ -42,23 +42,22 @@ Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echt
 
 # Toelichting Domeinen
 
-|Domein				|Datatype		|Toelichting									|
-|-------------------|---------------|-----------------------------------------------|
-|PERSON_ID			|bigint			|Auto gegenereerd ID	|
-|COUNTRY_NAME		|varchar()		||
-|NAME				|varchar(128)	||
-|DATE				|Date			||
-|CLUB_NAME			|varchar(128)	||
-|CITY_NAME			|varchar(128)	||
-|COUNTRY_NAME		|varchar(128)	||
-|STADIUM_NAME		|varchar(60)	||
-|COMPETITON_NAME	|varchar(128)	||
-|CAPACITY			|bigint			||
-|PERCENTAGE			|numeric(5,2)	||
-|COUNT				|bigint			||
-|BOOLEAN			|bit			||
-|EVENTY_TYPE		|varchar(128)	||
-|MINUTE IN MATCH	|numeric(6,3)	||
-|JERSEY_NUMBER		|numeric(2,0)	||
-|POSITION_TYPE		|varchar(128)	|(Aanvaller, Middenvelder, Verdediger, Keeper)	|
-|SEASON_NAME		|char(5)		|Altijd twee getallen met een slash				|
+|Domein				|Datatype		|Toelichting															|
+|-------------------|---------------|-----------------------------------------------------------------------|
+|PERSON_ID			|bigint			|Automatisch gegenereerd ID												|
+|NAME				|varchar(128)	|																		|
+|DATE				|Date			|																		|
+|CLUB_NAME			|varchar(128)	|																		|
+|CITY_NAME			|varchar(128)	|																		|
+|COUNTRY_NAME		|varchar(128)	|																		|
+|STADIUM_NAME		|varchar(60)	|																		|
+|COMPETITON_NAME	|varchar(128)	|																		|
+|CAPACITY			|bigint			|																		|
+|PERCENTAGE			|numeric(5,2)	|(0-100)																|
+|COUNT				|bigint			|																		|
+|BOOLEAN			|bit			|																		|
+|EVENTY_TYPE		|varchar(128)	|(Red card, Yellow card, Pass, Goal, Shot, Foul, Corner, Substitute)	|
+|MINUTE IN MATCH	|numeric(6,3)	|<!--- Je zou hier 1-90 +extra time ofzo kunnen doen--->				|
+|JERSEY_NUMBER		|numeric(2,0)	|(1-99)                                                    				|
+|POSITION_TYPE		|varchar(128)	|(Aanvaller, Middenvelder, Verdediger, Keeper)							|
+|SEASON_NAME		|char(5)		|Altijd twee getallen met een slash. (bijv.22/21)       				|
