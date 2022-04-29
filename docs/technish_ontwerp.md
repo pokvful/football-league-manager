@@ -170,51 +170,85 @@ Voor uitleg zie FO
 Voor uitleg zie FO
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
+|Player_person_id|Unieke id van een persoon dat speler is|
+|Match_id|Unieke id van de wedstrijd|
+|Position_type|Geeft aan op welke positie een speler staat op het veld bij de wedstrijd (aanvaller, verdediger etc.)|
 ## Tabel: PLAYER_as_reserve_in_MATCH
 
-Voor uitleg zie FO
+In dit tabel staan alle spelers die in de reserve staan bij een bepaalde wedstrijd.
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
+|Player_person_id|Unieke id van een persoon dat speler is|
+|Match_id|Unieke id van de wedstrijd|
+
 ## Tabel: SUBSTITUTE
 
 Voor uitleg zie FO
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
+|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
+|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
+|In_person_id|Unieke id van de persoon die nu op het veld gaat staan|
+|Out_person_id|Unieke id van de persoon die nu uit het veld gaat|
+
 ## Tabel: CORNER
 
 Voor uitleg zie FO
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
+|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
+|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
+|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
 ## Tabel: FOUL
 
 Voor uitleg zie FO
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
+|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
+|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
+|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
 ## Tabel: SHOT
 
 Voor uitleg zie FO
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
+|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
+|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
+|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
+|On_goal|Hiermee wordt aangegeven of het schot naar het doel is geschoten|
 ## Tabel: GOAL
 
 Voor uitleg zie FO
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
+|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
+|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
+|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
 ## Tabel: PASS
 
 Voor uitleg zie FO
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
+|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
+|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
+|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
+|Succes|Hiermee wordt aangegeven dat de paas is aangekomen|
 ## Tabel: YELLOW_CARD
 
 Voor uitleg zie FO
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
+|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
+|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
+|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
 ## Tabel: RED_CARD
 
 Voor uitleg zie FO
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
+|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
+|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
+|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
 # Ontwerkpeuzes
 
 ## MATCH id
