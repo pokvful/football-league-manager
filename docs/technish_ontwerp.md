@@ -324,7 +324,7 @@ TODO: Hier mooie plaatjes toevoegen
 |COUNT				|bigint			|																		|
 |BOOLEAN			|bit			|																		|
 |EVENTY_TYPE		|varchar(128)	|(Red card, Yellow card, Pass, Goal, Shot, Foul, Corner, Substitute)	|
-|MINUTE IN MATCH	|numeric(6,3)	|<!--- Je zou hier 1-90 +extra time ofzo kunnen doen--->				|
+|MINUTE IN MATCH	|numeric(6,3)	|																		|
 |JERSEY_NUMBER		|numeric(2,0)	|(1-99)                                                    				|
 |POSITION_TYPE		|varchar(128)	|(Aanvaller, Middenvelder, Verdediger, Keeper)							|
 |SEASON_NAME		|char(5)		|Altijd twee getallen met een slash. (bijv.22/21)       				|
