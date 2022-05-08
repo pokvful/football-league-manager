@@ -101,30 +101,30 @@ De database zal ontwikkeld worden voor NUTMEG in MSSQL en vervolgens beschikbaar
 
 # 4. Projectgrenzen
 
-De periode waarin we werken aan het project is van 11 april 2022 t/m 9 juni 2022.
-
-Tijdens het project is team A4 aanwezig op de HAN te Arnhem op maandag t/m vrijdag van 9:00 t/m 17:00 uur. Hierbij is er uitzonderingen voor paar feestdagen en een vakantie periode.
-
-De dagen dat de groep A4 niet werkt aan het project zijn:
-
-- 15 april 2022, goeie vrijdag;
+**Start- en einddatum:**
+De periode waarin we werken aan het project is van 11 april 2022 tot en met 9 juni 2022. 
+Tijdens deze feestdagen wordt er niet gewerkt aan het project:
+- 15 april 2022, Goede Vrijdag;
 - 18 april 2022, 2e Paasdag;
-- 27 april 2022, koningsdag;
-- 2 mei t/m 6 mei 2022, mei vakantie.
-
-Voor het project zijn bepaalde methode en tools gegeven door school die wij moeten gebruiken binnen dit project:
-
-- Projectmethode RUP;
-- Jira om taken te plannen;
-- BitBucket voor het managen van code.
-
-Deze methode en tools moeten gebruikt worden binnen het project en er mag geen alternatief worden ingezet.
-
-Team A4 gaat in ieder geval gebruik maken van MSSQL en Docker. Verder wordt er eerst onderzoek gedaan naar MongoDB, hieruit zal blijken of MongoDB ook gebruikt gaat worden voor het realiseren van het eindproduct.
-
-De opdrachtgever kan tijdens de transition fase geen nieuwe requirements of functionaliteiten meer geven. In deze tijd wordt er gewerkt om het project af te ronden.
-
-Het laatste moment waarop requirements gewijzigd kunnen worden is tijdens de start van de laatste iteratie binnen de constructie fase.
+- 27 april 2022, Koningsdag;
+- 2 mei tot en met 6 mei 2022, meivakantie.
+ 
+**Wat wel:**
+- We leveren een MSSQL database die ontwikkeld is om voetbaldata op te slaan;
+- We zorgen ervoor dat de data overgezet kan worden naar MongoDB (staging area);
+- We nemen knock-out toernooien mee in ons datamodel, maar implementeren deze niet;
+- De opdrachtgever kan requirements tijdens de start van de laatste iteratie binnen de constructie fase wijzigen.
+ 
+**Wat niet:**
+- We implementeren geen knock-out toernooi, maar nemen dit wel mee in ons datamodel;
+- We leveren geen front-end applicatie;
+- De opdrachtgever kan tijdens de transition fase geen nieuwe requirements of functionaliteiten meer geven.
+ 
+**Deze hebben prioriteit:**
+- Groepsbeoordeling tussentijds;
+- Verantwoording projectbijdrage tussentijds;
+- Groepsbeoordeling aan het eind;
+- Verantwoording projectbijdrage aan het eind.
 
 # 5. Randvoorwaarden
 
