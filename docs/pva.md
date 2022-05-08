@@ -102,6 +102,7 @@ De database zal ontwikkeld worden voor NUTMEG in MSSQL en vervolgens beschikbaar
 # 4. Projectgrenzen
 
 **Start- en einddatum:**
+
 De periode waarin we werken aan het project is van 11 april 2022 tot en met 9 juni 2022. 
 Tijdens deze feestdagen wordt er niet gewerkt aan het project:
 - 15 april 2022, Goede Vrijdag;
@@ -110,17 +111,20 @@ Tijdens deze feestdagen wordt er niet gewerkt aan het project:
 - 2 mei tot en met 6 mei 2022, meivakantie.
  
 **Wat wel:**
+
 - We leveren een MSSQL database die ontwikkeld is om voetbaldata op te slaan;
 - We zorgen ervoor dat de data overgezet kan worden naar MongoDB (staging area);
 - We nemen knock-out toernooien mee in ons datamodel, maar implementeren deze niet;
 - De opdrachtgever kan requirements tijdens de start van de laatste iteratie binnen de constructie fase wijzigen.
  
 **Wat niet:**
+
 - We implementeren geen knock-out toernooi, maar nemen dit wel mee in ons datamodel;
 - We leveren geen front-end applicatie;
 - De opdrachtgever kan tijdens de transition fase geen nieuwe requirements of functionaliteiten meer geven.
  
 **Deze hebben prioriteit:**
+
 - Groepsbeoordeling tussentijds;
 - Verantwoording projectbijdrage tussentijds;
 - Groepsbeoordeling aan het eind;
@@ -128,12 +132,16 @@ Tijdens deze feestdagen wordt er niet gewerkt aan het project:
 
 # 5. Randvoorwaarden
 
-In dit hoofdstuk worden de randvoorwaarden beschreven, hierin staat wat er geregeld moet worden om het project mogelijk te maken.
+In dit hoofdstuk worden de randvoorwaarden beschreven, hierin staat wat er gedurende het project geregeld moet worden om het project mogelijk te maken.
 
-- De HAN levert beschikbare ruimtes met stroom en internet gedurende het project.
-- De HAN voorziet toegang tot Jira en BitBucket gedurende kantooruren. (Jira en BitBucket behoren tot de toolstack).
-- De opdrachtgever, procesbegeleider en professional skills docent zijn minimaal één keer per week beschikbaar op locatie gedurende het project.
-- Opdrachten die door de HAN zijn opgesteld krijgen prioriteit over opdrachten van NUTMEG.
+**Voorwaarden:**
+
+- Michel Koolwaaij (NUTMEG) maakt Jira toegankelijk voor het team om taken te plannen;
+- Michel Koolwaaij (NUTMEG) maakt BitBucket toegankelijk voor het team om code te managen;
+- Michel Koolwaaij (NUTMEG) levert beschikbare ruimtes met stroom en internet;
+- De opdrachtgever (Michel Koolwaaij) is minimaal één keer per week beschikbaar op locatie;
+- De procesbegeleider (Chris Scholten) is minimaal één keer per week beschikbaar op locatie;
+- De professional skills docent (Nils Bijleveld) is minimaal één keer per week beschikbaar op locatie.
 
 # 6. Op te leveren producten en kwaliteitseisen
 
