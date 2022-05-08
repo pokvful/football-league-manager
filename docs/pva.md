@@ -91,12 +91,11 @@ De database zal ontwikkeld worden voor NUTMEG in MSSQL en vervolgens beschikbaar
 
 ## 3.4 Resultaat
 
-- PvA met daarin ook Software Development Plan en Risk List.
-- Functioneel ontwerp.
-- Technisch ontwerp.
-- MSSQL server database.
-- Staging area.
-- Testplan.
+- Plan van Aanpak;
+- Functioneel ontwerp;
+- Technisch ontwerp;
+- Code;
+- Testplan;
 - Testrapport.
 
 # 4. Projectgrenzen
