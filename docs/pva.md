@@ -231,6 +231,8 @@ Het ISE-project vindt plaats op 11-04-2022 t/m 09-06-2022. Binnen deze periode s
 | Construction| OW-5  | OW-8  |
 | Transition  | OW-9  | OW-10 |
 
+![RUP Planning](images/RUP_planning.png)
+
 ## 9.2 Inleverdata
 
 | In te leveren                               | Datum      | Tijd  |
