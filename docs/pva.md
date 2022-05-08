@@ -85,15 +85,9 @@ De doelstelling van het bedrijf NUTMEG is om zo veel mogelijk data over verschil
 
 ## 3.3 Opdracht
 
-Een database waarin data omtrent voetbalcompetities kan worden beheerd, de specfieke data is te vinden in de bijlage onder de naam 'opzet_databehoeften.md'.
+Projectgroep A4 gaat hier een bijdrage aan leveren door een database te bouwen die data van voetbalwedstrijden gaat opslaan. Hier gaat alleen een back-end voor ontwikkeld worden en geen front-end. Daarnaast ontwikkelen we de database alleen voor competitiewedstrijden en geen knock-out toernooien. De data dat opgeslagen gaat worden is te vinden in: opzet_databehoeften.md.
 
-Data analisten kunnen middels een bijpassende API data opvragen uit de database, deze data komt niet direct uit MSSQL Server maar gaat eerst door een staging area. De opdrachtgever adviseert het gebruik van MongoDB voor de staging area, hier zal nog nader onderzoek naar gedaan worden.
-
-Het moet op ieder moment mogelijk zijn om een tussenstand van de competite en en lijst van topscorers te generen.
-
-Data die uit de API komt wordt in JSON aangeleverd. 
-
-Data analisten kunnen alleen data lezen via de API, administrators kunnen direct op de MSSQL Server-database schrijven en lezen.
+De database zal ontwikkeld worden voor NUTMEG in MSSQL en vervolgens beschikbaar gesteld worden aan data-analisten vanuit MongoDB (staging area). NUTMEG krijgt volledige toegang en kan direct schrijven en lezen op de MSSQL Serverdatabase. Data-analisten daarentegen kunnen alleen data lezen vanuit MongoDB.
 
 ## 3.4 Resultaat
 
