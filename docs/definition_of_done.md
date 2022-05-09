@@ -16,13 +16,7 @@ Unittests voldoen aan het opgestelde testplan (testplan, GroepA4).
 
 ## Stored procedures
 
-Bij een stored procedure staan de argumenten altijd in dezelfde volgorde:
-
-    - De attributen van het betreffende domeinobject;
-    - De id's van gekoppelde domeinobjecten met enkelvoudige verwijzing;
-    - De lijstjes id's van gekoppelde domeinobjecten met een meervoudige verwijzing.
-
-De uitgevoerde kolommen zijn altijd gelabeld en worden altijd expliciet genoemd. Gebruik van SELECT * is dan ook niet toegestaan.
+De uitgevoerde kolommen zijn altijd gelabeld en worden altijd expliciet genoemd. Gebruik van `SELECT * FROM ...` is dan ook niet toegestaan.
 
 ## Overig
 
