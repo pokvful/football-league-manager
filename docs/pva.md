@@ -65,13 +65,13 @@ Bij elk van deze risico's zijn haalbare maatregelen ten hoeven van het voortzett
 
 # 2. Achtergrond van het project
 
-NUTMEG verzamelt sportdata en verkoopt deze vervolgens aan sportclubs. Ze hebben al klanten in sporten als atletiek en zwemmen, maar willen nu ook data gaan aanbieden voor voetbalclubs.
+Projectgroep A4 van de hogeschool Arnhem Nijmegen is in opdracht om een informatiesysteem te ontwikkelen en zijn verantwoordelijk voor het gehele project. Het team bestaat uit IT’ers die gespecialiseerd zijn in Data Modulering, Database Design en Database-implementatie. 
 
-Hiervoor moet een database opgesteld worden met relevante data over voetbalcompetities en eventueel knock-out tournaments. De database moet makkelijk uitbreidbaar zijn.
+Dit project wordt uitgevoerd voor het bedrijf NUTMEG met als opdrachtgever Michel Koolwaaij. NUTMEG is een organisatie die sportdata verzamelt en verkoopt aan sportclubs. Data-analisten binnen die sportclubs kunnen die data dan analyseren.
 
-De eindgebruikers van de database zijn data analisten die via een API data opvragen. Deze API moet ook opgesteld worden.
-
-Team A4 is ingeschakeld om deze opdracht uit te voeren.
+Dit project is een vervolg van eerdere projecten. Ze hebben klanten in verschillende sporten als atletiek en zwemmen, maar willen nu ook data gaan aanbieden voor voetbalclubs. Hiervoor moet een database opgesteld worden met belangrijke data over voetbalcompetities en eventueel knock-out toernooien.
+ 
+De belanghebbende partijen van het project zijn de klanten van NUTMEG, want ze krijgen hierdoor de mogelijkheid om data over de club te analyseren. Dit heeft positieve invloed op beide partijen, want NUTMEG kan hierdoor geld verdienen en klanten (data-analisten) kunnen hierdoor de club analyseren.
 
 # 3. Doelstelling, opdracht en op te leveren resultaten voor het bedrijf
 
@@ -81,68 +81,66 @@ NUTMEG wil voetbaldata gaan verkopen aan voetbalclubs. Hiervoor moet de database
 
 ## 3.2 Doelstelling
 
-Een database met informatie over voetbalcompetities (en eventueel knock-out tournaments), inclusief bijpassende API waarmee data opgevraagd kan worden door data analisten.
+De doelstelling van het bedrijf NUTMEG is om zo veel mogelijk data over verschillende sport branches te verzamelen om klanten te voorzien van analytische informatie. Ze willen dit project realiseren om een groter doelgroep te bereiken, zodat ze uiteindelijk ook meer omzet kunnen maken. NUTMEG zal hierdoor data-analisten bereiken die geïnteresseerd zijn in voetbaldata, waardoor ze ook steeds dichter bij het grote doel komen.
 
 ## 3.3 Opdracht
 
-Een database waarin data omtrent voetbalcompetities kan worden beheerd, de specfieke data is te vinden in de bijlage onder de naam 'opzet_databehoeften.md'.
+Projectgroep A4 gaat hier een bijdrage aan leveren door een database te bouwen die data van voetbalwedstrijden gaat opslaan. Hier gaat alleen een back-end voor ontwikkeld worden en geen front-end. Daarnaast ontwikkelen we de database alleen voor competitiewedstrijden en geen knock-out toernooien. De data dat opgeslagen gaat worden is te vinden in: opzet_databehoeften.md.
 
-Data analisten kunnen middels een bijpassende API data opvragen uit de database, deze data komt niet direct uit MSSQL Server maar gaat eerst door een staging area. De opdrachtgever adviseert het gebruik van MongoDB voor de staging area, hier zal nog nader onderzoek naar gedaan worden.
-
-Het moet op ieder moment mogelijk zijn om een tussenstand van de competite en en lijst van topscorers te generen.
-
-Data die uit de API komt wordt in JSON aangeleverd. 
-
-Data analisten kunnen alleen data lezen via de API, administrators kunnen direct op de MSSQL Server-database schrijven en lezen.
+De database zal ontwikkeld worden voor NUTMEG in MSSQL en vervolgens beschikbaar gesteld worden aan data-analisten vanuit MongoDB (staging area). NUTMEG krijgt volledige toegang en kan direct schrijven en lezen op de MSSQL Serverdatabase. Data-analisten daarentegen kunnen alleen data lezen vanuit MongoDB.
 
 ## 3.4 Resultaat
 
-- PvA met daarin ook Software Development Plan en Risk List.
-- Functioneel ontwerp.
-- Technisch ontwerp.
-- MSSQL server database.
-- Staging area.
-- Testplan.
+- Plan van Aanpak;
+- Functioneel ontwerp;
+- Technisch ontwerp;
+- Code;
+- Testplan;
 - Testrapport.
 
 # 4. Projectgrenzen
 
-De periode waarin we werken aan het project is van 11 april 2022 t/m 9 juni 2022.
+**Start- en einddatum:**
 
-Tijdens het project is team A4 aanwezig op de HAN te Arnhem op maandag t/m vrijdag van 9:00 t/m 17:00 uur. Hierbij is er uitzonderingen voor paar feestdagen en een vakantie periode.
-
-De dagen dat de groep A4 niet werkt aan het project zijn:
-
-- 15 april 2022, goeie vrijdag;
+De periode waarin we werken aan het project is van 11 april 2022 tot en met 9 juni 2022. 
+Tijdens deze feestdagen wordt er niet gewerkt aan het project:
+- 15 april 2022, Goede Vrijdag;
 - 18 april 2022, 2e Paasdag;
-- 27 april 2022, koningsdag;
-- 2 mei t/m 6 mei 2022, mei vakantie.
+- 27 april 2022, Koningsdag;
+- 2 mei tot en met 6 mei 2022, meivakantie.
+ 
+**Wat wel:**
 
-Voor het project zijn bepaalde methode en tools gegeven door school die wij moeten gebruiken binnen dit project:
+- We leveren een MSSQL database die ontwikkeld is om voetbaldata op te slaan;
+- We zorgen ervoor dat de data overgezet kan worden naar MongoDB (staging area);
+- We nemen knock-out toernooien mee in ons datamodel, maar implementeren deze niet;
+- De opdrachtgever kan requirements tijdens de start van de laatste iteratie binnen de constructie fase wijzigen.
+ 
+**Wat niet:**
 
-- Projectmethode RUP;
-- Jira om taken te plannen;
-- BitBucket voor het managen van code.
+- We implementeren geen knock-out toernooi, maar nemen dit wel mee in ons datamodel;
+- We leveren geen front-end applicatie;
+- De opdrachtgever kan tijdens de transition fase geen nieuwe requirements of functionaliteiten meer geven.
+ 
+**Deze hebben prioriteit:**
 
-Deze methode en tools moeten gebruikt worden binnen het project en er mag geen alternatief worden ingezet.
-
-Team A4 gaat in ieder geval gebruik maken van MSSQL en Docker. Verder wordt er eerst onderzoek gedaan naar MongoDB, hieruit zal blijken of MongoDB ook gebruikt gaat worden voor het realiseren van het eindproduct.
-
-De opdrachtgever kan tijdens de transition fase geen nieuwe requirements of functionaliteiten meer geven. In deze tijd wordt er gewerkt om het project af te ronden.
-
-Het laatste moment waarop requirements gewijzigd kunnen worden is tijdens de start van de laatste iteratie binnen de constructie fase.
-
-Tijdens het project is de proces begeleider twee keer per week beschikbaar voor een meeting en is hij contacteerbaar via teams.
+- Groepsbeoordeling tussentijds;
+- Verantwoording projectbijdrage tussentijds;
+- Groepsbeoordeling aan het eind;
+- Verantwoording projectbijdrage aan het eind.
 
 # 5. Randvoorwaarden
 
-In dit hoofdstuk worden de randvoorwaarden beschreven, hierin staat wat er geregeld moet worden om het project mogelijk te maken.
+In dit hoofdstuk worden de randvoorwaarden beschreven, hierin staat wat er gedurende het project geregeld moet worden om het project mogelijk te maken.
 
-- De HAN levert beschikbare ruimtes met stroom en internet gedurende het project.
-- De HAN voorziet toegang tot Jira en BitBucket gedurende kantooruren.
-- De opdrachtgever, procesbegeleider en professional skills docent zijn minimaal één keer per week beschikbaar op locatie gedurende het project.
-- ISE ritme dicteert (denk hierbij bijvoorbeeld aan inleverdeadlines).
-- Opdrachten die door de HAN zijn opgesteld krijgen prioriteit over opdrachten van NUTMEG.
+**Voorwaarden:**
+
+- Michel Koolwaaij (NUTMEG) maakt Jira toegankelijk voor het team om taken te plannen;
+- Michel Koolwaaij (NUTMEG) maakt BitBucket toegankelijk voor het team om code te managen;
+- Michel Koolwaaij (NUTMEG) levert beschikbare ruimtes met stroom en internet;
+- De opdrachtgever (Michel Koolwaaij) is minimaal één keer per week beschikbaar op locatie;
+- De procesbegeleider (Chris Scholten) is minimaal één keer per week beschikbaar op locatie;
+- De professional skills docent (Nils Bijleveld) is minimaal één keer per week beschikbaar op locatie.
 
 # 6. Op te leveren producten en kwaliteitseisen
 
@@ -150,22 +148,23 @@ In dit hoofdstuk worden de op te leveren producten en de bijbehorende kwaliteits
 
 Algemene eisen aan producten zijn gespecificeerd in de Definition of Done (DoD). In de kolom 'Product Kwaliteitseisen' zijn product specifieke eisen opgesteld.
 
+De Definition of Done (DoD) wordt tijdens de elaboratie fase uitgewerkt, in een apart document.
+
 De volgende tabel beschrijft:
 
 - De op te leveren producten;
-- De kwaliteitseisen waaraan de producten moeten voldoen;
+- De kwaliteitseisen waaraan de producten moeten voldoen; zodra het product alle kwaliteitseisen bevat, is het product kwalitatief voldoende;
 - Wat het team moet uitvoeren om tot een succesvol product te komen;
 - Hoe het team ervoor zorgt dat kwaliteitseisen behaald worden.
 
-| Product         | Productkwaliteitseisen  (SMART)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | Benodigde activiteiten om te komen tot het product                                                                                                                                                                                            | Proceskwaliteitseisen  (5XW 1xH)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| FO              | Bevat een korte samenvatting van de op te leveren functionaliteit. FO is up-to-date met de huidige implementatie. De functionele requirements zijn uitgewerkt in de vorm van usecases. Bevat een CDM (Conceptual Data Model). Per usecase dient het volgende te zijn beschreven: Primaire actor en stakeholders. Brief description (brief format). Preconditie (concreet booleaans m.b.t. het conceptual data model). Postconditie (concreet booleaans m.b.t. het conceptual data model). Happy flow en optionele alternative flows. Opgestelde use cases voldoen aan eisen binnen "CRUD Use Cases.pdf" CDM voldoet aan eisen binnen "ERM opstellen.pdf" (HAN, I-OOSE OOAD 21/22). | Requirements uitvragen. Functionele requirements uitwerken in use cases. Niet-functionele requirements uitwerken. Use cases uitschrijven in brief-format.  Bij oppakken van een brief-format use case, deze fully dressed uitwerken.          | Bij het opleveren van het document wordt het hele document door alle teamleden gelezen. Hierdoor kan er genoeg feedback worden gegeven op het product. Het hele document moet worden gelezen zodat ook samenhang van het document gecontroleerd kan worden. Tijdens het geven van feedback wordt gekeken naar de punten opgesteld in de Definition of Done en de productkwaliteitseisen in deze tabel.                                                                                                                                                          |
-| TO              | Bevat een PDM (Physical Domain Model). Bevat een databaseontwerp. Bevat beargumentatie van de ontwerpkeuzes weergegeven in de bovengenoemde diagrammen. PDM voldoet aan opgestelde eisen binnen document "PDM opstellen.pdf" (HAN, I-ISE DMDD/2 2122).                                                                                                                                                                                                                                                                                                                         												 | Database design opstellen. PDM opstellen.                                                                                                                                                                                 					 | Bij het opleveren van het document wordt het hele document door alle teamleden gelezen. Hierdoor kan er genoeg feedback worden gegeven op het product. Het hele document moet worden gelezen zodat ook samenhang van het document gecontroleerd kan worden. Tijdens het geven van feedback wordt gekeken naar de punten opgesteld in de Definition of Done en de productkwaliteitseisen in deze tabel.                                                                                                                                                          |
-| Code            | Voldoet aan code conventies wanneer de code uit een branch gemerged wordt met de dev branch. Deze conventies zijn te vinden in de Definition of Done.                                                                                                                                                                                                                                                                                                                                                                                | Eerst wordt de code geschreven. Wanneer de code is geschreven, worden er unittests gemaakt. Constraints, triggers, gebruiker permissies en stored procedures zijn voor 60% getest (voor de coverage wordt de coverage van tSQLt aangehouden). | Wanneer iemand een stuk code wil plaatsen op BitBucket, wordt dit gedaan door een pull request (PR) aan te maken. Deze PR wordt gecontroleerd door minimaal 1 ander teamlid. Dit gebeurt binnen maximaal 1 werkdag. Als dat teamlid een (grote) bug vindt in de code of vindt dat de code niet voldoet aan de DoD, wordt de PR tegengehouden en moet de code herzien worden door de auteur van de PR. Wanneer er geen bugs (meer) in de code zitten, mag de code op BitBucket gezet worden. Op deze manier voorkomt het team dat er bugs worden geïntroduceerd. |
-| Plan van Aanpak | Een dag voor het opleveren van het PvA, is het PvA geschreven volgens de toelichting op het plan van aanpak (Praktijkbureau AIM, Hogeschool Arnhem Nijmegen).                                                                                                                                                                                                                                                                                                                                                                        | Introductiegesprek met opdrachtgever. In kaart brengen van de requirements. Afspraken maken over ontwikkelmethode. Compleetheid van PvA bespreken met inhoudelijk begeleider en professional skills begeleider.                               | Vóór de elaboratie fase moet het PvA gereviewd worden door alle teamleden. Het PvA moet zijn ingeleverd voor de opgegeven datum zodat de procesbegeleider het PvA kan beoordelen. Als de procesbegeleider feedback heeft op het ingeleverde PvA, wordt deze feedback binnen 1 werkweek verwerkt.                                                                                                                                                                                                                                                                |                                                                                                                                           
-| Testrapport     | Wanneer het document wordt opgeleverd, toont het document het slagingspercentage van de geteste code. Ook beschrijft het document redenen voor eventuele gefaalde tests.                                                                                                                                                                                                                                                                                                                                                             | Er zijn testdoelen opgesteld. Resultaten van tests zijn genoteerd. De redenen voor gefaalde tests zijn uitgeschreven.                                                                                                                         | Er wordt gebruik gemaakt van tSQLt om de applicatie te testen, de resultaten hiervan worden verwerkt in het testrapport.                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| Testplan        | Wanneer het document wordt opgeleverd, geeft het document de stappen weer om de gewenste code coverage te behalen. Ook geeft het document het doel van alle tests weer en geeft het document weer hoe er getest wordt.                                                                                                                                                                                                                                                                                                               | Methoden die gebruikt worden om te testen zijn uitgeschreven. Gewenste input en resultaten zij opgesteld.                                                                                                                                     | Het testplan wordt door het hele team gereviewed. Feedback uit deze reviews wordt binnen 1 werkdag verwerkt.                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-
+| Product         | Productkwaliteitseisen  (SMART)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Benodigde activiteiten om te komen tot het product                                                                                                                                                                                            | Proceskwaliteitseisen  (5XW 1xH)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |   |
+|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
+| FO              | Bevat een korte samenvatting van de op te leveren functionaliteit. FO is up-to-date met de huidige implementatie. De functionele requirements zijn uitgewerkt in de vorm van usecases. Bevat een CDM (Conceptual Data Model). Per usecase dient het volgende te zijn beschreven: Primaire actor en stakeholders. Brief description (brief format). Preconditie (concreet booleaans m.b.t. het conceptual data model). Postconditie (concreet booleaans m.b.t. het conceptual data model). Happy flow en optionele alternative flows. Opgestelde use cases voldoen aan eisen binnen "CRUD Use Cases.pdf" CDM voldoet aan eisen binnen "ERM opstellen.pdf" (HAN, I-OOSE OOAD 21/22). Eerste versie FO is af aan het einde van de eerste week van de Elaboratie-fase. | Requirements uitvragen. Functionele requirements uitwerken in use cases. Niet-functionele requirements uitwerken. Use cases uitschrijven in brief-format.  Bij oppakken van een brief-format use case, deze fully dressed uitwerken.          | Bij het opleveren van het document wordt het hele document door alle teamleden gelezen. Hierdoor kan er genoeg feedback worden gegeven op het product. Het hele document moet worden gelezen zodat ook samenhang van het document gecontroleerd kan worden. Tijdens het geven van feedback wordt gekeken naar de punten opgesteld in de Definition of Done en de productkwaliteitseisen in deze tabel.                                                                                                                                                          |   |
+| TO              | Bevat een PDM (Physical Domain Model). Bevat een databaseontwerp. Bevat beargumentatie van de ontwerpkeuzes weergegeven in de bovengenoemde diagrammen. PDM voldoet aan opgestelde eisen binnen document "PDM opstellen.pdf" (HAN, I-ISE DMDD/2 2122). Eerste versie TO is af aan het einde van de tweede week van de Elaboratie-fase.                                                                                                                                                                                                                                                                                                                                                                                                                             | Database design opstellen. PDM opstellen.                                                                                                                                                                                                     | Bij het opleveren van het document wordt het hele document door alle teamleden gelezen. Hierdoor kan er genoeg feedback worden gegeven op het product. Het hele document moet worden gelezen zodat ook samenhang van het document gecontroleerd kan worden. Tijdens het geven van feedback wordt gekeken naar de punten opgesteld in de Definition of Done en de productkwaliteitseisen in deze tabel.                                                                                                                                                          |   |
+| Code            | Voldoet aan code conventies wanneer de code uit een branch gemerged wordt met de dev branch. Deze conventies zijn te vinden in de Definition of Done.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Eerst wordt de code geschreven. Wanneer de code is geschreven, worden er unittests gemaakt. Constraints, triggers, gebruiker permissies en stored procedures zijn voor 60% getest (voor de coverage wordt de coverage van tSQLt aangehouden). | Wanneer iemand een stuk code wil plaatsen op BitBucket, wordt dit gedaan door een pull request (PR) aan te maken. Deze PR wordt gecontroleerd door minimaal 1 ander teamlid. Dit gebeurt binnen maximaal 1 werkdag. Als dat teamlid een (grote) bug vindt in de code of vindt dat de code niet voldoet aan de DoD, wordt de PR tegengehouden en moet de code herzien worden door de auteur van de PR. Wanneer er geen bugs (meer) in de code zitten, mag de code op BitBucket gezet worden. Op deze manier voorkomt het team dat er bugs worden geïntroduceerd. |   |
+| Plan van Aanpak | Een dag voor het opleveren van het PvA, is het PvA geschreven volgens de toelichting op het plan van aanpak (Praktijkbureau AIM, Hogeschool Arnhem Nijmegen). Definitieve versie van PvA is af aan het einde van de Elaboratie-fase.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Introductiegesprek met opdrachtgever. In kaart brengen van de requirements. Afspraken maken over ontwikkelmethode. Compleetheid van PvA bespreken met inhoudelijk begeleider en professional skills begeleider.                               | Vóór de elaboratie fase moet het PvA gereviewd worden door alle teamleden. Het PvA moet zijn ingeleverd voor de opgegeven datum zodat de procesbegeleider het PvA kan beoordelen. Als de procesbegeleider feedback heeft op het ingeleverde PvA, wordt deze feedback binnen 1 werkweek verwerkt.                                                                                                                                                                                                                                                                |   |
+| Testrapport     | Wanneer het document wordt opgeleverd, toont het document het slagingspercentage van de geteste code. Ook beschrijft het document redenen voor eventuele gefaalde tests. Testrapport is af aan het einde van de Transitie-fase.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Er zijn testdoelen opgesteld. Resultaten van tests zijn genoteerd. De redenen voor gefaalde tests zijn uitgeschreven.                                                                                                                         | Er wordt gebruik gemaakt van tSQLt om de applicatie te testen, de resultaten hiervan worden verwerkt in het testrapport.                                                                                                                                                                                                                                                                                                                                                                                                                                        |   |
+| Testplan        | Wanneer het document wordt opgeleverd, geeft het document de stappen weer om de gewenste code coverage te behalen. Ook geeft het document het doel van alle tests weer en geeft het document weer hoe er getest wordt. Testplan is af aan het einde van de Transitie-fase.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | Methoden die gebruikt worden om te testen zijn uitgeschreven. Gewenste input en resultaten zijn opgesteld.                                                                                                                                     | Het testplan wordt door het hele team gereviewed. Feedback uit deze reviews wordt binnen 1 werkdag verwerkt.                                                                                                                                                                                                                                                                                                                                                                                                                                                    |   |
 # 7. Ontwikkelmethoden
 
 Tijdens dit project zal de RUP-ontwikkelmethode toegepast worden, deze methode wordt namelijk vanuit de HAN voorgeschreven.
@@ -182,10 +181,12 @@ Tevens moet het team ook persoonlijke ontwikkeling gedurende het project bijhoud
 
 ## 8.1 Begeleiders
 
+Tijdens het project is de procesbegeleider twee keer per week beschikbaar voor een meeting en is hij contacteerbaar via teams.
+
 | Persoon           | Rol               | Contact                                               | Beschikbaarheid                  |
 |-------------------|-------------------|-------------------------------------------------------|----------------------------------|
-| Nils Bijleveld    | Procesbegeleider  | [nils.bijleveld@han.nl](mailto:nils.bijleveld@han.nl) | Nog onbekend                     |
-| Chris Scholten    | Projectbegeleider | [chris.scholten@han.nl](mailto:chris.scholten@han.nl) | Fysiek: Di/Do Digitaal: Ma/Wo/Vr |
+| Nils Bijleveld    | Professional Skills Docent  | [nils.bijleveld@han.nl](mailto:nils.bijleveld@han.nl) | Fysiek: Do                       |
+| Chris Scholten    | Procesbegeleider | [chris.scholten@han.nl](mailto:chris.scholten@han.nl) | Fysiek: Di/Do Digitaal: Ma/Wo/Vr |
 
 ## 8.2 Opdrachtgever
 
@@ -230,6 +231,8 @@ Het ISE-project vindt plaats op 11-04-2022 t/m 09-06-2022. Binnen deze periode s
 | Construction| OW-5  | OW-8  |
 | Transition  | OW-9  | OW-10 |
 
+![RUP Planning](images/RUP_planning.png)
+
 ## 9.2 Inleverdata
 
 | In te leveren                               | Datum      | Tijd  |
@@ -240,12 +243,12 @@ Het ISE-project vindt plaats op 11-04-2022 t/m 09-06-2022. Binnen deze periode s
 | Groepsbeoordeling aan het eind              | 09-06-2022 | 16:00 |
 | Verantwoording projectbijdrage aan het eind | 09-06-2022 | 16:00 |
 
+# 10. Risk List
 
-# 10. Risico’s
-
-| Risico | Kans (groot-middel-klein) | Impact (groot-middel-klein) | Tegenmaatregel | Uitwijkstrategie |
-|--------|-------------------------- | ----------------------------|----------------|------------------|
-| De toolstack is (tijdelijk) niet beschikbaar      | klein                         | groot                           | -              | Met projectbegeleider en opdrachtgever bespreken hoe het nu verder moet. |
+| Risico                                  | Tegenmaatregel | Uitwijkstrategie |
+|-----------------------------------------|----------------|------------------|
+| Mongo Database opzetten                 | PoC voor docker omgeving mac  |  De mac-gebruikers moeten windows of linux runnen. Anders andere laptop regelen. |
+| Mongo database koppelen aan MSSQL server | PoC maken voor de koppeling  | Staging area veranderen naar spring boot. |
 
 # Literatuurlijst
 
