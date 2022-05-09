@@ -40,6 +40,9 @@ def main():
 		# every row and concat them together. The following code does that
 		result = "".join([ row[0] for row in rows ])
 
+		if not result:
+			continue;
+
 		# convert the json string to a python dictionary (object)
 		data[table] = json.loads(result)
 

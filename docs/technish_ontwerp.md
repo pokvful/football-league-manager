@@ -306,6 +306,57 @@ Zodra dit is gebeurd, wordt er over alle opgehaalde tabellen en views heen geloo
 
 ## Input
 
+```sql
+SELECT TOP 10 ID, FIRST_NAME, EMAIL, GENDER, IP_ADDRESS, A_BIG_NUMBER FROM MOCK_DATA;
+```
+
+```
+id          first_name                                         email                                              gender                                             ip_address           a_big_number
+----------- -------------------------------------------------- -------------------------------------------------- -------------------------------------------------- -------------------- ------------
+          1 Wells                                              wbraddick0@yellowbook.com                          Male                                               37.5.189.141                  172
+          2 Phaidra                                            pdumbellow1@twitter.com                            Female                                             18.254.21.176                 567
+          3 Taffy                                              tsherrett2@usnews.com                              Female                                             130.106.253.132               545
+          4 Sinclare                                           sdomeney3@irs.gov                                  Male                                               233.160.141.121               106
+          5 Park                                               pmacquire4@sogou.com                               Male                                               83.92.149.53                  409
+          6 Pauly                                              polsen5@techcrunch.com                             Genderfluid                                        239.135.132.236                25
+          7 Pavlov                                             pbygraves6@youtube.com                             Male                                               86.232.150.235                235
+          8 Domingo                                            dmelland7@is.gd                                    Male                                               1.96.155.119                  792
+          9 Reed                                               rfenning8@prlog.org                                Male                                               249.193.7.1                   260
+         10 Sholom                                             schadburn9@etsy.com                                Male                                               204.49.183.139                581
+```
+
 ## Output
 
-TODO: Hier mooie plaatjes toevoegen
+```javascript
+db.MOCK_DATA.find({}, { id: 1, first_name: 1, email: 1, gender: 1, ip_address: 1, a_big_number: 1, _id: 0 }).limit(10)
+```
+
+```json
+[
+  {
+    "id": 1,
+    "first_name": "Wells",
+    "email": "wbraddick0@yellowbook.com",
+    "gender": "Male",
+    "ip_address": "37.5.189.141",
+    "a_big_number": 172
+  },
+  {
+    "id": 2,
+    "first_name": "Phaidra",
+    "email": "pdumbellow1@twitter.com",
+    "gender": "Female",
+    "ip_address": "18.254.21.176",
+    "a_big_number": 567
+  },
+  {
+    "id": 3,
+    "first_name": "Taffy",
+    "email": "tsherrett2@usnews.com",
+    "gender": "Female",
+    "ip_address": "130.106.253.132",
+    "a_big_number": 545
+  },
+  ...
+]
+```
