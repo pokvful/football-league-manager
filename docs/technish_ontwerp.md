@@ -56,7 +56,7 @@ Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echt
 - Omschrijving: Er zijn minimaal 11 spelers aan een club verbonden;
 - Implementatie: Een trigger `TRG_MINIMUM_PLAYERS_IN_CLUB` op de tabel `PLAYER`.
 
-## IR3 komt overeen met C3 en BRBR19
+## IR3 komt overeen met C3 en BR19
 
 - Omschrijving: Een club heeft altijd percies 1 coach;
 - Implementatie: Een trigger `TRG_ONE_COACH_PER_CLUB` op de tabel `COACH`.
@@ -71,7 +71,7 @@ Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echt
 - Omschrijving: Een rugnummer van een speler moet hoger zijn dan 0 (mag niet 0 zijn) en mag niet hoger zijn dan 99 (mag wel 99 zijn);
 - Implementatie: Een check-constraint `CHK_VALID_JERSEY` op de tabel `PLAYER`.
 
-## IR6 komt overeen met C6 en BR BR4
+## IR6 komt overeen met C6 en BR4
 
 - Omschrijving: De startdatum van een speelronde ligt binnen de start- en einddatum van het bijbehorende seizoen;
 - Implementatie: Een check-constraint `CHK_VALID_ROUND_START_DATE` op de tabel `ROUND`. <!-- De startdatum is beschikbaar door de afhankelijkheid. Als dit wordt aangepast, moet de check een trigger worden -->
