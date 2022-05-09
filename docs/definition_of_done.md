@@ -1,4 +1,6 @@
-Voor alle SQL code die geschreven wordt tijdens de realisatie van de database/back-end van de applicatie wordt de SQL style guide van GitLab aangehouden (style guide, GitLab team).
+# Definition of Done
+
+Voor alle SQL code die geschreven wordt tijdens de realisatie van de database van de applicatie wordt de SQL style guide van GitLab aangehouden (style guide, GitLab team).
 
 ## Natuurlijke taal
 
