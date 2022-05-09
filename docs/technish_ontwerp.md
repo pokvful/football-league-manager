@@ -296,6 +296,8 @@ Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echt
 
 Voor het omzetten van data in MSSQL Server naar MongoDB wordt gebruik gemaakt van een Python script.
 
+De reden voor het gebruik van Python is omdat het snel is om code mee te schrijven en de code leesbaar is voor iedereen in de projectgroep. (Ook al is niet iedereen vaardig in het schrijven van Python code).
+
 Hieronder staat toegelicht hoe dit script in elkaar zit:
 
 Het script begint met een timer van 15 seconden, de reden hiervoor is omdat MSSQL en MongoDB opgestart moeten zijn voordat ermee verbonden kan worden. Ook moet MSSQL een (groot) aantal create- en insert scripts uitvoeren, waar ook op gewacht moet worden.
