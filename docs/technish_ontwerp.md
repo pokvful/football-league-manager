@@ -34,6 +34,7 @@
 ## Tabel: PERSON
 
 Deze tabel bevat alle informatie van personen in de database.
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 | Person_id| Unieke persoonsnummer |
@@ -46,6 +47,7 @@ Deze tabel bevat alle informatie van personen in de database.
 ## Tabel: REFEREE
 
 Deze tabel bevat alle personen die ook scheidsrechters zijn.
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Person_id| Unieke persoonsnummer|
@@ -53,6 +55,7 @@ Deze tabel bevat alle personen die ook scheidsrechters zijn.
 ## Tabel: COACH
 
 Deze tabel bevat alle personen die ook coaches zijn.
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Person_id| Unieke persoonsnummer|
@@ -61,6 +64,7 @@ Deze tabel bevat alle personen die ook coaches zijn.
 ## Tabel: PLAYER
 
 Deze tabel bevat alle personen die ook spelers zijn.
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Person_id | Unieke persoonsnummer|
@@ -70,6 +74,7 @@ Deze tabel bevat alle personen die ook spelers zijn.
 ## Tabel: COUNTRY
 
 Deze tabel bevat alle landen.
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Country_name| Naam van het desbetrefende land|
@@ -77,6 +82,7 @@ Deze tabel bevat alle landen.
 ## Tabel: CITY
 
 Deze tabel bevat alle steden.
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Country_name|Het land waarin deze stad ligt|
@@ -85,6 +91,7 @@ Deze tabel bevat alle steden.
 ## Tabel: STADIUM
 
 Deze tabel bevat alle stadions
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Stadium_name|Naam van dit stadion|
@@ -93,6 +100,7 @@ Deze tabel bevat alle stadions
 ## Tabel: CLUB
 
 Deze tabel bevat alle clubs die wedstrijden kunnen spelen.
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Club_name|Unieke naam van deze club|
@@ -103,6 +111,7 @@ Deze tabel bevat alle clubs die wedstrijden kunnen spelen.
 ## Tabel: SEASON
 
 Voor uitleg zie FO
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Season_name|Unieke naam van een bepaald speel seizoen|
@@ -110,6 +119,7 @@ Voor uitleg zie FO
 ## Tabel: DOMESTIC_LEAGUE 
 
 Voor uitleg zie FO
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Competition_name|Unieke naam van deze competitie|
@@ -117,6 +127,7 @@ Voor uitleg zie FO
 ## Tabel: EDITION
 
 Voor uitleg zie FO
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Season_name|Naam van het seizoen van deze editie|
@@ -125,6 +136,7 @@ Voor uitleg zie FO
 ## Tabel: ROUND
 
 Voor uitleg zie FO
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Season_name|Naam van het seizoen waarin deze ronde wordt gespeeld|
@@ -134,6 +146,7 @@ Voor uitleg zie FO
 ## Tabel: CLUB_plays_in_EDITION
 
 In deze tabel staat welke clubs participeren in een specifieke editie.
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Season_name|Naam van het seizoen waarin een club speelt|
@@ -143,6 +156,7 @@ In deze tabel staat welke clubs participeren in een specifieke editie.
 ## Tabel: MATCHDAY
 
 Voor uitleg zie FO
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Season_name|Naam van het seizoen waarin deze speeldag wordt gespeeld|
@@ -153,6 +167,7 @@ Voor uitleg zie FO
 ## Tabel: MATCH
 
 Voor uitleg zie FO
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Match_id|Unieke gegenereerde id waarde van een wedstrijd|
@@ -170,6 +185,7 @@ Voor uitleg zie FO
 ## Tabel: POSITION
 
 Voor uitleg zie FO
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Player_person_id|Unieke id van een persoon dat speler is|
@@ -179,6 +195,7 @@ Voor uitleg zie FO
 ## Tabel: PLAYER_as_reserve_in_MATCH
 
 In dit tabel staan alle spelers die in de reserve staan bij een bepaalde wedstrijd.
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Player_person_id|Unieke id van een persoon dat speler is|
@@ -187,6 +204,7 @@ In dit tabel staan alle spelers die in de reserve staan bij een bepaalde wedstri
 ## Tabel: SUBSTITUTE
 
 Voor uitleg zie FO
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
@@ -197,6 +215,7 @@ Voor uitleg zie FO
 ## Tabel: CORNER
 
 Voor uitleg zie FO
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
@@ -206,6 +225,7 @@ Voor uitleg zie FO
 ## Tabel: FOUL
 
 Voor uitleg zie FO
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
@@ -215,6 +235,7 @@ Voor uitleg zie FO
 ## Tabel: SHOT
 
 Voor uitleg zie FO
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
@@ -225,6 +246,7 @@ Voor uitleg zie FO
 ## Tabel: GOAL
 
 Voor uitleg zie FO
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
@@ -234,6 +256,7 @@ Voor uitleg zie FO
 ## Tabel: PASS
 
 Voor uitleg zie FO
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
@@ -244,6 +267,7 @@ Voor uitleg zie FO
 ## Tabel: YELLOW_CARD
 
 Voor uitleg zie FO
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
@@ -253,6 +277,7 @@ Voor uitleg zie FO
 ## Tabel: RED_CARD
 
 Voor uitleg zie FO
+
 |*Kolom*|*Omschrijving*|
 |-------|--------------|
 |Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
@@ -288,7 +313,7 @@ Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echt
 
 ## IR3 komt overeen met C3 en BR19
 
-- Omschrijving: Een club heeft altijd percies 1 coach;
+- Omschrijving: Een club heeft altijd precies 1 coach;
 - Implementatie: Een trigger `TRG_ONE_COACH_PER_CLUB` op de tabel `COACH`.
 
 ## IR4 komt overeen met C4 en BR16
