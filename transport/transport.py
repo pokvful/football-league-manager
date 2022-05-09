@@ -32,8 +32,6 @@ def main():
 	for table in table:
 		result = ""
 
-		print(f"SELECT * FROM {table} FOR JSON AUTO, INCLUDE_NULL_VALUES")
-
 		# get all the data in the table as json
 		cursor.execute(f"SELECT * FROM {table} FOR JSON AUTO, INCLUDE_NULL_VALUES")
 		rows = cursor.fetchall()
@@ -43,7 +41,7 @@ def main():
 		result = "".join([ row[0] for row in rows ])
 
 		if not result:
-			continue;
+			continue
 
 		# convert the json string to a python dictionary (object)
 		data[table] = json.loads(result)
