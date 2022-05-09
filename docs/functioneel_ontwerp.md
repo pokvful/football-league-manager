@@ -839,8 +839,7 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 - BR18 Minimaal 11 spelers per club;
 - BR19 Minimaal en maximaal 1 coach per club;
 - BR20 Een speler mag niet jonger zijn dan 10 jaar;
-<!-- dubbelop met die hierboven? (als deze wordt verwijdert, verander dan ook de getallen bij de IR's) -->
-- BR21 Een speler kan niet in een competitie spelen voor zijn 10 verjaardag;
+- BR21 Een speler kan niet in een competitie spelen voor zijn 10 verjaardag; <!-- dubbelop met die hierboven? (als deze wordt verwijdert, verander dan ook de getallen bij de IR's) -->
 - BR22 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
 - BR23 Hoeveelste minuut mag niet negatief zijn.
 
