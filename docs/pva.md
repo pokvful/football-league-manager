@@ -243,12 +243,12 @@ Het ISE-project vindt plaats op 11-04-2022 t/m 09-06-2022. Binnen deze periode s
 | Groepsbeoordeling aan het eind              | 09-06-2022 | 16:00 |
 | Verantwoording projectbijdrage aan het eind | 09-06-2022 | 16:00 |
 
+# 10. Risk List
 
-# 10. Risico’s
-
-| Risico | Kans (groot-middel-klein) | Impact (groot-middel-klein) | Tegenmaatregel | Uitwijkstrategie |
-|--------|-------------------------- | ----------------------------|----------------|------------------|
-| De toolstack is (tijdelijk) niet beschikbaar      | klein                         | groot                           | -              | Met projectbegeleider en opdrachtgever bespreken hoe het nu verder moet. |
+| Risico                                  | Tegenmaatregel | Uitwijkstrategie |
+|-----------------------------------------|----------------|------------------|
+| Mongo Database opzetten                 | PoC voor docker omgeving mac  |  De mac-gebruikers moeten windows of linux runnen. Anders andere laptop regelen. |
+| Mongo database koppelen aan MSSQL server | PoC maken voor de koppeling  | Staging area veranderen naar spring boot. |
 
 # Literatuurlijst
 
