@@ -104,7 +104,7 @@ Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echt
 ## IR12 komt overeen met C12 en BR20
 
 - Omschrijving: Een speler mag niet jonger zijn dan 10 jaar;
-- Implementatie: Een trigger `TRG_PLAYER_HAS_VALID_AGE` op de tabel `PLAYER`.
+- Implementatie: Een check-constraint `CHK_PLAYER_HAS_VALID_AGE` op de tabel `PLAYER`.
 
 ## IR13 komt overeen met C13 en BR22
 
