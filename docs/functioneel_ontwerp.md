@@ -1132,6 +1132,29 @@ In de entiteit RED_CARD staan alle momenten wanneer een speler een rode kaart kr
 
 In de entiteit YELLOW_CARD staan alle momenten wanneer een speler een gele kaart krijgt in een wedstrijd.
 
+## Entiteit PASS
+
+In de entiteit PASS staan alle momenten wanneer een speler een paas heeft gedaan in een wedstrijd.
+| Attribuut | Omschrijving |
+|---|---|
+| Succes | Dit geeft aan of de paas succesvol is aangekomen bij de aangespeelde speler |
+
+## Entiteit SHOT
+
+In de entiteit SHOT staan alle momenten wanneer een speler een schot heeft gedaan in een wedstrijd.
+| Attribuut | Omschrijving |
+|---|---|
+| On_goal | Dit geeft aan of een goal was geprobeerd te maken met dit schot  |
+
+
+## Entiteit  CORNER
+
+In de entiteit CORNER staan alle momenten wanneer een speler een corner heeft uitgevoerd in een wedstrijd.
+
+## Entiteit FOUL
+
+In de entiteit FOUL staan alle momenten wanneer een speler een overtreding heeft gemaakt in een wedstrijd.
+
 # Testplan
 
 Staat in bijlage Testplan.
