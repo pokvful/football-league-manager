@@ -32,8 +32,10 @@ def main():
 	for table in table:
 		result = ""
 
+		print(f"SELECT * FROM {table} FOR JSON AUTO, INCLUDE_NULL_VALUES")
+
 		# get all the data in the table as json
-		cursor.execute("SELECT * FROM %s FOR JSON AUTO, INCLUDE_NULL_VALUES" % table)
+		cursor.execute(f"SELECT * FROM {table} FOR JSON AUTO, INCLUDE_NULL_VALUES")
 		rows = cursor.fetchall()
 
 		# the result is spread over multiple rows, so we need to loop over
@@ -47,7 +49,7 @@ def main():
 		data[table] = json.loads(result)
 
 	for table in data:
-		print("Recreating \"%s\"" % table)
+		print(f"Recreating \"{table}\"")
 
 		# insert all the data into mongo
 		mongo_connection.drop_collection(table)
