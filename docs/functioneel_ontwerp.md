@@ -1044,17 +1044,23 @@ In de entiteit COMPETITION worden alle competities vastgelegd.
 |---|---|
 | Competition\_name | De naam van de competitie |
 
+# Entitieit DOMESTIC_LEAGUE
+
+In de domestic league entiteit staan alle competities die ook poul wedstrijden zijn.
+
 ## Entiteit SEASON
 
 In de entiteit SEASON worden alle seizoenen vastgelegd.
 
 | Attribuut | Omschrijving |
-|---|---|
-| Season\_name | De naam van het seizoen |
+|---|---|<!-- Dit was bij de IR aangepast naar begin en eind datum -->
+| Start\_date | De startdatum van het seizoen |
+| End\_date | De einddatum van het seizoen |
 
 ## Entiteit EDITION
 
-In de entiteit EDITION worden de edities van een competitie in een seizoen vastgelegd.
+In de entiteit EDITION worden de edities vastgelegd.
+Het bestaat uit één bepaalde competitie en één bepaalde seizoen.
 
 ## Entiteit ROUND
 
@@ -1063,7 +1069,6 @@ De entiteit ROUND bevat alle speelronden van een editie.
 | Attribuut | Omschrijving |
 |---|---|
 | Start\_date | De startdatum van de speelronde |
-| End\_date | De einddatum van de speelronde |
 
 ## Entiteit MATCHDAY
 
@@ -1081,18 +1086,7 @@ In de entiteit MATCH worden een aantal statistieken bijgehouden van de wedstrijd
 |---|---|
 | Ball\_possession\_home | Het percentage balbezit van de thuis spelende club |
 | Ball\_possession\_out | Het percentage balbezit van de uit spelende club |
-| Pass\_count\_home | Het aantal passes binnen de thuis spelende club |
-| Pass\_count\_out | Het aantal passes binnen de uit spelende club |
-| Shots\_home | Het totaal aantal schoten binnen de thuis spelende club |
-| Shots\_out | Het totaal aantal schoten binnen de uit spelende club |
-| Shots\_on\_goal\_home | Het aantal schoten op goal binnen de thuis spelende club |
-| Shots\_on\_goal\_out | Het aantal schoten op goal binnen de uit spelende club |
-| Pass\_accuracy\_home | Hoeveel procent van het aantal passes dat goed is aangekomen bij een medespeler van de thuis spelende club |
-| Pass\_accuracy\_out | Hoeveel procent van het aantal passes dat goed is aangekomen bij een medespeler van de uit spelende club |
-| Fouls\_home | Het aantal overtredingen van de thuis spelende club |
-| Fouls\_out | Het aantal overtredingen van de thuis spelende club |
-| Corners\_home | Het aantal corners van de thuis spelende club |
-| Corners\_out | Het aantal corners van de thuis spelende club |
+| Spectators | Het aantal toeschouwers bij deze wedstrijd |
 
 ## Entiteit POSITION
 
