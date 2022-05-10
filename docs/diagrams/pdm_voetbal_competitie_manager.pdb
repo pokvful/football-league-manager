@@ -5442,9 +5442,9 @@ SOURCE 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ReferenceSymbol>
 <o:ReferenceSymbol Id="o110">
-<a:ModificationDate>1652085603</a:ModificationDate>
-<a:Rect>((26028,-43013), (40728,-37655))</a:Rect>
-<a:ListOfPoints>((33378,-42613),(33378,-38055))</a:ListOfPoints>
+<a:ModificationDate>1652085637</a:ModificationDate>
+<a:Rect>((26028,-43013), (40728,-35020))</a:Rect>
+<a:ListOfPoints>((33378,-42613),(33378,-35420))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>11184640</a:LineColor>
@@ -5462,9 +5462,9 @@ SOURCE 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:ReferenceSymbol>
 <o:ReferenceSymbol Id="o113">
-<a:ModificationDate>1652085603</a:ModificationDate>
-<a:Rect>((35893,-45766), (56752,-37655))</a:Rect>
-<a:ListOfPoints>((56352,-44734),(43243,-44734),(43243,-38055))</a:ListOfPoints>
+<a:ModificationDate>1652085637</a:ModificationDate>
+<a:Rect>((36157,-45766), (56752,-35020))</a:Rect>
+<a:ListOfPoints>((56352,-44734),(43507,-44734),(43507,-35420))</a:ListOfPoints>
 <a:CornerStyle>1</a:CornerStyle>
 <a:ArrowStyle>1</a:ArrowStyle>
 <a:LineColor>16744576</a:LineColor>
@@ -6034,9 +6034,9 @@ LABL 0 Arial,8,N</a:FontList>
 </c:Object>
 </o:TableSymbol>
 <o:TableSymbol Id="o111">
-<a:ModificationDate>1652085603</a:ModificationDate>
+<a:ModificationDate>1652085637</a:ModificationDate>
 <a:IconMode>-1</a:IconMode>
-<a:Rect>((32470,-38055), (54016,-34056))</a:Rect>
+<a:Rect>((32734,-35420), (54280,-31421))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
 <a:FillColor>16777136</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -12678,7 +12678,7 @@ DAT 1652085578</a:History>
 <a:Code>CDM_VOETBAL_COMPETITIE_MANAGER</a:Code>
 <a:CreationDate>1651142046</a:CreationDate>
 <a:Creator>Elmar</a:Creator>
-<a:ModificationDate>1652084299</a:ModificationDate>
+<a:ModificationDate>1652085565</a:ModificationDate>
 <a:Modifier>thkra</a:Modifier>
 <a:TargetModelURL>file:///C|/Users/thkra/Desktop/GIT_Local/football-league-manager/docs/diagrams/cdm_no_ko.cdm</a:TargetModelURL>
 <a:TargetModelID>558E9633-ECC2-446F-9730-71E9E9CFB2FB</a:TargetModelID>

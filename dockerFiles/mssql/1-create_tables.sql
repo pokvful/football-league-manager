@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     09/05/2022 10:52:16                          */
+/* Created on:     10/05/2022 10:07:23                          */
 /*==============================================================*/
 
 
@@ -1142,8 +1142,8 @@ go
 /* Table: COMPETITION                                           */
 /*==============================================================*/
 create table COMPETITION (
-   ATTRIBUTE_25         COMPETITION_NAME     not null,
-   constraint PK_COMPETITION primary key (ATTRIBUTE_25)
+   COMPETITION_NAME     COMPETITION_NAME     not null,
+   constraint PK_COMPETITION primary key (COMPETITION_NAME)
 )
 go
 
@@ -1192,8 +1192,8 @@ go
 /* Table: DOMESTIC_LEAGUE                                       */
 /*==============================================================*/
 create table DOMESTIC_LEAGUE (
-   ATTRIBUTE_25         COMPETITION_NAME     not null,
-   constraint PK_DOMESTIC_LEAGUE primary key (ATTRIBUTE_25)
+   COMPETITION_NAME     COMPETITION_NAME     not null,
+   constraint PK_DOMESTIC_LEAGUE primary key (COMPETITION_NAME)
 )
 go
 
@@ -1765,8 +1765,8 @@ alter table CORNER
 go
 
 alter table DOMESTIC_LEAGUE
-   add constraint FK_DOMESTIC_TYPE_OF_C_COMPETIT foreign key (ATTRIBUTE_25)
-      references COMPETITION (ATTRIBUTE_25)
+   add constraint FK_DOMESTIC_TYPE_OF_C_COMPETIT foreign key (COMPETITION_NAME)
+      references COMPETITION (COMPETITION_NAME)
          on update cascade
 go
 
@@ -1778,7 +1778,7 @@ go
 
 alter table EDITION
    add constraint FK_EDITION_EDITION_O_COMPETIT foreign key (ATTRIBUTE_25)
-      references COMPETITION (ATTRIBUTE_25)
+      references COMPETITION (COMPETITION_NAME)
          on update cascade
 go
 
