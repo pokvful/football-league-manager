@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     10/05/2022 10:15:44                          */
+/* Created on:     10/05/2022 10:20:20                          */
 /*==============================================================*/
 
 
@@ -1151,11 +1151,10 @@ go
 /* Table: CORNER                                                */
 /*==============================================================*/
 create table CORNER (
-   ATTRIBUTE_25         COMPETITION_NAME     not null,
    MATCH_ID             G_IDENTITY           not null,
    TIME                 MINUTE_IN_MATCH      not null,
    PERSON_ID            PERSON_ID            not null,
-   constraint PK_CORNER primary key (ATTRIBUTE_25, MATCH_ID, TIME)
+   constraint PK_CORNER primary key (MATCH_ID, TIME)
 )
 go
 
@@ -1221,11 +1220,10 @@ go
 /* Table: FOUL                                                  */
 /*==============================================================*/
 create table FOUL (
-   ATTRIBUTE_25         COMPETITION_NAME     not null,
    MATCH_ID             G_IDENTITY           not null,
    TIME                 MINUTE_IN_MATCH      not null,
    PERSON_ID            PERSON_ID            not null,
-   constraint PK_FOUL primary key (ATTRIBUTE_25, MATCH_ID, TIME)
+   constraint PK_FOUL primary key (MATCH_ID, TIME)
 )
 go
 
@@ -1253,11 +1251,10 @@ go
 /* Table: GOAL                                                  */
 /*==============================================================*/
 create table GOAL (
-   ATTRIBUTE_25         COMPETITION_NAME     not null,
    MATCH_ID             G_IDENTITY           not null,
    TIME                 MINUTE_IN_MATCH      not null,
    PERSON_ID            PERSON_ID            not null,
-   constraint PK_GOAL primary key (ATTRIBUTE_25, MATCH_ID, TIME)
+   constraint PK_GOAL primary key (MATCH_ID, TIME)
 )
 go
 
@@ -1383,12 +1380,11 @@ go
 /* Table: PASS                                                  */
 /*==============================================================*/
 create table PASS (
-   ATTRIBUTE_25         COMPETITION_NAME     not null,
    MATCH_ID             G_IDENTITY           not null,
    TIME                 MINUTE_IN_MATCH      not null,
    PERSON_ID            PERSON_ID            not null,
    SUCCES               BOOLEAN              not null,
-   constraint PK_PASS primary key (ATTRIBUTE_25, MATCH_ID, TIME)
+   constraint PK_PASS primary key (MATCH_ID, TIME)
 )
 go
 
@@ -1524,11 +1520,10 @@ go
 /* Table: RED_CARD                                              */
 /*==============================================================*/
 create table RED_CARD (
-   ATTRIBUTE_25         COMPETITION_NAME     not null,
    MATCH_ID             G_IDENTITY           not null,
    TIME                 MINUTE_IN_MATCH      not null,
    PERSON_ID            PERSON_ID            not null,
-   constraint PK_RED_CARD primary key (ATTRIBUTE_25, MATCH_ID, TIME)
+   constraint PK_RED_CARD primary key (MATCH_ID, TIME)
 )
 go
 
@@ -1596,12 +1591,11 @@ go
 /* Table: SHOT                                                  */
 /*==============================================================*/
 create table SHOT (
-   ATTRIBUTE_25         COMPETITION_NAME     not null,
    MATCH_ID             G_IDENTITY           not null,
    TIME                 MINUTE_IN_MATCH      not null,
    PERSON_ID            PERSON_ID            not null,
    ON_GOAL              BOOLEAN              not null,
-   constraint PK_SHOT primary key (ATTRIBUTE_25, MATCH_ID, TIME)
+   constraint PK_SHOT primary key (MATCH_ID, TIME)
 )
 go
 
@@ -1639,12 +1633,11 @@ go
 /* Table: SUBSTITUTE                                            */
 /*==============================================================*/
 create table SUBSTITUTE (
-   ATTRIBUTE_25         COMPETITION_NAME     not null,
    MATCH_ID             G_IDENTITY           not null,
    TIME                 MINUTE_IN_MATCH      not null,
    IN_PERSON_ID         PERSON_ID            not null,
    OUT_PERSON_ID        PERSON_ID            not null,
-   constraint PK_SUBSTITUTE primary key (ATTRIBUTE_25, MATCH_ID, TIME)
+   constraint PK_SUBSTITUTE primary key (MATCH_ID, TIME)
 )
 go
 
@@ -1682,11 +1675,10 @@ go
 /* Table: YELLOW_CARD                                           */
 /*==============================================================*/
 create table YELLOW_CARD (
-   ATTRIBUTE_25         COMPETITION_NAME     not null,
    MATCH_ID             G_IDENTITY           not null,
    TIME                 MINUTE_IN_MATCH      not null,
    PERSON_ID            PERSON_ID            not null,
-   constraint PK_YELLOW_CARD primary key (ATTRIBUTE_25, MATCH_ID, TIME)
+   constraint PK_YELLOW_CARD primary key (MATCH_ID, TIME)
 )
 go
 
