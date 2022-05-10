@@ -1,4 +1,3 @@
-
 EXEC tSQLt.NewTestClass 'testUserAuthorization'
 
 GO

@@ -2,7 +2,7 @@ USE flm;
 
 GO
 
-CREATE LOGIN Administrator WITH PASSWORD = 'Administr@tor!';
+CREATE LOGIN Administrator WITH PASSWORD = 'Administr@tor!'
 CREATE USER Administrator FOR LOGIN Administrator
 
 GO
