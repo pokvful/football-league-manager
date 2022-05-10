@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     10/05/2022 10:07:23                          */
+/* Created on:     10/05/2022 10:15:44                          */
 /*==============================================================*/
 
 
@@ -1102,8 +1102,8 @@ go
 create table CLUB_PLAYS_IN_EDITION (
    CLUB_NAME            CLUB_NAME            not null,
    SEASON_NAME          SEASON_NAME          not null,
-   ATTRIBUTE_25         COMPETITION_NAME     not null,
-   constraint PK_CLUB_PLAYS_IN_EDITION primary key (CLUB_NAME, SEASON_NAME, ATTRIBUTE_25)
+   COMPETITION_NAME     COMPETITION_NAME     not null,
+   constraint PK_CLUB_PLAYS_IN_EDITION primary key (CLUB_NAME, SEASON_NAME, COMPETITION_NAME)
 )
 go
 
@@ -1125,7 +1125,7 @@ go
 
 
 create nonclustered index CLUB_PLAYS_IN_EDITION2_FK on CLUB_PLAYS_IN_EDITION (SEASON_NAME ASC,
-  ATTRIBUTE_25 ASC)
+  COMPETITION_NAME ASC)
 go
 
 /*==============================================================*/
@@ -1202,8 +1202,8 @@ go
 /*==============================================================*/
 create table EDITION (
    SEASON_NAME          SEASON_NAME          not null,
-   ATTRIBUTE_25         COMPETITION_NAME     not null,
-   constraint PK_EDITION primary key (SEASON_NAME, ATTRIBUTE_25)
+   COMPETITION_NAME     COMPETITION_NAME     not null,
+   constraint PK_EDITION primary key (SEASON_NAME, COMPETITION_NAME)
 )
 go
 
@@ -1287,7 +1287,7 @@ go
 create table MATCH (
    MATCH_ID             G_IDENTITY           identity,
    SEASON_NAME          SEASON_NAME          not null,
-   ATTRIBUTE_25         COMPETITION_NAME     not null,
+   COMPETITION_NAME     COMPETITION_NAME     not null,
    START_DATE           _DATE_               not null,
    MATCH_DAY            _DATE_               not null,
    HOME_CLUB_NAME       CLUB_NAME            not null,
@@ -1298,7 +1298,7 @@ create table MATCH (
    BALL_POSSESSION_OUT  PERCENTAGE           null,
    SPECTATORS           COUNT                null,
    constraint PK_MATCH primary key (MATCH_ID),
-   constraint AK_AK_2_MATCH unique (SEASON_NAME, ATTRIBUTE_25, START_DATE, MATCH_DAY, HOME_CLUB_NAME, OUT_CLUB_NAME)
+   constraint AK_AK_2_MATCH unique (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY, HOME_CLUB_NAME, OUT_CLUB_NAME)
 )
 go
 
@@ -1310,7 +1310,7 @@ go
 
 
 create nonclustered index MATCH_IN_MATCHDAY_FK on MATCH (SEASON_NAME ASC,
-  ATTRIBUTE_25 ASC,
+  COMPETITION_NAME ASC,
   START_DATE ASC,
   MATCH_DAY ASC)
 go
@@ -1360,10 +1360,10 @@ go
 /*==============================================================*/
 create table MATCHDAY (
    SEASON_NAME          SEASON_NAME          not null,
-   ATTRIBUTE_25         COMPETITION_NAME     not null,
+   COMPETITION_NAME     COMPETITION_NAME     not null,
    START_DATE           _DATE_               not null,
    MATCH_DAY            _DATE_               not null,
-   constraint PK_MATCHDAY primary key (SEASON_NAME, ATTRIBUTE_25, START_DATE, MATCH_DAY)
+   constraint PK_MATCHDAY primary key (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY)
 )
 go
 
@@ -1375,7 +1375,7 @@ go
 
 
 create nonclustered index MATCHDAY_IN_ROUND_FK on MATCHDAY (SEASON_NAME ASC,
-  ATTRIBUTE_25 ASC,
+  COMPETITION_NAME ASC,
   START_DATE ASC)
 go
 
@@ -1566,9 +1566,9 @@ go
 /*==============================================================*/
 create table ROUND (
    SEASON_NAME          SEASON_NAME          not null,
-   ATTRIBUTE_25         COMPETITION_NAME     not null,
+   COMPETITION_NAME     COMPETITION_NAME     not null,
    START_DATE           _DATE_               not null,
-   constraint PK_ROUND primary key (SEASON_NAME, ATTRIBUTE_25, START_DATE)
+   constraint PK_ROUND primary key (SEASON_NAME, COMPETITION_NAME, START_DATE)
 )
 go
 
@@ -1580,7 +1580,7 @@ go
 
 
 create nonclustered index ROUND_IN_EDITION_FK on ROUND (SEASON_NAME ASC,
-  ATTRIBUTE_25 ASC)
+  COMPETITION_NAME ASC)
 go
 
 /*==============================================================*/
@@ -1735,8 +1735,8 @@ alter table CLUB_PLAYS_IN_EDITION
 go
 
 alter table CLUB_PLAYS_IN_EDITION
-   add constraint FK_CLUB_PLA_CLUB_PLAY_EDITION foreign key (SEASON_NAME, ATTRIBUTE_25)
-      references EDITION (SEASON_NAME, ATTRIBUTE_25)
+   add constraint FK_CLUB_PLA_CLUB_PLAY_EDITION foreign key (SEASON_NAME, COMPETITION_NAME)
+      references EDITION (SEASON_NAME, COMPETITION_NAME)
          on update cascade
 go
 
@@ -1777,7 +1777,7 @@ alter table EDITION
 go
 
 alter table EDITION
-   add constraint FK_EDITION_EDITION_O_COMPETIT foreign key (ATTRIBUTE_25)
+   add constraint FK_EDITION_EDITION_O_COMPETIT foreign key (COMPETITION_NAME)
       references COMPETITION (COMPETITION_NAME)
          on update cascade
 go
@@ -1813,8 +1813,8 @@ alter table MATCH
 go
 
 alter table MATCH
-   add constraint FK_MATCH_MATCH_IN__MATCHDAY foreign key (SEASON_NAME, ATTRIBUTE_25, START_DATE, MATCH_DAY)
-      references MATCHDAY (SEASON_NAME, ATTRIBUTE_25, START_DATE, MATCH_DAY)
+   add constraint FK_MATCH_MATCH_IN__MATCHDAY foreign key (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY)
+      references MATCHDAY (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY)
          on update cascade
 go
 
@@ -1835,8 +1835,8 @@ alter table MATCH
 go
 
 alter table MATCHDAY
-   add constraint FK_MATCHDAY_MATCHDAY__ROUND foreign key (SEASON_NAME, ATTRIBUTE_25, START_DATE)
-      references ROUND (SEASON_NAME, ATTRIBUTE_25, START_DATE)
+   add constraint FK_MATCHDAY_MATCHDAY__ROUND foreign key (SEASON_NAME, COMPETITION_NAME, START_DATE)
+      references ROUND (SEASON_NAME, COMPETITION_NAME, START_DATE)
          on update cascade
 go
 
@@ -1909,8 +1909,8 @@ alter table REFEREE
 go
 
 alter table ROUND
-   add constraint FK_ROUND_ROUND_IN__EDITION foreign key (SEASON_NAME, ATTRIBUTE_25)
-      references EDITION (SEASON_NAME, ATTRIBUTE_25)
+   add constraint FK_ROUND_ROUND_IN__EDITION foreign key (SEASON_NAME, COMPETITION_NAME)
+      references EDITION (SEASON_NAME, COMPETITION_NAME)
          on update cascade
 go
 
