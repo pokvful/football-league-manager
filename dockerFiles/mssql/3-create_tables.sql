@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     10/05/2022 10:25:23                          */
+/* Created on:     10/05/2022 10:50:12                          */
 /*==============================================================*/
 
 
@@ -1799,7 +1799,6 @@ go
 alter table MATCH
    add constraint FK_MATCH_MATCH_HOM_CLUB foreign key (HOME_CLUB_NAME)
       references CLUB (CLUB_NAME)
-         on update cascade
 go
 
 alter table MATCH
@@ -1856,7 +1855,6 @@ go
 alter table PLAYER
    add constraint FK_PLAYER_PLAYER_IN_CLUB foreign key (CLUB_NAME)
       references CLUB (CLUB_NAME)
-         on update cascade
 go
 
 alter table PLAYER_AS_RESERVE_IN_MATCH
