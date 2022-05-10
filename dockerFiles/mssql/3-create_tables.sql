@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     29/04/2022 11:41:35                          */
+/* Created on:     10/05/2022 10:25:23                          */
 /*==============================================================*/
 
 
@@ -16,6 +16,13 @@ if exists (select 1
    where r.fkeyid = object_id('CLUB') and o.name = 'FK_CLUB_CLUB_LOCA_CITY')
 alter table CLUB
    drop constraint FK_CLUB_CLUB_LOCA_CITY
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('CLUB') and o.name = 'FK_CLUB_COACH_OF__COACH')
+alter table CLUB
+   drop constraint FK_CLUB_COACH_OF__COACH
 go
 
 if exists (select 1
@@ -41,13 +48,6 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('COACH') and o.name = 'FK_COACH_COACH_OF__CLUB')
-alter table COACH
-   drop constraint FK_COACH_COACH_OF__CLUB
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
    where r.fkeyid = object_id('COACH') and o.name = 'FK_COACH_IS_A_PERS_PERSON')
 alter table COACH
    drop constraint FK_COACH_IS_A_PERS_PERSON
@@ -69,6 +69,13 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('DOMESTIC_LEAGUE') and o.name = 'FK_DOMESTIC_TYPE_OF_C_COMPETIT')
+alter table DOMESTIC_LEAGUE
+   drop constraint FK_DOMESTIC_TYPE_OF_C_COMPETIT
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
    where r.fkeyid = object_id('EDITION') and o.name = 'FK_EDITION_EDITION_I_SEASON')
 alter table EDITION
    drop constraint FK_EDITION_EDITION_I_SEASON
@@ -76,9 +83,9 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('EDITION') and o.name = 'FK_EDITION_EDITION_O_DOMESTIC')
+   where r.fkeyid = object_id('EDITION') and o.name = 'FK_EDITION_EDITION_O_COMPETIT')
 alter table EDITION
-   drop constraint FK_EDITION_EDITION_O_DOMESTIC
+   drop constraint FK_EDITION_EDITION_O_COMPETIT
 go
 
 if exists (select 1
@@ -374,6 +381,13 @@ if exists (select 1
 go
 
 if exists (select 1
+            from  sysobjects
+           where  id = object_id('COMPETITION')
+            and   type = 'U')
+   drop table COMPETITION
+go
+
+if exists (select 1
             from  sysindexes
            where  id    = object_id('CORNER')
             and   name  = 'EVENT_HAPPENED_IN_MATCH7_FK'
@@ -410,15 +424,6 @@ if exists (select 1
            where  id = object_id('DOMESTIC_LEAGUE')
             and   type = 'U')
    drop table DOMESTIC_LEAGUE
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('EDITION')
-            and   name  = 'EDITION_OF_COMPETITION_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index EDITION.EDITION_OF_COMPETITION_FK
 go
 
 if exists (select 1
@@ -1056,6 +1061,7 @@ create table CLUB (
    STADIUM_NAME         STADIUM_NAME         not null,
    COUNTRY_NAME         COUNTRY_NAME         not null,
    CITY_NAME            CITY_NAME            not null,
+   COACH_PERSON_ID      PERSON_ID            not null,
    constraint PK_CLUB primary key (CLUB_NAME)
 )
 go
@@ -1067,7 +1073,7 @@ go
 
 
 
-create nonclustered index COACH_OF_CLUB2_FK on CLUB (CLUB_NAME ASC)
+create nonclustered index COACH_OF_CLUB2_FK on CLUB (COACH_PERSON_ID ASC)
 go
 
 /*==============================================================*/
@@ -1128,8 +1134,16 @@ go
 /*==============================================================*/
 create table COACH (
    PERSON_ID            PERSON_ID            not null,
-   CLUB_NAME            CLUB_NAME            not null,
    constraint PK_COACH primary key (PERSON_ID)
+)
+go
+
+/*==============================================================*/
+/* Table: COMPETITION                                           */
+/*==============================================================*/
+create table COMPETITION (
+   COMPETITION_NAME     COMPETITION_NAME     not null,
+   constraint PK_COMPETITION primary key (COMPETITION_NAME)
 )
 go
 
@@ -1200,16 +1214,6 @@ go
 
 
 create nonclustered index EDITION_IN_SEASON_FK on EDITION (SEASON_NAME ASC)
-go
-
-/*==============================================================*/
-/* Index: EDITION_OF_COMPETITION_FK                             */
-/*==============================================================*/
-
-
-
-
-create nonclustered index EDITION_OF_COMPETITION_FK on EDITION (COMPETITION_NAME ASC)
 go
 
 /*==============================================================*/
@@ -1709,6 +1713,12 @@ alter table CLUB
 go
 
 alter table CLUB
+   add constraint FK_CLUB_COACH_OF__COACH foreign key (COACH_PERSON_ID)
+      references COACH (PERSON_ID)
+         on update cascade
+go
+
+alter table CLUB
    add constraint FK_CLUB_STADIUM_O_STADIUM foreign key (STADIUM_NAME)
       references STADIUM (STADIUM_NAME)
          on update cascade
@@ -1723,12 +1733,6 @@ go
 alter table CLUB_PLAYS_IN_EDITION
    add constraint FK_CLUB_PLA_CLUB_PLAY_EDITION foreign key (SEASON_NAME, COMPETITION_NAME)
       references EDITION (SEASON_NAME, COMPETITION_NAME)
-         on update cascade
-go
-
-alter table COACH
-   add constraint FK_COACH_COACH_OF__CLUB foreign key (CLUB_NAME)
-      references CLUB (CLUB_NAME)
          on update cascade
 go
 
@@ -1750,6 +1754,12 @@ alter table CORNER
          on update cascade
 go
 
+alter table DOMESTIC_LEAGUE
+   add constraint FK_DOMESTIC_TYPE_OF_C_COMPETIT foreign key (COMPETITION_NAME)
+      references COMPETITION (COMPETITION_NAME)
+         on update cascade
+go
+
 alter table EDITION
    add constraint FK_EDITION_EDITION_I_SEASON foreign key (SEASON_NAME)
       references SEASON (SEASON_NAME)
@@ -1757,8 +1767,8 @@ alter table EDITION
 go
 
 alter table EDITION
-   add constraint FK_EDITION_EDITION_O_DOMESTIC foreign key (COMPETITION_NAME)
-      references DOMESTIC_LEAGUE (COMPETITION_NAME)
+   add constraint FK_EDITION_EDITION_O_COMPETIT foreign key (COMPETITION_NAME)
+      references COMPETITION (COMPETITION_NAME)
          on update cascade
 go
 
