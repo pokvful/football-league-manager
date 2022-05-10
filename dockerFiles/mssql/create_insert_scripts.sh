@@ -3,6 +3,9 @@
 # Extract countries from the city create script, so we always have the correct countries
 sed -E "s/CITY \\(Country_name, City_name\\) values \\(('[[:alnum:][:blank:][:punct:]]+'), '[[:alnum:][:blank:][:punct:]]+'\\);\$/COUNTRY (Country_name) values (\1);/" ./5-insert_city.sql > 4-insert_country.sql
 
+# Copy the DOMESTIC_LEAGUE content to the COMPETITION table
+sed -E "s/DOMESTIC_LEAGUE \\(Competition_name\) values \\(('[[:alnum:][:blank:][:punct:]]+')\\);\$/COMPETITION (Competition_name) values (\1);/" ./7-insert_domestic_league.sql > ./6-insert_competition.sql
+
 # loop over all insert files in this directory
 for file in ./*-insert_*.sql; do
 	# sort content in file reversed
