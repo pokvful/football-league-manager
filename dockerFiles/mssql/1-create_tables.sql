@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     10/05/2022 10:20:20                          */
+/* Created on:     10/05/2022 10:25:23                          */
 /*==============================================================*/
 
 
@@ -16,6 +16,13 @@ if exists (select 1
    where r.fkeyid = object_id('CLUB') and o.name = 'FK_CLUB_CLUB_LOCA_CITY')
 alter table CLUB
    drop constraint FK_CLUB_CLUB_LOCA_CITY
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('CLUB') and o.name = 'FK_CLUB_COACH_OF__COACH')
+alter table CLUB
+   drop constraint FK_CLUB_COACH_OF__COACH
 go
 
 if exists (select 1
@@ -37,13 +44,6 @@ if exists (select 1
    where r.fkeyid = object_id('CLUB_PLAYS_IN_EDITION') and o.name = 'FK_CLUB_PLA_CLUB_PLAY_EDITION')
 alter table CLUB_PLAYS_IN_EDITION
    drop constraint FK_CLUB_PLA_CLUB_PLAY_EDITION
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('COACH') and o.name = 'FK_COACH_COACH_OF__CLUB')
-alter table COACH
-   drop constraint FK_COACH_COACH_OF__CLUB
 go
 
 if exists (select 1
@@ -1061,6 +1061,7 @@ create table CLUB (
    STADIUM_NAME         STADIUM_NAME         not null,
    COUNTRY_NAME         COUNTRY_NAME         not null,
    CITY_NAME            CITY_NAME            not null,
+   COACH_PERSON_ID      PERSON_ID            not null,
    constraint PK_CLUB primary key (CLUB_NAME)
 )
 go
@@ -1072,7 +1073,7 @@ go
 
 
 
-create nonclustered index COACH_OF_CLUB2_FK on CLUB (CLUB_NAME ASC)
+create nonclustered index COACH_OF_CLUB2_FK on CLUB (COACH_PERSON_ID ASC)
 go
 
 /*==============================================================*/
@@ -1133,7 +1134,6 @@ go
 /*==============================================================*/
 create table COACH (
    PERSON_ID            PERSON_ID            not null,
-   CLUB_NAME            CLUB_NAME            not null,
    constraint PK_COACH primary key (PERSON_ID)
 )
 go
@@ -1458,9 +1458,8 @@ go
 /*==============================================================*/
 create table PLAYER_AS_RESERVE_IN_MATCH (
    PLAYER_PERSON_ID     PERSON_ID            not null,
-   ATTRIBUTE_25         COMPETITION_NAME     not null,
    MATCH_ID             G_IDENTITY           not null,
-   constraint PK_PLAYER_AS_RESERVE_IN_MATCH primary key (ATTRIBUTE_25, MATCH_ID, PLAYER_PERSON_ID)
+   constraint PK_PLAYER_AS_RESERVE_IN_MATCH primary key (MATCH_ID, PLAYER_PERSON_ID)
 )
 go
 
@@ -1489,10 +1488,9 @@ go
 /*==============================================================*/
 create table POSITION (
    PLAYER_PERSON_ID     PERSON_ID            not null,
-   ATTRIBUTE_25         COMPETITION_NAME     not null,
    MATCH_ID             G_IDENTITY           not null,
    POSITION_TYPE        POSITION_TYPE        not null,
-   constraint PK_POSITION primary key (ATTRIBUTE_25, MATCH_ID, PLAYER_PERSON_ID)
+   constraint PK_POSITION primary key (MATCH_ID, PLAYER_PERSON_ID)
 )
 go
 
@@ -1715,6 +1713,12 @@ alter table CLUB
 go
 
 alter table CLUB
+   add constraint FK_CLUB_COACH_OF__COACH foreign key (COACH_PERSON_ID)
+      references COACH (PERSON_ID)
+         on update cascade
+go
+
+alter table CLUB
    add constraint FK_CLUB_STADIUM_O_STADIUM foreign key (STADIUM_NAME)
       references STADIUM (STADIUM_NAME)
          on update cascade
@@ -1729,12 +1733,6 @@ go
 alter table CLUB_PLAYS_IN_EDITION
    add constraint FK_CLUB_PLA_CLUB_PLAY_EDITION foreign key (SEASON_NAME, COMPETITION_NAME)
       references EDITION (SEASON_NAME, COMPETITION_NAME)
-         on update cascade
-go
-
-alter table COACH
-   add constraint FK_COACH_COACH_OF__CLUB foreign key (CLUB_NAME)
-      references CLUB (CLUB_NAME)
          on update cascade
 go
 
