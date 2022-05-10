@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     10/05/2022 10:50:12                          */
+/* Created on:     10/05/2022 12:51:47                          */
 /*==============================================================*/
 
 
@@ -1581,6 +1581,8 @@ go
 /*==============================================================*/
 create table SEASON (
    SEASON_NAME          SEASON_NAME          not null,
+   START_DATE           _DATE_               not null,
+   END_DATE             _DATE_               not null,
    constraint PK_SEASON primary key (SEASON_NAME)
 )
 go
@@ -1799,6 +1801,7 @@ go
 alter table MATCH
    add constraint FK_MATCH_MATCH_HOM_CLUB foreign key (HOME_CLUB_NAME)
       references CLUB (CLUB_NAME)
+         on update cascade
 go
 
 alter table MATCH
@@ -1855,6 +1858,7 @@ go
 alter table PLAYER
    add constraint FK_PLAYER_PLAYER_IN_CLUB foreign key (CLUB_NAME)
       references CLUB (CLUB_NAME)
+         on update cascade
 go
 
 alter table PLAYER_AS_RESERVE_IN_MATCH
