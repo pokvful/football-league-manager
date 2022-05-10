@@ -19,8 +19,9 @@ def main():
 
 	cursor = mssql_connection.cursor()
 
-	# get all the tables and views in the database
-	cursor.execute("SELECT table_name FROM INFORMATION_SCHEMA.TABLES")
+	# get all the tables and views in the database, excluding the ones created
+	# by tSQLt
+	cursor.execute("SELECT table_name FROM INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA <> 'tSQLt' AND TABLE_NAME NOT LIKE '%tSQLt%'")
 	rows = cursor.fetchall()
 	table = []
 
