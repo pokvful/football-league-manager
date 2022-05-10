@@ -29,7 +29,7 @@ GO
 
 CREATE OR ALTER PROCEDURE testUserAuthorization.[test that the administrator can delete and update]
 AS
-BEGIN\
+BEGIN
 
     EXEC tSQLt.FakeTable @TableName='dbo.CITY'
 
