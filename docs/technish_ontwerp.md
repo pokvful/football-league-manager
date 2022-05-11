@@ -358,15 +358,15 @@ Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echt
 
 ## IR12 komt overeen met C12 en BR20
 
-- Omschrijving: Een speler mag niet jonger zijn dan 10 jaar;
-- Implementatie: Een check-constraint `CHK_PLAYER_HAS_VALID_AGE` op de tabel `PLAYER`.
+- Omschrijving: Een persoon mag niet jonger zijn dan 15 jaar;
+- Implementatie: Een check-constraint `CHK_PERSON_HAS_VALID_AGE` op de tabel `PERSON`.
 
-## IR13 komt overeen met C13 en BR22
+## IR13 komt overeen met C13 en BR21
 
 - Omschrijving: Het aantal toeschouwers bij een wedstrijd mag niet groter zijn dan de capaciteit van het stadion waar de wedstrijd wordt gehouden;
 - Implementatie: Een trigger `TRG_VALID_AMOUNT_OF_SPECTATORS` op de tabel `MATCH`.
 
-## IR14 komt overeen met C14 en BR23
+## IR14 komt overeen met C14 en BR22
 
 - Omschrijving: De minuut in een wedstrijd mag niet negatief zijn;
 - Implementatie: Een check-constraint `CHK_VALID_MINUTE_IN_MATCH` op de tabellen `RED_CARD`, `YELLOW_CARD`, `PASS`, `GOAL`, `SHOT`, `FOUL`, `CORNER` en `SUBSTITUTE`.
