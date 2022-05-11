@@ -1,4 +1,4 @@
-CREATE or ALTER TRIGGER trg_round_max_amount ON ROUND
+CREATE or ALTER TRIGGER tgr_round_max_amount ON ROUND
 AFTER INSERT
 AS
 BEGIN
@@ -6,15 +6,14 @@ BEGIN
 		return
 	set nocount on
 
-	DECLARE @roundAmt int;
-	SET @roundAmt = 52;
+	DECLARE @roundAmt int = 52;
 
 	if exists(
-			SELECT SEASON_NAME
+			SELECT 1
 			FROM ROUND
 			GROUP BY SEASON_NAME
 			HAVING COUNT(SEASON_NAME) > @roundAmt
 	)
-		THROW 50000, 'Edition has more than 52 rounds', 1
+		THROW 50000, 'Edition has more than 52 Rounds', 1
 END
 GO
