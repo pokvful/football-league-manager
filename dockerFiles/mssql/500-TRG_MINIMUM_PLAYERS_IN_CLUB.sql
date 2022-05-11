@@ -1,22 +1,27 @@
 CREATE OR ALTER TRIGGER TRG_MINIMUM_PLAYERS_IN_CLUB
-    ON PLAYER
-    FOR INSERT, UPDATE
-    AS
-BEGIN TRY
-    SET NOCOUNT ON;
-        DECLARE @ClubName VARCHAR(255)
+	ON PLAYER
+	FOR INSERT, UPDATE
+	AS
+BEGIN
+	if @@rowcount > 0
+--		SET NOCOUNT ON;
+		BEGIN TRY
 
-        SELECT @ClubName = I.CLUB_NAME
-        from inserted I
+--		if ((SELECT COUNT(*)
+--			 from PLAYER P
+--					  inner join inserted I on P.PERSON_ID = I.PERSON_ID
+--			 WHERE p.CLUB_NAME = i.CLUB_NAME) < 11)
+--			THROW 50000, 'There must be at least 11 players in a club', 1
 
-        if ((SELECT COUNT(*)
-             from PLAYER
-             where CLUB_NAME = @ClubName) < 11)
-        THROW 50000, 'There must be at least 11 players in a club', 1
-END TRY
-
-BEGIN CATCH
-    THROW;
-END CATCH
-
+			IF EXISTS(
+				SELECT COUNT(*)
+				FROM PLAYER P
+				GROUP BY P.CLUB_NAME
+				HAVING COUNT(*) < 11)
+				THROW 50000, 'There must be at least 11 players in a club', 1
+		END TRY
+		BEGIN CATCH
+			THROW;
+		END CATCH
+END
 GO
