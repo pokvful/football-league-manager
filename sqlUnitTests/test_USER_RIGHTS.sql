@@ -46,7 +46,7 @@ EXEC tSQLt.Run 'testUserAuthorization.[test that the administrator can delete an
 
 GO
 
-CREATE OR ALTER PROCEDURE testUserAuthorization.[test that the data_analist can not delete insert and update]
+CREATE OR ALTER PROCEDURE testUserAuthorization.[test that the data_analist can not delete]
 AS
 BEGIN
 
@@ -58,7 +58,23 @@ BEGIN
 
     EXEC ('DELETE FROM dbo.CITY WHERE CITY_NAME = ''CITY'';');
 
-    EXEC ('UPDATE dbo.CITY SET CITY_NAME = ''CITY'' WHERE COUNTRY_NAME = ''CITY'';');
+END;
+
+GO
+
+EXEC tSQLt.Run 'testUserAuthorization.[test that the data_analist can not delete]';
+
+GO
+
+CREATE OR ALTER PROCEDURE testUserAuthorization.[test that the data_analist can not insert]
+AS
+BEGIN
+
+  	EXEC tSQLt.FakeTable @TableName='dbo.CITY';
+
+    EXEC tSQLt.ExpectException;
+
+    EXECUTE AS USER = 'Data_analist';
 
   	EXEC ('INSERT INTO dbo.CITY(CITY_NAME) WHERE CITY = ''CITY'';');
 
@@ -66,7 +82,27 @@ END;
 
 GO
 
-EXEC tSQLt.Run 'testUserAuthorization.[test that the data_analist can not delete insert and update]';
+EXEC tSQLt.Run 'testUserAuthorization.[test that the data_analist can not insert]';
+
+GO
+
+CREATE OR ALTER PROCEDURE testUserAuthorization.[test that the data_analist can not update]
+AS
+BEGIN
+
+  	EXEC tSQLt.FakeTable @TableName='dbo.CITY';
+
+    EXEC tSQLt.ExpectException;
+
+    EXECUTE AS USER = 'Data_analist';
+
+    EXEC ('UPDATE dbo.CITY SET CITY_NAME = ''CITY'' WHERE COUNTRY_NAME = ''CITY'';');
+
+END;
+
+GO
+
+EXEC tSQLt.Run 'testUserAuthorization.[test that the data_analist can not update]';
 
 GO
 
