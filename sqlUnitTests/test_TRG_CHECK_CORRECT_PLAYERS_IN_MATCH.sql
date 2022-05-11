@@ -73,11 +73,7 @@ END
 GO
 EXEC TSQLT.RUN 'TEST_TRG_CHECK_CORRECT_PLAYERS_IN_MATCH_FOR_PLAYER_AS_RESERVE_IN_MATCH.[test trigger player not from right club]'
 GO
--- SCIENCE. Did you know that not (null = 1) is equal to null = 1
--- And both are false
---SELECT 1 WHERE not(null = 'f')
---SELECT 1 WHERE null = 'f' OR null is null
---SELECT 1 WHERE 1 = 1
+
 
 EXEC TSQLT.NEWTESTCLASS 'test_TRG_CHECK_CORRECT_PLAYERS_IN_MATCH_FOR_POSITION'
 GO
