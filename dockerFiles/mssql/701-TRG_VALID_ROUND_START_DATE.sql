@@ -1,0 +1,21 @@
+CREATE OR ALTER TRIGGER TRG_VALID_ROUND_START_DATE
+	ON ROUND
+	AFTER INSERT, UPDATE
+	AS
+	DECLARE
+		@rowCount NUMERIC;
+	SET @rowCount = @@ROWCOUNT;
+	BEGIN TRY
+		IF @rowCount > 0
+			IF EXISTS(
+					SELECT 1
+					FROM inserted INNER JOIN SEASON ON inserted.SEASON_NAME = SEASON.SEASON_NAME
+					WHERE inserted.START_DATE < SEASON.START_DATE
+					   OR inserted.START_DATE > SEASON.END_DATE
+				)
+				THROW 500002, 'The start date of a round must be inside the date of a season', 1;
+
+	END TRY
+	BEGIN CATCH
+		THROW;
+	END CATCH
