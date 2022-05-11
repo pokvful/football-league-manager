@@ -2,13 +2,13 @@ CREATE or ALTER TRIGGER tgr_round_max_amount ON ROUND
 AFTER INSERT
 AS
 BEGIN
-	if @@rowcount = 0
-		return
-	set nocount on
+	IF @@rowcount = 0
+		RETURN
+	SET NOCOUNT ON
 
-	DECLARE @roundAmt int = 52;
+	DECLARE @roundAmt INT = 52;
 
-	if exists(
+	IF EXISTS(
 			SELECT 1
 			FROM ROUND
 			GROUP BY SEASON_NAME

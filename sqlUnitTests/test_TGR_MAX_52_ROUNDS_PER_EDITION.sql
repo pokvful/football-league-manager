@@ -5,7 +5,7 @@ AS
 BEGIN
 	EXEC tSQLt.FakeTable @SchemaName='dbo', @TableName='ROUND';
 
-	DECLARE @i int = 0;
+	DECLARE @i INT = 0;
 	WHILE (@i <= 52 )
 	BEGIN
 		INSERT INTO ROUND (SEASON_NAME, COMPETITION_NAME, START_DATE)
