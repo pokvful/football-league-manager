@@ -3,7 +3,7 @@ go
 
 CREATE
 OR
-ALTER PROCEDURE [TRG_MINIMUM_PLAYERS_IN_CLUB].[Test total player in club is les then 11 failed]
+ALTER PROCEDURE [TRG_MINIMUM_PLAYERS_IN_CLUB].[Test total player in club is less than 11 failed]
     AS
 BEGIN
 --Assemble
@@ -27,7 +27,7 @@ go
 
 CREATE
 OR
-ALTER PROCEDURE [TRG_MINIMUM_PLAYERS_IN_CLUB].[Test total player in club is les then 11 passed]
+ALTER PROCEDURE [TRG_MINIMUM_PLAYERS_IN_CLUB].[Test total player in club is less than 11 passed]
     AS
 BEGIN
 --Assemble
@@ -55,7 +55,7 @@ go
 
 CREATE
 OR
-ALTER PROCEDURE [TRG_MINIMUM_PLAYERS_IN_CLUB].[Test total player in club is les then 11 passed when inserted more then one team passed]
+ALTER PROCEDURE [TRG_MINIMUM_PLAYERS_IN_CLUB].[Test total player in club is less than 11 passed when inserted more then one team passed]
     AS
 BEGIN
 --Assemble
@@ -94,7 +94,7 @@ go
 
 CREATE
 OR
-ALTER PROCEDURE [TRG_MINIMUM_PLAYERS_IN_CLUB].[Test total player in club is les then 11 passed when inserted more then one team failed]
+ALTER PROCEDURE [TRG_MINIMUM_PLAYERS_IN_CLUB].[Test total player in club is less than 11 passed when inserted more then one team failed]
     AS
 BEGIN
 --Assemble
