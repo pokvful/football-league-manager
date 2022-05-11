@@ -46,7 +46,7 @@ EXEC tSQLt.Run 'testUserAuthorization.[test that the administrator can delete an
 
 GO
 
-CREATE OR ALTER PROCEDURE testUserAuthorization.[test that the data_analist can not delete and update]
+CREATE OR ALTER PROCEDURE testUserAuthorization.[test that the data_analist can not delete insert and update]
 AS
 BEGIN
 
@@ -60,11 +60,13 @@ BEGIN
 
     EXEC ('UPDATE dbo.CITY SET CITY_NAME = ''CITY'' WHERE COUNTRY_NAME = ''CITY'';');
 
+  	EXEC ('INSERT INTO dbo.CITY(CITY_NAME) WHERE CITY = ''CITY'';');
+
 END;
 
 GO
 
-EXEC tSQLt.Run 'testUserAuthorization.[test that the data_analist can not delete and update]';
+EXEC tSQLt.Run 'testUserAuthorization.[test that the data_analist can not delete insert and update]';
 
 GO
 
