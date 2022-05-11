@@ -838,11 +838,9 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 - BR17 Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1;
 - BR18 Minimaal 11 spelers per club;
 - BR19 Minimaal en maximaal 1 coach per club;
-- BR20 Een speler mag niet jonger zijn dan 10 jaar;
-<!-- dubbelop met die hierboven? (als deze wordt verwijdert, verander dan ook de getallen bij de IR's) -->
-- BR21 Een speler kan niet in een competitie spelen voor zijn 10 verjaardag;
-- BR22 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
-- BR23 Hoeveelste minuut mag niet negatief zijn.
+- BR20 Een persoon binnen het systeem mag niet jonger zijn dan 15 jaar;
+- BR21 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
+- BR22 Hoeveelste minuut mag niet negatief zijn.
 
 # Functionele requirements.
 
@@ -961,15 +959,15 @@ PI: Time + club_name + club_name + match_day + start_date + end_date + competiti
 
 #### C12 komt overeen met BR20
 
-- Betreft: ET `PLAYER`, Att `Birth_date`;
-- Specificatie: Een speler mag niet jonger zijn dan 10 jaar oud.
+- Betreft: ET `PERSON`, Att `Birth_date`;
+- Specificatie: Een peroon binnen het systeem mag niet jonger zijn dan 15 jaar oud.
 
-#### C13 komt overeen met BR22
+#### C13 komt overeen met BR21
 
 - Betreft: ET `MATCH` en ET `STADIUM`, Att `Capacity`;
 - Specificatie: Het aantal toeschouwers mag niet groter zijn dan de capaciteit van het stadion waar de wedstrijd wordt gehouden.
 
-#### C14 komt overeen met BR23
+#### C14 komt overeen met BR22
 
 - Betreft: De Att `Time` van de entiteiten ET `RED_CARD`, ET `YELLOW_CARD`, ET `PASS`, ET `GOAL`, ET `SHOT`, ET `FOUL`, ET `CORNER` en ET `SUBSTITUTE`;
 - Specificatie: De minuut in een wedstrijd mag niet negatief zijn.
