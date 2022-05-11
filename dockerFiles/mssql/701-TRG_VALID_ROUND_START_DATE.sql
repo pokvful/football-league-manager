@@ -14,11 +14,7 @@ BEGIN TRY
                 AND ROUND.SEASON_NAME = SEASON_NAME
         )
 
-        RAISERROR (
-            'The start date of a round must be inside the date of a season',
-            16,
-            1
-        )
+        THROW 500002, 'The start date of a round must be inside the date of a season', 1;
 
 END TRY
 
