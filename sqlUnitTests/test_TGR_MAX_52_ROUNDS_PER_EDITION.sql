@@ -11,10 +11,7 @@ BEGIN
 		INSERT INTO ROUND (SEASON_NAME, COMPETITION_NAME, START_DATE)
 		VALUES	('21/22', 'Eredivisie', DATEADD(day , @i, GETDATE()));
 		SET @i = @i + 1;
-    END
-
-	SELECT *
-    FROM ROUND
+	END
 
 	EXEC tSQLt.ApplyTrigger 'ROUND', 'tgr_round_max_amount';
 
@@ -38,7 +35,6 @@ BEGIN
 
 	INSERT INTO ROUND (SEASON_NAME, COMPETITION_NAME, START_DATE)
 	VALUES	('21/22', 'Eredivisie', GETDATE());
-
 END;
 GO
 
