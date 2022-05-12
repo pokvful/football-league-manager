@@ -1,0 +1,140 @@
+EXEC tSQLt.NewTestClass 'test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_COACH'
+GO
+CREATE OR ALTER PROCEDURE test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_COACH.SetUp
+AS
+BEGIN
+	EXEC tSQLt.FakeTable 'dbo.COACH'
+	EXEC tSQLt.FakeTable 'dbo.REFEREE'
+	EXEC tSQLt.FakeTable 'dbo.PLAYER'
+
+	EXEC tSQLt.ApplyTrigger 'dbo.COACH', 'TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_COACH'
+END
+GO
+CREATE OR ALTER PROCEDURE test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_COACH.[test one subtype for multiple people succes]
+AS
+BEGIN
+	EXEC tSQLt.ExpectNoException
+	
+	INSERT INTO COACH (PERSON_ID) VALUES
+	(222),
+	(223),
+	(2),
+	(55)
+END
+GO
+EXEC tSQLt.Run 'test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_COACH.[test one subtype for multiple people succes]'
+GO
+CREATE OR ALTER PROCEDURE test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_COACH.[test coach is already player with update]
+AS
+BEGIN
+	INSERT INTO PLAYER (PERSON_ID)
+	VALUES (200)
+
+	INSERT INTO COACH (PERSON_ID)
+	VALUES (55)
+
+	EXEC tSQLt.ExpectException 'Person can only be one subtype'
+
+	UPDATE COACH
+	SET PERSON_ID = 200
+	WHERE PERSON_ID = 55
+END
+GO
+EXEC tSQLt.Run 'test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_COACH.[test coach is already player with update]'
+GO
+CREATE OR ALTER PROCEDURE test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_COACH.[test coach is already referee]
+AS
+BEGIN
+	INSERT INTO REFEREE (PERSON_ID)
+	VALUES (1)
+
+	EXEC tSQLt.ExpectException 'Person can only be one subtype'
+
+	INSERT INTO COACH (PERSON_ID)
+	VALUES (1)
+END
+GO
+EXEC tSQLt.Run 'test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_COACH.[test coach is already referee]'
+GO
+
+
+EXEC tSQLt.NewTestClass 'test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_REFEREE'
+GO
+CREATE OR ALTER PROCEDURE test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_REFEREE.SetUp
+AS
+BEGIN
+	EXEC tSQLt.FakeTable 'dbo.COACH'
+	EXEC tSQLt.FakeTable 'dbo.REFEREE'
+	EXEC tSQLt.FakeTable 'dbo.PLAYER'
+
+	EXEC tSQLt.ApplyTrigger 'dbo.REFEREE', 'TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_REFEREE'
+END
+GO
+CREATE OR ALTER PROCEDURE test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_REFEREE.[test one subtype for multiple people succes]
+AS
+BEGIN
+	EXEC tSQLt.ExpectNoException
+	
+	INSERT INTO REFEREE(PERSON_ID) VALUES
+	(222),
+	(223),
+	(2),
+	(55)
+END
+GO
+EXEC tSQLt.Run 'test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_REFEREE.[test one subtype for multiple people succes]'
+GO
+CREATE OR ALTER PROCEDURE test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_REFEREE.[test referee is already player]
+AS
+BEGIN
+	INSERT INTO PLAYER (PERSON_ID)
+	VALUES (200)
+
+	EXEC tSQLt.ExpectException 'Person can only be one subtype'
+
+	INSERT INTO REFEREE (PERSON_ID)
+	VALUES (200)
+END
+GO
+EXEC tSQLt.Run 'test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_REFEREE.[test referee is already player]'
+GO
+
+EXEC tSQLt.NewTestClass 'test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_PLAYER'
+GO
+CREATE OR ALTER PROCEDURE test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_PLAYER.SetUp
+AS
+BEGIN
+	EXEC tSQLt.FakeTable 'dbo.COACH'
+	EXEC tSQLt.FakeTable 'dbo.REFEREE'
+	EXEC tSQLt.FakeTable 'dbo.PLAYER'
+
+	EXEC tSQLt.ApplyTrigger 'dbo.PLAYER', 'TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_PLAYER'
+END
+GO
+CREATE OR ALTER PROCEDURE test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_PLAYER.[test one subtype for multiple people succes]
+AS
+BEGIN
+	EXEC tSQLt.ExpectNoException
+	
+	INSERT INTO PLAYER(PERSON_ID) VALUES
+	(222),
+	(223),
+	(2),
+	(55)
+END
+GO
+EXEC tSQLt.Run 'test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_PLAYER.[test one subtype for multiple people succes]'
+GO
+CREATE OR ALTER PROCEDURE test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_PLAYER.[test player is already coach]
+AS
+BEGIN
+	INSERT INTO COACH(PERSON_ID)
+	VALUES (200)
+
+	EXEC tSQLt.ExpectException 'Person can only be one subtype'
+
+	INSERT INTO PLAYER (PERSON_ID)
+	VALUES (200)
+END
+GO
+EXEC tSQLt.Run 'test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_PLAYER.[test player is already coach]'
