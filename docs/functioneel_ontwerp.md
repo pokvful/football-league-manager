@@ -2,7 +2,7 @@
 
 # Use cases
 
-![Use case diagram](images/usecase_diagram_nutmeg.png)
+![Use case diagram](images/UseCase\ Diagram\ NUTMEG.png)
 
 # Fully-Dressed Use-cases
 <!--- Staging area bij alles nog weggelaten, updaten na onderzoek --->
@@ -1011,11 +1011,15 @@ De entiteit Match bevat alle informatie (balbezit, passes, schoten, schoten op d
 | Toevoegen Nieuwe Persoon  | Person                                        | Admin                 |
 
 # Toelichting Datakwaliteit
-Voor dit project is geen data aangeleverd. Alle data in de database wordt gemockt en zoveel mogelijk gebaseerd op voorbeelddata.
 
+Voor dit project is geen data aangeleverd. Alle data in de database wordt gemockt en zoveel mogelijk gebaseerd op voorbeelddata.
 
 Het schema is gebaseerd op een opzet met informatiebehoeften dat met de opdrachtgever is afgestemed. Het schema is vervolgens ontworpen op basis van deze informatiebehoeften.
 Relevante keuzes betreft het includeren of uitsluiten van feiten in het schema staan omschreven in het hoofdstuk ontwerpkeuzes.
+
+# CDM
+
+![Het CDM.](images/cdm_no_ko.png)
 
 # Onderbouwing concepten CDM
 
