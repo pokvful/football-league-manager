@@ -1,0 +1,20 @@
+TSQLT.NewTestClass @ClassName = 'test_PROC_INSERT_NEW_PERSON'
+
+GO
+
+CREATE OR ALTER PROCEDURE test_PROC_INSERT_NEW_PERSON.[test_PROC_INSERT_NEW_PLAYER_SUCCESS]
+AS
+BEGIN
+
+	EXEC TSQLT.FakeTable 'dbo.PERSON'
+
+	EXEC TSQLT.ExpectNoException
+
+	EXEC PROC_INSERT_NEW_PLAYER 'Country', 'FirstName', 'LastName', 'MiddleName', '2000-10-04', 'Club', 1
+
+	SELECT * FROM PERSON
+END
+
+GO
+
+TSQLT.Run @TestName = 'test_PROC_INSERT_NEW_PERSON';

@@ -1412,7 +1412,7 @@ go
 /* Table: PERSON                                                */
 /*==============================================================*/
 create table PERSON (
-   PERSON_ID            PERSON_ID            not null,
+   PERSON_ID            PERSON_ID            not null IDENTITY(1,1),
    COUNTRY_NAME         COUNTRY_NAME         not null,
    FIRST_NAME           NAME                 not null,
    LAST_NAME            NAME                 not null,
