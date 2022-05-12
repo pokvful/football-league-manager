@@ -4,26 +4,26 @@
 
 ## Performance and scalability
 
-- Data uitlezen wordt gedaan via een staging area met mongoDB, hierdoor wordt de load op de MSSQL database verlaagd
+- Data uitlezen wordt gedaan via een MongoDB staging area, hierdoor wordt de load op de MSSQL database verlaagd
 
 ## Portability and compatibility
 
 - MSSQL is vereist voor het *opzetten* van de database
-- MongoDB is vereist voor het *uitlezen* van de database
+- Voor data-analisten van klanten die willen *uitlezen*, is het verplicht om de staging area te gebruiken
 
 ## Reliability, availability, maintainability
 
-- De data wordt opgeslagen in MSSQL en periodiek overgezet naar MongoDB staging area
+- Iedere dag wordt om 02:00 een kopie van de MSSQL database overgezet naar de MongoDB staging area
 
 ## Security
 
-- Administrators van NUTMEG kunnen de MSSQL database volledig beheren
+- Administrators van NUTMEG hebben volledige CRUD rechten op alle tabellen in de MSSQL database
 - Data-analisten van klanten kunnen de database alleen uitlezen via de staging area
 
 ## Localization
 
 - De data wordt in het Nederlands opgeslagen
-- Tabelnamen staan in het Engels
+- De schema wordt in het Engels gemaakt
 
 ## Usability
 
