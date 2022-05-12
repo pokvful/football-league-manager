@@ -6,11 +6,9 @@ BEGIN
 DECLARE @rows int = @@ROWCOUNT
 IF @rows > 0 AND UPDATE(PERSON_ID)
 	BEGIN TRY
-		DECLARE @aantCoaches int = (SELECT COUNT(*) FROM inserted i JOIN COACH c ON i.PERSON_ID = c.PERSON_ID)
-		DECLARE @aantReferees int = (SELECT COUNT(*) FROM inserted i JOIN REFEREE r ON i.PERSON_ID = r.PERSON_ID)
-		DECLARE @aantPlayers int = (SELECT COUNT(*) FROM inserted i JOIN PLAYER p ON i.PERSON_ID = p.PERSON_ID)
-
-		IF not (@rows = (@aantCoaches + @aantReferees + @aantPlayers))
+		IF EXISTS (SELECT 1 FROM inserted i 
+					WHERE EXISTS (SELECT 1 FROM REFEREE r WHERE r.PERSON_ID = i.PERSON_ID) 
+					OR EXISTS (SELECT 1 FROM PLAYER p WHERE p.PERSON_ID = i.PERSON_ID))
 			THROW 50001, 'Person can only be one subtype', 1
 	END TRY
 	BEGIN CATCH
@@ -26,11 +24,9 @@ BEGIN
 DECLARE @rows int = @@ROWCOUNT
 IF @rows > 0 AND UPDATE(PERSON_ID)
 	BEGIN TRY
-		DECLARE @aantCoaches int = (SELECT COUNT(*) FROM inserted i JOIN COACH c ON i.PERSON_ID = c.PERSON_ID)
-		DECLARE @aantReferees int = (SELECT COUNT(*) FROM inserted i JOIN REFEREE r ON i.PERSON_ID = r.PERSON_ID)
-		DECLARE @aantPlayers int = (SELECT COUNT(*) FROM inserted i JOIN PLAYER p ON i.PERSON_ID = p.PERSON_ID)
-
-		IF not (@rows = (@aantCoaches + @aantReferees + @aantPlayers))
+		IF EXISTS (SELECT 1 FROM inserted i 
+					WHERE EXISTS (SELECT 1 FROM COACH c WHERE c.PERSON_ID = i.PERSON_ID) 
+					OR EXISTS (SELECT 1 FROM PLAYER p WHERE p.PERSON_ID = i.PERSON_ID))
 			THROW 50001, 'Person can only be one subtype', 1
 	END TRY
 	BEGIN CATCH
@@ -46,11 +42,9 @@ BEGIN
 DECLARE @rows int = @@ROWCOUNT
 IF @rows > 0 AND UPDATE(PERSON_ID)
 	BEGIN TRY
-		DECLARE @aantCoaches int = (SELECT COUNT(*) FROM inserted i JOIN COACH c ON i.PERSON_ID = c.PERSON_ID)
-		DECLARE @aantReferees int = (SELECT COUNT(*) FROM inserted i JOIN REFEREE r ON i.PERSON_ID = r.PERSON_ID)
-		DECLARE @aantPlayers int = (SELECT COUNT(*) FROM inserted i JOIN PLAYER p ON i.PERSON_ID = p.PERSON_ID)
-
-		IF not (@rows = (@aantCoaches + @aantReferees + @aantPlayers))
+		IF EXISTS (SELECT 1 FROM inserted i 
+					WHERE EXISTS (SELECT 1 FROM COACH c WHERE c.PERSON_ID = i.PERSON_ID) 
+					OR EXISTS (SELECT 1 FROM REFEREE r WHERE r.PERSON_ID = i.PERSON_ID))
 			THROW 50001, 'Person can only be one subtype', 1
 	END TRY
 	BEGIN CATCH
