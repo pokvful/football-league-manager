@@ -29,6 +29,10 @@
 
 - Data-analisten kunnen via de MongoDB shell data uitlezen van de staging area
 
+# PDM
+
+![Het PDM.](images/pdm_no_ko.png)
+
 # Beschrijving Tabellen en Kolommen
 
 ## Tabel: PERSON
