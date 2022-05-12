@@ -997,18 +997,22 @@ De entiteit Match bevat alle informatie (balbezit, passes, schoten, schoten op d
 
 # Rechtenstructuur
 
-| Use Cases                 | Entiteit(en)                                  | Rechten               |
-|---------------------------|-----------------------------------------------|-----------------------|
-| Ophalen Top-lijst         | Event (inc. subtypes), Match, Person, Club    | Data-Analist en Admin |
-| Ophalen Tussenstand Comp  | Competition, Edition, Season, Round           | Data-Analist en Admin |
-| Ophalen Club Info         | Club, Person, City, Competition, Coach        | Data-Analist en Admin | 
-| Ophalen Match Info        | Match, Person, Matchday, Club, Stadium, Event | Data-Analist en Admin |
-| Ophalen Speelronde Info   | Round, Matchday, Edition                      | Data-Analist en Admin |
-| Ophalen Matchday Info     | Matchday, Round, Match                        | Data-Analist en Admin |
-| Invoeren Match Data       | Match, Event, Matchday, Stadium, Club, Person | Admin                 |
-| Updaten Club Info         | Club, Player, Coach, City, Match              | Admin                 |
-| Start Nieuwe Seizoen Comp | Season, Competition, Edition, Round, Matchday | Admin                 |
-| Toevoegen Nieuwe Persoon  | Person                                        | Admin                 |
+Voor data-analisten geldt dat ze alleen SELECT / READ rechten op alle data uit de MongoDB staging area.
+
+Administrators hebben GRANT ALL rechten op alle data uit de MSSQL database en de MongoDB staging area.
+
+| Use Cases                 | Entiteit(en)                                  | Rechten               | Beschrijving
+|---------------------------|-----------------------------------------------|-----------------------|--------------|
+| Ophalen Top-lijst         | Event (inc. subtypes), Match, Person, Club    | Data-Analist en Admin | Het ophalen van de volgende gegevens: Per editie wordt op volgorde gesorteerd welke spelers de meeste ballen hebben gepaast, doelpunten hebben gescoord, rode en gele kaarten hebben ontvangen, schot op goal hebben gelost, overtreding hebben gemaakt en corners hebben genomen.
+| Ophalen Tussenstand Comp  | Competition, Edition, Season, Round           | Data-Analist en Admin | Het ophalen van de volgende gegevens: Per editie wordt op volgorde gesorteerd welke teams de meeste wedstrijden heeft gewonnen.
+| Ophalen Club Info         | Club                                          | Data-Analist en Admin | Het ophalen van alle kolommen die zich bevinden in de club tabel.
+| Ophalen Match Info        | Match, Person, Club, Stadium, Event           | Data-Analist en Admin | Het ophalen van match info die zich bevindt in de match, matchday, person, club, stadium en event tabel.
+| Ophalen Speelronde Info   | Round, Matchday, Edition                      | Data-Analist en Admin | Het ophalen van speelronde informatie, dit wordt uit de tabel round, matchday en editie gehaald.
+| Ophalen Matchday Info     | Matchday, Round, Match                        | Data-Analist en Admin | Het ophalen van matchday info die zich bevindt in de matchday, round en match tabel.
+| Invoeren Match Data       | Match, Event, Matchday, Stadium, Club, Person | Admin                 | Het invoeren van nieuwe match data in de match, event, matchday, stadium en club tabel.
+| Updaten Club Info         | Club, Player, Coach, City, Match              | Admin                 | Het updaten van bestaande data in de club, player, coach, city en match tabel.
+| Start Nieuwe Seizoen Comp | Season, Competition, Edition, Round, Matchday | Admin                 | Het aanmaken van een nieuwe seizoen in de season, competition, edition, round en matchday tabel.
+| Toevoegen Nieuwe Persoon  | Person                                        | Admin                 | Het toevoegen van een nieuwe persoon; afhankelijk van het type persoon kan een persoon een speler, scheidsrechter of coach zijn.
 
 # Toelichting Datakwaliteit
 Voor dit project is geen data aangeleverd. Alle data in de database wordt gemockt en zoveel mogelijk gebaseerd op voorbeelddata.
