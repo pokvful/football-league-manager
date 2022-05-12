@@ -2,7 +2,7 @@
 
 # Use cases
 
-![Use case diagram](images/UseCase\ Diagram\ NUTMEG.png)
+![Use case diagram](images/usecase_diagram_nutmeg.png)
 
 # Fully-Dressed Use-cases
 <!--- Staging area bij alles nog weggelaten, updaten na onderzoek --->
