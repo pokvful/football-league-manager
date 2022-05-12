@@ -1005,7 +1005,7 @@ Administrators hebben GRANT ALL rechten op alle data uit de MSSQL database en de
 |---------------------------|-----------------------------------------------|-----------------------|--------------|
 | Ophalen Top-lijst         | Event (inc. subtypes), Match, Person, Club    | Data-Analist en Admin | Het ophalen van de volgende gegevens: Per editie wordt op volgorde gesorteerd welke spelers de meeste ballen hebben gepaast, doelpunten hebben gescoord, rode en gele kaarten hebben ontvangen, schot op goal hebben gelost, overtreding hebben gemaakt en corners hebben genomen.
 | Ophalen Tussenstand Comp  | Competition, Edition, Season, Round           | Data-Analist en Admin | Het ophalen van de volgende gegevens: Per editie wordt op volgorde gesorteerd welke teams de meeste wedstrijden heeft gewonnen.
-| Ophalen Club Info         | Club                                          | Data-Analist en Admin | Het ophalen van alle kolommen die zich bevinden in de club tabel.
+| Ophalen Club Info         | Club, Player, City, Stadium                   | Data-Analist en Admin | Het ophalen van alle kolommen die zich bevinden in de club, player, city en stadium tabel.
 | Ophalen Match Info        | Match, Person, Club, Stadium, Event           | Data-Analist en Admin | Het ophalen van match info die zich bevindt in de match, matchday, person, club, stadium en event tabel.
 | Ophalen Speelronde Info   | Round, Matchday, Edition                      | Data-Analist en Admin | Het ophalen van speelronde informatie, dit wordt uit de tabel round, matchday en editie gehaald.
 | Ophalen Matchday Info     | Matchday, Round, Match                        | Data-Analist en Admin | Het ophalen van matchday info die zich bevindt in de matchday, round en match tabel.
