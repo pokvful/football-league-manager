@@ -29,6 +29,10 @@
 
 - Data-analisten kunnen via de MongoDB shell data uitlezen die in de MongoDB staging area staat
 
+# Deployment diagram
+
+![Deployment diagram.](images/Deployment%20Diagram.png)
+
 # PDM
 
 ![Het PDM.](images/pdm_no_ko.png)
