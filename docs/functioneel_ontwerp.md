@@ -843,6 +843,7 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 - BR21 Een speler kan niet in een competitie spelen voor zijn 10 verjaardag;
 - BR22 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
 - BR23 Hoeveelste minuut mag niet negatief zijn.
+- BR24 Een persoon kan een speler, coach of scheidsrechter zijn.
 
 # Functionele requirements.
 

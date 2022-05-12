@@ -372,6 +372,11 @@ Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echt
 - Implementatie: Een check-constraint `CHK_VALID_MINUTE_IN_MATCH` op de tabellen `RED_CARD`, `YELLOW_CARD`, `PASS`, `GOAL`, `SHOT`, `FOUL`, `CORNER` en `SUBSTITUTE`.
 Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echter worden wedstrijden als vastgesteld en aangemaakt ver voordat de opstelling bekend zijn. Hierom hebben ervoor gekozen het ook mogelijk te 0 tot 22 spelers op te stellen. Met een trigger wordt gecheckt of er wel 22 spelers zijn opgesteld voordat de wedstrijd daadwerkelijk start.
 
+## IR15 komt overeen met diagram en BR24
+
+- Omschrijving: Een persoon moet een speler, coach of scheidsrechter zijn.
+- Implementatie: Een trigger `TRG_PLAYER_MUST_BE_ONE_SUBTYPE` op de tabellen `PLAYER`, `COACH` en `REFEREE`.
+
 # Toelichting Domeinen
 
 |Domein				|Datatype		|Toelichting															|
