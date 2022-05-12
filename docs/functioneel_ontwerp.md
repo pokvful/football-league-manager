@@ -861,116 +861,72 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 ## Constraints
 
-### Primary key constraints
-
-#### Person
-
-PI: Person ID
-
-#### Match
-
-PI: Club_name + club_name + match_day + start_date + end_date + competition_name + season_name
-
-#### Club
-
-PI: Club_name
-
-#### City
-
-PI: City_name
-
-#### Country 
-
-PI: Country_name
-
-#### Competition
-
-PI: Competition_name
-
-#### Season
-
-PI: Season_name
-
-#### Round
-
-PI: Start_date + end_date
-
-#### Matchday
-
-PI: Match_day + start_date + end_date + competition_name + season_name
-
-#### Event
-
-PI: Time + club_name + club_name + match_day + start_date + end_date + competition_name + season_name
-
-### Check constraints
-
-#### C1 komt overeen met BR12
+### C1 komt overeen met BR12
 
 - Betreft: ET `POSITION`;
 - Specificatie: Maximaal 22 posities per match (11 per club).
 
-#### C2 komt overeen met BR18
+### C2 komt overeen met BR18
 
 - Betreft: ET `PLAYER` en ET `CLUB`;
 - Specificatie: Minimaal 11 spelers per club;
 
-#### C3 komt overeen met BR19
+### C3 komt overeen met BR19
 
 - Betreft: ET `COACH` en ET `CLUB`;
 - Specificatie: Minimaal en maximaal 1 coach per club;
 
-#### C4 komt overeen met BR16
+### C4 komt overeen met BR16
 
 - Betreft: ET `ROUND`, ET `EDITION` en ET `DOMESTIC_LEAGUE`;
 - Specificatie: Maximaal 52 speelrondes per editie van een competitie.
 
-#### C5 komt overeen met BR17
+### C5 komt overeen met BR17
 
 - Betreft: ET `PLAYER` en Att `Jersey`;
 - Specificatie: Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1.
 
-#### C6 komt overeen met BR4
+### C6 komt overeen met BR4
 
 - Betreft: ET `ROUND`, Att `Start_date`, en ET `SEASON`, Att `Start_date` en `End_date`;
 - Specificatie: De startdatum van een speelronde ligt binnen de start- en einddatum van het bijbehorende seizoen. <!-- TODO: SEASON heeft geen start datum -->
 
-#### C7 komt overeen met BR5
+### C7 komt overeen met BR5
 
 - Betreft: ET `MATCHDAY`, Att `Match_day`, en ET `ROUND`, Att `Start_date`;
 - Specificatie: De startdatum van een speeldag moet voor de startdatum van een opvolgende speelronde zijn, maar hetzelfde of na de startdatum van de gekoppelde speelronde.
 
-#### C8 komt overeen met BR8
+### C8 komt overeen met BR8
 
 - Betreft: ET `MATCH` en ET `EDITION`;
 - Specificatie: Een speler in een wedstrijd moet op dat moment lid zijn van de thuis- of uitspelende club.
 
-#### C9 komt overeen met BR9
+### C9 komt overeen met BR9
 
 - Betreft: ET `MATCH` en ET `EDITION`;
 - Specificatie: Een club mag alleen meedoen aan een wedstrijd als ze ook aan de bijbehorende editie.
 
-#### C10 komt overeen met BR10
+### C10 komt overeen met BR10
 
 - Betreft: ET `YELLOW_CARD`, ET `RED_CARD`, ET `COACH` en ET `PLAYER`;
 - Specificatie: Een gele of rode kaart mag alleen aan een speler of een coach gegeven worden.
 
-#### C11 komt overeen met BR11
+### C11 komt overeen met BR11
 
 - Betreft: ET `PASS`, ET `GOAL`, ET `SHOT`, ET `FOUL`, ET `CORNER` en ET `SUBSTITUTE`;
 - Specificatie: Alleen voor spelende spelers in een wedstrijd worden het aantal schoten, het aantal passes, de wissels, de overtredingen, de corners en of de persoon heeft gescoord bijgehouden.
 
-#### C12 komt overeen met BR20
+### C12 komt overeen met BR20
 
 - Betreft: ET `PLAYER`, Att `Birth_date`;
 - Specificatie: Een speler mag niet jonger zijn dan 10 jaar oud.
 
-#### C13 komt overeen met BR22
+### C13 komt overeen met BR22
 
 - Betreft: ET `MATCH` en ET `STADIUM`, Att `Capacity`;
 - Specificatie: Het aantal toeschouwers mag niet groter zijn dan de capaciteit van het stadion waar de wedstrijd wordt gehouden.
 
-#### C14 komt overeen met BR23
+### C14 komt overeen met BR23
 
 - Betreft: De Att `Time` van de entiteiten ET `RED_CARD`, ET `YELLOW_CARD`, ET `PASS`, ET `GOAL`, ET `SHOT`, ET `FOUL`, ET `CORNER` en ET `SUBSTITUTE`;
 - Specificatie: De minuut in een wedstrijd mag niet negatief zijn.
