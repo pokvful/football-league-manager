@@ -13,7 +13,7 @@ BEGIN
 		SET @i = @i + 1;
 	END
 
-	EXEC tSQLt.ApplyTrigger 'ROUND', 'trg_round_max_amount';
+	EXEC tSQLt.ApplyTrigger 'ROUND', 'TRG_CHECK_MAXIMUM_ROUNDS_OF_EDITION';
 
 	EXEC tSQLt.ExpectException;
 
@@ -31,7 +31,7 @@ AS
 BEGIN
 	EXEC tSQLt.FakeTable @SchemaName='dbo', @TableName='ROUND';
 
-	EXEC tSQLt.ApplyTrigger 'ROUND', 'trg_round_max_amount';
+	EXEC tSQLt.ApplyTrigger 'ROUND', 'TRG_CHECK_MAXIMUM_ROUNDS_OF_EDITION';
 
 	EXEC tSQLt.ExpectNoException;
 
