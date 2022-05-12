@@ -13,7 +13,7 @@ BEGIN
 		SET @i = @i + 1;
 	END
 
-	EXEC tSQLt.ApplyTrigger 'ROUND', 'tgr_round_max_amount';
+	EXEC tSQLt.ApplyTrigger 'ROUND', 'trg_round_max_amount';
 
 	EXEC tSQLt.ExpectException;
 
@@ -30,6 +30,8 @@ CREATE OR ALTER PROCEDURE [test_IR4_Max52Round].[Test that checks if the max amo
 AS
 BEGIN
 	EXEC tSQLt.FakeTable @SchemaName='dbo', @TableName='ROUND';
+
+	EXEC tSQLt.ApplyTrigger 'ROUND', 'trg_round_max_amount';
 
 	EXEC tSQLt.ExpectNoException;
 

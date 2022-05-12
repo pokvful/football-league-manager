@@ -1,4 +1,4 @@
-CREATE or ALTER TRIGGER tgr_round_max_amount ON ROUND
+CREATE or ALTER TRIGGER trg_round_max_amount ON ROUND
 AFTER INSERT
 AS
 BEGIN
