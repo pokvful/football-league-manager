@@ -15,7 +15,20 @@ while read -r competition; do
 	done < <(tail -n +2 ./8-insert_seasons.sql | sed -E "s/.+\\(('[^']+').+/\1/")
 done < <(tail -n +2 ./6-insert_competition.sql | sed -E "s/.+\\(('[^']+').+/\1/")
 
-echo $edition_result > ./14-insert_edition.sql
+echo -e $edition_result > ./14-insert_edition.sql
+
+# Create a CLUB_plays_in_EDITION table
+plays_in_edition_result="set nocount on;"
+
+while read -r edition; do
+	echo $edition
+	while read -r club; do
+		echo $club
+		plays_in_edition_result="$plays_in_edition_result"'\n'"insert into CLUB_plays_in_EDITION (Club_name, Season_name, Competition_name) values ($club, $edition);"
+	done < <(tail -n +2 ./12-insert_club.sql | sed -E "s/.+\\(('[^']+').+/\1/")
+done < <(tail -n +2 ./14-insert_edition.sql | sed -E "s/.+\\(('[^)]+').+/\1/")
+
+echo -e $plays_in_edition_result > ./16-insert_club_plays_in_edition.sql
 
 # loop over all insert files in this directory
 for file in ./*-insert_*.sql; do
