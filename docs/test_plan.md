@@ -1,3 +1,11 @@
+- [Testplan](#testplan)
+	- [Inleiding](#inleiding)
+	- [Wanneer worden er testen geschreven](#wanneer-worden-er-testen-geschreven)
+	- [Benodigdheden](#benodigdheden)
+	- [Hoe worden de testen geschreven.](#hoe-worden-de-testen-geschreven)
+	- [Waarover worden de testen geschreven](#waarover-worden-de-testen-geschreven)
+	- [Achteraf](#achteraf)
+
 # Testplan
 
 Aanleiding (Waarom)
