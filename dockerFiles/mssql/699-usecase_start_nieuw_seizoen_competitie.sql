@@ -50,6 +50,80 @@ BEGIN
 	end catch;
 END
 GO
+-- From internet https://stackoverflow.com/questions/48099486/sql-server-round-robin-tournament/48101665#48101665 
+CREATE OR ALTER PROCEDURE GENERATE_ROUND_ROBIN_TOURNAMENT_TABLE
+(@listofclubs clubNamesTable READONLY)
+AS
+BEGIN
+;WITH Teams
+     AS (SELECT club_name,
+                TeamNum = ROW_NUMBER() OVER (ORDER BY club_name),
+                TeamCount = COUNT(*) OVER()
+         FROM   @listofclubs
+		 /*Purpose of below is to add an extra dummy team if odd number 
+		   of teams. This null team name will be matched up against competitors 
+		   having no game that week */
+         GROUP  BY club_name WITH ROLLUP
+         HAVING GROUPING(club_name) = 0
+                 OR COUNT(*) %2 = 1),
+     Weeks
+     AS ( /*We need numbers 1- 11 for a 12 team league etc. 
+           Can use the row numbers calculated above for this*/
+         SELECT TeamNum AS Week
+         FROM   Teams
+         WHERE  TeamNum < TeamCount),
+     Positioned
+     AS (SELECT club_name,
+                TeamNum,
+                Week,
+                position,
+                TeamCount,
+                /*Sum of opposing positions should add up to TeamCount + 1 so can calculate slot for grouping*/
+                Slot = CASE WHEN position <= TeamCount / 2 THEN position ELSE TeamCount + 1 - position END
+         FROM   Teams
+                CROSS JOIN Weeks
+                /*Uses scheduling algorithm from Wikipedia with the last team in fixed position
+                  and all other teams rotating around (between positions 1 and 11 in 12 team example)*/
+                CROSS APPLY (SELECT CASE
+                                      WHEN TeamNum = TeamCount
+                                        THEN TeamCount
+                                      ELSE 1 + ( ( TeamNum + Week ) % ( TeamCount - 1 ) )
+                                    END) CA(position)),
+     Matches
+     AS (SELECT Week,
+                Slot,
+                TeamCount,
+                TopTeam = MAX(CASE WHEN position = slot THEN club_name END),
+                BottomTeam = MAX(CASE WHEN position <> slot THEN club_name END)
+         FROM   Positioned
+         GROUP  BY Week,
+                   Slot,
+                   TeamCount)
+SELECT CA.HomeTeam, CA.AwayTeam, ROW_NUMBER() OVER (ORDER BY CA.WEEK) - 1
+FROM   Matches
+       CROSS APPLY (
+                   /*Choose Home and Away from alternating Top and Bottom of pair to 
+                     avoid long runs of either for a team*/
+				   /*First two rows are for alternate weeks in the 1st half of the season */
+                   SELECT TopTeam, BottomTeam, Week
+                   WHERE  Week %2 = 0
+                   UNION ALL
+                   SELECT BottomTeam, TopTeam, Week
+                   WHERE  Week %2 > 0
+                   UNION ALL
+                   /*For second half of the season just reversing the "Home" and "Away" teams */
+                   SELECT BottomTeam, TopTeam, Week + TeamCount - 1
+                   WHERE  Week %2 = 0
+                   UNION ALL
+                   SELECT TopTeam, BottomTeam, Week + TeamCount - 1
+                   WHERE  Week %2 > 0) CA(HomeTeam, AwayTeam, Week)
+/*Exclude any dummy matches if odd number of teams*/
+WHERE  CA.AwayTeam IS NOT NULL
+       AND CA.HomeTeam IS NOT NULL
+ORDER  BY CA.Week; 
+END
+
+GO
 CREATE OR ALTER PROCEDURE START_NEW_EDITION
 (@competitionname COMPETITION_NAME , -- not null
 @seasonname SEASON_NAME , -- not null
@@ -90,12 +164,8 @@ BEGIN
 
 	DECLARE @clubPairs as clubPairsTable
 
-	;WITH randomnumbs (h_club, o_club, randomNum) as (
-	SELECT c1.club_name, c2.club_name, CAST(CRYPT_GEN_RANDOM(1) AS INT) FROM @listofclubs c1, @listofclubs c2
-	WHERE c1.club_name <> c2.club_name
-	)
 	INSERT INTO @clubPairs
-	SELECT h_club, o_club, ROW_NUMBER() OVER (ORDER BY randomNum) - 1 FROM randomnumbs
+	EXEC dbo.GENERATE_ROUND_ROBIN_TOURNAMENT_TABLE @listofclubs
 
 	-- Genereer alle rondes
 	DECLARE @geneerdeRonde INT = 0
