@@ -58,7 +58,7 @@ END
 GO
 EXEC tSQLt.Run 'test_START_NEW_EDITION.[test correct EDITION made]'
 GO
-CREATE OR ALTER PROCEDURE test_START_NEW_EDITION.[test met 9 clubs 6 rondes]
+CREATE OR ALTER PROCEDURE test_START_NEW_EDITION.[test met 9 clubs 6 rounds]
 AS
 BEGIN
 	DECLARE @expectedAmount INT = 6
@@ -83,9 +83,9 @@ BEGIN
 	EXEC tSQLt.AssertEquals @expectedAmount, @amountOfRounds
 END
 GO
-EXEC tSQLt.Run 'test_START_NEW_EDITION.[test met 9 clubs 6 rondes]'
+EXEC tSQLt.Run 'test_START_NEW_EDITION.[test met 9 clubs 6 rounds]'
 GO
-CREATE OR ALTER PROCEDURE test_START_NEW_EDITION.[test met 10 clubs 8 rondes]
+CREATE OR ALTER PROCEDURE test_START_NEW_EDITION.[test 10 clubs 8 rounds]
 AS
 BEGIN
 	DECLARE @expectedAmount INT = 8
@@ -110,10 +110,10 @@ BEGIN
 	EXEC tSQLt.AssertEquals @expectedAmount, @amountOfRounds
 END
 GO
-EXEC tSQLt.Run 'test_START_NEW_EDITION.[test met 10 clubs 8 rondes]'
+EXEC tSQLt.Run 'test_START_NEW_EDITION.[test 10 clubs 8 rounds]'
 
 GO
-CREATE OR ALTER PROCEDURE test_START_NEW_EDITION.[test met 10 clubs 30 matchdays]
+CREATE OR ALTER PROCEDURE test_START_NEW_EDITION.[test 10 clubs 30 matchdays]
 AS
 BEGIN
 	DECLARE @expectedAmount INT = 30
@@ -138,9 +138,9 @@ BEGIN
 	EXEC tSQLt.AssertEquals @expectedAmount, @amountOfMatchdays
 END
 GO
-EXEC tSQLt.Run 'test_START_NEW_EDITION.[test met 10 clubs 30 matchdays]'
+EXEC tSQLt.Run 'test_START_NEW_EDITION.[test 10 clubs 30 matchdays]'
 GO
-CREATE OR ALTER PROCEDURE test_START_NEW_EDITION.[test met 10 clubs 90 matches]
+CREATE OR ALTER PROCEDURE test_START_NEW_EDITION.[test 10 clubs 90 matches]
 AS
 BEGIN
 	DECLARE @expectedAmount INT = 90
@@ -165,9 +165,9 @@ BEGIN
 	EXEC tSQLt.AssertEquals @expectedAmount, @amountOfMatches
 END
 GO
-EXEC tSQLt.Run 'test_START_NEW_EDITION.[test met 10 clubs 90 matches]'
+EXEC tSQLt.Run 'test_START_NEW_EDITION.[test 10 clubs 90 matches]'
 GO
-CREATE OR ALTER PROCEDURE test_START_NEW_EDITION.[test te weinig clubs]
+CREATE OR ALTER PROCEDURE test_START_NEW_EDITION.[test not enough clubs]
 AS
 BEGIN
 	DECLARE @Table AS dbo.clubNamesTable
@@ -186,5 +186,5 @@ BEGIN
 								@amountOfMatchdaysPerRound = 4
 END
 GO
-EXEC tSQLt.Run 'test_START_NEW_EDITION.[test te weinig clubs]'
+EXEC tSQLt.Run 'test_START_NEW_EDITION.[test not enough clubs]'
 GO
