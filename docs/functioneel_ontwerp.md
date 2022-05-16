@@ -920,7 +920,7 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 # Business Rules
 
-- BR1 Van een lopende competitie mag alleen de selectie clubs en de speeldatum van een wedstrijd worden aangepast;
+- BR1 Van een lopende competitie mogen alleen de selecties van de clubs en de speeldata van de wedstrijden worden aangepast;
 - BR2 Een thuis club mag maximaal een keer tegen een uit club spelen binnen een normaal competitie seizoen;
 - BR3 De startdatum van een ronde moet in het seizoen liggen;
 - BR4 De speeldag moet na de gekoppelde startdatum van de speelronde liggen;
@@ -1019,15 +1019,20 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 - Betreft: ET `PERSON`, Att `Birth_date`;
 - Specificatie: Een peroon binnen het systeem mag niet jonger zijn dan 15 jaar oud.
 
-#### C13 komt overeen met BR21
+### C13 komt overeen met BR21
 
 - Betreft: ET `MATCH` en ET `STADIUM`, Att `Capacity`;
 - Specificatie: Het aantal toeschouwers mag niet groter zijn dan de capaciteit van het stadion waar de wedstrijd wordt gehouden.
 
-#### C14 komt overeen met BR22
+### C14 komt overeen met BR22
 
 - Betreft: De Att `Time` van de entiteiten ET `RED_CARD`, ET `YELLOW_CARD`, ET `PASS`, ET `GOAL`, ET `SHOT`, ET `FOUL`, ET `CORNER` en ET `SUBSTITUTE`;
 - Specificatie: De minuut in een wedstrijd mag niet negatief zijn.
+
+### C15 komt overeen met BR1
+- Betreft: ET `EDITITE`, ET `CLUB`, ET `PLAYER` en de Att `Match_day`van de ET `MATCHDAY`;
+- Specificatie: Tijdens een lopende competitie mogen alleen de selecties van de clubs en de matchdays aangepast worden
+
 
 # Ontwerp keuzes
 
