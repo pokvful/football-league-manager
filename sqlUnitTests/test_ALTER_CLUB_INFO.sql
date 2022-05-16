@@ -77,7 +77,7 @@ BEGIN
 	DROP TABLE IF EXISTS test_ALTER_PLAYER_CLUB.verwacht
 END
 GO
-CREATE OR ALTER PROC test_ALTER_PLAYER_CLUB.[test verander alleen club]
+CREATE OR ALTER PROC test_ALTER_PLAYER_CLUB.[test change only club]
 AS
 BEGIN
 	SELECT TOP(0) *
@@ -92,9 +92,9 @@ BEGIN
 	EXEC tSQLt.AssertEqualsTable 'test_ALTER_PLAYER_CLUB.verwacht', 'PLAYER'
 END
 GO
-EXEC tSQLt.Run 'test_ALTER_PLAYER_CLUB.[test verander alleen club]'
+EXEC tSQLt.Run 'test_ALTER_PLAYER_CLUB.[test change only club]'
 GO
-CREATE OR ALTER PROC test_ALTER_PLAYER_CLUB.[test verander club en jersey]
+CREATE OR ALTER PROC test_ALTER_PLAYER_CLUB.[test change club and jersey]
 AS
 BEGIN
 	SELECT TOP(0) *
@@ -109,7 +109,7 @@ BEGIN
 	EXEC tSQLt.AssertEqualsTable 'test_ALTER_PLAYER_CLUB.verwacht', 'PLAYER'
 END
 GO
-EXEC tSQLt.Run 'test_ALTER_PLAYER_CLUB.[test verander club en jersey]'
+EXEC tSQLt.Run 'test_ALTER_PLAYER_CLUB.[test change club and jersey]'
 GO
 
 EXEC tSQLt.NewTestClass 'test_UPDATE_CLUB'
