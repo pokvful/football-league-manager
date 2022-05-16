@@ -11,11 +11,12 @@ BEGIN
 		BEGIN TRY
 			IF EXISTS(
 				SELECT I.PERSON_ID
-				FROM inserted I left join PLAYER_PLAYED_IN_MATCH PIM on i.PERSON_ID = PIM.PLAYER_PERSON_ID
-				AND I.MATCH_ID = PIM.MATCH_ID
+				FROM inserted I
+						 left join PLAYER_PLAYED_IN_MATCH PIM on i.PERSON_ID = PIM.PLAYER_PERSON_ID
+					AND I.MATCH_ID = PIM.MATCH_ID
 				where PIM.PLAYER_PERSON_ID is NULL
-			    )
-		    THROW 50001, 'Player didnt play in the assigned match', 1
+				)
+				THROW 50001, 'Player didnt play in the assigned match', 1
 
 		END TRY
 		BEGIN CATCH
@@ -34,11 +35,12 @@ BEGIN
 		BEGIN TRY
 			IF EXISTS(
 				SELECT I.PERSON_ID
-				FROM inserted I left join PLAYER_PLAYED_IN_MATCH PIM on i.PERSON_ID = PIM.PLAYER_PERSON_ID
-				AND I.MATCH_ID = PIM.MATCH_ID
+				FROM inserted I
+						 left join PLAYER_PLAYED_IN_MATCH PIM on i.PERSON_ID = PIM.PLAYER_PERSON_ID
+					AND I.MATCH_ID = PIM.MATCH_ID
 				where PIM.PLAYER_PERSON_ID is NULL
-			    )
-		    THROW 50001, 'Player didnt play in the assigned match', 1
+				)
+				THROW 50001, 'Player didnt play in the assigned match', 1
 
 		END TRY
 		BEGIN CATCH
@@ -57,11 +59,12 @@ BEGIN
 		BEGIN TRY
 			IF EXISTS(
 				SELECT I.PERSON_ID
-				FROM inserted I left join PLAYER_PLAYED_IN_MATCH PIM on i.PERSON_ID = PIM.PLAYER_PERSON_ID
-				AND I.MATCH_ID = PIM.MATCH_ID
+				FROM inserted I
+						 left join PLAYER_PLAYED_IN_MATCH PIM on i.PERSON_ID = PIM.PLAYER_PERSON_ID
+					AND I.MATCH_ID = PIM.MATCH_ID
 				where PIM.PLAYER_PERSON_ID is NULL
-			    )
-		    THROW 50001, 'Player didnt play in the assigned match', 1
+				)
+				THROW 50001, 'Player didnt play in the assigned match', 1
 
 		END TRY
 		BEGIN CATCH
@@ -80,11 +83,12 @@ BEGIN
 		BEGIN TRY
 			IF EXISTS(
 				SELECT I.PERSON_ID
-				FROM inserted I left join PLAYER_PLAYED_IN_MATCH PIM on i.PERSON_ID = PIM.PLAYER_PERSON_ID
-				AND I.MATCH_ID = PIM.MATCH_ID
+				FROM inserted I
+						 left join PLAYER_PLAYED_IN_MATCH PIM on i.PERSON_ID = PIM.PLAYER_PERSON_ID
+					AND I.MATCH_ID = PIM.MATCH_ID
 				where PIM.PLAYER_PERSON_ID is NULL
-			    )
-		    THROW 50001, 'Player didnt play in the assigned match', 1
+				)
+				THROW 50001, 'Player didnt play in the assigned match', 1
 
 		END TRY
 		BEGIN CATCH
@@ -103,11 +107,12 @@ BEGIN
 		BEGIN TRY
 			IF EXISTS(
 				SELECT I.PERSON_ID
-				FROM inserted I left join PLAYER_PLAYED_IN_MATCH PIM on i.PERSON_ID = PIM.PLAYER_PERSON_ID
-				AND I.MATCH_ID = PIM.MATCH_ID
+				FROM inserted I
+						 left join PLAYER_PLAYED_IN_MATCH PIM on i.PERSON_ID = PIM.PLAYER_PERSON_ID
+					AND I.MATCH_ID = PIM.MATCH_ID
 				where PIM.PLAYER_PERSON_ID is NULL
-			    )
-		    THROW 50001, 'Player didnt play in the assigned match', 1
+				)
+				THROW 50001, 'Player didnt play in the assigned match', 1
 
 		END TRY
 		BEGIN CATCH
@@ -124,14 +129,14 @@ BEGIN
 	if
 		@@ROWCOUNT > 0
 		BEGIN TRY
-			IF NOT EXISTS(
-				SELECT *
-			    FROM inserted I inner join PLAYER_AS_RESERVE_IN_MATCH PAR
-			    ON PAR.PLAYER_PERSON_ID = i.IN_PERSON_ID
-			    AND I.MATCH_ID = PAR.MATCH_ID
-			    where i.IN_PERSON_ID is NULL
-			    )
-		    THROW 50001, 'Player didnt play in the assigned match', 1
+			IF EXISTS(
+				SELECT I.IN_PERSON_ID
+				FROM inserted I
+						 LEFT JOIN PLAYER_AS_RESERVE_IN_MATCH PAR ON PAR.PLAYER_PERSON_ID = i.IN_PERSON_ID
+									   AND I.MATCH_ID = PAR.MATCH_ID
+				WHERE PAR.PLAYER_PERSON_ID IS NULL
+				)
+				THROW 50001, 'Player didnt play in the assigned match', 1
 
 		END TRY
 		BEGIN CATCH
@@ -148,14 +153,15 @@ BEGIN
 	if
 		@@ROWCOUNT > 0
 		BEGIN TRY
-			IF NOT EXISTS(
-				SELECT *
-			    FROM inserted I inner join POSITION P
-			    ON P.PLAYER_PERSON_ID = i.OUT_PERSON_ID
-			    AND P.MATCH_ID = i.MATCH_ID
-				where i.IN_PERSON_ID is NULL
-			    )
-		    THROW 50001, 'Player didnt play in the assigned match', 1
+			IF EXISTS(
+				SELECT I.IN_PERSON_ID
+				FROM inserted I
+						 LEFT JOIN POSITION P
+								   ON P.PLAYER_PERSON_ID = i.OUT_PERSON_ID
+									   AND P.MATCH_ID = i.MATCH_ID
+				WHERE P.PLAYER_PERSON_ID IS NULL
+				)
+				THROW 50001, 'Player didnt play in the assigned match', 1
 
 		END TRY
 		BEGIN CATCH

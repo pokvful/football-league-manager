@@ -38,8 +38,6 @@ BEGIN
 END
 GO
 
-
-
 ----------------------------------------------------------------------------------------------------------------------
 --PASS
 
@@ -453,7 +451,56 @@ BEGIN
 	EXEC [tSQLt].[ExpectException] 'Player didnt play in the assigned match'
 	INSERT INTO dbo.SUBSTITUTE(MATCH_ID, TIME, IN_PERSON_ID, OUT_PERSON_ID)
 	VALUES (1, 45, 6, 1),
-		   (1, 86, 38, 2)
+		   (1, 86, 7, 2),
+		   (1, 86, 8, 3),
+		   (1, 86, 9, 4),
+		   (1, 86, 22, 5)
+--Assert
+END
+GO
+
+CREATE OR ALTER PROCEDURE TRG_CHECK_ALL_EVENTS.[test CSUBSTITUTE_IN when person id is correct but match id doesn't exist, should fail]
+AS
+BEGIN
+	--Assemble
+
+--Act
+	EXEC [tSQLt].[ExpectException] 'Player didnt play in the assigned match'
+	INSERT INTO dbo.SUBSTITUTE(MATCH_ID, TIME, IN_PERSON_ID, OUT_PERSON_ID)
+	VALUES (2, 45, 6, 1)
+--Assert
+END
+GO
+
+----------------------------------------------------------------------------------------------------------------------
+--SUBSTITUTE OUT
+
+CREATE OR ALTER PROCEDURE TRG_CHECK_ALL_EVENTS.[Test SUBSTITUTE_OUT only for one player played in match and is reserve, should fail]
+AS
+BEGIN
+	--Assemble
+
+--Act
+	EXEC [tSQLt].[ExpectException] 'Player didnt play in the assigned match'
+	INSERT INTO dbo.SUBSTITUTE(MATCH_ID, TIME, IN_PERSON_ID, OUT_PERSON_ID)
+	VALUES (1, 45, 6, 13)
+--Assert
+END
+GO
+
+CREATE OR ALTER PROCEDURE TRG_CHECK_ALL_EVENTS.[Test SUBSTITUTE_IN for more then one player played in match where one doesnt exist, should failed]
+AS
+BEGIN
+	--Assemble
+
+--Act
+	EXEC [tSQLt].[ExpectException] 'Player didnt play in the assigned match'
+	INSERT INTO dbo.SUBSTITUTE(MATCH_ID, TIME, IN_PERSON_ID, OUT_PERSON_ID)
+	VALUES (1, 45, 6, 1),
+		   (1, 86, 7, 2),
+		   (1, 86, 8, 3),
+		   (1, 86, 9, 4),
+		   (1, 86, 10, 15)
 --Assert
 END
 GO
