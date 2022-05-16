@@ -68,6 +68,9 @@ def generate_matches(cursor, editions, clubs): # {{{
 	for edition in editions:
 		for club_home in clubs:
 			for club_out in clubs:
+				if club_home == club_out:
+					continue
+
 				ball_possession_home = randint(0, 100)
 
 				result.append( format_sql(
