@@ -7,8 +7,9 @@ BEGIN
 		BEGIN TRY
 
 			IF EXISTS(
-				SELECT COUNT(*)
-				FROM PLAYER P
+				SELECT COUNT(P.PERSON_ID + I.PERSON_ID)
+				FROM PLAYER P inner join inserted I
+				on P.PERSON_ID = I.PERSON_ID
 				GROUP BY P.CLUB_NAME
 				HAVING COUNT(*) < 11)
 				THROW 50000, 'There must be at least 11 players in a club', 1
