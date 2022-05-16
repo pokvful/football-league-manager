@@ -1,6 +1,3 @@
--- moet voor `PASS`, `GOAL`, `SHOT`, `FOUL`, `CORNER` en `SUBSTITUTE`
--- de speler moet bestaan met dezelfde id voor match in tabel match
--- schrijf voor substitute 2 triggers een voor in en een voor uit
 CREATE OR ALTER TRIGGER TRG_PASS_ONLY_FOR_PLAYER_PLAYED_IN_MATCH
 	ON dbo.PASS
 	FOR INSERT, UPDATE
