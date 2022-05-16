@@ -4,7 +4,7 @@ GO
 IF NOT EXISTS (SELECT 1 FROM SYSTYPES WHERE NAME = 'clubPairsTable')
 	CREATE TYPE clubPairsTable AS TABLE(home_club CLUB_NAME, out_club CLUB_NAME, rank int)
 GO
-CREATE OR ALTER PROCEDURE ADD_MATCHES_TO_MATCHDAY -- Alleen voor intern gebruik.
+CREATE OR ALTER PROCEDURE ADD_MATCHES_TO_MATCHDAY -- Only for internal use.
 (@competitionname COMPETITION_NAME, @seasonname SEASON_NAME, @round DATE, @matchday DATE , @gamesPerMatchday INT, @rankedClubPairs clubPairsTable READONLY, @start INT = 1)
 AS
 BEGIN
@@ -200,7 +200,6 @@ BEGIN
 				VALUES (@seasonname, @competitionname, @startDatumRonde, @datumMatchDay)
 
 
-				-- MATCHES
 				EXEC dbo.ADD_MATCHES_TO_MATCHDAY @competitionname, @seasonname, @startDatumRonde, @datumMatchDay, @gamesPerMatchday, @clubPairs , @generatedMatches
 
 

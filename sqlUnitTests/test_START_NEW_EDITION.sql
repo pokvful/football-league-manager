@@ -3,14 +3,11 @@ GO
 CREATE OR ALTER PROCEDURE test_START_NEW_EDITION.SetUp
 AS
 BEGIN
-	--EXEC tSQLt.FakeTable 'dbo.SEASON'
-	--EXEC tSQLt.FakeTable 'dbo.COMPETITION'
 	EXEC tSQLt.FakeTable 'dbo.EDITION'
 	EXEC tSQLt.FakeTable 'dbo.CLUB_PLAYS_IN_EDITION'
 	EXEC tSQLt.FakeTable 'dbo.ROUND'
 	EXEC tSQLt.FakeTable 'dbo.MATCHDAY'
 	EXEC tSQLt.FakeTable 'dbo.MATCH'
-	--EXEC tSQLt.FakeTable 'dbo.CLUB'
 
 	DROP TABLE IF EXISTS test_START_NEW_EDITION.clubslist
 
@@ -81,11 +78,9 @@ BEGIN
 								@aantPotjesPerMatchday = 3, 
 								@aantMatchdaysPerRonde = 4
 
-	--SELECT * FROM EDITION
 	DECLARE @amountOfRounds INT = (SELECT COUNT(*) FROM ROUND)
 	
 	EXEC tSQLt.AssertEquals @expectedAmount, @amountOfRounds
-	--SELECT * FROM MATCHDAY
 END
 GO
 EXEC tSQLt.Run 'test_START_NEW_EDITION.[test met 9 clubs 6 rondes]'
@@ -110,12 +105,9 @@ BEGIN
 								@aantPotjesPerMatchday = 3, 
 								@aantMatchdaysPerRonde = 4
 
-	--SELECT * FROM EDITION
 	DECLARE @amountOfRounds INT = (SELECT COUNT(*) FROM ROUND)
 	
 	EXEC tSQLt.AssertEquals @expectedAmount, @amountOfRounds
-
-	--SELECT * FROM MATCHDAY
 END
 GO
 EXEC tSQLt.Run 'test_START_NEW_EDITION.[test met 10 clubs 8 rondes]'
@@ -141,12 +133,9 @@ BEGIN
 								@aantPotjesPerMatchday = 3, 
 								@aantMatchdaysPerRonde = 4
 
-	--SELECT * FROM EDITION
 	DECLARE @amountOfMatchdays INT = (SELECT COUNT(*) FROM MATCHDAY)
 	
 	EXEC tSQLt.AssertEquals @expectedAmount, @amountOfMatchdays
-
-	--SELECT * FROM MATCHDAY
 END
 GO
 EXEC tSQLt.Run 'test_START_NEW_EDITION.[test met 10 clubs 30 matchdays]'
@@ -171,11 +160,9 @@ BEGIN
 								@aantPotjesPerMatchday = 3, 
 								@aantMatchdaysPerRonde = 4
 
-	--SELECT * FROM EDITION
 	DECLARE @amountOfMatches INT = (SELECT COUNT(*) FROM MATCH)
 	
 	EXEC tSQLt.AssertEquals @expectedAmount, @amountOfMatches
-
 END
 GO
 EXEC tSQLt.Run 'test_START_NEW_EDITION.[test met 10 clubs 90 matches]'
