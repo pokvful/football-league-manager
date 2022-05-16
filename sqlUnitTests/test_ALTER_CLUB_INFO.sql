@@ -147,10 +147,60 @@ BEGIN
 	INSERT INTO test_UPDATE_CLUB.verwacht2 (STADIUM_NAME, CAPACITY)
 	VALUES ('stadium', 666), ('stadium2', 333)
 
-	EXEC dbo.UPDATE_CLUB @CLUB_NAME = 'club', @STADIUM_NAME = 'stadium2', 4, @COUNTRY_NAME = 'cc', @CITY_NAME = 'ccc', @NEW_CLUB_NAME =  'changedClub'
+	EXEC dbo.UPDATE_CLUB @CLUB_NAME = 'club', @STADIUM_NAME = 'stadium2',@coach = 4, @COUNTRY_NAME = 'cc', @CITY_NAME = 'ccc', @NEW_CLUB_NAME =  'changedClub'
 
 	EXEC tSQLt.AssertEqualsTable 'test_UPDATE_CLUB.verwacht', 'CLUB'
 	EXEC tSQLt.AssertEqualsTable 'test_UPDATE_CLUB.verwacht2', 'STADIUM'
 END
 GO
 EXEC tSQLt.Run 'test_UPDATE_CLUB.[test update all information with existing stadium]'
+GO
+CREATE OR ALTER PROC test_UPDATE_CLUB.[test all parameter null]
+AS
+BEGIN
+	SELECT TOP(0) * 
+	INTO test_UPDATE_CLUB.verwacht
+	FROM CLUB
+
+	SELECT TOP(0) *
+	INTO test_UPDATE_CLUB.verwacht2
+	FROM STADIUM
+
+	INSERT INTO test_UPDATE_CLUB.verwacht (CLUB_NAME, STADIUM_NAME, COACH_PERSON_ID, COUNTRY_NAME, CITY_NAME)
+	VALUES ('club', 'stadium', 2, 'country', 'city')
+
+	INSERT INTO test_UPDATE_CLUB.verwacht2 (STADIUM_NAME, CAPACITY)
+	VALUES ('stadium', 666), ('stadium2', 333)
+
+	EXEC dbo.UPDATE_CLUB 'club'
+
+	EXEC tSQLt.AssertEqualsTable 'test_UPDATE_CLUB.verwacht', 'CLUB'
+	EXEC tSQLt.AssertEqualsTable 'test_UPDATE_CLUB.verwacht2', 'STADIUM'
+END
+GO
+EXEC tSQLt.Run 'test_UPDATE_CLUB.[test all parameter null]'
+GO
+CREATE OR ALTER PROC test_UPDATE_CLUB.[test give club non existing stadium]
+AS
+BEGIN
+	SELECT TOP(0) * 
+	INTO test_UPDATE_CLUB.verwacht
+	FROM CLUB
+
+	SELECT TOP(0) *
+	INTO test_UPDATE_CLUB.verwacht2
+	FROM STADIUM
+
+	INSERT INTO test_UPDATE_CLUB.verwacht (CLUB_NAME, STADIUM_NAME, COACH_PERSON_ID, COUNTRY_NAME, CITY_NAME)
+	VALUES ('club', 'newadded', 2, 'country', 'city')
+
+	INSERT INTO test_UPDATE_CLUB.verwacht2 (STADIUM_NAME, CAPACITY)
+	VALUES ('stadium', 666), ('stadium2', 333), ('newadded', 2022)
+
+	EXEC dbo.UPDATE_CLUB 'club', 'newadded', 2022
+
+	EXEC tSQLt.AssertEqualsTable 'test_UPDATE_CLUB.verwacht', 'CLUB'
+	EXEC tSQLt.AssertEqualsTable 'test_UPDATE_CLUB.verwacht2', 'STADIUM'
+END
+GO
+EXEC tSQLt.Run 'test_UPDATE_CLUB.[test give club non existing stadium]'
