@@ -136,7 +136,6 @@ AS
 BEGIN
 	SET NOCOUNT ON
 	DECLARE @aantClubs INT = (SELECT COUNT(*) FROM @listofclubs)
-	-- Op basis van een lijst van meespelende clubs wordt spelende clubs gevuld.
 	IF @aantClubs < 2
 		THROW 500003, 'Not enough clubs to start an edition', 1
 	IF @lengthRound < 0 
@@ -152,7 +151,7 @@ BEGIN
 	INSERT INTO CLUB_PLAYS_IN_EDITION (SEASON_NAME, COMPETITION_NAME, CLUB_NAME)
 	SELECT @seasonname, @competitionname, club_name FROM @listofclubs
 
-	-- Bereken hoeveel potjes worden gespeeld
+	-- Calculate amount of matches played
 	DECLARE @aantPotjes INT = (@aantClubs * ( @aantClubs - 1))
 
 	DECLARE @amountMatchdays INT = CEILING((@aantPotjes * 1.0) / (@gamesPerMatchday * 1.0))
@@ -164,7 +163,7 @@ BEGIN
 
 	DECLARE @daysBetweenMatches FLOAT = @lengthRound * 1.0 / @amountOfMatchdaysPerRound * 1.0
 
-	-- Genereer alle rondes
+	-- generate all rounds
 	DECLARE @generatedRound INT = 0
 	DECLARE @amountOfGeneratedMatchdays INT = 0
 
@@ -185,10 +184,8 @@ BEGIN
 				
 				DECLARE @dateMatchday DATE
 				
-
 				SET @dateMatchday = DATEADD(day, @daysBetweenMatches * @amountOfGeneratedMatchdaysInRound, @startDateRound)
 				
-
 				INSERT INTO MATCHDAY (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY)
 				VALUES (@seasonname, @competitionname, @startDateRound, @dateMatchday)
 
