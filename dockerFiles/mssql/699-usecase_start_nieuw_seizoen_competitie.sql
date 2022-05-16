@@ -5,7 +5,7 @@ IF NOT EXISTS (SELECT 1 FROM SYSTYPES WHERE NAME = 'clubPairsTable')
 	CREATE TYPE clubPairsTable AS TABLE(home_club CLUB_NAME, out_club CLUB_NAME, rank int)
 GO
 CREATE OR ALTER PROCEDURE ADD_MATCHES_TO_MATCHDAY -- Only for internal use.
-(@competitionname COMPETITION_NAME, @seasonname SEASON_NAME, @round DATE, @matchday DATE , @gamesPerMatchday INT, @rankedClubPairs clubPairsTable READONLY, @start INT = 1)
+(@competitionname COMPETITION_NAME, @seasonname SEASON_NAME, @round DATE, @matchday DATE , @gamesPerMatchday INT, @rankedClubPairs clubPairsTable READONLY, @start INT = 0)
 AS
 BEGIN
 	SET NOCOUNT ON
@@ -128,7 +128,7 @@ CREATE OR ALTER PROCEDURE START_NEW_EDITION
 (@competitionname COMPETITION_NAME , -- not null
 @seasonname SEASON_NAME , -- not null
 @listofclubs clubNamesTable READONLY, -- not null
-@stardDateCompetition DATE, -- not null 
+@startDateCompetition DATE, -- not null 
 @lengthRound INT = 7 ,
 @gamesPerMatchday INT = 3, 
 @amountOfMatchdaysPerRound INT = 4)
@@ -155,7 +155,7 @@ BEGIN
 	-- Bereken hoeveel potjes worden gespeeld
 	DECLARE @aantPotjes INT = (@aantClubs * ( @aantClubs - 1))
 
-	DECLARE @aantMatchdays INT = CEILING((@aantPotjes * 1.0) / (@gamesPerMatchday * 1.0))
+	DECLARE @amountMatchdays INT = CEILING((@aantPotjes * 1.0) / (@gamesPerMatchday * 1.0))
 
 	DECLARE @clubPairs as clubPairsTable
 
@@ -165,38 +165,37 @@ BEGIN
 	-- Genereer alle rondes
 	DECLARE @generatedRound INT = 0
 	DECLARE @amountOfGeneratedMatchdays INT = 0
-	DECLARE @generatedMatches INT = 0
 
-	WHILE (@amountOfGeneratedMatchdays < @aantMatchdays) -- Loop to generate rounds
+	WHILE (@amountOfGeneratedMatchdays < @amountMatchdays) -- Loop to generate rounds
 		BEGIN
-			DECLARE @startDatumRonde DATE = DATEADD(day, @generatedRound * (@lengthRound + 1), @stardDateCompetition)
+			DECLARE @startDateRound DATE = DATEADD(day, @generatedRound * (@lengthRound + 1), @startDateCompetition)
 
 			INSERT INTO [ROUND] (SEASON_NAME, COMPETITION_NAME, START_DATE)
-			VALUES (@seasonname, @competitionname, @startDatumRonde)
+			VALUES (@seasonname, @competitionname, @startDateRound)
 
 			DECLARE @amountOfGeneratedMatchdaysInRound INT = 0
 			WHILE(@amountOfGeneratedMatchdaysInRound < @amountOfMatchdaysPerRound) -- Loops for matchdays in round
 			BEGIN -- Strategy first match is on start round and the rest are spread evenly
 				
-				IF @amountOfGeneratedMatchdays >= @aantMatchdays
+				IF @amountOfGeneratedMatchdays >= @amountMatchdays
 					BREAK;
 				
-				DECLARE @datumMatchDay DATE
+				DECLARE @dateMatchday DATE
 				IF (@amountOfGeneratedMatchdaysInRound = 0)
 				BEGIN
-					SET @datumMatchDay = @startDatumRonde
+					SET @dateMatchday = @startDateRound
 				END
 				ELSE
 				BEGIN
 					DECLARE @daysBetweenMatches FLOAT = @lengthRound * 1.0 / @amountOfMatchdaysPerRound * 1.0
 
-					SET @datumMatchDay = DATEADD(day, @daysBetweenMatches * @amountOfGeneratedMatchdaysInRound, @startDatumRonde)
+					SET @dateMatchday = DATEADD(day, @daysBetweenMatches * @amountOfGeneratedMatchdaysInRound, @startDateRound)
 				END
 				INSERT INTO MATCHDAY (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY)
-				VALUES (@seasonname, @competitionname, @startDatumRonde, @datumMatchDay)
+				VALUES (@seasonname, @competitionname, @startDateRound, @dateMatchday)
 
 
-				EXEC dbo.ADD_MATCHES_TO_MATCHDAY @competitionname, @seasonname, @startDatumRonde, @datumMatchDay, @gamesPerMatchday, @clubPairs , @generatedMatches
+				EXEC dbo.ADD_MATCHES_TO_MATCHDAY @competitionname, @seasonname, @startDateRound, @dateMatchday, @gamesPerMatchday, @clubPairs
 
 
 				SET @amountOfGeneratedMatchdaysInRound = @amountOfGeneratedMatchdaysInRound + 1

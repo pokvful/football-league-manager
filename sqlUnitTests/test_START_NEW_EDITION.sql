@@ -50,7 +50,7 @@ BEGIN
 	EXEC tSQLt.ExpectNoException
 
 
-	EXEC dbo.START_NEW_EDITION @competitionname = 'comp', @seasonname = '20/21', @listofclubs = @Table, @stardDateCompetition = '2000-05-05'
+	EXEC dbo.START_NEW_EDITION @competitionname = 'comp', @seasonname = '20/21', @listofclubs = @Table, @startDateCompetition = '2000-05-05'
 
 
 	EXEC tSQLt.AssertEqualsTable 'test_START_NEW_EDITION.verwacht', 'EDITION'
@@ -74,7 +74,7 @@ BEGIN
 	EXEC dbo.START_NEW_EDITION @competitionname = 'comp', 
 								@seasonname = '20/21', 
 								@listofclubs = @Table, 
-								@stardDateCompetition = '2000-05-05', 
+								@startDateCompetition = '2000-05-05', 
 								@gamesPerMatchday = 3, 
 								@amountOfMatchdaysPerRound = 4
 
@@ -101,7 +101,7 @@ BEGIN
 	EXEC dbo.START_NEW_EDITION @competitionname = 'comp', 
 								@seasonname = '20/21', 
 								@listofclubs = @Table, 
-								@stardDateCompetition = '2000-05-05', 
+								@startDateCompetition = '2000-05-05', 
 								@gamesPerMatchday = 3, 
 								@amountOfMatchdaysPerRound = 4
 
@@ -129,7 +129,7 @@ BEGIN
 	EXEC dbo.START_NEW_EDITION @competitionname = 'comp', 
 								@seasonname = '20/21', 
 								@listofclubs = @Table, 
-								@stardDateCompetition = '2000-05-05', 
+								@startDateCompetition = '2000-05-05', 
 								@gamesPerMatchday = 3, 
 								@amountOfMatchdaysPerRound = 4
 
@@ -156,7 +156,7 @@ BEGIN
 	EXEC dbo.START_NEW_EDITION @competitionname = 'comp', 
 								@seasonname = '20/21', 
 								@listofclubs = @Table, 
-								@stardDateCompetition = '2000-05-05', 
+								@startDateCompetition = '2000-05-05', 
 								@gamesPerMatchday = 3, 
 								@amountOfMatchdaysPerRound = 4
 
@@ -166,27 +166,6 @@ BEGIN
 END
 GO
 EXEC tSQLt.Run 'test_START_NEW_EDITION.[test met 10 clubs 90 matches]'
-GO
-CREATE OR ALTER PROCEDURE test_START_NEW_EDITION.[test startdatum null error]
-AS
-BEGIN
-	DECLARE @Table AS dbo.clubNamesTable
-
-	INSERT INTO @Table
-	SELECT TOP (10) club_name 
-	FROM test_START_NEW_EDITION.clubslist
-
-	EXEC tSQLt.ExpectException '@startdatumCompetitie cannot be null'
-
-	EXEC dbo.START_NEW_EDITION @competitionname = 'comp', 
-								@seasonname = '20/21', 
-								@listofclubs = @Table, 
-								@stardDateCompetition = null, 
-								@gamesPerMatchday = 3, 
-								@amountOfMatchdaysPerRound = 4
-END
-GO
-EXEC tSQLt.Run 'test_START_NEW_EDITION.[test startdatum null error]'
 GO
 CREATE OR ALTER PROCEDURE test_START_NEW_EDITION.[test te weinig clubs]
 AS
@@ -202,7 +181,7 @@ BEGIN
 	EXEC dbo.START_NEW_EDITION @competitionname = 'comp', 
 								@seasonname = '20/21', 
 								@listofclubs = @Table, 
-								@stardDateCompetition = '2000-05-05', 
+								@startDateCompetition = '2000-05-05', 
 								@gamesPerMatchday = 3, 
 								@amountOfMatchdaysPerRound = 4
 END
