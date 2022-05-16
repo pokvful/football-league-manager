@@ -50,7 +50,7 @@ BEGIN
 	EXEC tSQLt.ExpectNoException
 
 
-	EXEC dbo.START_NEW_EDITION @competitionname = 'comp', @seasonname = '20/21', @listofclubs = @Table, @startdatumCompetitie = '2000-05-05'
+	EXEC dbo.START_NEW_EDITION @competitionname = 'comp', @seasonname = '20/21', @listofclubs = @Table, @stardDateCompetition = '2000-05-05'
 
 
 	EXEC tSQLt.AssertEqualsTable 'test_START_NEW_EDITION.verwacht', 'EDITION'
@@ -74,9 +74,9 @@ BEGIN
 	EXEC dbo.START_NEW_EDITION @competitionname = 'comp', 
 								@seasonname = '20/21', 
 								@listofclubs = @Table, 
-								@startdatumCompetitie = '2000-05-05', 
-								@aantPotjesPerMatchday = 3, 
-								@aantMatchdaysPerRonde = 4
+								@stardDateCompetition = '2000-05-05', 
+								@gamesPerMatchday = 3, 
+								@amountOfMatchdaysPerRound = 4
 
 	DECLARE @amountOfRounds INT = (SELECT COUNT(*) FROM ROUND)
 	
@@ -101,9 +101,9 @@ BEGIN
 	EXEC dbo.START_NEW_EDITION @competitionname = 'comp', 
 								@seasonname = '20/21', 
 								@listofclubs = @Table, 
-								@startdatumCompetitie = '2000-05-05', 
-								@aantPotjesPerMatchday = 3, 
-								@aantMatchdaysPerRonde = 4
+								@stardDateCompetition = '2000-05-05', 
+								@gamesPerMatchday = 3, 
+								@amountOfMatchdaysPerRound = 4
 
 	DECLARE @amountOfRounds INT = (SELECT COUNT(*) FROM ROUND)
 	
@@ -129,9 +129,9 @@ BEGIN
 	EXEC dbo.START_NEW_EDITION @competitionname = 'comp', 
 								@seasonname = '20/21', 
 								@listofclubs = @Table, 
-								@startdatumCompetitie = '2000-05-05', 
-								@aantPotjesPerMatchday = 3, 
-								@aantMatchdaysPerRonde = 4
+								@stardDateCompetition = '2000-05-05', 
+								@gamesPerMatchday = 3, 
+								@amountOfMatchdaysPerRound = 4
 
 	DECLARE @amountOfMatchdays INT = (SELECT COUNT(*) FROM MATCHDAY)
 	
@@ -156,9 +156,9 @@ BEGIN
 	EXEC dbo.START_NEW_EDITION @competitionname = 'comp', 
 								@seasonname = '20/21', 
 								@listofclubs = @Table, 
-								@startdatumCompetitie = '2000-05-05', 
-								@aantPotjesPerMatchday = 3, 
-								@aantMatchdaysPerRonde = 4
+								@stardDateCompetition = '2000-05-05', 
+								@gamesPerMatchday = 3, 
+								@amountOfMatchdaysPerRound = 4
 
 	DECLARE @amountOfMatches INT = (SELECT COUNT(*) FROM MATCH)
 	
@@ -181,9 +181,9 @@ BEGIN
 	EXEC dbo.START_NEW_EDITION @competitionname = 'comp', 
 								@seasonname = '20/21', 
 								@listofclubs = @Table, 
-								@startdatumCompetitie = null, 
-								@aantPotjesPerMatchday = 3, 
-								@aantMatchdaysPerRonde = 4
+								@stardDateCompetition = null, 
+								@gamesPerMatchday = 3, 
+								@amountOfMatchdaysPerRound = 4
 END
 GO
 EXEC tSQLt.Run 'test_START_NEW_EDITION.[test startdatum null error]'
@@ -202,9 +202,9 @@ BEGIN
 	EXEC dbo.START_NEW_EDITION @competitionname = 'comp', 
 								@seasonname = '20/21', 
 								@listofclubs = @Table, 
-								@startdatumCompetitie = '2000-05-05', 
-								@aantPotjesPerMatchday = 3, 
-								@aantMatchdaysPerRonde = 4
+								@stardDateCompetition = '2000-05-05', 
+								@gamesPerMatchday = 3, 
+								@amountOfMatchdaysPerRound = 4
 END
 GO
 EXEC tSQLt.Run 'test_START_NEW_EDITION.[test te weinig clubs]'
