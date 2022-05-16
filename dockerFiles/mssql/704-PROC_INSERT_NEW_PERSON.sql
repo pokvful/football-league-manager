@@ -1,41 +1,53 @@
-CREATE OR ALTER PROCEDURE PROC_INSERT_NEW_COACH @Person_id INT,
-												@Country_name VARCHAR(128),
+CREATE OR ALTER PROCEDURE PROC_INSERT_NEW_COACH @Country_name VARCHAR(128),
 												@First_name VARCHAR(128),
 												@Last_name VARCHAR(128),
 												@Middle_name VARCHAR(128),
 												@Birth_Date DATE
 AS
-	SET NOCOUNT ON;
 BEGIN
-	INSERT INTO PERSON (PERSON_ID, COUNTRY_NAME, FIRST_NAME, LAST_NAME, MIDDLE_NAME, BIRTH_DATE)
-	VALUES (@Person_ID, @Country_name, @First_name, @Last_name, @Middle_name, @Birth_Date)
+	SET NOCOUNT ON;
+	DECLARE @Inserted_personID TABLE
+							   (
+								   person_id INT NOT NULL
+							   );
+
+	INSERT INTO PERSON (COUNTRY_NAME, FIRST_NAME, LAST_NAME, MIDDLE_NAME, BIRTH_DATE)
+	OUTPUT (inserted.PERSON_ID) INTO @Inserted_personID
+	VALUES (@Country_name, @First_name, @Last_name, @Middle_name, @Birth_Date)
 
 	INSERT INTO COACH (PERSON_ID)
-	VALUES (@Person_id)
+	SELECT PERSON_ID
+	FROM @Inserted_personID
 END
 
 GO
-CREATE OR ALTER PROCEDURE PROC_INSERT_NEW_REFEREE @Person_id INT,
-												  @Country_name VARCHAR(128),
+
+CREATE OR ALTER PROCEDURE PROC_INSERT_NEW_REFEREE @Country_name VARCHAR(128),
 												  @First_name VARCHAR(128),
 												  @Last_name VARCHAR(128),
 												  @Middle_name VARCHAR(128),
 												  @Birth_Date DATE
 AS
-	SET NOCOUNT ON;
 BEGIN
-	INSERT INTO PERSON (PERSON_ID, COUNTRY_NAME, FIRST_NAME, LAST_NAME, MIDDLE_NAME, BIRTH_DATE)
-	VALUES (@Person_ID, @Country_name, @First_name, @Last_name, @Middle_name, @Birth_Date)
+	SET NOCOUNT ON;
+	DECLARE @Inserted_personID TABLE
+							   (
+								   person_id INT NOT NULL
+							   );
+
+	INSERT INTO PERSON (COUNTRY_NAME, FIRST_NAME, LAST_NAME, MIDDLE_NAME, BIRTH_DATE)
+	OUTPUT inserted.PERSON_ID INTO @Inserted_personID
+	VALUES (@Country_name, @First_name, @Last_name, @Middle_name, @Birth_Date)
 
 	INSERT INTO REFEREE (PERSON_ID)
-	VALUES (@Person_id)
+	SELECT PERSON_ID
+	FROM @Inserted_personID
 
 END
 
 GO
 
-CREATE OR ALTER PROCEDURE PROC_INSERT_NEW_PLAYER
-												 @Country_name VARCHAR(128),
+CREATE OR ALTER PROCEDURE PROC_INSERT_NEW_PLAYER @Country_name VARCHAR(128),
 												 @First_name VARCHAR(128),
 												 @Last_name VARCHAR(128),
 												 @Middle_name VARCHAR(128),
@@ -43,12 +55,18 @@ CREATE OR ALTER PROCEDURE PROC_INSERT_NEW_PLAYER
 												 @Club_name VARCHAR(128),
 												 @Jersey INT
 AS
-	SET NOCOUNT ON;
-
 BEGIN
+	SET NOCOUNT ON;
+	DECLARE @Inserted_personID TABLE
+							   (
+								   person_id INT NOT NULL
+							   );
+
 	INSERT INTO PERSON (COUNTRY_NAME, FIRST_NAME, LAST_NAME, MIDDLE_NAME, BIRTH_DATE)
+	OUTPUT (inserted.PERSON_ID) INTO @Inserted_personID
 	VALUES (@Country_name, @First_name, @Last_name, @Middle_name, @Birth_date)
 
 	INSERT INTO PLAYER (PERSON_ID, CLUB_NAME, JERSEY)
-	VALUES (SCOPE_IDENTITY(), @Club_name, @Jersey)
+	SELECT person_id, @Club_name, @Jersey
+	FROM @Inserted_personID;
 END
