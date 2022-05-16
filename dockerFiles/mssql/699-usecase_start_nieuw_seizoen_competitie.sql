@@ -129,7 +129,7 @@ CREATE OR ALTER PROCEDURE START_NEW_EDITION
 @seasonname SEASON_NAME , -- not null
 @listofclubs clubNamesTable READONLY, -- not null
 @startDateCompetition DATE, -- not null 
-@lengthRound INT = 7 ,
+@lengthRound INT = 7 , -- in days
 @gamesPerMatchday INT = 3, 
 @amountOfMatchdaysPerRound INT = 4)
 AS
@@ -162,9 +162,12 @@ BEGIN
 	INSERT INTO @clubPairs
 	EXEC dbo.GENERATE_ROUND_ROBIN_TOURNAMENT_TABLE @listofclubs
 
+	DECLARE @daysBetweenMatches FLOAT = @lengthRound * 1.0 / @amountOfMatchdaysPerRound * 1.0
+
 	-- Genereer alle rondes
 	DECLARE @generatedRound INT = 0
 	DECLARE @amountOfGeneratedMatchdays INT = 0
+
 
 	WHILE (@amountOfGeneratedMatchdays < @amountMatchdays) -- Loop to generate rounds
 		BEGIN
@@ -181,16 +184,11 @@ BEGIN
 					BREAK;
 				
 				DECLARE @dateMatchday DATE
-				IF (@amountOfGeneratedMatchdaysInRound = 0)
-				BEGIN
-					SET @dateMatchday = @startDateRound
-				END
-				ELSE
-				BEGIN
-					DECLARE @daysBetweenMatches FLOAT = @lengthRound * 1.0 / @amountOfMatchdaysPerRound * 1.0
+				
 
-					SET @dateMatchday = DATEADD(day, @daysBetweenMatches * @amountOfGeneratedMatchdaysInRound, @startDateRound)
-				END
+				SET @dateMatchday = DATEADD(day, @daysBetweenMatches * @amountOfGeneratedMatchdaysInRound, @startDateRound)
+				
+
 				INSERT INTO MATCHDAY (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY)
 				VALUES (@seasonname, @competitionname, @startDateRound, @dateMatchday)
 
