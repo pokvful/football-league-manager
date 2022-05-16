@@ -168,25 +168,25 @@ BEGIN
 	EXEC dbo.GENERATE_ROUND_ROBIN_TOURNAMENT_TABLE @listofclubs
 
 	-- Genereer alle rondes
-	DECLARE @geneerdeRonde INT = 0
-	DECLARE @hoeveelGenereerdeMatchdays INT = 0
-	DECLARE @genereerdeMatches INT = 0
-	WHILE (@hoeveelGenereerdeMatchdays < @aantMatchdays) -- Loop to generate rounds
+	DECLARE @generatedRound INT = 0
+	DECLARE @amountOfGeneratedRounds INT = 0
+	DECLARE @generatedMatches INT = 0
+	WHILE (@amountOfGeneratedRounds < @aantMatchdays) -- Loop to generate rounds
 		BEGIN
-			DECLARE @startDatumRonde DATE = DATEADD(day, @geneerdeRonde * (@lengthRound + 1), @stardDateCompetition)
+			DECLARE @startDatumRonde DATE = DATEADD(day, @generatedRound * (@lengthRound + 1), @stardDateCompetition)
 
 			INSERT INTO [ROUND] (SEASON_NAME, COMPETITION_NAME, START_DATE)
 			VALUES (@seasonname, @competitionname, @startDatumRonde)
 
-			DECLARE @aantGeneerdeMatchdaysInRonde INT = 0
-			WHILE(@aantGeneerdeMatchdaysInRonde < @amountOfMatchdaysPerRound) -- Loops for matchdays in round
+			DECLARE @amountOfGeneratedMatchdaysInRound INT = 0
+			WHILE(@amountOfGeneratedMatchdaysInRound < @amountOfMatchdaysPerRound) -- Loops for matchdays in round
 			BEGIN -- Strategy first match is on start round and the rest are spread evenly
 				
-				IF @hoeveelGenereerdeMatchdays >= @aantMatchdays
+				IF @amountOfGeneratedRounds >= @aantMatchdays
 					BREAK;
 				
 				DECLARE @datumMatchDay DATE
-				IF (@aantGeneerdeMatchdaysInRonde = 0)
+				IF (@amountOfGeneratedMatchdaysInRound = 0)
 				BEGIN
 					SET @datumMatchDay = @startDatumRonde
 				END
@@ -194,21 +194,21 @@ BEGIN
 				BEGIN
 					DECLARE @daysBetweenMatches FLOAT = @lengthRound * 1.0 / @amountOfMatchdaysPerRound * 1.0
 
-					SET @datumMatchDay = DATEADD(day, @daysBetweenMatches * @aantGeneerdeMatchdaysInRonde, @startDatumRonde)
+					SET @datumMatchDay = DATEADD(day, @daysBetweenMatches * @amountOfGeneratedMatchdaysInRound, @startDatumRonde)
 				END
 				INSERT INTO MATCHDAY (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY)
 				VALUES (@seasonname, @competitionname, @startDatumRonde, @datumMatchDay)
 
 
 				-- MATCHES
-				EXEC dbo.ADD_MATCHES_TO_MATCHDAY @competitionname, @seasonname, @startDatumRonde, @datumMatchDay, @gamesPerMatchday, @clubPairs , @genereerdeMatches
+				EXEC dbo.ADD_MATCHES_TO_MATCHDAY @competitionname, @seasonname, @startDatumRonde, @datumMatchDay, @gamesPerMatchday, @clubPairs , @generatedMatches
 
 
-				SET @aantGeneerdeMatchdaysInRonde = @aantGeneerdeMatchdaysInRonde + 1
-				SET @hoeveelGenereerdeMatchdays = @hoeveelGenereerdeMatchdays + 1
+				SET @amountOfGeneratedMatchdaysInRound = @amountOfGeneratedMatchdaysInRound + 1
+				SET @amountOfGeneratedRounds = @amountOfGeneratedRounds + 1
 
 			END
-			SET @geneerdeRonde = @geneerdeRonde + 1
+			SET @generatedRound = @generatedRound + 1
 		END
 
 END
