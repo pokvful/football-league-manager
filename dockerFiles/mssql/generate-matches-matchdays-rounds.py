@@ -13,6 +13,20 @@ TOTAL_DAYS_IN_ROUND = 7 # days, 1 week
 TOTAL_ROUND_LENGTH = 7 # days
 TOTAL_COACHES = 9
 TOTAL_PLAYERS = 153
+POSITIONS = [
+	{
+		"KEEPER": 1,
+		"DEFENDER": 3,
+		"MIDFIELDER": 4,
+		"ATTACKER": 3,
+	},
+	{
+		"KEEPER": 1,
+		"DEFENDER": 4,
+		"MIDFIELDER": 3,
+		"ATTACKER": 3,
+	}
+]
 CONNECTION_URL_MSSQL = "DRIVER={ODBC Driver 17 for SQL Server};SERVER=localhost,14330;UID=sa;PWD=Football!;DATABASE=flm"
 
 def format_sql(table, dict):
