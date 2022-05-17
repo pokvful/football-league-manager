@@ -502,10 +502,10 @@ Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echt
 - Omschrijving: Een persoon moet een speler, coach of scheidsrechter zijn.
 - Implementatie: Een trigger `TRG_PLAYER_MUST_BE_ONE_SUBTYPE` op de tabellen `PLAYER`, `COACH` en `REFEREE`.
 
-## IR 16 komt overeen met C15 en BR1
+## IR16 komt overeen met C15 en BR1
 
 - Omschrijving: Van een lopende competitie mogen alleen de selecties van clubs en de speeldata van wedstrijden aangepast worden
-- Implementatie: Een trigger op `TRG_NO_UPDATES_ON_CURRENT_EDITION` op de tabellen `CLUB`, `STADIUM`, `MATCH`, `SEASON`, `COMPETITION` en `CLUB_plays_in_EDITION` 
+- Implementatie: Een trigger op `TRG_NO_UPDATES_ON_CURRENT_EDITION` op de tabellen `CLUB`, `MATCH`, `SEASON` en `CLUB_plays_in_EDITION` 
 
 # Toelichting Domeinen
 
