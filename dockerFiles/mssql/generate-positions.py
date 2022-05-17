@@ -1,5 +1,5 @@
 """
-A very beautiful script to matches generate scripts
+A very beautiful script to generate positions scripts
 """
 
 import random

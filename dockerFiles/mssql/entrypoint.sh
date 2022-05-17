@@ -6,7 +6,7 @@ function run_sql_files {
 	echo "=== RUNNING FILES ==="
 	find ./sql-files/ -type f \( -iname "*.sql" -not -iname "create_database.sql" \) \
 		| sort -n -t / -k 3.1 \
-		| xargs -I {} /opt/mssql-tools/bin/sqlcmd -S "localhost" -U "sa" -P "Football!" -d "flm" -i {}
+		| xargs -I {} sh -c "echo === Executing '{}' === && /opt/mssql-tools/bin/sqlcmd -S 'localhost' -U 'sa' -P 'Football!' -d 'flm' -i {}"
 	echo "=== DONE RUNNING FILES ==="
 }
 
