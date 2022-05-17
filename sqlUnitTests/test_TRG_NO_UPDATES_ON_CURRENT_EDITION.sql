@@ -54,11 +54,11 @@ BEGIN
 	INSERT INTO CLUB (CLUB_NAME, STADIUM_NAME)
 	VALUES ('Ajax', 'Amsterdam ArenA')
 
-	INSERT INTO CLUB_PLAYS_IN_EDITION (CLUB_NAME, SEASON_NAME)
-	VALUES ('Ajax', '21/22')
+	INSERT INTO CLUB_PLAYS_IN_EDITION (CLUB_NAME, SEASON_NAME, COMPETITION_NAME)
+	VALUES ('Ajax', '21/22', 'Eredivisie')
 
-	INSERT INTO EDITION (SEASON_NAME)
-	VALUES ('21/22')
+	INSERT INTO EDITION (SEASON_NAME, COMPETITION_NAME)
+	VALUES ('21/22', 'Eredivisie')
 
 	INSERT INTO SEASON (SEASON_NAME, START_DATE, END_DATE)
 	VALUES ('21/22', DATEADD(year, -1, GETDATE()), DATEADD(year, 1, GETDATE()))
@@ -78,5 +78,84 @@ END;
 GO
 
 EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in CLUB during a current edition FAILING]'
+GO
+
+CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges ].[Test that checks if changes get prevented in CLUB during a current edition PASSING]
+AS
+BEGIN
+	EXEC tSQLt.FakeTable @TableName='dbo.CLUB';
+	EXEC tSQLt.FakeTable @TableName='dbo.CLUB_PLAYS_IN_EDITION';
+	EXEC tSQLt.FakeTable @TableName='dbo.EDITION';
+	EXEC tSQLt.FakeTable @TableName='dbo.SEASON';
+
+	INSERT INTO CLUB (CLUB_NAME, STADIUM_NAME)
+	VALUES ('Ajax', 'Amsterdam ArenA')
+
+	INSERT INTO CLUB_PLAYS_IN_EDITION (CLUB_NAME, SEASON_NAME, COMPETITION_NAME)
+	VALUES ('Ajax', '24/25', 'Eredivisie')
+
+	INSERT INTO EDITION (SEASON_NAME, COMPETITION_NAME)
+	VALUES ('24/25', 'Eredivisie')
+
+	INSERT INTO SEASON (SEASON_NAME, START_DATE, END_DATE)
+	VALUES ('24/25', '01-01-2024', '01-01-2025')
+
+	EXEC tSQLt.ApplyTrigger 'dbo.CLUB', 'TRG_NO_UPDATES_ON_CURRENT_EDITION_CLUB';
+
+	EXEC tSQLt.ApplyConstraint 'dbo.CLUB_PLAYS_IN_EDITION', 'FK_CLUB_PLA_CLUB_PLAY_CLUB'
+	EXEC tSQLt.ApplyConstraint 'dbo.CLUB_PLAYS_IN_EDITION', 'FK_CLUB_PLA_CLUB_PLAY_EDITION'
+	EXEC tSQLt.ApplyConstraint 'dbo.EDITION', 'FK_EDITION_EDITION_I_SEASON'
+
+	EXEC tSQLt.ExpectNoException;
+
+	UPDATE CLUB
+    SET STADIUM_NAME = 'Johan Cruyf Arena'
+    WHERE CLUB_NAME = 'Ajax'
+END;
+GO
+
+EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in CLUB during a current edition PASSING]'
+GO
+
+CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges ].[Test that checks if changes get prevented in MATCH during a current edition PASSING]
+AS
+BEGIN
+	EXEC tSQLt.FakeTable @TableName='dbo.MATCH';
+	EXEC tSQLt.FakeTable @TableName='dbo.MATCHDAY';
+	EXEC tSQLt.FakeTable @TableName='dbo.ROUND';
+	EXEC tSQLt.FakeTable @TableName='dbo.EDITION';
+	EXEC tSQLt.FakeTable @TableName='dbo.SEASON';
+
+	INSERT INTO MATCH (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY, HOME_CLUB_NAME, BALL_POSSESSION_HOME)
+	VALUES ('21/22', 'Eredivisie', '02-02-2022', '02-02-2022', 'Ajax', 30)
+
+	INSERT INTO MATCHDAY (SEASON_NAME, COMPETITION_NAME, START_DATE)
+	VALUES ('21/22', 'Eredivisie', '02-02-2022')
+
+	INSERT INTO ROUND (SEASON_NAME, COMPETITION_NAME)
+	VALUES ('21/22', 'Eredivisie')
+
+	INSERT INTO EDITION (SEASON_NAME, COMPETITION_NAME)
+	VALUES ('21/22', 'Eredivisie')
+
+	INSERT INTO SEASON (SEASON_NAME, START_DATE, END_DATE)
+	VALUES ('21/22', DATEADD(year, -1, GETDATE()), DATEADD(year, 1, GETDATE()))
+
+	EXEC tSQLt.ApplyTrigger 'dbo.MATCH', 'TRG_NO_UPDATES_ON_CURRENT_EDITION_MATCH';
+
+	EXEC tSQLt.ApplyConstraint 'dbo.MATCH', 'FK_MATCH_MATCH_IN__MATCHDAY'
+	EXEC tSQLt.ApplyConstraint 'dbo.MATCHDAY', 'FK_MATCHDAY_MATCHDAY__ROUND'
+	EXEC tSQLt.ApplyConstraint 'dbo.ROUND', 'FK_ROUND_ROUND_IN__EDITION'
+	EXEC tSQLt.ApplyConstraint 'dbo.EDITION', 'FK_EDITION_EDITION_I_SEASON'
+
+	EXEC tSQLt.ExpectException;
+
+	UPDATE MATCH
+    SET BALL_POSSESSION_HOME = 50
+    WHERE HOME_CLUB_NAME = 'Ajax'
+END;
+GO
+
+EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition PASSING]'
 GO
 
