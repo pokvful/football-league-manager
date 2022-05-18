@@ -1,3 +1,4 @@
+/* z ← don't remove this (see ) */ begin transaction;
 set nocount on;
 insert into ROUND (Season_name, Competition_name, Start_date) values ('20/21', 'Serie A', '2000-02-04');
 insert into ROUND (Season_name, Competition_name, Start_date) values ('20/21', 'Serie A', '2000-02-02');
@@ -323,3 +324,4 @@ insert into ROUND (Season_name, Competition_name, Start_date) values ('18/19', '
 insert into ROUND (Season_name, Competition_name, Start_date) values ('18/19', 'Bundesliga', '2000-01-05');
 insert into ROUND (Season_name, Competition_name, Start_date) values ('18/19', 'Bundesliga', '2000-01-03');
 insert into ROUND (Season_name, Competition_name, Start_date) values ('18/19', 'Bundesliga', '2000-01-01');
+commit transaction;

@@ -63,6 +63,8 @@ cd dockerFiles/mssql/
 # spin up the docker containers
 python3 ./generate-matches-matchdays-rounds.py
 python3 ./generate-positions.py
+./create_insert_scripts.sh # run this one more time, so everything is sorted correctly
+# restart the docker containers
 python3 ./generate-events.py
 ./create_insert_scripts.sh # run this one more time, to ensure there are no duplicates
 ```

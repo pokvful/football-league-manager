@@ -92,10 +92,12 @@ def generate_positions(matches, players): # {{{
 			) )
 
 	with open("20-insert_positions.sql", "w") as file:
-		file.write( "set nocount on;\n" + "\n".join(result_positions) )
+		file.write( "set nocount on;\ncommit transaction;\n/* z ← don't remove this (see ) */ begin transaction;\n" )
+		file.write( "\n".join(result_positions) )
 
 	with open("21-insert_reserves.sql", "w") as file:
-		file.write( "set nocount on;\n" + "\n".join(result_reserves) )
+		file.write( "set nocount on;\ncommit transaction;\n/* z ← don't remove this (see ) */ begin transaction;\n" )
+		file.write( "\n".join(result_reserves) )
 # }}}
 
 def main():

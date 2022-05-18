@@ -118,15 +118,16 @@ def generate_rounds_and_matchdays(club_pairs, editions, match_count): # {{{
 			amount_of_generated_rounds += 1
 
 	with open("17-insert_rounds.sql", "w") as file:
-		file.write( "set nocount on;\n" + "\n".join(result_rounds) )
+		file.write( "set nocount on;\ncommit transaction;\n/* z ← don't remove this (see ) */ begin transaction;\n" )
+		file.write( "\n".join(result_rounds) )
 
 	with open("18-insert_matchdays.sql", "w") as file:
-		file.write( "set nocount on;\n" + "\n".join(result_matchdays) )
+		file.write( "set nocount on;\ncommit transaction;\n/* z ← don't remove this (see ) */ begin transaction;\n" )
+		file.write( "\n".join(result_matchdays) )
 
 	with open("19-insert_matches.sql", "w") as file:
-		result = "set nocount on;\nset identity_insert MATCH on;\n\n" + "\n".join(result_matches)
-
-		file.write(result)
+		file.write( "set nocount on;\nset identity_insert MATCH on;\ncommit transaction;\n/* z ← don't remove this (see ) */ begin transaction;\n" )
+		file.write( "\n".join(result_matches) )
 # }}}
 
 def generate_club_pairs(clubs): # {{{
