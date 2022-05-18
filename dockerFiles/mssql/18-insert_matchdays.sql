@@ -1,4 +1,4 @@
-/* z ← don't remove this (see ) */ begin transaction;
+/* z ← don't remove this (see https://isebitbucket.aimsites.nl/projects/S22122A4/repos/football-league-manager/pull-requests/88/overview) */ begin transaction;
 set nocount on;
 insert into MATCHDAY (Season_name, Competition_name, Start_date, Match_day) values ('20/21', 'Serie A', '2000-02-04', '2000-06-05');
 insert into MATCHDAY (Season_name, Competition_name, Start_date, Match_day) values ('20/21', 'Serie A', '2000-02-04', '2000-06-02');
