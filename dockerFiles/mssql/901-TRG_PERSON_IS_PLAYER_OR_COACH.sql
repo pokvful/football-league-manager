@@ -8,13 +8,6 @@ BEGIN
 	SET NOCOUNT ON
 
 	BEGIN TRY
-		IF EXISTS(
-			SELECT inserted.PERSON_ID
-			FROM inserted
-					 JOIN referee ON inserted.PERSON_ID = referee.PERSON_ID
-			)
-			THROW 50001, 'Referee can not have a yellow card!', 1;
-
 		IF NOT EXISTS(
 			SELECT 1
 			FROM inserted, (SELECT player_person_id as person_id
@@ -49,13 +42,6 @@ BEGIN
 	SET NOCOUNT ON
 
 	BEGIN TRY
-		IF EXISTS(
-			SELECT inserted.PERSON_ID
-			FROM inserted
-					 JOIN referee ON inserted.PERSON_ID = referee.PERSON_ID
-			)
-			THROW 50001, 'Referee can not have a red card!', 1;
-
 		IF NOT EXISTS(
 			SELECT 1
 			FROM inserted, (SELECT player_person_id as person_id
