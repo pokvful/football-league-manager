@@ -1,7 +1,7 @@
 CREATE OR ALTER PROCEDURE PROC_INSERT_NEW_COACH @Country_name VARCHAR(128),
 												@First_name VARCHAR(128),
 												@Last_name VARCHAR(128),
-												@Middle_name VARCHAR(128),
+												@Middle_name VARCHAR(128) = NULL,
 												@Birth_Date DATE
 AS
 BEGIN
@@ -25,7 +25,7 @@ GO
 CREATE OR ALTER PROCEDURE PROC_INSERT_NEW_REFEREE @Country_name VARCHAR(128),
 												  @First_name VARCHAR(128),
 												  @Last_name VARCHAR(128),
-												  @Middle_name VARCHAR(128),
+												  @Middle_name VARCHAR(128) = NULL,
 												  @Birth_Date DATE
 AS
 BEGIN
@@ -50,7 +50,7 @@ GO
 CREATE OR ALTER PROCEDURE PROC_INSERT_NEW_PLAYER @Country_name VARCHAR(128),
 												 @First_name VARCHAR(128),
 												 @Last_name VARCHAR(128),
-												 @Middle_name VARCHAR(128),
+												 @Middle_name VARCHAR(128) = NULL,
 												 @Birth_date DATE,
 												 @Club_name VARCHAR(128),
 												 @Jersey INT
@@ -70,3 +70,5 @@ BEGIN
 	SELECT person_id, @Club_name, @Jersey
 	FROM @Inserted_personID;
 END
+
+
