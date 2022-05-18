@@ -5,6 +5,7 @@ CREATE OR ALTER PROCEDURE PROC_ADD_MATCHDATA_RED_CARD(
 )
 AS
 BEGIN
+    SET NOCOUNT ON
 	BEGIN TRY
 		INSERT INTO red_card (match_id, time, person_id)
 		VALUES (@match_id, @time, @person_id);
@@ -22,6 +23,7 @@ CREATE OR ALTER PROCEDURE PROC_ADD_MATCHDATA_YELLOW_CARD(
 )
 AS
 BEGIN
+    SET NOCOUNT ON
 	BEGIN TRY
 		INSERT INTO yellow_card (match_id, time, person_id)
 		VALUES (@match_id, @time, @person_id);
@@ -40,6 +42,7 @@ CREATE OR ALTER PROCEDURE PROC_ADD_MATCHDATA_PASS(
 )
 AS
 BEGIN
+    SET NOCOUNT ON
 	BEGIN TRY
 		INSERT INTO pass (match_id, time, person_id, succes)
 		VALUES (@match_id, @time, @person_id, @success);
@@ -57,6 +60,7 @@ CREATE OR ALTER PROCEDURE PROC_ADD_MATCHDATA_GOAL(
 )
 AS
 BEGIN
+    SET NOCOUNT ON
 	BEGIN TRY
 		INSERT INTO goal (match_id, time, person_id)
 		VALUES (@match_id, @time, @person_id);
@@ -75,6 +79,7 @@ CREATE OR ALTER PROCEDURE PROC_ADD_MATCHDATA_SHOT(
 )
 AS
 BEGIN
+    SET NOCOUNT ON
 	BEGIN TRY
 		INSERT INTO shot (match_id, time, person_id, on_goal)
 		VALUES (@match_id, @time, @person_id, @on_goal);
@@ -92,6 +97,7 @@ CREATE OR ALTER PROCEDURE PROC_ADD_MATCHDATA_FOUL(
 )
 AS
 BEGIN
+    SET NOCOUNT ON
 	BEGIN TRY
 		INSERT INTO foul (match_id, time, person_id)
 		VALUES (@match_id, @time, @person_id);
@@ -109,6 +115,7 @@ CREATE OR ALTER PROCEDURE PROC_ADD_MATCHDATA_CORNER(
 )
 AS
 BEGIN
+    SET NOCOUNT ON
 	BEGIN TRY
 		INSERT INTO corner (match_id, time, person_id)
 		VALUES (@match_id, @time, @person_id);
@@ -126,6 +133,7 @@ CREATE OR ALTER PROCEDURE PROC_ADD_MATCHDATA_CORNER(
 )
 AS
 BEGIN
+    SET NOCOUNT ON
 	BEGIN TRY
 		INSERT INTO corner (match_id, time, person_id)
 		VALUES (@match_id, @time, @person_id);
@@ -144,6 +152,7 @@ CREATE OR ALTER PROCEDURE PROC_ADD_MATCHDATA_SUBSTITUTE(
 )
 AS
 BEGIN
+    SET NOCOUNT ON
 	BEGIN TRY
 		INSERT INTO substitute (match_id, time, in_person_id, out_person_id)
 		VALUES (@match_id, @time, @in_person_id, @out_person_id);
