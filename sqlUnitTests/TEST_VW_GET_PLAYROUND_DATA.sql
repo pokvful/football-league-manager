@@ -31,7 +31,7 @@ BEGIN
 
 	EXEC TSQLT.ExpectNoException;
 
-	DECLARE @actual TABLE
+	CREATE TABLE actual
 					(
 						Season           VARCHAR(128),
 						Competition_name VARCHAR(128),
@@ -42,10 +42,10 @@ BEGIN
 						Out_goals        INT
 					);
 
-	DECLARE @expected TABLE
+	CREATE TABLE expected
 					  (
 						  Season      VARCHAR(128),
-						  Competition VARCHAR(128),
+						  Competition_name VARCHAR(128),
 						  Start_date  DATE,
 						  Club_home   VARCHAR(128),
 						  Club_out    VARCHAR(128),
@@ -53,11 +53,11 @@ BEGIN
 						  Out_goals   INT
 					  );
 
-	EXEC TSQLT.FakeTable 'dbo.MATCH';
+	EXEC TSQLT.FakeTable 'dbo.MATCH', @Identity = 1;
 	EXEC TSQLT.FakeTable 'dbo.MATCHDAY';
 	EXEC TSQLT.FakeTable 'dbo.ROUND';
 	EXEC TSQLT.FakeTable 'dbo.GOAL';
-	EXEC TSQLT.FakeTable 'dbo.PERSON';
+	EXEC TSQLT.FakeTable 'dbo.PERSON', @Identity = 1;
 	EXEC TSQLT.FakeTable 'dbo.PLAYER';
 	EXEC TSQLT.FakeTable 'dbo.CLUB';
 
@@ -69,9 +69,9 @@ BEGIN
 	VALUES (1, 'AJAX', 1),
 		   (2, 'VITESSE', 2);
 
-	INSERT INTO dbo.MATCH(MATCH_ID, COMPETITION_NAME, START_DATE, MATCH_DAY, HOME_CLUB_NAME, OUT_CLUB_NAME,
+	INSERT INTO dbo.MATCH(SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY, HOME_CLUB_NAME, OUT_CLUB_NAME,
 						  STADIUM_NAME, REFEREE_PERSON_ID, BALL_POSSESSION_HOME, BALL_POSSESSION_OUT, SPECTATORS)
-	VALUES (1, 'Eredivisie', '2000-12-12', '2000-12-12', 'AJAX', 'VITESSE', 'Ziggo Dome', 1, 20, 50,
+	VALUES ('20', 'Eredivisie', '2000-12-12', '2000-12-12', 'AJAX', 'VITESSE', 'Ziggo Dome', 1, 20, 50,
 			20000);
 
 	INSERT INTO dbo.MATCHDAY (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY)
@@ -87,13 +87,13 @@ BEGIN
 		   (1, 13, 2),
 		   (2, 14, 1)
 
-	INSERT INTO dbo.PERSON (PERSON_ID, COUNTRY_NAME, FIRST_NAME, LAST_NAME, MIDDLE_NAME, BIRTH_DATE)
-	VALUES (1, 'The Netherlands', 'Bob', 'Banaan', 'van', '1990-12-12')
+	INSERT INTO dbo.PERSON (COUNTRY_NAME, FIRST_NAME, LAST_NAME, MIDDLE_NAME, BIRTH_DATE)
+	VALUES ('The Netherlands', 'Bob', 'Banaan', 'van', '1990-12-12')
 
-	INSERT INTO @expected (Season, Competition, Start_date, Club_home, Club_out, Home_goals, Out_goals)
+	INSERT INTO expected (Season, Competition_name, Start_date, Club_home, Club_out, Home_goals, Out_goals)
 	VALUES (20, 'Eredivisie', '2000-12-12', 'AJAX', 'VITESSE', 1, 3)
 
-	INSERT INTO @actual
+	INSERT INTO actual
 	SELECT dbo.ROUND.SEASON_NAME,
 		   dbo.ROUND.COMPETITION_NAME,
 		   dbo.ROUND.START_DATE,
@@ -111,7 +111,7 @@ BEGIN
 	GROUP BY dbo.ROUND.SEASON_NAME, dbo.ROUND.COMPETITION_NAME, dbo.ROUND.START_DATE, dbo.MATCH.HOME_CLUB_NAME,
 			 dbo.MATCH.OUT_CLUB_NAME
 
-	EXEC TSQLT.AssertEqualsTable @expected, @actual
+	EXEC TSQLT.AssertEqualsTable expected, actual
 
 END
 
