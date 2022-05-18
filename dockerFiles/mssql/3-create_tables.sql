@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     10/05/2022 14:49:44                          */
+/* Created on:     16/05/2022 09:34:11                          */
 /*==============================================================*/
 
 
@@ -1412,7 +1412,7 @@ go
 /* Table: PERSON                                                */
 /*==============================================================*/
 create table PERSON (
-   PERSON_ID            PERSON_ID            not null,
+   PERSON_ID            PERSON_ID            identity,
    COUNTRY_NAME         COUNTRY_NAME         not null,
    FIRST_NAME           NAME                 not null,
    LAST_NAME            NAME                 not null,
