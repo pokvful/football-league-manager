@@ -67,4 +67,4 @@ python3 ./generate-events.py
 ./create_insert_scripts.sh # run this one more time, to ensure there are no duplicates
 ```
 
-After this, you can enjoy waiting five minutes for MSSQL to start up :D
+After this, you can enjoy waiting five minutes for MSSQL to start up 🤡
