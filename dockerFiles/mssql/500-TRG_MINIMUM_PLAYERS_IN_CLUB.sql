@@ -6,18 +6,31 @@ BEGIN
 	DECLARE @minimalPlayer int
 
 	set @minimalPlayer = 11
-	if @@rowcount > 0
-		BEGIN TRY
-		    IF EXISTS(
-		    	SELECT COUNT(*)
-				FROM PLAYER P
-				inner join inserted I on P.PERSON_ID = I.PERSON_ID
-				GROUP BY P.CLUB_NAME
-		        HAVING COUNT(*) < @minimalPlayer)
-				THROW 50001, 'There must be at least 11 players in a club', 1
-		END TRY
-		BEGIN CATCH
-			THROW;
-		END CATCH
+	IF @@ROWCOUNT = 0
+		RETURN
+	SET NOCOUNT ON
+	BEGIN TRY
+		IF EXISTS(
+			SELECT totalPlayer.CLUB_NAME,
+				   COUNT(*)
+			FROM (SELECT *
+				  FROM PLAYER P
+				  UNION
+				  SELECT *
+				  FROM inserted I) AS totalPlayer
+			GROUP BY CLUB_NAME
+			HAVING COUNT(*) < @minimalPlayer)
+			/*
+			(SELECT COUNT(*)
+			FROM PLAYER P
+			INNER JOIN inserted I ON P.PERSON_ID = I.PERSON_ID
+			GROUP BY P.CLUB_NAME
+			HAVING COUNT(*) < @minimalPlayer)
+			*/
+			THROW 50001, 'There must be at least 11 players in a club', 1
+	END TRY
+	BEGIN CATCH
+		THROW;
+	END CATCH
 END
 GO
