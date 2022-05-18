@@ -43,7 +43,7 @@
 - [9. Planning](#9-planning)
 	- [9.1 Globale planning](#91-globale-planning)
 	- [9.2 Inleverdata](#92-inleverdata)
-- [10. Risico’s](#10-risicos)
+- [10. Risk List](#10-risk-list)
 - [Literatuurlijst](#literatuurlijst)
 - [Bijlagen](#bijlagen)
 	- [Bijlage I - Rollenbeschrijvingen](#bijlage-i---rollenbeschrijvingen)

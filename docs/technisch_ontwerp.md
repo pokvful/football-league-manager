@@ -1,33 +1,114 @@
 # Technisch ontwerp
 
+- [Technisch ontwerp](#technisch-ontwerp)
+- [Non-Functional Requirements](#non-functional-requirements)
+  - [Performance and scalability](#performance-and-scalability)
+  - [Portability and compatibility](#portability-and-compatibility)
+  - [Reliability, availability, maintainability](#reliability-availability-maintainability)
+  - [Security](#security)
+  - [Localization](#localization)
+  - [Usability](#usability)
+- [Deployment diagram](#deployment-diagram)
+- [PDM](#pdm)
+- [Beschrijving Tabellen en Kolommen](#beschrijving-tabellen-en-kolommen)
+  - [Tabel: PERSON](#tabel-person)
+  - [Tabel: REFEREE](#tabel-referee)
+  - [Tabel: COACH](#tabel-coach)
+  - [Tabel: PLAYER](#tabel-player)
+  - [Tabel: COUNTRY](#tabel-country)
+  - [Tabel: CITY](#tabel-city)
+  - [Tabel: STADIUM](#tabel-stadium)
+  - [Tabel: CLUB](#tabel-club)
+  - [Tabel: SEASON](#tabel-season)
+  - [Tabel: DOMESTIC_LEAGUE](#tabel-domestic_league)
+  - [Tabel: EDITION](#tabel-edition)
+  - [Tabel: ROUND](#tabel-round)
+  - [Tabel: CLUB_plays_in_EDITION](#tabel-club_plays_in_edition)
+  - [Tabel: MATCHDAY](#tabel-matchday)
+  - [Tabel: MATCH](#tabel-match)
+  - [Tabel: POSITION](#tabel-position)
+  - [Tabel: PLAYER_as_reserve_in_MATCH](#tabel-player_as_reserve_in_match)
+  - [Tabel: SUBSTITUTE](#tabel-substitute)
+  - [Tabel: CORNER](#tabel-corner)
+  - [Tabel: FOUL](#tabel-foul)
+  - [Tabel: SHOT](#tabel-shot)
+  - [Tabel: GOAL](#tabel-goal)
+  - [Tabel: PASS](#tabel-pass)
+  - [Tabel: YELLOW_CARD](#tabel-yellow_card)
+  - [Tabel: RED_CARD](#tabel-red_card)
+- [Ontwerkpeuzes](#ontwerkpeuzes)
+  - [MATCH id](#match-id)
+  - [PERSON id](#person-id)
+  - [0..22 Position](#022-position)
+- [Constraints](#constraints)
+  - [Primary key constraints](#primary-key-constraints)
+    - [Person](#person)
+    - [Match](#match)
+    - [Club](#club)
+    - [City](#city)
+    - [Country](#country)
+    - [Competition](#competition)
+    - [Season](#season)
+    - [Round](#round)
+    - [Matchday](#matchday)
+    - [Event](#event)
+  - [Integrity rules](#integrity-rules)
+    - [IR1 komt overeen met C1 en BR12](#ir1-komt-overeen-met-c1-en-br12)
+    - [IR2 komt overeen met C2 en BR18](#ir2-komt-overeen-met-c2-en-br18)
+    - [IR3 komt overeen met C3 en BR19](#ir3-komt-overeen-met-c3-en-br19)
+    - [IR4 komt overeen met C4 en BR16](#ir4-komt-overeen-met-c4-en-br16)
+    - [IR5 komt overeen met C5 en BR17](#ir5-komt-overeen-met-c5-en-br17)
+    - [IR6 komt overeen met C6 en BR4](#ir6-komt-overeen-met-c6-en-br4)
+    - [IR7 komt overeen met C7 en BR5](#ir7-komt-overeen-met-c7-en-br5)
+    - [IR8 komt overeen met C8 en BR8](#ir8-komt-overeen-met-c8-en-br8)
+    - [IR9 komt overeen met C9 en BR9](#ir9-komt-overeen-met-c9-en-br9)
+    - [IR10 komt overeen met C10 en BR10](#ir10-komt-overeen-met-c10-en-br10)
+    - [IR11 komt overeen met C11 en BR11](#ir11-komt-overeen-met-c11-en-br11)
+    - [IR12 komt overeen met C12 en BR20](#ir12-komt-overeen-met-c12-en-br20)
+  - [IR13 komt overeen met C13 en BR21](#ir13-komt-overeen-met-c13-en-br21)
+  - [IR14 komt overeen met C14 en BR22](#ir14-komt-overeen-met-c14-en-br22)
+  - [IR15 komt overeen met diagram en BR24](#ir15-komt-overeen-met-diagram-en-br24)
+- [Toelichting Domeinen](#toelichting-domeinen)
+- [Toelichting export MSSQL naar MongoDB](#toelichting-export-mssql-naar-mongodb)
+  - [Input](#input)
+  - [Output](#output)
+
 # Non-Functional Requirements
 
 ## Performance and scalability
 
-- Data uitlezen wordt gedaan via een staging area met mongoDB, hierdoor wordt de load op de MSSQL database verlaagd
+- Om de druk op de MSSQL database te verlichten lezen data-analisten van klaten alleen de MongoDB staging area uit
 
 ## Portability and compatibility
 
 - MSSQL is vereist voor het *opzetten* van de database
-- MongoDB is vereist voor het *uitlezen* van de database
+- Voor data-analisten van klanten die willen *uitlezen*, is het verplicht om de staging area te gebruiken
 
 ## Reliability, availability, maintainability
 
-- De data wordt opgeslagen in MSSQL en periodiek overgezet naar MongoDB staging area
+- Iedere dag wordt om 02:00 een kopie van de MSSQL database overgezet naar de MongoDB staging area
 
 ## Security
 
-- Administrators van NUTMEG kunnen de MSSQL database volledig beheren
+- Administrators van NUTMEG hebben volledige CRUD rechten op zowel de volledige MSSQL als MongoDB database
 - Data-analisten van klanten kunnen de database alleen uitlezen via de staging area
 
 ## Localization
 
 - De data wordt in het Nederlands opgeslagen
-- Tabelnamen staan in het Engels
+- De schema van MSSQL (en MongoDB indien nodig) worden in het Engels gemaakt
 
 ## Usability
 
-- Data-analisten kunnen via de MongoDB shell data uitlezen van de staging area
+- Data-analisten kunnen via de MongoDB shell data uitlezen die in de MongoDB staging area staat
+
+# Deployment diagram
+
+![Deployment diagram.](images/Deployment%20Diagram.png)
+
+# PDM
+
+![Het PDM.](images/pdm_no_ko.png)
 
 # Beschrijving Tabellen en Kolommen
 
@@ -298,79 +379,128 @@ Om een persoon van een daadwerkelijk van een unieke identifier te voorzien moete
 
 Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echter worden wedstrijden als vastgesteld en aangemaakt ver voordat de opstelling bekend zijn. Hierom hebben ervoor gekozen het ook mogelijk te 0 tot 22 spelers op te stellen. Met een trigger wordt gecheckt of er wel 22 spelers zijn opgesteld voordat de wedstrijd daadwerkelijk start.
 
-# Integrity rules
+# Constraints
 
-## IR1 komt overeen met C1 en BR12
+## Primary key constraints
+
+### Person
+
+PI: Person ID
+
+### Match
+
+PI: Club_name + club_name + match_day + start_date + end_date + competition_name + season_name
+
+### Club
+
+PI: Club_name
+
+### City
+
+PI: City_name
+
+### Country
+
+PI: Country_name
+
+### Competition
+
+PI: Competition_name
+
+### Season
+
+PI: Season_name
+
+### Round
+
+PI: Start_date + end_date
+
+### Matchday
+
+PI: Match_day + start_date + end_date + competition_name + season_name
+
+### Event
+
+PI: Time + club_name + club_name + match_day + start_date + end_date + competition_name + season_name
+
+## Integrity rules
+
+### IR1 komt overeen met C1 en BR12
 
 - Omschrijving: Er zijn maximaal 22 spelers aan een match verbonden (11 per club);
 - Implementatie: Een trigger `TRG_CHECK_PLAYER_COUNT` op de tabel `POSITION`.
 
-## IR2 komt overeen met C2 en BR18
+### IR2 komt overeen met C2 en BR18
 
 <!-- TODO: Hoe doen we dit wanneer er b.v. een nieuwe club wordt aangemaakt, want dan beginnen ze met < 11 spelers... -->
 - Omschrijving: Er zijn minimaal 11 spelers aan een club verbonden;
 - Implementatie: Een trigger `TRG_MINIMUM_PLAYERS_IN_CLUB` op de tabel `PLAYER`.
 
-## IR3 komt overeen met C3 en BR19
+### IR3 komt overeen met C3 en BR19
 
 - Omschrijving: Een club heeft altijd precies 1 coach;
 - Implementatie: Een trigger `TRG_ONE_COACH_PER_CLUB` op de tabel `COACH`.
 
-## IR4 komt overeen met C4 en BR16
+### IR4 komt overeen met C4 en BR16
 
 - Omschrijving: Er zijn maximaal 52 speelrondes per editie van een competitie;
 - Implementatie: Een trigger `TRG_CHECK_MAXIMUM_ROUNDS_OF_EDITION` op de tabel `ROUND`.
 
-## IR5 komt overeen met C5 en BR17
+### IR5 komt overeen met C5 en BR17
 
 - Omschrijving: Een rugnummer van een speler moet hoger zijn dan 0 (mag niet 0 zijn) en mag niet hoger zijn dan 99 (mag wel 99 zijn);
 - Implementatie: Een check-constraint `CHK_VALID_JERSEY` op de tabel `PLAYER`.
 
-## IR6 komt overeen met C6 en BR4
+### IR6 komt overeen met C6 en BR4
 
 - Omschrijving: De startdatum van een speelronde ligt binnen de start- en einddatum van het bijbehorende seizoen;
 - Implementatie: Een check-constraint `CHK_VALID_ROUND_START_DATE` op de tabel `ROUND`. <!-- De startdatum is beschikbaar door de afhankelijkheid. Als dit wordt aangepast, moet de check een trigger worden -->
 
-## IR7 komt overeen met C7 en BR5
+### IR7 komt overeen met C7 en BR5
 
 - Omschrijving: De startdatum van een speeldag moet voor de startdatum van een opvolgende speelronde zijn, maar hetzelfde of na de startdatum van de gekoppelde speelronde;
 - Implementatie: Een trigger `TRG_CHECK_VALID_MATCHDAY_START_DATE` op de tabel `MATCHDAY`.
 
-## IR8 komt overeen met C8 en BR8
+### IR8 komt overeen met C8 en BR8
 
 - Omschrijving: De spelers die aan een wedstrijd zijn gekoppeld moeten lid zijn van één van de twee clubs die aan de wedstrijd meedoen;
 - Implementatie: Een trigger `TRG_CHECK_CORRECT_PLAYERS_IN_MATCH` op de tabel `POSITION` en `PLAYER_as_reserve_in_MATCH`.
 
-## IR9 komt overeen met C9 en BR9
+### IR9 komt overeen met C9 en BR9
 
 - Omschrijving: Een club mag alleen meedoen aan een wedstrijd als ze ook aan de bijbehorende editie meedoen;
 - Implementatie: Een trigger `TRG_CHECK_CLUB_IN_EDITION` op de tabel `MATCH`.
 
-## IR10 komt overeen met C10 en BR10
+### IR10 komt overeen met C10 en BR10
 
 - Omschrijving: Alleen spelers en coaches mogen een rode of gele kaart krijgen;
 - Implementatie: Een trigger `TRG_PERSON_IS_PLAYER_OR_COACH` op de tabellen `YELLOW_CARD` en `RED_CARD`.
 
-## IR11 komt overeen met C11 en BR11
+### IR11 komt overeen met C11 en BR11
 
 - Omschrijving: Alleen voor spelende spelers in een wedstrijd worden het aantal schoten, het aantal passes, de wissels, de overtredingen, de corners en of de persoon heeft gescoord bijgehouden;
 - Implementatie: Een trigger `TRG_PERSON_IS_PLAYER` op de tabellen `PASS`, `GOAL`, `SHOT`, `FOUL`, `CORNER` en `SUBSTITUTE`.
 
-## IR12 komt overeen met C12 en BR20
+### IR12 komt overeen met C12 en BR20
 
-- Omschrijving: Een speler mag niet jonger zijn dan 10 jaar;
-- Implementatie: Een check-constraint `CHK_PLAYER_HAS_VALID_AGE` op de tabel `PLAYER`.
+- Omschrijving: Een persoon mag niet jonger zijn dan 15 jaar;
+- Implementatie: Een check-constraint `CHK_PERSON_HAS_VALID_AGE` op de tabel `PERSON`.
 
-## IR13 komt overeen met C13 en BR22
+## IR13 komt overeen met C13 en BR21
 
 - Omschrijving: Het aantal toeschouwers bij een wedstrijd mag niet groter zijn dan de capaciteit van het stadion waar de wedstrijd wordt gehouden;
 - Implementatie: Een trigger `TRG_VALID_AMOUNT_OF_SPECTATORS` op de tabel `MATCH`.
 
-## IR14 komt overeen met C14 en BR23
+## IR14 komt overeen met C14 en BR22
 
 - Omschrijving: De minuut in een wedstrijd mag niet negatief zijn;
 - Implementatie: Een check-constraint `CHK_VALID_MINUTE_IN_MATCH` op de tabellen `RED_CARD`, `YELLOW_CARD`, `PASS`, `GOAL`, `SHOT`, `FOUL`, `CORNER` en `SUBSTITUTE`.
 Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echter worden wedstrijden als vastgesteld en aangemaakt ver voordat de opstelling bekend zijn. Hierom hebben ervoor gekozen het ook mogelijk te 0 tot 22 spelers op te stellen. Met een trigger wordt gecheckt of er wel 22 spelers zijn opgesteld voordat de wedstrijd daadwerkelijk start.
+
+## IR15 komt overeen met diagram en BR24
+
+- Omschrijving: Een persoon moet een speler, coach of scheidsrechter zijn.
+- Implementatie: Een trigger `TRG_PLAYER_MUST_BE_ONE_SUBTYPE` op de tabellen `PLAYER`, `COACH` en `REFEREE`.
 
 # Toelichting Domeinen
 

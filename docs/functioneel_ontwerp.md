@@ -1,5 +1,106 @@
 # Functioneel ontwerp
 
+- [Use cases](#use-cases)
+- [Fully-Dressed Use-cases](#fully-dressed-use-cases)
+- [Verwoordingen feittypen](#verwoordingen-feittypen)
+  - [Competitie](#competitie)
+    - [Naam](#naam)
+  - [Editie](#editie)
+    - [Clubs](#clubs)
+    - [Thuisstad](#thuisstad)
+    - [Stadion](#stadion)
+    - [Personen](#personen)
+    - [Persoon achternaam](#persoon-achternaam)
+    - [Persoon middelnaam](#persoon-middelnaam)
+    - [Geboortedatum](#geboortedatum)
+    - [Nationaliteit](#nationaliteit)
+    - [Land van stad](#land-van-stad)
+    - [Coach](#coach)
+    - [Spelers](#spelers)
+      - [Rugnummer, voornaam en achternaam](#rugnummer-voornaam-en-achternaam)
+    - [Speler in club](#speler-in-club)
+  - [Voetbalwedstrijd](#voetbalwedstrijd)
+    - [Positie](#positie)
+    - [Reserve](#reserve)
+    - [Schoten THUIS](#schoten-thuis)
+    - [Schoten UIT](#schoten-uit)
+    - [Schoten op doel THUIS](#schoten-op-doel-thuis)
+    - [Schoten op doel UIT](#schoten-op-doel-uit)
+    - [Balbezit UIT](#balbezit-uit)
+    - [Balbezit THUIS](#balbezit-thuis)
+    - [Aantal passes THUIS](#aantal-passes-thuis)
+    - [Aantal passes UIT](#aantal-passes-uit)
+    - [Precisie passes THUIS](#precisie-passes-thuis)
+    - [Preciesie passes UIT](#preciesie-passes-uit)
+    - [Overtredingen](#overtredingen)
+    - [Hoekschoppen UIT](#hoekschoppen-uit)
+    - [Hoekschoppen THUIS](#hoekschoppen-thuis)
+  - [Events](#events)
+    - [Goals](#goals)
+    - [Gele kaarten](#gele-kaarten)
+    - [Rode kaarten](#rode-kaarten)
+    - [Rode kaarten](#rode-kaarten-1)
+  - [Match day](#match-day)
+    - [Wissels](#wissels)
+      - [Scheidsrechter](#scheidsrechter)
+    - [Aantal toeschouwers](#aantal-toeschouwers)
+- [Business Rules](#business-rules)
+- [Functionele requirements.](#functionele-requirements)
+  - [Constraints](#constraints)
+    - [C1 komt overeen met BR12](#c1-komt-overeen-met-br12)
+    - [C2 komt overeen met BR18](#c2-komt-overeen-met-br18)
+    - [C3 komt overeen met BR19](#c3-komt-overeen-met-br19)
+    - [C4 komt overeen met BR16](#c4-komt-overeen-met-br16)
+    - [C5 komt overeen met BR17](#c5-komt-overeen-met-br17)
+    - [C6 komt overeen met BR4](#c6-komt-overeen-met-br4)
+    - [C7 komt overeen met BR5](#c7-komt-overeen-met-br5)
+    - [C8 komt overeen met BR8](#c8-komt-overeen-met-br8)
+    - [C9 komt overeen met BR9](#c9-komt-overeen-met-br9)
+    - [C10 komt overeen met BR10](#c10-komt-overeen-met-br10)
+    - [C11 komt overeen met BR11](#c11-komt-overeen-met-br11)
+    - [C12 komt overeen met BR20](#c12-komt-overeen-met-br20)
+      - [C13 komt overeen met BR21](#c13-komt-overeen-met-br21)
+      - [C14 komt overeen met BR22](#c14-komt-overeen-met-br22)
+- [Ontwerp keuzes](#ontwerp-keuzes)
+  - [Entiteit: Persoon](#entiteit-persoon)
+  - [Entiteit: Event](#entiteit-event)
+  - [Entiteit: Position](#entiteit-position)
+  - [Entiteit: Match](#entiteit-match)
+- [Rechtenstructuur](#rechtenstructuur)
+- [Toelichting Datakwaliteit](#toelichting-datakwaliteit)
+- [CDM](#cdm)
+- [Onderbouwing concepten CDM](#onderbouwing-concepten-cdm)
+  - [Entiteit PERSON](#entiteit-person)
+  - [Entiteit PLAYER](#entiteit-player)
+  - [Entiteit REFEREE](#entiteit-referee)
+  - [Entiteit COACH](#entiteit-coach)
+  - [Entiteit COUNTRY](#entiteit-country)
+  - [Entiteit CITY](#entiteit-city)
+  - [Entiteit CLUB](#entiteit-club)
+  - [Entiteit STADIUM](#entiteit-stadium)
+  - [Entiteit COMPETITION](#entiteit-competition)
+- [Entitieit DOMESTIC_LEAGUE](#entitieit-domestic_league)
+  - [Entiteit SEASON](#entiteit-season)
+  - [Entiteit EDITION](#entiteit-edition)
+  - [Entiteit ROUND](#entiteit-round)
+  - [Entiteit MATCHDAY](#entiteit-matchday)
+  - [Entiteit MATCH](#entiteit-match-1)
+  - [Entiteit POSITION](#entiteit-position-1)
+  - [Entiteit KEEPER](#entiteit-keeper)
+  - [Entiteit DEFENDER](#entiteit-defender)
+  - [Entiteit MIDFIELDER](#entiteit-midfielder)
+  - [Entiteit ATTACKER](#entiteit-attacker)
+  - [Entiteit EVENT](#entiteit-event-1)
+  - [Entiteit SUBSTITUTE](#entiteit-substitute)
+  - [Entiteit GOAL](#entiteit-goal)
+  - [Entiteit RED_CARD](#entiteit-red_card)
+  - [Entiteit YELLOW_CARD](#entiteit-yellow_card)
+  - [Entiteit PASS](#entiteit-pass)
+  - [Entiteit SHOT](#entiteit-shot)
+  - [Entiteit  CORNER](#entiteit--corner)
+  - [Entiteit FOUL](#entiteit-foul)
+- [Testplan](#testplan)
+
 # Use cases
 
 ![Use case diagram](images/usecase_diagram_nutmeg.png)
@@ -838,11 +939,9 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 - BR17 Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1;
 - BR18 Minimaal 11 spelers per club;
 - BR19 Minimaal en maximaal 1 coach per club;
-- BR20 Een speler mag niet jonger zijn dan 10 jaar;
-<!-- dubbelop met die hierboven? (als deze wordt verwijdert, verander dan ook de getallen bij de IR's) -->
-- BR21 Een speler kan niet in een competitie spelen voor zijn 10 verjaardag;
-- BR22 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
-- BR23 Hoeveelste minuut mag niet negatief zijn.
+- BR20 Een persoon binnen het systeem mag niet jonger zijn dan 15 jaar;
+- BR21 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
+- BR22 Hoeveelste minuut mag niet negatief zijn.
 
 # Functionele requirements.
 
@@ -860,116 +959,72 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 ## Constraints
 
-### Primary key constraints
-
-#### Person
-
-PI: Person ID
-
-#### Match
-
-PI: Club_name + club_name + match_day + start_date + end_date + competition_name + season_name
-
-#### Club
-
-PI: Club_name
-
-#### City
-
-PI: City_name
-
-#### Country 
-
-PI: Country_name
-
-#### Competition
-
-PI: Competition_name
-
-#### Season
-
-PI: Season_name
-
-#### Round
-
-PI: Start_date + end_date
-
-#### Matchday
-
-PI: Match_day + start_date + end_date + competition_name + season_name
-
-#### Event
-
-PI: Time + club_name + club_name + match_day + start_date + end_date + competition_name + season_name
-
-### Check constraints
-
-#### C1 komt overeen met BR12
+### C1 komt overeen met BR12
 
 - Betreft: ET `POSITION`;
 - Specificatie: Maximaal 22 posities per match (11 per club).
 
-#### C2 komt overeen met BR18
+### C2 komt overeen met BR18
 
 - Betreft: ET `PLAYER` en ET `CLUB`;
 - Specificatie: Minimaal 11 spelers per club;
 
-#### C3 komt overeen met BR19
+### C3 komt overeen met BR19
 
 - Betreft: ET `COACH` en ET `CLUB`;
 - Specificatie: Minimaal en maximaal 1 coach per club;
 
-#### C4 komt overeen met BR16
+### C4 komt overeen met BR16
 
 - Betreft: ET `ROUND`, ET `EDITION` en ET `DOMESTIC_LEAGUE`;
 - Specificatie: Maximaal 52 speelrondes per editie van een competitie.
 
-#### C5 komt overeen met BR17
+### C5 komt overeen met BR17
 
 - Betreft: ET `PLAYER` en Att `Jersey`;
 - Specificatie: Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1.
 
-#### C6 komt overeen met BR4
+### C6 komt overeen met BR4
 
 - Betreft: ET `ROUND`, Att `Start_date`, en ET `SEASON`, Att `Start_date` en `End_date`;
 - Specificatie: De startdatum van een speelronde ligt binnen de start- en einddatum van het bijbehorende seizoen. <!-- TODO: SEASON heeft geen start datum -->
 
-#### C7 komt overeen met BR5
+### C7 komt overeen met BR5
 
 - Betreft: ET `MATCHDAY`, Att `Match_day`, en ET `ROUND`, Att `Start_date`;
 - Specificatie: De startdatum van een speeldag moet voor de startdatum van een opvolgende speelronde zijn, maar hetzelfde of na de startdatum van de gekoppelde speelronde.
 
-#### C8 komt overeen met BR8
+### C8 komt overeen met BR8
 
 - Betreft: ET `MATCH` en ET `EDITION`;
 - Specificatie: Een speler in een wedstrijd moet op dat moment lid zijn van de thuis- of uitspelende club.
 
-#### C9 komt overeen met BR9
+### C9 komt overeen met BR9
 
 - Betreft: ET `MATCH` en ET `EDITION`;
 - Specificatie: Een club mag alleen meedoen aan een wedstrijd als ze ook aan de bijbehorende editie.
 
-#### C10 komt overeen met BR10
+### C10 komt overeen met BR10
 
 - Betreft: ET `YELLOW_CARD`, ET `RED_CARD`, ET `COACH` en ET `PLAYER`;
 - Specificatie: Een gele of rode kaart mag alleen aan een speler of een coach gegeven worden.
 
-#### C11 komt overeen met BR11
+### C11 komt overeen met BR11
 
 - Betreft: ET `PASS`, ET `GOAL`, ET `SHOT`, ET `FOUL`, ET `CORNER` en ET `SUBSTITUTE`;
 - Specificatie: Alleen voor spelende spelers in een wedstrijd worden het aantal schoten, het aantal passes, de wissels, de overtredingen, de corners en of de persoon heeft gescoord bijgehouden.
 
-#### C12 komt overeen met BR20
+### C12 komt overeen met BR20
 
-- Betreft: ET `PLAYER`, Att `Birth_date`;
-- Specificatie: Een speler mag niet jonger zijn dan 10 jaar oud.
+- Betreft: ET `PERSON`, Att `Birth_date`;
+- Specificatie: Een peroon binnen het systeem mag niet jonger zijn dan 15 jaar oud.
 
-#### C13 komt overeen met BR22
+#### C13 komt overeen met BR21
 
 - Betreft: ET `MATCH` en ET `STADIUM`, Att `Capacity`;
 - Specificatie: Het aantal toeschouwers mag niet groter zijn dan de capaciteit van het stadion waar de wedstrijd wordt gehouden.
 
-#### C14 komt overeen met BR23
+#### C14 komt overeen met BR22
 
 - Betreft: De Att `Time` van de entiteiten ET `RED_CARD`, ET `YELLOW_CARD`, ET `PASS`, ET `GOAL`, ET `SHOT`, ET `FOUL`, ET `CORNER` en ET `SUBSTITUTE`;
 - Specificatie: De minuut in een wedstrijd mag niet negatief zijn.
@@ -996,25 +1051,33 @@ De entiteit Match bevat alle informatie (balbezit, passes, schoten, schoten op d
 
 # Rechtenstructuur
 
-| Use Cases                 | Entiteit(en)                                  | Rechten               |
-|---------------------------|-----------------------------------------------|-----------------------|
-| Ophalen Top-lijst         | Event (inc. subtypes), Match, Person, Club    | Data-Analist en Admin |
-| Ophalen Tussenstand Comp  | Competition, Edition, Season, Round           | Data-Analist en Admin |
-| Ophalen Club Info         | Club, Person, City, Competition, Coach        | Data-Analist en Admin | 
-| Ophalen Match Info        | Match, Person, Matchday, Club, Stadium, Event | Data-Analist en Admin |
-| Ophalen Speelronde Info   | Round, Matchday, Edition                      | Data-Analist en Admin |
-| Ophalen Matchday Info     | Matchday, Round, Match                        | Data-Analist en Admin |
-| Invoeren Match Data       | Match, Event, Matchday, Stadium, Club, Person | Admin                 |
-| Updaten Club Info         | Club, Player, Coach, City, Match              | Admin                 |
-| Start Nieuwe Seizoen Comp | Season, Competition, Edition, Round, Matchday | Admin                 |
-| Toevoegen Nieuwe Persoon  | Person                                        | Admin                 |
+Voor data-analisten geldt dat ze alleen SELECT / READ rechten op alle data uit de MongoDB staging area.
+
+Administrators hebben GRANT ALL rechten op alle data uit de MSSQL database en de MongoDB staging area.
+
+| Use Cases                 | Entiteit(en)                                  | Rechten               | Beschrijving
+|---------------------------|-----------------------------------------------|-----------------------|--------------|
+| Ophalen Top-lijst         | Event (inc. subtypes), Match, Person, Club    | Data-Analist en Admin | Het ophalen van de volgende gegevens: Per editie wordt op volgorde gesorteerd welke spelers de meeste ballen hebben gepaast, doelpunten hebben gescoord, rode en gele kaarten hebben ontvangen, schot op goal hebben gelost, overtreding hebben gemaakt en corners hebben genomen.
+| Ophalen Tussenstand Comp  | Competition, Edition, Season, Round           | Data-Analist en Admin | Het ophalen van de volgende gegevens: Per editie wordt op volgorde gesorteerd welke teams de meeste wedstrijden heeft gewonnen.
+| Ophalen Club Info         | Club, Player, City, Stadium                   | Data-Analist en Admin | Het ophalen van alle kolommen die zich bevinden in de club, player, city en stadium tabel.
+| Ophalen Match Info        | Match, Person, Club, Stadium, Event           | Data-Analist en Admin | Het ophalen van match info die zich bevindt in de match, matchday, person, club, stadium en event tabel.
+| Ophalen Speelronde Info   | Round, Matchday, Edition                      | Data-Analist en Admin | Het ophalen van speelronde informatie, dit wordt uit de tabel round, matchday en editie gehaald.
+| Ophalen Matchday Info     | Matchday, Round, Match                        | Data-Analist en Admin | Het ophalen van matchday info die zich bevindt in de matchday, round en match tabel.
+| Invoeren Match Data       | Match, Event, Matchday, Stadium, Club, Person | Admin                 | Het invoeren van nieuwe match data in de match, event, matchday, stadium en club tabel.
+| Updaten Club Info         | Club, Player, Coach, City, Match              | Admin                 | Het updaten van bestaande data in de club, player, coach, city en match tabel.
+| Start Nieuwe Seizoen Comp | Season, Competition, Edition, Round, Matchday | Admin                 | Het aanmaken van een nieuwe seizoen in de season, competition, edition, round en matchday tabel.
+| Toevoegen Nieuwe Persoon  | Person                                        | Admin                 | Het toevoegen van een nieuwe persoon; afhankelijk van het type persoon kan een persoon een speler, scheidsrechter of coach zijn.
 
 # Toelichting Datakwaliteit
-Voor dit project is geen data aangeleverd. Alle data in de database wordt gemockt en zoveel mogelijk gebaseerd op voorbeelddata.
 
+Voor dit project is geen data aangeleverd. Alle data in de database wordt gemockt en zoveel mogelijk gebaseerd op voorbeelddata.
 
 Het schema is gebaseerd op een opzet met informatiebehoeften dat met de opdrachtgever is afgestemed. Het schema is vervolgens ontworpen op basis van deze informatiebehoeften.
 Relevante keuzes betreft het includeren of uitsluiten van feiten in het schema staan omschreven in het hoofdstuk ontwerpkeuzes.
+
+# CDM
+
+![Het CDM.](images/cdm_no_ko.png)
 
 # Onderbouwing concepten CDM
 
