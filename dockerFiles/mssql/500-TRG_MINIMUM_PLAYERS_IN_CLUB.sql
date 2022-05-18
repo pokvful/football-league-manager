@@ -20,13 +20,6 @@ BEGIN
 				  FROM inserted I) AS totalPlayer
 			GROUP BY CLUB_NAME
 			HAVING COUNT(*) < @minimalPlayer)
-			/*
-			(SELECT COUNT(*)
-			FROM PLAYER P
-			INNER JOIN inserted I ON P.PERSON_ID = I.PERSON_ID
-			GROUP BY P.CLUB_NAME
-			HAVING COUNT(*) < @minimalPlayer)
-			*/
 			THROW 50001, 'There must be at least 11 players in a club', 1
 	END TRY
 	BEGIN CATCH
