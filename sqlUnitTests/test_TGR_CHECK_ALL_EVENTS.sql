@@ -81,7 +81,7 @@ BEGIN
 END
 GO
 
-CREATE OR ALTER PROCEDURE TRG_CHECK_ALL_EVENTS.[Test pass for more then one player played in match where one doesnt exist, should failed]
+CREATE OR ALTER PROCEDURE TRG_CHECK_ALL_EVENTS.[Test pass for more then one player played in match where one doesn't exist, should failed]
 AS
 BEGIN
 	--Assemble
@@ -153,7 +153,7 @@ BEGIN
 END
 GO
 
-CREATE OR ALTER PROCEDURE TRG_CHECK_ALL_EVENTS.[Test pass for more then one player played in match where one doesnt exist, should failed]
+CREATE OR ALTER PROCEDURE TRG_CHECK_ALL_EVENTS.[Test pass for more then one player played in match where one doesn't exist, should failed]
 AS
 BEGIN
 	--Assemble
@@ -225,7 +225,7 @@ BEGIN
 END
 GO
 
-CREATE OR ALTER PROCEDURE TRG_CHECK_ALL_EVENTS.[Test SHOT for more then one player played in match where one doesnt exist, should failed]
+CREATE OR ALTER PROCEDURE TRG_CHECK_ALL_EVENTS.[Test SHOT for more then one player played in match where one doesn't exist, should failed]
 AS
 BEGIN
 	--Assemble
@@ -296,7 +296,7 @@ BEGIN
 END
 GO
 
-CREATE OR ALTER PROCEDURE TRG_CHECK_ALL_EVENTS.[Test FOUL for more then one player played in match where one doesnt exist, should failed]
+CREATE OR ALTER PROCEDURE TRG_CHECK_ALL_EVENTS.[Test FOUL for more then one player played in match where one doesn't exist, should failed]
 AS
 BEGIN
 	--Assemble
@@ -367,7 +367,7 @@ BEGIN
 END
 GO
 
-CREATE OR ALTER PROCEDURE TRG_CHECK_ALL_EVENTS.[Test CORNER for more then one player played in match where one doesnt exist, should failed]
+CREATE OR ALTER PROCEDURE TRG_CHECK_ALL_EVENTS.[Test CORNER for more then one player played in match where one doesn't exist, should failed]
 AS
 BEGIN
 	--Assemble
@@ -425,7 +425,7 @@ BEGIN
 END
 GO
 
-CREATE OR ALTER PROCEDURE TRG_CHECK_ALL_EVENTS.[Test SUBSTITUTE_IN for more then one player played in match where one doesnt exist, should succeed]
+CREATE OR ALTER PROCEDURE TRG_CHECK_ALL_EVENTS.[Test SUBSTITUTE_IN for more then one player played in match where one doesn't exist, should succeed]
 AS
 BEGIN
 	--Assemble
@@ -442,7 +442,7 @@ BEGIN
 END
 GO
 
-CREATE OR ALTER PROCEDURE TRG_CHECK_ALL_EVENTS.[Test SUBSTITUTE_IN for more then one player played in match where one doesnt exist, should failed]
+CREATE OR ALTER PROCEDURE TRG_CHECK_ALL_EVENTS.[Test SUBSTITUTE_IN for more then one player played in match where one doesn't exist, should failed]
 AS
 BEGIN
 	--Assemble
@@ -488,7 +488,7 @@ BEGIN
 END
 GO
 
-CREATE OR ALTER PROCEDURE TRG_CHECK_ALL_EVENTS.[Test SUBSTITUTE_IN for more then one player played in match where one doesnt exist, should failed]
+CREATE OR ALTER PROCEDURE TRG_CHECK_ALL_EVENTS.[Test SUBSTITUTE_IN for more then one player played in match where one doesn't exist, should failed]
 AS
 BEGIN
 	--Assemble
