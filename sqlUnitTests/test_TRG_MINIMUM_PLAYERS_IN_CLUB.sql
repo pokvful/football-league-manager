@@ -25,7 +25,7 @@ BEGIN
 END
 GO
 
-CREATE OR ALTER PROCEDURE TRG_MINIMUM_PLAYERS_IN_CLUB.[Test total player in club is equal or more than 11, should succeed]
+CREATE OR ALTER PROCEDURE TRG_MINIMUM_PLAYERS_IN_CLUB.[Test total player insert in club is equal or more than 11, should succeed]
 AS
 BEGIN
 
@@ -49,7 +49,7 @@ BEGIN
 end
 go
 
-CREATE OR ALTER PROCEDURE TRG_MINIMUM_PLAYERS_IN_CLUB.[Test total player in club is less than 11, should fail]
+CREATE OR ALTER PROCEDURE TRG_MINIMUM_PLAYERS_IN_CLUB.[Test total player insert in club is less than 11, should fail]
 AS
 BEGIN
 
@@ -69,7 +69,7 @@ BEGIN
 end
 go
 
-CREATE OR ALTER PROCEDURE TRG_MINIMUM_PLAYERS_IN_CLUB.[Test when more then one team with total player in club is equal or more than 11, should succeed]
+CREATE OR ALTER PROCEDURE TRG_MINIMUM_PLAYERS_IN_CLUB.[Test when more then one team with total player inserted in club is equal or more than 11, should succeed]
 AS
 BEGIN
 
