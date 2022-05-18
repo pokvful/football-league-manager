@@ -1,3 +1,4 @@
+/* z ← don't remove this (see https://isebitbucket.aimsites.nl/projects/S22122A4/repos/football-league-manager/pull-requests/88/overview) */ begin transaction;
 set nocount on;
 insert into PLAYER_as_reserve_in_MATCH (Player_person_id, Match_id) values (162, 959);
 insert into PLAYER_as_reserve_in_MATCH (Player_person_id, Match_id) values (162, 958);
@@ -7775,3 +7776,4 @@ insert into PLAYER_as_reserve_in_MATCH (Player_person_id, Match_id) values (109,
 insert into PLAYER_as_reserve_in_MATCH (Player_person_id, Match_id) values (109, 1041);
 insert into PLAYER_as_reserve_in_MATCH (Player_person_id, Match_id) values (109, 1040);
 insert into PLAYER_as_reserve_in_MATCH (Player_person_id, Match_id) values (109, 104);
+commit transaction;
