@@ -18,7 +18,7 @@ docker-compose down
 
 # Creating mock data
 
-When you want to create new or more mock data, you need to do some stuff. First, you need to create an account on [mockaroo.com](https://mockaroo.com/). When you did this, you need to ask Joram to get access to the project. You can use mockaroo to mock the following tables:
+When you want to create new or more mock data, you need to do some stuff. First, you need to create an account on [mockaroo.com](https://mockaroo.com/). When you have done this, you need to ask Joram to get access to the project. You can use mockaroo to mock the following tables:
 
 - `CITY`;
 - `COACH`;
