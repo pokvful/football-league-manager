@@ -1,4 +1,5 @@
 set nocount on;
+set identity_insert PERSON on;
 insert into PERSON (Person_id, Country_name, First_name, Last_name, Middle_name, Birth_date) values (9, 'Turkmenistan', 'Dulsea', 'Healy', null, '10/23/1994');
 insert into PERSON (Person_id, Country_name, First_name, Last_name, Middle_name, Birth_date) values (99, 'Thailand', 'Christos', 'Griffitt', null, '4/24/1992');
 insert into PERSON (Person_id, Country_name, First_name, Last_name, Middle_name, Birth_date) values (98, 'Cameroon', 'Devonne', 'Ogdahl', null, '2/12/1999');

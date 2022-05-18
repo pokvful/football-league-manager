@@ -35,6 +35,8 @@ def main():
 	for table in table:
 		result = ""
 
+		print(f"Retrieving data from {table}")
+
 		# get all the data in the table as json
 		cursor.execute(f"SELECT * FROM {table} FOR JSON AUTO, INCLUDE_NULL_VALUES")
 		rows = cursor.fetchall()
