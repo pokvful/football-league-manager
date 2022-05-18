@@ -13,7 +13,6 @@
 - Stukje over NUTMEG, achtergrond, etc.
 
 `Projectgroep A4 van de hogeschool Arnhem Nijmegen is in opdracht om een informatiesysteem te ontwikkelen en zijn verantwoordelijk voor het gehele project. Het team bestaat uit IT’ers die gespecialiseerd zijn in Data Modulering, Database Design en Database-implementatie.
-
 Dit project wordt uitgevoerd voor het bedrijf NUTMEG met als opdrachtgever Michel Koolwaaij. NUTMEG is een organisatie die sportdata verzamelt en verkoopt aan sportclubs. Data-analisten binnen die sportclubs kunnen die data dan analyseren.
 `
 
