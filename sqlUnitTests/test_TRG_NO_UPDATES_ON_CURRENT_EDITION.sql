@@ -117,7 +117,7 @@ GO
 EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in CLUB during a current edition PASSING]'
 GO
 
-CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges ].[Test that checks if changes get prevented in MATCH during a current edition PASSING]
+CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges ].[Test that checks if changes get prevented in MATCH during a current edition FAILING]
 AS
 BEGIN
 	EXEC tSQLt.FakeTable @TableName='dbo.MATCH';
@@ -129,11 +129,11 @@ BEGIN
 	INSERT INTO MATCH (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY, HOME_CLUB_NAME, BALL_POSSESSION_HOME)
 	VALUES ('21/22', 'Eredivisie', '02-02-2022', '02-02-2022', 'Ajax', 30)
 
-	INSERT INTO MATCHDAY (SEASON_NAME, COMPETITION_NAME, START_DATE)
-	VALUES ('21/22', 'Eredivisie', '02-02-2022')
+	INSERT INTO MATCHDAY (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY)
+	VALUES ('21/22', 'Eredivisie', '02-02-2022', '02-02-2022')
 
-	INSERT INTO ROUND (SEASON_NAME, COMPETITION_NAME)
-	VALUES ('21/22', 'Eredivisie')
+	INSERT INTO ROUND (SEASON_NAME, COMPETITION_NAME, START_DATE)
+	VALUES ('21/22', 'Eredivisie', '02-02-2022')
 
 	INSERT INTO EDITION (SEASON_NAME, COMPETITION_NAME)
 	VALUES ('21/22', 'Eredivisie')
@@ -156,6 +156,47 @@ BEGIN
 END;
 GO
 
-EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition PASSING]'
+EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition FAILING]'
 GO
 
+CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges ].[Test that checks if changes get prevented in MATCH during a current edition PASSING]
+AS
+BEGIN
+	EXEC tSQLt.FakeTable @TableName='dbo.MATCH';
+	EXEC tSQLt.FakeTable @TableName='dbo.MATCHDAY';
+	EXEC tSQLt.FakeTable @TableName='dbo.ROUND';
+	EXEC tSQLt.FakeTable @TableName='dbo.EDITION';
+	EXEC tSQLt.FakeTable @TableName='dbo.SEASON';
+
+	INSERT INTO MATCH (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY, HOME_CLUB_NAME, BALL_POSSESSION_HOME)
+	VALUES ('25/26', 'Eredivisie', '02-02-2022', '02-02-2022', 'Ajax', 30)
+
+	INSERT INTO MATCHDAY (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY)
+	VALUES ('25/26', 'Eredivisie', '02-02-2022', '02-02-2022')
+
+	INSERT INTO ROUND (SEASON_NAME, COMPETITION_NAME, START_DATE)
+	VALUES ('25/26', 'Eredivisie', '02-02-2022')
+
+	INSERT INTO EDITION (SEASON_NAME, COMPETITION_NAME)
+	VALUES ('25/26', 'Eredivisie')
+
+	INSERT INTO SEASON (SEASON_NAME, START_DATE, END_DATE)
+	VALUES ('25/26', '01-01-2025', '01-01-2026')
+
+	EXEC tSQLt.ApplyTrigger 'dbo.MATCH', 'TRG_NO_UPDATES_ON_CURRENT_EDITION_MATCH';
+
+	EXEC tSQLt.ApplyConstraint 'dbo.MATCH', 'FK_MATCH_MATCH_IN__MATCHDAY'
+	EXEC tSQLt.ApplyConstraint 'dbo.MATCHDAY', 'FK_MATCHDAY_MATCHDAY__ROUND'
+	EXEC tSQLt.ApplyConstraint 'dbo.ROUND', 'FK_ROUND_ROUND_IN__EDITION'
+	EXEC tSQLt.ApplyConstraint 'dbo.EDITION', 'FK_EDITION_EDITION_I_SEASON'
+
+	EXEC tSQLt.ExpectNoException;
+
+	UPDATE MATCH
+    SET BALL_POSSESSION_HOME = 50
+    WHERE HOME_CLUB_NAME = 'Ajax'
+END;
+GO
+
+EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition PASSING]'
+GO
