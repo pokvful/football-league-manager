@@ -14,9 +14,7 @@ BEGIN
 		JOIN SEASON S on E.SEASON_NAME = S.SEASON_NAME
 		WHERE S.END_DATE > GETDATE() AND S.START_DATE < GETDATE()
 	)
-		THROW 50000, 'Season is still active, cannot update data', 1
-
-    IF EXISTS(
+    OR EXISTS(
 		SELECT 1
 		FROM deleted d
 		JOIN CLUB_PLAYS_IN_EDITION CPIE on d.CLUB_NAME = CPIE.CLUB_NAME
@@ -24,7 +22,7 @@ BEGIN
 		JOIN SEASON S on E.SEASON_NAME = S.SEASON_NAME
 		WHERE S.END_DATE > GETDATE() AND S.START_DATE < GETDATE()
 	)
-		THROW 50000, 'Season is still active, cannot delete data', 1
+		THROW 50000, 'Season is still active, cannot alter data', 1
 END
 GO
 
@@ -45,9 +43,7 @@ BEGIN
 	    JOIN SEASON S on E.SEASON_NAME = S.SEASON_NAME
 		WHERE S.END_DATE > GETDATE() AND S.START_DATE < GETDATE()
 	)
-		THROW 50000, 'Season is still active, cannot update data', 1
-
-    	IF EXISTS(
+    	OR EXISTS(
 	    SELECT *
 	    FROM deleted d
 	    JOIN MATCHDAY M2 on M2.SEASON_NAME = d.SEASON_NAME and M2.COMPETITION_NAME = d.COMPETITION_NAME and M2.START_DATE = d.START_DATE and M2.MATCH_DAY = d.MATCH_DAY
@@ -56,7 +52,7 @@ BEGIN
 	    JOIN SEASON S on E.SEASON_NAME = S.SEASON_NAME
 		WHERE S.END_DATE > GETDATE() AND S.START_DATE < GETDATE()
 	)
-		THROW 50000, 'Season is still active, cannot delete data', 1
+		THROW 50000, 'Season is still active, cannot alter data', 1
 END
 GO
 
@@ -73,13 +69,11 @@ BEGIN
 		FROM inserted
 		WHERE END_DATE > GETDATE() AND START_DATE < GETDATE()
 	)
-		THROW 50000, 'Season is still active, cannot update data', 1
-
-    IF EXISTS(
+    OR EXISTS(
         SELECT 1
         FROM deleted
 		WHERE END_DATE > GETDATE() AND START_DATE < GETDATE()
 	)
-		THROW 50000, 'Season is still active, cannot delete data', 1
+		THROW 50000, 'Season is still active, cannot alter data', 1
 END
 GO
