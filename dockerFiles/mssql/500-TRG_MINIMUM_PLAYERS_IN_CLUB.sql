@@ -3,18 +3,27 @@ CREATE OR ALTER TRIGGER TRG_MINIMUM_PLAYERS_IN_CLUB
 	FOR INSERT, UPDATE
 	AS
 BEGIN
-	if @@rowcount > 0
-		BEGIN TRY
+	DECLARE @minimalPlayer int
 
-			IF EXISTS(
-				SELECT COUNT(*)
-				FROM PLAYER P
-				GROUP BY P.CLUB_NAME
-				HAVING COUNT(*) < 11)
-				THROW 50000, 'There must be at least 11 players in a club', 1
-		END TRY
-		BEGIN CATCH
-			THROW;
-		END CATCH
+	set @minimalPlayer = 11
+	IF @@ROWCOUNT = 0
+		RETURN
+	SET NOCOUNT ON
+	BEGIN TRY
+		IF EXISTS(
+			SELECT totalPlayer.CLUB_NAME,
+				   COUNT(*)
+			FROM (SELECT *
+				  FROM PLAYER P
+				  UNION
+				  SELECT *
+				  FROM inserted I) AS totalPlayer
+			GROUP BY CLUB_NAME
+			HAVING COUNT(*) < @minimalPlayer)
+			THROW 50001, 'There must be at least 11 players in a club', 1
+	END TRY
+	BEGIN CATCH
+		THROW;
+	END CATCH
 END
 GO
