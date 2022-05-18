@@ -30,8 +30,6 @@ def main():
 	for row in rows:
 		table.append(row.table_name)
 
-	print(table)
-
 	data = {}
 
 	for table in table:
