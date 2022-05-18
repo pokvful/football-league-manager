@@ -5,7 +5,7 @@ A very beautiful script to generate matches scripts
 from datetime import datetime, timedelta
 import math
 import pyodbc
-from random import randint
+import random
 
 TOTAL_MATCHES_PER_MATCHDAY = 2 # days
 TOTAL_MATCHDAYS_PER_ROUND = 2 # days
@@ -87,7 +87,9 @@ def generate_rounds_and_matchdays(club_pairs, editions, match_count): # {{{
 					club_home = club_pair[0]
 					club_out = club_pair[1]
 					stadium = club_pair[2]
-					ball_possession_home = randint(0, 100)
+					ball_possession_home = random.randint(0, 100)
+					capacity = club_pair[3]
+					spectators = random.randint( int(capacity * 0.25), capacity )
 
 					result_matches.append( format_sql(
 						"MATCH",
@@ -103,7 +105,7 @@ def generate_rounds_and_matchdays(club_pairs, editions, match_count): # {{{
 							"Referee_person_id": match_counter % 8 + 1 + TOTAL_COACHES + TOTAL_PLAYERS,
 							"Ball_possession_home": ball_possession_home,
 							"Ball_possession_out": 100 - ball_possession_home,
-							"Spectators": 0,
+							"Spectators": spectators,
 						}
 					) )
 
@@ -129,17 +131,14 @@ def generate_rounds_and_matchdays(club_pairs, editions, match_count): # {{{
 
 def generate_club_pairs(clubs): # {{{
 	result = []
-	counter = 0
 
 	for club_home in clubs:
 		for club_out in clubs:
 			if club_home == club_out:
 				continue
 
-			# home_name, out_name, stadium, counter
-			result.append([ club_home[0], club_out[0], club_home[1], counter ])
-
-			counter += 1
+			# home_name, out_name, stadium, capacity, counter
+			result.append([ club_home[0], club_out[0], club_home[1], club_home[2] ])
 
 	return result
 # }}}
@@ -151,7 +150,7 @@ def main():
 
 	club_count = cursor.execute("SELECT COUNT(Club_name) FROM CLUB;").fetchone()[0]
 	editions = cursor.execute("SELECT Season_name, Competition_name FROM EDITION").fetchall()
-	clubs = cursor.execute("SELECT Club_name, Stadium_name FROM CLUB").fetchall()
+	clubs = cursor.execute("SELECT C.Club_name, S.Stadium_name, S.Capacity FROM CLUB C INNER JOIN STADIUM S ON S.Stadium_name = C.Stadium_name").fetchall()
 
 	match_count = club_count * (club_count - 1)
 
