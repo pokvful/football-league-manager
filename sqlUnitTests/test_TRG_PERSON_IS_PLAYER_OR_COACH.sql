@@ -67,7 +67,7 @@ CREATE OR ALTER PROCEDURE [Test_Trg_Person_Is_Player_Or_Coach_Yellow].[Test_Trg_
 AS
 BEGIN
 	-- Expect:
-	EXEC tsqlt.expectexception @expectedmessage = 'Referee can not have a yellow card!';
+	EXEC tsqlt.expectexception
 
 	-- Act:
 	INSERT INTO yellow_card([Match_Id], [Time], [Person_Id])
@@ -170,7 +170,7 @@ CREATE OR ALTER PROCEDURE [Test_Trg_Person_Is_Player_Or_Coach_Red].[Test_Trg_Per
 AS
 BEGIN
 	-- Expect:
-	EXEC tsqlt.expectexception @expectedmessage = 'Referee can not have a red card!';
+	EXEC tsqlt.expectexception
 
 	-- Act:
 	INSERT INTO red_card([Match_Id], [Time], [Person_Id])
@@ -202,5 +202,3 @@ GO
 
 EXEC tsqlt.run [Test_Trg_Person_Is_Player_Or_Coach_Red.Test_Trg_Person_Is_Player_Or_Coach_Red_Player_Available_No_Exception]
 GO
-
-EXEC tsqlt.RunAll
