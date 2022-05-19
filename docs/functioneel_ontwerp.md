@@ -1055,6 +1055,8 @@ Voor data-analisten geldt dat ze alleen SELECT / READ rechten op alle data uit d
 
 Administrators hebben GRANT ALL rechten op alle data uit de MSSQL database en de MongoDB staging area.
 
+De transport script gebruiker heeft READ rechten op de MSSQL database en READ en WRITE rechten op de MongoDB staging area.
+
 |Afkorting | Betekenis |
 |- |-
 |C | Er wordt wat aangemaakt. |
