@@ -121,8 +121,8 @@
 |Preconditie        |Database is opgesteld <br> Er zijn wedstrijden gespeeld in de gewenste competite tijdens het gewenste seizoen <br> Data is verwerkt in de database	|
 |Postconditie       |Systeem toont de tussenstand van de gewenste competitie tijdens het gewenste seizoen	|
 |Brief Description  |Actor haalt de tussenstand van een gewenste competitie tijdens een gewenst seizoen op	|
-|Happy Flow         |1.Actor geeft aan de tussenstand van een gewenste competitie tijdens een gewenst seizoen te willen zien. <br> 2.Systeem toont de tussenstand.	|
 |Happy Flow         |1.Actor selecteerd de season name en de competition name. <br> 2.Systeem toont de tussenstand.	|
+
 
 
 |Naam               |Ophalen clubinfo																										|
@@ -131,7 +131,7 @@
 |Preconditie        |Database is opgesteld <br> Club informatie is verwerkt in de database											|
 |Postconditie       |Systeem toont informatie over de gewenste club																		|
 |Brief Description  |Actor haalt het team, de coach, de thuisstad, het stadion en de capaciteit van het stadion van een gewenste club op	|
-|Happy Flow         |1.Actor geeft aan informatie over een gewenste club te willen zien. <br> 2.Systeem toont clubinformatie over de gewenste club.                                                                       	|
+|Happy Flow         |1.Actor geeft aan informatie over een gewenste club te willen zien en selecteerd de club <br> 2.Systeem toont clubinformatie over de gewenste club.                                                                       	|
 
 
 |Naam               |Ophalen matchinfo									|
@@ -140,7 +140,8 @@
 |Preconditie        |Database is opgesteld <br> De match is gespeeld <br> De match informatie is verwerkt in de database               |
 |Postconditie       |Systeem toont de informatie van de gewenste match                                        	|
 |Brief Description  |Actor haalt per team balbezit, passes, schoten, schoten op doel, passprecisie, overtredingen, corners, goals, kaarten en wissels van de gewenste match	op	                                                   |
-|Happy Flow         |1.Actor geeft aan informatie over een gewenste match te willen zien. <br> 2.Systeem toont de informatie van de match.                                                                                      	|
+|Happy Flow         |1.Actor geeft aan informatie over een gewenste match te willen zien en selecteerd de seizoen, competitie, wedstrijd datum, home club en out club <br> 2.Systeem toont de informatie van de match.|
+|Alternatieve Flow  |2A.Systeem geeft aan dat de ingevoerde informatie neit klopt|
 
 
 |Naam               |Ophalen speelrondeinfo	                                                                    |
@@ -159,8 +160,8 @@
 |Actors             |NUTMEG Voetbal Admin	                                                                        |
 |Preconditie        |Database is opgesteld|
 |Postconditie       |De match met al zijn gegevens staat geregistreerd in het systeem	                            |
-|Brief Description  |Actor	voert matchdata van een gespeelde wedstrijd in                                          |
-|Happy Flow         |1.Actor voert de matchdata in in STORED PROCEDURE <br> 2.Systeem slaat matchdata op	        |
+|Brief Description  |Actor voert in wie een gele/rode kaart heeft gekregen. Wie een pass, goal, schoot, overtreding, hoekschop heeft gemaakt, wie met wie is vervangen. En op welke minute de event is gebeurd.|
+|Happy Flow         |1.Actor voert de matchdata in<br> 2.Systeem slaat matchdata op	        |
 |Alternatieve Flow  |2A.Systeem geeft aan dat de ingevoerde waarde van balbezit/passprecisie niet tussen 0-100 is. <br> 3A.Ga terug naar stap 1 <br> - <br> 2B.Systeem geeft aan dat speler gekoppeld aan een event/pass/corner/overtreding/schot(op doel) niet in het is correcte team zit. <br> 3B.Ga terug naar stap 1 <br> - <br> 2C.Systeem geeft aan dat speler niet opgesteld is tijdens de wedstrijd. <br> 3C.Ga terug naar stap 1	|
 
 
@@ -171,7 +172,7 @@
 |Postconditie       |De updated clubinformatie is opgeslagen in het systeem	|
 |Brief Description  |Actor update de clubinformatie. Hieronder wordt het team, de coach, de thuisstad het stadion en de stadioncapaciteit verstaan.	|
 |Happy Flow         |1.Actor geeft de informatie mee die geüpdatet moet worden. 2.Systeem update de informatie. |
-|Alternative FLow	|2A.Systeem geeft aan dat een speler/coach die moet worden toegevoegd nog bij een ander team ingeschreven staat. <br> Ga terug naar stap 1.
+|Alternative FLow	|2A.Systeem geeft aan dat een speler/coach die moet worden toegevoegd nog bij een ander team ingeschreven staat. <br>3A. Ga terug naar stap 1.
 
 
 
@@ -191,7 +192,7 @@
 |Preconditie        |Database is opgesteld	|
 |Postconditie       |Nieuw persoon staat in het systeem	|
 |Brief Description  |Actor zet een nieuw coach, scheidsrechter of speler in het systeem	|
-|Happy Flow         |1.Actor geeft informatie van niewe persoon op en geeft aan deze op te willen slaan in het systeem. 2.Nieuw persoon staat in het systeem.	|
+|Happy Flow         |1.Actor geeft informatie van niewe persoon op en geeft aan deze op te willen slaan in het systeem. <br>2.Nieuw persoon staat in het systeem.	|
 |Alternative Flow	|2A.Systeem geeft aan dat informatie onvolledig is  <br> 3A.Ga terug naar stap 1
 
 # Verwoordingen feittypen
