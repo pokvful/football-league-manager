@@ -1,6 +1,3 @@
-/*  Ik moet een proc schrijven die alle spelers van een club ophaalt, 
-	Ook moet er een proc komen die de gemiddelde positie ophaalt en tot aant goals*/
-
 CREATE OR ALTER VIEW ALL_PLAYERS_EDITIONS AS
 SELECT DISTINCT m.SEASON_NAME, m.COMPETITION_NAME, pp.PLAYER_PERSON_ID 
 FROM MATCH m 
