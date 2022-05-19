@@ -307,3 +307,69 @@ GO
 
 EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in COMPETITION during a current edition PASSING]'
 GO 
+
+CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in CLUB_PLAYS_IN_EDITION during a current edition PASSING]
+AS
+BEGIN
+
+	EXEC tSQLt.FakeTable @TableName='dbo.CLUB_PLAYS_IN_EDITION'
+	EXEC tSQLt.FakeTable @TableName='dbo.EDITION';
+	EXEC tSQLt.FakeTable @TableName='dbo.SEASON';
+
+	INSERT INTO CLUB_PLAYS_IN_EDITION (CLUB_NAME, SEASON_NAME, COMPETITION_NAME)
+	VALUES ('Ajax', '99/99', 'Eredivisie')
+
+	INSERT INTO [EDITION] (SEASON_NAME, COMPETITION_NAME)
+	VALUES ('99/99', 'Eredivisie')
+
+	INSERT INTO SEASON (SEASON_NAME, START_DATE, END_DATE)
+	VALUES ('99/99', DATEADD(year, 80, GETDATE()), DATEADD(year, 81, GETDATE()))
+
+	EXEC tSQLt.ApplyTrigger 'dbo.CLUB_PLAYS_IN_EDITION', 'TRG_NO_UPDATES_ON_CURRENT_EDITION_CIE';
+
+	EXEC tSQLt.ApplyConstraint 'dbo.EDITION', 'FK_EDITION_EDITION_I_SEASON'
+	EXEC tSQLt.ApplyConstraint 'dbo.CLUB_PLAYS_IN_EDITION', 'FK_CLUB_PLA_CLUB_PLAY_EDITION'
+
+	EXEC tSQLt.ExpectNoException;
+
+	UPDATE CLUB_PLAYS_IN_EDITION
+    SET CLUB_NAME = 'PSV'
+    WHERE CLUB_NAME = 'Ajax'
+END;
+GO
+
+EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in CLUB_PLAYS_IN_EDITION during a current edition PASSING]'
+GO 
+
+CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in CLUB_PLAYS_IN_EDITION during a current edition FAILING]
+AS
+BEGIN
+
+	EXEC tSQLt.FakeTable @TableName='dbo.CLUB_PLAYS_IN_EDITION'
+	EXEC tSQLt.FakeTable @TableName='dbo.EDITION';
+	EXEC tSQLt.FakeTable @TableName='dbo.SEASON';
+
+	INSERT INTO CLUB_PLAYS_IN_EDITION (CLUB_NAME, SEASON_NAME, COMPETITION_NAME)
+	VALUES ('Ajax', '21/22', 'Eredivisie')
+
+	INSERT INTO [EDITION] (SEASON_NAME, COMPETITION_NAME)
+	VALUES ('21/22', 'Eredivisie')
+
+	INSERT INTO SEASON (SEASON_NAME, START_DATE, END_DATE)
+	VALUES ('21/22', DATEADD(year, -1, GETDATE()), DATEADD(year, 1, GETDATE()))
+
+	EXEC tSQLt.ApplyTrigger 'dbo.CLUB_PLAYS_IN_EDITION', 'TRG_NO_UPDATES_ON_CURRENT_EDITION_CIE';
+
+	EXEC tSQLt.ApplyConstraint 'dbo.EDITION', 'FK_EDITION_EDITION_I_SEASON'
+	EXEC tSQLt.ApplyConstraint 'dbo.CLUB_PLAYS_IN_EDITION', 'FK_CLUB_PLA_CLUB_PLAY_EDITION'
+
+	EXEC tSQLt.ExpectException;
+
+	UPDATE CLUB_PLAYS_IN_EDITION
+    SET CLUB_NAME = 'PSV'
+    WHERE CLUB_NAME = 'Ajax'
+END;
+GO
+
+EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in CLUB_PLAYS_IN_EDITION during a current edition FAILING]'
+GO 
