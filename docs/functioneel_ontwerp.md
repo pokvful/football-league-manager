@@ -1055,6 +1055,13 @@ Voor data-analisten geldt dat ze alleen SELECT / READ rechten op alle data uit d
 
 Administrators hebben GRANT ALL rechten op alle data uit de MSSQL database en de MongoDB staging area.
 
+|Afkorting | Betekenis |
+|- |-
+|C | Er wordt wat aangemaakt. |
+|R | Er wordt wat gelezen. |
+|U | Er wordt wat aangepast. |
+|D | Er wordt wat verwijdert. |
+
 | Use Cases                 | Entiteit(en)                                  | Rechten               | Beschrijving
 |---------------------------|-----------------------------------------------|-----------------------|--------------|
 | Ophalen Top-lijst         | Event (inc. subtypes), Match, Person, Club    | Data-Analist en Admin | Het ophalen van de volgende gegevens: Per editie wordt op volgorde gesorteerd welke spelers de meeste ballen hebben gepaast, doelpunten hebben gescoord, rode en gele kaarten hebben ontvangen, schot op goal hebben gelost, overtreding hebben gemaakt en corners hebben genomen.
