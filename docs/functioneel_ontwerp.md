@@ -110,43 +110,43 @@
 |Naam               |Ophalen top-lijst                                  							|
 |-------------------|-------------------------------------------------------------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin  									|
-|Preconditie        |1.Er zijn wedstrijden gepseeld waarop de relevante data gebaseerd kan worden	|
+|Preconditie        |Database is opgesteld <br>Er zijn wedstrijden gespeeld waarop de relevante data gebaseerd kan worden <br> Data is verwerkt in de database	|
 |Postconditie       |Systeem toont de gewenste top-lijst											|
 |Brief Description  |Actor haalt een top-lijst met gewenste informatiebehoefte op uit het systeem	|
-|Happy Flow         |1.Actor geeft aan een top-lijst met de gewenste informatiebehoefte op te vragen. <br> 2.Systeem toont de top-lijst. 	|
-
+|Happy Flow         |1.Actor selecteerd de season name en de competition name. <br> 2.Systeem toont de top-lijst. 	|
 
 |Naam               |Ophalen tussenstand competitie															|
 |-------------------|---------------------------------------------------------------------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin												|
-|Preconditie        |Er zijn wedstrijden gespeeld in de gewenste competite tijdens het gewenste seizoen		|
+|Preconditie        |Database is opgesteld <br> Er zijn wedstrijden gespeeld in de gewenste competite tijdens het gewenste seizoen <br> Data is verwerkt in de database	|
 |Postconditie       |Systeem toont de tussenstand van de gewenste competitie tijdens het gewenste seizoen	|
 |Brief Description  |Actor haalt de tussenstand van een gewenste competitie tijdens een gewenst seizoen op	|
 |Happy Flow         |1.Actor geeft aan de tussenstand van een gewenste competitie tijdens een gewenst seizoen te willen zien. <br> 2.Systeem toont de tussenstand.	|
+|Happy Flow         |1.Actor selecteerd de season name en de competition name. <br> 2.Systeem toont de tussenstand.	|
 
 
 |Naam               |Ophalen clubinfo																										|
 |-------------------|-----------------------------------------------------------------------------------------------------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin																				|
-|Preconditie        |<!--- evt. club bevat informatie ofzo, maar lijkt me overbodig --->													|
+|Preconditie        |Database is opgesteld <br> Club informatie is verwerkt in de database											|
 |Postconditie       |Systeem toont informatie over de gewenste club																		|
 |Brief Description  |Actor haalt het team, de coach, de thuisstad, het stadion en de capaciteit van het stadion van een gewenste club op	|
-|Happy Flow         |1.Actor geeft aan informatie over een gewenste club te willen zien. <br> 2.Systeem toont clubinformatie over de gewenste club.	|
+|Happy Flow         |1.Actor geeft aan informatie over een gewenste club te willen zien. <br> 2.Systeem toont clubinformatie over de gewenste club.                                                                       	|
 
 
 |Naam               |Ophalen matchinfo									|
 |-------------------|---------------------------------------------------|
-|Actors             |Data-analist Klant / NUTMEG Voetbal Admin			|
-|Preconditie        |De match is gespeeld								|
-|Postconditie       |Systeem toont de informatie van de gewenste match	|
-|Brief Description  |Actor haalt per team balbezit, passes, schoten, schoten op doel, passprecisie, overtredingen, corners, goals, kaarten en wissels van de gewenste match	op	|
-|Happy Flow         |1.Actor geeft aan informatie over een gewenste match te willen zien. <br> 2.Systeem toont de informatie van de match.	|
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin			                                            |
+|Preconditie        |Database is opgesteld <br> De match is gespeeld <br> De match informatie is verwerkt in de database               |
+|Postconditie       |Systeem toont de informatie van de gewenste match                                        	|
+|Brief Description  |Actor haalt per team balbezit, passes, schoten, schoten op doel, passprecisie, overtredingen, corners, goals, kaarten en wissels van de gewenste match	op	                                                   |
+|Happy Flow         |1.Actor geeft aan informatie over een gewenste match te willen zien. <br> 2.Systeem toont de informatie van de match.                                                                                      	|
 
 
 |Naam               |Ophalen speelrondeinfo	                                                                    |
 |-------------------|-------------------------------------------------------------------------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin	                                                |
-|Preconditie        |De speelronde is al gespeeld	                                                            |
+|Preconditie        |Database is opgesteld <br> De speelronde is al gespeeld	<br> Speelronde informatie is verwerkt in de database     |
 |Postconditie       |Systeem toont de informatie van de gewenste speelronde	                                    |
 |Brief Description  |Actor haalt de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde op	|
 |Happy Flow         |1.Actor geeft aan de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde te willen zien. <br> 2.Systeemm toont de uitslagen en speeldagen van wedstrijden tijdens de gewenste speelronde.	|
@@ -157,7 +157,7 @@
 |Naam               |Invoeren matchdata	                                                                            |
 |-------------------|-----------------------------------------------------------------------------------------------|
 |Actors             |NUTMEG Voetbal Admin	                                                                        |
-|Preconditie        |<!--- je zou kunnen zeggen match is gespeeld maar in principe kan je ook gewoonde verkeerde data invoeren, is geen preconditie> --->	|
+|Preconditie        |Database is opgesteld|
 |Postconditie       |De match met al zijn gegevens staat geregistreerd in het systeem	                            |
 |Brief Description  |Actor	voert matchdata van een gespeelde wedstrijd in                                          |
 |Happy Flow         |1.Actor voert de matchdata in in STORED PROCEDURE <br> 2.Systeem slaat matchdata op	        |
@@ -167,29 +167,30 @@
 |Naam               |Updaten clubinfo	|
 |-------------------|-------------------------------------------------------------------------------|
 |Actors             |NUTMEG Voetbal Admin	|
-|Preconditie        |De club bestaat al	|
+|Preconditie        |Database is opgesteld <br> De club bestaat al	|
 |Postconditie       |De updated clubinformatie is opgeslagen in het systeem	|
 |Brief Description  |Actor update de clubinformatie. Hieronder wordt het team, de coach, de thuisstad het stadion en de stadioncapaciteit verstaan.	|
 |Happy Flow         |1.Actor geeft de informatie mee die geüpdatet moet worden. 2.Systeem update de informatie. |
 |Alternative FLow	|2A.Systeem geeft aan dat een speler/coach die moet worden toegevoegd nog bij een ander team ingeschreven staat. <br> Ga terug naar stap 1.
 
 
+
 |Naam               |Start nieuw seizoen competitie	|
 |-------------------|-------------------------------------------------------------------------------|
 |Actors             |NUTMEG Voetbal Admin	|
-|Preconditie        |Het vorige seizoen is afgelopen <!--- iets met speelrondes ofzo? 2x aantal clubs --->	|
+|Preconditie        |Database is opgesteld <br> Het vorige seizoen is afgelopen <!--- iets met speelrondes ofzo? 2x aantal clubs --->	|
 |Postconditie       |De juiste clubs zijn gedegradeerd/gepromoveert. Een nieuw seizoen is gestart	|
 |Brief Description  |Actor update de correcte clubs in de nieuwe editie, start vervolgens een leeg seizoen (lege matches, speeldrondes en een nieuwe editie).	|
-|Happy Flow         |1.Actor geeft aan welke clubs gedegradeerd/gepromoveert worden middels STORED PROCEDURE en start daarmee het nieuwe seizeoen. <br> 2.Systeem zet de correcte clubs in de nieuwe editie <br> 3.Systeem maakt matches, speelrondes en een nieuwe editie aan.	|
-|Alternative Flow	| 2A. Systeem geeft aan dat een gepromoveerde club al in de competitie zit. <br> 3A. Ga terug naar stap 1. <br> 2B.Systeem geeft aan dat het aantal promoties en degradaties niet gelijk is. <br> 3B.Ga terug naar stap 1
+|Happy Flow         |1. Actor geeft aan welke clubs gedegradeerd/gepromoveert worden <br> 2. Systeem verwerkt de gegevens <br> 3. Actor selecteerd de competitie, de startdatum, speelrondes, aantal rondes per dag en de clubs die mee doen aan de competitie <br> 4.Systeem maakt nieuwe editie met de juiste gegevens aan.	|
+|Alternative Flow	| 1A. Actor selecteerd de competitie en voegd de verkeerde startdatum, speelrondes, aantal rondes per dag en de clubs die mee doen aan de competitie <br> 2A. Systeem geeft aan dat er verkeerde informatie is geselecteerd <br> 3A. Actor voegd de juiste gegevens in <br> 4A. Systeem verwerkt de gegevens
 
 
 |Naam               |Toevoegen nieuwe persoon	|
 |-------------------|-------------------------------------------------------------------------------|
 |Actors             |NUTMEG Voetbal Admin	|
-|Preconditie        |Geen	|
+|Preconditie        |Database is opgesteld	|
 |Postconditie       |Nieuw persoon staat in het systeem	|
-|Brief Description  |Actor zet een nieuw persoon in het systeem	|
+|Brief Description  |Actor zet een nieuw coach, scheidsrechter of speler in het systeem	|
 |Happy Flow         |1.Actor geeft informatie van niewe persoon op en geeft aan deze op te willen slaan in het systeem. 2.Nieuw persoon staat in het systeem.	|
 |Alternative Flow	|2A.Systeem geeft aan dat informatie onvolledig is  <br> 3A.Ga terug naar stap 1
 
