@@ -56,14 +56,32 @@ Realiseren van knock-out tournament.
 
 ### Workshop (demonstratie van mongo shell, ophalen van informatiebehoeften)
 
-- Per use case stored procedures uitvoeren.
-- Transport van MSSQL -> MongoDB aantonen.
-
-Transport script uitvoeren, vervolgens MSSQL data vergelijken met MongoDB data.
+- Laat zien dat er geen insert scripts in `./dockerFiles/mongo/` staan en overtuig ze dat er dus niks geïnsert wordt;
+- Start docker op, **zonder de `-d`**, en laat de output zien. Er staat als het goed is eerst dat er allemaal SQL bestanden worden uitgevoerd. Hierna zegt het export script dat hij data aan het ophalen is van alle tabellen en daarna zie je dat het transport script zegt dat hij dingen recreate, gemixt met MONGO die zegt dat hij de dingen aanmaakt;
+- Een kleine demo:
+	- Er is genoeg overgenomen;
+		- MSSQL: `SELECT COUNT(*) FROM POSITION` en daarna `go`;
+		- MONGO: `db.POSITION.find().count()`;
+	- Ook de goede data is overgenomen;
+		- MSSQL: `SELECT TOP 3 * FROM POSITION` en daarna `go`;
+		- MONGO: `db.POSITION.find().limit(3)`;
+	- Ook de views worden overgenomen;
+		- MSSQL: `SELECT COUNT(*) FROM VW_GET_PLAYROUND_DATA` en daarna `go`;
+		- MONGO: `db.VW_GET_PLAYROUND_DATA.find().count()`
+- Een kleine demo van dingen die deze week nog hebben toegevoegd;
+	- Een nieuwe scheidsrechter toevoegen (MSSQL only);
+		- `SELECT * FROM REFEREE ORDER BY PERSON_ID DESC` en daarna `go`;
+		- `SELECT TOP 5 * FROM PERSON ORDER BY PERSON_ID DESC` en daarna `go`;
+		- `EXEC PROC_INSERT_NEW_REFEREE @Country_name = 'Greece', @First_name = 'Henk', @Last_name = 'Hank', @Birth_date = '2000-01-01'` en daarna `go`;
+		- Bewijzen dat ze zijn toegevoegd;
+			- `SELECT * FROM REFEREE ORDER BY PERSON_ID DESC` en daarna `go`;
+			- `SELECT TOP 5 * FROM PERSON ORDER BY PERSON_ID DESC` en daarna `go`;
+	- Ophalen van de tussentijdse matchinfo;
+		- `EXEC GET_SCORE_EDITION @Season = '19/20', @Competition = 'Eredivisie'` en daarna `go`;
+	- Ophalen van club info;
+		- `EXEC GET_CLUB_INFORMATION @Club = 'Wikido'` en daarna `go`;
 
 ## Slot
 
 - Bedanken van product owner en projectbegeleider(s).
 - Zijn er nog vragen?
-
-
