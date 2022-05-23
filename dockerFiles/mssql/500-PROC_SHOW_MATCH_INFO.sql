@@ -1,15 +1,3 @@
-CREATE OR ALTER VIEW MATCHES_INFO AS
-	SELECT	*,
-			(SELECT COUNT(*) FROM GOAL g WHERE m.MATCH_ID = g.MATCH_ID)			AS [amount of goals],
-			(SELECT COUNT(*) FROM CORNER c WHERE m.MATCH_ID = c.MATCH_ID)		AS [amount of corners],
-			(SELECT COUNT(*) FROM FOUL f WHERE m.MATCH_ID = f.MATCH_ID)			AS [amount of fouls],
-			(SELECT COUNT(*) FROM PASS p WHERE m.MATCH_ID = p.MATCH_ID)			AS [amount of passess],
-			(SELECT COUNT(*) FROM YELLOW_CARD yc WHERE m.MATCH_ID = yc.MATCH_ID)AS [amount of yellow cards],
-			(SELECT COUNT(*) FROM RED_CARD rc WHERE m.MATCH_ID = rc.MATCH_ID)	AS [amount of red cards],
-			(SELECT COUNT(*) FROM SHOT s WHERE m.MATCH_ID = s.MATCH_ID)			AS [amount of shots],
-			(SELECT COUNT(*) FROM SUBSTITUTE sub WHERE m.MATCH_ID= sub.MATCH_ID)AS [amount of substitutions]
-	FROM MATCH m
-GO
 CREATE OR ALTER PROCEDURE SHOW_MATCH_INFO
 (@match_id G_IDENTITY = NULL,
 @season SEASON_NAME = NULL,
