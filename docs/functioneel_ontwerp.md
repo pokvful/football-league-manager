@@ -201,7 +201,7 @@
 |Level              |user-goal                                                                      |
 |Actors             |NUTMEG Voetbal Admin	                                                          |
 |Stakeholder and interest|NUTMEG Voetbal Admin, zodat de gegevens van de nieuwe seizoen competite verwerkt kan worden|
-|Preconditie        |Database is opgesteld <br> Het vorige seizoen is afgelopen                     |
+|Preconditie        |Het vorige seizoen is afgelopen                     |
 |Postconditie       |De juiste clubs zijn gedegradeerd/gepromoveert. Een nieuw seizoen is gestart	  |
 |Brief Description  |Actor update de correcte clubs in de nieuwe editie, start vervolgens een leeg seizoen (lege matches, speeldrondes en een nieuwe editie).	|
 |Happy Flow         |1. Actor geeft aan welke clubs gedegradeerd/gepromoveert worden <br> 2. Systeem verwerkt de gegevens <br> 3. Actor selecteerd de competitie, de startdatum, speelrondes, aantal rondes per dag en de clubs die mee doen aan de competitie <br> 4.Systeem maakt nieuwe editie met de gegevens, competitie naam, season naam, lijst met clubs, start datum, lengte van een ronde, games per dag en aantal matches per ronde|
@@ -211,7 +211,7 @@
 |Naam               |Toevoegen nieuwe persoon	|
 |-------------------|-------------------------------------------------------------------------------|
 |Actors             |NUTMEG Voetbal Admin	|
-|Preconditie        |Database is opgesteld	|
+|Preconditie        | |
 |Postconditie       |Nieuw persoon staat in het systeem	|
 |Brief Description  |Actor zet een nieuw coach, scheidsrechter of speler in het systeem	|
 |Happy Flow         |1.Actor geeft informatie van niewe persoon op en geeft aan deze op te willen slaan in het systeem. <br>2.Nieuw persoon staat in het systeem.	|
