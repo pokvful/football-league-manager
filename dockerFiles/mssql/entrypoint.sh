@@ -4,7 +4,7 @@ set -m # turn on job control (https://unix.stackexchange.com/a/637004/430375)
 
 function run_sql_files {
 	echo "=== RUNNING FILES ==="
-	find ./sql-files/ -type f \( -iname "*.sql" -not -iname "create_database.sql" \) \
+	find ./sql-files/ -type f \( -iname "*.sql" -not -iname "CREATE_DATABASE.sql" \) \
 		| sort -n -t / -k 3.1 \
 		| xargs -I {} sh -c "echo === Executing '{}' === && /opt/mssql-tools/bin/sqlcmd -S 'localhost' -U 'sa' -P 'Football!' -d 'flm' -i {}"
 	echo "=== DONE RUNNING FILES ==="
@@ -18,7 +18,7 @@ function run_sql_files {
 # loop because the timing for when the SQL instance is ready is indeterminate
 for i in {1..60};
 do
-	/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "Football!" -d master -i ./sql-files/create_database.sql
+	/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "Football!" -d master -i ./sql-files/CREATE_DATABASE.sql
 
 	if [ $? -eq 0 ]
 	then

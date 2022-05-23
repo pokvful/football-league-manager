@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Extract countries from the city create script, so we always have the correct countries
-sed -E "s/CITY \\(Country_name, City_name\\) values \\(('[[:alnum:][:blank:][:punct:]]+'), '[[:alnum:][:blank:][:punct:]]+'\\);\$/COUNTRY (Country_name) values (\1);/" ./5-insert_city.sql > 4-insert_country.sql
+sed -E "s/CITY \\(Country_name, City_name\\) values \\(('[[:alnum:][:blank:][:punct:]]+'), '[[:alnum:][:blank:][:punct:]]+'\\);\$/COUNTRY (Country_name) values (\1);/" ./401-INSERT_CITY.sql > ./400-INSERT_COUNTRY.sql
 
 # Copy the DOMESTIC_LEAGUE content to the COMPETITION table
-sed -E "s/DOMESTIC_LEAGUE \\(Competition_name\) values \\(('[[:alnum:][:blank:][:punct:]]+')\\);\$/COMPETITION (Competition_name) values (\1);/" ./7-insert_domestic_league.sql > ./6-insert_competition.sql
+sed -E "s/DOMESTIC_LEAGUE \\(Competition_name\) values \\(('[[:alnum:][:blank:][:punct:]]+')\\);\$/COMPETITION (Competition_name) values (\1);/" ./405-INSERT_DOMESTIC_LEAGUE.sql > ./403-INSERT_COMPETITION.sql
 
 # Create a EDITION table
 edition_result="set nocount on;"
@@ -12,10 +12,10 @@ edition_result="set nocount on;"
 while read -r competition; do
 	while read -r season; do
 		edition_result="$edition_result"'\n'"insert into EDITION (Season_name, Competition_name) values ($season, $competition);"
-	done < <(tail -n +2 ./8-insert_seasons.sql | sed -E "s/.+\\(('[^']+').+/\1/")
-done < <(tail -n +2 ./6-insert_competition.sql | sed -E "s/.+\\(('[^']+').+/\1/")
+	done < <(tail -n +2 ./406-INSERT_SEASONS.sql | sed -E "s/.+\\(('[^']+').+/\1/")
+done < <(tail -n +2 ./403-INSERT_COMPETITION.sql | sed -E "s/.+\\(('[^']+').+/\1/")
 
-echo -e $edition_result > ./14-insert_edition.sql
+echo -e $edition_result > ./408-INSERT_EDITION.sql
 
 # Create a CLUB_plays_in_EDITION table
 plays_in_edition_result="set nocount on;"
@@ -23,13 +23,13 @@ plays_in_edition_result="set nocount on;"
 while read -r edition; do
 	while read -r club; do
 		plays_in_edition_result="$plays_in_edition_result"'\n'"insert into CLUB_plays_in_EDITION (Club_name, Season_name, Competition_name) values ($club, $edition);"
-	done < <(tail -n +2 ./12-insert_club.sql | sed -E "s/.+\\(('[^']+').+/\1/")
-done < <(tail -n +2 ./14-insert_edition.sql | sed -E "s/.+\\(('[^)]+').+/\1/")
+	done < <(tail -n +2 ./414-INSERT_CLUBS.sql | sed -E "s/.+\\(('[^']+').+/\1/")
+done < <(tail -n +2 ./408-INSERT_EDITION.sql | sed -E "s/.+\\(('[^)]+').+/\1/")
 
-echo -e $plays_in_edition_result > ./16-insert_club_plays_in_edition.sql
+echo -e $plays_in_edition_result > ./419-INSERT_CLUBS_THAT_PLAY_IN_EDITION.sql
 
 # loop over all insert files in this directory
-for file in ./*-insert_*.sql; do
+for file in ./*-INSERT_*.sql; do
 	# sort content in file reversed
 	content=$(sort -r "$file")
 	# get the duplicate lines, and return them one time
