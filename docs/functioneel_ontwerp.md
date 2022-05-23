@@ -214,7 +214,7 @@
 |Preconditie        | |
 |Postconditie       |Nieuw persoon staat in het systeem	|
 |Brief Description  |Actor zet een nieuw coach, scheidsrechter of speler in het systeem	|
-|Happy Flow         |1.Actor geeft informatie van niewe persoon op en geeft aan deze op te willen slaan in het systeem. <br>2.Nieuw persoon staat in het systeem.	|
+|Happy Flow         |1.Actor geeft aan een nieuwe coach op te willen slaan in het systeem en voert in land, voornaam, achternaam, middelnaam en geboorte datum in. <br>2.Nieuw persoon staat in het systeem.	<br> 1.Actor geeft aan een nieuwe scheidsrechter op te willen slaan in het systeem en voert in land, voornaam, achternaam, middelnaam en geboorte datum in. <br>2.Nieuw persoon staat in het systeem. <br> 1.Actor geeft aan een nieuwe speler op te willen slaan in het systeem en voert in land, voornaam, achternaam, middelnaam geboorte datum, club naam en jersey nummer in. <br>2.Nieuw persoon staat in het systeem.||
 |Alternative Flow	|2A.Systeem geeft aan dat informatie onvolledig is  <br> 3A.Ga terug naar stap 1
 
 # Verwoordingen feittypen
