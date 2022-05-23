@@ -920,7 +920,7 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 # Business Rules
 
-- BR1 Van een lopende competitie mag alleen de selectie clubs en de speeldatum van een wedstrijd worden aangepast;
+- BR1 Van een lopende competitie mogen alleen de selecties van de clubs, het aantal toeschouwers van een wedstrijd, het balbezit per team voor een wedstrijd en de speeldatums van wedstrijden aangepast worden;
 - BR2 Een thuis club mag maximaal een keer tegen een uit club spelen binnen een normaal competitie seizoen;
 - BR3 De startdatum van een ronde moet in het seizoen liggen;
 - BR4 De speeldag moet na de gekoppelde startdatum van de speelronde liggen;
