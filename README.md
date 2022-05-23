@@ -16,6 +16,12 @@ When you are done, you can stop the database by running the following command in
 docker-compose down
 ```
 
+If you have problems with the ports of the added databases add a .env file in the project root.
+
+In the .env you can add DATABASE_PORT_MSSQL=new_port for MSSQL.
+
+And DATABASE_PORT_MONGO:new_port for MONGO.
+
 # Creating mock data
 
 When you want to create new or more mock data, you need to do some stuff. First, you need to create an account on [mockaroo.com](https://mockaroo.com/). When you have done this, you need to ask Joram to get access to the project. You can use mockaroo to mock the following tables:
@@ -63,6 +69,8 @@ cd dockerFiles/mssql/
 # spin up the docker containers
 python3 ./generate-matches-matchdays-rounds.py
 python3 ./generate-positions.py
+./create_insert_scripts.sh # run this one more time, so everything is sorted correctly
+# restart the docker containers
 python3 ./generate-events.py
 ./create_insert_scripts.sh # run this one more time, to ensure there are no duplicates
 ```
