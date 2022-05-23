@@ -1,0 +1,1275 @@
+# Functioneel ontwerp
+
+- [Use cases](#use-cases)
+- [Fully-Dressed Use-cases](#fully-dressed-use-cases)
+- [Verwoordingen feittypen](#verwoordingen-feittypen)
+  - [Competitie](#competitie)
+    - [Naam](#naam)
+  - [Editie](#editie)
+    - [Clubs](#clubs)
+    - [Thuisstad](#thuisstad)
+    - [Stadion](#stadion)
+    - [Personen](#personen)
+    - [Persoon achternaam](#persoon-achternaam)
+    - [Persoon middelnaam](#persoon-middelnaam)
+    - [Geboortedatum](#geboortedatum)
+    - [Nationaliteit](#nationaliteit)
+    - [Land van stad](#land-van-stad)
+    - [Coach](#coach)
+    - [Spelers](#spelers)
+      - [Rugnummer, voornaam en achternaam](#rugnummer-voornaam-en-achternaam)
+    - [Speler in club](#speler-in-club)
+  - [Voetbalwedstrijd](#voetbalwedstrijd)
+    - [Positie](#positie)
+    - [Reserve](#reserve)
+    - [Schoten THUIS](#schoten-thuis)
+    - [Schoten UIT](#schoten-uit)
+    - [Schoten op doel THUIS](#schoten-op-doel-thuis)
+    - [Schoten op doel UIT](#schoten-op-doel-uit)
+    - [Balbezit UIT](#balbezit-uit)
+    - [Balbezit THUIS](#balbezit-thuis)
+    - [Aantal passes THUIS](#aantal-passes-thuis)
+    - [Aantal passes UIT](#aantal-passes-uit)
+    - [Precisie passes THUIS](#precisie-passes-thuis)
+    - [Preciesie passes UIT](#preciesie-passes-uit)
+    - [Overtredingen](#overtredingen)
+    - [Hoekschoppen UIT](#hoekschoppen-uit)
+    - [Hoekschoppen THUIS](#hoekschoppen-thuis)
+  - [Events](#events)
+    - [Goals](#goals)
+    - [Gele kaarten](#gele-kaarten)
+    - [Rode kaarten](#rode-kaarten)
+    - [Rode kaarten](#rode-kaarten-1)
+  - [Match day](#match-day)
+    - [Wissels](#wissels)
+      - [Scheidsrechter](#scheidsrechter)
+    - [Aantal toeschouwers](#aantal-toeschouwers)
+- [Business Rules](#business-rules)
+- [Functionele requirements.](#functionele-requirements)
+  - [Constraints](#constraints)
+    - [C1 komt overeen met BR12](#c1-komt-overeen-met-br12)
+    - [C2 komt overeen met BR18](#c2-komt-overeen-met-br18)
+    - [C3 komt overeen met BR19](#c3-komt-overeen-met-br19)
+    - [C4 komt overeen met BR16](#c4-komt-overeen-met-br16)
+    - [C5 komt overeen met BR17](#c5-komt-overeen-met-br17)
+    - [C6 komt overeen met BR4](#c6-komt-overeen-met-br4)
+    - [C7 komt overeen met BR5](#c7-komt-overeen-met-br5)
+    - [C8 komt overeen met BR8](#c8-komt-overeen-met-br8)
+    - [C9 komt overeen met BR9](#c9-komt-overeen-met-br9)
+    - [C10 komt overeen met BR10](#c10-komt-overeen-met-br10)
+    - [C11 komt overeen met BR11](#c11-komt-overeen-met-br11)
+    - [C12 komt overeen met BR20](#c12-komt-overeen-met-br20)
+      - [C13 komt overeen met BR21](#c13-komt-overeen-met-br21)
+      - [C14 komt overeen met BR22](#c14-komt-overeen-met-br22)
+- [Ontwerp keuzes](#ontwerp-keuzes)
+  - [Entiteit: Persoon](#entiteit-persoon)
+  - [Entiteit: Event](#entiteit-event)
+  - [Entiteit: Position](#entiteit-position)
+  - [Entiteit: Match](#entiteit-match)
+- [Rechtenstructuur](#rechtenstructuur)
+- [Toelichting Datakwaliteit](#toelichting-datakwaliteit)
+- [CDM](#cdm)
+- [Onderbouwing concepten CDM](#onderbouwing-concepten-cdm)
+  - [Entiteit PERSON](#entiteit-person)
+  - [Entiteit PLAYER](#entiteit-player)
+  - [Entiteit REFEREE](#entiteit-referee)
+  - [Entiteit COACH](#entiteit-coach)
+  - [Entiteit COUNTRY](#entiteit-country)
+  - [Entiteit CITY](#entiteit-city)
+  - [Entiteit CLUB](#entiteit-club)
+  - [Entiteit STADIUM](#entiteit-stadium)
+  - [Entiteit COMPETITION](#entiteit-competition)
+- [Entitieit DOMESTIC_LEAGUE](#entitieit-domestic_league)
+  - [Entiteit SEASON](#entiteit-season)
+  - [Entiteit EDITION](#entiteit-edition)
+  - [Entiteit ROUND](#entiteit-round)
+  - [Entiteit MATCHDAY](#entiteit-matchday)
+  - [Entiteit MATCH](#entiteit-match-1)
+  - [Entiteit POSITION](#entiteit-position-1)
+  - [Entiteit KEEPER](#entiteit-keeper)
+  - [Entiteit DEFENDER](#entiteit-defender)
+  - [Entiteit MIDFIELDER](#entiteit-midfielder)
+  - [Entiteit ATTACKER](#entiteit-attacker)
+  - [Entiteit EVENT](#entiteit-event-1)
+  - [Entiteit SUBSTITUTE](#entiteit-substitute)
+  - [Entiteit GOAL](#entiteit-goal)
+  - [Entiteit RED_CARD](#entiteit-red_card)
+  - [Entiteit YELLOW_CARD](#entiteit-yellow_card)
+  - [Entiteit PASS](#entiteit-pass)
+  - [Entiteit SHOT](#entiteit-shot)
+  - [Entiteit  CORNER](#entiteit--corner)
+  - [Entiteit FOUL](#entiteit-foul)
+- [Testplan](#testplan)
+
+# Use cases
+
+![Use case diagram](images/usecase_diagram_nutmeg.png)
+
+# Fully-Dressed Use-cases
+<!--- Staging area bij alles nog weggelaten, updaten na onderzoek --->
+|Naam               |Ophalen top-lijst                                  							|
+|-------------------|-------------------------------------------------------------------------------|
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin  									|
+|Preconditie        |1.Er zijn wedstrijden gepseeld waarop de relevante data gebaseerd kan worden	|
+|Postconditie       |Systeem toont de gewenste top-lijst											|
+|Brief Description  |Actor haalt een top-lijst met gewenste informatiebehoefte op uit het systeem	|
+|Happy Flow         |1.Actor geeft aan een top-lijst met de gewenste informatiebehoefte op te vragen. <br> 2.Systeem toont de top-lijst. 	|
+
+
+|Naam               |Ophalen tussenstand competitie															|
+|-------------------|---------------------------------------------------------------------------------------|
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin												|
+|Preconditie        |Er zijn wedstrijden gespeeld in de gewenste competite tijdens het gewenste seizoen		|
+|Postconditie       |Systeem toont de tussenstand van de gewenste competitie tijdens het gewenste seizoen	|
+|Brief Description  |Actor haalt de tussenstand van een gewenste competitie tijdens een gewenst seizoen op	|
+|Happy Flow         |1.Actor geeft aan de tussenstand van een gewenste competitie tijdens een gewenst seizoen te willen zien. <br> 2.Systeem toont de tussenstand.	|
+
+
+|Naam               |Ophalen clubinfo																										|
+|-------------------|-----------------------------------------------------------------------------------------------------------------------|
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin																				|
+|Preconditie        |<!--- evt. club bevat informatie ofzo, maar lijkt me overbodig --->													|
+|Postconditie       |Systeem toont informatie over de gewenste club																		|
+|Brief Description  |Actor haalt het team, de coach, de thuisstad, het stadion en de capaciteit van het stadion van een gewenste club op	|
+|Happy Flow         |1.Actor geeft aan informatie over een gewenste club te willen zien. <br> 2.Systeem toont clubinformatie over de gewenste club.	|
+
+
+|Naam               |Ophalen matchinfo									|
+|-------------------|---------------------------------------------------|
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin			|
+|Preconditie        |De match is gespeeld								|
+|Postconditie       |Systeem toont de informatie van de gewenste match	|
+|Brief Description  |Actor haalt per team balbezit, passes, schoten, schoten op doel, passprecisie, overtredingen, corners, goals, kaarten en wissels van de gewenste match	op	|
+|Happy Flow         |1.Actor geeft aan informatie over een gewenste match te willen zien. <br> 2.Systeem toont de informatie van de match.	|
+
+
+|Naam               |Ophalen speelrondeinfo	                                                                    |
+|-------------------|-------------------------------------------------------------------------------------------|
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin	                                                |
+|Preconditie        |De speelronde is al gespeeld	                                                            |
+|Postconditie       |Systeem toont de informatie van de gewenste speelronde	                                    |
+|Brief Description  |Actor haalt de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde op	|
+|Happy Flow         |1.Actor geeft aan de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde te willen zien. <br> 2.Systeemm toont de uitslagen en speeldagen van wedstrijden tijdens de gewenste speelronde.	|
+<!--- Onderstaande alternative flows zijn gemaakt voordat er een CDM_V2 is gemaakt.--->
+<!--- Alternative Flow A is misschien iets te implementatie gericht--->
+
+
+|Naam               |Invoeren matchdata	                                                                            |
+|-------------------|-----------------------------------------------------------------------------------------------|
+|Actors             |NUTMEG Voetbal Admin	                                                                        |
+|Preconditie        |<!--- je zou kunnen zeggen match is gespeeld maar in principe kan je ook gewoonde verkeerde data invoeren, is geen preconditie> --->	|
+|Postconditie       |De match met al zijn gegevens staat geregistreerd in het systeem	                            |
+|Brief Description  |Actor	voert matchdata van een gespeelde wedstrijd in                                          |
+|Happy Flow         |1.Actor voert de matchdata in in STORED PROCEDURE <br> 2.Systeem slaat matchdata op	        |
+|Alternatieve Flow  |2A.Systeem geeft aan dat de ingevoerde waarde van balbezit/passprecisie niet tussen 0-100 is. <br> 3A.Ga terug naar stap 1 <br> - <br> 2B.Systeem geeft aan dat speler gekoppeld aan een event/pass/corner/overtreding/schot(op doel) niet in het is correcte team zit. <br> 3B.Ga terug naar stap 1 <br> - <br> 2C.Systeem geeft aan dat speler niet opgesteld is tijdens de wedstrijd. <br> 3C.Ga terug naar stap 1	|
+
+
+|Naam               |Updaten clubinfo	|
+|-------------------|-------------------------------------------------------------------------------|
+|Actors             |NUTMEG Voetbal Admin	|
+|Preconditie        |De club bestaat al	|
+|Postconditie       |De updated clubinformatie is opgeslagen in het systeem	|
+|Brief Description  |Actor update de clubinformatie. Hieronder wordt het team, de coach, de thuisstad het stadion en de stadioncapaciteit verstaan.	|
+|Happy Flow         |1.Actor geeft de informatie mee die geüpdatet moet worden. 2.Systeem update de informatie. |
+|Alternative FLow	|2A.Systeem geeft aan dat een speler/coach die moet worden toegevoegd nog bij een ander team ingeschreven staat. <br> Ga terug naar stap 1.
+
+
+|Naam               |Start nieuw seizoen competitie	|
+|-------------------|-------------------------------------------------------------------------------|
+|Actors             |NUTMEG Voetbal Admin	|
+|Preconditie        |Het vorige seizoen is afgelopen <!--- iets met speelrondes ofzo? 2x aantal clubs --->	|
+|Postconditie       |De juiste clubs zijn gedegradeerd/gepromoveert. Een nieuw seizoen is gestart	|
+|Brief Description  |Actor update de correcte clubs in de nieuwe editie, start vervolgens een leeg seizoen (lege matches, speeldrondes en een nieuwe editie).	|
+|Happy Flow         |1.Actor geeft aan welke clubs gedegradeerd/gepromoveert worden middels STORED PROCEDURE en start daarmee het nieuwe seizeoen. <br> 2.Systeem zet de correcte clubs in de nieuwe editie <br> 3.Systeem maakt matches, speelrondes en een nieuwe editie aan.	|
+|Alternative Flow	| 2A. Systeem geeft aan dat een gepromoveerde club al in de competitie zit. <br> 3A. Ga terug naar stap 1. <br> 2B.Systeem geeft aan dat het aantal promoties en degradaties niet gelijk is. <br> 3B.Ga terug naar stap 1
+
+
+|Naam               |Toevoegen nieuwe persoon	|
+|-------------------|-------------------------------------------------------------------------------|
+|Actors             |NUTMEG Voetbal Admin	|
+|Preconditie        |Geen	|
+|Postconditie       |Nieuw persoon staat in het systeem	|
+|Brief Description  |Actor zet een nieuw persoon in het systeem	|
+|Happy Flow         |1.Actor geeft informatie van niewe persoon op en geeft aan deze op te willen slaan in het systeem. 2.Nieuw persoon staat in het systeem.	|
+|Alternative Flow	|2A.Systeem geeft aan dat informatie onvolledig is  <br> 3A.Ga terug naar stap 1
+
+# Verwoordingen feittypen
+
+## Competitie
+
+### Naam
+
+Er bestaat een competitie Eredivisie.
+
+Er bestaat een competitie <u>Champions League</u>.
+
+---
+
+ET COMPETITIE
+
+ID: Att Name
+
+Predicate: Er bestaat een competitie \<Name\>.
+
+## Editie
+
+In seizoen 17/18 vond er een editie van de eredivisie plaats.
+
+In seizoen *<u>19/20</u> vond er een editie van de <u>WK</u>* plaats.
+
+---
+
+ET: SEASON
+
+ID: Att Season_name
+
+---
+
+ET: *EDITION*
+
+ID: ET SEASON + ET COMPETITION
+
+MATCH MATCH
+
+---
+
+RT EDITION_of_COMPETITION tussen EDITION(afhankelijk) en COMPETITION.
+
+RT EDITION_in_SEASON tussen EDITION(afhankelijk) en SEASON.
+
+Predicate: In seizoen \<Season_name\> vond er een editie van de \<Name\> plaats.
+
+### Clubs
+
+De club Manchester United doet mee aan de competitie Eredivisie in het seizoen 17/18.
+
+De club <u>*Vitesse*</u> doet mee aan de competitie <u>Eredivisie in het seizoen 17/18</u>.
+
+---
+
+ET *CLUB*
+
+ID: Att Name
+
+---
+
+ETT: EDITION
+
+MATCH
+
+---
+
+RT CLUB_plays_in_EDITION tussen CLUB en EDITION.
+
+Predicate: \<Name\> doet mee aan de competitie \<Competion_name\>.
+
+### Thuisstad
+
+De club Manchester United heeft als thuisstad Manchester.
+
+De club <u>Vitesse</u> heeft als thuisstad <u>*Arnhem*</u>.
+
+---
+
+ET CLUB
+
+Att Club_name
+
+---
+
+ET *CITY*
+
+ID: Att City_name
+
+---
+
+RT: CLUB_in_CITY tussen CLUB en CITY.
+
+Predicate: De club \<Club_name\> heeft als thuisstad \<City_name\>.
+
+### Stadion
+
+Het stadion Old Trafford bevat 47.140 stoelen.
+
+Het stadion <u>Gelredome</u> bevat <u>28.000</u> stoelen.
+
+---
+
+ET: STADIUM
+
+ID: Att Stadium_name
+
+Att Capacity
+
+Predicate: Het stadion \<Stadium_name\> bevat \<Capacity\> stoelen.
+
+### Personen
+
+De persoon 45 heeft als voornaam henk.
+
+De persoon <u>7</u> heeft als naam <u>Elmar</u>.
+
+---
+
+ET: PERSON
+
+ID: Att Person_id
+
+Att First_name
+
+Predicate: De persoon \<Person_id\> heeft als naam \<First_name\>.
+
+### Persoon achternaam
+
+De persoon 7 heeft als achternaam Wiese.
+
+De persoon <u>45</u> heeft als achternaam <u>Boss</u>.
+
+ET: PERSON
+
+MATCH
+
+Att Last_name
+
+Predicate: De persoon \<Person_id\> heeft als achternaam \<Last_name\>.
+
+### Persoon middelnaam
+
+De persoon 123 heeft als tussenvoegsel van de.
+
+De persoon <u>45</u> heeft als tussenvoegsel <u>de</u>.
+
+---
+
+ET: PERSON
+
+MATCH
+
+Att Middle_name
+
+Predicate: De persoon \<Person_id\> heeft als tussenvoegsel \<Middle_name\>.
+
+### Geboortedatum
+
+De persoon 11 is geboren op 11 februari 1996.
+
+De persoon <u>364524144</u> is geboren op <u>8 Maart 1929</u>.
+
+ET: PERSON
+
+MATCH
+
+Att Birth_date
+
+Predicate: De persoon \<Person_id\> is geboren op \<Birth_date\>.
+
+### Nationaliteit
+
+De persoon 11 heeft een nederlandse paspoort.
+
+De persoon <u>122343</u> heeft een <u>*Zuid-Africa*</u> paspoort
+
+ET: PERSON
+
+MATCH
+
+---
+
+ET: *COUNTRY*
+
+ID: Att Country_name
+
+---
+
+RT PERSON_nationality_of_COUNTRY tussen PERSON en COUNTRY.
+
+Predicate: De persoon \<Person_id\> heeft een \<Country_name\> paspoort.
+
+### Land van stad
+
+De stad Amsterdam ligt in het land Nederland.
+
+De stad <u>Londen</u> ligt in het land <u>*Engeland*</u>.
+
+---
+
+ET: CITY
+
+MATCH
+
+---
+
+ET: *COUNTRY*
+
+MATCH
+
+---
+
+RT CITY_located_in_COUNTRY tussen CITY en COUNTRY.
+
+Predicate: De stad \<City_name\> ligt in het land \<Country_name\>.
+
+### Coach
+
+De coach van Manchester United is persoon 3.
+
+De coach van <u>Vitesse</u> is persoon <u>9876</u>.
+
+---
+
+ET: CLUB
+
+MATCH
+
+---
+
+ET: COACH
+
+MATCH
+
+---
+
+RT COACH_of_CLUB tussen CLUB en COACH.
+
+Predicate: De coach van \<Club_name\> is persoon \<Person_id\>.
+
+### Spelers
+
+#### Rugnummer, voornaam en achternaam
+
+De speler 90 heeft rugnummer 26.
+
+De speler <u>56</u> heeft rugnummer <u>14</u>.
+
+---
+
+ET: PLAYER
+
+Att Jersey
+
+Predicate: De speler \<Person_id\> heeft rugnummer \<Jersey\>.
+
+### Speler in club
+
+De speler <u>12</u> zit in club <u>Ajax</u>.
+
+De speler <u>1234132412</u> zit in <u>*PSV*</u>.
+
+---
+
+ET: PLAYER
+
+MATCH
+
+---
+
+ET: *CLUB*
+
+MATCH
+
+---
+
+RT PLAYER_in_CLUB tussen PLAYER en CLUB.
+
+Predicate: De speler \<Person_id\> zit in \<Club_name\>.
+
+## Voetbalwedstrijd
+
+Er is een voetbalwedstrijd op 5 januari 2020 tussen thuis team Ajax thuis en uit team psv uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie keuken kampioen divisie
+
+Er is een voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> geweest.
+
+<!-- FIXME: -->
+ET: MATCH
+
+ID: ET: MATCHDAY
+        ID: ET: GAMEROUNDE + Att Match_day
+                MATCH
+
++ ET: CLUB
+  MATCH
++ ET:CLUB
+  MATCH
+
+RT VOETBALWEDSTRIJD_SPEELDAG tussen VOETBALWEDSTRIJD(afhankelijk) en MATCHDAY.
+
+RT VOETBALWEDSTRIJD_thuis_CLUB tussen VOETBALWEDSTRIJD(afhankelijk) en CLUB.
+
+RT VOETBALWEDSTRIJD_uit_CLUB tussen VOETBALWDSTRIJD(afhankelijk) en CLUB.
+
+Predicate: Er is een voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> geweest.
+
+### Positie
+
+Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> heeft de speler <u>21</u> de positie <u>middenvelder</U>.
+
+---
+
+ET POSITION
+
+ID: ET VOETBALWEDSTRIJD + ET PLAYER
+
+MATCH MATCH
+
+---
+
+RT PLAYER_plays_on_POSITION tussen POSITION en PLAYER.
+
+RT POSITION_in_MATCH tussen POSITION en MATCH.
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<Speler_id\> de positie \<Position\>.
+
+### Reserve
+
+Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> was de speler <u>*1223*</u> reserve.
+
+---
+
+ET: MATCH
+
+MATCH
+
+---
+
+ET: *SPELER*
+
+MATCH
+
+---
+
+RT PLAYER_as_reserve_in_MATCH tussen PLAYER en MATCH.
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was de speler \<Speler_id\> reserve.
+
+### Schoten THUIS
+
+Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> heeft het thuis team <u>5</u> goals gemaakt.
+
+---
+
+ET: MATCH
+
+MATCH
+
+Att Shots_home
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het thuis team \<Shots_home\> goals gemaakt.
+
+### Schoten UIT
+
+Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> heeft het uit team <u>5</u> goals gemaakt.
+
+---
+
+ET: MATCH
+
+MATCH
+
+Att Shots_out
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<Shots_out\> goals gemaakt.
+
+### Schoten op doel THUIS
+
+Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> heeft het thuis team <u>5</u> schoten op doel gemaakt.
+
+---
+
+ET: MATCH
+
+MATCH
+
+Att Shots_on_goal_home
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het thuis team \<Shots_on_goal_home\> schoten op doel gemaakt.
+
+### Schoten op doel UIT
+
+Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> heeft het uit team <u>5</u> schoten op doel gemaakt.
+
+---
+
+ET: MATCH
+
+MATCH
+
+Att Shots_on_goal_out
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<Shots_on_goal_out\> schoten op doel gemaakt.
+
+### Balbezit UIT
+
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft de uit team 36 balbezit
+
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft het uit team <u>32%</u> balbezit.
+
+---
+
+ET: MATCH
+
+MATCH
+
+Att Ball_possession_out
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<Ball_possession_out\> balbezit.
+
+### Balbezit THUIS
+
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft de thuis team 36 balbezit
+
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft het thuis team <u>68%</u> balbezit.
+
+---
+
+ET: MATCH
+
+MATCH
+
+Att Ball_possession_home
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het thuis team \<Ball_possession_home\> balbezit.
+
+### Aantal passes THUIS
+
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft het thuis team 874 passes gemaakt.
+
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft het thuis team <u>947</U> passes gemaakt.
+
+---
+
+ET: MATCH
+
+MATCH
+
+Att Pass_count_home
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het thuis team \<Pass_count_home\> passes gemaakt.
+
+### Aantal passes UIT
+
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft het uit team 434 passes gemaakt.
+
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft het uit team <u>823</U> passes gemaakt.
+
+---
+
+ET: MATCH
+
+MATCH
+
+Att Pass_count_out
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<Pass_count_out\> passes gemaakt.
+
+### Precisie passes THUIS
+
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft het thuis team 65% passes precisie
+
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft het thuis team <u>77%</u> passes precisie.
+
+---
+
+ET: MATCH
+
+MATCH
+
+Att Pass_accuracy_home
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het thuis team \<Pass_accuracy_home\> passes precisie.
+
+### Preciesie passes UIT
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft het uit team 35% passes precisie
+
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft het uit team <u>33%</u> passes precisie.
+
+---
+
+ET: MATCH
+
+MATCH
+
+Att Pass_accuracy_out
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<Pass_accuracy_out\> passes precisie.
+
+### Overtredingen
+
+Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft de speler 55 een speler getackeld in  de 12de minuut.
+
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft de speler <u>Son Heung-min</u> een speler getackeld in  de <u>70ste</u> minuut.
+
+---
+
+ET: MATCH
+
+MATCH
+
+ET: Player_Name
+
+MATCH
+
+Att Time
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<Person_id\> een speler getackeld in de \<Time\> minuut.
+
+### Hoekschoppen UIT
+
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team ajax en uit team PSV in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 23 hoekschoppen gemaakt.
+
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft het uit team <u>26</u> hoekschoppen gemaakt.
+
+---
+
+ET: MATCH
+
+MATCH
+
+Att Corners_out
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<Corners_out\> hoekschoppen gemaakt.
+
+### Hoekschoppen THUIS
+
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team ajax en uit team PSV in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de thuis team 23 hoekschoppen gemaakt.
+
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft de thuis team <u>36</u> hoekschoppen gemaakt.
+
+---
+
+ET: MATCH
+
+MATCH
+
+Att Corners_home
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de thuis team \<Corners_home\> hoekschoppen gemaakt.
+
+## Events
+
+### Goals
+
+Tijdens de voetbalwedstrijd op 5 januari 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 januari 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 5 goals gescored.
+
+Tijdens de voetbalwedstrijd op <u>*5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga*</u> heeft speler <u>**55**</u> gescoord in de <u>48ste</u> minuut.
+
+---
+
+ET: *MATCH*
+
+MATCH
+
+---
+
+ET: **PLAYER**
+
+MATCH
+
+---
+
+ET: GOAL
+
+ID: ET: *MATCH* + ET: **PLAYER** + Att Time
+
+---
+
+RT GOAL_scored_by_PERSON tussen GOAL en PERSON.
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft speler \<Person_id\> gescoord in de \<Time\> minuut.
+
+### Gele kaarten
+
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 1 gele kaart gekregen in de 70ste minuut.
+
+Tijdens de voetbalwedstrijd op <u>*4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga*</u> heeft de speler <u>**Jesse Lingard**</u> gele kaart gekregen in <u>30ste minuut</u>.
+
+---
+
+ET: *MATCH*
+
+### Rode kaarten
+
+MATCH
+
+---
+
+ET: **PLAYER**
+
+MATCH
+
+---
+
+ET: YELLOW_CARD
+
+ID: ET: *MATCH* + ET: **PLAYER** + Att Time
+
+MATCH
+
+---
+
+RT YELLOW_CARD_for_PERSON tussen YELLOW_CARD en PERSON.
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<Person_id\> gele kaart gekregen in \<Time\> minuut.
+
+### Rode kaarten
+
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 1 rode kaart gekregen in de 70ste minuut.
+
+## Match day
+
+Tijdens de voetbalwedstrijd op <u>*4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga*</u> heeft de speler <u>**Jesse Lingard**</u> rode kaart gekregen in <u>30ste minuut</u>.
+
+---
+
+ET: *MATCH*
+
+MATCH
+
+---
+
+ET: **PLAYER**
+
+MATCH
+
+---
+
+ET: RED_CARD
+
+ID: ET: *MATCH* + ET: **PLAYER** + Att Time
+
+---
+
+RT RED_CARD_for_PERSON tussen RED_CARD en PERSON.
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<Person_id\> rode kaart gekregen in \<Time\> minuut.
+
+### Wissels
+
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga werdt de speler 33 ingewisseld voor speler 1111 in de 30ste minuut.
+
+Tijdens de voetbalwedstrijd op <u>*4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga*</u> werd de speler <u>**55**</u> ingewisseld voor de speler <u>***66***</u> in de <u>40ste</u> minuut.
+
+---
+
+ET: *MATCH*
+
+MATCH
+
+---
+
+ET: **PLAYER**
+
+MATCH
+
+---
+
+ET: ***PLAYER***
+
+MATCH
+
+---
+
+ET: SUBSTITUTE
+
+ID: ET: *MATCH* + ET: **PLAYER** + ET: ***PLAYER*** + Att Time
+
+---
+
+RT PERSON_out_SUBSTITUTE tussen PERSON en SUBSTITUTE.
+RT PERSON_in_SUBSTITUTE tussen PERSON en SUBSTITUTE.
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> werd de speler \<Person_id\> ingewisseld voor de speler \<Person_id\> in de \<Time\> minuut.
+
+#### Scheidsrechter
+
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga was Bas Neijnhuis de scheidsrechter.
+
+Tijdens de voetbalwedstrijd op <u>*4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga*</u> was <u>Danny Makkelie</u> de scheidsrechter.
+
+---
+
+ET: *MATCH*
+
+MATCH
+
+---
+
+ET: REFEREE
+
+<!-- FIXME: Afhankelijk van PERSON -->
+
+RT REFEREE_enforcing_MATCH tussen REFEREE en MATCH.
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was \<Person_id\> de scheidsrechter.
+
+### Aantal toeschouwers
+
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga was het aantal toeschouwers 40000.
+
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> was het aantal toeschouwers <u>30000</u>.
+
+---
+
+ET: MATCH
+
+MATCH
+
+Att Spectator_count
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was het aantal toeschouwers \<Spectator_count\>.
+De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
+
+# Business Rules
+
+- BR1 Van een lopende competitie mag alleen de selectie clubs en de speeldatum van een wedstrijd worden aangepast;
+- BR2 Een thuis club mag maximaal een keer tegen een uit club spelen binnen een normaal competitie seizoen;
+- BR3 De startdatum van een ronde moet in het seizoen liggen;
+- BR4 De speeldag moet na de gekoppelde startdatum van de speelronde liggen;
+- BR5 De startdatum van een speeldag moet voor de startdatum van een opvolgende ronde bestaan, maar hetzelfde of na de startdatum van de gekoppelde ronde;
+- BR6 Een speler die op het veld staat kan een keeper, verdediger, aanvaller of middenvelder zijn;
+- BR7 Een thuis club mag maximaal een keer tegen een uit club spelen binnen een fase van een knockout competitie;
+- BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een van de spelende clubs;
+- BR9 Clubs mogen alleen een match spelen als ze meedoen aan de editie;
+- BR10 Gele en Rode kaarten mogen alleen worden gegeven aan Spelers en Coaches;
+- BR11 Voor alleen spelende spelers wordt opgeslagen of ze hebben geschoten, pases gemaakt, gewisseld, overtredingen, corners, gescored in een voetbalwedstrijd;
+- BR12 Er moeten 22 spelers op het veld ingedeeld zijn bij een wedstrijd;
+- BR13 Bij welke club een persoon coacht wordt alleen opgeslagen voor coaches;
+- BR14 Bij welke wedstrijden een persoon scheidst wordt alleen opgeslagen voor scheidsrechters;
+- BR15 Of een persoon in de reserve staat bij een wedstrijd wordt alleen opgeslagen voor spelers;
+- BR16 Maximaal 52 speelrondes per editie van een competitie;
+- BR17 Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1;
+- BR18 Minimaal 11 spelers per club;
+- BR19 Minimaal en maximaal 1 coach per club;
+- BR20 Een persoon binnen het systeem mag niet jonger zijn dan 15 jaar;
+- BR21 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
+- BR22 Hoeveelste minuut mag niet negatief zijn.
+
+# Functionele requirements.
+
+| Functional Requirements                                                                                    | MoSCoW |
+|------------------------------------------------------------------------------------------------------------|--------|
+| Bij een lopende competitie mag alleen de speeldatum of speler selectie van een wedstrijd worden veranderd. | M      |
+| Het moet mogelijk zijn om de tussenstand van een competitie op te halen.                                   | M      |
+| De gegevens moeten bereikbaar zijn via een staging area in JSON formaat.                                   | M      |
+| Een \[analist\] kan inhoudelijke gegevens via de staging area uitlezen.                                    | M      |
+| Het moet mogelijk zijn om een top lijst van een editie te genereren.                                       | S      |
+| Een \[admin\] kan matchdata invoeren in de database.                                                       | S      |
+| Een \[admin\] kan clubinfo updaten.                                                                        | S      |
+| Een \[admin\] kan een nieuwe seizoen competitie starten.                                                   | S      |
+| Een \[admin\] kan nieuwe personen toevoegen aan de database.                                               | S      |
+
+## Constraints
+
+### C1 komt overeen met BR12
+
+- Betreft: ET `POSITION`;
+- Specificatie: Maximaal 22 posities per match (11 per club).
+
+### C2 komt overeen met BR18
+
+- Betreft: ET `PLAYER` en ET `CLUB`;
+- Specificatie: Minimaal 11 spelers per club;
+
+### C3 komt overeen met BR19
+
+- Betreft: ET `COACH` en ET `CLUB`;
+- Specificatie: Minimaal en maximaal 1 coach per club;
+
+### C4 komt overeen met BR16
+
+- Betreft: ET `ROUND`, ET `EDITION` en ET `DOMESTIC_LEAGUE`;
+- Specificatie: Maximaal 52 speelrondes per editie van een competitie.
+
+### C5 komt overeen met BR17
+
+- Betreft: ET `PLAYER` en Att `Jersey`;
+- Specificatie: Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1.
+
+### C6 komt overeen met BR4
+
+- Betreft: ET `ROUND`, Att `Start_date`, en ET `SEASON`, Att `Start_date` en `End_date`;
+- Specificatie: De startdatum van een speelronde ligt binnen de start- en einddatum van het bijbehorende seizoen. <!-- TODO: SEASON heeft geen start datum -->
+
+### C7 komt overeen met BR5
+
+- Betreft: ET `MATCHDAY`, Att `Match_day`, en ET `ROUND`, Att `Start_date`;
+- Specificatie: De startdatum van een speeldag moet voor de startdatum van een opvolgende speelronde zijn, maar hetzelfde of na de startdatum van de gekoppelde speelronde.
+
+### C8 komt overeen met BR8
+
+- Betreft: ET `MATCH` en ET `EDITION`;
+- Specificatie: Een speler in een wedstrijd moet op dat moment lid zijn van de thuis- of uitspelende club.
+
+### C9 komt overeen met BR9
+
+- Betreft: ET `MATCH` en ET `EDITION`;
+- Specificatie: Een club mag alleen meedoen aan een wedstrijd als ze ook aan de bijbehorende editie.
+
+### C10 komt overeen met BR10
+
+- Betreft: ET `YELLOW_CARD`, ET `RED_CARD`, ET `COACH` en ET `PLAYER`;
+- Specificatie: Een gele of rode kaart mag alleen aan een speler of een coach gegeven worden.
+
+### C11 komt overeen met BR11
+
+- Betreft: ET `PASS`, ET `GOAL`, ET `SHOT`, ET `FOUL`, ET `CORNER` en ET `SUBSTITUTE`;
+- Specificatie: Alleen voor spelende spelers in een wedstrijd worden het aantal schoten, het aantal passes, de wissels, de overtredingen, de corners en of de persoon heeft gescoord bijgehouden.
+
+### C12 komt overeen met BR20
+
+- Betreft: ET `PERSON`, Att `Birth_date`;
+- Specificatie: Een peroon binnen het systeem mag niet jonger zijn dan 15 jaar oud.
+
+#### C13 komt overeen met BR21
+
+- Betreft: ET `MATCH` en ET `STADIUM`, Att `Capacity`;
+- Specificatie: Het aantal toeschouwers mag niet groter zijn dan de capaciteit van het stadion waar de wedstrijd wordt gehouden.
+
+#### C14 komt overeen met BR22
+
+- Betreft: De Att `Time` van de entiteiten ET `RED_CARD`, ET `YELLOW_CARD`, ET `PASS`, ET `GOAL`, ET `SHOT`, ET `FOUL`, ET `CORNER` en ET `SUBSTITUTE`;
+- Specificatie: De minuut in een wedstrijd mag niet negatief zijn.
+
+# Ontwerp keuzes
+
+In dit hoofdstuk gaan de verschillende ontwerp keuzes verwoord worden om het model duidelijk te krijgen. Deze specfieke keuzes staan hieronder uitgelegd.
+
+## Entiteit: Persoon
+
+De entiteit Persoon heeft drie subtypes (coach, referee en player). Hier is voor gekozen zodat elk persoon in de database gekoppeld kan worden aan een type persoon. Hierdoor is het mogelijk om voor elk persoon specifieke data op te slaan.
+
+## Entiteit: Event
+
+Voor de verschillende events (rode kaart, gele kaart, wissel, doelpunt) die tijdens een voetbalwedstrijd plaatsvinden is de entiteit Event bedacht. Deze events zijn als subtype gekoppeld aan Event, zodat elke event gekoppeld kan worden aan een speler met daarbij de minuut waarin het is gebeurd. Hierdoor is het mogelijk om specifieke data op te halen voor spelers.
+
+## Entiteit: Position
+
+Voor entiteit Position hebben we vier subtypes (keeper, verdediger, middenvelder, aanvaller) bedacht. Dit zorgt ervoor dat we elke Speler kunnen koppelen aan een positie. Hierdoor is het mogelijk om voor elke positie de bijhorende spelers op te halen.
+
+## Entiteit: Match
+
+De entiteit Match bevat alle informatie (balbezit, passes, schoten, schoten op doel, passnauwkeurigheid, overtredingen en corners) over de thuis en uit clubs die tegen elkaar spelen. Hij is afhankelijk van de entiteit Club, want die bepaald wie de thuis en uit clubs zijn. Daarnaast is hij ook afhankelijk van de entiteit Matchday, want die specificeert de dag waarop de wedstrijd gespeeld wordt. Door het zo specifiek mogelijk op te slaan, is het mogelijk om data voor elke club nauwkeurig uit te lezen.
+
+# Rechtenstructuur
+
+Voor data-analisten geldt dat ze alleen SELECT / READ rechten op alle data uit de MongoDB staging area.
+
+Administrators hebben GRANT ALL rechten op alle data uit de MSSQL database en de MongoDB staging area.
+
+De transport script gebruiker heeft READ rechten op de MSSQL database en READ en WRITE rechten op de MongoDB staging area.
+
+|Afkorting | Betekenis |
+|- |-
+|C | Er wordt wat aangemaakt. |
+|R | Er wordt wat gelezen. |
+|U | Er wordt wat aangepast. |
+|D | Er wordt wat verwijdert. |
+
+| Use Cases                 | Entiteit(en)                                  | Rechten               | Beschrijving
+|---------------------------|-----------------------------------------------|-----------------------|--------------|
+| Ophalen Top-lijst         | Event (inc. subtypes), Match, Person, Club    | Data-Analist en Admin | Het ophalen van de volgende gegevens: Per editie wordt op volgorde gesorteerd welke spelers de meeste ballen hebben gepaast, doelpunten hebben gescoord, rode en gele kaarten hebben ontvangen, schot op goal hebben gelost, overtreding hebben gemaakt en corners hebben genomen.
+| Ophalen Tussenstand Comp  | Edition, Match           | Data-Analist en Admin | Het ophalen van de volgende gegevens: Per editie wordt op volgorde gesorteerd welke teams de meeste wedstrijden heeft gewonnen.
+| Ophalen Club Info         | Club, Player, City, Stadium                   | Data-Analist en Admin | Het ophalen van alle kolommen die zich bevinden in de club, player, city en stadium tabel.
+| Ophalen Match Info        | Match, Person, Stadium, Event           | Data-Analist en Admin | Het ophalen van match info die zich bevindt in de match, matchday, person, club, stadium en event tabel.
+| Ophalen Speelronde Info   | Round, Edition,  Match                  | Data-Analist en Admin | Het ophalen van speelronde informatie, dit wordt uit de tabel round, matchday en editie gehaald.
+| Ophalen Matchday Info     | Matchday, Round, Match                        | Data-Analist en Admin | Het ophalen van matchday info die zich bevindt in de matchday, round en match tabel.
+| Invoeren Match Data       | Match (U), Event (I), Matchday (R), Stadium (R), Club (R), Person (R) | Admin                 | Het invoeren van nieuwe match data in de match, event, matchday, stadium en club tabel.
+| Updaten Club Info         | Club (U), Player (I, U), Coach (R), City (R)              | Admin                 | Het updaten van bestaande data in de club, player, coach, city en match tabel.
+| Start Nieuwe Seizoen Comp | Season (R), Competition (R), Edition (I), Round (I), Matchday (I), Match (I) | Admin                 | Het aanmaken van een nieuwe seizoen in de season, competition, edition, round en matchday tabel.
+| Toevoegen Nieuwe Persoon  | Person (I)                                       | Admin                 | Het toevoegen van een nieuwe persoon; afhankelijk van het type persoon kan een persoon een speler, scheidsrechter of coach zijn.
+
+# Toelichting Datakwaliteit
+
+Voor dit project is geen data aangeleverd. Alle data in de database wordt gemockt en zoveel mogelijk gebaseerd op voorbeelddata.
+
+Het schema is gebaseerd op een opzet met informatiebehoeften dat met de opdrachtgever is afgestemed. Het schema is vervolgens ontworpen op basis van deze informatiebehoeften.
+Relevante keuzes betreft het includeren of uitsluiten van feiten in het schema staan omschreven in het hoofdstuk ontwerpkeuzes.
+
+# CDM
+
+![Het CDM.](images/cdm_no_ko.png)
+
+# Onderbouwing concepten CDM
+
+## Entiteit PERSON
+
+De entiteit PERSOON bevat informatie over een persoon, zoals de voornaam, achternaam, tussenvoegsel(s), geboortedatum en een nummer om de persoon te identificeren in de database.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Person\_id | Het nummer waar een persoon mee geïdentificeerd kan worden |
+| First\_name | De voornaam van de persoon |
+| Last\_name | De achternaam van de persoon |
+| Middle\_name | Een eventueel tussenvoegsel tussen de voor- en achternaam van de persoon |
+| Birth\_date | De geboortedatum van de persoon |
+
+## Entiteit PLAYER
+
+De PLAYER entiteit neemt alle kolommen uit de PERSON entiteit over en krijgt vervolgens ook nog een rugnummer.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Jersey | Het rugnummer van de speler |
+
+## Entiteit REFEREE
+
+De REFEREE entiteit heeft geen extra kolommen ten opzichte van PLAYER. Deze entiteit wordt dus alleen gebruikt om aan te geven dat een persoon een scheidsrechter is.
+
+## Entiteit COACH
+
+De COACH entiteit heeft geen extra kolommen ten opzichte van PLAYER. Deze entiteit wordt dus alleen gebruikt om aan te geven dat een persoon een coach is.
+
+## Entiteit COUNTRY
+
+In de COUNTRY entiteit staan alle landen opgeslagen.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Country\_name | De naam van het land |
+
+## Entiteit CITY
+
+In de COUNTRY entiteit staan alle steden en dorpen opgeslagen.
+
+| Attribuut | Omschrijving |
+|---|---|
+| City\_name | De naam van de stad of het dorp |
+
+## Entiteit CLUB
+
+In de CLUB entiteit staan alle clubs opgeslagen.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Club\_name | De nama van de voetbal club |
+
+## Entiteit STADIUM
+
+In de entiteit STADIUM staan alle stadionnen van alle clubs.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Stadium\_name | De naam van het stadion |
+| Capacity | Het aantal toeschouwers dat in het stadion aanwezig kunnen zijn totdat het vol is |
+
+## Entiteit COMPETITION
+
+In de entiteit COMPETITION worden alle competities vastgelegd.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Competition\_name | De naam van de competitie |
+
+# Entitieit DOMESTIC_LEAGUE
+
+In de domestic league entiteit staan alle competities die ook poul wedstrijden zijn.
+
+## Entiteit SEASON
+
+In de entiteit SEASON worden alle seizoenen vastgelegd.
+
+| Attribuut | Omschrijving |
+|---|---|<!-- Dit was bij de IR aangepast naar begin en eind datum -->
+| Start\_date | De startdatum van het seizoen |
+| End\_date | De einddatum van het seizoen |
+
+## Entiteit EDITION
+
+In de entiteit EDITION worden de edities vastgelegd.
+Het bestaat uit één bepaalde competitie en één bepaalde seizoen.
+
+## Entiteit ROUND
+
+De entiteit ROUND bevat alle speelronden van een editie.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Start\_date | De startdatum van de speelronde |
+
+## Entiteit MATCHDAY
+
+De MATCHDAY entiteit bevat informatie over een speeldag in een speelronde.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Match\_day | De datum (een dag) wanneer de speeldag plaats vind |
+
+## Entiteit MATCH
+
+In de entiteit MATCH worden een aantal statistieken bijgehouden van de wedstrijd. Denk hier aan het aantal passes, het balbezit, het aantal schoten (op doel), het aantal overtredingen en het aantal corners.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Ball\_possession\_home | Het percentage balbezit van de thuis spelende club |
+| Ball\_possession\_out | Het percentage balbezit van de uit spelende club |
+| Spectators | Het aantal toeschouwers bij deze wedstrijd |
+
+## Entiteit POSITION
+
+De entiteit POSITION houd bij welke speler in welke wedstrijd op welke positie speelt.
+
+## Entiteit KEEPER
+
+In de KEEPER entiteit staan alle spelers die in een wedstrijd als keeper gespeeld hebben.
+
+## Entiteit DEFENDER
+
+In de DEFENDER entiteit staan alle spelers die in een wedstrijd als verdediger gespeeld hebben.
+
+## Entiteit MIDFIELDER
+
+In de MIDFIELDER entiteit staan alle spelers die in een wedstrijd als middenvelder gespeeld hebben.
+
+## Entiteit ATTACKER
+
+In de ATTACKER entiteit staan alle spelers die in een wedstrijd als aanvaller gespeeld hebben.
+
+## Entiteit EVENT
+
+In de EVENT entiteit worden gebeurtenissen tijdens een wedstrijd bijgehouden. Deze gebeurtenissen gebeuren in een bepaalde minuut in de wedstrijd.
+
+| Attribuut | Omschrijving |
+|---|---|
+| Time | De minuut in de wedstrijd wanneer het event heeft plaatsgevonden |
+
+## Entiteit SUBSTITUTE
+
+In de entiteit SUBSTITUTE staan alle momenten wanneer een speler voor een andere speler wordt vervangen.
+
+## Entiteit GOAL
+
+In de entiteit GOAL staan alle momenten wanneer er een goal is gemaakt in een wedstrijd.
+
+## Entiteit RED_CARD
+
+In de entiteit RED_CARD staan alle momenten wanneer een speler een rode kaart krijgt in een wedstrijd.
+
+## Entiteit YELLOW_CARD
+
+In de entiteit YELLOW_CARD staan alle momenten wanneer een speler een gele kaart krijgt in een wedstrijd.
+
+## Entiteit PASS
+
+In de entiteit PASS staan alle momenten wanneer een speler een paas heeft gedaan in een wedstrijd.
+| Attribuut | Omschrijving |
+|---|---|
+| Succes | Dit geeft aan of de paas succesvol is aangekomen bij de aangespeelde speler |
+
+## Entiteit SHOT
+
+In de entiteit SHOT staan alle momenten wanneer een speler een schot heeft gedaan in een wedstrijd.
+| Attribuut | Omschrijving |
+|---|---|
+| On_goal | Dit geeft aan of een goal was geprobeerd te maken met dit schot  |
+
+
+## Entiteit  CORNER
+
+In de entiteit CORNER staan alle momenten wanneer een speler een corner heeft uitgevoerd in een wedstrijd.
+
+## Entiteit FOUL
+
+In de entiteit FOUL staan alle momenten wanneer een speler een overtreding heeft gemaakt in een wedstrijd.
+
+# Testplan
+
+Staat in bijlage Testplan.

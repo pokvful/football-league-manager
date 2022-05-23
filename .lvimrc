@@ -1,0 +1,5 @@
+set noexpandtab
+
+let g:dbs = {
+	\ 'MSSQL': 'jdbc:sqlserver://sa@127.0.0.1:14330/flm;Password=Football!',
+	\ }
