@@ -921,23 +921,23 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 # Business Rules
 
 - BR1 Van een lopende competitie mag alleen de selectie clubs en de speeldatum van een wedstrijd worden aangepast;
-- BR2 Een thuis club mag maximaal een keer tegen een uit club spelen binnen een normaal competitie seizoen;
-- BR3 De startdatum van een ronde moet in het seizoen liggen;
-- BR4 De speeldag moet na de gekoppelde startdatum van de speelronde liggen;
-- BR5 De startdatum van een speeldag moet voor de startdatum van een opvolgende ronde bestaan, maar hetzelfde of na de startdatum van de gekoppelde ronde;
+- BR2 Een thuis club mag maximaal een keer tegen een uit club spelen binnen een competitie seizoen;
+- BR3 De startdatum van een ronde moet lager zijn dan de einddatum van het bijhorende seizoen;
+- BR4 De datum van een speeldag moet na de gekoppelde startdatum van de speelronde liggen;
+- BR5 De startdatum van een speeldag moet voor de startdatum van een opvolgende ronde bestaan en moet hetzelfde zijn of na de startdatum van de gekoppelde ronde bestaan;
 - BR6 Een speler die op het veld staat kan een keeper, verdediger, aanvaller of middenvelder zijn;
-- BR7 Een thuis club mag maximaal een keer tegen een uit club spelen binnen een fase van een knockout competitie;
-- BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een van de spelende clubs;
+- BR7 Een thuis club mag maximaal een e keer tegen een uit club spelen binnen een fase van een knockout competitie;
+- BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een spelende club, die zich bevindt in de database;
 - BR9 Clubs mogen alleen een match spelen als ze meedoen aan de editie;
-- BR10 Gele en Rode kaarten mogen alleen worden gegeven aan Spelers en Coaches;
-- BR11 Voor alleen spelende spelers wordt opgeslagen of ze hebben geschoten, pases gemaakt, gewisseld, overtredingen, corners, gescored in een voetbalwedstrijd;
+- BR10 Gele en rode kaarten mogen alleen worden gegeven aan spelers en coaches;
+- BR11 Voor alleen spelende spelers wordt opgeslagen of ze hebben geschoten, pases hebben gemaakt, zijn gewisseld, overtredingen hebben gemaakt, corners hebben afgenomen of gescored hebben tijdens een voetbalwedstrijd;
 - BR12 Er moeten 22 spelers op het veld ingedeeld zijn bij een wedstrijd;
 - BR13 Bij welke club een persoon coacht wordt alleen opgeslagen voor coaches;
 - BR14 Bij welke wedstrijden een persoon scheidst wordt alleen opgeslagen voor scheidsrechters;
 - BR15 Of een persoon in de reserve staat bij een wedstrijd wordt alleen opgeslagen voor spelers;
 - BR16 Maximaal 52 speelrondes per editie van een competitie;
 - BR17 Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1;
-- BR18 Minimaal 11 spelers per club;
+- BR18 Minimaal 7 spelers per club;
 - BR19 Minimaal en maximaal 1 coach per club;
 - BR20 Een persoon binnen het systeem mag niet jonger zijn dan 15 jaar;
 - BR21 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
