@@ -31,9 +31,7 @@ Deze testen worden gemaakt nadat de code zelf is geschreven om de code te testen
 
 Daarnaast worden er testen geschreven voor de security of dat de aangemaakte de rollen de rechten hebben die zijn afgesproken.
 
-## Scope
-
-### In scope
+### Wat er getest wordt
 
 Alle Integrity rules worden getest
 |*Integrity rules*|*tabel*|*Omschrijving*|
@@ -58,7 +56,7 @@ Alle Integrity rules worden getest
 |---------------|--------------|
 |NUTMEG Voetbal Admin||
 
-### out scope
+### wat niet getest wordt
 
 -Er worden geen tests geschreven voor de HISTORY tabellen.
 
