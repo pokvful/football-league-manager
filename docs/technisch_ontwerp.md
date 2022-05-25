@@ -108,9 +108,13 @@
 
 **Het bovenstaande diagram geldt alleen voor de ontwikkelomgeving.**
 
+## Server unknown
+
+In het bovenstaande diagram is `Server unknown` alles wat draait op de lokale computer van de ontwikkelaars.
+
 ## Client
 
-De client is de computer waarop alle docker containers draaien. Dit is de MongoDB container, de container met daarin het transport script en de SQL Server container.
+De client heeft een directe verbinding met de `MongoDB node` dit is de staging area die gebruikt wordt door data-analisten. Data-analisten krijgen niet direct toegang tot de `SQL Server node`, dit mogen alleen de admins.
 
 ## Transport Script
 
@@ -118,7 +122,7 @@ Binnen deze container draaien alle scripts die van belang zijn voor het overzett
 
 ## MongoDB
 
-De client interact met de MongoDB staging area, dit is ook hoe de uiteindelijke omgeving eruit komt te zien. De client is dus niet direct in verbinding met de SQL Server maar eerst met de staging area (MongoDB). Tijdens de constructie fase van het project zal ook direct verbinding gemaakt worden met de SQL Server, echter is dit in de uiteindelijke versie van de applicatie niet het geval. (Dat hebben alleen de admins per direct toegang tot de SQL Server)
+De client interact met de MongoDB staging area, dit is ook hoe de uiteindelijke omgeving eruit komt te zien. De client is dus niet direct in verbinding met de SQL Server maar eerst met de staging area (MongoDB). Tijdens de constructie fase van het project zal ook direct verbinding gemaakt worden met de SQL Server, echter is dit in de uiteindelijke versie van de applicatie niet het geval. (Dan hebben alleen de admins per direct toegang tot de SQL Server)
 
 ## SQL Server
 
@@ -126,7 +130,7 @@ Binnen de SQL Server container draait een Microsoft SQL Server 2018 Server image
 
 ## Docker Compose
 
-Docker Compose is een applicatie om gemakkelijk meerdere containers mee op te starten. Dit bestand is te vinden onder `docker-compose.yml`.
+Docker Compose is een applicatie om gemakkelijk meerdere containers mee op te starten. Dit bestand is te vinden onder `docker-compose.yaml`.
 
 Om gebruik te maken van Docker Compose wordt het volgende commando gedraait in de root directory (`/football-league-manager`) van het project: 
 
@@ -134,7 +138,7 @@ Om gebruik te maken van Docker Compose wordt het volgende commando gedraait in d
 
 ## Gebruik van Docker
 
-Tijdens de ontwikkeling van het project wordt gebruik gemaakt van Docker; Dit heeft als reden dat we door middel van Docker de omgeving van de applicatie kunnen wegabstraheren. Op deze manier hoeven wij ons zelf niet druk te maken over het installeren en onderhouden van installaties van bijvoorbeeld SQL Server en/of Linux.
+Tijdens de ontwikkeling van het project wordt gebruik gemaakt van Docker; dit heeft als reden dat we door middel van Docker de omgeving van de applicatie kunnen wegabstraheren. Op deze manier hoeven wij ons zelf niet druk te maken over het installeren en onderhouden van installaties van bijvoorbeeld SQL Server en/of Linux.
 
 Wij gebruiken Docker zo dat elke keer zodra de containers worden opgestart, alle data in de database wordt gereset. Dit houdt in dat alle mockdata scripts opnieuw worden gedraaid en de bestaande data in de docker omgeving wordt verwijderd. Zo beginnen we elke keer met een schone database. Het voordeel hiervan is dat op elk moment de database hetzelfde is zoals gedefinieerd in de SQL bestanden.
 
@@ -470,14 +474,7 @@ PI: Time + club_name + club_name + match_day + start_date + end_date + competiti
 - Omschrijving: Er zijn minimaal 11 spelers aan een club verbonden;
 - Implementatie: Een trigger `TRG_MINIMUM_PLAYERS_IN_CLUB` op de tabel `PLAYER`.
 
-### IR3 komt overeen met C3 en BR19
-
-- Omschrijving: Een club heeft altijd precies 1 coach;
-- Implementatie: Een trigger `TRG_ONE_COACH_PER_CLUB` op de tabel `COACH`.
-
-### IR4 komt overeen met C4 en BR16
-
-- Omschrijving: Er zijn maximaal 52 speelrondes per editie van een competitie;
+### IR3 komt overeen met C3 en BR19;speelrondes per editie van een competitie;
 - Implementatie: Een trigger `TRG_CHECK_MAXIMUM_ROUNDS_OF_EDITION` op de tabel `ROUND`.
 
 ### IR5 komt overeen met C5 en BR17
