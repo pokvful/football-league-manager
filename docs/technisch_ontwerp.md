@@ -404,6 +404,15 @@ Om een persoon van een daadwerkelijk van een unieke identifier te voorzien moete
 
 Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echter worden wedstrijden als vastgesteld en aangemaakt ver voordat de opstelling bekend zijn. Hierom hebben ervoor gekozen het ook mogelijk te 0 tot 22 spelers op te stellen. Met een trigger wordt gecheckt of er wel 22 spelers zijn opgesteld voordat de wedstrijd daadwerkelijk start.
 
+## Position
+
+De startposities van spelers worden per wedstrijd vastgelegd. Wissels worden altijd als wissel opgeslagen, zelfs als zij in de wedstrijd komen. Positiewisselingen tijdens de wedstrijd worden niet opgeslagen. De beperkingen met wissels en positiewisselingen komen voort uit het feit dat het minimale aantal spelers voor het starten van een wedstrijd op dit moment in de positie-tabel gecheckt wordt. 
+
+Zo is het mogelijk om twee losse tabellen te maken, een met opstellingen (LINE-UP) en een met posities in een wedstrijd (POSITION_IN_MATCH).
+De check op het minimaal aantal spelers kan dan in LINE-UP uitgevoerd worden, bijvoorbeeld minimaal 7 spelers per team in de line-up wanneer de Match_day van de wedstrijd bereikt is.
+In de POSITIONS_IN_MATCH tabel worden vervolgens alle posities van alle spelers in de wedstrijd vacstgelegd. Spelers kunnen dus dubbel in een wedstrdij staan wanneer zijn tijdens de wedstrijd van positie wisellen.
+
+
 # Constraints
 
 ## Primary key constraints
