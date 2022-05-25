@@ -75,7 +75,7 @@
 
 # Niet-functionele eisen
 
-| Niet-functionele eisen                                                                                        | Categorieën     |
+| Niet-functionele eisen                                                                                             | Categorieën  |
 |--------------------------------------------------------------------------------------------------------------------|--------------|
 | Data-analisten lezen alleen data uit vanuit de MongoDB staging area, zo wordt de load op de SQL Server verlicht    | Performance  |
 | Administrators van NUTMEG hebben volledige CRUD rechten op zowel de SQL Server als MongoDB database                | Security     |
@@ -83,7 +83,7 @@
 | De data wordt alleen in het Nederlands opgeslagen                                                                  | Localization |
 | Tabelnamen, constraints, triggers, views en procedures in SQL Server worden in het Engels geschreven               | Localization |
 | Data-analisten kunnen via de MongoDB shell data uitlezen                                                           | Usability    |
-| Iedere dag dient er om 02:00 een kopie van de SQL Server database overgezet te worden naar de MongoDB staging area | Availability |
+| Iedere dag dient er om 02:00 een kopie van de SQL Server database overgezet te worden naar de MongoDB staging area | Reliability  |
 
 # Deployment diagram
 
