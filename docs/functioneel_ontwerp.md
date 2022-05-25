@@ -921,12 +921,12 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 # Business Rules
 
 - BR1 Van een lopende competitie mag alleen de selectie clubs en de speeldatum van een wedstrijd worden aangepast;
-- BR2 Een thuis club mag maximaal een keer tegen een uit club spelen binnen een competitie seizoen;
+- BR2 Een thuis club mag maximaal één keer tegen een uit club spelen binnen een competitie seizoen;
 - BR3 De startdatum van een ronde moet lager zijn dan de einddatum van het bijhorende seizoen;
 - BR4 De datum van een speeldag moet na de gekoppelde startdatum van de speelronde liggen;
 - BR5 De startdatum van een speeldag moet voor de startdatum van een opvolgende ronde bestaan en moet hetzelfde zijn of na de startdatum van de gekoppelde ronde bestaan;
 - BR6 Een speler die op het veld staat kan een keeper, verdediger, aanvaller of middenvelder zijn;
-- BR7 Een thuis club mag maximaal een keer tegen een uit club spelen binnen een fase van een knockout competitie;
+- BR7 Een thuis club mag maximaal één keer tegen een uit club spelen binnen een fase van een knockout competitie;
 - BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een spelende club, die zich bevindt in de database;
 - BR9 Clubs mogen alleen een match spelen als ze meedoen aan de editie;
 - BR10 Gele en rode kaarten mogen alleen worden gegeven aan spelers en coaches;
