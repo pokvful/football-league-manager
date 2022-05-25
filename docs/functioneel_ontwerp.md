@@ -107,8 +107,8 @@
 
 # Fully-Dressed Use-cases
 <!--- Staging area bij alles nog weggelaten, updaten na onderzoek --->
-|Naam               |Ophalen top-lijst                 							|
-|-------------------|-------------------------------------------------------------------------------|
+|Naam               |Ophalen top-lijst|
+|-------------------|------------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
 |Stakeholder and interest| Data-analist, zodat de data-analist de top-lijst kan analizeren|
 |Preconditie        ||
@@ -116,91 +116,91 @@
 |Brief Description  |Actor haalt een top-lijst met gewenste informatiebehoefte op uit het systeem|
 |Happy Flow         |1.Actor geeft aan een toplijst van event gele kaart op te halen <br> 2.Systeem toont de top-lijst van gele kaarten|
 
-|Naam               |Ophalen tussenstand competitie															|
-|-------------------|---------------------------------------------------------------------------------------|
+|Naam               |Ophalen tussenstand competitie|
+|-------------------|-----------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
-|Stakeholder and interest|Data-analist, zodat de data-analist de gegevens analizeren|
+|Stakeholder and interest|Data-analist, zodat de data-analist de gegevens analizeren.|
 |Preconditie        ||
-|Postconditie       |Systeem toont de tussenstand van de gewenste competitie tijdens het gewenste seizoen|
-|Brief Description  |Actor haalt de tussenstand van een gewenste competitie tijdens een gewenst seizoen op	|
-|Happy Flow         |1.Actor geeft aan de tussenstand van een competitie op teh lane. <br> 2.Systeem toont de tussenstand.	|
-|Alternatieve Flow  |1A.Actor geeft aan een niet bestaande seizoen en competitie te hebben geselecteerd<br>2A. Systeem toont een lege lijst|
+|Postconditie       |Systeem toont de tussenstand van de gewenste competitie tijdens het gewenste seizoen.|
+|Brief Description  |Actor haalt de tussenstand van een gewenste competitie tijdens een gewenst seizoen op.|
+|Happy Flow         |1.Actor geeft aan de tussenstand van een competitie op teh lane. <br> 2.Systeem toont de tussenstand.|
+|Alternatieve Flow  |1A.Actor geeft aan een niet bestaande seizoen en competitie te hebben geselecteerd<br>2A. Systeem toont een lege lijst.|
 
 
 
-|Naam               |Ophalen clubinfo																										|
-|-------------------|-----------------------------------------------------------|
+|Naam               |Ophalen clubinfo|
+|-------------------|-------------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
-|Stakeholder and interest|Data-analist, zodat de data-analist de gegevens van de geselecteerde club kan analizeren|
+|Stakeholder and interest|Data-analist, zodat de data-analist de gegevens van de geselecteerde club kan analizeren.|
 |Preconditie        ||
-|Postconditie       |Systeem toont de informatie Club naam, Stadium naam, land naam, stad naam en de caoch van de gewenste club|
-|Brief Description  |Actor haalt het team, de coach, de thuisstad, het stadion en de capaciteit van het stadion van een gewenste club op	|
-|Happy Flow         |1.Actor geeft aan informatie over een gewenste club te willen zien <br> 2.Systeem toont clubinformatie over de gewenste club.                                                                       	|
+|Postconditie       |Systeem toont de informatie Club naam, Stadium naam, land naam, stad naam en de caoch van de gewenste club.|
+|Brief Description  |Actor haalt het team, de coach, de thuisstad, het stadion en de capaciteit van het stadion van een gewenste club op.|
+|Happy Flow         |1.Actor geeft aan informatie over een gewenste club te willen zien <br> 2.Systeem toont clubinformatie over de gewenste club.|
 
 
 |Naam               |Ophalen matchinfo									|
 |-------------------|---------------------------------------------------|
-|Actors             |Data-analist Klant / NUTMEG Voetbal Admin  									              |
-|Stakeholder and interest|Data-analist, zodat de data-analist de gegevens van de geselecteerde match kan analizeren          |
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
+|Stakeholder and interest|Data-analist, zodat de data-analist de gegevens van de geselecteerde match kan analizeren.|
 |Preconditie        ||
-|Postconditie       |Systeem toont de informatie van de gewenste match|
-|Brief Description  |Actor haalt per team balbezit, passes, schoten, schoten op doel, passprecisie, overtredingen, corners, goals, kaarten en wissels van de gewenste match op |
+|Postconditie       |Systeem toont de informatie van de gewenste match.|
+|Brief Description  |Actor haalt per team balbezit, passes, schoten, schoten op doel, passprecisie, overtredingen, corners, goals, kaarten en wissels van de gewenste match op.|
 |Happy Flow         |1.Actor geeft aan informatie over een gewenste match te willen zien<br> 2.Systeem toont de informatie goals, hoekschop, overtreding, passes, gele kaart ,rode kaart, schoten en vervanging van de gewenste match.|
-|Alternatieve Flow  |2A.Systeem geeft aan dat de match niet bestaat|
+|Alternatieve Flow  |2A.Systeem geeft aan dat de match niet bestaat.|
 
 
 |Naam               |Ophalen speelrondeinfo	|
 |-------------------|-------------------------------------|
-|Actors             |Data-analist Klant / NUTMEG Voetbal Admin  									              |
-|Stakeholder and interest|Data-analist, zodat de data-analist de gegevens van de geselecteerde speelronde kan analyseren          |
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
+|Stakeholder and interest|Data-analist, zodat de data-analist de gegevens van de geselecteerde speelronde kan analyseren.|
 |Preconditie        ||
-|Postconditie       |Systeem toont de informatie van de gewenste speelronde	                                |
-|Brief Description  |Actor haalt de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde op	|
-|Happy Flow         |1.Actor geeft aan de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde te willen zien. <br> 2.Systeemm toont van de seizoen, competitie alle start datum, club out en club thuis en de aantal goals die gemaakt zijn door de spelende clubs.	|
+|Postconditie       |Systeem toont de informatie van de gewenste speelronde.|
+|Brief Description  |Actor haalt de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde op.|
+|Happy Flow         |1.Actor geeft aan de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde te willen zien. <br> 2.Systeemm toont van de seizoen, competitie alle start datum, club out en club thuis en de aantal goals die gemaakt zijn door de spelende clubs.|
 
 
-|Naam               |Invoeren matchdata	    |
-|-------------------|--------------------------------------------------------------------------------|
-|Actors             |Data-analist Klant / NUTMEG Voetbal Admin  									              |
-|Stakeholder and interest|NUTMEG Voetbal Admin, zodat de NUTMEG Voetbal Admin de gegevens match data in de database kan verwerken|
-|Preconditie        |De match is gespeeld |
-|Postconditie       |De match met al zijn gegevens staat geregistreerd in het systeem	          |
+|Naam               |Invoeren matchdata	|
+|-------------------|-----------------------------------------------------|
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin.|
+|Stakeholder and interest|NUTMEG Voetbal Admin, zodat de NUTMEG Voetbal Admin de gegevens match data in de database kan verwerken.|
+|Preconditie        ||
+|Postconditie       |De match met al zijn gegevens staat geregistreerd in het systeem.|
 |Brief Description  |Actor voert in wie een gele/rode kaart heeft gekregen. Wie een pass, goal, schoot, overtreding, hoekschop heeft gemaakt, wie met wie is vervangen. En op welke minute de event is gebeurd.|
-|Happy Flow         |1.Actor geeft aan de matchdata: goal, hoekschop, overtreding, passes, gele kaart, rode kaart, schoten en wie met wie is vervangen op te willen slaan in de database<br> 2.Systeem slaat de match data op in de database|
-|Alternatieve Flow  |2A.Systeem geeft aan dat de ingevoerde waarde van balbezit/passprecisie niet tussen 0-100 is. <br> 3A.Ga terug naar stap 1 <br> - <br> 2B.Systeem geeft aan dat speler gekoppeld aan een event/pass/corner/overtreding/schot(op doel) niet in het is correcte team zit. <br> 3B.Ga terug naar stap 1 <br> - <br> 2C.Systeem geeft aan dat speler niet opgesteld is tijdens de wedstrijd. <br> 3C.Ga terug naar stap 1	|
+|Happy Flow         |1.Actor geeft aan de matchdata: goal, hoekschop, overtreding, passes, gele kaart, rode kaart, schoten en wie met wie is vervangen op te willen slaan in de database<br> 2.Systeem slaat de match data op in de database.|
+|Alternatieve Flow  |2A.Systeem geeft aan dat de ingevoerde waarde van balbezit/passprecisie niet tussen 0-100 is. <br> 3A.Ga terug naar stap 1 <br> - <br> 2B.Systeem geeft aan dat speler gekoppeld aan een event/pass/corner/overtreding/schot(op doel) niet in het is correcte team zit. <br> 3B.Ga terug naar stap 1 <br> - <br> 2C.Systeem geeft aan dat speler niet opgesteld is tijdens de wedstrijd. <br> 3C.Ga terug naar stap 1.|
 
 
 |Naam               |Updaten clubinfo	|
 |-------------------|-------------------------------------------------------------------------------|
-|Actors             |Data-analist Klant / NUTMEG Voetbal Admin  									              |
-|Stakeholder and interest|NUTMEG Voetbal Admin, zodat de NUTMEG Voetbal Admin de gegevens van clubs in de database kan bewerken|
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
+|Stakeholder and interest|NUTMEG Voetbal Admin, zodat de NUTMEG Voetbal Admin de gegevens van clubs in de database kan bewerken.|
 |Preconditie        ||
-|Postconditie       |De updated clubinformatie is opgeslagen in het systeem	|
-|Brief Description  |Actor update de clubinformatie. Hieronder wordt het team, de coach, de thuisstad het stadion en de stadioncapaciteit verstaan.	|
-|Happy Flow         |1.Actor geeft de informatie mee die geüpdatet moet worden. 2.Systeem update de informatie. |
-|Alternative FLow	|2A.Systeem geeft aan dat een speler/coach die moet worden toegevoegd nog bij een ander team ingeschreven staat. <br>3A. Ga terug naar stap 1.
+|Postconditie       |De updated clubinformatie is opgeslagen in het systeem.|
+|Brief Description  |Actor update de clubinformatie. Hieronder wordt het team, de coach, de thuisstad het stadion en de stadioncapaciteit verstaan.|
+|Happy Flow         |1.Actor geeft de informatie mee die geüpdatet moet worden. 2.Systeem update de informatie.|
+|Alternative FLow	|2A.Systeem geeft aan dat een speler/coach die moet worden toegevoegd nog bij een ander team ingeschreven staat. <br>3A. Ga terug naar stap 1.|
 
 
 
 |Naam               |Start nieuw seizoen competitie	|
 |-------------------|-------------------------------------------------------------------------------|
-|Actors             |NUTMEG Voetbal Admin	                                                          |
-|Stakeholder and interest|NUTMEG Voetbal Admin, zodat de gegevens van de nieuwe seizoen competite verwerkt kan worden|
-|Preconditie        |Het vorige seizoen is afgelopen                     |
-|Postconditie       |De juiste clubs zijn gedegradeerd/gepromoveert. Een nieuw seizoen is gestart	  |
-|Brief Description  |Actor update de correcte clubs in de nieuwe editie, start vervolgens een leeg seizoen (lege matches, speeldrondes en een nieuwe editie).	|
+|Actors             |NUTMEG Voetbal Admin|
+|Stakeholder and interest|NUTMEG Voetbal Admin, zodat de gegevens van de nieuwe seizoen competite verwerkt kan worden.|
+|Preconditie        ||
+|Postconditie       |De juiste clubs zijn gedegradeerd/gepromoveert. Een nieuw seizoen is gestart.|
+|Brief Description  |Actor update de correcte clubs in de nieuwe editie, start vervolgens een leeg seizoen (lege matches, speeldrondes en een nieuwe editie).|
 |Happy Flow         |1. Actor geeft aan welke clubs gedegradeerd/gepromoveert worden <br> 2. Systeem verwerkt de gegevens <br> 3. Actor geeft aan een nieuwe seizoen comeptitie te starten met de gegevens startdatum, speelrondes, aantal rondes per dag en de clubs die mee doen aan de competitie <br> 4.Systeem maakt nieuwe editie met de gegevens, competitie naam, season naam, lijst met clubs, start datum, lengte van een ronde, games per dag en aantal matches per ronde|
-|Alternative Flow	| 1A. Actor geeft aan een nieuwe seizoen comeptitie te starten met de verkeerde gegevens startdatum, speelrondes, aantal rondes per dag en de clubs die mee doen aan de competitie <br> 2A. Systeem geeft een error bericht     |
+|Alternative Flow	| 1A. Actor geeft aan een nieuwe seizoen comeptitie te starten met de verkeerde gegevens startdatum, speelrondes, aantal rondes per dag en de clubs die mee doen aan de competitie <br> 2A. Systeem geeft een error bericht.|
 
 
 |Naam               |Toevoegen nieuwe persoon	|
-|-------------------|-------------------------------------------------------------------------------|
-|Actors             |NUTMEG Voetbal Admin	|
+|-------------------|-----------------------|
+|Actors             |NUTMEG Voetbal Admin|
 |Preconditie        | |
-|Postconditie       |Nieuw persoon staat in het systeem	|
+|Postconditie       |Nieuw persoon staat in het systeem.|
 |Brief Description  |Actor zet een nieuw coach, scheidsrechter of speler in het systeem met de gegevens land, voornaam, achternaam, middelnaam, geboorte datum en voor de speler de Jersey nummer.|
 |Happy Flow         |1.Actor geeft aan een nieuwe coach op te willen slaan in het systeem en voert in land, voornaam, achternaam, middelnaam en geboorte datum in. <br>2.Nieuw persoon wordt opgeslagen in de database.|
-|Alternative Flow	|2A.Systeem geeft aan dat informatie onvolledig is  <br> 3A.Ga terug naar stap 1
+|Alternative Flow	|2A.Systeem geeft aan dat informatie onvolledig is  <br> 3A.Ga terug naar stap 1|
 
 # Verwoordingen feittypen
 
