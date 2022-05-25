@@ -26,16 +26,14 @@ BEGIN
 END 
 ```
 
-Wanneer deze procedure wordt uitgevoerd kan er een probleem ontstaan. 
+Op dit moment kan er een probleem ontstaan in deze procedure.
 
-Tussen de twee inserts in de procedure kan iemand anders een update uitvoeren.
+Na de eerste insert wordt een person_id terug gegeven.
 
-Als deze persoon de person_ids aanpast na de eerste insert zal de output waarde niet overeenkomen met de nieuwe id.
+Deze person_id wordt in de volgende insert gebruikt om een player te koppelen, maar als de person_id wordt veranderd tussendoor dan komt er een error.
 
-Als dan de player insert wordt gedaan kan er een error komen.
+Om dit probleem op te lossen krijgt de procedure het isolatie level `REPEATABLE READ`.
 
-Gelukkig is de risico dat dit gebeurt nihil.
+Nu kan de geïnserte waarde niet worden aangepast totdat de procedure is afgelopen.
 
-Maar voor het geval dat kan de procedure het isolatie level `REPEATABLE READ` krijgen, nu kan de geïnserte waardes niet worden aangepast totdat de procedure is afgelopen en blijft het veilig.
-
-Isolatie level `SERIALIZABLE` is niet nodig omdat andere inserts geen probleem vormen en hogere isolatie levels zorgen voor een lagere performance.
+De zwaardere isolatie level `SERIALIZABLE` is niet nodig, omdat andere inserts geen problemen opleveren. `SERIALIZABLE` zorgt voor een lagere performance dan `REPEATABLE READ`.
