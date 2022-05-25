@@ -36,7 +36,6 @@ BEGIN
 
 
 	IF (UPDATE(HOME_CLUB_NAME) OR UPDATE (OUT_CLUB_NAME) OR UPDATE(STADIUM_NAME) OR UPDATE(REFEREE_PERSON_ID))
-	BEGIN
 		IF EXISTS(
 	    SELECT *
 	    FROM inserted i
@@ -46,7 +45,9 @@ BEGIN
 	    JOIN SEASON S on E.SEASON_NAME = S.SEASON_NAME
 		WHERE S.END_DATE > GETDATE() AND S.START_DATE < GETDATE()
 	)
-    	OR EXISTS(
+			THROW 50000, 'Season is still active, cannot alter data', 1
+
+	IF EXISTS(
 	    SELECT *
 	    FROM deleted d
 	    JOIN MATCHDAY M2 on M2.SEASON_NAME = d.SEASON_NAME and M2.COMPETITION_NAME = d.COMPETITION_NAME and M2.START_DATE = d.START_DATE and M2.MATCH_DAY = d.MATCH_DAY
@@ -55,8 +56,7 @@ BEGIN
 	    JOIN SEASON S on E.SEASON_NAME = S.SEASON_NAME
 		WHERE S.END_DATE > GETDATE() AND S.START_DATE < GETDATE()
 	)
-		THROW 50000, 'Season is still active, cannot alter data', 1
-	END
+			THROW 50000, 'Season is still active, cannot alter data', 1
 END
 GO
 
