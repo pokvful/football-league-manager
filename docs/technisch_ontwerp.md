@@ -455,8 +455,7 @@ PI: Time + club_name + club_name + match_day + start_date + end_date + competiti
 
 ### IR2 komt overeen met C2 en BR18
 
-<!-- TODO: Hoe doen we dit wanneer er b.v. een nieuwe club wordt aangemaakt, want dan beginnen ze met < 11 spelers... -->
-- Omschrijving: Er zijn minimaal 11 spelers aan een club verbonden;
+- Omschrijving: Er zijn minimaal 7 spelers aan een club verbonden;
 - Implementatie: Een trigger `TRG_MINIMUM_PLAYERS_IN_CLUB` op de tabel `PLAYER`.
 
 ### IR3 komt overeen met C3 en BR19;speelrondes per editie van een competitie;
