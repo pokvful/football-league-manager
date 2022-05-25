@@ -1,3 +1,5 @@
+# ***Disclaimer*** | De lay-out van de PDF-versie voor dit document kan verschillen met de markdown versie, voor een accurate weergave zie markdown bestand in [bitbucket](https://isebitbucket.aimsites.nl/projects/S22122A4/repos/football-league-manager/browse/docs).
+
 # Functioneel ontwerp
 
 - [Use cases](#use-cases)
@@ -920,24 +922,24 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 # Business Rules
 
-- BR1 Van een lopende competitie mogen alleen de selecties van de clubs en de speeldata van de wedstrijden worden aangepast;
-- BR2 Een thuis club mag maximaal een keer tegen een uit club spelen binnen een normaal competitie seizoen;
-- BR3 De startdatum van een ronde moet in het seizoen liggen;
-- BR4 De speeldag moet na de gekoppelde startdatum van de speelronde liggen;
-- BR5 De startdatum van een speeldag moet voor de startdatum van een opvolgende ronde bestaan, maar hetzelfde of na de startdatum van de gekoppelde ronde;
+- BR1 Van een lopende competitie mag alleen de selectie clubs en de speeldatum van een wedstrijd worden aangepast;
+- BR2 Een thuis club mag maximaal één keer tegen een uit club spelen binnen een competitie seizoen;
+- BR3 De startdatum van een ronde moet lager zijn dan de einddatum van het bijhorende seizoen;
+- BR4 De datum van een speeldag moet na de gekoppelde startdatum van de speelronde liggen;
+- BR5 De startdatum van een speeldag moet voor de startdatum van een opvolgende ronde bestaan en moet hetzelfde zijn of na de startdatum van de gekoppelde ronde bestaan;
 - BR6 Een speler die op het veld staat kan een keeper, verdediger, aanvaller of middenvelder zijn;
-- BR7 Een thuis club mag maximaal een keer tegen een uit club spelen binnen een fase van een knockout competitie;
-- BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een van de spelende clubs;
+- BR7 Een thuis club mag maximaal één keer tegen een uit club spelen binnen een fase van een knockout competitie;
+- BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een spelende club, die zich bevindt in de database;
 - BR9 Clubs mogen alleen een match spelen als ze meedoen aan de editie;
-- BR10 Gele en Rode kaarten mogen alleen worden gegeven aan Spelers en Coaches;
-- BR11 Voor alleen spelende spelers wordt opgeslagen of ze hebben geschoten, pases gemaakt, gewisseld, overtredingen, corners, gescored in een voetbalwedstrijd;
+- BR10 Gele en rode kaarten mogen alleen worden gegeven aan spelers en coaches;
+- BR11 Voor alleen spelende spelers wordt opgeslagen of ze hebben geschoten, pases hebben gemaakt, zijn gewisseld, overtredingen hebben gemaakt, corners hebben afgenomen of gescored hebben tijdens een voetbalwedstrijd;
 - BR12 Er moeten 22 spelers op het veld ingedeeld zijn bij een wedstrijd;
 - BR13 Bij welke club een persoon coacht wordt alleen opgeslagen voor coaches;
 - BR14 Bij welke wedstrijden een persoon scheidst wordt alleen opgeslagen voor scheidsrechters;
 - BR15 Of een persoon in de reserve staat bij een wedstrijd wordt alleen opgeslagen voor spelers;
 - BR16 Maximaal 52 speelrondes per editie van een competitie;
 - BR17 Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1;
-- BR18 Minimaal 11 spelers per club;
+- BR18 Minimaal 7 spelers per club;
 - BR19 Minimaal en maximaal 1 coach per club;
 - BR20 Een persoon binnen het systeem mag niet jonger zijn dan 15 jaar;
 - BR21 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
@@ -1060,18 +1062,27 @@ Voor data-analisten geldt dat ze alleen SELECT / READ rechten op alle data uit d
 
 Administrators hebben GRANT ALL rechten op alle data uit de MSSQL database en de MongoDB staging area.
 
+De transport script gebruiker heeft READ rechten op de MSSQL database en READ en WRITE rechten op de MongoDB staging area.
+
+|Afkorting | Betekenis |
+|- |-
+|C | Er wordt wat aangemaakt. |
+|R | Er wordt wat gelezen. |
+|U | Er wordt wat aangepast. |
+|D | Er wordt wat verwijdert. |
+
 | Use Cases                 | Entiteit(en)                                  | Rechten               | Beschrijving
 |---------------------------|-----------------------------------------------|-----------------------|--------------|
 | Ophalen Top-lijst         | Event (inc. subtypes), Match, Person, Club    | Data-Analist en Admin | Het ophalen van de volgende gegevens: Per editie wordt op volgorde gesorteerd welke spelers de meeste ballen hebben gepaast, doelpunten hebben gescoord, rode en gele kaarten hebben ontvangen, schot op goal hebben gelost, overtreding hebben gemaakt en corners hebben genomen.
-| Ophalen Tussenstand Comp  | Competition, Edition, Season, Round           | Data-Analist en Admin | Het ophalen van de volgende gegevens: Per editie wordt op volgorde gesorteerd welke teams de meeste wedstrijden heeft gewonnen.
+| Ophalen Tussenstand Comp  | Edition, Match           | Data-Analist en Admin | Het ophalen van de volgende gegevens: Per editie wordt op volgorde gesorteerd welke teams de meeste wedstrijden heeft gewonnen.
 | Ophalen Club Info         | Club, Player, City, Stadium                   | Data-Analist en Admin | Het ophalen van alle kolommen die zich bevinden in de club, player, city en stadium tabel.
-| Ophalen Match Info        | Match, Person, Club, Stadium, Event           | Data-Analist en Admin | Het ophalen van match info die zich bevindt in de match, matchday, person, club, stadium en event tabel.
-| Ophalen Speelronde Info   | Round, Matchday, Edition                      | Data-Analist en Admin | Het ophalen van speelronde informatie, dit wordt uit de tabel round, matchday en editie gehaald.
+| Ophalen Match Info        | Match, Person, Stadium, Event           | Data-Analist en Admin | Het ophalen van match info die zich bevindt in de match, matchday, person, club, stadium en event tabel.
+| Ophalen Speelronde Info   | Round, Edition,  Match                  | Data-Analist en Admin | Het ophalen van speelronde informatie, dit wordt uit de tabel round, matchday en editie gehaald.
 | Ophalen Matchday Info     | Matchday, Round, Match                        | Data-Analist en Admin | Het ophalen van matchday info die zich bevindt in de matchday, round en match tabel.
-| Invoeren Match Data       | Match, Event, Matchday, Stadium, Club, Person | Admin                 | Het invoeren van nieuwe match data in de match, event, matchday, stadium en club tabel.
-| Updaten Club Info         | Club, Player, Coach, City, Match              | Admin                 | Het updaten van bestaande data in de club, player, coach, city en match tabel.
-| Start Nieuwe Seizoen Comp | Season, Competition, Edition, Round, Matchday | Admin                 | Het aanmaken van een nieuwe seizoen in de season, competition, edition, round en matchday tabel.
-| Toevoegen Nieuwe Persoon  | Person                                        | Admin                 | Het toevoegen van een nieuwe persoon; afhankelijk van het type persoon kan een persoon een speler, scheidsrechter of coach zijn.
+| Invoeren Match Data       | Match (U), Event (I), Matchday (R), Stadium (R), Club (R), Person (R) | Admin                 | Het invoeren van nieuwe match data in de match, event, matchday, stadium en club tabel.
+| Updaten Club Info         | Club (U), Player (I, U), Coach (R), City (R)              | Admin                 | Het updaten van bestaande data in de club, player, coach, city en match tabel.
+| Start Nieuwe Seizoen Comp | Season (R), Competition (R), Edition (I), Round (I), Matchday (I), Match (I) | Admin                 | Het aanmaken van een nieuwe seizoen in de season, competition, edition, round en matchday tabel.
+| Toevoegen Nieuwe Persoon  | Person (I)                                       | Admin                 | Het toevoegen van een nieuwe persoon; afhankelijk van het type persoon kan een persoon een speler, scheidsrechter of coach zijn.
 
 # Toelichting Datakwaliteit
 

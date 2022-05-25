@@ -1,0 +1,10 @@
+set nocount on;
+insert into COACH (Person_id) values (9);
+insert into COACH (Person_id) values (8);
+insert into COACH (Person_id) values (7);
+insert into COACH (Person_id) values (6);
+insert into COACH (Person_id) values (5);
+insert into COACH (Person_id) values (4);
+insert into COACH (Person_id) values (3);
+insert into COACH (Person_id) values (2);
+insert into COACH (Person_id) values (1);

@@ -1,0 +1,149 @@
+EXEC tSQLt.NewTestClass 'test_SHOW_MATCH_INFO'
+GO
+CREATE OR ALTER PROCEDURE test_SHOW_MATCH_INFO.SetUp
+AS
+BEGIN
+	EXEC tSQLt.FakeTable 'dbo.CORNER'
+	EXEC tSQLt.FakeTable 'dbo.FOUL'
+	EXEC tSQLt.FakeTable 'dbo.GOAL'
+	EXEC tSQLt.FakeTable 'dbo.MATCH'
+	EXEC tSQLt.FakeTable 'dbo.PASS'
+	EXEC tSQLt.FakeTable 'dbo.RED_CARD'
+	EXEC tSQLt.FakeTable 'dbo.SHOT'
+	EXEC tSQLt.FakeTable 'dbo.SUBSTITUTE'
+	EXEC tSQLt.FakeTable 'dbo.YELLOW_CARD'
+
+	INSERT INTO MATCH (MATCH_ID, SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY, HOME_CLUB_NAME, OUT_CLUB_NAME, STADIUM_NAME, REFEREE_PERSON_ID, BALL_POSSESSION_HOME, BALL_POSSESSION_OUT, SPECTATORS)
+	VALUES (1, '20/21', 'comp', GETDATE(), GETDATE(), 'home', 'out', 'aStadium', 420, 20, 70, 100020)
+
+	INSERT INTO CORNER (MATCH_ID, TIME, PERSON_ID)
+	VALUES (1, 2.3, 2)
+
+	INSERT INTO FOUL (MATCH_ID, TIME, PERSON_ID)
+	VALUES (1, 4, 5)
+
+	INSERT INTO GOAL (MATCH_ID, TIME, PERSON_ID)
+	VALUES (1, 55.6, 3)
+
+	INSERT INTO PASS (MATCH_ID, TIME, PERSON_ID, SUCCES)
+	VALUES (1, 53.6, 3, 1), (1, 20, 3, 0)
+
+	INSERT INTO RED_CARD (MATCH_ID, TIME, PERSON_ID)
+	VALUES (1, 80, 67)
+
+	INSERT INTO YELLOW_CARD(MATCH_ID, TIME, PERSON_ID)
+	VALUES (1, 1.1, 1)
+
+	INSERT INTO SHOT (MATCH_ID, TIME, PERSON_ID, ON_GOAL)
+	VALUES (1, 55.55, 3, 1), (1, 90.5, 99, 0)
+
+	INSERT INTO SUBSTITUTE (MATCH_ID, TIME, IN_PERSON_ID, OUT_PERSON_ID)
+	VALUES (1, 45.444, 665, 667)
+
+	INSERT INTO MATCH (MATCH_ID, SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY, HOME_CLUB_NAME, OUT_CLUB_NAME, STADIUM_NAME, REFEREE_PERSON_ID, BALL_POSSESSION_HOME, BALL_POSSESSION_OUT, SPECTATORS)
+	VALUES (2, '20/21', 'comp2', GETDATE(), GETDATE(), 'home', 'out', 'aStadium', 420, 20, 70, 100020)
+
+	INSERT INTO CORNER (MATCH_ID, TIME, PERSON_ID)
+	VALUES (2, 2.3, 2)
+
+	INSERT INTO FOUL (MATCH_ID, TIME, PERSON_ID)
+	VALUES (2, 4, 5)
+
+	INSERT INTO GOAL (MATCH_ID, TIME, PERSON_ID)
+	VALUES (2, 55.6, 3)
+
+	INSERT INTO PASS (MATCH_ID, TIME, PERSON_ID, SUCCES)
+	VALUES (2, 53.6, 3, 1), (2, 20, 3, 0)
+
+	INSERT INTO RED_CARD (MATCH_ID, TIME, PERSON_ID)
+	VALUES (2, 80, 67)
+
+	INSERT INTO YELLOW_CARD(MATCH_ID, TIME, PERSON_ID)
+	VALUES (2, 1.1, 1)
+
+	INSERT INTO SHOT (MATCH_ID, TIME, PERSON_ID, ON_GOAL)
+	VALUES (2, 55.55, 3, 1), (2, 90.5, 99, 0)
+
+	INSERT INTO SUBSTITUTE (MATCH_ID, TIME, IN_PERSON_ID, OUT_PERSON_ID)
+	VALUES (2, 45.444, 665, 667)
+
+	DROP TABLE IF EXISTS test_SHOW_MATCH_INFO.expected
+END
+GO
+CREATE OR ALTER PROCEDURE test_SHOW_MATCH_INFO.[test test view]
+AS
+BEGIN
+	SELECT TOP (0) *
+	INTO test_SHOW_MATCH_INFO.expected
+	FROM MATCHES_INFO
+
+	INSERT INTO test_SHOW_MATCH_INFO.expected VALUES
+	(1,	'20/21',	'comp',		GETDATE(),	GETDATE(),	'home',	'out',	'aStadium',	420,	20.00,	70.00,	100020,	1,	1,	1,	2,	1,	1,	2,	1),
+	(2,	'20/21',	'comp2',	GETDATE(),	GETDATE(),	'home',	'out',	'aStadium',	420,	20.00,	70.00,	100020,	1,	1,	1,	2,	1,	1,	2,	1)
+
+	EXEC tSQLt.AssertEqualsTable 'test_SHOW_MATCH_INFO.expected', 'MATCHES_INFO'
+END
+GO
+EXEC tSQLt.Run 'test_SHOW_MATCH_INFO.[test test view]'
+GO
+CREATE OR ALTER PROCEDURE test_SHOW_MATCH_INFO.[test procedure match_id]
+AS
+BEGIN
+	SELECT TOP (0) *
+	INTO test_SHOW_MATCH_INFO.expected
+	FROM MATCHES_INFO
+
+	INSERT INTO test_SHOW_MATCH_INFO.expected VALUES
+	(1,	'20/21',	'comp',		GETDATE(),	GETDATE(),	'home',	'out',	'aStadium',	420,	20.00,	70.00,	100020,	1,	1,	1,	2,	1,	1,	2,	1)
+
+
+	DROP TABLE IF EXISTS test_SHOW_MATCH_INFO.[procedure]
+	SELECT TOP (0) *
+	INTO test_SHOW_MATCH_INFO.[procedure]
+	FROM MATCHES_INFO
+
+	INSERT INTO test_SHOW_MATCH_INFO.[procedure]
+	EXEC SHOW_MATCH_INFO 1
+
+	EXEC tSQLt.AssertEqualsTable 'test_SHOW_MATCH_INFO.expected', 'test_SHOW_MATCH_INFO.[procedure]'
+END
+GO
+EXEC tSQLt.Run 'test_SHOW_MATCH_INFO.[test procedure match_id]'
+GO
+CREATE OR ALTER PROCEDURE test_SHOW_MATCH_INFO.[test procedure match via alternate key]
+AS
+BEGIN
+	SELECT TOP (0) *
+	INTO test_SHOW_MATCH_INFO.expected
+	FROM MATCHES_INFO
+
+	INSERT INTO test_SHOW_MATCH_INFO.expected VALUES
+	(2,	'20/21',	'comp2',	GETDATE(),	GETDATE(),	'home',	'out',	'aStadium',	420,	20.00,	70.00,	100020,	1,	1,	1,	2,	1,	1,	2,	1)
+
+
+	DROP TABLE IF EXISTS test_SHOW_MATCH_INFO.[procedure]
+	SELECT TOP (0) *
+	INTO test_SHOW_MATCH_INFO.[procedure]
+	FROM MATCHES_INFO
+
+	DECLARE @start_date_declared DATE = GETDATE()
+	DECLARE @match_day_declared DATE = GETDATE()
+
+	INSERT INTO test_SHOW_MATCH_INFO.[procedure]
+	EXEC SHOW_MATCH_INFO @season = '20/21', @competition = 'comp2', @start_date = @start_date_declared, @match_day = @match_day_declared, @home_club = 'home', @out_club = 'out'
+
+	EXEC tSQLt.AssertEqualsTable 'test_SHOW_MATCH_INFO.expected', 'test_SHOW_MATCH_INFO.[procedure]'
+
+END
+GO
+EXEC tSQLt.Run 'test_SHOW_MATCH_INFO.[test procedure match via alternate key]'
+GO
+CREATE OR ALTER PROCEDURE test_SHOW_MATCH_INFO.[test procedure input nulls error]
+AS
+BEGIN
+	EXEC tSQLt.ExpectException 'Invalid input either only @match_id IS NULL or only @match_id IS NOT NULL'
+
+	EXEC SHOW_MATCH_INFO NULL, '20/21', NULL
+END
+GO
+EXEC tSQLt.Run 'test_SHOW_MATCH_INFO.[test procedure input nulls error]'

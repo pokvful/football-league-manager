@@ -2,16 +2,18 @@
 Some beautiful python code to transfer data from MSSQL to Mongo
 """
 
+from datetime import timedelta
 from pymongo import MongoClient
 import json
 import pyodbc
 import time
 
+PRE_TIMEOUT = timedelta( minutes=0, seconds=30 ).seconds
 CONNECTION_URL_MSSQL = "DRIVER={ODBC Driver 17 for SQL Server};SERVER=db_mssql,1433;UID=sa;PWD=Football!;DATABASE=flm"
 CONNECTION_URL_MONGO = "mongodb://mongo:toor@db_mongo:27017"
 
 def main():
-	time.sleep(15)
+	time.sleep(PRE_TIMEOUT)
 
 	mssql_connection = pyodbc.connect(CONNECTION_URL_MSSQL)
 	mongo_client = MongoClient(CONNECTION_URL_MONGO)
@@ -32,6 +34,8 @@ def main():
 
 	for table in table:
 		result = ""
+
+		print(f"Retrieving data from {table}")
 
 		# get all the data in the table as json
 		cursor.execute(f"SELECT * FROM {table} FOR JSON AUTO, INCLUDE_NULL_VALUES")
