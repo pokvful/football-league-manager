@@ -184,8 +184,6 @@
 
 |Naam               |Start nieuw seizoen competitie	|
 |-------------------|-------------------------------------------------------------------------------|
-|Scope              |The system under design                                                        |
-|Level              |user-goal                                                                      |
 |Actors             |NUTMEG Voetbal Admin	                                                          |
 |Stakeholder and interest|NUTMEG Voetbal Admin, zodat de gegevens van de nieuwe seizoen competite verwerkt kan worden|
 |Preconditie        |Het vorige seizoen is afgelopen                     |
