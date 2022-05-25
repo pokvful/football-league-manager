@@ -31,7 +31,36 @@ Deze testen worden gemaakt nadat de code zelf is geschreven om de code te testen
 
 Daarnaast worden er testen geschreven voor de security of dat de aangemaakte de rollen de rechten hebben die zijn afgesproken.
 
-Er worden geen tests geschreven voor de HISTORY tabellen.
+## Scope
+
+### In scope
+
+Alle Integrity rules worden getest
+|*Integrity rules*|*tabel*|*Omschrijving*|
+|-------|--------------|---------------|
+|IR1|POSITION|Er zijn maximaal 22 spelers aan een match verbonden (11 per club)|
+|IR2|PLAYER|Er zijn minimaal 11 spelers aan een club verbonden|
+|IR3|COACH|Een club heeft altijd precies 1 coach|
+|IR4|ROUND|Er zijn maximaal 52 speelrondes per editie van een competitie|
+|IR5|PLAYER|Een rugnummer van een speler moet hoger zijn dan 0 (mag niet 0 zijn) en mag niet hoger zijn dan 99 (mag wel 99 zijn)|
+|IR6|ROUND|De startdatum van een speelronde ligt binnen de start- en einddatum van het bijbehorende seizoen|
+|IR7|MATCHDAY|De startdatum van een speeldag moet voor de startdatum van een opvolgende speelronde zijn, maar hetzelfde of na de startdatum van de gekoppelde speelronde|
+|IR8|POSITION<BR>PLAYER_as_reserve_in_MATCH|De spelers die aan een wedstrijd zijn gekoppeld moeten lid zijn van één van de twee clubs die aan de wedstrijd meedoen|
+|IR9|MATCH|Een club mag alleen meedoen aan een wedstrijd als ze ook aan de bijbehorende editie meedoen|
+|IR10|YELLOW_CARD<BR>RED_CARD|Alleen spelers en coaches mogen een rode of gele kaart krijgen|
+|IR11|PASS<BR>GOAL<BR>SHOT<BR>FOUL<BR>CORNER<BR>SUBSTITUTE|Alleen voor spelende spelers in een wedstrijd worden het aantal schoten, het aantal passes, de wissels, de overtredingen, de corners en of de persoon heeft gescoord bijgehouden|
+|IR12|PERSON|Een persoon mag niet jonger zijn dan 15 jaar|
+|IR13|MATCH|Het aantal toeschouwers bij een wedstrijd mag niet groter zijn dan de capaciteit van het stadion waar de wedstrijd wordt gehouden|
+|IR14|RED_CARD<BR>YELLOW_CARD<BR>PASS<BR>GOAL<BR>SHOT<BR>FOUL<BR>CORNER<BR>SUBSTITUTE.|De minuut in een wedstrijd mag niet negatief zijn|
+|IR15|PLAYER<BR>COACH<BR>REFEREE|Een persoon moet een speler, coach of scheidsrechter zijn|
+
+|*Applicable Roles*|*Description*|
+|---------------|--------------|
+|NUTMEG Voetbal Admin||
+
+### out scope
+
+-Er worden geen tests geschreven voor de HISTORY tabellen.
 
 ## Benodigdheden
 
@@ -92,3 +121,6 @@ Als er waardes worden teruggegeven dan wordt gecontroleerd of die correct zijn.
 ## Achteraf
 
 Nadat de code is getest met behulp van de geschreven unit tests worden de tests gereviewed. Als de tests worden goed gekeurd wordt in het testrapport het bewijs van het slagen van de tests neergezet met de datum.
+
+
+
