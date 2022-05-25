@@ -400,18 +400,21 @@ Door de afhankelijkheden van match zou de orignele primary key maarliefst 6 kolo
 
 Om een persoon van een daadwerkelijk van een unieke identifier te voorzien moeten niet alleen de naam en de achternaam gebruikt worden, maar ook de geboortedatum, melfs met deze waarden is er echter nog een nihiele kans dat de waardne niet uniek zijn. Daarnaast wordt de primary key van Person in maar liefst 3 andere tabellen gebruikt. Om deze redenen is ervoor gekozen om Person een uniek ID te geven.
 
+<!--- DIT KAN WEG LIJKT ME --->
 ## 0..22 Position
 
 Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echter worden wedstrijden als vastgesteld en aangemaakt ver voordat de opstelling bekend zijn. Hierom hebben ervoor gekozen het ook mogelijk te 0 tot 22 spelers op te stellen. Met een trigger wordt gecheckt of er wel 22 spelers zijn opgesteld voordat de wedstrijd daadwerkelijk start.
 
 ## Position
 
-De startposities van spelers worden per wedstrijd vastgelegd. Wissels worden altijd als wissel opgeslagen, zelfs als zij in de wedstrijd komen. Positiewisselingen tijdens de wedstrijd worden niet opgeslagen. De beperkingen met wissels en positiewisselingen komen voort uit het feit dat het minimale aantal spelers voor het starten van een wedstrijd op dit moment in de positie-tabel gecheckt wordt. 
+De startposities van spelers worden per wedstrijd vastgelegd. Wissels worden altijd als wissel opgeslagen, zelfs als zij aan spelen toe komen. Positiewisselingen tijdens de wedstrijd worden niet opgeslagen. De beperkingen met wissels en positiewisselingen komen voort uit het feit dat het minimale aantal spelers voor het starten van een wedstrijd op dit moment in de positie-tabel gecheckt wordt. Dis is des tijds op deze manier geïmplmenteerd aangezien het we niet heel bewust hebben nagedacht over implementaties die erg afwijken van het gegenereerde PDM.
 
+Hiervoor zijn echter alternatieven.
 Zo is het mogelijk om twee losse tabellen te maken, een met opstellingen (LINE-UP) en een met posities in een wedstrijd (POSITION_IN_MATCH).
 De check op het minimaal aantal spelers kan dan in LINE-UP uitgevoerd worden, bijvoorbeeld minimaal 7 spelers per team in de line-up wanneer de Match_day van de wedstrijd bereikt is.
 In de POSITIONS_IN_MATCH tabel worden vervolgens alle posities van alle spelers in de wedstrijd vacstgelegd. Spelers kunnen dus dubbel in een wedstrdij staan wanneer zijn tijdens de wedstrijd van positie wisellen.
 
+Het is ook mogelijk om bij de wissel-event een positie kolom toe te voegen. Hiermee kan je positiewisselingen vastleggen door spelers met zichzelf te laten wissellen. Posities van wissels die in de wedstrijd komen staan dan in de wissel-event. POSITION wordt in deze oplossing een soortgelijke tabel als LINE-UP in de vorige oplossing. Waar je in de vorige oplossing alle posities van een wedstrijd in de tabel POSITION_IN_MATCH kan terugvinden, vind je ze bij deze oplossing door POSITION te joinen met alle wissel-events met een gelijk match_id.
 
 # Constraints
 
