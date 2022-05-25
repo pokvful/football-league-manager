@@ -73,34 +73,17 @@
   - [Input](#input)
   - [Output](#output)
 
-# Non-Functional Requirements
+# Niet-functionele eisen
 
-## Performance and scalability
-
-- Om de druk op de MSSQL database te verlichten lezen data-analisten van klaten alleen de MongoDB staging area uit
-
-## Portability and compatibility
-
-- MSSQL is vereist voor het *opzetten* van de database
-- Voor data-analisten van klanten die willen *uitlezen*, is het verplicht om de staging area te gebruiken
-
-## Reliability, availability, maintainability
-
-- Iedere dag wordt om 02:00 een kopie van de MSSQL database overgezet naar de MongoDB staging area
-
-## Security
-
-- Administrators van NUTMEG hebben volledige CRUD rechten op zowel de volledige MSSQL als MongoDB database
-- Data-analisten van klanten kunnen de database alleen uitlezen via de staging area
-
-## Localization
-
-- De data wordt in het Nederlands opgeslagen
-- De schema van MSSQL (en MongoDB indien nodig) worden in het Engels gemaakt
-
-## Usability
-
-- Data-analisten kunnen via de MongoDB shell data uitlezen die in de MongoDB staging area staat
+| Niet-functionele eisen                                                                                        | Categorieën     |
+|--------------------------------------------------------------------------------------------------------------------|--------------|
+| Data-analisten lezen alleen data uit vanuit de MongoDB staging area, zo wordt de load op de SQL Server verlicht    | Performance  |
+| Administrators van NUTMEG hebben volledige CRUD rechten op zowel de SQL Server als MongoDB database                | Security     |
+| Data-analisten hebben alleen lees rechten en lezen data exclusief uit vanuit de staging area                       | Security     |
+| De data wordt alleen in het Nederlands opgeslagen                                                                  | Localization |
+| Tabelnamen, constraints, triggers, views en procedures in SQL Server worden in het Engels geschreven               | Localization |
+| Data-analisten kunnen via de MongoDB shell data uitlezen                                                           | Usability    |
+| Iedere dag dient er om 02:00 een kopie van de SQL Server database overgezet te worden naar de MongoDB staging area | Availability |
 
 # Deployment diagram
 
