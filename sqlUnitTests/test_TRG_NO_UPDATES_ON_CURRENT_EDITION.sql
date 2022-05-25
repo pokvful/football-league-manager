@@ -117,7 +117,7 @@ GO
 EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in CLUB during a current edition PASSING]'
 GO
 
-CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition PASSING ON COLUMN]
+CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition PASSING CURRENT SEASON]
 AS
 BEGIN
 	EXEC tSQLt.FakeTable @TableName='dbo.MATCH';
@@ -125,94 +125,94 @@ BEGIN
 	EXEC tSQLt.FakeTable @TableName='dbo.ROUND';
 	EXEC tSQLt.FakeTable @TableName='dbo.EDITION';
 	EXEC tSQLt.FakeTable @TableName='dbo.SEASON';
-
-	INSERT INTO MATCH (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY, HOME_CLUB_NAME, BALL_POSSESSION_HOME)
-	VALUES ('21/22', 'Eredivisie', '02-02-2022', '02-02-2022', 'Ajax', 30)
-
-	INSERT INTO MATCHDAY (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY)
-	VALUES ('21/22', 'Eredivisie', '02-02-2022', '02-02-2022')
-
-	INSERT INTO ROUND (SEASON_NAME, COMPETITION_NAME, START_DATE)
-	VALUES ('21/22', 'Eredivisie', '02-02-2022')
-
-	INSERT INTO EDITION (SEASON_NAME, COMPETITION_NAME)
-	VALUES ('21/22', 'Eredivisie')
-
-	INSERT INTO SEASON (SEASON_NAME, START_DATE, END_DATE)
-	VALUES ('21/22', DATEADD(year, -1, GETDATE()), DATEADD(year, 1, GETDATE()))
-
-	EXEC tSQLt.ApplyTrigger 'dbo.MATCH', 'TRG_NO_UPDATES_ON_CURRENT_EDITION_MATCH';
-
-	EXEC tSQLt.ApplyConstraint 'dbo.MATCH', 'FK_MATCH_MATCH_IN__MATCHDAY'
-	EXEC tSQLt.ApplyConstraint 'dbo.MATCHDAY', 'FK_MATCHDAY_MATCHDAY__ROUND'
-	EXEC tSQLt.ApplyConstraint 'dbo.ROUND', 'FK_ROUND_ROUND_IN__EDITION'
-	EXEC tSQLt.ApplyConstraint 'dbo.EDITION', 'FK_EDITION_EDITION_I_SEASON'
-
-	EXEC tSQLt.ExpectNoException;
-
-	UPDATE MATCH
-    SET BALL_POSSESSION_HOME = 50
-    WHERE HOME_CLUB_NAME = 'Ajax'
-END;
-GO
-
-EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition PASSING ON COLUMN]'
-GO
-
-CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition PASSING ON YEAR]
-AS
-BEGIN
-	EXEC tSQLt.FakeTable @TableName='dbo.MATCH';
-	EXEC tSQLt.FakeTable @TableName='dbo.MATCHDAY';
-	EXEC tSQLt.FakeTable @TableName='dbo.ROUND';
-	EXEC tSQLt.FakeTable @TableName='dbo.EDITION';
-	EXEC tSQLt.FakeTable @TableName='dbo.SEASON';
-
-	INSERT INTO MATCH (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY, HOME_CLUB_NAME, BALL_POSSESSION_HOME)
-	VALUES ('25/26', 'Eredivisie', '02-02-2025', '02-02-2025', 'Ajax', 30)
-
-	INSERT INTO MATCHDAY (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY)
-	VALUES ('25/26', 'Eredivisie', '02-02-2025', '02-02-2025')
-
-	INSERT INTO ROUND (SEASON_NAME, COMPETITION_NAME, START_DATE)
-	VALUES ('25/26', 'Eredivisie', '02-02-2025')
-
-	INSERT INTO EDITION (SEASON_NAME, COMPETITION_NAME)
-	VALUES ('25/26', 'Eredivisie')
-
-	INSERT INTO SEASON (SEASON_NAME, START_DATE, END_DATE)
-	VALUES ('25/26', '01-01-2025', '01-01-2026')
-
-	EXEC tSQLt.ApplyTrigger 'dbo.MATCH', 'TRG_NO_UPDATES_ON_CURRENT_EDITION_MATCH';
-
-	EXEC tSQLt.ApplyConstraint 'dbo.MATCH', 'FK_MATCH_MATCH_IN__MATCHDAY'
-	EXEC tSQLt.ApplyConstraint 'dbo.MATCHDAY', 'FK_MATCHDAY_MATCHDAY__ROUND'
-	EXEC tSQLt.ApplyConstraint 'dbo.ROUND', 'FK_ROUND_ROUND_IN__EDITION'
-	EXEC tSQLt.ApplyConstraint 'dbo.EDITION', 'FK_EDITION_EDITION_I_SEASON'
-
-	EXEC tSQLt.ExpectNoException;
-
-	UPDATE MATCH
-    SET BALL_POSSESSION_HOME = 50
-    WHERE HOME_CLUB_NAME = 'Ajax'
-END;
-GO
-
-EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition PASSING ON YEAR]'
-GO
-
-CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition PASSING ON YEAR]
-AS
-BEGIN
-	EXEC tSQLt.FakeTable @TableName='dbo.MATCH';
-	EXEC tSQLt.FakeTable @TableName='dbo.MATCHDAY';
-	EXEC tSQLt.FakeTable @TableName='dbo.ROUND';
-	EXEC tSQLt.FakeTable @TableName='dbo.EDITION';
-	EXEC tSQLt.FakeTable @TableName='dbo.SEASON';
-
 
 	INSERT INTO MATCH (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY, HOME_CLUB_NAME, STADIUM_NAME)
-	VALUES ('21/22', 'Eredivisie', '02-02-2021', '02-02-2021', 'Ajax', 'ArenA')
+	VALUES ('99/99', 'Eredivisie', '09-09-2099', '09-09-2099', 'Ajax', 'ArenA')
+
+	INSERT INTO MATCHDAY (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY)
+	VALUES ('99/99', 'Eredivisie', '09-09-2099', '09-09-2099')
+
+	INSERT INTO ROUND (SEASON_NAME, COMPETITION_NAME, START_DATE)
+	VALUES ('99/99', 'Eredivisie', '09-09-2099')
+
+	INSERT INTO EDITION (SEASON_NAME, COMPETITION_NAME)
+	VALUES ('99/99', 'Eredivisie')
+
+	INSERT INTO SEASON (SEASON_NAME, START_DATE, END_DATE)
+	VALUES ('99/99', DATEADD(year, 98, GETDATE()), DATEADD(year, 99, GETDATE()))
+
+	EXEC tSQLt.ApplyTrigger 'dbo.MATCH', 'TRG_NO_UPDATES_ON_CURRENT_EDITION_MATCH';
+
+	EXEC tSQLt.ApplyConstraint 'dbo.MATCH', 'FK_MATCH_MATCH_IN__MATCHDAY'
+	EXEC tSQLt.ApplyConstraint 'dbo.MATCHDAY', 'FK_MATCHDAY_MATCHDAY__ROUND'
+	EXEC tSQLt.ApplyConstraint 'dbo.ROUND', 'FK_ROUND_ROUND_IN__EDITION'
+	EXEC tSQLt.ApplyConstraint 'dbo.EDITION', 'FK_EDITION_EDITION_I_SEASON'
+
+	EXEC tSQLt.ExpectNoException;
+
+	UPDATE MATCH
+    SET STADIUM_NAME = 'Grolsch Veste'
+    WHERE HOME_CLUB_NAME = 'Ajax'
+END;
+GO
+
+EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition PASSING CURRENT SEASON]'
+GO
+
+CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition FAILING CURRENT SEASON]
+AS
+BEGIN
+	EXEC tSQLt.FakeTable @TableName='dbo.MATCH';
+	EXEC tSQLt.FakeTable @TableName='dbo.MATCHDAY';
+	EXEC tSQLt.FakeTable @TableName='dbo.ROUND';
+	EXEC tSQLt.FakeTable @TableName='dbo.EDITION';
+	EXEC tSQLt.FakeTable @TableName='dbo.SEASON';
+
+	INSERT INTO MATCH (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY, HOME_CLUB_NAME, STADIUM_NAME)
+	VALUES ('22/23', 'Eredivisie', '02-02-2022', '02-02-2022', 'Ajax', 'ArenA')
+
+	INSERT INTO MATCHDAY (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY)
+	VALUES ('22/23', 'Eredivisie', '02-02-2022', '02-02-2022')
+
+	INSERT INTO ROUND (SEASON_NAME, COMPETITION_NAME, START_DATE)
+	VALUES ('22/23', 'Eredivisie', '02-02-2022')
+
+	INSERT INTO EDITION (SEASON_NAME, COMPETITION_NAME)
+	VALUES ('22/23', 'Eredivisie')
+
+	INSERT INTO SEASON (SEASON_NAME, START_DATE, END_DATE)
+	VALUES ('22/23', DATEADD(year, -1, GETDATE()), DATEADD(year, 1, GETDATE()))
+
+	EXEC tSQLt.ApplyTrigger 'dbo.MATCH', 'TRG_NO_UPDATES_ON_CURRENT_EDITION_MATCH';
+
+	EXEC tSQLt.ApplyConstraint 'dbo.MATCH', 'FK_MATCH_MATCH_IN__MATCHDAY'
+	EXEC tSQLt.ApplyConstraint 'dbo.MATCHDAY', 'FK_MATCHDAY_MATCHDAY__ROUND'
+	EXEC tSQLt.ApplyConstraint 'dbo.ROUND', 'FK_ROUND_ROUND_IN__EDITION'
+	EXEC tSQLt.ApplyConstraint 'dbo.EDITION', 'FK_EDITION_EDITION_I_SEASON'
+
+	EXEC tSQLt.ExpectException;
+
+	UPDATE MATCH
+    SET STADIUM_NAME = 'Grolsch Veste'
+    WHERE HOME_CLUB_NAME = 'Ajax'
+END;
+GO
+
+EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition FAILING CURRENT SEASON]'
+GO
+
+CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition PASSING ALTERABLE COLUMN]
+AS
+BEGIN
+	EXEC tSQLt.FakeTable @TableName='dbo.MATCH';
+	EXEC tSQLt.FakeTable @TableName='dbo.MATCHDAY';
+	EXEC tSQLt.FakeTable @TableName='dbo.ROUND';
+	EXEC tSQLt.FakeTable @TableName='dbo.EDITION';
+	EXEC tSQLt.FakeTable @TableName='dbo.SEASON';
+
+
+	INSERT INTO MATCH (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY, HOME_CLUB_NAME, BALL_POSSESSION_HOME)
+	VALUES ('21/22', 'Eredivisie', '02-02-2021', '02-02-2021', 'Ajax', null)
 
 	INSERT INTO MATCHDAY (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY)
 	VALUES ('21/22', 'Eredivisie', '02-02-2021', '02-02-2021')
@@ -233,15 +233,15 @@ BEGIN
 	EXEC tSQLt.ApplyConstraint 'dbo.ROUND', 'FK_ROUND_ROUND_IN__EDITION'
 	EXEC tSQLt.ApplyConstraint 'dbo.EDITION', 'FK_EDITION_EDITION_I_SEASON'
 
-	EXEC tSQLt.ExpectException;
+	EXEC tSQLt.ExpectNoException;
 
 	UPDATE MATCH
-    SET STADIUM_NAME = 'Kuip'
+    SET BALL_POSSESSION_HOME = 50
     WHERE HOME_CLUB_NAME = 'Ajax'
 END;
 GO
 
-EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition PASSING ON YEAR]'
+EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition PASSING ALTERABLE COLUMN]'
 GO
 
 CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in COMPETITION during a current edition FAILING]
