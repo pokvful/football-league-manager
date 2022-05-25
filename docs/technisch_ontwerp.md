@@ -130,7 +130,9 @@ Docker Compose is een applicatie om gemakkelijk meerdere containers mee op te st
 
 Om gebruik te maken van Docker Compose wordt het volgende commando gedraait in de root directory (`/football-league-manager`) van het project: 
 
-`docker-compose up --build --force-recreate -d`
+```bash
+docker-compose up --build --force-recreate -d
+```
 
 ## Gebruik van Docker
 
