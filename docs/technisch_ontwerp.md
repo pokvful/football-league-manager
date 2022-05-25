@@ -126,7 +126,7 @@ Binnen de SQL Server container draait een Microsoft SQL Server 2018 Server image
 
 ## Docker Compose
 
-Docker Compose is een applicatie om gemakkelijk meerdere containers mee op te starten. Dit bestand is te vinden onder `docker-compose.yml`.
+Docker Compose is een applicatie om gemakkelijk meerdere containers mee op te starten. Dit bestand is te vinden onder `docker-compose.yaml`.
 
 Om gebruik te maken van Docker Compose wordt het volgende commando gedraait in de root directory (`/football-league-manager`) van het project: 
 
