@@ -1,3 +1,5 @@
+# ***Disclaimer*** | De lay-out van de PDF-versie voor dit document kan verschillen met de markdown versie, voor een accurate weergave zie markdown bestand in [bitbucket](https://isebitbucket.aimsites.nl/projects/S22122A4/repos/football-league-manager/browse/docs).
+
 # Definition of Done
 
 Voor alle SQL code die geschreven wordt tijdens de realisatie van de database van de applicatie wordt de SQL style guide van GitLab aangehouden (style guide, GitLab team).
