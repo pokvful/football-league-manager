@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-=======
-# ***Disclaimer*** | De lay-out van de PDF-versie voor dit document kan verschillen met de markdown versie, voor een accurate weergave zie markdown bestand in [bitbucket](https://isebitbucket.aimsites.nl/projects/S22122A4/repos/football-league-manager/browse/docs).
-
-- [Testplan](#testplan)
-	- [Inleiding](#inleiding)
-	- [Wanneer worden er testen geschreven](#wanneer-worden-er-testen-geschreven)
-	- [Benodigdheden](#benodigdheden)
-	- [Hoe worden de testen geschreven.](#hoe-worden-de-testen-geschreven)
-	- [Waarover worden de testen geschreven](#waarover-worden-de-testen-geschreven)
-	- [Achteraf](#achteraf)
-
-# Testplan
-
->>>>>>> 58dcb653d82088b4ebd0407cb2628f7b25bcd885
 Aanleiding (Waarom)
 
 Aanpak (Hoe)
@@ -22,6 +7,7 @@ Benodigde mensen en middelen (Wie en wat)
 Benodigde tijd (planning) (Wat)
 
 Op te leveren producten (Wat)
+
 # Testplan
 
 - [Testplan](#testplan)
@@ -32,7 +18,8 @@ Op te leveren producten (Wat)
 	- [Benodigdheden](#benodigdheden)
 	- [Hoe worden de testen geschreven.](#hoe-worden-de-testen-geschreven)
 	- [Waarover worden de testen geschreven](#waarover-worden-de-testen-geschreven)
-	- [Achteraf](#achteraf)
+	- [schema](#schema)
+	- [Test volledigheid](#Test-volledigheid)
 
 ## Inleiding
 
@@ -46,6 +33,23 @@ Deze unit tests worden geschreven voor iedere Stored Procedure, Trigger en Check
 Deze testen worden gemaakt nadat de code zelf is geschreven om de code te testen.
 
 Daarnaast worden er testen geschreven voor de security of dat de aangemaakte de rollen de rechten hebben die zijn afgesproken.
+
+## Waarover worden de testen geschreven
+
+Er worden bij de test zoveel mogelijke verschillende succes en faal scenario's behandeld.
+
+Hierbij wordt rekening gehouden met de randvoorwaarden.
+
+Als voorbeeld met de check: leeftijd > 18
+
+- Een succes test is dit checken met leeftijd = 19.
+- Een faal test is dit checken met leeftijd = 18.
+
+Er wordt gecontroleerd of de afgesproken errors gegooid worden wanneer ze moeten, daarbij ook dat ze niet erroren wanneer het niet moet.
+
+Als er waardes worden aangepast wordt er gecontroleerd of de aanpassingen die moeten gebeuren juist worden uitgevoerd (dat niet teveel gegevens worden aangepast).
+
+Als er waardes worden teruggegeven dan wordt gecontroleerd of die correct zijn.
 
 ## Wat er getest wordt
 
@@ -85,8 +89,8 @@ Voor het schrijven van de testen wordt het tSQLt framework gebruik.
 |No.|Resources|Descriptions|
 |--|--|--|
 |1.|Server|De Database server met MySQL server en MongoDB.|
-|2.|Test tool|tSQLt.RunTestClass|
-|3.|Netwerk|local|
+|2.|Test tool|tSQLt.NewTestClass om een test tabel aan te maken en tSQLt.RunTestClass om de onderdelen te testen|
+|3.|Netwerk|Alle testen worden lokaal getest|
 |4.|Computer|Op zijn minst een computer met Windows 7, Ram 2GB, CPU 3.4GHZ|
 
 ## Hoe worden de testen geschreven.
@@ -123,23 +127,17 @@ BEGIN
 END
 ```
 
-## Waarover worden de testen geschreven
+## Schema
+Per IR worden ook meteen te testen gemaakt. Er wordt geschat dat er onggeveer 45 min voor nodig is om alle testen per IR uit te werken.
 
-Er worden bij de test zoveel mogelijke verschillende succes en faal scenario's behandeld.
-
-Hierbij wordt rekening gehouden met de randvoorwaarden.
-
-Als voorbeeld met de check: leeftijd > 18
-
-- Een succes test is dit checken met leeftijd = 19.
-- Een faal test is dit checken met leeftijd = 18.
-
-Er wordt gecontroleerd of de afgesproken errors gegooid worden wanneer ze moeten, daarbij ook dat ze niet erroren wanneer het niet moet.
-
-Als er waardes worden aangepast wordt er gecontroleerd of de aanpassingen die moeten gebeuren juist worden uitgevoerd (dat niet teveel gegevens worden aangepast).
-
-Als er waardes worden teruggegeven dan wordt gecontroleerd of die correct zijn.
+|Opdracht|uitvoeren|Geschatten tijd|
+|-------|----|-----------|
+|Testen maken|alle A4 leden|675 min|
+|Teste controlleren|twee A4 leden|300 min|
+|Testen uitvoeren|Tester|60 min|
+|Test raport maken|Tester|120 min|
+|Totaal||19 uur 15 min (1155 min)|
 
 ## Test volledigheid
 
-Nadat de code is getest met behulp van de geschreven unit tests en een slagings percentage van 100% heeft behaald. Worden de tests gereviewed en gecontrolleerd of de defintion of done. Als de tests worden goed gekeurd wordt in het testrapport het bewijs van het slagen van de tests neergezet met de datum.
+Nadat de code is getest met behulp van de geschreven unit tests en een slagings percentage van 100% heeft behaald. Worden de tests gereviewed en gecontrolleerd of de defintion of done. Als de tests worden goed gekeurd wordt in het testrapport het bewijs van het slagen van de tests neergezet met de datum en is de test report opgeleverd. 
