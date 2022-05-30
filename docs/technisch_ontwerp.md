@@ -411,7 +411,9 @@ Spelers kunnen 4 posities hebben, namelijk: KEEPER, DEFENDER, MIDFIELDER en ATTA
 
 De startposities van spelers worden vastgeleged in de LINE-UP tabel.
 
-De posities van wissels worden meegeven in de SUBSTITUTION-event onder de kolom in_position.
+De posities van wissels worden meegeven in de SUBSTITUTION-event binnen de kolom in_position. Wanneer spelers tijdens een wedstrijd van positie wissellen wordt dit aangegeven met een SUBSTITUTION op hunzelf, de nieuwe positie komt dan in de in_position te staan.
+
+
 
 
 
