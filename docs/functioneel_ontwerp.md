@@ -1049,13 +1049,9 @@ Als je geen ID gebruikt zou je er bijvoorbeeld voor kunnen kiezen om een First_n
 ## Person_type
 
 Personen binnen ons systeem behoren tot een van de volgende drie typen: COACH, PLAYER of REFEREE. Om dit aan te geven hebben we ervoor gekozen om inheritance te gebruiken, personen zijn daadwerkelijk een van de drie typen.
-Een 
-
-We hebben ervoor gekozen om personen middels inheritance daadwerkelijk een COACH, PLAYER of REFEREE te maken. 
-
-## Entiteit: Event
-
-Voor de verschillende events (rode kaart, gele kaart, wissel, doelpunt) die tijdens een voetbalwedstrijd plaatsvinden is de entiteit Event bedacht. Deze events zijn als subtype gekoppeld aan Event, zodat elke event gekoppeld kan worden aan een speler met daarbij de minuut waarin het is gebeurd. Hierdoor is het mogelijk om specifieke data op te halen voor spelers.
+We hadden er ook voor kunnen kiezen person_type een attribuut van person te maken, echter kom je dan in de knoop met relaties en attributen.
+Zo zijn COACHES en PLAYERS verbonden aan een CLUB, maar REFEREES niet.Ook hebben PLAYERS een rugnummer, COACHES en REFEREES hebben dit niet.
+Door inheritance te gebruiken kun je al deze typen personen hun eigen relaties en attributen geven.
 
 ## Entiteit: Position
 
