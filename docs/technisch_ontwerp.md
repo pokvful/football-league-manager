@@ -630,9 +630,9 @@ db.MOCK_DATA.find({}, { id: 1, first_name: 1, email: 1, gender: 1, ip_address: 1
 | PROC_ADD_MATCHES_TO_MATCHDAY               | competition_name, season_name, date, games, club_pairs_table, start                                 | Toevoegen van match aan een matchday.                                                                               | N.V.T.                                                                                                                                                                                                                                                                                                                                                 |
 | PROC_GENERATE_ROUND_ROBIN_TOURNAMENT_TABLE | club_names_table                                                                                    | Aanmaken van tournament door middel van een tabel met daarin club namen. Deze tabel wordt meegegeven als parameter. | N.V.T.                                                                                                                                                                                                                                                                                                                                                 |
 | PROC_START_NEW_EDITION                     | competition_name, season_name, club_names_table, date, length, games, amount_of_matchdays_per_round | Starten van een nieuwe editie.                                                                                      | N.V.T.                                                                                                                                                                                                                                                                                                                                                 |
-| PROC_INSERT_NEW_COACH                      | country_name, first_name, last_name, middle_name, birth_date                                        | Toevoegen van coach.                                                                                                | N.V.T.
-| PROC_INSERT_NEW_REFEREE                    | country_name, first_name, last_name, middle_name, birth_date                                        | Toevoegen van scheidsrechter.                                                                                       | N.V.T.
-| PROC_INSERT_NEW_PLAYER                     | country_name, first_name, last_name, middle_name, birth_date, club_name, jersey_number              | Toevoegen van speler.                                                                                               | N.V.T.
+| PROC_INSERT_NEW_COACH                      | country_name, first_name, last_name, middle_name, birth_date                                        | Toevoegen van nieuwe een nieuwe coach.                                                                                               | N.V.T.
+| PROC_INSERT_NEW_REFEREE                    | country_name, first_name, last_name, middle_name, birth_date                                        | Toevoegen van een nieuwe scheidsrechter.                                                                                      | N.V.T.
+| PROC_INSERT_NEW_PLAYER                     | country_name, first_name, last_name, middle_name, birth_date, club_name, jersey_number              | Toevoegen van een nieuwe speler.                                                                                           | N.V.T.
 
 ### Koppeling stored procedures met use cases
 
@@ -668,3 +668,10 @@ db.MOCK_DATA.find({}, { id: 1, first_name: 1, email: 1, gender: 1, ip_address: 1
 | Ophalen clubinfo               | VW_SHOW_CLUB_INFO                          |
 
 
+### Waarom maken wij gebruik van stored procedures?
+
+#### Functioneel
+Er zijn twee grote functionele redenen waarom wij hebben gekozen om stored procedures te gebruiken. De eerste reden is omdat bepaalde acties van gebruikers vaak moeten worden herhaald. Bijvoorbeeld het aanmaken van spelers, hiervoor is het dus handig om een stored procedure te gebruiken. Dit gaat hand in hand met de tweede reden: gebruikersgemak. Het is gemakkelijker en sneller voor een gebruiker om een stored procedure aan te roepen i.p.v. steeds een insert statement uit te schrijven voor het toevoegen van spelers.
+
+#### Technisch
+Een technische reden waarom wij hebben gekozen voor het gebruik van stored procedures is dat het execution plan van een stored procedure wordt opgeslagen in de SQL server omgeving. Acties die dus vaak herhaald worden, worden hierdoor sneller omdat de server voorheen al de exeuction plan heeft opgeslagen.
