@@ -25,8 +25,8 @@ Het functioneel ontwerp moet voldoen aan een aantal punten:
 - Alle verwoordingen sluiten aan op het domein van de opdrachtgever en zijn relevant aan de te realiseren database;
 - Alle feittypen sluiten aan op het domein van de opdrachtgever en de bijbehorende verwoording(en);
 - Wanneer twee of meer entiteiten van de feittypen een relatie tussen elkaar hebben, wordt deze aangegeven met een bijpassende naam;
-- Wanneer een business rule wordt aangemaakt heeft deze een nummer gekregen (b.v. BR12), zodat er makkelijk naar de Business Rule verwezen kan worden;
-- Bij elke verwoording is gekeken of bepaalde dingen weggelaten kunnen worden, zonder dat er nuttige informatie verloren gaat. Als dit zo is, kunnen deze verwijdert worden;
+- Wanneer een business rule wordt aangemaakt krijgt deze een nummer(b.v. BR12), zodat er makkelijk naar de Business Rule verwezen kan worden;
+- Bij elke verwoording is gekeken of elementen weggelaten kunnen worden zonder dat er nuttige informatie verloren gaat. Hierdoor blijven de verwoordingen bij de kern en leesbaar.
 - Alle functionele requirements zijn geprioriteerd met [MoSCoW](https://nl.wikipedia.org/wiki/MoSCoW-methode);
 - Voor elke business rule die niet uit het CDM kan worden afgeleid, is een constraint opgesteld;
 - Alle ontwerpkeuzes zijn behandeld in het functioneel ontwerp. Per ontwerpkeuze wordt er ingegaan op het probleem, welke mogelijke oplossingen er voor waren met hun voor- en nadelen en voor welke oplossing uiteindelijk is gekozen en waarom;
