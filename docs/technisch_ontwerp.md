@@ -398,7 +398,55 @@ Door de afhankelijkheden van match zou de orignele primary key maarliefst 6 kolo
 
 ## PERSON id
 
-Om een persoon van een daadwerkelijk van een unieke identifier te voorzien moeten niet alleen de naam en de achternaam gebruikt worden, maar ook de geboortedatum, melfs met deze waarden is er echter nog een nihiele kans dat de waardne niet uniek zijn. Daarnaast wordt de primary key van Person in maar liefst 3 andere tabellen gebruikt. Om deze redenen is ervoor gekozen om Person een uniek ID te geven.
+Om een persoon van een daadwerkelijk van een unieke identifier te voorzien moeten niet alleen de naam en de achternaam gebruikt worden, maar ook de geboortedatum, melfs met deze waarden is er echter nog een nihiele kans dat de waarden niet uniek zijn. Daarnaast wordt de primary key van Person in maar liefst 3 andere tabellen gebruikt. Om deze redenen is ervoor gekozen om Person een uniek ID te geven.
+
+## EVENT id
+
+Doordat events geen PK hebben maar wel gerefeerd moeten kunnen worden, krijgen ze een gegeneerde id. Hoewel de combinatie van minuut, persoon en type overtreding in eerste instantie een potentiële pk lijkt te zijn, voldoet deze niet. Zo is het mogelijk meerdere overtredingen tegelijkertijd te maken. \(p\-29 https://www.knvb.nl/downloads/bestand/4841/spelregels-veldvoetbal-2021-22\)
+
+##  Events
+
+Om de events te structuren bij een wedstrijd moeten er keuzes worden gemaakt. Daarbij moet er met meerdere aspecten rekening worden gehouden. 
+<br />
+<br />
+- Het moet in het tijdschema/budget passen van het development team.
+- Hoe uitbreidbaar is het voor de opdrachtgever om meer events toe te voegen.
+<br />
+<br />
+
+Een van de manieren is om voor iedere event een eigen tabel aan te maken.
+<br />
+Voordeel: Vanuit powerdesigner is het gemakkelijk te generen.
+<br />
+Nadeel: Wanneer een event wordt toegevoegd moet er niet alleen een create table script geschreven worden. Triggers, check constraints, etc. moeten ook worden overgenomen.
+<br />
+<br />
+Een andere manier is om de events op te slaan in een NoSQL database.
+
+Voordeel: Het toevoegen van nieuwe soorten events is simpeler, zeker wanneer nieuwe events meer informatie hebben.
+
+Nadeel: Veel development overhead. De gegevens staan niet in één database, maar verspreid over verschillende databases die in de staging area gecombineerd moeten worden.
+<br />
+<br />
+De laatste te behandelen manier is om een tabel te hebben van alle type events. Je hebt de parent tabel events waarin alle events worden gerigistreerd met welke type.
+Voor de types die extra informatie willen opslaan krijgen zij een eigen tabel die verwijst naar parent tabel.
+
+Voordeel: Nieuwe soorten van simpele (minuut, persoon, match) events kunnen worden toegevoegd met één insert in de type events tabel.
+
+Nadeel: Meer development tijd. Voor events die meer informatie willen opslaan moet nieuwe tabellen worden aangemaakt met triggers erop.
+<br />
+<br />
+Voor deze opdracht wordt gekozen voor de eerste optie.
+
+Een gedeelte van de nadelen gaan we verhelpen door een stored procedure te schrijven die een wrapper is om de create table.
+
+Die kan de bijbehorende foreign keys en check constraint generen.
+
+Daarbij komt ook de functionaliteit om extra kolommmen toe te voegen. (Alleen naam en type data)
+
+Als er om meer wordt gevraagd moet de cliënt zelf daarvoor zorgen.
+<br />
+<br />
 
 ## 0..22 Position
 
