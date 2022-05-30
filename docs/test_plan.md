@@ -1,13 +1,3 @@
-- [Testplan](#testplan)
-	- [Inleiding](#inleiding)
-	- [Wanneer worden er testen geschreven](#wanneer-worden-er-testen-geschreven)
-	- [Benodigdheden](#benodigdheden)
-	- [Hoe worden de testen geschreven.](#hoe-worden-de-testen-geschreven)
-	- [Waarover worden de testen geschreven](#waarover-worden-de-testen-geschreven)
-	- [Achteraf](#achteraf)
-
-# Testplan
-
 Aanleiding (Waarom)
 
 Aanpak (Hoe)
@@ -17,6 +7,17 @@ Benodigde mensen en middelen (Wie en wat)
 Benodigde tijd (planning) (Wat)
 
 Op te leveren producten (Wat)
+# Testplan
+
+- [Testplan](#testplan)
+	- [Inleiding](#inleiding)
+	- [Wanneer worden er testen geschreven](#wanneer-worden-er-testen-geschreven)
+	- [Wat er getest wordt](#Wat-er-getest-wordt)
+	- [wat niet getest wordt](#wat-niet-getest-wordt)
+	- [Benodigdheden](#benodigdheden)
+	- [Hoe worden de testen geschreven.](#hoe-worden-de-testen-geschreven)
+	- [Waarover worden de testen geschreven](#waarover-worden-de-testen-geschreven)
+	- [Achteraf](#achteraf)
 
 ## Inleiding
 
@@ -31,7 +32,7 @@ Deze testen worden gemaakt nadat de code zelf is geschreven om de code te testen
 
 Daarnaast worden er testen geschreven voor de security of dat de aangemaakte de rollen de rechten hebben die zijn afgesproken.
 
-### Wat er getest wordt
+## Wat er getest wordt
 
 Alle Integrity rules worden getest
 |*Integrity rules*|*tabel*|*Omschrijving*|
@@ -56,15 +57,22 @@ Alle Integrity rules worden getest
 |---------------|--------------|
 |NUTMEG Voetbal Admin||
 
-### wat niet getest wordt
+## wat niet getest wordt
 
--Er worden geen tests geschreven voor de HISTORY tabellen.
+-Transport script wordt niet getest.
 
 ## Benodigdheden
 
 Er is een specifieke dev-test database die de normale database nabootst.
 
 Voor het schrijven van de testen wordt het tSQLt framework gebruik.
+
+|No.|Resources|Descriptions|
+|--|--|--|
+|1.|Server|De Database server met MySQL server en MongoDB.|
+|2.|Test tool|tSQLt.RunTestClass|
+|3.|Netwerk|local|
+|4.|Computer|Op zijn minst een computer met Windows 7, Ram 2GB, CPU 3.4GHZ|
 
 ## Hoe worden de testen geschreven.
 
@@ -116,16 +124,7 @@ Er wordt gecontroleerd of de afgesproken errors gegooid worden wanneer ze moeten
 Als er waardes worden aangepast wordt er gecontroleerd of de aanpassingen die moeten gebeuren juist worden uitgevoerd (dat niet teveel gegevens worden aangepast).
 
 Als er waardes worden teruggegeven dan wordt gecontroleerd of die correct zijn.
-## Achteraf
 
-Nadat de code is getest met behulp van de geschreven unit tests worden de tests gereviewed. Als de tests worden goed gekeurd wordt in het testrapport het bewijs van het slagen van de tests neergezet met de datum.
+## Test volledigheid
 
-# Resource & Environment Needs
-## Testing Tools
-|No.|Resources|Descriptions|
-|--|--|--|
-|1.|Server|Need a Database server which install MySQL server.<br>Web server which install Apache Server|
-|2.|Test tool|Develop a Test tool which can auto generate the test result to the predefined form and automated test execution
-|3.|Network|Setup a LAN Gigabit and 1 internet line with the speed at least 5 Mb/s
-|4.|Computer|At least 4 computer run Windows 7, Ram 2GB, CPU 3.4GHZ
-
+Nadat de code is getest met behulp van de geschreven unit tests en een slagings percentage van 100% heeft behaald. Worden de tests gereviewed en gecontrolleerd of de defintion of done. Als de tests worden goed gekeurd wordt in het testrapport het bewijs van het slagen van de tests neergezet met de datum.
