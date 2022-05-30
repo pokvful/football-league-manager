@@ -1036,9 +1036,10 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 - Specificatie: Tijdens een lopende competitie mogen alleen de selecties van de clubs en de matchdays aangepast worden
 
 
-# Ontwerp keuzes
+# Ontwerpkeuzes
 
-In dit hoofdstuk gaan de verschillende ontwerp keuzes verwoord worden om het model duidelijk te krijgen. Deze specfieke keuzes staan hieronder uitgelegd.
+
+In dit hoofdstuk zijn de ontwerpkeuzes te vinden die tijdens die tijdens het opstellen CDM aan bod kwamen. Per ontwerpkeuze worden zowel de gekozen implmentatie als alternatieve implementaties omschreven 
 
 ## Entiteit: Persoon
 
