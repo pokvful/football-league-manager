@@ -1051,11 +1051,12 @@ Als je geen ID gebruikt zou je er bijvoorbeeld voor kunnen kiezen om een First_n
 Personen binnen ons systeem behoren tot een van de volgende drie typen: COACH, PLAYER of REFEREE. Om dit aan te geven hebben we ervoor gekozen om inheritance te gebruiken, personen zijn daadwerkelijk een van de drie typen.
 We hadden er ook voor kunnen kiezen person_type een attribuut van person te maken, echter kom je dan in de knoop met relaties en attributen.
 Zo zijn COACHES en PLAYERS verbonden aan een CLUB, maar REFEREES niet.Ook hebben PLAYERS een rugnummer, COACHES en REFEREES hebben dit niet.
-Door inheritance te gebruiken kun je al deze typen personen hun eigen relaties en attributen geven.
+Door inheritance te gebruiken kun je al deze typen personen hun eigen relaties en attributen geven. 
 
-## Entiteit: Position
+## Position
 
-Voor entiteit Position hebben we vier subtypes (keeper, verdediger, middenvelder, aanvaller) bedacht. Dit zorgt ervoor dat we elke Speler kunnen koppelen aan een positie. Hierdoor is het mogelijk om voor elke positie de bijhorende spelers op te halen.
+Er zijn vier soorten posities binnen ons systeem, namelijk: KEEPER, DEFENDER, MIDFIELDER en ATTACKER. We zouden ook specifiekere posities zoals Rechtervleugelverdediger, Aanvallende middelvelder en Spits kunnen vastleggen, maar met de opdrachtgever is vastgesteld dat de vier basisposities genoeg zijn.
+De posities van spelers worden per wedstrijd gekoppeld, spelers hebben dus geen (favoriete_)positie-attribuut. s
 
 ## Entiteit: Match
 
