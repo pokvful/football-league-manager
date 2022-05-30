@@ -1055,12 +1055,19 @@ Door inheritance te gebruiken kun je al deze typen personen hun eigen relaties e
 
 ## Position
 
-Er zijn vier soorten posities binnen ons systeem, namelijk: KEEPER, DEFENDER, MIDFIELDER en ATTACKER. We zouden ook specifiekere posities zoals Rechtervleugelverdediger, Aanvallende middelvelder en Spits kunnen vastleggen, maar met de opdrachtgever is vastgesteld dat de vier basisposities genoeg zijn.
-De posities van spelers worden per wedstrijd gekoppeld, spelers hebben dus geen (favoriete_)positie-attribuut. s
+Er zijn vier soorten posities binnen ons systeem, namelijk: KEEPER, DEFENDER, MIDFIELDER en ATTACKER. We zouden ook specifiekere posities zoals bijvoorbeeld Rechtervleugelverdediger, Aanvallende middelvelder en Spits kunnen vastleggen, maar met de opdrachtgever is vastgesteld dat de vier basisposities genoeg zijn.
+De posities van spelers worden per wedstrijd gekoppeld, spelers hebben dus geen (favoriete_)positie-attribuut.
 
-## Entiteit: Match
+## Matchinfo
 
-De entiteit Match bevat alle informatie (balbezit, passes, schoten, schoten op doel, passnauwkeurigheid, overtredingen en corners) over de thuis en uit clubs die tegen elkaar spelen. Hij is afhankelijk van de entiteit Club, want die bepaald wie de thuis en uit clubs zijn. Daarnaast is hij ook afhankelijk van de entiteit Matchday, want die specificeert de dag waarop de wedstrijd gespeeld wordt. Door het zo specifiek mogelijk op te slaan, is het mogelijk om data voor elke club nauwkeurig uit te lezen.
+De meeste informatie van matches wordt bijgehouden met events. Per event wordt een event_type, speler en tijdtijdstip in wedstrijd vastgelegd. Er zijn een aantal event_typen waarbij extra inforamtie bijgehouden.
+Balbezit percentages en toeschouwer aantallen worden als attributen bijghouden. 
+
+## Uibreidbaarheid competition
+
+## Matchday & Round 
+
+
 
 # Rechtenstructuur
 
