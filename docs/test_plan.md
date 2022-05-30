@@ -120,5 +120,12 @@ Als er waardes worden teruggegeven dan wordt gecontroleerd of die correct zijn.
 
 Nadat de code is getest met behulp van de geschreven unit tests worden de tests gereviewed. Als de tests worden goed gekeurd wordt in het testrapport het bewijs van het slagen van de tests neergezet met de datum.
 
-
+# Resource & Environment Needs
+## Testing Tools
+|No.|Resources|Descriptions|
+|--|--|--|
+|1.|Server|Need a Database server which install MySQL server.<br>Web server which install Apache Server|
+|2.|Test tool|Develop a Test tool which can auto generate the test result to the predefined form and automated test execution
+|3.|Network|Setup a LAN Gigabit and 1 internet line with the speed at least 5 Mb/s
+|4.|Computer|At least 4 computer run Windows 7, Ram 2GB, CPU 3.4GHZ
 
