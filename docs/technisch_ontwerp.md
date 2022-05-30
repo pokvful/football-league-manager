@@ -407,6 +407,15 @@ Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echt
 
 ## Position
 
+Spelers kunnen 4 posities hebben, namelijk: KEEPER, DEFENDER, MIDFIELDER en ATTACKER. Deze positities staan vastgelegd in de POSITION tabel.
+
+De startposities van spelers worden vastgeleged in de LINE-UP tabel.
+
+De posities van wissels worden meegeven in de SUBSTITUTION-event onder de kolom in_position.
+
+
+
+
 De startposities van spelers worden per wedstrijd vastgelegd. Wissels worden altijd als wissel opgeslagen, zelfs als zij aan spelen toe komen. Positiewisselingen tijdens de wedstrijd worden niet opgeslagen. De beperkingen met wissels en positiewisselingen komen voort uit het feit dat het minimale aantal spelers voor het starten van een wedstrijd op dit moment in de positie-tabel gecheckt wordt. Dis is des tijds op deze manier geïmplmenteerd aangezien het we niet heel bewust hebben nagedacht over implementaties die erg afwijken van het gegenereerde PDM.
 
 Hiervoor zijn echter alternatieven.
@@ -530,7 +539,7 @@ Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echt
 
 - Omschrijving: Een persoon moet een speler, coach of scheidsrechter zijn.
 - Implementatie: Een trigger `TRG_PLAYER_MUST_BE_ONE_SUBTYPE` op de tabellen `PLAYER`, `COACH` en `REFEREE`.
-
+ 
 # Toelichting Domeinen
 
 |Domein				|Datatype		|Toelichting															|
