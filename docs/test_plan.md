@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+=======
+# ***Disclaimer*** | De lay-out van de PDF-versie voor dit document kan verschillen met de markdown versie, voor een accurate weergave zie markdown bestand in [bitbucket](https://isebitbucket.aimsites.nl/projects/S22122A4/repos/football-league-manager/browse/docs).
+
+- [Testplan](#testplan)
+	- [Inleiding](#inleiding)
+	- [Wanneer worden er testen geschreven](#wanneer-worden-er-testen-geschreven)
+	- [Benodigdheden](#benodigdheden)
+	- [Hoe worden de testen geschreven.](#hoe-worden-de-testen-geschreven)
+	- [Waarover worden de testen geschreven](#waarover-worden-de-testen-geschreven)
+	- [Achteraf](#achteraf)
+
+# Testplan
+
+>>>>>>> 58dcb653d82088b4ebd0407cb2628f7b25bcd885
 Aanleiding (Waarom)
 
 Aanpak (Hoe)
