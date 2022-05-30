@@ -1041,9 +1041,17 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 In dit hoofdstuk zijn de ontwerpkeuzes te vinden die tijdens die tijdens het opstellen CDM aan bod kwamen. Per ontwerpkeuze worden zowel de gekozen implmentatie als alternatieve implementaties omschreven 
 
-## Entiteit: Persoon
+## Person_ID
 
-De entiteit Persoon heeft drie subtypes (coach, referee en player). Hier is voor gekozen zodat elk persoon in de database gekoppeld kan worden aan een type persoon. Hierdoor is het mogelijk om voor elk persoon specifieke data op te slaan.
+Personen worden in ons systeem voorzien van een uniek ID. Deze keuze is gemaakt aangezien het erg lastig is om te verzekeren dat een primary identifier op basis van de bestaande attributen ook daadwerkelijk uniek is.
+Als je geen ID gebruikt zou je er bijvoorbeeld voor kunnen kiezen om een First_name, Middle_name, Last_name en Birth_date te kunnen gebruiken. Naast dat dit nog steeds geen garantie is dat een speler daadwerkelijk uniek is, wordt de primary identifier (en daarmee later dus ook de primary key) van een persoon erg groot.
+
+## Person_type
+
+Personen binnen ons systeem behoren tot een van de volgende drie typen: COACH, PLAYER of REFEREE. Om dit aan te geven hebben we ervoor gekozen om inheritance te gebruiken, personen zijn daadwerkelijk een van de drie typen.
+Een 
+
+We hebben ervoor gekozen om personen middels inheritance daadwerkelijk een COACH, PLAYER of REFEREE te maken. 
 
 ## Entiteit: Event
 
