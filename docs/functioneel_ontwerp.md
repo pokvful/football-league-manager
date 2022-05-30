@@ -1051,6 +1051,32 @@ Voor entiteit Position hebben we vier subtypes (keeper, verdediger, middenvelder
 
 De entiteit Match bevat alle informatie (balbezit, passes, schoten, schoten op doel, passnauwkeurigheid, overtredingen en corners) over de thuis en uit clubs die tegen elkaar spelen. Hij is afhankelijk van de entiteit Club, want die bepaald wie de thuis en uit clubs zijn. Daarnaast is hij ook afhankelijk van de entiteit Matchday, want die specificeert de dag waarop de wedstrijd gespeeld wordt. Door het zo specifiek mogelijk op te slaan, is het mogelijk om data voor elke club nauwkeurig uit te lezen.
 
+## Position
+
+Posities van spelers voor en tijdens de wedstrijd kan op meerdere manieren gedaan worden. Hieronder staan er een paar met hun voor- en nadelen en wordt er toegelicht voor welke oplossing uiteindelijk gekozen is.
+
+### Alleen begin wedstrijd
+
+Een optie voor het bijhouden van de posities van spelers is een entiteit aanmaken genaamd `POSITION` waar de posities van de elf spelende spelers (per club) worden bijgehouden. De echte posities van de spelers (`KEEPER`, `DEFENDER`, `MIDFIELDER` en `ATTACKER`) worden aangemaakt als losse subtypen. De reserve spelers kunnen als relatie tussen `PLAYER` en `MATCH` bijgehouden worden.
+
+Op deze manier is het niet mogelijk om een speler op een andere positie te laten spelen (een `ATTACKER` wordt bijvoorbeeld een `DEFENDER`), want de positie van een speler staat vast aan het begin van de wedstrijd (de `POSITION` entiteit) en kan niet op een andere manier worden bijgehouden.
+
+### Positie verzameling
+
+Een andere optie voor het bijhouden van posities is in de `POSITION` entiteit bijhouden wat alle posities van alle spelers gedurende de hele wedstrijd waren. Op deze manier kunnen de verschillende posities van de spelers achterhaald worden.
+
+Een nadeel hiervan is dat er niet achterhaald kan worden welke `SUBSTITUTE` event bij welke `POSITION` hoort. Op deze manier is het niet mogelijk om er achter te komen vanaf wanneer een persoon op welke positie is gaan spelen.
+
+### Positie ook in wissel
+
+Nog een optie voor het bijhouden van posities is een combinatie van optie één en twee, alleen een groot verschil is dat de `SUBSTITUTE` event een extra kolom genaamd `Position` krijgt. Op deze manier kan er in deze kolom worden aangegeven op welke positie de persoon die er in gewisseld wordt speelt. Ook kan op deze manier een speler zelf van positie wisselen, door met zichzelf te wisselen en dan een andere positie aan te nemen in deze kolom.
+
+Met deze oplossing komt een klein probleempje omhoog, namelijk dat er heel vaak de positie wordt opgeslagen (dubbele data). Dit kan verholpen worden met een extra tabel. De `POSITION` tabel wordt hernoemd naar `LINEUP` (deze naam is logischer, omdat het alleen de begin posities van de spelers zijn) en er wordt een nieuwe tabel genaamd `POSITION` aangemaakt waar alle mogelijke posities in worden opgeslagen (`KEEPER`, `DEFENDER`, `MIDFIELDER` en `ATTACKER`). De `LINEUP` en `SUBSTITUTE` entiteiten krijgen een verwijzing naar deze tabel zodat het dubbele data probleem is opgelost.
+
+### Uiteindelijke keuze posities
+
+Omdat de laatste optie ([positie ook in wissel](#positie-ook-in-wissel)) geen nadelen heeft en een combinatie is van de andere twee opties, is dit de beste optie om te gebruiken in het systeem.
+
 # Rechtenstructuur
 
 Voor data-analisten geldt dat ze alleen SELECT / READ rechten op alle data uit de MongoDB staging area.

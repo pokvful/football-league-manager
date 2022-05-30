@@ -390,7 +390,7 @@ Voor uitleg zie FO
 |Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
 |Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
 
-# Ontwerkpeuzes
+# Ontwerpkeuzes
 
 ## MATCH id
 
@@ -399,18 +399,6 @@ Door de afhankelijkheden van match zou de orignele primary key maarliefst 6 kolo
 ## PERSON id
 
 Om een persoon van een daadwerkelijk van een unieke identifier te voorzien moeten niet alleen de naam en de achternaam gebruikt worden, maar ook de geboortedatum, melfs met deze waarden is er echter nog een nihiele kans dat de waardne niet uniek zijn. Daarnaast wordt de primary key van Person in maar liefst 3 andere tabellen gebruikt. Om deze redenen is ervoor gekozen om Person een uniek ID te geven.
-
-## Position
-
-Spelers kunnen 4 posities hebben, namelijk: KEEPER, DEFENDER, MIDFIELDER en ATTACKER. Deze positities staan vastgelegd in de POSITION tabel.
-
-De startposities van spelers worden vastgeleged in de LINE-UP tabel.
-
-De posities van wissels worden meegeven in de SUBSTITUTION-event binnen de kolom in_position. Wanneer spelers tijdens een wedstrijd van positie wissellen wordt dit aangegeven met een SUBSTITUTION op hunzelf, de nieuwe positie komt dan in de in_position te staan.
-
-Het 
-
-
 
 # Constraints
 
