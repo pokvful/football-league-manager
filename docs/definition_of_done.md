@@ -42,15 +42,14 @@ Het technisch ontwerp moet voldoen aan een aantal punten:
 
 - Non-functional requirements zijn SMART-omschreven
 
-
 - De toelichting bij het deployment diagram komt overeen met het deployment diagram;
 - Het PDM komt overeen met het CDM uit het functioneel ontwerp;
 
-
 - Alle tabellen en bijbehorende kolommen in het PDM zijn toegelicht;
 - Alle ontwerpkeuzes zijn behandeld in het technisch ontwerp. Per ontwerpkeuze wordt er ingegaan op het probleem, welke mogelijke oplossingen er voor waren met hun voor- en nadelen en voor welke oplossing uiteindelijk is gekozen en waarom;
- 
 - De integrity rules zijn terug te leiden naar de bijbehorende constraint(s) en business rule(s);
+- Alle integrity rules hebben een korte (SMART) omschrijving van de implementatie.
+- Alle integrity rules 
 - Alle domeinen uit het PDM zijn toegelicht;
 
 # Overig

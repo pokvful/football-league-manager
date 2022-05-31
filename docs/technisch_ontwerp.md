@@ -460,9 +460,6 @@ PI: Time + club_name + club_name + match_day + start_date + end_date + competiti
 - Omschrijving: Er zijn minimaal 7 spelers aan een club verbonden;
 - Implementatie: Een trigger `TRG_MINIMUM_PLAYERS_IN_CLUB` op de tabel `PLAYER`.
 
-### IR3 komt overeen met C3 en BR19;speelrondes per editie van een competitie;
-- Implementatie: Een trigger `TRG_CHECK_MAXIMUM_ROUNDS_OF_EDITION` op de tabel `ROUND`.
-
 ### IR5 komt overeen met C5 en BR17
 
 - Omschrijving: Een rugnummer van een speler moet hoger zijn dan 0 (mag niet 0 zijn) en mag niet hoger zijn dan 99 (mag wel 99 zijn);
