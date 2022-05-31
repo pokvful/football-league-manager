@@ -634,7 +634,7 @@ db.MOCK_DATA.find({}, { id: 1, first_name: 1, email: 1, gender: 1, ip_address: 1
 | PROC_INSERT_NEW_REFEREE                    | country_name, first_name, last_name, middle_name, birth_date                                        | Toevoegen van een nieuwe scheidsrechter.                                                                                      | N.V.T.
 | PROC_INSERT_NEW_PLAYER                     | country_name, first_name, last_name, middle_name, birth_date, club_name, jersey_number              | Toevoegen van een nieuwe speler.                                                                                           | N.V.T.
 
-### Koppeling stored procedures met use cases
+## Koppeling stored procedures met use cases
 
 | Use case                       | Stored procedure                           |
 |--------------------------------|--------------------------------------------|
