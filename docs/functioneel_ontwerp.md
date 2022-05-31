@@ -1039,15 +1039,15 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 # Ontwerpkeuzes
 
 
-In dit hoofdstuk zijn de ontwerpkeuzes te vinden die tijdens die tijdens het opstellen CDM aan bod kwamen. Per ontwerpkeuze worden zowel de gekozen implmentatie als alternatieve implementaties omschreven 
+In dit hoofdstuk zijn de ontwerpkeuzes te vinden die tijdens het opstellen van het CDM aan bod kwamen. Per ontwerpkeuze worden zowel de gekozen implementatie als alternatieve implementaties beschreven. 
 
 ## Person_ID
 
-Personen worden in ons systeem voorzien van een uniek ID. Deze keuze is gemaakt aangezien het erg lastig is om te verzekeren dat een primary identifier op basis van de bestaande attributen ook daadwerkelijk uniek is. Als je geen ID gebruikt zou je er bijvoorbeeld voor kunnen kiezen om een First_name, Middle_name, Last_name en Birth_date te kunnen gebruiken. Echter verzeker je hiermee nog steeds niet daadwerkelijk een unieke waarde.
+Personen worden in het systeem voorzien van een uniek ID. Deze keuze is gemaakt aangezien het erg lastig is om te verzekeren dat een primary identifier op basis van de bestaande attributen ook daadwerkelijk uniek is. Wanneer je geen ID gebruikt zou je er bijvoorbeeld voor kunnen kiezen om een First_name, Middle_name, Last_name en Birth_date te kunnen gebruiken. Echter verzeker je hiermee nog steeds niet daadwerkelijk een unieke waarde.
 
 ## Person_type
 
-Personen binnen ons systeem behoren tot een van de volgende drie typen: COACH, PLAYER of REFEREE. Om dit aan te geven hebben we ervoor gekozen om inheritance te gebruiken, personen zijn daadwerkelijk een van de drie typen. We hadden er ook voor kunnen kiezen person_type een attribuut van person te maken, echter kom je dan in de knoop met relaties en attributen. 
+Personen binnen het systeem behoren tot een van de volgende drie typen: COACH, PLAYER of REFEREE. Om dit aan te geven hebben we ervoor gekozen om inheritance te gebruiken, personen zijn daadwerkelijk een van de drie typen. We hadden er ook voor kunnen kiezen person_type een attribuut van person te maken, echter kom je dan in de knoop met relaties en attributen. 
 
 Zo zijn COACHES en PLAYERS verbonden aan een CLUB, maar REFEREES niet.Ook hebben PLAYERS een rugnummer, COACHES en REFEREES hebben dit niet. Door inheritance te gebruiken kun je al deze typen personen hun eigen relaties en attributen geven. 
 
