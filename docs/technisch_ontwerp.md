@@ -673,5 +673,5 @@ db.MOCK_DATA.find({}, { id: 1, first_name: 1, email: 1, gender: 1, ip_address: 1
 ### Functioneel
 Er zijn twee grote functionele redenen waarom wij hebben gekozen om stored procedures te gebruiken. De eerste reden is omdat bepaalde acties van gebruikers vaak moeten worden herhaald. Bijvoorbeeld het aanmaken van spelers, hiervoor is het dus handig om een stored procedure te gebruiken. Dit gaat hand in hand met de tweede reden: gebruikersgemak. Het is gemakkelijker en sneller voor een gebruiker om een stored procedure aan te roepen i.p.v. steeds een insert statement uit te schrijven voor het toevoegen van spelers.
 
-#### Technisch
+### Technisch
 Een technische reden waarom wij hebben gekozen voor het gebruik van stored procedures is dat het execution plan van een stored procedure wordt opgeslagen in de SQL server omgeving. Acties die dus vaak herhaald worden, worden hierdoor sneller omdat de server voorheen al de exeuction plan heeft opgeslagen.
