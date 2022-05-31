@@ -1065,9 +1065,11 @@ Balbezit percentages en toeschouwer aantallen worden als attributen bijghouden.
 
 ## Uibreidbaarheid competition
 
+Aangezien in de casus is aangegeven dat er eventueel knock-out tournaments moeten worden toegevoegd is ervoor gekozen om COMPETITION uitbreidbaar te maken. In het systeem dat wij uitgewerkt hebben erft COMPETITION alleen over van DOMESTIC_LEAGUE.
+
 ## Matchday & Round 
 
-
+We hebben ervoor gekozen om MATCHDAYS en ROUNDS als entiteiten bij te houden. Hoewel je hiermee veel afhankelijkheid -en later dus langere foreign keys- creëert, voorkom je dubelle data in je systeem.
 
 # Rechtenstructuur
 
