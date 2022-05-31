@@ -49,11 +49,11 @@ def generate_positions(matches, players): # {{{
 			player = players_home[home_index]
 
 			result_positions.append( format_sql(
-				"POSITION",
+				"LINEUP",
 				{
 					"Player_person_id": player[0],
 					"Match_id": match[0],
-					"Position_type": f"'{positions_home[home_index]}'",
+					"Position": f"'{positions_home[home_index]}'",
 				}
 			) )
 
@@ -61,11 +61,11 @@ def generate_positions(matches, players): # {{{
 			player = players_out[out_index]
 
 			result_positions.append( format_sql(
-				"POSITION",
+				"LINEUP",
 				{
 					"Player_person_id": player[0],
 					"Match_id": match[0],
-					"Position_type": f"'{positions_out[out_index]}'",
+					"Position": f"'{positions_out[out_index]}'",
 				}
 			) )
 
