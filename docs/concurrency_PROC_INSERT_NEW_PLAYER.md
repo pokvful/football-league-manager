@@ -28,12 +28,10 @@ END
 
 Op dit moment kan er een probleem ontstaan in deze procedure.
 
-Na de eerste insert wordt een person_id terug gegeven.
+Waarneer deze procedure wordt gestart zal na de eerste insert een person_id terug gegeven worden.
 
-Deze person_id wordt in de volgende insert gebruikt om een player te koppelen, maar als de person_id wordt veranderd tussendoor dan komt er een error.
+Deze person_id wordt in de volgende insert gebruikt om een player te koppelen, maar als tussendoor de person_id wordt veranderd dan komt er een error.
 
-Om dit probleem op te lossen krijgt de procedure het isolatie level `REPEATABLE READ`.
+Dit probleem kan je oplossen door de procedure het isolatie level `REPEATABLE READ` te geven, nu kan de geïnserte waarde niet worden aangepast totdat de procedure is afgelopen.
 
-Nu kan de geïnserte waarde niet worden aangepast totdat de procedure is afgelopen.
-
-De zwaardere isolatie level `SERIALIZABLE` is niet nodig, omdat andere inserts geen problemen opleveren. `SERIALIZABLE` zorgt voor een lagere performance dan `REPEATABLE READ`.
+Je had ook kunnen gaan voor de zwaardere isolatie level `SERIALIZABLE`. Maar dat is niet nodig, omdat andere inserts geen problemen opleveren en `SERIALIZABLE` zorgt voor een lagere performance dan `REPEATABLE READ`.
