@@ -13,7 +13,6 @@ Op te leveren producten (Wat)
 - [Testplan](#testplan)
 	- [Inleiding](#inleiding)
 	- [Wanneer worden er testen geschreven](#wanneer-worden-er-testen-geschreven)
-	- [Wat er getest wordt](#Wat-er-getest-wordt)
 	- [wat niet getest wordt](#wat-niet-getest-wordt)
 	- [Benodigdheden](#benodigdheden)
 	- [Hoe worden de testen geschreven.](#hoe-worden-de-testen-geschreven)
@@ -22,9 +21,8 @@ Op te leveren producten (Wat)
 	- [Test volledigheid](#Test-volledigheid)
 
 ## Inleiding
-
-Voor de opdracht besproken in het PvA moet voor de requirements (en code) testen worden geschreven om te controleren of die requirement zijn behaald.
-In dit document wordt beschreven Hoe, Wat en Waarover testen geschreven worden.
+Om te controleren of de requirements uit het FO goed geïmplementeerd zijn moeten er tests geschreven worden.
+In dit document wordt beschreven hoe, wat en waarover testen geschreven worden.
 
 ## Wanneer worden er testen geschreven
 
@@ -36,45 +34,19 @@ Daarnaast worden er testen geschreven voor de security of dat de aangemaakte de 
 
 ## Waarover worden de testen geschreven
 
-Er worden bij de test zoveel mogelijke verschillende succes en faal scenario's behandeld.
-
-Hierbij wordt rekening gehouden met de randvoorwaarden.
+Er worden bij de test minimaal een succes, faal, en edge scenario behaald
 
 Als voorbeeld met de check: leeftijd > 18
 
-- Een succes test is dit checken met leeftijd = 19.
-- Een faal test is dit checken met leeftijd = 18.
+Het successcenario moet passen wanneer de leeftijd 25 is.
+Het failurescenario moet falen wanneer de leeftijd 15 is.
+De edgecase moet falen wanneer de leeftijd 18 is.
 
 Er wordt gecontroleerd of de afgesproken errors gegooid worden wanneer ze moeten, daarbij ook dat ze niet erroren wanneer het niet moet.
 
-Als er waardes worden aangepast wordt er gecontroleerd of de aanpassingen die moeten gebeuren juist worden uitgevoerd (dat niet teveel gegevens worden aangepast).
+Als er waardes aangepast wordt, wordt er gecontroleerd of de aanpassingen juist uitgevoerd word.
 
 Als er waardes worden teruggegeven dan wordt gecontroleerd of die correct zijn.
-
-## Wat er getest wordt
-
-Alle Integrity rules worden getest
-|*Integrity rules*|*tabel*|*Omschrijving*|
-|-------|--------------|---------------|
-|IR1|POSITION|Er zijn maximaal 22 spelers aan een match verbonden (11 per club)|
-|IR2|PLAYER|Er zijn minimaal 11 spelers aan een club verbonden|
-|IR3|COACH|Een club heeft altijd precies 1 coach|
-|IR4|ROUND|Er zijn maximaal 52 speelrondes per editie van een competitie|
-|IR5|PLAYER|Een rugnummer van een speler moet hoger zijn dan 0 (mag niet 0 zijn) en mag niet hoger zijn dan 99 (mag wel 99 zijn)|
-|IR6|ROUND|De startdatum van een speelronde ligt binnen de start- en einddatum van het bijbehorende seizoen|
-|IR7|MATCHDAY|De startdatum van een speeldag moet voor de startdatum van een opvolgende speelronde zijn, maar hetzelfde of na de startdatum van de gekoppelde speelronde|
-|IR8|POSITION<BR>PLAYER_as_reserve_in_MATCH|De spelers die aan een wedstrijd zijn gekoppeld moeten lid zijn van één van de twee clubs die aan de wedstrijd meedoen|
-|IR9|MATCH|Een club mag alleen meedoen aan een wedstrijd als ze ook aan de bijbehorende editie meedoen|
-|IR10|YELLOW_CARD<BR>RED_CARD|Alleen spelers en coaches mogen een rode of gele kaart krijgen|
-|IR11|PASS<BR>GOAL<BR>SHOT<BR>FOUL<BR>CORNER<BR>SUBSTITUTE|Alleen voor spelende spelers in een wedstrijd worden het aantal schoten, het aantal passes, de wissels, de overtredingen, de corners en of de persoon heeft gescoord bijgehouden|
-|IR12|PERSON|Een persoon mag niet jonger zijn dan 15 jaar|
-|IR13|MATCH|Het aantal toeschouwers bij een wedstrijd mag niet groter zijn dan de capaciteit van het stadion waar de wedstrijd wordt gehouden|
-|IR14|RED_CARD<BR>YELLOW_CARD<BR>PASS<BR>GOAL<BR>SHOT<BR>FOUL<BR>CORNER<BR>SUBSTITUTE.|De minuut in een wedstrijd mag niet negatief zijn|
-|IR15|PLAYER<BR>COACH<BR>REFEREE|Een persoon moet een speler, coach of scheidsrechter zijn|
-
-|*Applicable Roles*|*Description*|
-|---------------|--------------|
-|NUTMEG Voetbal Admin||
 
 ## wat niet getest wordt
 
@@ -133,7 +105,7 @@ Per IR worden ook meteen te testen gemaakt. Er wordt geschat dat er onggeveer 45
 |Opdracht|uitvoeren|Geschatten tijd|
 |-------|----|-----------|
 |Testen maken|alle A4 leden|675 min|
-|Teste controlleren|twee A4 leden|300 min|
+|Testen controlleren|twee A4 leden|300 min|
 |Testen uitvoeren|Tester|60 min|
 |Test raport maken|Tester|120 min|
 |Totaal||19 uur 15 min (1155 min)|
