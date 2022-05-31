@@ -22,13 +22,16 @@ Alle geschreven unit-tests voldoen aan het opgestelde testplan (testplan, GroepA
 Het functioneel ontwerp moet voldoen aan een aantal punten:
 
 - Alle use-cases zijn door de opdrachtgever goedgekeurd en zijn relevant aan het project;
-- Alle verwoordingen sluiten aan op het domein van de opdrachtgever en zijn relevant aan de te realiseren database;
+- Alle use-cases omschrijven één actie, op één moment, door één persoon.
+- Er staat **geen** implementatie-specifieke taal in de use-cases.
 - Alle feittypen sluiten aan op het domein van de opdrachtgever en de bijbehorende verwoording(en);
+- Bij alle feittypen wordt zo veel mogelijk informatie weggelaten, mits er geen relevante informatie verloren gaat.
 - Wanneer twee of meer entiteiten van de feittypen een relatie tussen elkaar hebben, wordt deze aangegeven met een bijpassende naam;
+- Stel businessrules zo specifiek mogelijk op, voorkom onduidelijkheid.
 - Wanneer een business rule wordt aangemaakt krijgt deze een nummer(b.v. BR12), zodat er makkelijk naar de Business Rule verwezen kan worden;
-- Bij elke verwoording is gekeken of elementen weggelaten kunnen worden zonder dat er nuttige informatie verloren gaat. Hierdoor blijven de verwoordingen bij de kern en leesbaar.
-- Alle functionele requirements zijn geprioriteerd met [MoSCoW](https://nl.wikipedia.org/wiki/MoSCoW-methode);
 - Voor elke business rule die niet uit het CDM kan worden afgeleid, is een constraint opgesteld;
+- Alle functionele requirements zijn geprioriteerd met [MoSCoW](https://nl.wikipedia.org/wiki/MoSCoW-methode);
+- Functionele requirements zijn SMART opgesteld.
 - Alle ontwerpkeuzes zijn behandeld in het functioneel ontwerp. Per ontwerpkeuze wordt er ingegaan op het probleem, welke mogelijke oplossingen er voor waren met hun voor- en nadelen en voor welke oplossing uiteindelijk is gekozen en waarom;
 - In de rechtenstructuur zijn alle use-cases behandeld. Per use-case is er aangegeven van welke entiteit(en) deze use-case gebruik maakt en op welke manier (**C**reate, **R**ead, **U**pdate of **I**nsert). Ook wordt er aangegeven wie dit mag (data-analist en/of admin).
 
@@ -36,11 +39,18 @@ Het functioneel ontwerp moet voldoen aan een aantal punten:
 
 Het technisch ontwerp moet voldoen aan een aantal punten:
 
+
+- Non-functional requirements zijn SMART-omschreven
+
+
 - De toelichting bij het deployment diagram komt overeen met het deployment diagram;
 - Het PDM komt overeen met het CDM uit het functioneel ontwerp;
+
+
 - Alle tabellen en bijbehorende kolommen in het PDM zijn toegelicht;
 - Alle ontwerpkeuzes zijn behandeld in het technisch ontwerp. Per ontwerpkeuze wordt er ingegaan op het probleem, welke mogelijke oplossingen er voor waren met hun voor- en nadelen en voor welke oplossing uiteindelijk is gekozen en waarom;
-- De integrity rules komen overeen met de bijbehorende constraint(s) en business rule(s);
+ 
+- De integrity rules zijn terug te leiden naar de bijbehorende constraint(s) en business rule(s);
 - Alle domeinen uit het PDM zijn toegelicht;
 
 # Overig
