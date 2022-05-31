@@ -51,6 +51,22 @@ Het technisch ontwerp moet voldoen aan een aantal punten:
 - Voor alle tabellen staan de primary keys genoteerd.
 - Het TO bevat een uitleg van hoe de staging area van van data wordt voorzien.
 
+# Testplan
+
+Het testplan moet voldoen aan een aantal punten:
+
+- Er is omschreven welke software benodigd is voor het testen
+- Voor iedere IR wordt omschreven welke scenario's minimaal uitgewerkt moeten worden
+- Er is wordt een ruwe schatting gemaakt van de tijd die benodigd is voor het implementeren van de tests
+
+# Testrapport
+
+Het testrapport moet voldoen aan een aantal punten:
+
+- De uitslagen van alle unit tests staan gedocumenteerd
+- Er is een stappenplan waarin staat hoe je de tests uitvoert
+<!--- Eventueel post/pre condities? --->
+
 # Overig
 
 Lokale functienamen, domeinfuncties en overige functies zijn zo kort en beschrijvend mogelijk.
