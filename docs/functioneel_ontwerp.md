@@ -1021,35 +1021,55 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 - Betreft: ET `PERSON`, Att `Birth_date`;
 - Specificatie: Een peroon binnen het systeem mag niet jonger zijn dan 15 jaar oud.
 
-#### C13 komt overeen met BR21
+### C13 komt overeen met BR21
 
 - Betreft: ET `MATCH` en ET `STADIUM`, Att `Capacity`;
 - Specificatie: Het aantal toeschouwers mag niet groter zijn dan de capaciteit van het stadion waar de wedstrijd wordt gehouden.
 
-#### C14 komt overeen met BR22
+### C14 komt overeen met BR22
 
 - Betreft: De Att `Time` van de entiteiten ET `RED_CARD`, ET `YELLOW_CARD`, ET `PASS`, ET `GOAL`, ET `SHOT`, ET `FOUL`, ET `CORNER` en ET `SUBSTITUTE`;
 - Specificatie: De minuut in een wedstrijd mag niet negatief zijn.
 
-# Ontwerp keuzes
+### C15 komt overeen met BR1
+- Betreft: ET `EDITITE`, ET `CLUB`, ET `PLAYER` en de Att `Match_day`van de ET `MATCHDAY`;
+- Specificatie: Tijdens een lopende competitie mogen alleen de selecties van de clubs en de matchdays aangepast worden
 
-In dit hoofdstuk gaan de verschillende ontwerp keuzes verwoord worden om het model duidelijk te krijgen. Deze specfieke keuzes staan hieronder uitgelegd.
 
-## Entiteit: Persoon
+# Ontwerpkeuzes
 
-De entiteit Persoon heeft drie subtypes (coach, referee en player). Hier is voor gekozen zodat elk persoon in de database gekoppeld kan worden aan een type persoon. Hierdoor is het mogelijk om voor elk persoon specifieke data op te slaan.
 
-## Entiteit: Event
+In dit hoofdstuk zijn de ontwerpkeuzes te vinden die tijdens het opstellen van het CDM aan bod kwamen. Per ontwerpkeuze worden zowel de gekozen implementatie als alternatieve implementaties beschreven. 
 
-Voor de verschillende events (rode kaart, gele kaart, wissel, doelpunt) die tijdens een voetbalwedstrijd plaatsvinden is de entiteit Event bedacht. Deze events zijn als subtype gekoppeld aan Event, zodat elke event gekoppeld kan worden aan een speler met daarbij de minuut waarin het is gebeurd. Hierdoor is het mogelijk om specifieke data op te halen voor spelers.
+## Person_ID
 
-## Entiteit: Position
+Personen worden in het systeem voorzien van een uniek ID. Deze keuze is gemaakt aangezien het erg lastig is om te verzekeren dat een primary identifier op basis van de bestaande attributen ook daadwerkelijk uniek is. Wanneer je geen ID gebruikt zou je er bijvoorbeeld voor kunnen kiezen om een First_name, Middle_name, Last_name en Birth_date te kunnen gebruiken. Echter verzeker je hiermee nog steeds niet daadwerkelijk een unieke waarde.
 
-Voor entiteit Position hebben we vier subtypes (keeper, verdediger, middenvelder, aanvaller) bedacht. Dit zorgt ervoor dat we elke Speler kunnen koppelen aan een positie. Hierdoor is het mogelijk om voor elke positie de bijhorende spelers op te halen.
+## Person_type
 
-## Entiteit: Match
+Personen binnen het systeem behoren tot een van de volgende drie typen: COACH, PLAYER of REFEREE. Om dit aan te geven hebben we ervoor gekozen om inheritance te gebruiken, personen zijn daadwerkelijk een van de drie typen. We hadden er ook voor kunnen kiezen person_type een attribuut van person te maken, echter kom je dan in de knoop met relaties en attributen. 
 
-De entiteit Match bevat alle informatie (balbezit, passes, schoten, schoten op doel, passnauwkeurigheid, overtredingen en corners) over de thuis en uit clubs die tegen elkaar spelen. Hij is afhankelijk van de entiteit Club, want die bepaald wie de thuis en uit clubs zijn. Daarnaast is hij ook afhankelijk van de entiteit Matchday, want die specificeert de dag waarop de wedstrijd gespeeld wordt. Door het zo specifiek mogelijk op te slaan, is het mogelijk om data voor elke club nauwkeurig uit te lezen.
+Zo zijn COACHES en PLAYERS verbonden aan een CLUB, maar REFEREES niet.Ook hebben PLAYERS een rugnummer terwijl COACHES en REFEREES dit niet hebben. Door inheritance te gebruiken kun je al deze typen personen hun eigen relaties en attributen geven. 
+
+## Position
+
+Er zijn vier soorten posities binnen ons systeem, namelijk: KEEPER, DEFENDER, MIDFIELDER en ATTACKER. We zouden ook specifiekere posities zoals bijvoorbeeld Rechtervleugelverdediger, Aanvallende middelvelder en Spits kunnen gebruiken, maar met de opdrachtgever is vastgesteld dat de vier basisposities goed genoeg zijn.
+
+De posities van spelers worden per wedstrijd gekoppeld, spelers hebben dus geen (favoriete_)positie-attribuut.
+
+## Matchinfo
+
+De meeste informatie van matches wordt bijgehouden met events. Per event wordt een event_type, speler en tijdtijdstip in de wedstrijd vastgelegd. Er zijn een aantal event_typen waarbij extra informatie wordt  bijgehouden, zoals on_goal bij SHOT.
+
+Balbezitpercentages en toeschouweraantallen worden simpelweg als attributen van match bijgehouden aangezien uitvoerende personen en tijdstippen hierbij niet relevant zijn.
+
+## Uibreidbaarheid competition
+
+Aangezien in de opdrachtgever heeft aangegeven dat er eventueel knock-out tournaments moeten worden toegevoegd is ervoor gekozen om COMPETITION uitbreidbaar te maken. In het uitgewerkt systeem erft COMPETITION alleen over van DOMESTIC_LEAGUE en zijn er nog geen knock-out tournaments toegevoegd.
+
+## Matchday & Round 
+
+We hebben ervoor gekozen om MATCHDAYS en ROUNDS als entiteiten bij te houden. Hiermee voorkom je de dubelle data die je zou krijgen wanneer je MATCHDAY en ROUND als attributen van MATCH zou bijhouden.
 
 # Rechtenstructuur
 
