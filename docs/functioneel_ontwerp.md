@@ -1050,7 +1050,7 @@ Als je geen ID gebruikt zou je er bijvoorbeeld voor kunnen kiezen om een First_n
 
 Personen binnen ons systeem behoren tot een van de volgende drie typen: COACH, PLAYER of REFEREE. Om dit aan te geven hebben we ervoor gekozen om inheritance te gebruiken, personen zijn daadwerkelijk een van de drie typen.
 We hadden er ook voor kunnen kiezen person_type een attribuut van person te maken, echter kom je dan in de knoop met relaties en attributen.
-Zo zijn COACHES en PLAYERS verbonden aan een CLUB, maar REFEREES niet.Ook hebben PLAYERS een rugnummer, COACHES en REFEREES hebben dit niet.
+Zo zijn COACHES en PLAYERS verbonden aan een CLUB, maar REFEREES niet. Ook hebben PLAYERS een rugnummer terwijl COACHES en REFEREES dit niet hebben.
 Door inheritance te gebruiken kun je al deze typen personen hun eigen relaties en attributen geven. 
 
 ## Position
