@@ -656,7 +656,7 @@ db.MOCK_DATA.find({}, { id: 1, first_name: 1, email: 1, gender: 1, ip_address: 1
 | Toevoegen nieuw persoon        | PROC_INSERT_NEW_REFEREE                    |
 | Toevoegen nieuw persoon        | PROC_INSERT_NEW_PLAYER                     |
 
-### Koppeling stored procedures met views
+## Koppeling stored procedures met views
 
 | Use case                       | View                                       |
 |--------------------------------|--------------------------------------------|
