@@ -176,8 +176,8 @@
 |Stakeholder        |NUTMEG Voetbal Admin|
 |Preconditie        ||
 |Postconditie       |De updated clubinformatie is opgeslagen in het systeem.|
-|Brief Description  |Actor update de clubinformatie. Hieronder wordt het team, de coach, de thuisstad het stadion en de stadioncapaciteit verstaan.|
-|Happy Flow         |1.Actor geeft aan de informatie van club geüpdatet moet worden. 2.Systeem update de informatie.|
+|Brief Description  |Actor update de clubinformatie. Hieronder wordt het team, de coach, de thuisstad, het stadion en de stadioncapaciteit verstaan.|
+|Happy Flow         |1.Actor geeft aan de informatie van club geüpdatet moet worden en geeft aan nieuwe informatie, team, coach, thuisstad, stadion en stdioncapaciteit in te willen voeren. 2.Systeem update de informatie.|
 |Alternative FLow	|2A.Systeem geeft aan dat een speler/coach die moet worden toegevoegd nog bij een ander team ingeschreven staat. <br>3A. Ga terug naar stap 1.|
 
 
