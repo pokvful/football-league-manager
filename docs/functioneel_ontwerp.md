@@ -1049,7 +1049,7 @@ Personen worden in het systeem voorzien van een uniek ID. Deze keuze is gemaakt 
 
 Personen binnen het systeem behoren tot een van de volgende drie typen: COACH, PLAYER of REFEREE. Om dit aan te geven hebben we ervoor gekozen om inheritance te gebruiken, personen zijn daadwerkelijk een van de drie typen. We hadden er ook voor kunnen kiezen person_type een attribuut van person te maken, echter kom je dan in de knoop met relaties en attributen. 
 
-Zo zijn COACHES en PLAYERS verbonden aan een CLUB, maar REFEREES niet.Ook hebben PLAYERS een rugnummer, COACHES en REFEREES hebben dit niet. Door inheritance te gebruiken kun je al deze typen personen hun eigen relaties en attributen geven. 
+Zo zijn COACHES en PLAYERS verbonden aan een CLUB, maar REFEREES niet.Ook hebben PLAYERS een rugnummer terwijl COACHES en REFEREES dit niet hebben. Door inheritance te gebruiken kun je al deze typen personen hun eigen relaties en attributen geven. 
 
 ## Position
 
@@ -1059,17 +1059,17 @@ De posities van spelers worden per wedstrijd gekoppeld, spelers hebben dus geen 
 
 ## Matchinfo
 
-De meeste informatie van matches wordt bijgehouden met events. Per event wordt een event_type, speler en tijdtijdstip in wedstrijd vastgelegd. Er zijn een aantal event_typen waarbij extra inforamtie bijgehouden.
+De meeste informatie van matches wordt bijgehouden met events. Per event wordt een event_type, speler en tijdtijdstip in de wedstrijd vastgelegd. Er zijn een aantal event_typen waarbij extra informatie wordt  bijgehouden, zoals on_goal bij SHOT.
 
-Balbezitpercentages en toeschouweraantallen worden als attributen van match bijgehouden.
+Balbezitpercentages en toeschouweraantallen worden simpelweg als attributen van match bijgehouden aangezien uitvoerende personen en tijdstippen hierbij niet relevant zijn.
 
 ## Uibreidbaarheid competition
 
-Aangezien in de casus is aangegeven dat er eventueel knock-out tournaments moeten worden toegevoegd is ervoor gekozen om COMPETITION uitbreidbaar te maken. In het systeem dat wij uitgewerkt hebben erft COMPETITION alleen over van DOMESTIC_LEAGUE.
+Aangezien in de opdrachtgever heeft aangegeven dat er eventueel knock-out tournaments moeten worden toegevoegd is ervoor gekozen om COMPETITION uitbreidbaar te maken. In het uitgewerkt systeem erft COMPETITION alleen over van DOMESTIC_LEAGUE en zijn er nog geen knock-out tournaments toegevoegd.
 
 ## Matchday & Round 
 
-We hebben ervoor gekozen om MATCHDAYS en ROUNDS als entiteiten bij te houden. Hoewel je hiermee veel afhankelijkheid -en later dus langere foreign keys- creëert, voorkom je dubelle data in je systeem.
+We hebben ervoor gekozen om MATCHDAYS en ROUNDS als entiteiten bij te houden. Hiermee voorkom je de dubelle data die je zou krijgen wanneer je MATCHDAY en ROUND als attributen van MATCH zou bijhouden.
 
 # Rechtenstructuur
 
