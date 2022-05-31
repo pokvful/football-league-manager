@@ -493,79 +493,33 @@ PI: Time + club_name + club_name + match_day + start_date + end_date + competiti
 
 ## Integrity rules
 
-### IR1 komt overeen met C1 en BR12
+| Nummer | Naam                                    | Tabel                                                              | Omschrijving                                                                                                                                                                     | Komt overeen met |
+|--------|-----------------------------------------|--------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|
+| IR1    | TRG_CHECK_PLAYER_COUNT                  | POSITION                                                           | Er zijn maximaal 22 spelers aan een match verbonden (11 per club)                                                                                                                | C1 & BR12        |
+| IR2    | TRG_MINIMUM_PLAYERS_IN_CLUB             | PLAYER                                                             | Er zijn minimaal 7 spelers aan een club verbonden                                                                                                                                | C2 & BR18        |
+| IR3    | TRG_CHECK_MAXIMUM_ROUNDS_OF_EDITION     | ROUND                                                              | Er mogen binnen een editie niet meer dan 52 rondes zitten, want een editie duurt een jaar (52 weken)                                                                             | C3 & BR19        |
+| IR5    | CHK_VALID_JERSEY                        | PLAYER                                                             | Een rugnummer van een speler moet hoger zijn dan 0 (mag niet 0 zijn) en mag niet hoger zijn dan 99 (mag wel 99 zijn)                                                             | C5 & BR17        |
+| IR6    | CHK_VALID_ROUND_START_DATE              | ROUND                                                              | De startdatum van een speelronde ligt binnen de start- en einddatum van het bijbehorende seizoen                                                                                 | C6 & BR4         |
+| IR7    | TRG_CHECK_VALID_MATCHDAY_START_DATE     | MATCHDAY                                                           | De startdatum van een speeldag moet voor de startdatum van een opvolgende speelronde zijn, maar hetzelfde of na de startdatum van de gekoppelde speelronde                       | C7 & BR5         |
+| IR8    | TRG_CHECK_CORRECT_PLAYERS_IN_MATCH      | POSITION & PLAYER_as_reserve_in_MATCH                              | De spelers die aan een wedstrijd zijn gekoppeld moeten lid zijn van één van de twee clubs die aan de wedstrijd meedoen;                                                          | C8 & BR8         |
+| IR9    | TRG_CHECK_CLUB_IN_EDITION               | MATCH                                                              | Een club mag alleen meedoen aan een wedstrijd als ze ook aan de bijbehorende editie meedoen                                                                                      | C9 & BR9         |
+| IR10   | TRG_PERSON_IS_PLAYER_OR_COACH           | YELLOW_CARD & RED_CARD                                             | Alleen spelers en coaches mogen een rode of gele kaart krijgen                                                                                                                   | C10 & BR10       |
+| IR11   | TRG_PERSON_IS_PLAYER                    | PASS, GOAL, SHOT, FOUL, CORNER & SUBSTITUTE                        | Alleen voor spelende spelers in een wedstrijd worden het aantal schoten, het aantal passes, de wissels, de overtredingen, de corners en of de persoon heeft gescoord bijgehouden | C11 & BR11       |
+| IR12   | CHK_PERSON_HAS_VALID_AGE                | PERSON                                                             | Een persoon mag niet jonger zijn dan 15 jaar                                                                                                                                     | C12 & BR20       |
+| IR13   | TRG_VALID_AMOUNT_OF_SPECTATORS          | MATCH                                                              | Het aantal toeschouwers bij een wedstrijd mag niet groter zijn dan de capaciteit van het stadion waar de wedstrijd wordt gehouden                                                | C13 & BR21       |
+| IR14   | CHK_VALID_MINUTE_IN_MATCH               | RED_CARD, YELLOW_CARD, PASS, GOAL, SHOT, FOUL, CORNER & SUBSTITUTE | De minuut in een wedstrijd mag niet negatief zijn                                                                                                                                | C14 & BR22       |
+| IR15   | TRG_PLAYER_MUST_BE_ONE_SUBTYPE          | PLAYER, COACH & REFEREE                                            | Een persoon moet een speler, coach of scheidsrechter zijn                                                                                                                        | CDM, PDM & BR24  |
+| IR16   | TRG_NO_UPDATES_ON_CURRENT_EDITION_TABEL | CLUB, MATCH, SEASON, COMPETITION & CLUB_plays_in_EDITION           | Van een lopende competitie mogen alleen de selecties van clubs en de speeldata van wedstrijden aangepast worden                                                                  | C15 & BR1        |
 
-- Omschrijving: Er zijn maximaal 22 spelers aan een match verbonden (11 per club);
-- Implementatie: Een trigger `TRG_CHECK_PLAYER_COUNT` op de tabel `POSITION`.
+## Waarom maken wij gebruik van triggers?
 
-### IR2 komt overeen met C2 en BR18
+### Functioneel
 
-- Omschrijving: Er zijn minimaal 7 spelers aan een club verbonden;
-- Implementatie: Een trigger `TRG_MINIMUM_PLAYERS_IN_CLUB` op de tabel `PLAYER`.
+Het komt vaak voor dat mensen verkeerde data invoeren zonder dat ze het in de gaten hebben. Dit wil je natuurlijk niet in de database hebben. Om dit te voorkomen hebben we triggers geschreven die de ingevoerde data controleren. Mocht er iets niet correct zijn, dan wordt er een foutmelding getoont. Deze triggers gaan af bij het invoeren, updaten of verwijderen van data.
 
-### IR3 komt overeen met C3 en BR19;speelrondes per editie van een competitie;
-- Implementatie: Een trigger `TRG_CHECK_MAXIMUM_ROUNDS_OF_EDITION` op de tabel `ROUND`.
+### Technisch
 
-### IR5 komt overeen met C5 en BR17
-
-- Omschrijving: Een rugnummer van een speler moet hoger zijn dan 0 (mag niet 0 zijn) en mag niet hoger zijn dan 99 (mag wel 99 zijn);
-- Implementatie: Een check-constraint `CHK_VALID_JERSEY` op de tabel `PLAYER`.
-
-### IR6 komt overeen met C6 en BR4
-
-- Omschrijving: De startdatum van een speelronde ligt binnen de start- en einddatum van het bijbehorende seizoen;
-- Implementatie: Een check-constraint `CHK_VALID_ROUND_START_DATE` op de tabel `ROUND`. <!-- De startdatum is beschikbaar door de afhankelijkheid. Als dit wordt aangepast, moet de check een trigger worden -->
-
-### IR7 komt overeen met C7 en BR5
-
-- Omschrijving: De startdatum van een speeldag moet voor de startdatum van een opvolgende speelronde zijn, maar hetzelfde of na de startdatum van de gekoppelde speelronde;
-- Implementatie: Een trigger `TRG_CHECK_VALID_MATCHDAY_START_DATE` op de tabel `MATCHDAY`.
-
-### IR8 komt overeen met C8 en BR8
-
-- Omschrijving: De spelers die aan een wedstrijd zijn gekoppeld moeten lid zijn van één van de twee clubs die aan de wedstrijd meedoen;
-- Implementatie: Een trigger `TRG_CHECK_CORRECT_PLAYERS_IN_MATCH` op de tabel `POSITION` en `PLAYER_as_reserve_in_MATCH`.
-
-### IR9 komt overeen met C9 en BR9
-
-- Omschrijving: Een club mag alleen meedoen aan een wedstrijd als ze ook aan de bijbehorende editie meedoen;
-- Implementatie: Een trigger `TRG_CHECK_CLUB_IN_EDITION` op de tabel `MATCH`.
-
-### IR10 komt overeen met C10 en BR10
-
-- Omschrijving: Alleen spelers en coaches mogen een rode of gele kaart krijgen;
-- Implementatie: Een trigger `TRG_PERSON_IS_PLAYER_OR_COACH` op de tabellen `YELLOW_CARD` en `RED_CARD`.
-
-### IR11 komt overeen met C11 en BR11
-
-- Omschrijving: Alleen voor spelende spelers in een wedstrijd worden het aantal schoten, het aantal passes, de wissels, de overtredingen, de corners en of de persoon heeft gescoord bijgehouden;
-- Implementatie: Een trigger `TRG_PERSON_IS_PLAYER` op de tabellen `PASS`, `GOAL`, `SHOT`, `FOUL`, `CORNER` en `SUBSTITUTE`.
-
-### IR12 komt overeen met C12 en BR20
-
-- Omschrijving: Een persoon mag niet jonger zijn dan 15 jaar;
-- Implementatie: Een check-constraint `CHK_PERSON_HAS_VALID_AGE` op de tabel `PERSON`.
-
-## IR13 komt overeen met C13 en BR21
-
-- Omschrijving: Het aantal toeschouwers bij een wedstrijd mag niet groter zijn dan de capaciteit van het stadion waar de wedstrijd wordt gehouden;
-- Implementatie: Een trigger `TRG_VALID_AMOUNT_OF_SPECTATORS` op de tabel `MATCH`.
-
-## IR14 komt overeen met C14 en BR22
-
-- Omschrijving: De minuut in een wedstrijd mag niet negatief zijn;
-- Implementatie: Een check-constraint `CHK_VALID_MINUTE_IN_MATCH` op de tabellen `RED_CARD`, `YELLOW_CARD`, `PASS`, `GOAL`, `SHOT`, `FOUL`, `CORNER` en `SUBSTITUTE`.
-Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echter worden wedstrijden als vastgesteld en aangemaakt ver voordat de opstelling bekend zijn. Hierom hebben ervoor gekozen het ook mogelijk te 0 tot 22 spelers op te stellen. Met een trigger wordt gecheckt of er wel 22 spelers zijn opgesteld voordat de wedstrijd daadwerkelijk start.
-
-## IR15 komt overeen met diagram en BR24
-
-- Omschrijving: Een persoon moet een speler, coach of scheidsrechter zijn.
-- Implementatie: Een trigger `TRG_PLAYER_MUST_BE_ONE_SUBTYPE` op de tabellen `PLAYER`, `COACH` en `REFEREE`.
-
-## IR16 komt overeen met C15 en BR1
-
-- Omschrijving: Van een lopende competitie mogen alleen de selecties van clubs en de speeldata van wedstrijden aangepast worden
-- Implementatie: Een trigger op `TRG_NO_UPDATES_ON_CURRENT_EDITION_[TABEL]` op de tabellen `CLUB`, `MATCH`, `SEASON`, `COMPETITION` en `CLUB_plays_in_EDITION` 
+Een technische reden voor het kiezen van een trigger is dat je kan refereren naar de inserted en deleted tabel. Deze tabellen bevatten de data die wordt toegevoegd of verwijderd, waardoor het makkelijker is om controles uit te voeren. Dit had ook met een stored procedure gekund, maar dan zou je meerdere procedures moeten schrijven voor het invoeren, updaten of verwijderen van data. Dit is niet efficient waardoor triggers een betere oplossing is.
 
 # Toelichting Domeinen
 
