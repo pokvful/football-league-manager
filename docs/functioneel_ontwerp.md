@@ -1043,25 +1043,25 @@ In dit hoofdstuk zijn de ontwerpkeuzes te vinden die tijdens die tijdens het ops
 
 ## Person_ID
 
-Personen worden in ons systeem voorzien van een uniek ID. Deze keuze is gemaakt aangezien het erg lastig is om te verzekeren dat een primary identifier op basis van de bestaande attributen ook daadwerkelijk uniek is.
-Als je geen ID gebruikt zou je er bijvoorbeeld voor kunnen kiezen om een First_name, Middle_name, Last_name en Birth_date te kunnen gebruiken. Naast dat dit nog steeds geen garantie is dat een speler daadwerkelijk uniek is, wordt de primary identifier (en daarmee later dus ook de primary key) van een persoon erg groot.
+Personen worden in ons systeem voorzien van een uniek ID. Deze keuze is gemaakt aangezien het erg lastig is om te verzekeren dat een primary identifier op basis van de bestaande attributen ook daadwerkelijk uniek is. Als je geen ID gebruikt zou je er bijvoorbeeld voor kunnen kiezen om een First_name, Middle_name, Last_name en Birth_date te kunnen gebruiken. Echter verzeker je hiermee nog steeds niet daadwerkelijk een unieke waarde.
 
 ## Person_type
 
-Personen binnen ons systeem behoren tot een van de volgende drie typen: COACH, PLAYER of REFEREE. Om dit aan te geven hebben we ervoor gekozen om inheritance te gebruiken, personen zijn daadwerkelijk een van de drie typen.
-We hadden er ook voor kunnen kiezen person_type een attribuut van person te maken, echter kom je dan in de knoop met relaties en attributen.
-Zo zijn COACHES en PLAYERS verbonden aan een CLUB, maar REFEREES niet.Ook hebben PLAYERS een rugnummer, COACHES en REFEREES hebben dit niet.
-Door inheritance te gebruiken kun je al deze typen personen hun eigen relaties en attributen geven. 
+Personen binnen ons systeem behoren tot een van de volgende drie typen: COACH, PLAYER of REFEREE. Om dit aan te geven hebben we ervoor gekozen om inheritance te gebruiken, personen zijn daadwerkelijk een van de drie typen. We hadden er ook voor kunnen kiezen person_type een attribuut van person te maken, echter kom je dan in de knoop met relaties en attributen. 
+
+Zo zijn COACHES en PLAYERS verbonden aan een CLUB, maar REFEREES niet.Ook hebben PLAYERS een rugnummer, COACHES en REFEREES hebben dit niet. Door inheritance te gebruiken kun je al deze typen personen hun eigen relaties en attributen geven. 
 
 ## Position
 
-Er zijn vier soorten posities binnen ons systeem, namelijk: KEEPER, DEFENDER, MIDFIELDER en ATTACKER. We zouden ook specifiekere posities zoals bijvoorbeeld Rechtervleugelverdediger, Aanvallende middelvelder en Spits kunnen vastleggen, maar met de opdrachtgever is vastgesteld dat de vier basisposities genoeg zijn.
+Er zijn vier soorten posities binnen ons systeem, namelijk: KEEPER, DEFENDER, MIDFIELDER en ATTACKER. We zouden ook specifiekere posities zoals bijvoorbeeld Rechtervleugelverdediger, Aanvallende middelvelder en Spits kunnen gebruiken, maar met de opdrachtgever is vastgesteld dat de vier basisposities goed genoeg zijn.
+
 De posities van spelers worden per wedstrijd gekoppeld, spelers hebben dus geen (favoriete_)positie-attribuut.
 
 ## Matchinfo
 
 De meeste informatie van matches wordt bijgehouden met events. Per event wordt een event_type, speler en tijdtijdstip in wedstrijd vastgelegd. Er zijn een aantal event_typen waarbij extra inforamtie bijgehouden.
-Balbezit percentages en toeschouwer aantallen worden als attributen bijghouden. 
+
+Balbezitpercentages en toeschouweraantallen worden als attributen van match bijgehouden.
 
 ## Uibreidbaarheid competition
 
