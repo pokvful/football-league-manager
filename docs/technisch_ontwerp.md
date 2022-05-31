@@ -398,11 +398,11 @@ Door de afhankelijkheden van match zou de orignele primary key maarliefst 6 kolo
 
 ## PERSON id
 
-Om een persoon van een daadwerkelijk van een unieke identifier te voorzien moeten niet alleen de naam en de achternaam gebruikt worden, maar ook de geboortedatum, melfs met deze waarden is er echter nog een nihiele kans dat de waarden niet uniek zijn. Daarnaast wordt de primary key van Person in maar liefst 3 andere tabellen gebruikt. Om deze redenen is ervoor gekozen om Person een uniek ID te geven.
+Om een persoon van een daadwerkelijk van een unieke identifier te voorzien moeten niet alleen de naam en de achternaam gebruikt worden, maar ook de geboortedatum, zelfs met deze waarden is er echter nog een nihiele kans dat de waarden niet uniek zijn. Daarnaast wordt de primary key van Person in maar liefst 3 andere tabellen gebruikt. Om deze redenen is ervoor gekozen om Person een uniek ID te geven.
 
 ## EVENT id
 
-Doordat events geen PK hebben maar wel gerefeerd moeten kunnen worden, krijgen ze een gegeneerde id. Hoewel de combinatie van minuut, persoon en type overtreding in eerste instantie een potentiële pk lijkt te zijn, voldoet deze niet. Zo is het mogelijk meerdere overtredingen tegelijkertijd te maken. \(p\-29 https://www.knvb.nl/downloads/bestand/4841/spelregels-veldvoetbal-2021-22\)
+Doordat events geen PK hebben maar wel gerefereerd moeten kunnen worden, krijgen ze een gegenereerde id. Hoewel de combinatie van minuut, persoon en type overtreding in eerste instantie een potentiële pk lijkt te zijn, voldoet deze niet. Zo is het mogelijk meerdere overtredingen tegelijkertijd te maken. \(p\-29 https://www.knvb.nl/downloads/bestand/4841/spelregels-veldvoetbal-2021-22\)
 
 ##  Events
 
@@ -413,7 +413,7 @@ Om de events te structuren bij een wedstrijd moeten er keuzes worden gemaakt. Da
 
 ### Losse tabellen
 
-Voordeel: Vanuit powerdesigner is het gemakkelijk te generen.
+Voordeel: Vanuit powerdesigner is het gemakkelijk te genereren.
 
 Nadeel: Wanneer een event wordt toegevoegd moet er niet alleen een create table script geschreven worden. Triggers, check constraints, etc. moeten ook worden overgenomen.
 
@@ -436,7 +436,7 @@ Voor deze opdracht wordt gekozen voor de eerste optie.
 
 Een gedeelte van de nadelen gaan we verhelpen door een stored procedure te schrijven die een wrapper is om de create table.
 
-Die kan de bijbehorende foreign keys en check constraint generen.
+Die kan de bijbehorende foreign keys en check constraint genereren.
 
 Daarbij komt ook de functionaliteit om extra kolommmen toe te voegen. (Alleen naam en type data)
 
