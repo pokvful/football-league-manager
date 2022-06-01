@@ -520,6 +520,10 @@ Het komt vaak voor dat mensen verkeerde data invoeren zonder dat ze het in de ga
 
 Een technische reden voor het kiezen van een trigger is dat je kan refereren naar de inserted en deleted tabel. Deze tabellen bevatten de data die wordt toegevoegd of verwijderd, waardoor het makkelijker is om controles uit te voeren. Dit had ook met een stored procedure gekund, maar dan zou je meerdere procedures moeten schrijven voor het invoeren, updaten of verwijderen van data. Dit is niet efficient waardoor triggers een betere oplossing is.
 
+### Toelichting TRG_CHECK_PLAYER_COUNT
+
+De trigger checked op inserts en updates, op deze manier worden er bij het toevoegen van spelers ook gekeken naar de huidige hoeveelheid spelers in een club binnen een match. Zo kunnen er per club minimaal 7 spelers of maximaal 11 spelers meedoen aan een wedstrijd. Dit geldt voor zowel de thuis als uit club. (Dus minimaal 14 en max 22 in totaal per wedstrijd voor beide clubs). 
+
 # Toelichting Domeinen
 
 |Domein				|Datatype		|Toelichting															|
