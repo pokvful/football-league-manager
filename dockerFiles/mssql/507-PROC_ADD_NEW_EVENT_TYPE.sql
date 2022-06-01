@@ -19,7 +19,6 @@ GO
 -- Warning this will overwrite existings tables!
 CREATE OR ALTER PROCEDURE ADD_NEW_EVENT_TYPE(
 @newEventName varchar(MAX),
-@whichPersonTypes StringList NULL READONLY,
 @extraColumns ColumnTable NULL READONLY)
 AS
 BEGIN
