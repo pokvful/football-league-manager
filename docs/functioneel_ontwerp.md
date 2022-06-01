@@ -1036,25 +1036,66 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 - Specificatie: Tijdens een lopende competitie mogen alleen de selecties van de clubs en de matchdays aangepast worden
 
 
-# Ontwerp keuzes
+# Ontwerpkeuzes
 
-In dit hoofdstuk gaan de verschillende ontwerp keuzes verwoord worden om het model duidelijk te krijgen. Deze specfieke keuzes staan hieronder uitgelegd.
 
-## Entiteit: Persoon
+In dit hoofdstuk zijn de ontwerpkeuzes te vinden die tijdens het opstellen van het CDM aan bod kwamen. Per ontwerpkeuze worden zowel de gekozen implementatie als alternatieve implementaties beschreven. 
 
-De entiteit Persoon heeft drie subtypes (coach, referee en player). Hier is voor gekozen zodat elk persoon in de database gekoppeld kan worden aan een type persoon. Hierdoor is het mogelijk om voor elk persoon specifieke data op te slaan.
+## Person_ID
 
-## Entiteit: Event
+Personen worden in het systeem voorzien van een uniek ID. Deze keuze is gemaakt aangezien het erg lastig is om te verzekeren dat een primary identifier op basis van de bestaande attributen ook daadwerkelijk uniek is. Wanneer je geen ID gebruikt zou je er bijvoorbeeld voor kunnen kiezen om een First_name, Middle_name, Last_name en Birth_date te kunnen gebruiken. Echter verzeker je hiermee nog steeds niet daadwerkelijk een unieke waarde.
 
-Voor de verschillende events (rode kaart, gele kaart, wissel, doelpunt) die tijdens een voetbalwedstrijd plaatsvinden is de entiteit Event bedacht. Deze events zijn als subtype gekoppeld aan Event, zodat elke event gekoppeld kan worden aan een speler met daarbij de minuut waarin het is gebeurd. Hierdoor is het mogelijk om specifieke data op te halen voor spelers.
+## Person_type
 
-## Entiteit: Position
+Personen binnen het systeem behoren tot een van de volgende drie typen: COACH, PLAYER of REFEREE. Om dit aan te geven hebben we ervoor gekozen om inheritance te gebruiken, personen zijn daadwerkelijk een van de drie typen. We hadden er ook voor kunnen kiezen person_type een attribuut van person te maken, echter kom je dan in de knoop met relaties en attributen. 
 
-Voor entiteit Position hebben we vier subtypes (keeper, verdediger, middenvelder, aanvaller) bedacht. Dit zorgt ervoor dat we elke Speler kunnen koppelen aan een positie. Hierdoor is het mogelijk om voor elke positie de bijhorende spelers op te halen.
+Zo zijn COACHES en PLAYERS verbonden aan een CLUB, maar REFEREES niet.Ook hebben PLAYERS een rugnummer terwijl COACHES en REFEREES dit niet hebben. Door inheritance te gebruiken kun je al deze typen personen hun eigen relaties en attributen geven. 
 
-## Entiteit: Match
+## Position
 
-De entiteit Match bevat alle informatie (balbezit, passes, schoten, schoten op doel, passnauwkeurigheid, overtredingen en corners) over de thuis en uit clubs die tegen elkaar spelen. Hij is afhankelijk van de entiteit Club, want die bepaald wie de thuis en uit clubs zijn. Daarnaast is hij ook afhankelijk van de entiteit Matchday, want die specificeert de dag waarop de wedstrijd gespeeld wordt. Door het zo specifiek mogelijk op te slaan, is het mogelijk om data voor elke club nauwkeurig uit te lezen.
+Er zijn vier soorten posities binnen ons systeem, namelijk: KEEPER, DEFENDER, MIDFIELDER en ATTACKER. We zouden ook specifiekere posities zoals bijvoorbeeld Rechtervleugelverdediger, Aanvallende middelvelder en Spits kunnen gebruiken, maar met de opdrachtgever is vastgesteld dat de vier basisposities goed genoeg zijn.
+
+De posities van spelers worden per wedstrijd gekoppeld, spelers hebben dus geen (favoriete_)positie-attribuut.
+
+## Matchinfo
+
+De meeste informatie van matches wordt bijgehouden met events. Per event wordt een event_type, speler en tijdtijdstip in de wedstrijd vastgelegd. Er zijn een aantal event_typen waarbij extra informatie wordt  bijgehouden, zoals on_goal bij SHOT.
+
+Balbezitpercentages en toeschouweraantallen worden simpelweg als attributen van match bijgehouden aangezien uitvoerende personen en tijdstippen hierbij niet relevant zijn.
+
+## Uibreidbaarheid competition
+
+Aangezien in de opdrachtgever heeft aangegeven dat er eventueel knock-out tournaments moeten worden toegevoegd is ervoor gekozen om COMPETITION uitbreidbaar te maken. In het uitgewerkt systeem erft COMPETITION alleen over van DOMESTIC_LEAGUE en zijn er nog geen knock-out tournaments toegevoegd.
+
+## Matchday & Round 
+
+We hebben ervoor gekozen om MATCHDAYS en ROUNDS als entiteiten bij te houden. Hiermee voorkom je de dubelle data die je zou krijgen wanneer je MATCHDAY en ROUND als attributen van MATCH zou bijhouden.
+
+## Position
+
+Posities van spelers voor en tijdens de wedstrijd kan op meerdere manieren gedaan worden. Hieronder staan er een paar met hun voor- en nadelen en wordt er toegelicht voor welke oplossing uiteindelijk gekozen is.
+
+### Alleen begin wedstrijd
+
+Een optie voor het bijhouden van de posities van spelers is een entiteit aanmaken genaamd `POSITION` waar de posities van de elf spelende spelers (per club) worden bijgehouden. De echte posities van de spelers (`KEEPER`, `DEFENDER`, `MIDFIELDER` en `ATTACKER`) worden aangemaakt als losse subtypen. De reserve spelers kunnen als relatie tussen `PLAYER` en `MATCH` bijgehouden worden.
+
+Op deze manier is het niet mogelijk om een speler op een andere positie te laten spelen (een `ATTACKER` wordt bijvoorbeeld een `DEFENDER`), want de positie van een speler staat vast aan het begin van de wedstrijd (de `POSITION` entiteit) en kan niet op een andere manier worden bijgehouden.
+
+### Positie verzameling
+
+Een andere optie voor het bijhouden van posities is in de `POSITION` entiteit bijhouden wat alle posities van alle spelers gedurende de hele wedstrijd waren. Op deze manier kunnen de verschillende posities van de spelers achterhaald worden.
+
+Een nadeel hiervan is dat er niet achterhaald kan worden welke `SUBSTITUTE` event bij welke `POSITION` hoort. Op deze manier is het niet mogelijk om er achter te komen vanaf wanneer een persoon op welke positie is gaan spelen.
+
+### Positie ook in wissel
+
+Nog een optie voor het bijhouden van posities is een combinatie van optie één en twee, alleen een groot verschil is dat de `SUBSTITUTE` event een extra kolom genaamd `Position` krijgt. Op deze manier kan er in deze kolom worden aangegeven op welke positie de persoon die er in gewisseld wordt speelt. Ook kan op deze manier een speler zelf van positie wisselen, door met zichzelf te wisselen en dan een andere positie aan te nemen in deze kolom.
+
+Met deze oplossing komt een klein probleempje omhoog, namelijk dat er verschillende soorten posities gebruikt kunnen worden (bijvoorbeeld `KEEPER` en `GOALKEEPER`, deze zijn in principe hetzelfde, maar ze hebben een andere naam). Dit kan verholpen worden met een extra tabel. De `POSITION` tabel wordt hernoemd naar `LINEUP` (deze naam is logischer, omdat het alleen de begin posities van de spelers zijn) en er wordt een nieuwe tabel genaamd `POSITION` aangemaakt waar alle mogelijke posities in worden opgeslagen (`KEEPER`, `DEFENDER`, `MIDFIELDER` en `ATTACKER`). De `LINEUP` en `SUBSTITUTE` entiteiten krijgen een verwijzing naar deze tabel, wat er voor zorgt dat `LINEUP` en `SUBSTITUTE` nooit andere soorten posities kunnen hebben.
+
+### Uiteindelijke keuze posities
+
+Omdat de laatste optie ([positie ook in wissel](#positie-ook-in-wissel)) geen nadelen heeft en een combinatie is van de andere twee opties, is dit de beste optie om te gebruiken in het systeem.
 
 # Rechtenstructuur
 

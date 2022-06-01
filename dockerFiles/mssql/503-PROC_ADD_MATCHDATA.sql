@@ -124,24 +124,7 @@ BEGIN
 		THROW
 	END CATCH
 END
-GO
 
-CREATE OR ALTER PROCEDURE PROC_ADD_MATCHDATA_CORNER(
-	@match_id g_identity,
-	@time minute_in_match,
-	@person_id person_id
-)
-AS
-BEGIN
-    SET NOCOUNT ON
-	BEGIN TRY
-		INSERT INTO corner (match_id, time, person_id)
-		VALUES (@match_id, @time, @person_id);
-	END TRY
-	BEGIN CATCH
-		THROW
-	END CATCH
-END
 GO
 
 CREATE OR ALTER PROCEDURE PROC_ADD_MATCHDATA_SUBSTITUTE(

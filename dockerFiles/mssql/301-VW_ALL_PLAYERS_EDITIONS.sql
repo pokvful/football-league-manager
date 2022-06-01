@@ -6,7 +6,8 @@ CREATE OR ALTER VIEW MATCHES_INFO AS
 			(SELECT COUNT(*) FROM PASS p WHERE m.MATCH_ID = p.MATCH_ID)			AS [amount of passess],
 			(SELECT COUNT(*) FROM YELLOW_CARD yc WHERE m.MATCH_ID = yc.MATCH_ID)AS [amount of yellow cards],
 			(SELECT COUNT(*) FROM RED_CARD rc WHERE m.MATCH_ID = rc.MATCH_ID)	AS [amount of red cards],
-			(SELECT COUNT(*) FROM SHOT s WHERE m.MATCH_ID = s.MATCH_ID)			AS [amount of shots],
+			(SELECT COUNT(*) FROM SHOT s WHERE m.MATCH_ID = s.MATCH_ID AND ON_GOAL = 1)AS [amount of shots on goal],
+			(SELECT COUNT(*) FROM SHOT s WHERE m.MATCH_ID = s.MATCH_ID AND ON_GOAL = 0)AS [amount of shots not on goal],
 			(SELECT COUNT(*) FROM SUBSTITUTE sub WHERE m.MATCH_ID= sub.MATCH_ID)AS [amount of substitutions]
 	FROM MATCH m
 GO
