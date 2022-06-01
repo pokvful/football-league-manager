@@ -30,6 +30,8 @@ Het doel van dit document is een duidelijk overzicht te geven van het testproces
 | TC-3         | TEST_CHK_VALID_JERSEY.[test check jersey 100] | 1.Open file test_CHK_VALID_JERSEY.sql<br>2.Run the procedure 'test_CHK_VALID_JERSEY.[test check jersey 100]' | Zie pre-conditions TC-1                                                                                                                                           | (100)     | Systeem geeft een error       | Systeem voegd de gegevens niet toe |               | Geslaagd |
 | TC-4         | TEST_CHK_VALID_JERSEY.[test check jersey 99]  | 1.Open file test_CHK_VALID_JERSEY.sql<br>2.Run the procedure 'TEST_CHK_VALID_JERSEY.[test check jersey 99]'  | Zie pre-conditions TC-1                                                                                                                                           | (99)      | Systeem voegd de gegevens toe | Systeem geeft geen error           |               | Geslaagd |
 
+## test_CHK_VALID_MINUTE_IN_MATCH
+
 ## test_SHOW_CLUB_INFO
 
 | Test case ID | Test Case                                                                               | Test steps                                                                                                               | Pre-conditions                                                                                                                                                               | Test Data               | Post Conditions                            | Expected Results                                                                                                           | Actual Result | Status   |
@@ -37,3 +39,170 @@ Het doel van dit document is een duidelijk overzicht te geven van het testproces
 | TC-1         | test_SHOW_SELECTION_CLUB_EDITION.[test GET_SELECTION_CLUB_OF_EDITION club2 comp1 20/21] | 1.Open file test_SHOW_CLUB_INFO.sql<br>2.Run tSQLt.Run 'test_SHOW_CLUB_INFORMATION.[test proc GET_CLUB_INFORMATION]'     | 1.Database moet opgezet zijn<br>2.Database moet gegevens hebben om een read te kunnen uitvoeren.<br>3.De procedure test_SHOW_SELECTION_CLUB_EDITION.SetUp moet gerunned zijn | 'club2','comp1','20/21' | Systeem toont de gewenste club informatie. | Systeem toont tabel met de gegevens<br>(2,'first', NULL ,'last','2222-02-02'),<br>(4,'first','middle','last','2222-02-02') |               | Geslaagd |
 | TC-2         | test_SHOW_SELECTION_CLUB_EDITION.[test nonexistent club]                                | 1.Open file test_SHOW_CLUB_INFO.sql<br>2.Run the procedure test_SHOW_SELECTION_CLUB_EDITION.[test nonexistent club       | Zie pre-conditions TC-1                                                                                                                                                      | 'a','comp1','20/21'     | Systeem toont een lege tabel               | Systeem toont een lege tabel                                                                                               |               | Geslaagd |
 | TC-3         | test_SHOW_CLUB_INFORMATION.[test proc GET_CLUB_INFORMATION]                             | 1.Open file test_SHOW_CLUB_INFO.sql<br>2.Run the procedure 'test_SHOW_CLUB_INFORMATION.[test proc GET_CLUB_INFORMATION]' | Zie pre-conditions TC-1                                                                                                                                                      | 'Ajax'                  | Systeem toont de gewenste club informatie. | Systeem toond tabel met de gegevens<br>('Ajax','Amsterdam','The Netherlands','De Kuip',150000,12)                          |               | Geslaagd |
+
+
+## ALL unittest
+
+|No |Test Case Name                                                                                                                          |Dur(ms)|Result |
+|---|----------------------------------------------------------------------------------------------------------------------------------------|-------|-------|
+|1  |[test_ADD_PLAYER_CLUB].[test player added with middle name]                                                                             |     61|Success|
+|2  |[test_ADD_PLAYER_CLUB].[test player added without middle name]                                                                          |     57|Success|
+|3  |[test_ALTER_PLAYER_CLUB].[test change club and jersey]                                                                                  |     33|Success|
+|4  |[test_ALTER_PLAYER_CLUB].[test change only club]                                                                                        |     57|Success|
+|5  |[TEST_CHK_PERSON_HAS_VALID_AGE].[Test that checks if the person is at least 15 years old FAILING EDGE]                                  |     20|Success|
+|6  |[TEST_CHK_PERSON_HAS_VALID_AGE].[Test that checks if the person is at least 15 years old FAILING]                                       |     49|Success|
+|7  |[TEST_CHK_PERSON_HAS_VALID_AGE].[Test that checks if the person is at least 15 years old PASSING EDGE]                                  |    123|Success|
+|8  |[TEST_CHK_PERSON_HAS_VALID_AGE].[Test that checks if the person is at least 15 years old PASSING]                                       |     21|Success|
+|9  |[test_CHK_VALID_JERSEY].[test check jersey 0]                                                                                           |     20|Success|
+|10 |[test_CHK_VALID_JERSEY].[test check jersey 1]                                                                                           |     17|Success|
+|11 |[test_CHK_VALID_JERSEY].[test check jersey 100]                                                                                         |     33|Success|
+|12 |[test_CHK_VALID_JERSEY].[test check jersey 99]                                                                                          |     20|Success|
+|13 |[TEST_CHK_VALID_MINUTE_IN_MATCH].[TEST_CHK_VALID_MINUTE_IN_MATCH.CORNER]                                                                |     20|Success|
+|14 |[TEST_CHK_VALID_MINUTE_IN_MATCH].[TEST_CHK_VALID_MINUTE_IN_MATCH.CORNER_SUCCES]                                                         |     20|Success|
+|15 |[TEST_CHK_VALID_MINUTE_IN_MATCH].[TEST_CHK_VALID_MINUTE_IN_MATCH.FOUL]                                                                  |     20|Success|
+|16 |[TEST_CHK_VALID_MINUTE_IN_MATCH].[TEST_CHK_VALID_MINUTE_IN_MATCH.FOUL_SUCCES]                                                           |     21|Success|
+|17 |[TEST_CHK_VALID_MINUTE_IN_MATCH].[TEST_CHK_VALID_MINUTE_IN_MATCH.SUBSTITUTE]                                                            |    103|Success|
+|18 |[TEST_CHK_VALID_MINUTE_IN_MATCH].[TEST_CHK_VALID_MINUTE_IN_MATCH.SUBSTITUTE_SUCCES]                                                     |     20|Success|
+|19 |[TEST_CHK_VALID_MINUTE_IN_MATCH].[TEST_CHK_VALID_MINUTE_IN_MATCH_GOAL]                                                                  |     37|Success|
+|20 |[TEST_CHK_VALID_MINUTE_IN_MATCH].[TEST_CHK_VALID_MINUTE_IN_MATCH_GOAL_SUCCES]                                                           |     16|Success|
+|21 |[TEST_CHK_VALID_MINUTE_IN_MATCH].[TEST_CHK_VALID_MINUTE_IN_MATCH_PASS]                                                                  |     37|Success|
+|22 |[TEST_CHK_VALID_MINUTE_IN_MATCH].[TEST_CHK_VALID_MINUTE_IN_MATCH_PASS_SUCCES]                                                           |     17|Success|
+|23 |[TEST_CHK_VALID_MINUTE_IN_MATCH].[TEST_CHK_VALID_MINUTE_IN_MATCH_RED_CARD]                                                              |     21|Success|
+|24 |[TEST_CHK_VALID_MINUTE_IN_MATCH].[TEST_CHK_VALID_MINUTE_IN_MATCH_RED_CARD_SUCCES]                                                       |     21|Success|
+|25 |[TEST_CHK_VALID_MINUTE_IN_MATCH].[TEST_CHK_VALID_MINUTE_IN_MATCH_SHOT]                                                                  |     16|Success|
+|26 |[TEST_CHK_VALID_MINUTE_IN_MATCH].[TEST_CHK_VALID_MINUTE_IN_MATCH_SHOT_SUCCES]                                                           |     49|Success|
+|27 |[TEST_CHK_VALID_MINUTE_IN_MATCH].[TEST_CHK_VALID_MINUTE_IN_MATCH_YELLOW_CARD]                                                           |     20|Success|
+|28 |[TEST_CHK_VALID_MINUTE_IN_MATCH].[TEST_CHK_VALID_MINUTE_IN_MATCH_YELLOW_CARD_SUCCES]                                                    |     20|Success|
+|29 |[test_CHK_VALID_POSITION_TYPE_IN_POSITION].[test_CHK_VALID_POSITION_TYPE_IN_POSITION_ATTACKER_SUCCESS]                                  |     28|Success|
+|30 |[test_CHK_VALID_POSITION_TYPE_IN_POSITION].[test_CHK_VALID_POSITION_TYPE_IN_POSITION_DEFENDER_FAILS]                                    |     82|Success|
+|31 |[test_CHK_VALID_POSITION_TYPE_IN_POSITION].[test_CHK_VALID_POSITION_TYPE_IN_POSITION_DEFENDER_SUCCESS]                                  |     25|Success|
+|32 |[test_CHK_VALID_POSITION_TYPE_IN_POSITION].[test_CHK_VALID_POSITION_TYPE_IN_POSITION_KEEPER_SUCCESS]                                    |     25|Success|
+|33 |[test_CHK_VALID_POSITION_TYPE_IN_POSITION].[test_CHK_VALID_POSITION_TYPE_IN_POSITION_MIDFIELDER_SUCCESS]                                |     25|Success|
+|34 |[test_GET_SCORE_EDITION].[test 2 competitions]                                                                                          |    155|Success|
+|35 |[test_GET_SCORE_EDITION].[test no data thus empty view]                                                                                 |     53|Success|
+|36 |[test_GET_SCORE_EDITION].[test procedure]                                                                                               |    152|Success|
+|37 |[test_GET_SCORE_EDITION].[test view 1 edition]                                                                                          |    130|Success|
+|38 |[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in CLUB during a current edition FAILING]                  |    135|Success|
+|39 |[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in CLUB during a current edition PASSING]                  |    184|Success|
+|40 |[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in CLUB_PLAYS_IN_EDITION during a current edition FAILING] |     57|Success|
+|41 |[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in CLUB_PLAYS_IN_EDITION during a current edition PASSING] |     57|Success|
+|42 |[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in COMPETITION during a current edition FAILING]           |     53|Success|
+|43 |[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in COMPETITION during a current edition PASSING]           |    110|Success|
+|44 |[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition FAILING CURRENT SEASON]  |    135|Success|
+|45 |[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition FAILING ON UPDATE]       |    180|Success|
+|46 |[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition PASSING ALTERABLE COLUMN]|    221|Success|
+|47 |[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition PASSING CURRENT SEASON]  |    126|Success|
+|48 |[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in season during a current edition FAILING]                |     82|Success|
+|49 |[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in season during a current edition PASSING]                |     21|Success|
+|50 |[test_IR4_Max52Round].[Test that checks if the max amount of rounds in an edition is 52 FAILING]                                        |     21|Success|
+|51 |[test_IR4_Max52Round].[Test that checks if the max amount of rounds in an edition is 52 PASSING]                                        |     21|Success|
+|52 |[test_PROC_ADD_MATCHDATA].[test_PROC_ADD_MATCHDATA_Add_Corner_No_Exception]                                                             |     57|Success|
+|53 |[test_PROC_ADD_MATCHDATA].[test_PROC_ADD_MATCHDATA_Add_Foul_No_Exception]                                                               |     69|Success|
+|54 |[test_PROC_ADD_MATCHDATA].[test_PROC_ADD_MATCHDATA_Add_Goal_No_Exception]                                                               |     61|Success|
+|55 |[test_PROC_ADD_MATCHDATA].[test_PROC_ADD_MATCHDATA_Add_Pass_No_Exception]                                                               |     74|Success|
+|56 |[test_PROC_ADD_MATCHDATA].[test_PROC_ADD_MATCHDATA_Add_Red_Card_No_Exception]                                                           |     58|Success|
+|57 |[test_PROC_ADD_MATCHDATA].[test_PROC_ADD_MATCHDATA_Add_Shot_No_Exception]                                                               |     62|Success|
+|58 |[test_PROC_ADD_MATCHDATA].[test_PROC_ADD_MATCHDATA_Add_Substitute_No_Exception]                                                         |     61|Success|
+|59 |[test_PROC_ADD_MATCHDATA].[test_PROC_ADD_MATCHDATA_Add_Yellow_Card_No_Exception]                                                        |     74|Success|
+|60 |[test_PROC_INSERT_NEW_PERSON].[test_PROC_INSERT_NEW_COACH_VALID_DATA_COACH]                                                             |     61|Success|
+|61 |[test_PROC_INSERT_NEW_PERSON].[test_PROC_INSERT_NEW_PLAYER_VALID_DATA_PLAYER]                                                           |     73|Success|
+|62 |[test_PROC_INSERT_NEW_PERSON].[test_PROC_INSERT_NEW_REFEREE_VALID_DATA_REFEREE]                                                         |    106|Success|
+|63 |[test_SHOW_MATCH_INFO].[test test view]                                                                                                 |    131|Success|
+|64 |[test_SHOW_SELECTION_CLUB_EDITION].[test GET_SELECTION_CLUB_OF_EDITION club2 comp1 20/21]                                               |    147|Success|
+|65 |[test_SHOW_SELECTION_CLUB_EDITION].[test nonexistent club]                                                                              |     53|Success|
+|66 |[test_START_NEW_EDITION].[test 10 clubs 30 matchdays]                                                                                   |     94|Success|
+|67 |[test_START_NEW_EDITION].[test 10 clubs 8 rounds]                                                                                       |     45|Success|
+|68 |[test_START_NEW_EDITION].[test 10 clubs 90 matches]                                                                                     |     45|Success|
+|69 |[test_START_NEW_EDITION].[test correct EDITION made]                                                                                    |     65|Success|
+|70 |[test_START_NEW_EDITION].[test met 9 clubs 6 rounds]                                                                                    |     44|Success|
+|71 |[test_START_NEW_EDITION].[test not enough clubs]                                                                                        |     33|Success|
+|72 |[test_TOP_LIST].[test VW_TOP_LIST_CORNER returns the correct values]                                                                    |    106|Success|
+|73 |[test_TOP_LIST].[test VW_TOP_LIST_FOUL returns the correct values]                                                                      |     86|Success|
+|74 |[test_TOP_LIST].[test VW_TOP_LIST_GOAL returns the correct values]                                                                      |     70|Success|
+|75 |[test_TOP_LIST].[test VW_TOP_LIST_PASS returns the correct values]                                                                      |    102|Success|
+|76 |[test_TOP_LIST].[test VW_TOP_LIST_RED_CARD returns the correct values]                                                                  |    130|Success|
+|77 |[test_TOP_LIST].[test VW_TOP_LIST_SHOT returns the correct values]                                                                      |     70|Success|
+|78 |[test_TOP_LIST].[test VW_TOP_LIST_SUBSTITUTE returns the correct values]                                                                |     78|Success|
+|79 |[test_TOP_LIST].[test VW_TOP_LIST_YELLOW_CARD returns the correct values]                                                               |     70|Success|
+|80 |[TEST_TRG_CHECK_CLUB_IN_EDITION].[test correct home_club plays home and out_club plays out]                                             |     45|Success|
+|81 |[TEST_TRG_CHECK_CLUB_IN_EDITION].[test correct out_club plays home and home_club plays out]                                             |     41|Success|
+|82 |[TEST_TRG_CHECK_CLUB_IN_EDITION].[test error club doesn't exist]                                                                        |     41|Success|
+|83 |[TEST_TRG_CHECK_CLUB_IN_EDITION].[test error wrong season]                                                                              |     53|Success|
+|84 |[TEST_TRG_CHECK_CLUB_IN_EDITION].[test error wrong_club doesn't play in the right competition]                                          |     69|Success|
+|85 |[test_TRG_CHECK_CORRECT_PLAYERS_IN_MATCH_FOR_LINEUP].[test trigger player from home_club]                                               |     32|Success|
+|86 |[test_TRG_CHECK_CORRECT_PLAYERS_IN_MATCH_FOR_LINEUP].[test trigger player from out_club]                                                |     49|Success|
+|87 |[test_TRG_CHECK_CORRECT_PLAYERS_IN_MATCH_FOR_LINEUP].[test trigger player not from a club]                                              |     49|Success|
+|88 |[test_TRG_CHECK_CORRECT_PLAYERS_IN_MATCH_FOR_LINEUP].[test trigger player not from right club]                                          |     37|Success|
+|89 |[test_TRG_CHECK_CORRECT_PLAYERS_IN_MATCH_FOR_PLAYER_AS_RESERVE_IN_MATCH].[test trigger player from home_club]                           |     70|Success|
+|90 |[test_TRG_CHECK_CORRECT_PLAYERS_IN_MATCH_FOR_PLAYER_AS_RESERVE_IN_MATCH].[test trigger player from out_club]                            |     45|Success|
+|91 |[test_TRG_CHECK_CORRECT_PLAYERS_IN_MATCH_FOR_PLAYER_AS_RESERVE_IN_MATCH].[test trigger player not from a club]                          |     33|Success|
+|92 |[test_TRG_CHECK_CORRECT_PLAYERS_IN_MATCH_FOR_PLAYER_AS_RESERVE_IN_MATCH].[test trigger player not from right club]                      |     37|Success|
+|93 |[test_TRG_CHECK_VALID_MATCHDAY_START_DATE].[test error matchday is on the startdate of next round]                                      |     29|Success|
+|94 |[test_TRG_CHECK_VALID_MATCHDAY_START_DATE].[test matchday in last round]                                                                |     49|Success|
+|95 |[test_TRG_CHECK_VALID_MATCHDAY_START_DATE].[test matchday voor de gekozen ronde]                                                        |     45|Success|
+|96 |[test_TRG_CHECK_VALID_MATCHDAY_START_DATE].[test meerdere valide matchday worden toegevoegd]                                            |     28|Success|
+|97 |[test_TRG_CHECK_VALID_MATCHDAY_START_DATE].[test works on MATCH_DAY update]                                                             |     33|Success|
+|98 |[test_TRG_CHECK_VALID_MATCHDAY_START_DATE].[test works on START_DATE update]                                                            |     86|Success|
+|99 |[test_TRG_ONE_COACH_PER_CLUB].[test_TRG_ONE_COACH_PER_CLUB_Exception]                                                                   |     21|Success|
+|100|[test_TRG_ONE_COACH_PER_CLUB].[test_TRG_ONE_COACH_PER_CLUB_NoException]                                                                 |     50|Success|
+|101|[test_TRG_PERSON_IS_PLAYER_OR_COACH_RED].[Test_Trg_Person_Is_Player_Or_Coach_Red_Player_Available_No_Exception]                         |     56|Success|
+|102|[test_TRG_PERSON_IS_PLAYER_OR_COACH_RED].[Test_Trg_Person_Is_Player_Or_Coach_Red_Player_Is_Referee_Exception]                           |     65|Success|
+|103|[test_TRG_PERSON_IS_PLAYER_OR_COACH_RED].[Test_Trg_Person_Is_Player_Or_Coach_Red_Player_Not_Available_Exception]                        |    128|Success|
+|104|[test_TRG_PERSON_IS_PLAYER_OR_COACH_YELLOW].[Test_Trg_Person_Is_Player_Or_Coach_Yellow_Player_Available_No_Exception]                   |     57|Success|
+|105|[test_TRG_PERSON_IS_PLAYER_OR_COACH_YELLOW].[Test_Trg_Person_Is_Player_Or_Coach_Yellow_Player_Is_Referee_Exception]                     |     65|Success|
+|106|[test_TRG_PERSON_IS_PLAYER_OR_COACH_YELLOW].[Test_Trg_Person_Is_Player_Or_Coach_Yellow_Player_Not_Available_Exception]                  |     94|Success|
+|107|[test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_COACH].[test coach is already player with update]                                               |     37|Success|
+|108|[test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_COACH].[test coach is already referee]                                                          |     32|Success|
+|109|[test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_COACH].[test one subtype for multiple people succes]                                            |     33|Success|
+|110|[test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_PLAYER].[test one subtype for multiple people succes]                                           |     32|Success|
+|111|[test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_PLAYER].[test player is already coach]                                                          |     45|Success|
+|112|[test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_REFEREE].[test one subtype for multiple people succes]                                          |     33|Success|
+|113|[test_TRG_PLAYER_MUST_BE_ONE_SUBTYPE_ON_REFEREE].[test referee is already player]                                                       |     32|Success|
+|114|[test_TRG_VALID_AMOUNT_OF_SPECTATORS].[test aant toeschouwers evengroot als capaciteit]                                                 |     37|Success|
+|115|[test_TRG_VALID_AMOUNT_OF_SPECTATORS].[test aant toeschouwers meer dan capaciteit]                                                      |     29|Success|
+|116|[TEST_TRG_VALID_ROUND_START_DATE].[TEST_TRG_VALID_ROUND_END_DATE_FAILS]                                                                 |     29|Success|
+|117|[TEST_TRG_VALID_ROUND_START_DATE].[TEST_TRG_VALID_ROUND_START_AND_END_DATE_SUCCESS]                                                     |     30|Success|
+|118|[TEST_TRG_VALID_ROUND_START_DATE].[TEST_TRG_VALID_ROUND_START_DATE_FAILS]                                                               |     29|Success|
+|119|[test_UPDATE_CLUB].[test all parameter null]                                                                                            |     49|Success|
+|120|[test_UPDATE_CLUB].[test give club non existing stadium]                                                                                |     66|Success|
+|121|[test_UPDATE_CLUB].[test update all information with existing stadium]                                                                  |     61|Success|
+|122|[test_VW_GET_PLAYGROUND_DATA].[test if view gives back correct data]                                                                    |     90|Success|
+|123|[testUserAuthorization].[test that the administrator can delete and update]                                                             |     28|Success|
+|124|[testUserAuthorization].[test that the administrator can read and insert]                                                               |     17|Success|
+|125|[testUserAuthorization].[test that the transport can read]                                                                              |     12|Success|
+|126|[testUserAuthorization].[test that transport can not delete and update]                                                                 |     16|Success|
+|127|[TRG_CHECK_ALL_EVENTS].[Test CORNER for more then one player played in match where both played in match, should succeed]                |    102|Success|
+|128|[TRG_CHECK_ALL_EVENTS].[Test CORNER for more then one player played in match where one doesnt exist, should failed]                     |     93|Success|
+|129|[TRG_CHECK_ALL_EVENTS].[Test CORNER only for one player played in match, should fail]                                                   |    122|Success|
+|130|[TRG_CHECK_ALL_EVENTS].[Test CORNER only for one player played in match, should succeed]                                                |     82|Success|
+|131|[TRG_CHECK_ALL_EVENTS].[test CORNER when person id is correct but match id doesnt exist, should fail]                                   |     82|Success|
+|132|[TRG_CHECK_ALL_EVENTS].[test CSUBSTITUTE_IN when person id is correct but match id doesnt exist, should fail]                           |    114|Success|
+|133|[TRG_CHECK_ALL_EVENTS].[Test FOUL for more then one player played in match where both played in match, should succeed]                  |     90|Success|
+|134|[TRG_CHECK_ALL_EVENTS].[Test FOUL for more then one player played in match where one doesnt exist, should failed]                       |     90|Success|
+|135|[TRG_CHECK_ALL_EVENTS].[Test FOUL only for one player played in match, should fail]                                                     |     82|Success|
+|136|[TRG_CHECK_ALL_EVENTS].[Test FOUL only for one player played in match, should succeed]                                                  |    102|Success|
+|137|[TRG_CHECK_ALL_EVENTS].[test FOUL when person id is correct but match id doesnt exist, should fail]                                     |     81|Success|
+|138|[TRG_CHECK_ALL_EVENTS].[Test goal for more then one player played in match where both played in match, should succeed]                  |    131|Success|
+|139|[TRG_CHECK_ALL_EVENTS].[Test goal only for one player played in match, should fail]                                                     |     98|Success|
+|140|[TRG_CHECK_ALL_EVENTS].[Test goal only for one player played in match, should succeed]                                                  |    106|Success|
+|141|[TRG_CHECK_ALL_EVENTS].[Test pass for more then one player played in match where both played in match, should succeed]                  |     98|Success|
+|142|[TRG_CHECK_ALL_EVENTS].[Test pass for more then one player played in match where one doesnt exist, should failed]                       |    159|Success|
+|143|[TRG_CHECK_ALL_EVENTS].[Test pass only for one player played in match, should fail]                                                     |    123|Success|
+|144|[TRG_CHECK_ALL_EVENTS].[Test pass only for one player played in match, should succeed]                                                  |     86|Success|
+|145|[TRG_CHECK_ALL_EVENTS].[test pass when person id is correct but match id doesnt exist, should fail]                                     |     85|Success|
+|146|[TRG_CHECK_ALL_EVENTS].[Test SHOT for more then one player played in match where both played in match, should succeed]                  |     94|Success|
+|147|[TRG_CHECK_ALL_EVENTS].[Test SHOT for more then one player played in match where one doesnt exist, should failed]                       |     86|Success|
+|148|[TRG_CHECK_ALL_EVENTS].[Test SHOT only for one player played in match, should fail]                                                     |     81|Success|
+|149|[TRG_CHECK_ALL_EVENTS].[Test SHOT only for one player played in match, should succeed]                                                  |     81|Success|
+|150|[TRG_CHECK_ALL_EVENTS].[test SHOT when person id is correct but match id doesnt exist, should fail]                                     |     94|Success|
+|151|[TRG_CHECK_ALL_EVENTS].[Test SUBSTITUTE_IN for more then one player played in match where one doesnt exist, should failed]              |    118|Success|
+|152|[TRG_CHECK_ALL_EVENTS].[Test SUBSTITUTE_IN for more then one player played in match where one doesnt exist, should succeed]             |    135|Success|
+|153|[TRG_CHECK_ALL_EVENTS].[Test SUBSTITUTE_IN only for one player played in match and is reserve, should fail]                             |     85|Success|
+|154|[TRG_CHECK_ALL_EVENTS].[Test SUBSTITUTE_IN only for one player played in match and is reserve, should succeed]                          |     81|Success|
+|155|[TRG_CHECK_ALL_EVENTS].[Test SUBSTITUTE_OUT only for one player played in match and is reserve, should fail]                            |    144|Success|
+|156|[TRG_MINIMUM_PLAYERS_IN_CLUB].[Test total player insert in club is equal or more than 11, should succeed]                               |     25|Success|
+|157|[TRG_MINIMUM_PLAYERS_IN_CLUB].[Test total player insert in club is less than 11, should fail]                                           |     24|Success|
+|158|[TRG_MINIMUM_PLAYERS_IN_CLUB].[Test when existing player plus inserted player is above 11 player, should succeed]                       |     25|Success|
+|159|[TRG_MINIMUM_PLAYERS_IN_CLUB].[Test when more then one team is inserted with one team les then 11, should fail]                         |     29|Success|
+|160|[TRG_MINIMUM_PLAYERS_IN_CLUB].[Test when more then one team with total player inserted in club is equal or more than 11, should succeed]|     37|Success|
+|161|[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition FAILING ON DELETE]       |    242|Failure|
