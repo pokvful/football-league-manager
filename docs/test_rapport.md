@@ -1,5 +1,13 @@
 # Testrapport
-
+- [Testrapport](#testrapport)
+  - [Doel van het document](#doel-van-het-document)
+  - [test_ALTER_CLUB_INFO](#test_alter_club_info)
+  - [test_CHK_PERSON_HAS_VALID_AGE](#test_chk_person_has_valid_age)
+  - [test_CHK_VALID_JERSEY](#test_chk_valid_jersey)
+  - [test_CHK_VALID_MINUTE_IN_MATCH](#test_chk_valid_minute_in_match)
+  - [test_SHOW_CLUB_INFO](#test_show_club_info)
+  - [ALL unittest results](#all-unittest-results)
+  - [Conclusie](#conclusie)
 ## Doel van het document
 Het doel van dit document is een duidelijk overzicht te geven van het testproces van de database football league manager. In de volgende hoofdstukken wordt u door de tesproces geleid. 
 
@@ -12,7 +20,7 @@ Het doel van dit document is een duidelijk overzicht te geven van het testproces
 | TC-3         | test_UPDATE_CLUB.[test update all information with existing stadium] | 1.Open file test_ALTER_CLUBINFO.sql<br>2.Run the procedure 'test_UPDATE_CLUB.[test update all information with existing stadium]' | 1.Database moet opgezet zijn<br>2.Database moet gegevens hebben om een read te kunnen uitvoeren.<br>3.De procedure test_UPDATE_CLUB.SetUp moet gerunned zijn       | ('changedClub', 'stadium2', 4, 'cc', 'ccc'),<br>('stadium', 666), <br>('stadium2', 333) | Systeem past de gegevens aan                           | systeem verandert de gegevens ('club', 'stadium', 2, 'country', 'city') naar ('changedClub', 'stadium2', 4, 'cc', 'ccc')                                                  |               | Geslaagd |
 | TC-4         | test_UPDATE_CLUB.[test all parameter null]                           | 1.Open file test_ALTER_CLUBINFO.sql<br>2.Run the procedure 'test_UPDATE_CLUB.[test all parameter null]'                           | Zie pre-conditions TC-3                                                                                                                                            | ('club', 'stadium', 2, 'country', 'city'),<br>('stadium', 666), <br>('stadium2', 333)   | Systeem verandert niks                                 | Systeem verandert niks                                                                                                                                                    |               | Geslaagd |
 | TC-5         | test_UPDATE_CLUB.[test give club non existing stadium]               | 1.Open file test_ALTER_CLUBINFO.sql<br>2.Run the procedure 'test_UPDATE_CLUB.[test all parameter null]'                           | Zie pre-conditions TC-3                                                                                                                                            | ('club', 'newadded', 2, 'country', 'city'),<br>('newadded', 2022)                       | Systeem voegd niet newadded toe                        | Systeem voegd niet newadded toe                                                                                                                                           |               | Geslaagd |
-## TEST_CHK_PERSON_HAS_VALID_AGE
+## test_CHK_PERSON_HAS_VALID_AGE
 
 | Test case ID | Test Case                                                                                              | Test steps                                                                                                                                                           | Pre-conditions                                                                                                                                                            | Test Data                                        | Post Conditions               | Expected Results                   | Actual Result | Status   |
 |--------------|--------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|-------------------------------|------------------------------------|---------------|----------|
@@ -214,3 +222,8 @@ Het doel van dit document is een duidelijk overzicht te geven van het testproces
 |159|[TRG_MINIMUM_PLAYERS_IN_CLUB].[Test when more then one team is inserted with one team les then 11, should fail]                         |     29|Success|
 |160|[TRG_MINIMUM_PLAYERS_IN_CLUB].[Test when more then one team with total player inserted in club is equal or more than 11, should succeed]|     37|Success|
 |161|[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition FAILING ON DELETE]       |    242|Failure|
+
+## Conclusie
+
+Op basis van de bovenstaande testresultaten is de conclusie dat de huidige database genoeg code coverage dekt om de product te live te gaan.
+
