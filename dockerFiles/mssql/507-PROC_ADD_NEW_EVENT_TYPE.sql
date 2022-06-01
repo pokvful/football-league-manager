@@ -49,9 +49,8 @@ BEGIN TRY
 								' );')
 
 	EXEC (@generatedSqlTable)
-	SELECT @generatedSqlTable
 
-	--PROC create foreign key (uses PROC drop )
+
 	DECLARE @generatedSqlForeignKey varchar(MAX)
 	SET @generatedSqlForeignKey = CONCAT(
 	  'ALTER TABLE ', @newEventName,
@@ -63,17 +62,23 @@ BEGIN TRY
 	SET @generatedSqlForeignKey = CONCAT(
 		  'ALTER TABLE ', @newEventName,
 		   ' ADD CONSTRAINT FK_',@newEventName,'_PERSON_IN_PERSON FOREIGN KEY (PERSON_ID) ',
-			  'REFERENCES MATCH (PERSON_ID) 
+			  'REFERENCES PERSON (PERSON_ID) 
 				 ON UPDATE CASCADE;')
 	EXEC (@generatedSqlForeignKey)
-
-	--PROC create check (uses PROC drop )
-
+	
+	EXEC dbo.PROC_CREATE_CHECK_TIME_EVENT @newEventName
 	--PROC trigger @whichPersonTypes
 
+
+	--SELECT @generatedSqlTable
+	--SELECT @generatedSqlForeignKey
+
+
+	IF @startTranCount = 0
+		COMMIT TRANSACTION; 
 END TRY
 BEGIN CATCH
-		IF XACT_STATE() = -1 AND @startTranCount = 0
+		IF XACT_STATE() = -1 OR  @startTranCount = 0
 		BEGIN 
 			ROLLBACK TRANSACTION
 		END
@@ -82,9 +87,10 @@ BEGIN CATCH
 			IF XACT_STATE() = 1
 			BEGIN 
 				ROLLBACK TRANSACTION @savepoint;
-				COMMIT TRANSACTION;
 			END;
 		END;
+		THROW
+
 END CATCH
 END
 
@@ -105,57 +111,41 @@ go
 )
 go*/
 GO
---CREATE OR ALTER PROCEDURE PROC_CREATE_FOREIGN_KEY
---(@table SYSNAME, @column SYSNAME, @otherTable SYSNAME, @FkName SYSNAME NULL, @otherColumn SYSNAME NULL)
---AS
---BEGIN
---SET NOCOUNT ON
---DECLARE @savepoint VARCHAR(128) =	CAST(OBJECT_NAME(@@PROCID) AS VARCHAR(125)) + 
---									CAST(@@NESTLEVEL AS VARCHAR(3))
---DECLARE @startTranCount INT = @@TRANCOUNT;
---IF @startTranCount > 0  
---	SAVE TRANSACTION @savepoint
---ELSE
---	BEGIN TRANSACTION
+CREATE OR ALTER PROCEDURE PROC_CREATE_CHECK_TIME_EVENT
+(@table SYSNAME)
+AS
+BEGIN
+SET NOCOUNT ON
+DECLARE @savepoint VARCHAR(128) =	CAST(OBJECT_NAME(@@PROCID) AS VARCHAR(125)) + 
+									CAST(@@NESTLEVEL AS VARCHAR(3))
+DECLARE @startTranCount INT = @@TRANCOUNT;
+IF @startTranCount > 0  
+	SAVE TRANSACTION @savepoint
+ELSE
+	BEGIN TRANSACTION
 
---BEGIN TRY
---		DECLARE @generatedSqlForeignKey varchar(MAX)
+BEGIN TRY
+	DECLARE @generatedSqlCheck varchar(MAX) = CONCAT( 
+		'ALTER TABLE ', @table,
+		' ADD CONSTRAINT CHK_VALID_MINUTE_IN_MATCH_', @table, ' CHECK (TIME >= 0);')
 
---		SET @generatedSqlForeignKey = CONCAT(
---		   alter table SHOT
---			   add constraint FK_SHOT_EVENT_HAP_MATCH foreign key (MATCH_ID)
---				  references MATCH (MATCH_ID)
---					 on update cascade
---END TRY
---BEGIN CATCH
---		IF XACT_STATE() = -1 AND @startTranCount = 0
---		BEGIN 
---			ROLLBACK TRANSACTION
---		END
---		ELSE
---		BEGIN
---			IF XACT_STATE() = 1
---			BEGIN 
---				ROLLBACK TRANSACTION @savepoint;
---				COMMIT TRANSACTION;
---			END;
---		END;
---END CATCH
---BEGIN TRY
---END
-/*
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('SHOT') and o.name = 'FK_SHOT_EVENT_HAP_MATCH')
-alter table SHOT
-   drop constraint FK_SHOT_EVENT_HAP_MATCH
-
-
-   alter table SHOT
-   add constraint FK_SHOT_EVENT_HAP_MATCH foreign key (MATCH_ID)
-      references MATCH (MATCH_ID)
-         on update cascade
-*/
+	EXEC (@generatedSqlCheck)
+END TRY
+BEGIN CATCH
+		IF XACT_STATE() = -1 OR  @startTranCount = 0
+		BEGIN 
+			ROLLBACK TRANSACTION
+		END
+		ELSE
+		BEGIN
+			IF XACT_STATE() = 1
+			BEGIN 
+				ROLLBACK TRANSACTION @savepoint;
+			END;
+		END;
+		THROW
+END CATCH
+END
 
 GO
 EXEC dbo.ADD_NEW_EVENT_TYPE 'yo'
