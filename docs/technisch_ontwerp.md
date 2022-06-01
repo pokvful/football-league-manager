@@ -390,7 +390,7 @@ Voor uitleg zie FO
 |Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
 |Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
 
-# Ontwerkpeuzes
+# Ontwerpkeuzes
 
 ## MATCH id
 
@@ -443,10 +443,6 @@ Daarbij komt ook de functionaliteit om extra kolommmen toe te voegen. (Alleen na
 Als er om meer wordt gevraagd moet de cliënt zelf daarvoor zorgen.
 
 
-## 0..22 Position
-
-Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echter worden wedstrijden als vastgesteld en aangemaakt ver voordat de opstelling bekend zijn. Hierom hebben ervoor gekozen het ook mogelijk te 0 tot 22 spelers op te stellen. Met een trigger wordt gecheckt of er wel 22 spelers zijn opgesteld voordat de wedstrijd daadwerkelijk start.
-
 # Constraints
 
 ## Primary key constraints
@@ -495,8 +491,7 @@ PI: Time + club_name + club_name + match_day + start_date + end_date + competiti
 
 | Nummer | Naam                                    | Tabel                                                              | Omschrijving                                                                                                                                                                     | Komt overeen met |
 |--------|-----------------------------------------|--------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|
-| IR1    | TRG_CHECK_PLAYER_COUNT                  | POSITION                                                           | Er zijn maximaal 22 spelers aan een match verbonden (11 per club)                                                                                                                | C1 & BR12        |
-| IR2    | TRG_MINIMUM_PLAYERS_IN_CLUB             | PLAYER                                                             | Er zijn minimaal 7 spelers aan een club verbonden                                                                                                                                | C2 & BR18        |
+| IR1    | TRG_CHECK_PLAYER_COUNT                  | POSITION                                                           | Er zijn minimaal 7 en maximaal 11 spelers per club opgesteld wanneer een wedstrijd start                                                                                         | C1 & BR12        |
 | IR3    | TRG_CHECK_MAXIMUM_ROUNDS_OF_EDITION     | ROUND                                                              | Er mogen binnen een editie niet meer dan 52 rondes zitten, want een editie duurt een jaar (52 weken)                                                                             | C3 & BR19        |
 | IR5    | CHK_VALID_JERSEY                        | PLAYER                                                             | Een rugnummer van een speler moet hoger zijn dan 0 (mag niet 0 zijn) en mag niet hoger zijn dan 99 (mag wel 99 zijn)                                                             | C5 & BR17        |
 | IR6    | CHK_VALID_ROUND_START_DATE              | ROUND                                                              | De startdatum van een speelronde ligt binnen de start- en einddatum van het bijbehorende seizoen                                                                                 | C6 & BR4         |
@@ -575,6 +570,14 @@ Het komt vaak voor dat mensen verkeerde data invoeren zonder dat ze het in de ga
 =======
 Een technische reden voor het kiezen van een trigger is dat je kan refereren naar de inserted en deleted tabel. Deze tabellen bevatten de data die wordt toegevoegd of verwijderd, waardoor het makkelijker is om controles uit te voeren. Dit had ook met een stored procedure gekund, maar dan zou je meerdere procedures moeten schrijven voor het invoeren, updaten of verwijderen van data. Dit is niet efficient waardoor triggers een betere oplossing is.
 >>>>>>> 98d3f1a34fab00eec9bb8d093041f59eaf48768e
+
+### Toelichting TRG_CHECK_PLAYER_COUNT
+
+De trigger checkt op inserts en updates, op deze manier worden er bij het toevoegen van spelers ook gekeken naar de huidige hoeveelheid spelers in een club binnen een match. Zo kunnen er per club minimaal 7 spelers of maximaal 11 spelers meedoen aan een wedstrijd. Dit geldt voor zowel de thuis als uit club. (Dus minimaal 14 en max 22 in totaal per wedstrijd voor beide clubs). 
+
+#### Alternatief
+
+Er zou ook gebruik gemaakt kunnen worden van een cronjob, zo kan er bij de start van een match gekeken worden naar het aantal spelers in een club die meedoen. Dit lijkt erg op onze huidige oplossing, echter wordt hier pas het aantal spelers afgevangen bij de start van een wedstrijd, zo zou er dus nog wel foutieve data in de database kunnen worden geinsert; maar niet foutieve matches worden gestart.
 
 # Toelichting Domeinen
 
