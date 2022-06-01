@@ -67,12 +67,6 @@ BEGIN TRY
 	EXEC (@generatedSqlForeignKey)
 	
 	EXEC dbo.PROC_CREATE_CHECK_TIME_EVENT @newEventName
-	--PROC trigger @whichPersonTypes
-
-
-	--SELECT @generatedSqlTable
-	--SELECT @generatedSqlForeignKey
-
 
 	IF @startTranCount = 0
 		COMMIT TRANSACTION; 
@@ -93,23 +87,6 @@ BEGIN CATCH
 
 END CATCH
 END
-
-/*
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('SHOT')
-            and   type = 'U')
-   drop table SHOT
-go
-*/
-/* create table SHOT (
-   MATCH_ID             G_IDENTITY           not null,
-   TIME                 MINUTE_IN_MATCH      not null,
-   PERSON_ID            PERSON_ID            not null,
-   ON_GOAL              BOOLEAN              not null,
-   constraint PK_SHOT primary key (MATCH_ID, TIME)
-)
-go*/
 GO
 CREATE OR ALTER PROCEDURE PROC_CREATE_CHECK_TIME_EVENT
 (@table SYSNAME)
@@ -148,12 +125,3 @@ END CATCH
 END
 
 GO
-EXEC dbo.ADD_NEW_EVENT_TYPE 'yo'
-GO
-DECLARE @eee ColumnTable
-
-INSERT INTO @eee VALUES
-('name1', 'varchar(50)', 'NULL'),
-('bit1', 'bit', 'not null')
-
-EXEC dbo.ADD_NEW_EVENT_TYPE @newEventName = 'yo', @extraColumns = @eee
