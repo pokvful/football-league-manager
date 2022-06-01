@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     01/06/2022 09:43:08                          */
+/* Created on:     01/06/2022 11:48:27                          */
 /*==============================================================*/
 
 
@@ -1306,7 +1306,7 @@ go
 /*==============================================================*/
 create table LINEUP (
    PLAYER_PERSON_ID     PERSON_ID            not null,
-   POSITION_TYPE        varchar(128)         not null,
+   POSITION_TYPE        POSITION             not null,
    MATCH_ID             G_IDENTITY           not null,
    constraint PK_LINEUP primary key (MATCH_ID, PLAYER_PERSON_ID)
 )
@@ -1551,7 +1551,7 @@ go
 /* Table: POSITION                                              */
 /*==============================================================*/
 create table POSITION (
-   POSITION_TYPE        varchar(128)         not null,
+   POSITION_TYPE        POSITION             not null,
    constraint PK_POSITION primary key (POSITION_TYPE)
 )
 go
