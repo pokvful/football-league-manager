@@ -445,7 +445,7 @@ Als er om meer wordt gevraagd moet de cliënt zelf daarvoor zorgen.
 ## ADD_NEW_EVENT_TYPE
 Dit is een procedure waarmee nieuwe event soorten kunnen worden toegevoegd door de cliënt.
 
-Het heeft de functionaliteit om een nieuwe event tabel aan te maken met de bijbehorende foreign keys en check constraint.
+Het heeft de functionaliteit om een nieuwe event tabel aan te maken met de bijbehorende foreign keys en check constraints.
 
 Ook is ervoor gekozen om de gebruiker de mogelijkheid te geven om extra kolommen toe te voegen dan de basis (match_id, person_id, minuut).
 
