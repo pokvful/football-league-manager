@@ -449,7 +449,7 @@ Het heeft de functionaliteit om een nieuwe event tabel aan te maken met de bijbe
 
 Ook is ervoor gekozen om de gebruiker de mogelijkheid te geven om extra kolommen toe te voegen dan de basis (match_id, person_id, minuut).
 
-Er was ook een keuze om alleen de basis kolommen aan te maken, maar er is een grote kans dat de cliënt extra kolommen wilt.
+Er was ook een keuze om alleen de basis kolommen aan te maken, maar er is een grote kans dat de cliënt extra kolommen wil.
 
 Er was de keuze om bij de aangemaakte tabel eigen triggers en constraints te accepteren, maar dat zorgt voor ons teveel complexiteit om dat in de procedure te regelen.
 
