@@ -390,7 +390,7 @@ Voor uitleg zie FO
 |Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
 |Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
 
-# Ontwerkpeuzes
+# Ontwerpkeuzes
 
 ## MATCH id
 
@@ -442,10 +442,6 @@ Daarbij komt ook de functionaliteit om extra kolommmen toe te voegen. (Alleen na
 
 Als er om meer wordt gevraagd moet de cliënt zelf daarvoor zorgen.
 
-
-## 0..22 Position
-
-Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echter worden wedstrijden als vastgesteld en aangemaakt ver voordat de opstelling bekend zijn. Hierom hebben ervoor gekozen het ook mogelijk te 0 tot 22 spelers op te stellen. Met een trigger wordt gecheckt of er wel 22 spelers zijn opgesteld voordat de wedstrijd daadwerkelijk start.
 
 # Constraints
 

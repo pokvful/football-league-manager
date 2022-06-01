@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     16/05/2022 09:34:11                          */
+/* Created on:     01/06/2022 11:48:27                          */
 /*==============================================================*/
 
 
@@ -118,6 +118,27 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('LINEUP') and o.name = 'FK_LINEUP_LINEUPS_I_MATCH')
+alter table LINEUP
+   drop constraint FK_LINEUP_LINEUPS_I_MATCH
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('LINEUP') and o.name = 'FK_LINEUP_PLAYER_PL_PLAYER')
+alter table LINEUP
+   drop constraint FK_LINEUP_PLAYER_PL_PLAYER
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('LINEUP') and o.name = 'FK_LINEUP_POSITION__POSITION')
+alter table LINEUP
+   drop constraint FK_LINEUP_POSITION__POSITION
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
    where r.fkeyid = object_id('MATCH') and o.name = 'FK_MATCH_MATCH_HOM_CLUB')
 alter table MATCH
    drop constraint FK_MATCH_MATCH_HOM_CLUB
@@ -205,20 +226,6 @@ if exists (select 1
    where r.fkeyid = object_id('PLAYER_AS_RESERVE_IN_MATCH') and o.name = 'FK_PLAYER_A_PLAYER_AS_MATCH')
 alter table PLAYER_AS_RESERVE_IN_MATCH
    drop constraint FK_PLAYER_A_PLAYER_AS_MATCH
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('POSITION') and o.name = 'FK_POSITION_PLAYER_PL_PLAYER')
-alter table POSITION
-   drop constraint FK_POSITION_PLAYER_PL_PLAYER
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('POSITION') and o.name = 'FK_POSITION_POSITIONS_MATCH')
-alter table POSITION
-   drop constraint FK_POSITION_POSITIONS_MATCH
 go
 
 if exists (select 1
@@ -494,6 +501,40 @@ go
 
 if exists (select 1
             from  sysindexes
+           where  id    = object_id('LINEUP')
+            and   name  = 'POSITION_IN_LINEUP_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index LINEUP.POSITION_IN_LINEUP_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('LINEUP')
+            and   name  = 'POSITIONS_IN_MATCH_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index LINEUP.POSITIONS_IN_MATCH_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('LINEUP')
+            and   name  = 'PLAYER_PLAYS_ON_POSITION_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index LINEUP.PLAYER_PLAYS_ON_POSITION_FK
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('LINEUP')
+            and   type = 'U')
+   drop table LINEUP
+go
+
+if exists (select 1
+            from  sysindexes
            where  id    = object_id('MATCH')
             and   name  = 'REFEREE_IN_CHARGE_OF_MATCH_FK'
             and   indid > 0
@@ -640,24 +681,6 @@ if exists (select 1
            where  id = object_id('PLAYER_AS_RESERVE_IN_MATCH')
             and   type = 'U')
    drop table PLAYER_AS_RESERVE_IN_MATCH
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('POSITION')
-            and   name  = 'POSITIONS_IN_MATCH_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index POSITION.POSITIONS_IN_MATCH_FK
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('POSITION')
-            and   name  = 'PLAYER_PLAYS_ON_POSITION_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index POSITION.PLAYER_PLAYS_ON_POSITION_FK
 go
 
 if exists (select 1
@@ -873,8 +896,8 @@ if exists(select 1 from systypes where name='PERSON_TYPE')
    drop type PERSON_TYPE
 go
 
-if exists(select 1 from systypes where name='POSITION_TYPE')
-   drop type POSITION_TYPE
+if exists(select 1 from systypes where name='POSITION')
+   drop type POSITION
 go
 
 if exists(select 1 from systypes where name='SEASON_NAME')
@@ -999,9 +1022,9 @@ create type PERSON_TYPE
 go
 
 /*==============================================================*/
-/* Domain: POSITION_TYPE                                        */
+/* Domain: POSITION                                             */
 /*==============================================================*/
-create type POSITION_TYPE
+create type POSITION
    from varchar(128)
 go
 
@@ -1279,6 +1302,47 @@ create nonclustered index EVENT_HAPPENED_IN_MATCH3_FK on GOAL (MATCH_ID ASC)
 go
 
 /*==============================================================*/
+/* Table: LINEUP                                                */
+/*==============================================================*/
+create table LINEUP (
+   PLAYER_PERSON_ID     PERSON_ID            not null,
+   POSITION_TYPE        POSITION             not null,
+   MATCH_ID             G_IDENTITY           not null,
+   constraint PK_LINEUP primary key (MATCH_ID, PLAYER_PERSON_ID)
+)
+go
+
+/*==============================================================*/
+/* Index: PLAYER_PLAYS_ON_POSITION_FK                           */
+/*==============================================================*/
+
+
+
+
+create nonclustered index PLAYER_PLAYS_ON_POSITION_FK on LINEUP (PLAYER_PERSON_ID ASC)
+go
+
+/*==============================================================*/
+/* Index: POSITIONS_IN_MATCH_FK                                 */
+/*==============================================================*/
+
+
+
+
+create nonclustered index POSITIONS_IN_MATCH_FK on LINEUP (MATCH_ID ASC)
+go
+
+/*==============================================================*/
+/* Index: POSITION_IN_LINEUP_FK                                 */
+/*==============================================================*/
+
+
+
+
+create nonclustered index POSITION_IN_LINEUP_FK on LINEUP (POSITION_TYPE ASC)
+go
+
+/*==============================================================*/
 /* Table: MATCH                                                 */
 /*==============================================================*/
 create table MATCH (
@@ -1487,31 +1551,9 @@ go
 /* Table: POSITION                                              */
 /*==============================================================*/
 create table POSITION (
-   PLAYER_PERSON_ID     PERSON_ID            not null,
-   MATCH_ID             G_IDENTITY           not null,
-   POSITION_TYPE        POSITION_TYPE        not null,
-   constraint PK_POSITION primary key (MATCH_ID, PLAYER_PERSON_ID)
+   POSITION_TYPE        POSITION             not null,
+   constraint PK_POSITION primary key (POSITION_TYPE)
 )
-go
-
-/*==============================================================*/
-/* Index: PLAYER_PLAYS_ON_POSITION_FK                           */
-/*==============================================================*/
-
-
-
-
-create nonclustered index PLAYER_PLAYS_ON_POSITION_FK on POSITION (PLAYER_PERSON_ID ASC)
-go
-
-/*==============================================================*/
-/* Index: POSITIONS_IN_MATCH_FK                                 */
-/*==============================================================*/
-
-
-
-
-create nonclustered index POSITIONS_IN_MATCH_FK on POSITION (MATCH_ID ASC)
 go
 
 /*==============================================================*/
@@ -1581,8 +1623,8 @@ go
 /*==============================================================*/
 create table SEASON (
    SEASON_NAME          SEASON_NAME          not null,
-   START_DATE           _DATE_               not null,
-   END_DATE             _DATE_               not null,
+   SEASON_START         _DATE_               not null,
+   SEASON_END           _DATE_               not null,
    constraint PK_SEASON primary key (SEASON_NAME)
 )
 go
@@ -1797,6 +1839,23 @@ alter table GOAL
          on update cascade
 go
 
+alter table LINEUP
+   add constraint FK_LINEUP_LINEUPS_I_MATCH foreign key (MATCH_ID)
+      references MATCH (MATCH_ID)
+go
+
+alter table LINEUP
+   add constraint FK_LINEUP_PLAYER_PL_PLAYER foreign key (PLAYER_PERSON_ID)
+      references PLAYER (PERSON_ID)
+         on update cascade
+go
+
+alter table LINEUP
+   add constraint FK_LINEUP_POSITION__POSITION foreign key (POSITION_TYPE)
+      references POSITION (POSITION_TYPE)
+         on update cascade
+go
+
 alter table MATCH
    add constraint FK_MATCH_MATCH_HOM_CLUB foreign key (HOME_CLUB_NAME)
       references CLUB (CLUB_NAME)
@@ -1868,17 +1927,6 @@ alter table PLAYER_AS_RESERVE_IN_MATCH
    add constraint FK_PLAYER_A_PLAYER_AS_MATCH foreign key (MATCH_ID)
       references MATCH (MATCH_ID)
          on update cascade
-go
-
-alter table POSITION
-   add constraint FK_POSITION_PLAYER_PL_PLAYER foreign key (PLAYER_PERSON_ID)
-      references PLAYER (PERSON_ID)
-         on update cascade
-go
-
-alter table POSITION
-   add constraint FK_POSITION_POSITIONS_MATCH foreign key (MATCH_ID)
-      references MATCH (MATCH_ID)
 go
 
 alter table RED_CARD
