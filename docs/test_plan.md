@@ -10,16 +10,6 @@
 
 # Testplan
 
-Aanleiding (Waarom)
-
-Aanpak (Hoe)
-
-Benodigde mensen en middelen (Wie en wat)
-
-Benodigde tijd (planning) (Wat)
-
-Op te leveren producten (Wat)
-
 ## Inleiding
 
 Voor de opdracht besproken in het PvA moet voor de requirements (en code) testen worden geschreven om te controleren of die requirement zijn behaald.
