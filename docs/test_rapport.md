@@ -41,7 +41,7 @@ Het doel van dit document is een duidelijk overzicht te geven van het testproces
 | TC-3         | test_SHOW_CLUB_INFORMATION.[test proc GET_CLUB_INFORMATION]                             | 1.Open file test_SHOW_CLUB_INFO.sql<br>2.Run the procedure 'test_SHOW_CLUB_INFORMATION.[test proc GET_CLUB_INFORMATION]' | Zie pre-conditions TC-1                                                                                                                                                      | 'Ajax'                  | Systeem toont de gewenste club informatie. | Systeem toond tabel met de gegevens<br>('Ajax','Amsterdam','The Netherlands','De Kuip',150000,12)                          |               | Geslaagd |
 
 
-## ALL unittest
+## ALL unittest results
 
 |No |Test Case Name                                                                                                                          |Dur(ms)|Result |
 |---|----------------------------------------------------------------------------------------------------------------------------------------|-------|-------|
