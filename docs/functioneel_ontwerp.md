@@ -124,7 +124,7 @@
 |Preconditie        ||
 |Postconditie       |Systeem toont de tussenstand van de gewenste competitie tijdens het gewenste seizoen.|
 |Brief Description  |Actor haalt de tussenstand van een gewenste competitie tijdens een gewenst seizoen op.|
-|Happy Flow         |1.Actor geeft aan de tussenstand van een competitie op teh lane. <br> 2.Systeem toont de tussenstand.|
+|Happy Flow         |1.Actor geeft aan de tussenstand van een competitie op te willen halen. <br> 2.Systeem toont de tussenstand.|
 |Alternatieve Flow  |1A.Actor geeft aan een niet bestaande seizoen en competitie te hebben geselecteerd<br>2A. Systeem toont een lege lijst.|
 
 
@@ -166,7 +166,7 @@
 |Preconditie        ||
 |Postconditie       |Systeem toont de informatie van de gewenste speelronde.|
 |Brief Description  |Actor haalt de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde op.|
-|Happy Flow         |1.Actor geeft aan de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde te willen zien. <br> 2.Systeemm toont van de seizoen, competitie alle start datum, club out en club thuis en de aantal goals die gemaakt zijn door de spelende clubs.|
+|Happy Flow         |1.Actor geeft aan de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde te willen zien. <br> 2.Systeem toont van de seizoen, competitie alle start datum, club out en club thuis en de aantal goals die gemaakt zijn door de spelende clubs.|
 
 
 |Naam               |Invoeren matchdata	|
@@ -186,8 +186,8 @@
 |Stakeholder        |Data-analist Klant|
 |Preconditie        ||
 |Postconditie       |De updated clubinformatie is opgeslagen in het systeem.|
-|Brief Description  |Actor update de clubinformatie. Hieronder wordt het team, de coach, de thuisstad het stadion en de stadioncapaciteit verstaan.|
-|Happy Flow         |1.Actor geeft de informatie mee die geüpdatet moet worden. 2.Systeem update de informatie.|
+|Brief Description  |Actor update de clubinformatie. Hieronder wordt het team, de coach, de thuisstad, het stadion en de stadioncapaciteit verstaan.|
+|Happy Flow         |1.Actor geeft aan de informatie van club geüpdatet moet worden en geeft aan nieuwe informatie, team, coach, thuisstad, stadion en stdioncapaciteit in te willen voeren. 2.Systeem update de informatie.|
 |Alternative FLow	|2A.Systeem geeft aan dat een speler/coach die moet worden toegevoegd nog bij een ander team ingeschreven staat. <br>3A. Ga terug naar stap 1.|
 
 
@@ -210,7 +210,7 @@
 |Preconditie        | |
 |Postconditie       |Nieuw persoon staat in het systeem.|
 |Brief Description  |Actor zet een nieuw coach, scheidsrechter of speler in het systeem met de gegevens land, voornaam, achternaam, middelnaam, geboorte datum en voor de speler de Jersey nummer.|
-|Happy Flow         |1.Actor geeft aan een nieuwe coach op te willen slaan in het systeem en voert in land, voornaam, achternaam, middelnaam en geboorte datum in. <br>2.Nieuw persoon wordt opgeslagen in de database.|
+|Happy Flow         |1.Actor geeft aan een nieuwe coach op te willen slaan in het systeem en geeft aan land, voornaam, achternaam, middelnaam en geboorte datum in te voeren. <br>2.Nieuw persoon wordt opgeslagen in de database.|
 |Alternative Flow	|2A.Systeem geeft aan dat informatie onvolledig is  <br> 3A.Ga terug naar stap 1|
 
 # Verwoordingen feittypen
