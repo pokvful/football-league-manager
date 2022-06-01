@@ -514,62 +514,7 @@ Het komt vaak voor dat mensen verkeerde data invoeren zonder dat ze het in de ga
 
 ### Technisch
 
-<<<<<<< HEAD
-- Omschrijving: De startdatum van een speelronde ligt binnen de start- en einddatum van het bijbehorende seizoen;
-- Implementatie: Een check-constraint `CHK_VALID_ROUND_START_DATE` op de tabel `ROUND`. <!-- De startdatum is beschikbaar door de afhankelijkheid. Als dit wordt aangepast, moet de check een trigger worden -->
-
-### IR7 komt overeen met C7 en BR5
-
-- Omschrijving: De startdatum van een speeldag moet voor de startdatum van een opvolgende speelronde zijn, maar hetzelfde of na de startdatum van de gekoppelde speelronde;
-- Implementatie: Een trigger `TRG_CHECK_VALID_MATCHDAY_START_DATE` op de tabel `MATCHDAY`.
-
-### IR8 komt overeen met C8 en BR8
-
-- Omschrijving: De spelers die aan een wedstrijd zijn gekoppeld moeten lid zijn van één van de twee clubs die aan de wedstrijd meedoen;
-- Implementatie: Een trigger `TRG_CHECK_CORRECT_PLAYERS_IN_MATCH` op de tabel `POSITION` en `PLAYER_as_reserve_in_MATCH`.
-
-### IR9 komt overeen met C9 en BR9
-
-- Omschrijving: Een club mag alleen meedoen aan een wedstrijd als ze ook aan de bijbehorende editie meedoen;
-- Implementatie: Een trigger `TRG_CHECK_CLUB_IN_EDITION` op de tabel `MATCH`.
-
-### IR10 komt overeen met C10 en BR10
-
-- Omschrijving: Alleen spelers en coaches mogen een rode of gele kaart krijgen;
-- Implementatie: Een trigger `TRG_PERSON_IS_PLAYER_OR_COACH` op de tabellen `YELLOW_CARD` en `RED_CARD`.
-
-### IR11 komt overeen met C11 en BR11
-
-- Omschrijving: Alleen voor spelende spelers in een wedstrijd worden het aantal schoten, het aantal passes, de wissels, de overtredingen, de corners en of de persoon heeft gescoord bijgehouden;
-- Implementatie: Een trigger `TRG_PERSON_IS_PLAYER` op de tabellen `PASS`, `GOAL`, `SHOT`, `FOUL`, `CORNER` en `SUBSTITUTE`.
-
-### IR12 komt overeen met C12 en BR20
-
-- Omschrijving: Een persoon mag niet jonger zijn dan 15 jaar;
-- Implementatie: Een check-constraint `CHK_PERSON_HAS_VALID_AGE` op de tabel `PERSON`.
-
-## IR13 komt overeen met C13 en BR21
-
-- Omschrijving: Het aantal toeschouwers bij een wedstrijd mag niet groter zijn dan de capaciteit van het stadion waar de wedstrijd wordt gehouden;
-- Implementatie: Een trigger `TRG_VALID_AMOUNT_OF_SPECTATORS` op de tabel `MATCH`.
-
-## IR14 komt overeen met C14 en BR22
-
-- Omschrijving: De minuut in een wedstrijd mag niet negatief zijn;
-- Implementatie: Een check-constraint `CHK_VALID_MINUTE_IN_MATCH` op de tabellen `RED_CARD`, `YELLOW_CARD`, `PASS`, `GOAL`, `SHOT`, `FOUL`, `CORNER` en `SUBSTITUTE`.
-
-## IR15 komt overeen met diagram en BR24
-
-- Omschrijving: Een persoon moet een speler, coach of scheidsrechter zijn.
-- Implementatie: Een trigger `TRG_PLAYER_MUST_BE_ONE_SUBTYPE` op de tabellen `PLAYER`, `COACH` en `REFEREE`.
-
-## IR16 komt overeen met C15 en BR1
-
-- Omschrijving: Van een lopende competitie mogen alleen de selecties van clubs en de speeldata van wedstrijden aangepast worden
-- Implementatie: Een trigger op `TRG_NO_UPDATES_ON_CURRENT_EDITION_[TABEL]` op de tabellen `CLUB`, `MATCH`, `SEASON`, `COMPETITION` en `CLUB_plays_in_EDITION` 
-=======
 Een technische reden voor het kiezen van een trigger is dat je kan refereren naar de inserted en deleted tabel. Deze tabellen bevatten de data die wordt toegevoegd of verwijderd, waardoor het makkelijker is om controles uit te voeren. Dit had ook met een stored procedure gekund, maar dan zou je meerdere procedures moeten schrijven voor het invoeren, updaten of verwijderen van data. Dit is niet efficient waardoor triggers een betere oplossing is.
->>>>>>> 98d3f1a34fab00eec9bb8d093041f59eaf48768e
 
 ### Toelichting TRG_CHECK_PLAYER_COUNT
 
