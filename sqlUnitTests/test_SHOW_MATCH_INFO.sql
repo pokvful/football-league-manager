@@ -78,72 +78,11 @@ BEGIN
 	FROM MATCHES_INFO
 
 	INSERT INTO test_SHOW_MATCH_INFO.expected VALUES
-	(1,	'20/21',	'comp',		GETDATE(),	GETDATE(),	'home',	'out',	'aStadium',	420,	20.00,	70.00,	100020,	1,	1,	1,	2,	1,	1,	2,	1),
-	(2,	'20/21',	'comp2',	GETDATE(),	GETDATE(),	'home',	'out',	'aStadium',	420,	20.00,	70.00,	100020,	1,	1,	1,	2,	1,	1,	2,	1)
+	(1,	'20/21',	'comp',		GETDATE(),	GETDATE(),	'home',	'out',	'aStadium',	420,	20.00,	70.00,	100020,	1,	1,	1,	2,	1,	1,	1,	1,	1),
+	(2,	'20/21',	'comp2',	GETDATE(),	GETDATE(),	'home',	'out',	'aStadium',	420,	20.00,	70.00,	100020,	1,	1,	1,	2,	1,	1,	1,	1,	1)
 
 	EXEC tSQLt.AssertEqualsTable 'test_SHOW_MATCH_INFO.expected', 'MATCHES_INFO'
 END
 GO
 EXEC tSQLt.Run 'test_SHOW_MATCH_INFO.[test test view]'
 GO
-CREATE OR ALTER PROCEDURE test_SHOW_MATCH_INFO.[test procedure match_id]
-AS
-BEGIN
-	SELECT TOP (0) *
-	INTO test_SHOW_MATCH_INFO.expected
-	FROM MATCHES_INFO
-
-	INSERT INTO test_SHOW_MATCH_INFO.expected VALUES
-	(1,	'20/21',	'comp',		GETDATE(),	GETDATE(),	'home',	'out',	'aStadium',	420,	20.00,	70.00,	100020,	1,	1,	1,	2,	1,	1,	2,	1)
-
-
-	DROP TABLE IF EXISTS test_SHOW_MATCH_INFO.[procedure]
-	SELECT TOP (0) *
-	INTO test_SHOW_MATCH_INFO.[procedure]
-	FROM MATCHES_INFO
-
-	INSERT INTO test_SHOW_MATCH_INFO.[procedure]
-	EXEC SHOW_MATCH_INFO 1
-
-	EXEC tSQLt.AssertEqualsTable 'test_SHOW_MATCH_INFO.expected', 'test_SHOW_MATCH_INFO.[procedure]'
-END
-GO
-EXEC tSQLt.Run 'test_SHOW_MATCH_INFO.[test procedure match_id]'
-GO
-CREATE OR ALTER PROCEDURE test_SHOW_MATCH_INFO.[test procedure match via alternate key]
-AS
-BEGIN
-	SELECT TOP (0) *
-	INTO test_SHOW_MATCH_INFO.expected
-	FROM MATCHES_INFO
-
-	INSERT INTO test_SHOW_MATCH_INFO.expected VALUES
-	(2,	'20/21',	'comp2',	GETDATE(),	GETDATE(),	'home',	'out',	'aStadium',	420,	20.00,	70.00,	100020,	1,	1,	1,	2,	1,	1,	2,	1)
-
-
-	DROP TABLE IF EXISTS test_SHOW_MATCH_INFO.[procedure]
-	SELECT TOP (0) *
-	INTO test_SHOW_MATCH_INFO.[procedure]
-	FROM MATCHES_INFO
-
-	DECLARE @start_date_declared DATE = GETDATE()
-	DECLARE @match_day_declared DATE = GETDATE()
-
-	INSERT INTO test_SHOW_MATCH_INFO.[procedure]
-	EXEC SHOW_MATCH_INFO @season = '20/21', @competition = 'comp2', @start_date = @start_date_declared, @match_day = @match_day_declared, @home_club = 'home', @out_club = 'out'
-
-	EXEC tSQLt.AssertEqualsTable 'test_SHOW_MATCH_INFO.expected', 'test_SHOW_MATCH_INFO.[procedure]'
-
-END
-GO
-EXEC tSQLt.Run 'test_SHOW_MATCH_INFO.[test procedure match via alternate key]'
-GO
-CREATE OR ALTER PROCEDURE test_SHOW_MATCH_INFO.[test procedure input nulls error]
-AS
-BEGIN
-	EXEC tSQLt.ExpectException 'Invalid input either only @match_id IS NULL or only @match_id IS NOT NULL'
-
-	EXEC SHOW_MATCH_INFO NULL, '20/21', NULL
-END
-GO
-EXEC tSQLt.Run 'test_SHOW_MATCH_INFO.[test procedure input nulls error]'

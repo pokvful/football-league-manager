@@ -150,7 +150,7 @@ def main():
 	cursor = connect.cursor()
 
 	matches = cursor.execute("SELECT Match_id FROM MATCH;").fetchall()
-	players = cursor.execute("SELECT Player_person_id, Match_id FROM POSITION;").fetchall()
+	players = cursor.execute("SELECT Player_person_id, Match_id FROM LINEUP;").fetchall()
 	reserves = cursor.execute("SELECT Player_person_id, Match_id FROM PLAYER_as_reserve_in_MATCH;").fetchall()
 
 	generate_events(matches, players, reserves)
