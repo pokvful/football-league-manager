@@ -1,5 +1,6 @@
 # Functioneel ontwerp
 
+- [Functioneel ontwerp](#functioneel-ontwerp)
 - [Use cases](#use-cases)
 - [Fully-Dressed Use-cases](#fully-dressed-use-cases)
 - [Verwoordingen feittypen](#verwoordingen-feittypen)
@@ -110,7 +111,7 @@
 |Naam               |Ophalen top-lijst|
 |-------------------|------------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
-|Stakeholder        |Data-analist|
+|Stakeholder        ||
 |Preconditie        ||
 |Postconditie       |Systeem toont de gewenste top-lijst|
 |Brief Description  |Actor haalt een top-lijst met gewenste informatiebehoefte op uit het systeem|
@@ -119,7 +120,7 @@
 |Naam               |Ophalen tussenstand competitie|
 |-------------------|-----------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
-|Stakeholder and interest|Data-analist, zodat de data-analist de gegevens analizeren.|
+|Stakeholder        ||
 |Preconditie        ||
 |Postconditie       |Systeem toont de tussenstand van de gewenste competitie tijdens het gewenste seizoen.|
 |Brief Description  |Actor haalt de tussenstand van een gewenste competitie tijdens een gewenst seizoen op.|
@@ -131,7 +132,7 @@
 |Naam               |Ophalen clubinfo|
 |-------------------|-------------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
-|Stakeholder        |Data-analist|
+|Stakeholder        ||
 |Preconditie        ||
 |Postconditie       |Systeem toont de informatie Club naam, Stadium naam, land naam, stad naam en de caoch van de gewenste club.|
 |Brief Description  |Actor haalt het team, de coach, de thuisstad, het stadion en de capaciteit van het stadion van een gewenste club op.|
@@ -141,18 +142,27 @@
 |Naam               |Ophalen matchinfo									|
 |-------------------|---------------------------------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
-|Stakeholder        |Data-analist|
+|Stakeholder        ||
 |Preconditie        ||
 |Postconditie       |Systeem toont de informatie van de gewenste match.|
 |Brief Description  |Actor haalt per team balbezit, passes, schoten, schoten op doel, passprecisie, overtredingen, corners, goals, kaarten en wissels van de gewenste match op.|
 |Happy Flow         |1.Actor geeft aan informatie over een gewenste match te willen zien<br> 2.Systeem toont de informatie goals, hoekschop, overtreding, passes, gele kaart ,rode kaart, schoten en vervanging van de gewenste match.|
 |Alternatieve Flow  |2A.Systeem geeft aan dat de match niet bestaat.|
 
+|Naam               |Ophalen matchdayinfo									|
+|-------------------|---------------------------------------------------|
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
+|Stakeholder        ||
+|Preconditie        ||
+|Postconditie       |Systeem toont de informatie van de gewenste matchday.|
+|Brief Description  |Actor haalt per dag wie gespeeld heeft op de dag en wat de standen zijn tussen de clubs|
+|Happy Flow         |1.Actor geeft aan informatie over de gewenste dag te willen zien<br>2.| Systeem toont de informatie wedstrijden, goals per wedstrijd per club en de duur van de wedstrijden.
+|Alternatieve Flow  |2A.Systeem geeft aan dat de matchday niet bestaat.|
 
 |Naam               |Ophalen speelrondeinfo	|
 |-------------------|-------------------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
-|Stakeholder        |Data-analist|
+|Stakeholder        ||
 |Preconditie        ||
 |Postconditie       |Systeem toont de informatie van de gewenste speelronde.|
 |Brief Description  |Actor haalt de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde op.|
@@ -161,8 +171,8 @@
 
 |Naam               |Invoeren matchdata	|
 |-------------------|-----------------------------------------------------|
-|Actors             |Data-analist Klant / NUTMEG Voetbal Admin.|
-|Stakeholder        |NUTMEG Voetbal Admin|
+|Actors             |NUTMEG Voetbal Admin.|
+|Stakeholder        |Data-analist Klant|
 |Preconditie        ||
 |Postconditie       |De match met al zijn gegevens staat geregistreerd in het systeem.|
 |Brief Description  |Actor voert in wie een gele/rode kaart heeft gekregen. Wie een pass, goal, schoot, overtreding, hoekschop heeft gemaakt, wie met wie is vervangen. En op welke minute de event is gebeurd.|
@@ -172,8 +182,8 @@
 
 |Naam               |Updaten clubinfo	|
 |-------------------|-------------------------------------------------------------------------------|
-|Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
-|Stakeholder        |NUTMEG Voetbal Admin|
+|Actors             |NUTMEG Voetbal Admin|
+|Stakeholder        |Data-analist Klant|
 |Preconditie        ||
 |Postconditie       |De updated clubinformatie is opgeslagen in het systeem.|
 |Brief Description  |Actor update de clubinformatie. Hieronder wordt het team, de coach, de thuisstad het stadion en de stadioncapaciteit verstaan.|
@@ -185,7 +195,7 @@
 |Naam               |Start nieuw seizoen competitie	|
 |-------------------|-------------------------------------------------------------------------------|
 |Actors             |NUTMEG Voetbal Admin|
-|Stakeholder        |NUTMEG Voetbal Admin|
+|Stakeholder        |Data-analist Klant|
 |Preconditie        ||
 |Postconditie       |De juiste clubs zijn gedegradeerd/gepromoveert. Een nieuw seizoen is gestart.|
 |Brief Description  |Actor update de correcte clubs in de nieuwe editie, start vervolgens een leeg seizoen (lege matches, speeldrondes en een nieuwe editie).|
@@ -196,7 +206,7 @@
 |Naam               |Toevoegen nieuwe persoon	|
 |-------------------|-----------------------|
 |Actors             |NUTMEG Voetbal Admin|
-|Stakeholder        |NUTMEG Voetbal Admin|
+|Stakeholder        |Data-analist Klant|
 |Preconditie        | |
 |Postconditie       |Nieuw persoon staat in het systeem.|
 |Brief Description  |Actor zet een nieuw coach, scheidsrechter of speler in het systeem met de gegevens land, voornaam, achternaam, middelnaam, geboorte datum en voor de speler de Jersey nummer.|
