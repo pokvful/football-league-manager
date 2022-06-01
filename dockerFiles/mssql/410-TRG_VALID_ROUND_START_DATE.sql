@@ -10,8 +10,8 @@ CREATE OR ALTER TRIGGER TRG_VALID_ROUND_START_DATE
 			IF EXISTS(
 					SELECT 1
 					FROM inserted INNER JOIN SEASON ON inserted.SEASON_NAME = SEASON.SEASON_NAME
-					WHERE inserted.START_DATE < SEASON.START_DATE
-					   OR inserted.START_DATE > SEASON.END_DATE
+					WHERE inserted.START_DATE < SEASON.SEASON_START
+					   OR inserted.START_DATE > SEASON.SEASON_END
 				)
 				THROW 500002, 'The start date of a round must be inside the date of a season', 1;
 

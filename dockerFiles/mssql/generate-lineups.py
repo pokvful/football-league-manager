@@ -53,7 +53,7 @@ def generate_positions(matches, players): # {{{
 				{
 					"Player_person_id": player[0],
 					"Match_id": match[0],
-					"Position": f"'{positions_home[home_index]}'",
+					"Position_type": f"'{positions_home[home_index]}'",
 				}
 			) )
 
@@ -65,7 +65,7 @@ def generate_positions(matches, players): # {{{
 				{
 					"Player_person_id": player[0],
 					"Match_id": match[0],
-					"Position": f"'{positions_out[out_index]}'",
+					"Position_type": f"'{positions_out[out_index]}'",
 				}
 			) )
 
@@ -91,7 +91,7 @@ def generate_positions(matches, players): # {{{
 				}
 			) )
 
-	with open("216-INSERT_POSITIONS.sql", "w") as file:
+	with open("216-INSERT_LINEUP.sql", "w") as file:
 		file.write( "set nocount on;\ncommit transaction;\n/* z ← don't remove this (see https://isebitbucket.aimsites.nl/projects/S22122A4/repos/football-league-manager/pull-requests/88/overview) */ begin transaction;\n" )
 		file.write( "\n".join(result_positions) )
 

@@ -12,7 +12,7 @@ edition_result="set nocount on;"
 while read -r competition; do
 	while read -r season; do
 		edition_result="$edition_result"'\n'"insert into EDITION (Season_name, Competition_name) values ($season, $competition);"
-	done < <(tail -n +2 ./204-INSERT.SEASONS.sql | sed -E "s/.+\\(('[^']+').+/\1/")
+	done < <(tail -n +2 ./204-INSERT_SEASONS.sql | sed -E "s/.+\\(('[^']+').+/\1/")
 done < <(tail -n +2 ./202-INSERT_COMPETITION.sql | sed -E "s/.+\\(('[^']+').+/\1/")
 
 echo -e $edition_result > ./210-INSERT_EDITION.sql

@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     31/05/2022 11:18:34                          */
+/* Created on:     01/06/2022 09:43:08                          */
 /*==============================================================*/
 
 
@@ -1625,8 +1625,6 @@ create table SEASON (
    SEASON_NAME          SEASON_NAME          not null,
    SEASON_START         _DATE_               not null,
    SEASON_END           _DATE_               not null,
-   START_DATE           _DATE_               not null,
-   END_DATE             _DATE_               not null,
    constraint PK_SEASON primary key (SEASON_NAME)
 )
 go

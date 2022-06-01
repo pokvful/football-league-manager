@@ -16,6 +16,7 @@ TABLE_BLACKLIST = [
 	"STADIUM",
 	"COUNTRY",
 	"CITY",
+	"POSITION",
 ]
 
 def main():
