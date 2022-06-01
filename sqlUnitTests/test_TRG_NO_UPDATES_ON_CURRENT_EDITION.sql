@@ -276,7 +276,7 @@ BEGIN
 	EXEC tSQLt.ApplyConstraint 'dbo.ROUND', 'FK_ROUND_ROUND_IN__EDITION'
 	EXEC tSQLt.ApplyConstraint 'dbo.EDITION', 'FK_EDITION_EDITION_I_SEASON'
 
-	EXEC tSQLt.ExpectException;
+	EXEC tSQLt.ExpectNoException;
 
 	DELETE FROM MATCH WHERE HOME_CLUB_NAME = 'Ajax'
 END;
