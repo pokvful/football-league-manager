@@ -969,9 +969,12 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 | Functional Requirements                                                                                    | MoSCoW | Use case                       |
 |------------------------------------------------------------------------------------------------------------|--------|--------------------------------|
 | Bij een lopende competitie mag alleen de speeldatum of speler selectie van een wedstrijd worden veranderd. | M      | Invoeren matchdata             |
-| Het moet mogelijk zijn om de tussenstand van een competitie op te halen.                                   | M      | Ophalen tussenstand competitie |
 | De gegevens moeten bereikbaar zijn via een staging area in JSON formaat.                                   | M      | Overzetten data                |
-| Een \[analist\] kan inhoudelijke gegevens via de staging area uitlezen.                                    | M      | Overzetten data                |
+| Een \[analist\] kan de top-lijst via de staging area uitlezen.                                             | M      | Ophalen top-lijst              |
+| Een \[analist\] kan de tussenstand van de competitie via de staging area uitlezen.                         | M      | Ophalen tussenstand competitie |
+| Een \[analist\] kan informatie over clubs via de staging area uitlezen.                                    | M      | Ophalen clubinfo               |
+| Een \[analist\] kan informatie over wedstrijden via de staging area uitlezen.                              | M      | Ophalen matchinfo              |
+| Een \[analist\] kan informatie over speelrondes via de staging area uitlezen.                              | M      | Ophalen speelrondeinfo         |
 | Het moet mogelijk zijn om een top lijst van een editie te genereren.                                       | S      | Ophalen top-lijst              |
 | Een \[admin\] kan matchdata invoeren in de database.                                                       | S      | Invoeren matchdata             |
 | Een \[admin\] kan clubinfo updaten.                                                                        | S      | Updaten clubinfo               |
