@@ -107,5 +107,5 @@ Per IR worden ook meteen te testen gemaakt. Er wordt geschat dat er onggeveer 45
 
 ## Test volledigheid
 
-Nadat de code is getest met behulp van de geschreven unit tests en een slagings percentage van 100% heeft behaald. Worden de testen gecontrolleerd of er minimaal een succes, een failure en een edge case wordt gedenkt met unittesten. Verder wordt er gekeken naar de eenvoudigheid van de test, de test moet makkelijk te onderhouden zijn. 
-Op het laatst worden de tests gereviewed en gecontrolleerd op de defintion of done. Als de tests worden goed gekeurd wordt in het testrapport het bewijs van het slagen van de tests neergezet en wordt de test report opgeleverd. 
+Nadat de code is getest met behulp van de geschreven unit tests en een slagings percentage van 100% heeft behaald. Worden de testen gecontroleerd of er minimaal een success, een failure en een edge case wordt gedekt met unittesten. Verder wordt er gekeken naar de eenvoudigheid van de test, de test moet makkelijk te onderhouden zijn. 
+Op het laatst worden de tests gereviewed en gecontroleerd op de defintion of done. Als de tests worden goedgekeurd wordt in het testrapport het bewijs van het slagen van de tests neergezet en wordt de test report opgeleverd. 
