@@ -2,6 +2,7 @@
 
 # Functioneel ontwerp
 
+- [Functioneel ontwerp](#functioneel-ontwerp)
 - [Use cases](#use-cases)
 - [Fully-Dressed Use-cases](#fully-dressed-use-cases)
 - [Verwoordingen feittypen](#verwoordingen-feittypen)
@@ -105,95 +106,129 @@
 
 # Use cases
 
+## Database
 ![Use case diagram](images/usecase_diagram_nutmeg.png)
 
+## Staging Area
+![Use case diagram](images/UseCase_Staging_Area_Nutmeg.png)
 # Fully-Dressed Use-cases
-<!--- Staging area bij alles nog weggelaten, updaten na onderzoek --->
-|Naam               |Ophalen top-lijst                                  							|
-|-------------------|-------------------------------------------------------------------------------|
-|Actors             |Data-analist Klant / NUTMEG Voetbal Admin  									|
-|Preconditie        |1.Er zijn wedstrijden gepseeld waarop de relevante data gebaseerd kan worden	|
-|Postconditie       |Systeem toont de gewenste top-lijst											|
-|Brief Description  |Actor haalt een top-lijst met gewenste informatiebehoefte op uit het systeem	|
-|Happy Flow         |1.Actor geeft aan een top-lijst met de gewenste informatiebehoefte op te vragen. <br> 2.Systeem toont de top-lijst. 	|
 
+|Naam               |Ophalen top-lijst|
+|-------------------|------------------------------|
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
+|Stakeholder        ||
+|Preconditie        ||
+|Postconditie       |Systeem toont de gewenste top-lijst|
+|Brief Description  |Actor haalt een top-lijst met gewenste informatiebehoefte op uit het systeem|
+|Happy Flow         |1.Actor geeft aan een toplijst van event gele kaart op te halen <br> 2.Systeem toont de top-lijst van gele kaarten|
 
-|Naam               |Ophalen tussenstand competitie															|
-|-------------------|---------------------------------------------------------------------------------------|
-|Actors             |Data-analist Klant / NUTMEG Voetbal Admin												|
-|Preconditie        |Er zijn wedstrijden gespeeld in de gewenste competite tijdens het gewenste seizoen		|
-|Postconditie       |Systeem toont de tussenstand van de gewenste competitie tijdens het gewenste seizoen	|
-|Brief Description  |Actor haalt de tussenstand van een gewenste competitie tijdens een gewenst seizoen op	|
-|Happy Flow         |1.Actor geeft aan de tussenstand van een gewenste competitie tijdens een gewenst seizoen te willen zien. <br> 2.Systeem toont de tussenstand.	|
+|Naam               |Ophalen tussenstand competitie|
+|-------------------|-----------------------------|
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
+|Stakeholder        ||
+|Preconditie        ||
+|Postconditie       |Systeem toont de tussenstand van de gewenste competitie tijdens het gewenste seizoen.|
+|Brief Description  |Actor haalt de tussenstand van een gewenste competitie tijdens een gewenst seizoen op.|
+|Happy Flow         |1.Actor geeft aan de tussenstand van een competitie op te willen halen. <br> 2.Systeem toont de tussenstand.|
+|Alternatieve Flow  |1A.Actor geeft aan een niet bestaande seizoen en competitie te hebben geselecteerd<br>2A. Systeem toont een lege lijst.|
 
-
-|Naam               |Ophalen clubinfo																										|
-|-------------------|-----------------------------------------------------------------------------------------------------------------------|
-|Actors             |Data-analist Klant / NUTMEG Voetbal Admin																				|
-|Preconditie        |<!--- evt. club bevat informatie ofzo, maar lijkt me overbodig --->													|
-|Postconditie       |Systeem toont informatie over de gewenste club																		|
-|Brief Description  |Actor haalt het team, de coach, de thuisstad, het stadion en de capaciteit van het stadion van een gewenste club op	|
-|Happy Flow         |1.Actor geeft aan informatie over een gewenste club te willen zien. <br> 2.Systeem toont clubinformatie over de gewenste club.	|
-
+|Naam               |Ophalen clubinfo|
+|-------------------|-------------------------------|
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
+|Stakeholder        ||
+|Preconditie        ||
+|Postconditie       |Systeem toont de informatie Club naam, Stadium naam, land naam, stad naam en de caoch van de gewenste club.|
+|Brief Description  |Actor haalt het team, de coach, de thuisstad, het stadion en de capaciteit van het stadion van een gewenste club op.|
+|Happy Flow         |1.Actor geeft aan informatie over een gewenste club te willen zien <br> 2.Systeem toont clubinformatie over de gewenste club.|
 
 |Naam               |Ophalen matchinfo									|
 |-------------------|---------------------------------------------------|
-|Actors             |Data-analist Klant / NUTMEG Voetbal Admin			|
-|Preconditie        |De match is gespeeld								|
-|Postconditie       |Systeem toont de informatie van de gewenste match	|
-|Brief Description  |Actor haalt per team balbezit, passes, schoten, schoten op doel, passprecisie, overtredingen, corners, goals, kaarten en wissels van de gewenste match	op	|
-|Happy Flow         |1.Actor geeft aan informatie over een gewenste match te willen zien. <br> 2.Systeem toont de informatie van de match.	|
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
+|Stakeholder        ||
+|Preconditie        ||
+|Postconditie       |Systeem toont de informatie van de gewenste match.|
+|Brief Description  |Actor haalt per team balbezit, passes, schoten, schoten op doel, passprecisie, overtredingen, corners, goals, kaarten en wissels van de gewenste match op.|
+|Happy Flow         |1.Actor geeft aan informatie over een gewenste match te willen zien<br> 2.Systeem toont de informatie goals, hoekschop, overtreding, passes, gele kaart ,rode kaart, schoten en vervanging van de gewenste match.|
+|Alternatieve Flow  |2A.Systeem geeft aan dat de match niet bestaat.|
+
+|Naam               |Ophalen matchdayinfo									|
+|-------------------|---------------------------------------------------|
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
+|Stakeholder        ||
+|Preconditie        ||
+|Postconditie       |Systeem toont de informatie van de gewenste matchday.|
+|Brief Description  |Actor haalt per dag wie gespeeld heeft op de dag en wat de standen zijn tussen de clubs|
+|Happy Flow         |1.Actor geeft aan informatie over de gewenste dag te willen zien<br>2.| Systeem toont de informatie wedstrijden, goals per wedstrijd per club en de duur van de wedstrijden.
+|Alternatieve Flow  |2A.Systeem geeft aan dat de matchday niet bestaat.|
+
+|Naam               |Ophalen speelrondeinfo	|
+|-------------------|-------------------------------------|
+|Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
+|Stakeholder        ||
+|Preconditie        ||
+|Postconditie       |Systeem toont de informatie van de gewenste speelronde.|
+|Brief Description  |Actor haalt de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde op.|
+|Happy Flow         |1.Actor geeft aan de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde te willen zien. <br> 2.Systeem toont van de seizoen, competitie alle start datum, club out en club thuis en de aantal goals die gemaakt zijn door de spelende clubs.|
 
 
-|Naam               |Ophalen speelrondeinfo	                                                                    |
-|-------------------|-------------------------------------------------------------------------------------------|
-|Actors             |Data-analist Klant / NUTMEG Voetbal Admin	                                                |
-|Preconditie        |De speelronde is al gespeeld	                                                            |
-|Postconditie       |Systeem toont de informatie van de gewenste speelronde	                                    |
-|Brief Description  |Actor haalt de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde op	|
-|Happy Flow         |1.Actor geeft aan de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde te willen zien. <br> 2.Systeemm toont de uitslagen en speeldagen van wedstrijden tijdens de gewenste speelronde.	|
-<!--- Onderstaande alternative flows zijn gemaakt voordat er een CDM_V2 is gemaakt.--->
-<!--- Alternative Flow A is misschien iets te implementatie gericht--->
-
-
-|Naam               |Invoeren matchdata	                                                                            |
-|-------------------|-----------------------------------------------------------------------------------------------|
-|Actors             |NUTMEG Voetbal Admin	                                                                        |
-|Preconditie        |<!--- je zou kunnen zeggen match is gespeeld maar in principe kan je ook gewoonde verkeerde data invoeren, is geen preconditie> --->	|
-|Postconditie       |De match met al zijn gegevens staat geregistreerd in het systeem	                            |
-|Brief Description  |Actor	voert matchdata van een gespeelde wedstrijd in                                          |
-|Happy Flow         |1.Actor voert de matchdata in in STORED PROCEDURE <br> 2.Systeem slaat matchdata op	        |
-|Alternatieve Flow  |2A.Systeem geeft aan dat de ingevoerde waarde van balbezit/passprecisie niet tussen 0-100 is. <br> 3A.Ga terug naar stap 1 <br> - <br> 2B.Systeem geeft aan dat speler gekoppeld aan een event/pass/corner/overtreding/schot(op doel) niet in het is correcte team zit. <br> 3B.Ga terug naar stap 1 <br> - <br> 2C.Systeem geeft aan dat speler niet opgesteld is tijdens de wedstrijd. <br> 3C.Ga terug naar stap 1	|
-
+|Naam               |Invoeren matchdata	|
+|-------------------|-----------------------------------------------------|
+|Actors             |NUTMEG Voetbal Admin.|
+|Stakeholder        |Data-analist Klant|
+|Preconditie        ||
+|Postconditie       |De match met al zijn gegevens staat geregistreerd in het systeem.|
+|Brief Description  |Actor voert in wie een gele/rode kaart heeft gekregen. Wie een pass, goal, schoot, overtreding, hoekschop heeft gemaakt, wie met wie is vervangen. En op welke minute de event is gebeurd.|
+|Happy Flow         |1.Actor geeft aan de matchdata: goal, hoekschop, overtreding, passes, gele kaart, rode kaart, schoten en wie met wie is vervangen op te willen slaan in de database<br> 2.Systeem slaat de match data op in de database.|
+|Alternatieve Flow  |2A.Systeem geeft aan dat de ingevoerde waarde van balbezit/passprecisie niet tussen 0-100 is. <br> 3A.Ga terug naar stap 1 <br> - <br> 2B.Systeem geeft aan dat speler gekoppeld aan een event/pass/corner/overtreding/schot(op doel) niet in het is correcte team zit. <br> 3B.Ga terug naar stap 1 <br> - <br> 2C.Systeem geeft aan dat speler niet opgesteld is tijdens de wedstrijd. <br> 3C.Ga terug naar stap 1.|
 
 |Naam               |Updaten clubinfo	|
 |-------------------|-------------------------------------------------------------------------------|
-|Actors             |NUTMEG Voetbal Admin	|
-|Preconditie        |De club bestaat al	|
-|Postconditie       |De updated clubinformatie is opgeslagen in het systeem	|
-|Brief Description  |Actor update de clubinformatie. Hieronder wordt het team, de coach, de thuisstad het stadion en de stadioncapaciteit verstaan.	|
-|Happy Flow         |1.Actor geeft de informatie mee die geüpdatet moet worden. 2.Systeem update de informatie. |
-|Alternative FLow	|2A.Systeem geeft aan dat een speler/coach die moet worden toegevoegd nog bij een ander team ingeschreven staat. <br> Ga terug naar stap 1.
-
+|Actors             |NUTMEG Voetbal Admin|
+|Stakeholder        |Data-analist Klant|
+|Preconditie        ||
+|Postconditie       |De updated clubinformatie is opgeslagen in het systeem.|
+|Brief Description  |Actor update de clubinformatie. Hieronder wordt het team, de coach, de thuisstad, het stadion en de stadioncapaciteit verstaan.|
+|Happy Flow         |1.Actor geeft aan de informatie van club geüpdatet moet worden en geeft aan nieuwe informatie, team, coach, thuisstad, stadion en stdioncapaciteit in te willen voeren. 2.Systeem update de informatie.|
+|Alternative FLow	|2A.Systeem geeft aan dat een speler/coach die moet worden toegevoegd nog bij een ander team ingeschreven staat. <br>3A. Ga terug naar stap 1.|
 
 |Naam               |Start nieuw seizoen competitie	|
 |-------------------|-------------------------------------------------------------------------------|
-|Actors             |NUTMEG Voetbal Admin	|
-|Preconditie        |Het vorige seizoen is afgelopen <!--- iets met speelrondes ofzo? 2x aantal clubs --->	|
-|Postconditie       |De juiste clubs zijn gedegradeerd/gepromoveert. Een nieuw seizoen is gestart	|
-|Brief Description  |Actor update de correcte clubs in de nieuwe editie, start vervolgens een leeg seizoen (lege matches, speeldrondes en een nieuwe editie).	|
-|Happy Flow         |1.Actor geeft aan welke clubs gedegradeerd/gepromoveert worden middels STORED PROCEDURE en start daarmee het nieuwe seizeoen. <br> 2.Systeem zet de correcte clubs in de nieuwe editie <br> 3.Systeem maakt matches, speelrondes en een nieuwe editie aan.	|
-|Alternative Flow	| 2A. Systeem geeft aan dat een gepromoveerde club al in de competitie zit. <br> 3A. Ga terug naar stap 1. <br> 2B.Systeem geeft aan dat het aantal promoties en degradaties niet gelijk is. <br> 3B.Ga terug naar stap 1
-
+|Actors             |NUTMEG Voetbal Admin|
+|Stakeholder        |Data-analist Klant|
+|Preconditie        ||
+|Postconditie       |De juiste clubs zijn gedegradeerd/gepromoveert. Een nieuw seizoen is gestart.|
+|Brief Description  |Actor update de correcte clubs in de nieuwe editie, start vervolgens een leeg seizoen (lege matches, speeldrondes en een nieuwe editie).|
+|Happy Flow         |1. Actor geeft aan welke clubs gedegradeerd/gepromoveert worden <br> 2. Systeem verwerkt de gegevens <br> 3. Actor geeft aan een nieuwe seizoen comeptitie te starten met de gegevens startdatum, speelrondes, aantal rondes per dag en de clubs die mee doen aan de competitie <br> 4.Systeem maakt nieuwe editie met de gegevens, competitie naam, season naam, lijst met clubs, start datum, lengte van een ronde, games per dag en aantal matches per ronde|
+|Alternative Flow	| 1A. Actor geeft aan een nieuwe seizoen comeptitie te starten met de verkeerde gegevens startdatum, speelrondes, aantal rondes per dag en de clubs die mee doen aan de competitie <br> 2A. Systeem geeft een error bericht.|
 
 |Naam               |Toevoegen nieuwe persoon	|
-|-------------------|-------------------------------------------------------------------------------|
-|Actors             |NUTMEG Voetbal Admin	|
-|Preconditie        |Geen	|
-|Postconditie       |Nieuw persoon staat in het systeem	|
-|Brief Description  |Actor zet een nieuw persoon in het systeem	|
-|Happy Flow         |1.Actor geeft informatie van niewe persoon op en geeft aan deze op te willen slaan in het systeem. 2.Nieuw persoon staat in het systeem.	|
-|Alternative Flow	|2A.Systeem geeft aan dat informatie onvolledig is  <br> 3A.Ga terug naar stap 1
+|-------------------|-----------------------|
+|Actors             |NUTMEG Voetbal Admin|
+|Stakeholder        |Data-analist Klant|
+|Preconditie        | |
+|Postconditie       |Nieuw persoon staat in het systeem.|
+|Brief Description  |Actor zet een nieuw coach, scheidsrechter of speler in het systeem met de gegevens land, voornaam, achternaam, middelnaam, geboorte datum en voor de speler de Jersey nummer.|
+|Happy Flow         |1.Actor geeft aan een nieuwe coach op te willen slaan in het systeem en geeft aan land, voornaam, achternaam, middelnaam en geboorte datum in te voeren. <br>2.Nieuw persoon wordt opgeslagen in de database.|
+|Alternative Flow	|2A.Systeem geeft aan dat informatie onvolledig is  <br> 3A.Ga terug naar stap 1|
+
+|Naam               |Overzetten data	|
+|-------------------|-----------------------|
+|Actors             |Time|
+|Stakeholder        |Staging Area|
+|Preconditie        ||
+|Postconditie       |De gegevens vanuit de ene database zijn overgezet naar de andere database.|
+|Brief Description  |Het overzetten van data gebeurt periodiek en vind elke nacht plaats om 2 uur.|
+|Happy Flow         |1. Actor geeft aan dat het tijd is om de data over te zetten. <br>2. Systeem zet data om van de ene database naar de andere database.|
+
+|Naam               |Toevoegen event type	|
+|-------------------|-----------------------|
+|Actors             |NUTMEG Voetbal Admin|
+|Stakeholder        ||
+|Preconditie        ||
+|Postconditie       |Er is een nieuw event toegevoegd aan het systeem.|
+|Brief Description  |De Actor maakt een nieuwe event type aan in het systeem, hierbij wordt een naam en optioneel een extra kolom toegevoegd.  |
+|Happy Flow         |1.Actor geeft aan een nieuw event type aan te maken, vervolgens voert de actor een naam in met een extra kolom. <br>2.Het systeem slaat de nieuwe event type op.|
+|Alternative Flow	  |2A. Systeem geeft aan dat de ingevoerde informatie onvolledig is  <br> 3A.Ga terug naar stap 1|
 
 # Verwoordingen feittypen
 
@@ -929,21 +964,20 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 - BR5 De startdatum van een speeldag moet voor de startdatum van een opvolgende ronde bestaan en moet hetzelfde zijn of na de startdatum van de gekoppelde ronde bestaan;
 - BR6 Een speler die op het veld staat kan een keeper, verdediger, aanvaller of middenvelder zijn;
 - BR7 Een thuis club mag maximaal één keer tegen een uit club spelen binnen een fase van een knockout competitie;
-- BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een spelende club, die zich bevindt in de database;
+- BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een bestaande, spelende club;
 - BR9 Clubs mogen alleen een match spelen als ze meedoen aan de editie;
 - BR10 Gele en rode kaarten mogen alleen worden gegeven aan spelers en coaches;
-- BR11 Voor alleen spelende spelers wordt opgeslagen of ze hebben geschoten, pases hebben gemaakt, zijn gewisseld, overtredingen hebben gemaakt, corners hebben afgenomen of gescored hebben tijdens een voetbalwedstrijd;
+- BR11 Voor alleen spelende spelers wordt bijgehouden of ze hebben geschoten, pases hebben gemaakt, zijn gewisseld, overtredingen hebben gemaakt, corners hebben afgenomen of gescored hebben tijdens een voetbalwedstrijd;
 - BR12 Er moeten 22 spelers op het veld ingedeeld zijn bij een wedstrijd;
-- BR13 Bij welke club een persoon coacht wordt alleen opgeslagen voor coaches;
-- BR14 Bij welke wedstrijden een persoon scheidst wordt alleen opgeslagen voor scheidsrechters;
-- BR15 Of een persoon in de reserve staat bij een wedstrijd wordt alleen opgeslagen voor spelers;
+- BR13 Voor coaches wordt bijgehouden voor welke club wordt gecoached;
+- BR14 Voor scheidsrechters wordt bijgehouden voor welke wedstrijd(en) wordt gescheidst;
+- BR15 Voor spelers wordt bijgehouden wie in reserve staat bij een wedstrijd;
 - BR16 Maximaal 52 speelrondes per editie van een competitie;
 - BR17 Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1;
-- BR18 Minimaal 7 spelers per club;
-- BR19 Minimaal en maximaal 1 coach per club;
-- BR20 Een persoon binnen het systeem mag niet jonger zijn dan 15 jaar;
-- BR21 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
-- BR22 Hoeveelste minuut mag niet negatief zijn.
+- BR18 Er mag minimaal en maximaal 1 coach per club zijn;
+- BR19 Een persoon mag niet jonger zijn dan 15 jaar;
+- BR20 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
+- BR21 De waarde van de minuten binnen een wedstrijd mag niet negatief zijn.
 
 # Functionele requirements.
 
@@ -964,17 +998,12 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 ### C1 komt overeen met BR12
 
 - Betreft: ET `POSITION`;
-- Specificatie: Maximaal 22 posities per match (11 per club).
-
-### C2 komt overeen met BR18
-
-- Betreft: ET `PLAYER` en ET `CLUB`;
-- Specificatie: Minimaal 11 spelers per club;
+- Specificatie: Er zijn minimaal 7 en maximaal 11 spelers per club opgesteld wanneer een wedstrijd start.
 
 ### C3 komt overeen met BR19
 
 - Betreft: ET `COACH` en ET `CLUB`;
-- Specificatie: Minimaal en maximaal 1 coach per club;
+- Specificatie: Minimaal en maximaal 1 coach per club.
 
 ### C4 komt overeen met BR16
 
@@ -1070,6 +1099,32 @@ Aangezien in de opdrachtgever heeft aangegeven dat er eventueel knock-out tourna
 ## Matchday & Round 
 
 We hebben ervoor gekozen om MATCHDAYS en ROUNDS als entiteiten bij te houden. Hiermee voorkom je de dubelle data die je zou krijgen wanneer je MATCHDAY en ROUND als attributen van MATCH zou bijhouden.
+
+## Position
+
+Posities van spelers voor en tijdens de wedstrijd kan op meerdere manieren gedaan worden. Hieronder staan er een paar met hun voor- en nadelen en wordt er toegelicht voor welke oplossing uiteindelijk gekozen is.
+
+### Alleen begin wedstrijd
+
+Een optie voor het bijhouden van de posities van spelers is een entiteit aanmaken genaamd `POSITION` waar de posities van de elf spelende spelers (per club) worden bijgehouden. De echte posities van de spelers (`KEEPER`, `DEFENDER`, `MIDFIELDER` en `ATTACKER`) worden aangemaakt als losse subtypen. De reserve spelers kunnen als relatie tussen `PLAYER` en `MATCH` bijgehouden worden.
+
+Op deze manier is het niet mogelijk om een speler op een andere positie te laten spelen (een `ATTACKER` wordt bijvoorbeeld een `DEFENDER`), want de positie van een speler staat vast aan het begin van de wedstrijd (de `POSITION` entiteit) en kan niet op een andere manier worden bijgehouden.
+
+### Positie verzameling
+
+Een andere optie voor het bijhouden van posities is in de `POSITION` entiteit bijhouden wat alle posities van alle spelers gedurende de hele wedstrijd waren. Op deze manier kunnen de verschillende posities van de spelers achterhaald worden.
+
+Een nadeel hiervan is dat er niet achterhaald kan worden welke `SUBSTITUTE` event bij welke `POSITION` hoort. Op deze manier is het niet mogelijk om er achter te komen vanaf wanneer een persoon op welke positie is gaan spelen.
+
+### Positie ook in wissel
+
+Nog een optie voor het bijhouden van posities is een combinatie van optie één en twee, alleen een groot verschil is dat de `SUBSTITUTE` event een extra kolom genaamd `Position` krijgt. Op deze manier kan er in deze kolom worden aangegeven op welke positie de persoon die er in gewisseld wordt speelt. Ook kan op deze manier een speler zelf van positie wisselen, door met zichzelf te wisselen en dan een andere positie aan te nemen in deze kolom.
+
+Met deze oplossing komt een klein probleempje omhoog, namelijk dat er verschillende soorten posities gebruikt kunnen worden (bijvoorbeeld `KEEPER` en `GOALKEEPER`, deze zijn in principe hetzelfde, maar ze hebben een andere naam). Dit kan verholpen worden met een extra tabel. De `POSITION` tabel wordt hernoemd naar `LINEUP` (deze naam is logischer, omdat het alleen de begin posities van de spelers zijn) en er wordt een nieuwe tabel genaamd `POSITION` aangemaakt waar alle mogelijke posities in worden opgeslagen (`KEEPER`, `DEFENDER`, `MIDFIELDER` en `ATTACKER`). De `LINEUP` en `SUBSTITUTE` entiteiten krijgen een verwijzing naar deze tabel, wat er voor zorgt dat `LINEUP` en `SUBSTITUTE` nooit andere soorten posities kunnen hebben.
+
+### Uiteindelijke keuze posities
+
+Omdat de laatste optie ([positie ook in wissel](#positie-ook-in-wissel)) geen nadelen heeft en een combinatie is van de andere twee opties, is dit de beste optie om te gebruiken in het systeem.
 
 # Rechtenstructuur
 

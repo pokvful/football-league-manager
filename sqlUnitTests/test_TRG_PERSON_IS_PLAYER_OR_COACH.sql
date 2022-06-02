@@ -5,6 +5,7 @@
 */
 
 EXEC tsqlt.newtestclass 'test_TRG_PERSON_IS_PLAYER_OR_COACH_YELLOW';
+GO
 
 CREATE OR ALTER PROCEDURE Test_Trg_Person_Is_Player_Or_Coach_Yellow.SETUP
 AS
@@ -14,7 +15,7 @@ BEGIN
 	EXEC tsqlt.faketable 'REFEREE';
 	EXEC tsqlt.faketable 'MATCH';
 	EXEC tsqlt.faketable 'PLAYER_AS_RESERVE_IN_MATCH';
-	EXEC tsqlt.faketable 'POSITION';
+	EXEC tsqlt.faketable 'LINEUP';
 	EXEC tsqlt.faketable 'YELLOW_CARD';
 
 	INSERT INTO person([Person_Id], [Country_Name], [First_Name], [Last_Name], [Middle_Name], [Birth_Date])
@@ -34,7 +35,7 @@ BEGIN
 	INSERT INTO player_as_reserve_in_match (player_person_id, match_id)
 	VALUES (2, 1);
 
-	INSERT INTO position (player_person_id, match_id, position_type)
+	INSERT INTO lineup (player_person_id, match_id, position_type)
 	VALUES (3, 1, 'Attacker');
 
 	EXEC tsqlt.applytrigger 'YELLOW_CARD', 'TRG_PERSON_IS_PLAYER_OR_COACH_YELLOW';
@@ -108,6 +109,7 @@ GO
 */
 
 EXEC tsqlt.newtestclass 'test_TRG_PERSON_IS_PLAYER_OR_COACH_RED';
+GO
 
 CREATE OR ALTER PROCEDURE Test_Trg_Person_Is_Player_Or_Coach_Red.SETUP
 AS
@@ -117,7 +119,7 @@ BEGIN
 	EXEC tsqlt.faketable 'REFEREE';
 	EXEC tsqlt.faketable 'MATCH';
 	EXEC tsqlt.faketable 'PLAYER_AS_RESERVE_IN_MATCH';
-	EXEC tsqlt.faketable 'POSITION';
+	EXEC tsqlt.faketable 'LINEUP';
 	EXEC tsqlt.faketable 'RED_CARD';
 
 	INSERT INTO person([Person_Id], [Country_Name], [First_Name], [Last_Name], [Middle_Name], [Birth_Date])
@@ -137,7 +139,7 @@ BEGIN
 	INSERT INTO player_as_reserve_in_match (player_person_id, match_id)
 	VALUES (2, 1);
 
-	INSERT INTO position (player_person_id, match_id, position_type)
+	INSERT INTO lineup (player_person_id, match_id, position_type)
 	VALUES (3, 1, 'Attacker');
 
 	EXEC tsqlt.applytrigger 'RED_CARD', 'TRG_PERSON_IS_PLAYER_OR_COACH_RED';
