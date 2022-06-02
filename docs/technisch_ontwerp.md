@@ -443,6 +443,7 @@ Daarbij komt ook de functionaliteit om extra kolommmen toe te voegen. (Alleen na
 Als er om meer wordt gevraagd moet de cliënt zelf daarvoor zorgen.
 
 ## ADD_NEW_EVENT_TYPE
+
 Dit is een procedure waarmee nieuwe event soorten kunnen worden toegevoegd door de cliënt.
 
 Het heeft de functionaliteit om een nieuwe event tabel aan te maken met de bijbehorende foreign keys en check constraints.
