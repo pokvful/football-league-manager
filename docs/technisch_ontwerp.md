@@ -434,7 +434,7 @@ Het vastleggen van events kan op veel verschillende manieren. Om te bepalen wat 
 Iedere event krijgt zijn eigen tabel met daarin de informatie die voor dat event belangrijk is.
 
 Voordelen:
-- Informatie over één type event opvragen gaat makkelijk, handig voor het genereren van toplijsten.
+- Informatie over één type event opvragen kan simpelweg  , handig voor het genereren van toplijsten.
 
 Nadelen:
 - Voor het aanmaken van nieuwe events moeten er nieuwe tabellen aangemaakt worden, dit kan eventueel foutgevoelig zijn.
@@ -457,7 +457,8 @@ Voordelen:
 Nadelen:
 - Lastiger om goed te onderhouden, gegevens staan in verschillende databases die vervolgens in de staging area weer gecombineerd zullen moeten worden.
 
-
+### Keuze
+Uitendelijk is de eerste optie geïmplementeerd aangezien dit de meest overzichtelijke optie is. 
 
 
 ### Keuze
