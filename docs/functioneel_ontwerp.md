@@ -215,7 +215,7 @@
 |Preconditie        ||
 |Postconditie       |De gegevens vanuit de ene database zijn overgezet naar de andere database.|
 |Brief Description  |Het overzetten van data gebeurt periodiek en vind elke nacht plaats om 2 uur.|
-|Happy Flow         |1. Actor voert benodigde software uit voor overzetten van data. <br>2. Systeem zet data om van de ene database naar de andere database.|
+|Happy Flow         |1. Actor geeft aan dat het tijd is om de data over te zetten. <br>2. Systeem zet data om van de ene database naar de andere database.|
 
 # Verwoordingen feittypen
 
