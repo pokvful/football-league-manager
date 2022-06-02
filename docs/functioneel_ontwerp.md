@@ -1,5 +1,8 @@
+# ***Disclaimer*** | De lay-out van de PDF-versie voor dit document kan verschillen met de markdown versie, voor een accurate weergave zie markdown bestand in [bitbucket](https://isebitbucket.aimsites.nl/projects/S22122A4/repos/football-league-manager/browse/docs).
+
 # Functioneel ontwerp
 
+- [***Disclaimer*** | De lay-out van de PDF-versie voor dit document kan verschillen met de markdown versie, voor een accurate weergave zie markdown bestand in bitbucket.](#disclaimer--de-lay-out-van-de-pdf-versie-voor-dit-document-kan-verschillen-met-de-markdown-versie-voor-een-accurate-weergave-zie-markdown-bestand-in-bitbucket)
 - [Functioneel ontwerp](#functioneel-ontwerp)
 - [Use cases](#use-cases)
 - [Fully-Dressed Use-cases](#fully-dressed-use-cases)
