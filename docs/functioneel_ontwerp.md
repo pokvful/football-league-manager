@@ -134,8 +134,6 @@
 |Happy Flow         |1.Actor geeft aan de tussenstand van een competitie op te willen halen. <br> 2.Systeem toont de tussenstand.|
 |Alternatieve Flow  |1A.Actor geeft aan een niet bestaande seizoen en competitie te hebben geselecteerd<br>2A. Systeem toont een lege lijst.|
 
-
-
 |Naam               |Ophalen clubinfo|
 |-------------------|-------------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
@@ -144,7 +142,6 @@
 |Postconditie       |Systeem toont de informatie Club naam, Stadium naam, land naam, stad naam en de caoch van de gewenste club.|
 |Brief Description  |Actor haalt het team, de coach, de thuisstad, het stadion en de capaciteit van het stadion van een gewenste club op.|
 |Happy Flow         |1.Actor geeft aan informatie over een gewenste club te willen zien <br> 2.Systeem toont clubinformatie over de gewenste club.|
-
 
 |Naam               |Ophalen matchinfo									|
 |-------------------|---------------------------------------------------|
@@ -186,7 +183,6 @@
 |Happy Flow         |1.Actor geeft aan de matchdata: goal, hoekschop, overtreding, passes, gele kaart, rode kaart, schoten en wie met wie is vervangen op te willen slaan in de database<br> 2.Systeem slaat de match data op in de database.|
 |Alternatieve Flow  |2A.Systeem geeft aan dat de ingevoerde waarde van balbezit/passprecisie niet tussen 0-100 is. <br> 3A.Ga terug naar stap 1 <br> - <br> 2B.Systeem geeft aan dat speler gekoppeld aan een event/pass/corner/overtreding/schot(op doel) niet in het is correcte team zit. <br> 3B.Ga terug naar stap 1 <br> - <br> 2C.Systeem geeft aan dat speler niet opgesteld is tijdens de wedstrijd. <br> 3C.Ga terug naar stap 1.|
 
-
 |Naam               |Updaten clubinfo	|
 |-------------------|-------------------------------------------------------------------------------|
 |Actors             |NUTMEG Voetbal Admin|
@@ -196,8 +192,6 @@
 |Brief Description  |Actor update de clubinformatie. Hieronder wordt het team, de coach, de thuisstad, het stadion en de stadioncapaciteit verstaan.|
 |Happy Flow         |1.Actor geeft aan de informatie van club geüpdatet moet worden en geeft aan nieuwe informatie, team, coach, thuisstad, stadion en stdioncapaciteit in te willen voeren. 2.Systeem update de informatie.|
 |Alternative FLow	|2A.Systeem geeft aan dat een speler/coach die moet worden toegevoegd nog bij een ander team ingeschreven staat. <br>3A. Ga terug naar stap 1.|
-
-
 
 |Naam               |Start nieuw seizoen competitie	|
 |-------------------|-------------------------------------------------------------------------------|
@@ -209,7 +203,6 @@
 |Happy Flow         |1. Actor geeft aan welke clubs gedegradeerd/gepromoveert worden <br> 2. Systeem verwerkt de gegevens <br> 3. Actor geeft aan een nieuwe seizoen comeptitie te starten met de gegevens startdatum, speelrondes, aantal rondes per dag en de clubs die mee doen aan de competitie <br> 4.Systeem maakt nieuwe editie met de gegevens, competitie naam, season naam, lijst met clubs, start datum, lengte van een ronde, games per dag en aantal matches per ronde|
 |Alternative Flow	| 1A. Actor geeft aan een nieuwe seizoen comeptitie te starten met de verkeerde gegevens startdatum, speelrondes, aantal rondes per dag en de clubs die mee doen aan de competitie <br> 2A. Systeem geeft een error bericht.|
 
-
 |Naam               |Toevoegen nieuwe persoon	|
 |-------------------|-----------------------|
 |Actors             |NUTMEG Voetbal Admin|
@@ -219,6 +212,25 @@
 |Brief Description  |Actor zet een nieuw coach, scheidsrechter of speler in het systeem met de gegevens land, voornaam, achternaam, middelnaam, geboorte datum en voor de speler de Jersey nummer.|
 |Happy Flow         |1.Actor geeft aan een nieuwe coach op te willen slaan in het systeem en geeft aan land, voornaam, achternaam, middelnaam en geboorte datum in te voeren. <br>2.Nieuw persoon wordt opgeslagen in de database.|
 |Alternative Flow	|2A.Systeem geeft aan dat informatie onvolledig is  <br> 3A.Ga terug naar stap 1|
+
+|Naam               |Overzetten data	|
+|-------------------|-----------------------|
+|Actors             |Time|
+|Stakeholder        ||
+|Preconditie        ||
+|Postconditie       |De gegevens vanuit de ene database zijn overgezet naar de andere database.|
+|Brief Description  |Het overzetten van data gebeurt periodiek en vind elke nacht plaats om 2 uur.|
+|Happy Flow         |1. Actor geeft aan dat het tijd is om de data over te zetten. <br>2. Systeem zet data om van de ene database naar de andere database.|
+
+|Naam               |Toevoegen event type	|
+|-------------------|-----------------------|
+|Actors             |NUTMEG Voetbal Admin|
+|Stakeholder        ||
+|Preconditie        | |
+|Postconditie       |Er is een nieuw event toegevoegd aan het systeem.|
+|Brief Description  |De Actor maakt een nieuwe event type aan in het systeem, hierbij wordt een naam en optioneel een extra kolom toegevoegd.  |
+|Happy Flow         |1.Actor geeft aan een nieuw event type aan te maken, vervolgens voert de actor een naam in met een extra kolom. <br>2.Het systeem slaat de nieuwe event type op.|
+|Alternative Flow	  |2A. Systeem geeft aan dat de ingevoerde informatie onvolledig is  <br> 3A.Ga terug naar stap 1|
 
 # Verwoordingen feittypen
 
@@ -964,11 +976,10 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 - BR15 Of een persoon in de reserve staat bij een wedstrijd wordt alleen opgeslagen voor spelers;
 - BR16 Maximaal 52 speelrondes per editie van een competitie;
 - BR17 Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1;
-- BR18 Minimaal 7 spelers per club;
-- BR19 Minimaal en maximaal 1 coach per club;
-- BR20 Een persoon binnen het systeem mag niet jonger zijn dan 15 jaar;
-- BR21 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
-- BR22 Hoeveelste minuut mag niet negatief zijn.
+- BR18 Minimaal en maximaal 1 coach per club;
+- BR19 Een persoon binnen het systeem mag niet jonger zijn dan 15 jaar;
+- BR20 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
+- BR21 Hoeveelste minuut mag niet negatief zijn.
 
 # Functionele requirements.
 
@@ -989,7 +1000,7 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 ### C1 komt overeen met BR12
 
 - Betreft: ET `POSITION`;
-- Specificatie: Er zijn minimaal 7 spelers per club opgesteld wanneer een wedstrijd start.
+- Specificatie: Er zijn minimaal 7 en maximaal 11 spelers per club opgesteld wanneer een wedstrijd start.
 
 ### C3 komt overeen met BR19
 
