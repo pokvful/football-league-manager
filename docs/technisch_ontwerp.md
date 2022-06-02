@@ -135,11 +135,6 @@ Zo is er altijd databaseinhoud om mee te testen en is de database consistent tus
 
 ![Het PDM.](images/pdm_no_ko.png)
 
-# Beschrijving Tabellen en Kolommen
-
-
-
-
 # Toelichting Domeinen
 
 |Domein				|Datatype		|Toelichting															|
