@@ -983,7 +983,7 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 ### C1 komt overeen met BR12
 
 - Betreft: ET `POSITION`;
-- Specificatie: Er zijn minimaal 7 spelers per club opgesteld wanneer een wedstrijd start.
+- Specificatie: Er zijn minimaal 7 en maximaal 11 spelers per club opgesteld wanneer een wedstrijd start.
 
 ### C3 komt overeen met BR19
 
