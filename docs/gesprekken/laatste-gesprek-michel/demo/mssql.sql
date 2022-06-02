@@ -26,3 +26,29 @@ INSERT INTO LINEUP (PLAYER_PERSON_ID, MATCH_ID, POSITION_TYPE)
 		(143, 1295, 'ATTACKER'),
 		(152, 1295, 'ATTACKER'),
 		(161, 1295, 'ATTACKER');
+
+-- Voeg een nieuwe event toe
+DECLARE @columns ColumnTable;
+
+INSERT INTO @columns (nameColumn, typeColumn, nullable)
+	VALUES ('test_column', 'VARCHAR(60)', 'NOT NULL');
+
+EXECUTE ADD_NEW_EVENT_TYPE
+	@newEventName = 'TestEvent',
+	@extraColumns = @columns;
+GO
+
+EXECUTE sp_help 'MATCH'; -- er staat nu een fk naar de match tabel vanuit TestEvent (staat onderaan)
+
+-- nieuwe positie toevoegen en gebruiken
+UPDATE LINEUP
+	SET POSITION_TYPE = 'OUTSIDER'
+	WHERE PLAYER_PERSON_ID = 107;
+
+-- na het toevoegen van een nieuwe soort positie, mag de bovenstaande query wel worden uitgevoerd
+INSERT INTO [POSITION] (POSITION_TYPE)
+	VALUES ('OUTSIDER');
+
+-- er is een blacklist toegevoegd zodat bepaalde tabellen niet mee overgenoomen worden naar mongo
+SELECT * FROM [POSITION];
+-- mongosh: db.POSITION.find()
