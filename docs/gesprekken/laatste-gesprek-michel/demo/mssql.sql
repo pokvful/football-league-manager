@@ -1,4 +1,4 @@
--- er moeten minstens 7 mensen en maximaal 11 mensen per club in de lineup staan
+-- er moeten minstens 7 en maximaal 11 spelers per club in de lineup staan.
 DELETE FROM LINEUP
 	WHERE MATCH_ID = 1295;
 
