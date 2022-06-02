@@ -390,6 +390,28 @@ Voor uitleg zie FO
 |Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
 |Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
 
+# Toelichting Domeinen
+
+|Domein				|Datatype		|Toelichting															|
+|-------------------|---------------|-----------------------------------------------------------------------|
+|PERSON_ID			|bigint			|Automatisch gegenereerd ID												|
+|NAME				|varchar(128)	|																		|
+|DATE				|Date			|																		|
+|CLUB_NAME			|varchar(128)	|																		|
+|CITY_NAME			|varchar(128)	|																		|
+|COUNTRY_NAME		|varchar(128)	|																		|
+|STADIUM_NAME		|varchar(60)	|																		|
+|COMPETITON_NAME	|varchar(128)	|																		|
+|CAPACITY			|bigint			|																		|
+|PERCENTAGE			|numeric(5,2)	|(0-100)																|
+|COUNT				|bigint			|																		|
+|BOOLEAN			|bit			|																		|
+|EVENTY_TYPE		|varchar(128)	|(Red card, Yellow card, Pass, Goal, Shot, Foul, Corner, Substitute)	|
+|MINUTE IN MATCH	|numeric(6,3)	|																		|
+|JERSEY_NUMBER		|numeric(2,0)	|(1-99)                                                    				|
+|POSITION_TYPE		|varchar(128)	|(Aanvaller, Middenvelder, Verdediger, Keeper)							|
+|SEASON_NAME		|char(5)		|Altijd twee getallen met een slash. (bijv.22/21)       				|
+
 # Ontwerpkeuzes
 
 ## MATCH id
@@ -523,28 +545,6 @@ De trigger checkt op inserts en updates, op deze manier worden er bij het toevoe
 #### Alternatief
 
 Er zou ook gebruik gemaakt kunnen worden van een cronjob, zo kan er bij de start van een match gekeken worden naar het aantal spelers in een club die meedoen. Dit lijkt erg op onze huidige oplossing, echter wordt hier pas het aantal spelers afgevangen bij de start van een wedstrijd, zo zou er dus nog wel foutieve data in de database kunnen worden geinsert; maar niet foutieve matches worden gestart.
-
-# Toelichting Domeinen
-
-|Domein				|Datatype		|Toelichting															|
-|-------------------|---------------|-----------------------------------------------------------------------|
-|PERSON_ID			|bigint			|Automatisch gegenereerd ID												|
-|NAME				|varchar(128)	|																		|
-|DATE				|Date			|																		|
-|CLUB_NAME			|varchar(128)	|																		|
-|CITY_NAME			|varchar(128)	|																		|
-|COUNTRY_NAME		|varchar(128)	|																		|
-|STADIUM_NAME		|varchar(60)	|																		|
-|COMPETITON_NAME	|varchar(128)	|																		|
-|CAPACITY			|bigint			|																		|
-|PERCENTAGE			|numeric(5,2)	|(0-100)																|
-|COUNT				|bigint			|																		|
-|BOOLEAN			|bit			|																		|
-|EVENTY_TYPE		|varchar(128)	|(Red card, Yellow card, Pass, Goal, Shot, Foul, Corner, Substitute)	|
-|MINUTE IN MATCH	|numeric(6,3)	|																		|
-|JERSEY_NUMBER		|numeric(2,0)	|(1-99)                                                    				|
-|POSITION_TYPE		|varchar(128)	|(Aanvaller, Middenvelder, Verdediger, Keeper)							|
-|SEASON_NAME		|char(5)		|Altijd twee getallen met een slash. (bijv.22/21)       				|
 
 # Toelichting export MSSQL naar MongoDB
 
