@@ -217,6 +217,16 @@
 |Brief Description  |Het overzetten van data gebeurt periodiek en vind elke nacht plaats om 2 uur.|
 |Happy Flow         |1. Actor geeft aan dat het tijd is om de data over te zetten. <br>2. Systeem zet data om van de ene database naar de andere database.|
 
+|Naam               |Toevoegen event type	|
+|-------------------|-----------------------|
+|Actors             |NUTMEG Voetbal Admin|
+|Stakeholder        ||
+|Preconditie        | |
+|Postconditie       |Er is een nieuw event toegevoegd aan het systeem.|
+|Brief Description  |De Actor maakt een nieuwe event type aan in het systeem, hierbij wordt een naam en optioneel een extra kolom toegevoegd.  |
+|Happy Flow         |1.Actor geeft aan een nieuw event type aan te maken, vervolgens voert de actor een naam in met een extra kolom. <br>2.Het systeem slaat de nieuwe event type op.|
+|Alternative Flow	  |2A. Systeem geeft aan dat de ingevoerde informatie onvolledig is  <br> 3A.Ga terug naar stap 1|
+
 # Verwoordingen feittypen
 
 ## Competitie
