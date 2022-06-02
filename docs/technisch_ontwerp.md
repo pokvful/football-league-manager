@@ -421,34 +421,44 @@ Door de afhankelijkheden van match zou de orignele primary key maarliefst 6 kolo
 ## EVENT id
 
 Het is niet mogelijk om met de bestaande kolommen een primary key te maken voor EVENT. Hoewel de combinatie van minuut, persoon en type-overtreding op het eerste oog een kandidaat lijkt, gaat dit niet op aangezien het mogelijk is om meerdere overtredingen tegelijkertijd te maken \(p\-29 https://www.knvb.nl/downloads/bestand/4841/spelregels-veldvoetbal-2021-22\).
-Omdat het natuurlijk wel mogelijk moet zijn naar iedere unieke EVENT te refereren is ervoor gekozen de EVENTs van een id te voorzien.
+Omdat het natuurlijk wel mogelijk moet zijn naar iedere unieke EVENT te refereren is ervoor gekozen de EVENTs van een id te voorzien. 
 
 ##  Events
 
-Om de events te structuren bij een wedstrijd moeten er keuzes worden gemaakt. Daarbij moet er met meerdere aspecten rekening worden gehouden. 
+Het vastleggen van events kan op veel verschillende manieren. Om te bepalen wat de beste optie is moet rekening gehouden worden met een vele aspecten, bijvoorbeeld:
+- Uitbreidbaarheid. Hoe makkelijk is het om events toe te voegen?
+- Comlexiteit van joins/reads
+- Hoe overzichtelijk en onderhoudbaar is de implementatie
 
-- Het moet in het tijdschema/budget passen van het development team.
-- Hoe uitbreidbaar is het voor de opdrachtgever om meer events toe te voegen.
+### Losse tabel voor iedere event
+Iedere event krijgt zijn eigen tabel met daarin de informatie die voor dat event belangrijk is.
 
-### Losse tabellen
+Voordelen:
+- Informatie over één type event opvragen gaat makkelijk, handig voor het genereren van toplijsten.
 
-Voordeel: Vanuit powerdesigner is het gemakkelijk te genereren.
+Nadelen:
+- Voor het aanmaken van nieuwe events moeten er nieuwe tabellen aangemaakt worden, dit kan eventueel foutgevoelig zijn.
 
-Nadeel: Wanneer een event wordt toegevoegd moet er niet alleen een create table script geschreven worden. Triggers, check constraints, etc. moeten ook worden overgenomen.
+### Één event-tabel, children voor complexere events
+Simpele events (waarbij alleen het tijdstip in de wedstrijd en 1 persoon vereist zijn) komen in een parent tabel. Comlexere events zullen een child van EVENT worden, ze erfen de basisattributen over en breiden deze uit.
+
+Voordelen:
+- Het toevoegen van simpele events kan makkelijk door admins zelf.
+
+Nadelen:
+- Minder overzichtelijk, sommige events zullen in de EVENT tabel staan terwijl andere EVENTs weer hun eigen tabel krijgen.
 
 ### NoSQL
+Events worden bijgehouden in een NoSQL database die geen moeite hebt verschillende aantallen attributen, bijvoorbeeld MongoDB.
 
-Voordeel: Het toevoegen van nieuwe soorten events is simpeler, zeker wanneer nieuwe events meer informatie hebben.
+Voordelen:
+- Geen problemen met verschillende toegevoegde/ontbrekende attributen.
 
-Nadeel: Veel development overhead. De gegevens staan niet in één database, maar verspreid over verschillende databases die in de staging area gecombineerd moeten worden.
+Nadelen:
+- Lastiger om goed te onderhouden, gegevens staan in verschillende databases die vervolgens in de staging area weer gecombineerd zullen moeten worden.
 
-### Parent met children tabellen
-De laatste te behandelen manier is om een tabel te hebben van alle type events. Je hebt de parent tabel events waarin alle events worden gerigistreerd met welke type.
-Voor de types die extra informatie willen opslaan krijgen zij een eigen tabel die verwijst naar parent tabel.
 
-Voordeel: Nieuwe soorten van simpele (minuut, persoon, match) events kunnen worden toegevoegd met één insert in de type events tabel.
 
-Nadeel: Meer development tijd. Voor events die meer informatie willen opslaan moet nieuwe tabellen worden aangemaakt met triggers erop.
 
 ### Keuze
 Voor deze opdracht wordt gekozen voor de eerste optie.
