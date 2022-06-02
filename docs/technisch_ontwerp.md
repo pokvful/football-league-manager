@@ -418,10 +418,6 @@ Voor uitleg zie FO
 
 Door de afhankelijkheden van match zou de orignele primary key maarliefst 6 kolommen lang zijn. Event, position en Player_as_Reserve zouden daarnaast ook  afhankelijk zijn van match waardoor deze tabellen ook allemaal de 6 kolommen lange primary key zouden bevatten. Om deze reden is ervoor gekozen om match van een ID te voorzien. De originele identifier staat wel als alternative key in de database opgeslagen zodat verzekert is dat deze waarde ook daadwerkelijk uniek blijft.
 
-## PERSON id
-
-Om een persoon van een daadwerkelijk van een unieke identifier te voorzien moeten niet alleen de naam en de achternaam gebruikt worden, maar ook de geboortedatum, zelfs met deze waarden is er echter nog een nihiele kans dat de waarden niet uniek zijn. Daarnaast wordt de primary key van Person in maar liefst 3 andere tabellen gebruikt. Om deze redenen is ervoor gekozen om Person een uniek ID te geven.
-
 ## EVENT id
 
 Doordat events geen PK hebben maar wel gerefereerd moeten kunnen worden, krijgen ze een gegenereerde id. Hoewel de combinatie van minuut, persoon en type overtreding in eerste instantie een potentiële pk lijkt te zijn, voldoet deze niet. Zo is het mogelijk meerdere overtredingen tegelijkertijd te maken. \(p\-29 https://www.knvb.nl/downloads/bestand/4841/spelregels-veldvoetbal-2021-22\)
