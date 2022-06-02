@@ -964,20 +964,20 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 - BR5 De startdatum van een speeldag moet voor de startdatum van een opvolgende ronde bestaan en moet hetzelfde zijn of na de startdatum van de gekoppelde ronde bestaan;
 - BR6 Een speler die op het veld staat kan een keeper, verdediger, aanvaller of middenvelder zijn;
 - BR7 Een thuis club mag maximaal één keer tegen een uit club spelen binnen een fase van een knockout competitie;
-- BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een spelende club, die zich bevindt in de database;
+- BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een bestaande, spelende club;
 - BR9 Clubs mogen alleen een match spelen als ze meedoen aan de editie;
 - BR10 Gele en rode kaarten mogen alleen worden gegeven aan spelers en coaches;
-- BR11 Voor alleen spelende spelers wordt opgeslagen of ze hebben geschoten, pases hebben gemaakt, zijn gewisseld, overtredingen hebben gemaakt, corners hebben afgenomen of gescored hebben tijdens een voetbalwedstrijd;
+- BR11 Voor alleen spelende spelers wordt bijgehouden of ze hebben geschoten, pases hebben gemaakt, zijn gewisseld, overtredingen hebben gemaakt, corners hebben afgenomen of gescored hebben tijdens een voetbalwedstrijd;
 - BR12 Er moeten 22 spelers op het veld ingedeeld zijn bij een wedstrijd;
-- BR13 Bij welke club een persoon coacht wordt alleen opgeslagen voor coaches;
-- BR14 Bij welke wedstrijden een persoon scheidst wordt alleen opgeslagen voor scheidsrechters;
-- BR15 Of een persoon in de reserve staat bij een wedstrijd wordt alleen opgeslagen voor spelers;
+- BR13 Voor coaches wordt bijgehouden voor welke club wordt gecoached;
+- BR14 Voor scheidsrechters wordt bijgehouden voor welke wedstrijd(en) wordt gescheidst;
+- BR15 Voor spelers wordt bijgehouden wie in reserve staat bij een wedstrijd;
 - BR16 Maximaal 52 speelrondes per editie van een competitie;
 - BR17 Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1;
-- BR18 Minimaal en maximaal 1 coach per club;
-- BR19 Een persoon binnen het systeem mag niet jonger zijn dan 15 jaar;
+- BR18 Er mag minimaal en maximaal 1 coach per club zijn;
+- BR19 Een persoon mag niet jonger zijn dan 15 jaar;
 - BR20 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
-- BR21 Hoeveelste minuut mag niet negatief zijn.
+- BR21 De waarde van de minuten binnen een wedstrijd mag niet negatief zijn.
 
 # Functionele requirements.
 
