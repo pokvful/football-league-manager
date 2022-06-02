@@ -243,6 +243,6 @@ Voor deze unittest is alleen een event uitgewerkt sinds de testen van alle ander
 
 ## Conclusie
 
-Op basis van de bovenstaande testresultaten is de conclusie dat de huidige database genoeg code coverage dekt om de product te live te gaan. Alle codes zijn getest op minimaal een succes, faal, en edge scenario. Er wordt gecontroleerd of de afgesproken errors gegooid worden wanneer ze moeten, daarbij ook dat ze niet erroren wanneer het niet moet. Als er waardes aangepast wordt, wordt er gecontroleerd of de aanpassingen juist uitgevoerd word.
+Op basis van de bovenstaande testresultaten is de conclusie dat de huidige database genoeg code coverage dekt om de product te live te gaan. Alle codes zijn getest op minimaal een success, fail, en edge scenario. Er wordt gecontroleerd of de afgesproken errors gegooid worden wanneer ze moeten, daarbij ook dat ze niet een exception throwen wanneer dat niet moet. Als er waarden aangepast worden, wordt er gecontroleerd of de aanpassingen juist uitgevoerd wordt.
 
 
