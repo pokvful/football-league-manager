@@ -106,10 +106,13 @@
 
 # Use cases
 
+## Database
 ![Use case diagram](images/usecase_diagram_nutmeg.png)
 
+## Staging Area
+![Use case diagram](images/UseCase_Staging_Area_Nutmeg.png)
 # Fully-Dressed Use-cases
-<!--- Staging area bij alles nog weggelaten, updaten na onderzoek --->
+
 |Naam               |Ophalen top-lijst|
 |-------------------|------------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
@@ -211,7 +214,7 @@
 |Naam               |Overzetten data	|
 |-------------------|-----------------------|
 |Actors             |Time|
-|Stakeholder        ||
+|Stakeholder        |Staging Area|
 |Preconditie        ||
 |Postconditie       |De gegevens vanuit de ene database zijn overgezet naar de andere database.|
 |Brief Description  |Het overzetten van data gebeurt periodiek en vind elke nacht plaats om 2 uur.|
