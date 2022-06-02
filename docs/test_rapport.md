@@ -236,7 +236,7 @@ Voor deze unittest is alleen een event uitgewerkt sinds de testen van alle ander
 |158|[TRG_MINIMUM_PLAYERS_IN_CLUB].[Test when existing player plus inserted player is above 11 player, should succeed]                       |     25|Success|
 |159|[TRG_MINIMUM_PLAYERS_IN_CLUB].[Test when more then one team is inserted with one team les then 11, should fail]                         |     29|Success|
 |160|[TRG_MINIMUM_PLAYERS_IN_CLUB].[Test when more then one team with total player inserted in club is equal or more than 11, should succeed]|     37|Success|
-|161|[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition FAILING ON DELETE]       |    242|Failure|
+|161|[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition FAILING ON DELETE]       |    242|Success|
 
 ## Conclusie
 
