@@ -964,7 +964,7 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 - BR20 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
 - BR21 Hoeveelste minuut mag niet negatief zijn.
 
-# Functionele requirements.
+# Functionele requirements
 
 | Functional Requirements                                                                                    | MoSCoW | Use case                       |
 |------------------------------------------------------------------------------------------------------------|--------|--------------------------------|
