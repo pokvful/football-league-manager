@@ -221,7 +221,7 @@
 |-------------------|-----------------------|
 |Actors             |NUTMEG Voetbal Admin|
 |Stakeholder        ||
-|Preconditie        | |
+|Preconditie        ||
 |Postconditie       |Er is een nieuw event toegevoegd aan het systeem.|
 |Brief Description  |De Actor maakt een nieuwe event type aan in het systeem, hierbij wordt een naam en optioneel een extra kolom toegevoegd.  |
 |Happy Flow         |1.Actor geeft aan een nieuw event type aan te maken, vervolgens voert de actor een naam in met een extra kolom. <br>2.Het systeem slaat de nieuwe event type op.|
