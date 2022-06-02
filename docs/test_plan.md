@@ -97,7 +97,7 @@ END
 ## Schema
 Per IR worden ook meteen te testen gemaakt. Er wordt geschat dat er onggeveer 45 min voor nodig is om alle testen per IR uit te werken.
 
-|Opdracht|uitvoeren|Geschatten tijd|
+|Opdracht|uitvoeren|Geschatte tijd|
 |-------|----|-----------|
 |Testen maken|alle A4 leden|675 min|
 |Testen controlleren|twee A4 leden|300 min|
