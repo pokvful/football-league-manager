@@ -112,7 +112,7 @@
 ## Staging Area
 ![Use case diagram](images/UseCase_Staging_Area_Nutmeg.png)
 # Fully-Dressed Use-cases
-<!--- Staging area bij alles nog weggelaten, updaten na onderzoek --->
+
 |Naam               |Ophalen top-lijst|
 |-------------------|------------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
