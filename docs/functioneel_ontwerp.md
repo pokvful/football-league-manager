@@ -952,7 +952,7 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 - BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een bestaande, spelende club;
 - BR9 Clubs mogen alleen een match spelen als ze meedoen aan de editie;
 - BR10 Gele en rode kaarten mogen alleen worden gegeven aan spelers en coaches;
-- BR11 Voor alleen spelende spelers wordt opgeslagen of ze hebben geschoten, pases hebben gemaakt, zijn gewisseld, overtredingen hebben gemaakt, corners hebben afgenomen of gescored hebben tijdens een voetbalwedstrijd;
+- BR11 Voor alleen spelende spelers wordt bijgehouden of ze hebben geschoten, pases hebben gemaakt, zijn gewisseld, overtredingen hebben gemaakt, corners hebben afgenomen of gescored hebben tijdens een voetbalwedstrijd;
 - BR12 Er moeten 22 spelers op het veld ingedeeld zijn bij een wedstrijd;
 - BR13 Voor coaches wordt bijgehouden voor welke club wordt gecoached;
 - BR14 Voor scheidsrechters wordt bijgehouden voor welke club wordt gescheidst;
