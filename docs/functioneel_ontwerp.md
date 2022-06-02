@@ -671,7 +671,8 @@ Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 
 Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft het uit team 434 passes gemaakt.
 
-Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft het uit team <u>823</U> passes gemaakt.
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team bitbucket.
+Functioneel ontwerpFC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft het uit team <u>823</U> passes gemaakt.
 
 ---
 
@@ -725,7 +726,8 @@ Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en
 ET: MATCH
 
 MATCH
-
+bitbucket.
+Functioneel ontwerp
 ET: Player_Name
 
 MATCH
@@ -959,11 +961,10 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 - BR15 Of een persoon in de reserve staat bij een wedstrijd wordt alleen opgeslagen voor spelers;
 - BR16 Maximaal 52 speelrondes per editie van een competitie;
 - BR17 Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1;
-- BR18 Minimaal 7 spelers per club;
-- BR19 Minimaal en maximaal 1 coach per club;
-- BR20 Een persoon binnen het systeem mag niet jonger zijn dan 15 jaar;
-- BR21 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
-- BR22 Hoeveelste minuut mag niet negatief zijn.
+- BR18 Minimaal en maximaal 1 coach per club;
+- BR19 Een persoon binnen het systeem mag niet jonger zijn dan 15 jaar;
+- BR20 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
+- BR21 Hoeveelste minuut mag niet negatief zijn.
 
 # Functionele requirements.
 
