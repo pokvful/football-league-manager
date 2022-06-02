@@ -451,7 +451,6 @@ De gebruiker kan extra kolommen toevoegen aan een event.
 
 Er was ook een keuze om alleen de basis kolommen aan te maken, maar er is een grote kans dat de cliënt extra kolommen wil.
 
-
 # Constraints
 
 ## Primary key constraints
