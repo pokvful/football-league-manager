@@ -969,7 +969,6 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 | Functional Requirements                                                                                    | MoSCoW | Use case                       |
 |------------------------------------------------------------------------------------------------------------|--------|--------------------------------|
 | Bij een lopende competitie mag alleen de speeldatum of speler selectie van een wedstrijd worden veranderd. | M      | Invoeren matchdata             |
-| De gegevens moeten bereikbaar zijn via een staging area in JSON formaat.                                   | M      | Overzetten data                |
 | Een \[analist\] kan de top-lijst via de staging area uitlezen.                                             | M      | Ophalen top-lijst              |
 | Een \[analist\] kan de tussenstand van de competitie via de staging area uitlezen.                         | M      | Ophalen tussenstand competitie |
 | Een \[analist\] kan informatie over clubs via de staging area uitlezen.                                    | M      | Ophalen clubinfo               |

@@ -86,6 +86,7 @@
 | Tabelnamen, constraints, triggers, views en procedures in SQL Server worden in het Engels geschreven               | Localization |
 | Data-analisten kunnen via de MongoDB shell data uitlezen                                                           | Usability    |
 | Iedere dag dient er om 02:00 een kopie van de SQL Server database overgezet te worden naar de MongoDB staging area | Reliability  |
+| De gegevens moeten bereikbaar zijn via een staging area in JSON formaat.                                           | Usability    |
 
 # Deployment diagram
 
