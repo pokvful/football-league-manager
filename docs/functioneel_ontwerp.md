@@ -974,7 +974,6 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 | Een \[analist\] kan informatie over clubs via de staging area uitlezen.                                    | M      | Ophalen clubinfo               |
 | Een \[analist\] kan informatie over wedstrijden via de staging area uitlezen.                              | M      | Ophalen matchinfo              |
 | Een \[analist\] kan informatie over speelrondes via de staging area uitlezen.                              | M      | Ophalen speelrondeinfo         |
-| Het moet mogelijk zijn om een top lijst van een editie te genereren.                                       | S      | Ophalen top-lijst              |
 | Een \[admin\] kan matchdata invoeren in de database.                                                       | S      | Invoeren matchdata             |
 | Een \[admin\] kan clubinfo updaten.                                                                        | S      | Updaten clubinfo               |
 | Een \[admin\] kan een nieuwe seizoen competitie starten.                                                   | S      | Start nieuw seizoen competitie |
