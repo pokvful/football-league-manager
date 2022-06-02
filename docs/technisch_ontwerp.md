@@ -137,8 +137,21 @@ Zo is er altijd databaseinhoud om mee te testen en is de database consistent tus
 
 # Beschrijving Tabellen en Kolommen
 
+## Match
 
+Bij match is er nu een match_id toegevoegd.
 
+|*Kolom* | *Toelichting* |
+|-----|-------|
+|Match_id | Het nummer waar een match mee geïdentificeerd kan worden |
+
+## CLUB_plays_in_EDITION
+
+In deze tabel staat welke clubs participeren in een specifieke editie.
+
+## PLAYER_as_reserve_in_MATCH
+
+In dit tabel staan alle spelers die in de reserve staan bij een bepaalde wedstrijd.
 
 # Toelichting Domeinen
 
