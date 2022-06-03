@@ -231,8 +231,6 @@
 
 ## Competitie
 
-### Naam
-
 Er bestaat een competitie Eredivisie.
 
 Er bestaat een competitie <u>Champions League</u>.
@@ -241,15 +239,15 @@ Er bestaat een competitie <u>Champions League</u>.
 
 ET COMPETITIE
 
-ID: Att Name
+ID: Att Competition_name
 
-Predicate: Er bestaat een competitie \<Name\>.
+Predicate: Er bestaat een competitie \<Competition_name\>.
 
-## Editie
+## Seizoen
 
-In seizoen 17/18 vond er een editie van de eredivisie plaats.
+Er is een seizoen 19/20 die start op 01-01-2019.
 
-In seizoen *<u>19/20</u> vond er een editie van de <u>WK</u>* plaats.
+Er is een seizoen <u>19/20</u> die start op <u>*01-01-2020*</u>.
 
 ---
 
@@ -257,21 +255,47 @@ ET: SEASON
 
 ID: Att Season_name
 
+Att: *Season_start*
+
+Predicate: Er is een seizoen \<Season_name\> die start op \<*Season_start*\>.
+
 ---
 
-ET: *EDITION*
+Er is een seizoen 18/19 die eindigt op 30-10-2020.
 
-ID: ET SEASON + ET COMPETITION
+Er is een seizoen <u>19/20</u> die eindigt op <u>30-10-2021</u>.
+
+---
+
+ET: SEASON
+
+MATCH
+
+Att: Season_end
+
+Predicate: Er is een seizoen \<Season_name\> die eindigt op \<*Season_end*\>.
+
+## Editie
+
+In seizoen 17/18 vond er een editie van de eredivisie plaats.
+
+In seizoen <u>**19/20**</u> vond er een editie van de <u>*WK*</u> plaats.
+
+---
+
+ET: EDITION
+
+ID: ET **SEASON** + ET *COMPETITION*
 
 MATCH MATCH
 
 ---
 
-RT EDITION_of_COMPETITION tussen EDITION(afhankelijk) en COMPETITION.
+RT EDITION_of_COMPETITION tussen EDITION(afhankelijk) en *COMPETITION*.
 
-RT EDITION_in_SEASON tussen EDITION(afhankelijk) en SEASON.
+RT EDITION_in_SEASON tussen EDITION(afhankelijk) en **SEASON**.
 
-Predicate: In seizoen \<Season_name\> vond er een editie van de \<Name\> plaats.
+Predicate: In seizoen \<**Season_name**\> vond er een editie van de \<*Competion_name*\> plaats.
 
 ### Clubs
 
