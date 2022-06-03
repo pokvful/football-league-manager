@@ -2,26 +2,27 @@
 
 # Functioneel ontwerp
 
+- [***Disclaimer*** | De lay-out van de PDF-versie voor dit document kan verschillen met de markdown versie, voor een accurate weergave zie markdown bestand in bitbucket.](#disclaimer--de-lay-out-van-de-pdf-versie-voor-dit-document-kan-verschillen-met-de-markdown-versie-voor-een-accurate-weergave-zie-markdown-bestand-in-bitbucket)
 - [Functioneel ontwerp](#functioneel-ontwerp)
 - [Use cases](#use-cases)
 - [Fully-Dressed Use-cases](#fully-dressed-use-cases)
 - [Verwoordingen feittypen](#verwoordingen-feittypen)
   - [Competitie](#competitie)
-    - [Naam](#naam)
+  - [Seizoen](#seizoen)
   - [Editie](#editie)
-    - [Clubs](#clubs)
-    - [Thuisstad](#thuisstad)
-    - [Stadion](#stadion)
-    - [Personen](#personen)
+  - [Clubs](#clubs)
+  - [Land](#land)
+  - [Thuisstad](#thuisstad)
+  - [Stadion](#stadion)
+  - [Personen](#personen)
     - [Persoon achternaam](#persoon-achternaam)
     - [Persoon middelnaam](#persoon-middelnaam)
     - [Geboortedatum](#geboortedatum)
     - [Nationaliteit](#nationaliteit)
-    - [Land van stad](#land-van-stad)
-    - [Coach](#coach)
-    - [Spelers](#spelers)
-      - [Rugnummer, voornaam en achternaam](#rugnummer-voornaam-en-achternaam)
-    - [Speler in club](#speler-in-club)
+  - [Coach](#coach)
+  - [Spelers](#spelers)
+    - [Rugnummer](#rugnummer)
+  - [Speler in club](#speler-in-club)
   - [Voetbalwedstrijd](#voetbalwedstrijd)
     - [Positie](#positie)
     - [Reserve](#reserve)
@@ -51,7 +52,6 @@
 - [Functionele requirements.](#functionele-requirements)
   - [Constraints](#constraints)
     - [C1 komt overeen met BR12](#c1-komt-overeen-met-br12)
-    - [C2 komt overeen met BR18](#c2-komt-overeen-met-br18)
     - [C3 komt overeen met BR19](#c3-komt-overeen-met-br19)
     - [C4 komt overeen met BR16](#c4-komt-overeen-met-br16)
     - [C5 komt overeen met BR17](#c5-komt-overeen-met-br17)
@@ -62,13 +62,21 @@
     - [C10 komt overeen met BR10](#c10-komt-overeen-met-br10)
     - [C11 komt overeen met BR11](#c11-komt-overeen-met-br11)
     - [C12 komt overeen met BR20](#c12-komt-overeen-met-br20)
-      - [C13 komt overeen met BR21](#c13-komt-overeen-met-br21)
-      - [C14 komt overeen met BR22](#c14-komt-overeen-met-br22)
-- [Ontwerp keuzes](#ontwerp-keuzes)
-  - [Entiteit: Persoon](#entiteit-persoon)
-  - [Entiteit: Event](#entiteit-event)
-  - [Entiteit: Position](#entiteit-position)
-  - [Entiteit: Match](#entiteit-match)
+    - [C13 komt overeen met BR21](#c13-komt-overeen-met-br21)
+    - [C14 komt overeen met BR22](#c14-komt-overeen-met-br22)
+    - [C15 komt overeen met BR1](#c15-komt-overeen-met-br1)
+- [Ontwerpkeuzes](#ontwerpkeuzes)
+  - [Person_ID](#person_id)
+  - [Person_type](#person_type)
+  - [Position](#position)
+  - [Matchinfo](#matchinfo)
+  - [Uibreidbaarheid competition](#uibreidbaarheid-competition)
+  - [Matchday & Round](#matchday--round)
+  - [Position](#position-1)
+    - [Alleen begin wedstrijd](#alleen-begin-wedstrijd)
+    - [Positie verzameling](#positie-verzameling)
+    - [Positie ook in wissel](#positie-ook-in-wissel)
+    - [Uiteindelijke keuze posities](#uiteindelijke-keuze-posities)
 - [Rechtenstructuur](#rechtenstructuur)
 - [Toelichting Datakwaliteit](#toelichting-datakwaliteit)
 - [CDM](#cdm)
@@ -87,13 +95,13 @@
   - [Entiteit EDITION](#entiteit-edition)
   - [Entiteit ROUND](#entiteit-round)
   - [Entiteit MATCHDAY](#entiteit-matchday)
-  - [Entiteit MATCH](#entiteit-match-1)
-  - [Entiteit POSITION](#entiteit-position-1)
+  - [Entiteit MATCH](#entiteit-match)
+  - [Entiteit POSITION](#entiteit-position)
   - [Entiteit KEEPER](#entiteit-keeper)
   - [Entiteit DEFENDER](#entiteit-defender)
   - [Entiteit MIDFIELDER](#entiteit-midfielder)
   - [Entiteit ATTACKER](#entiteit-attacker)
-  - [Entiteit EVENT](#entiteit-event-1)
+  - [Entiteit EVENT](#entiteit-event)
   - [Entiteit SUBSTITUTE](#entiteit-substitute)
   - [Entiteit GOAL](#entiteit-goal)
   - [Entiteit RED_CARD](#entiteit-red_card)
@@ -309,7 +317,7 @@ RT EDITION_in_SEASON tussen EDITION(afhankelijk) en **SEASON**.
 
 Predicate: In seizoen \<**Season_name**\> vond er een editie van de \<*Competion_name*\> plaats.
 
-### Clubs
+## Clubs
 
 De club Manchester United doet mee aan de competitie Eredivisie in het seizoen 17/18.
 
@@ -333,7 +341,7 @@ RT CLUB_plays_in_EDITION tussen *CLUB* en EDITION.
 
 Predicate: De club \<*Club_name*\> doet mee aan de competitie \<Competion_name\> in het seizoen \<Season_name\>.
 
-### Land
+## Land
 
 Er bestaat een land genaamd Duitsland.
 
@@ -347,7 +355,7 @@ ID: Att Country_name
 
 Predicate: Er bestaat een land genaamd \<Country_name\>.
 
-### Thuisstad
+## Thuisstad
 
 De club Manchester United heeft als thuisstad Manchester.
 
@@ -373,7 +381,7 @@ RT: CLUB_in_CITY tussen CLUB en *CITY*.
 
 Predicate: De club \<Club_name\> heeft als thuisstad \<*City_name*\> in \<**Country_name**\>.
 
-### Stadion
+## Stadion
 
 Het stadion Old Trafford bevat 47.140 stoelen.
 
@@ -389,7 +397,7 @@ Att *Capacity*
 
 Predicate: Het stadion \<Stadium_name\> bevat \<*Capacity*\> stoelen.
 
-### Personen
+## Personen
 
 De persoon 45 heeft als voornaam henk.
 
@@ -471,31 +479,7 @@ RT PERSON_nationality_of_COUNTRY tussen PERSON en COUNTRY.
 
 Predicate: De persoon \<Person_id\> heeft een \<Country_name\> paspoort.
 
-### Land van stad
-
-De stad Amsterdam ligt in het land Nederland.
-
-De stad <u>Londen</u> ligt in het land <u>*Engeland*</u>.
-
----
-
-ET: CITY
-
-MATCH
-
----
-
-ET: *COUNTRY*
-
-MATCH
-
----
-
-RT CITY_located_in_COUNTRY tussen CITY en COUNTRY.
-
-Predicate: De stad \<City_name\> ligt in het land \<Country_name\>.
-
-### Coach
+## Coach
 
 De coach van Manchester United is persoon 3.
 
@@ -519,9 +503,9 @@ RT COACH_of_CLUB tussen CLUB en COACH.
 
 Predicate: De coach van \<Club_name\> is persoon \<Person_id\>.
 
-### Spelers
+## Spelers
 
-#### Rugnummer, voornaam en achternaam
+### Rugnummer
 
 De speler 90 heeft rugnummer 26.
 
@@ -535,9 +519,9 @@ Att Jersey
 
 Predicate: De speler \<Person_id\> heeft rugnummer \<Jersey\>.
 
-### Speler in club
+## Speler in club
 
-De speler <u>12</u> zit in club <u>Ajax</u>.
+De speler 12 zit in club Ajax.
 
 De speler <u>1234132412</u> zit in <u>*PSV*</u>.
 
