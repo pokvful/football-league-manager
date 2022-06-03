@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     03/06/2022 12:06:24                          */
+/* Created on:     03/06/2022 12:28:28                          */
 /*==============================================================*/
 
 
@@ -1131,7 +1131,6 @@ go
 create table CORNER (
    MATCH_ID             G_IDENTITY           not null,
    PERSON_ID            PERSON_ID            not null,
-   COMPETITION_NAME     COMPETITION_NAME     not null,
    TIME                 MINUTE_IN_MATCH      not null
 )
 go
@@ -1190,7 +1189,6 @@ go
 create table FOUL (
    MATCH_ID             G_IDENTITY           not null,
    PERSON_ID            PERSON_ID            not null,
-   COMPETITION_NAME     COMPETITION_NAME     not null,
    TIME                 MINUTE_IN_MATCH      not null
 )
 go
@@ -1211,7 +1209,6 @@ go
 create table GOAL (
    MATCH_ID             G_IDENTITY           not null,
    PERSON_ID            PERSON_ID            not null,
-   COMPETITION_NAME     COMPETITION_NAME     not null,
    TIME                 MINUTE_IN_MATCH      not null
 )
 go
@@ -1372,7 +1369,6 @@ go
 create table PASS (
    MATCH_ID             G_IDENTITY           not null,
    PERSON_ID            PERSON_ID            not null,
-   COMPETITION_NAME     COMPETITION_NAME     not null,
    SUCCES               BOOLEAN              not null,
    TIME                 MINUTE_IN_MATCH      not null
 )
@@ -1479,7 +1475,6 @@ go
 create table RED_CARD (
    MATCH_ID             G_IDENTITY           not null,
    PERSON_ID            PERSON_ID            not null,
-   COMPETITION_NAME     COMPETITION_NAME     not null,
    TIME                 MINUTE_IN_MATCH      not null
 )
 go
@@ -1542,7 +1537,6 @@ go
 create table SHOT (
    MATCH_ID             G_IDENTITY           not null,
    PERSON_ID            PERSON_ID            not null,
-   COMPETITION_NAME     COMPETITION_NAME     not null,
    ON_GOAL              BOOLEAN              not null,
    TIME                 MINUTE_IN_MATCH      not null
 )
@@ -1576,7 +1570,6 @@ create table SUBSTITUTE (
    MATCH_ID             G_IDENTITY           not null,
    IN_PERSON_ID         PERSON_ID            not null,
    OUT_PERSON_ID        PERSON_ID            not null,
-   COMPETITION_NAME     COMPETITION_NAME     not null,
    TIME                 MINUTE_IN_MATCH      not null
 )
 go
@@ -1617,7 +1610,6 @@ go
 create table YELLOW_CARD (
    MATCH_ID             G_IDENTITY           not null,
    PERSON_ID            PERSON_ID            not null,
-   COMPETITION_NAME     COMPETITION_NAME     not null,
    TIME                 MINUTE_IN_MATCH      not null
 )
 go
