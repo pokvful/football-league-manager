@@ -974,37 +974,37 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 # Functionele requirements
 
-| Functional Requirements                                                                                           | MoSCoW | Use case                       |
-|-------------------------------------------------------------------------------------------------------------------|--------|--------------------------------|
-| Bij een lopende competitie mag alleen de speeldatum of speler selectie van een wedstrijd worden veranderd         | M      | Invoeren matchdata             |
-| Als \[admin\] wil ik een doelpunt in minuut 21 door Ronaldo als matchdata invoeren voor de wedstrijd Manchester United - Chelsea                       | M      | Invoeren matchdata             |
-| Als \[admin\] wil ik een rode kaart in minuut 90 voor Messi als matchdata invoeren voor de wedstrijd PSG - Real Madrid                     | M      | Invoeren matchdata             |
-| Als \[admin\] wil ik een gele kaart in minuut 2 voor Pepe als matchdata invoeren voor de wedstrijd Porto - Feyenoord                     | M      | Invoeren matchdata             |
-| Als \[admin\] wil ik een overtreding in minuut 63 door Pique als matchdata invoeren voor de wedstrijd FC Barcelona - Real Madrid                    | M      | Invoeren matchdata             |
-| Als \[admin\] wil ik een corner in minuut 34 door Neymar als matchdata invoeren voor de wedstrijd PSG - Bayern                         | M      | Invoeren matchdata             |
-| Als \[admin\] wil ik een schot op doel in minuut 87 door Antony als matchdata invoeren voor de wedstrijd Ajax - Feyenoord                          | M      | Invoeren matchdata             |
-| Als \[admin\] wil ik nieuwe spelers toewijzen aan de club Ajax                                                    | M      | Updaten clubinfo               |
-| Als \[admin\] wil ik een nieuw coach toewijzen aan de club Ajax                                                   | M      | Updaten clubinfo               |
-| Als \[admin\] wil ik een nieuwe seizoen voor de Eredivise starten                                                 | M      | Start nieuw seizoen competitie |
-| Als \[admin\] wil ik een nieuwe speler met de naam Chris toevoegen                                                | M      | Toevoegen nieuw persoon        |
-| Als \[admin\] wil ik een nieuwe coach met de naam Michel toevoegen                                                | M      | Toevoegen nieuw persoon        |
-| Als \[admin\] wil ik een nieuwe scheidsrechter met de naam Henk toevoegen                                         | M      | Toevoegen nieuw persoon        |
-| Als \[analist\] wil ik de top-lijst van voetballers met de meeste doelpunten uitlezen                             | M      | Ophalen top-lijst              |
-| Als \[analist\] wil ik de top-lijst van voetballers met de meeste gele kaarten uitlezen                           | M      | Ophalen top-lijst              |
-| Als \[analist\] wil ik de top-lijst van voetballers met de meeste rode kaarten uitlezen                           | M      | Ophalen top-lijst              |
-| Als \[analist\] wil ik de top-lijst van voetballers met de meeste overtredingen uitlezen                          | M      | Ophalen top-lijst              |
-| Als \[analist\] wil ik de top-lijst van clubs met de meeste corners uitlezen                                      | M      | Ophalen top-lijst              |
-| Als \[analist\] wil ik de top-lijst van clubs met de meeste schoten op doel uitlezen                              | M      | Ophalen top-lijst              |
-| Als \[analist\] wil ik de positie van Ajax in de Erdivisie uitlezen                                               | M      | Ophalen tussenstand competitie |
-| Als \[analist\] wil ik het aantal doelpunten van Feyenoord in de Erdivisie uitlezen                               | M      | Ophalen tussenstand competitie |
-| Als \[analist\] wil ik het aantal gewonnen wedstrijden van Feyenoord in de Erdivisie uitlezen                     | M      | Ophalen tussenstand competitie |
-| Als \[analist\] wil ik informatie over de spelers van de club Ajax uitlezen                                       | M      | Ophalen clubinfo               |
-| Als \[analist\] wil ik informatie over de coach van de club Ajax uitlezen                                         | M      | Ophalen clubinfo               |
-| Als \[analist\] wil ik informatie over de stadion van de club Ajax uitlezen                                       | M      | Ophalen clubinfo               |
-| Als \[analist\] wil ik informatie over de balbezit van Ajax tegen Feyenoord uitlezen                              | M      | Ophalen matchinfo              |
-| Als \[analist\] wil ik informatie over de toeschouwers tijdens Ajax - Feyenoord uitlezen                          | M      | Ophalen matchinfo              |
-| Als \[analist\] wil ik informatie over speelronde 34 van de Eredivisie uitlezen                                   | M      | Ophalen speelrondeinfo         |
-| Als \[analist\] wil ik informatie over de wedstrijd op 12/04/2021 in de Eredivisie uitlezen                       | M      | Ophalen speelrondeinfo         |
+| Functional Requirements                                                                                                          | MoSCoW | Use case                       |
+|----------------------------------------------------------------------------------------------------------------------------------|--------|--------------------------------|
+| Bij een lopende competitie mag alleen de speeldatum of speler selectie van een wedstrijd worden veranderd                        | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een doelpunt in minuut 21 door Ronaldo als matchdata invoeren voor de wedstrijd Manchester United - Chelsea | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een rode kaart in minuut 90 voor Messi als matchdata invoeren voor de wedstrijd PSG - Real Madrid           | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een gele kaart in minuut 2 voor Pepe als matchdata invoeren voor de wedstrijd Porto - Feyenoord             | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een overtreding in minuut 63 door Pique als matchdata invoeren voor de wedstrijd FC Barcelona - Real Madrid | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een corner in minuut 34 door Neymar als matchdata invoeren voor de wedstrijd PSG - Bayern                   | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een schot op doel in minuut 87 door Antony als matchdata invoeren voor de wedstrijd Ajax - Feyenoord        | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik nieuwe spelers toewijzen aan de club Ajax                                                                   | M      | Updaten clubinfo               |
+| Als \[admin\] wil ik een nieuw coach toewijzen aan de club Ajax                                                                  | M      | Updaten clubinfo               |
+| Als \[admin\] wil ik een nieuwe seizoen voor de Eredivise starten                                                                | M      | Start nieuw seizoen competitie |
+| Als \[admin\] wil ik een nieuwe speler met de naam Chris toevoegen                                                               | M      | Toevoegen nieuw persoon        |
+| Als \[admin\] wil ik een nieuwe coach met de naam Michel toevoegen                                                               | M      | Toevoegen nieuw persoon        |
+| Als \[admin\] wil ik een nieuwe scheidsrechter met de naam Henk toevoegen                                                        | M      | Toevoegen nieuw persoon        |
+| Als \[analist\] wil ik de top-lijst van voetballers met de meeste doelpunten uitlezen                                            | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de top-lijst van voetballers met de meeste gele kaarten uitlezen                                          | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de top-lijst van voetballers met de meeste rode kaarten uitlezen                                          | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de top-lijst van voetballers met de meeste overtredingen uitlezen                                         | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de top-lijst van clubs met de meeste corners uitlezen                                                     | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de top-lijst van clubs met de meeste schoten op doel uitlezen                                             | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de positie van Ajax in de Erdivisie uitlezen                                                              | M      | Ophalen tussenstand competitie |
+| Als \[analist\] wil ik het aantal doelpunten van Feyenoord in de Erdivisie uitlezen                                              | M      | Ophalen tussenstand competitie |
+| Als \[analist\] wil ik het aantal gewonnen wedstrijden van Feyenoord in de Erdivisie uitlezen                                    | M      | Ophalen tussenstand competitie |
+| Als \[analist\] wil ik informatie over de spelers van de club Ajax uitlezen                                                      | M      | Ophalen clubinfo               |
+| Als \[analist\] wil ik informatie over de coach van de club Ajax uitlezen                                                        | M      | Ophalen clubinfo               |
+| Als \[analist\] wil ik informatie over de stadion van de club Ajax uitlezen                                                      | M      | Ophalen clubinfo               |
+| Als \[analist\] wil ik informatie over de balbezit van Ajax tegen Feyenoord uitlezen                                             | M      | Ophalen matchinfo              |
+| Als \[analist\] wil ik informatie over de toeschouwers tijdens Ajax - Feyenoord uitlezen                                         | M      | Ophalen matchinfo              |
+| Als \[analist\] wil ik informatie over speelronde 34 van de Eredivisie uitlezen                                                  | M      | Ophalen speelrondeinfo         |
+| Als \[analist\] wil ik informatie over de wedstrijd op 12/04/2021 in de Eredivisie uitlezen                                      | M      | Ophalen speelrondeinfo         |
 
 
 ## Constraints
