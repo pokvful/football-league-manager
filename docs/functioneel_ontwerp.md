@@ -22,7 +22,7 @@
   - [Coach](#coach)
   - [Spelers](#spelers)
     - [Rugnummer](#rugnummer)
-  - [Speler in club](#speler-in-club)
+    - [Speler in club](#speler-in-club)
   - [Voetbalwedstrijd](#voetbalwedstrijd)
     - [Positie](#positie)
     - [Reserve](#reserve)
@@ -46,7 +46,7 @@
     - [Rode kaarten](#rode-kaarten-1)
   - [Match day](#match-day)
     - [Wissels](#wissels)
-      - [Scheidsrechter](#scheidsrechter)
+    - [Scheidsrechter](#scheidsrechter)
     - [Aantal toeschouwers](#aantal-toeschouwers)
 - [Business Rules](#business-rules)
 - [Functionele requirements.](#functionele-requirements)
@@ -401,7 +401,7 @@ Predicate: Het stadion \<Stadium_name\> bevat \<*Capacity*\> stoelen.
 
 De persoon 45 heeft als voornaam henk.
 
-De persoon <u>7</u> heeft als naam <u>Elmar</u>.
+De persoon <u>7</u> heeft als naam <u>*Elmar*</u>.
 
 ---
 
@@ -409,29 +409,29 @@ ET: PERSON
 
 ID: Att Person_id
 
-Att First_name
+Att *First_name*
 
-Predicate: De persoon \<Person_id\> heeft als naam \<First_name\>.
+Predicate: De persoon \<Person_id\> heeft als naam \<*First_name*\>.
 
 ### Persoon achternaam
 
 De persoon 7 heeft als achternaam Wiese.
 
-De persoon <u>45</u> heeft als achternaam <u>Boss</u>.
+De persoon <u>45</u> heeft als achternaam <u>*Boss*</u>.
 
 ET: PERSON
 
 MATCH
 
-Att Last_name
+Att *Last_name*
 
-Predicate: De persoon \<Person_id\> heeft als achternaam \<Last_name\>.
+Predicate: De persoon \<Person_id\> heeft als achternaam \<*Last_name*\>.
 
 ### Persoon middelnaam
 
 De persoon 123 heeft als tussenvoegsel van de.
 
-De persoon <u>45</u> heeft als tussenvoegsel <u>de</u>.
+De persoon <u>45</u> heeft als tussenvoegsel <u>*de*</u>.
 
 ---
 
@@ -439,29 +439,29 @@ ET: PERSON
 
 MATCH
 
-Att Middle_name
+Att *Middle_name*
 
-Predicate: De persoon \<Person_id\> heeft als tussenvoegsel \<Middle_name\>.
+Predicate: De persoon \<Person_id\> heeft als tussenvoegsel \<*Middle_name*\>.
 
 ### Geboortedatum
 
 De persoon 11 is geboren op 11 februari 1996.
 
-De persoon <u>364524144</u> is geboren op <u>8 Maart 1929</u>.
+De persoon <u>364524144</u> is geboren op <u>*8 Maart 1929*</u>.
 
 ET: PERSON
 
 MATCH
 
-Att Birth_date
+Att *Birth_date*
 
-Predicate: De persoon \<Person_id\> is geboren op \<Birth_date\>.
+Predicate: De persoon \<Person_id\> is geboren op \<*Birth_date*\>.
 
 ### Nationaliteit
 
 De persoon 11 heeft een nederlandse paspoort.
 
-De persoon <u>122343</u> heeft een <u>*Zuid-Africa*</u> paspoort
+De persoon <u>122343</u> heeft een <u>*Zuid-Afrika*</u> paspoort.
 
 ET: PERSON
 
@@ -471,19 +471,19 @@ MATCH
 
 ET: *COUNTRY*
 
-ID: Att Country_name
+*MATCH*
 
 ---
 
-RT PERSON_nationality_of_COUNTRY tussen PERSON en COUNTRY.
+RT PERSON_nationality_of_COUNTRY tussen PERSON en *COUNTRY*.
 
-Predicate: De persoon \<Person_id\> heeft een \<Country_name\> paspoort.
+Predicate: De persoon \<Person_id\> heeft een \<*Country_name*\> paspoort.
 
 ## Coach
 
 De coach van Manchester United is persoon 3.
 
-De coach van <u>Vitesse</u> is persoon <u>9876</u>.
+De coach van <u>Vitesse</u> is persoon <u>*9876*</u>.
 
 ---
 
@@ -493,15 +493,15 @@ MATCH
 
 ---
 
-ET: COACH
+ET: *COACH*
 
-MATCH
+*MATCH*
 
 ---
 
-RT COACH_of_CLUB tussen CLUB en COACH.
+RT COACH_of_CLUB tussen CLUB en *COACH*.
 
-Predicate: De coach van \<Club_name\> is persoon \<Person_id\>.
+Predicate: De coach van \<Club_name\> is persoon \<*Person_id*\>.
 
 ## Spelers
 
@@ -509,17 +509,19 @@ Predicate: De coach van \<Club_name\> is persoon \<Person_id\>.
 
 De speler 90 heeft rugnummer 26.
 
-De speler <u>56</u> heeft rugnummer <u>14</u>.
+De speler <u>56</u> heeft rugnummer <u>*14*</u>.
 
 ---
 
 ET: PLAYER
 
-Att Jersey
+MATCH
 
-Predicate: De speler \<Person_id\> heeft rugnummer \<Jersey\>.
+Att *Jersey*
 
-## Speler in club
+Predicate: De speler \<Person_id\> heeft rugnummer \<*Jersey*\>.
+
+### Speler in club
 
 De speler 12 zit in club Ajax.
 
@@ -535,13 +537,13 @@ MATCH
 
 ET: *CLUB*
 
-MATCH
+*MATCH*
 
 ---
 
-RT PLAYER_in_CLUB tussen PLAYER en CLUB.
+RT PLAYER_in_CLUB tussen PLAYER en *CLUB*.
 
-Predicate: De speler \<Person_id\> zit in \<Club_name\>.
+Predicate: De speler \<Person_id\> zit in \<*Club_name*\>.
 
 ## Voetbalwedstrijd
 
@@ -949,7 +951,7 @@ RT PERSON_in_SUBSTITUTE tussen PERSON en SUBSTITUTE.
 
 Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> werd de speler \<Person_id\> ingewisseld voor de speler \<Person_id\> in de \<Time\> minuut.
 
-#### Scheidsrechter
+### Scheidsrechter
 
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga was Bas Neijnhuis de scheidsrechter.
 
