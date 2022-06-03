@@ -5,6 +5,13 @@ A very beautiful script to generate event scripts
 import random
 import pyodbc
 
+POSITIONS = [
+    "KEEPER",
+    "DEFENDER",
+    "ATTACKER",
+    "MIDFIELDER",
+]
+
 def format_sql(table, dict):
 	columns = [ key for key, value in dict.items() ]
 	values = [ str(value) for key, value in dict.items() ]
@@ -108,6 +115,7 @@ def event_SUBSTITUTE(match_id, players, reserves): # {{{
 			"[Time]": round( random.uniform(0, 95), 3 ),
 			"In_person_id": random.choice(reserves)[0],
 			"Out_person_id": random.choice(players)[0],
+			"Position_type": random.choice(POSITIONS),
 		},
 	)
 # }}}
