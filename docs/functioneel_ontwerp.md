@@ -307,7 +307,7 @@ De club <u>*Vitesse*</u> doet mee aan de competitie <u>Eredivisie in het seizoen
 
 ET *CLUB*
 
-ID: Att Name
+ID: Att Club_name
 
 ---
 
@@ -317,39 +317,55 @@ MATCH
 
 ---
 
-RT CLUB_plays_in_EDITION tussen CLUB en EDITION.
+RT CLUB_plays_in_EDITION tussen *CLUB* en EDITION.
 
-Predicate: \<Name\> doet mee aan de competitie \<Competion_name\>.
+Predicate: De club \<*Club_name*\> doet mee aan de competitie \<Competion_name\> in het seizoen \<Season_name\>.
+
+### Land
+
+Er bestaat een land genaamd Duitsland.
+
+Er bestaat een land genaamd <u>Nederland</u>.
+
+---
+
+ET: COUNTRY
+
+ID: Att Country_name
+
+Predicate: Er bestaat een land genaamd \<Country_name\>.
 
 ### Thuisstad
 
 De club Manchester United heeft als thuisstad Manchester.
 
-De club <u>Vitesse</u> heeft als thuisstad <u>*Arnhem*</u>.
+De club <u>Vitesse</u> heeft als thuisstad <u>*Arnhem* in **Nederland**</u>.
 
 ---
 
 ET CLUB
 
-Att Club_name
+MATCH
 
 ---
 
 ET *CITY*
 
-ID: Att City_name
+ID: Att *City_name* + ET **COUNTRY**
+
+**MATCH**
 
 ---
 
-RT: CLUB_in_CITY tussen CLUB en CITY.
+RT: CLUB_in_CITY tussen CLUB en *CITY*.
 
-Predicate: De club \<Club_name\> heeft als thuisstad \<City_name\>.
+Predicate: De club \<Club_name\> heeft als thuisstad \<*City_name*\> in \<**Country_name**\>.
 
 ### Stadion
 
 Het stadion Old Trafford bevat 47.140 stoelen.
 
-Het stadion <u>Gelredome</u> bevat <u>28.000</u> stoelen.
+Het stadion <u>Gelredome</u> bevat <u>*28.000*</u> stoelen.
 
 ---
 
@@ -357,9 +373,9 @@ ET: STADIUM
 
 ID: Att Stadium_name
 
-Att Capacity
+Att *Capacity*
 
-Predicate: Het stadion \<Stadium_name\> bevat \<Capacity\> stoelen.
+Predicate: Het stadion \<Stadium_name\> bevat \<*Capacity*\> stoelen.
 
 ### Personen
 
