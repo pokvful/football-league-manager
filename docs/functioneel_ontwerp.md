@@ -979,10 +979,10 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 | Als \[analist\] wil ik informatie over de club Ajax via de staging area uitlezen                             | M      | Ophalen clubinfo               |
 | Als \[analist\] wil ik informatie over de wedstrijd Ajax - Feyenoord via de staging area uitlezen            | M      | Ophalen matchinfo              |
 | Als \[analist\] wil ik informatie over speelronde 34 van de Eredivisie via de staging area uitlezen          | M      | Ophalen speelrondeinfo         |
-| Als \[admin\] wil ik matchdata invoeren in de database voor de wedstrijd Ajax - Feyenoord                    | S      | Invoeren matchdata             |
-| Als \[admin\] wil ik nieuwe spelers toevoegen voor de club Ajax                                              | S      | Updaten clubinfo               |
-| Als \[admin\] wil ik een nieuwe seizoen voor de Eredivise starten                                            | S      | Start nieuw seizoen competitie |
-| Als \[admin\] wil ik een nieuwe persoon met de naam Chris toevoegen aan de database                          | S      | Toevoegen nieuw persoon        |
+| Als \[admin\] wil ik matchdata invoeren in de database voor de wedstrijd Ajax - Feyenoord                    | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik nieuwe spelers toevoegen voor de club Ajax                                              | M      | Updaten clubinfo               |
+| Als \[admin\] wil ik een nieuwe seizoen voor de Eredivise starten                                            | M      | Start nieuw seizoen competitie |
+| Als \[admin\] wil ik een nieuwe persoon met de naam Chris toevoegen aan de database                          | M      | Toevoegen nieuw persoon        |
 
 ## Constraints
 
