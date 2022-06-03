@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     01/06/2022 15:24:47                          */
+/* Created on:     03/06/2022 10:10:57                          */
 /*==============================================================*/
 
 
@@ -293,6 +293,13 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('SUBSTITUTE') and o.name = 'FK_SUBSTITU_POSITION__POSITION')
+alter table SUBSTITUTE
+   drop constraint FK_SUBSTITU_POSITION__POSITION
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
    where r.fkeyid = object_id('YELLOW_CARD') and o.name = 'FK_YELLOW_C_EVENT_HAP_MATCH')
 alter table YELLOW_CARD
    drop constraint FK_YELLOW_C_EVENT_HAP_MATCH
@@ -397,15 +404,6 @@ go
 if exists (select 1
             from  sysindexes
            where  id    = object_id('CORNER')
-            and   name  = 'EVENT_HAPPENED_IN_MATCH7_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index CORNER.EVENT_HAPPENED_IN_MATCH7_FK
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('CORNER')
             and   name  = 'PERSON_INVOLVED_IN_EVENT7_FK'
             and   indid > 0
             and   indid < 255)
@@ -452,15 +450,6 @@ go
 if exists (select 1
             from  sysindexes
            where  id    = object_id('FOUL')
-            and   name  = 'EVENT_HAPPENED_IN_MATCH8_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index FOUL.EVENT_HAPPENED_IN_MATCH8_FK
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('FOUL')
             and   name  = 'PERSON_INVOLVED_IN_EVENT8_FK'
             and   indid > 0
             and   indid < 255)
@@ -472,15 +461,6 @@ if exists (select 1
            where  id = object_id('FOUL')
             and   type = 'U')
    drop table FOUL
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('GOAL')
-            and   name  = 'EVENT_HAPPENED_IN_MATCH3_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index GOAL.EVENT_HAPPENED_IN_MATCH3_FK
 go
 
 if exists (select 1
@@ -604,15 +584,6 @@ go
 if exists (select 1
             from  sysindexes
            where  id    = object_id('PASS')
-            and   name  = 'EVENT_HAPPENED_IN_MATCH5_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index PASS.EVENT_HAPPENED_IN_MATCH5_FK
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('PASS')
             and   name  = 'PERSON_INVOLVED_IN_EVENT5_FK'
             and   indid > 0
             and   indid < 255)
@@ -693,15 +664,6 @@ go
 if exists (select 1
             from  sysindexes
            where  id    = object_id('RED_CARD')
-            and   name  = 'EVENT_HAPPENED_IN_MATCH_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index RED_CARD.EVENT_HAPPENED_IN_MATCH_FK
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('RED_CARD')
             and   name  = 'PERSON_INVOLVED_IN_EVENT_FK'
             and   indid > 0
             and   indid < 255)
@@ -748,15 +710,6 @@ go
 if exists (select 1
             from  sysindexes
            where  id    = object_id('SHOT')
-            and   name  = 'EVENT_HAPPENED_IN_MATCH6_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index SHOT.EVENT_HAPPENED_IN_MATCH6_FK
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('SHOT')
             and   name  = 'PERSON_INVOLVED_IN_EVENT6_FK'
             and   indid > 0
             and   indid < 255)
@@ -780,19 +733,19 @@ go
 if exists (select 1
             from  sysindexes
            where  id    = object_id('SUBSTITUTE')
-            and   name  = 'EVENT_HAPPENED_IN_MATCH4_FK'
+            and   name  = 'PERSON_INVOLVED_IN_EVENT4_FK'
             and   indid > 0
             and   indid < 255)
-   drop index SUBSTITUTE.EVENT_HAPPENED_IN_MATCH4_FK
+   drop index SUBSTITUTE.PERSON_INVOLVED_IN_EVENT4_FK
 go
 
 if exists (select 1
             from  sysindexes
            where  id    = object_id('SUBSTITUTE')
-            and   name  = 'PERSON_INVOLVED_IN_EVENT4_FK'
+            and   name  = 'POSITION_IN_SUBSTITUTE_FK'
             and   indid > 0
             and   indid < 255)
-   drop index SUBSTITUTE.PERSON_INVOLVED_IN_EVENT4_FK
+   drop index SUBSTITUTE.POSITION_IN_SUBSTITUTE_FK
 go
 
 if exists (select 1
@@ -809,15 +762,6 @@ if exists (select 1
            where  id = object_id('SUBSTITUTE')
             and   type = 'U')
    drop table SUBSTITUTE
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('YELLOW_CARD')
-            and   name  = 'EVENT_HAPPENED_IN_MATCH2_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index YELLOW_CARD.EVENT_HAPPENED_IN_MATCH2_FK
 go
 
 if exists (select 1
@@ -898,6 +842,10 @@ go
 
 if exists(select 1 from systypes where name='POSITION')
    drop type POSITION
+go
+
+if exists(select 1 from systypes where name='POSITION_PLAYER')
+   drop type POSITION_PLAYER
 go
 
 if exists(select 1 from systypes where name='SEASON_NAME')
@@ -1025,6 +973,13 @@ go
 /* Domain: POSITION                                             */
 /*==============================================================*/
 create type POSITION
+   from varchar(128)
+go
+
+/*==============================================================*/
+/* Domain: POSITION_PLAYER                                      */
+/*==============================================================*/
+create type POSITION_PLAYER
    from varchar(128)
 go
 
@@ -1175,9 +1130,7 @@ go
 /*==============================================================*/
 create table CORNER (
    MATCH_ID             G_IDENTITY           not null,
-   TIME                 MINUTE_IN_MATCH      not null,
-   PERSON_ID            PERSON_ID            not null,
-   constraint PK_CORNER primary key (MATCH_ID, TIME)
+   PERSON_ID            PERSON_ID            not null
 )
 go
 
@@ -1189,16 +1142,6 @@ go
 
 
 create nonclustered index PERSON_INVOLVED_IN_EVENT7_FK on CORNER (PERSON_ID ASC)
-go
-
-/*==============================================================*/
-/* Index: EVENT_HAPPENED_IN_MATCH7_FK                           */
-/*==============================================================*/
-
-
-
-
-create nonclustered index EVENT_HAPPENED_IN_MATCH7_FK on CORNER (MATCH_ID ASC)
 go
 
 /*==============================================================*/
@@ -1244,9 +1187,7 @@ go
 /*==============================================================*/
 create table FOUL (
    MATCH_ID             G_IDENTITY           not null,
-   TIME                 MINUTE_IN_MATCH      not null,
-   PERSON_ID            PERSON_ID            not null,
-   constraint PK_FOUL primary key (MATCH_ID, TIME)
+   PERSON_ID            PERSON_ID            not null
 )
 go
 
@@ -1261,23 +1202,11 @@ create nonclustered index PERSON_INVOLVED_IN_EVENT8_FK on FOUL (PERSON_ID ASC)
 go
 
 /*==============================================================*/
-/* Index: EVENT_HAPPENED_IN_MATCH8_FK                           */
-/*==============================================================*/
-
-
-
-
-create nonclustered index EVENT_HAPPENED_IN_MATCH8_FK on FOUL (MATCH_ID ASC)
-go
-
-/*==============================================================*/
 /* Table: GOAL                                                  */
 /*==============================================================*/
 create table GOAL (
    MATCH_ID             G_IDENTITY           not null,
-   TIME                 MINUTE_IN_MATCH      not null,
-   PERSON_ID            PERSON_ID            not null,
-   constraint PK_GOAL primary key (MATCH_ID, TIME)
+   PERSON_ID            PERSON_ID            not null
 )
 go
 
@@ -1289,16 +1218,6 @@ go
 
 
 create nonclustered index PERSON_INVOLVED_IN_EVENT3_FK on GOAL (PERSON_ID ASC)
-go
-
-/*==============================================================*/
-/* Index: EVENT_HAPPENED_IN_MATCH3_FK                           */
-/*==============================================================*/
-
-
-
-
-create nonclustered index EVENT_HAPPENED_IN_MATCH3_FK on GOAL (MATCH_ID ASC)
 go
 
 /*==============================================================*/
@@ -1445,10 +1364,8 @@ go
 /*==============================================================*/
 create table PASS (
    MATCH_ID             G_IDENTITY           not null,
-   TIME                 MINUTE_IN_MATCH      not null,
    PERSON_ID            PERSON_ID            not null,
-   SUCCES               BOOLEAN              not null,
-   constraint PK_PASS primary key (MATCH_ID, TIME)
+   SUCCES               BOOLEAN              not null
 )
 go
 
@@ -1460,16 +1377,6 @@ go
 
 
 create nonclustered index PERSON_INVOLVED_IN_EVENT5_FK on PASS (PERSON_ID ASC)
-go
-
-/*==============================================================*/
-/* Index: EVENT_HAPPENED_IN_MATCH5_FK                           */
-/*==============================================================*/
-
-
-
-
-create nonclustered index EVENT_HAPPENED_IN_MATCH5_FK on PASS (MATCH_ID ASC)
 go
 
 /*==============================================================*/
@@ -1561,9 +1468,7 @@ go
 /*==============================================================*/
 create table RED_CARD (
    MATCH_ID             G_IDENTITY           not null,
-   TIME                 MINUTE_IN_MATCH      not null,
-   PERSON_ID            PERSON_ID            not null,
-   constraint PK_RED_CARD primary key (MATCH_ID, TIME)
+   PERSON_ID            PERSON_ID            not null
 )
 go
 
@@ -1575,16 +1480,6 @@ go
 
 
 create nonclustered index PERSON_INVOLVED_IN_EVENT_FK on RED_CARD (PERSON_ID ASC)
-go
-
-/*==============================================================*/
-/* Index: EVENT_HAPPENED_IN_MATCH_FK                            */
-/*==============================================================*/
-
-
-
-
-create nonclustered index EVENT_HAPPENED_IN_MATCH_FK on RED_CARD (MATCH_ID ASC)
 go
 
 /*==============================================================*/
@@ -1634,10 +1529,8 @@ go
 /*==============================================================*/
 create table SHOT (
    MATCH_ID             G_IDENTITY           not null,
-   TIME                 MINUTE_IN_MATCH      not null,
    PERSON_ID            PERSON_ID            not null,
-   ON_GOAL              BOOLEAN              not null,
-   constraint PK_SHOT primary key (MATCH_ID, TIME)
+   ON_GOAL              BOOLEAN              not null
 )
 go
 
@@ -1649,16 +1542,6 @@ go
 
 
 create nonclustered index PERSON_INVOLVED_IN_EVENT6_FK on SHOT (PERSON_ID ASC)
-go
-
-/*==============================================================*/
-/* Index: EVENT_HAPPENED_IN_MATCH6_FK                           */
-/*==============================================================*/
-
-
-
-
-create nonclustered index EVENT_HAPPENED_IN_MATCH6_FK on SHOT (MATCH_ID ASC)
 go
 
 /*==============================================================*/
@@ -1675,11 +1558,10 @@ go
 /* Table: SUBSTITUTE                                            */
 /*==============================================================*/
 create table SUBSTITUTE (
+   POSITION_TYPE        POSITION             not null,
    MATCH_ID             G_IDENTITY           not null,
-   TIME                 MINUTE_IN_MATCH      not null,
    IN_PERSON_ID         PERSON_ID            not null,
-   OUT_PERSON_ID        PERSON_ID            not null,
-   constraint PK_SUBSTITUTE primary key (MATCH_ID, TIME)
+   OUT_PERSON_ID        PERSON_ID            not null
 )
 go
 
@@ -1694,6 +1576,16 @@ create nonclustered index PERSON_IN_SUBSTITUTE_FK on SUBSTITUTE (IN_PERSON_ID AS
 go
 
 /*==============================================================*/
+/* Index: POSITION_IN_SUBSTITUTE_FK                             */
+/*==============================================================*/
+
+
+
+
+create nonclustered index POSITION_IN_SUBSTITUTE_FK on SUBSTITUTE (POSITION_TYPE ASC)
+go
+
+/*==============================================================*/
 /* Index: PERSON_INVOLVED_IN_EVENT4_FK                          */
 /*==============================================================*/
 
@@ -1704,23 +1596,11 @@ create nonclustered index PERSON_INVOLVED_IN_EVENT4_FK on SUBSTITUTE (OUT_PERSON
 go
 
 /*==============================================================*/
-/* Index: EVENT_HAPPENED_IN_MATCH4_FK                           */
-/*==============================================================*/
-
-
-
-
-create nonclustered index EVENT_HAPPENED_IN_MATCH4_FK on SUBSTITUTE (MATCH_ID ASC)
-go
-
-/*==============================================================*/
 /* Table: YELLOW_CARD                                           */
 /*==============================================================*/
 create table YELLOW_CARD (
    MATCH_ID             G_IDENTITY           not null,
-   TIME                 MINUTE_IN_MATCH      not null,
-   PERSON_ID            PERSON_ID            not null,
-   constraint PK_YELLOW_CARD primary key (MATCH_ID, TIME)
+   PERSON_ID            PERSON_ID            not null
 )
 go
 
@@ -1732,16 +1612,6 @@ go
 
 
 create nonclustered index PERSON_INVOLVED_IN_EVENT2_FK on YELLOW_CARD (PERSON_ID ASC)
-go
-
-/*==============================================================*/
-/* Index: EVENT_HAPPENED_IN_MATCH2_FK                           */
-/*==============================================================*/
-
-
-
-
-create nonclustered index EVENT_HAPPENED_IN_MATCH2_FK on YELLOW_CARD (MATCH_ID ASC)
 go
 
 alter table CITY
@@ -1978,6 +1848,12 @@ go
 alter table SUBSTITUTE
    add constraint FK_SUBSTITU_PERSON_IN_PERSON foreign key (IN_PERSON_ID)
       references PERSON (PERSON_ID)
+go
+
+alter table SUBSTITUTE
+   add constraint FK_SUBSTITU_POSITION__POSITION foreign key (POSITION_TYPE)
+      references POSITION (POSITION_TYPE)
+         on update cascade
 go
 
 alter table YELLOW_CARD
