@@ -16,11 +16,7 @@ When you are done, you can stop the database by running the following command in
 docker-compose down
 ```
 
-If you have problems with the ports of the added databases add a .env file in the project root.
-
-In the .env you can add DATABASE_PORT_MSSQL=new_port for MSSQL.
-
-And DATABASE_PORT_MONGO:new_port for MONGO.
+If you have problems with the ports of the databases add a `.env` file in the project root. In the `.env` you can add `DATABASE_PORT_MSSQL=new_port` for MSSQL and `DATABASE_PORT_MONGO=new_port` for MONGO.
 
 # Creating mock data
 

@@ -1,3 +1,5 @@
+# ***Disclaimer*** | De lay-out van de PDF-versie voor dit document kan verschillen met de markdown versie, voor een accurate weergave zie markdown bestand in [bitbucket](https://isebitbucket.aimsites.nl/projects/S22122A4/repos/football-league-manager/browse/docs).
+
 # Technisch ontwerp
 
 - [Technisch ontwerp](#technisch-ontwerp)
@@ -73,299 +75,89 @@
   - [Input](#input)
   - [Output](#output)
 
-# Non-Functional Requirements
+# Niet-functionele eisen
 
-## Performance and scalability
-
-- Om de druk op de MSSQL database te verlichten lezen data-analisten van klaten alleen de MongoDB staging area uit
-
-## Portability and compatibility
-
-- MSSQL is vereist voor het *opzetten* van de database
-- Voor data-analisten van klanten die willen *uitlezen*, is het verplicht om de staging area te gebruiken
-
-## Reliability, availability, maintainability
-
-- Iedere dag wordt om 02:00 een kopie van de MSSQL database overgezet naar de MongoDB staging area
-
-## Security
-
-- Administrators van NUTMEG hebben volledige CRUD rechten op zowel de volledige MSSQL als MongoDB database
-- Data-analisten van klanten kunnen de database alleen uitlezen via de staging area
-
-## Localization
-
-- De data wordt in het Nederlands opgeslagen
-- De schema van MSSQL (en MongoDB indien nodig) worden in het Engels gemaakt
-
-## Usability
-
-- Data-analisten kunnen via de MongoDB shell data uitlezen die in de MongoDB staging area staat
+| Niet-functionele eisen                                                                                             | Categorieën  |
+|--------------------------------------------------------------------------------------------------------------------|--------------|
+| Data-analisten lezen alleen data uit vanuit de MongoDB staging area, zo wordt de load op de SQL Server verlicht    | Performance  |
+| Administrators van NUTMEG hebben volledige CRUD rechten op zowel de SQL Server als MongoDB database                | Security     |
+| Data-analisten hebben alleen lees rechten en lezen data exclusief uit vanuit de staging area                       | Security     |
+| De data wordt alleen in het Nederlands opgeslagen                                                                  | Localization |
+| Tabelnamen, constraints, triggers, views en procedures in SQL Server worden in het Engels geschreven               | Localization |
+| Data-analisten kunnen via de MongoDB shell data uitlezen                                                           | Usability    |
+| Iedere dag dient er om 02:00 een kopie van de SQL Server database overgezet te worden naar de MongoDB staging area | Reliability  |
 
 # Deployment diagram
 
 ![Deployment diagram.](images/Deployment%20Diagram.png)
 
+**Het bovenstaande diagram geldt alleen voor de ontwikkelomgeving.**
+
+## Server unknown
+
+In het bovenstaande diagram is `Server unknown` alles wat draait op de lokale computer van de ontwikkelaars.
+
+## Client
+
+De client heeft een directe verbinding met de `MongoDB node` dit is de staging area die gebruikt wordt door data-analisten. Data-analisten krijgen niet direct toegang tot de `SQL Server node`, dit mogen alleen de admins.
+
+## Transport Script
+
+Binnen deze container draaien alle scripts die van belang zijn voor het overzetten van de SQL Server JSON naar MongoDB.
+
+## MongoDB
+
+De client interact met de MongoDB staging area, dit is ook hoe de uiteindelijke omgeving eruit komt te zien. De client is dus niet direct in verbinding met de SQL Server maar eerst met de staging area (MongoDB). Tijdens de constructie fase van het project zal ook direct verbinding gemaakt worden met de SQL Server, echter is dit in de uiteindelijke versie van de applicatie niet het geval (dan hebben alleen de admins direct toegang tot de SQL Server).
+
+## SQL Server
+
+Binnen de SQL Server container draait een Microsoft SQL Server 2018 Server image. Vanaf deze node wordt alle data geleverd die gebruikt kan worden in de staging area. Deze node staat niet per direct in verbinding met de MongoDB node. Dit heeft als reden dat alle data eerst omgezet moet worden naar JSON die vervolgens MongoDB weer kan gebruiken om data mee te importeren.
+
+## Docker Compose
+
+Docker Compose is een applicatie om gemakkelijk meerdere containers mee op te starten. Dit bestand is te vinden onder `docker-compose.yaml`.
+
+Om gebruik te maken van Docker Compose wordt het volgende commando gedraait in de root directory (`/football-league-manager`) van het project: 
+
+```bash
+docker-compose up --build --force-recreate -d
+```
+
+## Gebruik van Docker
+
+Tijdens de ontwikkeling van het project wordt gebruik gemaakt van Docker; dit heeft als reden dat we door middel van Docker de omgeving van de applicatie kunnen wegabstraheren. Op deze manier hoeven wij ons zelf niet druk te maken over het installeren en onderhouden van installaties van bijvoorbeeld SQL Server en/of Linux.
+
+Wij gebruiken Docker zo dat elke keer zodra de containers worden opgestart, alle data in de database wordt gereset. Dit houdt in dat alle mockdata scripts opnieuw worden gedraaid en de bestaande data in de docker omgeving wordt verwijderd. Zo beginnen we elke keer met een schone database. Het voordeel hiervan is dat op elk moment de database hetzelfde is zoals gedefinieerd in de SQL bestanden.
+
+Zo is er altijd databaseinhoud om mee te testen en is de database consistent tussen de verschillende ontwikkelaars. Als iemand een schema, view of een procedure aanpast wordt deze wijziging meegecommit met de code. Zo lopen versies nooit uit elkaar.
+
 # PDM
 
 ![Het PDM.](images/pdm_no_ko.png)
 
-# Beschrijving Tabellen en Kolommen
-
-## Tabel: PERSON
-
-Deze tabel bevat alle informatie van personen in de database.
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-| Person_id| Unieke persoonsnummer |
-| Country_name| Naam van nationaliteit|
-|First_name | Voornaam van persoon|
-|Last_name| Achternaam van persoon|
-|Middle_name| Tussenvoegsel van persoon|
-|Birth_date| Wanneer de persoon is geboren|
-
-## Tabel: REFEREE
-
-Deze tabel bevat alle personen die ook scheidsrechters zijn.
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Person_id| Unieke persoonsnummer|
-
-## Tabel: COACH
-
-Deze tabel bevat alle personen die ook coaches zijn.
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Person_id| Unieke persoonsnummer|
-|Club_name|De naam van de club waar deze coach werkt|
-
-## Tabel: PLAYER
-
-Deze tabel bevat alle personen die ook spelers zijn.
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Person_id | Unieke persoonsnummer|
-|Club_name|Naam van de club waarin deze speler speelt|
-|Jersey|Rugnummer van deze speler|
-
-## Tabel: COUNTRY
-
-Deze tabel bevat alle landen.
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Country_name| Naam van het desbetrefende land|
-
-## Tabel: CITY
-
-Deze tabel bevat alle steden.
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Country_name|Het land waarin deze stad ligt|
-|City_name|De naam van deze stad|
-
-## Tabel: STADIUM
-
-Deze tabel bevat alle stadions
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Stadium_name|Naam van dit stadion|
-|Capacity|Het max aantal personen die in dit stadion kunnen|
-
-## Tabel: CLUB
-
-Deze tabel bevat alle clubs die wedstrijden kunnen spelen.
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Club_name|Unieke naam van deze club|
-|Stadium_name|Naam van het stadion van deze club|
-|Country_name|Land waarin deze club ligt|
-|City_name| Stad waarin deze club ligt|
-
-## Tabel: SEASON
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Season_name|Unieke naam van een bepaald speel seizoen|
-
-## Tabel: DOMESTIC_LEAGUE 
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Competition_name|Unieke naam van deze competitie|
-
-## Tabel: EDITION
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Season_name|Naam van het seizoen van deze editie|
-|Competition_name|Naam van de competitie die deze editie heeft|
-
-## Tabel: ROUND
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Season_name|Naam van het seizoen waarin deze ronde wordt gespeeld|
-|Competition_name|Naam van de competitie waarin deze ronde wordt gespeeld|
-|Start_date|Startdatum van deze specifieke ronde|
-
-## Tabel: CLUB_plays_in_EDITION
-
-In deze tabel staat welke clubs participeren in een specifieke editie.
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Season_name|Naam van het seizoen waarin een club speelt|
-|Competition_name|Naam van de competitie waarin een club speelt|
-|Club_name|Naam van de club die in een editie speelt|
-
-## Tabel: MATCHDAY
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Season_name|Naam van het seizoen waarin deze speeldag wordt gespeeld|
-|Competition_name|Naam van de competitie waarin deze speeldag wordt gespeeld|
-|Start_date|Startdatum van de ronde waarin deze speeldag wordt gespeeld|
-|Match_day|Een unieke speeldag datum|
-
-## Tabel: MATCH
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Match_id|Unieke gegenereerde id waarde van een wedstrijd|
-|Season_name|Naam van het seizoen waarin deze wedstrijd wordt gespeeld|
-|Competition_name|Naam van de competitie waarin deze competitie wordt gespeeld|
-|Start_date|Startdatum van de ronde waarin deze wedstrijd wordt gespeeld|
-|Match_day|Datum van de westrijd|
-|Home_club_name|Naam van de thuisclub die deze wedstrijd speelt|
-|Out_club_name|Naam van de uitclub die deze wedstrijd speelt|
-|Referee_person_id|Id verwijzing naar de scheids van deze wedstrijd|
-|Ball_possession_home|Hoeveel de thuisclub de bal in bezit heeft in procenten|
-|Ball_possession_out|Hoeveel de uitclub de bal in bezit heeft in procenten|
-|Spectators|Aantal toeschouwers die naar deze wedstrijd zijn geweest|
-
-## Tabel: POSITION
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Player_person_id|Unieke id van een persoon dat speler is|
-|Match_id|Unieke id van de wedstrijd|
-|Position_type|Geeft aan op welke positie een speler staat op het veld bij de wedstrijd (aanvaller, verdediger etc.)|
-
-## Tabel: PLAYER_as_reserve_in_MATCH
-
-In dit tabel staan alle spelers die in de reserve staan bij een bepaalde wedstrijd.
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Player_person_id|Unieke id van een persoon dat speler is|
-|Match_id|Unieke id van de wedstrijd|
-
-## Tabel: SUBSTITUTE
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
-|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
-|In_person_id|Unieke id van de persoon die nu op het veld gaat staan|
-|Out_person_id|Unieke id van de persoon die nu uit het veld gaat|
-
-## Tabel: CORNER
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
-|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
-|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
-
-## Tabel: FOUL
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
-|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
-|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
-
-## Tabel: SHOT
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
-|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
-|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
-|On_goal|Hiermee wordt aangegeven of het schot naar het doel is geschoten|
-
-## Tabel: GOAL
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
-|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
-|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
-
-## Tabel: PASS
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
-|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
-|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
-|Succes|Hiermee wordt aangegeven dat de paas is aangekomen|
-
-## Tabel: YELLOW_CARD
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
-|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
-|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
-
-## Tabel: RED_CARD
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
-|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
-|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
-
-# Ontwerkpeuzes
+# Toelichting Domeinen
+
+|Domein				|Datatype		|Toelichting															|
+|-------------------|---------------|-----------------------------------------------------------------------|
+|PERSON_ID			|bigint			|Automatisch gegenereerd ID												|
+|NAME				|varchar(128)	|																		|
+|DATE				|Date			|																		|
+|CLUB_NAME			|varchar(128)	|																		|
+|CITY_NAME			|varchar(128)	|																		|
+|COUNTRY_NAME		|varchar(128)	|																		|
+|STADIUM_NAME		|varchar(60)	|																		|
+|COMPETITON_NAME	|varchar(128)	|																		|
+|CAPACITY			|bigint			|																		|
+|PERCENTAGE			|numeric(5,2)	|(0-100)																|
+|COUNT				|bigint			|																		|
+|BOOLEAN			|bit			|																		|
+|EVENTY_TYPE		|varchar(128)	|(Red card, Yellow card, Pass, Goal, Shot, Foul, Corner, Substitute)	|
+|MINUTE IN MATCH	|numeric(6,3)	|																		|
+|JERSEY_NUMBER		|numeric(2,0)	|(1-99)                                                    				|
+|POSITION_TYPE		|varchar(128)	|(Aanvaller, Middenvelder, Verdediger, Keeper)							|
+|SEASON_NAME		|char(5)		|Altijd twee getallen met een slash. (bijv.22/21)       				|
+
+# Ontwerpkeuzes
 
 ## MATCH id
 
@@ -373,11 +165,59 @@ Door de afhankelijkheden van match zou de orignele primary key maarliefst 6 kolo
 
 ## PERSON id
 
-Om een persoon van een daadwerkelijk van een unieke identifier te voorzien moeten niet alleen de naam en de achternaam gebruikt worden, maar ook de geboortedatum, melfs met deze waarden is er echter nog een nihiele kans dat de waardne niet uniek zijn. Daarnaast wordt de primary key van Person in maar liefst 3 andere tabellen gebruikt. Om deze redenen is ervoor gekozen om Person een uniek ID te geven.
+Om een persoon van een daadwerkelijk van een unieke identifier te voorzien moeten niet alleen de naam en de achternaam gebruikt worden, maar ook de geboortedatum, zelfs met deze waarden is er echter nog een nihiele kans dat de waarden niet uniek zijn. Daarnaast wordt de primary key van Person in maar liefst 3 andere tabellen gebruikt. Om deze redenen is ervoor gekozen om Person een uniek ID te geven.
 
-## 0..22 Position
+## EVENT id
 
-Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echter worden wedstrijden als vastgesteld en aangemaakt ver voordat de opstelling bekend zijn. Hierom hebben ervoor gekozen het ook mogelijk te 0 tot 22 spelers op te stellen. Met een trigger wordt gecheckt of er wel 22 spelers zijn opgesteld voordat de wedstrijd daadwerkelijk start.
+Doordat events geen PK hebben maar wel gerefereerd moeten kunnen worden, krijgen ze een gegenereerde id. Hoewel de combinatie van minuut, persoon en type overtreding in eerste instantie een potentiële pk lijkt te zijn, voldoet deze niet. Zo is het mogelijk meerdere overtredingen tegelijkertijd te maken. \(p\-29 https://www.knvb.nl/downloads/bestand/4841/spelregels-veldvoetbal-2021-22\)
+
+##  Events
+
+Om de events te structuren bij een wedstrijd moeten er keuzes worden gemaakt. Daarbij moet er met meerdere aspecten rekening worden gehouden. 
+
+- Het moet in het tijdschema/budget passen van het development team.
+- Hoe uitbreidbaar is het voor de opdrachtgever om meer events toe te voegen.
+
+### Losse tabellen
+
+Voordeel: Vanuit powerdesigner is het gemakkelijk te genereren.
+
+Nadeel: Wanneer een event wordt toegevoegd moet er niet alleen een create table script geschreven worden. Triggers, check constraints, etc. moeten ook worden overgenomen.
+
+### NoSQL
+
+Voordeel: Het toevoegen van nieuwe soorten events is simpeler, zeker wanneer nieuwe events meer informatie hebben.
+
+Nadeel: Veel development overhead. De gegevens staan niet in één database, maar verspreid over verschillende databases die in de staging area gecombineerd moeten worden.
+
+### Parent met children tabellen
+De laatste te behandelen manier is om een tabel te hebben van alle type events. Je hebt de parent tabel events waarin alle events worden gerigistreerd met welke type.
+Voor de types die extra informatie willen opslaan krijgen zij een eigen tabel die verwijst naar parent tabel.
+
+Voordeel: Nieuwe soorten van simpele (minuut, persoon, match) events kunnen worden toegevoegd met één insert in de type events tabel.
+
+Nadeel: Meer development tijd. Voor events die meer informatie willen opslaan moet nieuwe tabellen worden aangemaakt met triggers erop.
+
+### Keuze
+Voor deze opdracht wordt gekozen voor de eerste optie.
+
+Een gedeelte van de nadelen gaan we verhelpen door een stored procedure te schrijven die een wrapper is om de create table.
+
+Die kan de bijbehorende foreign keys en check constraint genereren.
+
+Daarbij komt ook de functionaliteit om extra kolommmen toe te voegen. (Alleen naam en type data)
+
+Als er om meer wordt gevraagd moet de cliënt zelf daarvoor zorgen.
+
+## ADD_NEW_EVENT_TYPE
+
+Dit is een procedure waarmee nieuwe event soorten kunnen worden toegevoegd door de cliënt.
+
+Het heeft de functionaliteit om een nieuwe event tabel aan te maken met de bijbehorende foreign keys en check constraints.
+
+De gebruiker kan extra kolommen toevoegen aan een event.
+
+Er was ook een keuze om alleen de basis kolommen aan te maken, maar er is een grote kans dat de cliënt extra kolommen wil.
 
 # Constraints
 
@@ -425,104 +265,40 @@ PI: Time + club_name + club_name + match_day + start_date + end_date + competiti
 
 ## Integrity rules
 
-### IR1 komt overeen met C1 en BR12
+| Nummer | Naam                                    | Tabel                                                              | Omschrijving                                                                                                                                                                     | Komt overeen met |
+|--------|-----------------------------------------|--------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|
+| IR1    | TRG_CHECK_PLAYER_COUNT                  | POSITION                                                           | Er zijn minimaal 7 en maximaal 11 spelers per club opgesteld wanneer een wedstrijd start                                                                                         | C1 & BR12        |
+| IR3    | TRG_CHECK_MAXIMUM_ROUNDS_OF_EDITION     | ROUND                                                              | Er mogen binnen een editie niet meer dan 52 rondes zitten, want een editie duurt een jaar (52 weken)                                                                             | C3 & BR19        |
+| IR5    | CHK_VALID_JERSEY                        | PLAYER                                                             | Een rugnummer van een speler moet hoger zijn dan 0 (mag niet 0 zijn) en mag niet hoger zijn dan 99 (mag wel 99 zijn)                                                             | C5 & BR17        |
+| IR6    | CHK_VALID_ROUND_START_DATE              | ROUND                                                              | De startdatum van een speelronde ligt binnen de start- en einddatum van het bijbehorende seizoen                                                                                 | C6 & BR4         |
+| IR7    | TRG_CHECK_VALID_MATCHDAY_START_DATE     | MATCHDAY                                                           | De startdatum van een speeldag moet voor de startdatum van een opvolgende speelronde zijn, maar hetzelfde of na de startdatum van de gekoppelde speelronde                       | C7 & BR5         |
+| IR8    | TRG_CHECK_CORRECT_PLAYERS_IN_MATCH      | POSITION & PLAYER_as_reserve_in_MATCH                              | De spelers die aan een wedstrijd zijn gekoppeld moeten lid zijn van één van de twee clubs die aan de wedstrijd meedoen;                                                          | C8 & BR8         |
+| IR9    | TRG_CHECK_CLUB_IN_EDITION               | MATCH                                                              | Een club mag alleen meedoen aan een wedstrijd als ze ook aan de bijbehorende editie meedoen                                                                                      | C9 & BR9         |
+| IR10   | TRG_PERSON_IS_PLAYER_OR_COACH           | YELLOW_CARD & RED_CARD                                             | Alleen spelers en coaches mogen een rode of gele kaart krijgen                                                                                                                   | C10 & BR10       |
+| IR11   | TRG_PERSON_IS_PLAYER                    | PASS, GOAL, SHOT, FOUL, CORNER & SUBSTITUTE                        | Alleen voor spelende spelers in een wedstrijd worden het aantal schoten, het aantal passes, de wissels, de overtredingen, de corners en of de persoon heeft gescoord bijgehouden | C11 & BR11       |
+| IR12   | CHK_PERSON_HAS_VALID_AGE                | PERSON                                                             | Een persoon mag niet jonger zijn dan 15 jaar                                                                                                                                     | C12 & BR20       |
+| IR13   | TRG_VALID_AMOUNT_OF_SPECTATORS          | MATCH                                                              | Het aantal toeschouwers bij een wedstrijd mag niet groter zijn dan de capaciteit van het stadion waar de wedstrijd wordt gehouden                                                | C13 & BR21       |
+| IR14   | CHK_VALID_MINUTE_IN_MATCH               | RED_CARD, YELLOW_CARD, PASS, GOAL, SHOT, FOUL, CORNER & SUBSTITUTE | De minuut in een wedstrijd mag niet negatief zijn                                                                                                                                | C14 & BR22       |
+| IR15   | TRG_PLAYER_MUST_BE_ONE_SUBTYPE          | PLAYER, COACH & REFEREE                                            | Een persoon moet een speler, coach of scheidsrechter zijn                                                                                                                        | CDM, PDM & BR24  |
+| IR16   | TRG_NO_UPDATES_ON_CURRENT_EDITION_TABEL | CLUB, MATCH, SEASON, COMPETITION & CLUB_plays_in_EDITION           | Van een lopende competitie mogen alleen de selecties van clubs en de speeldata van wedstrijden aangepast worden                                                                  | C15 & BR1        |
 
-- Omschrijving: Er zijn maximaal 22 spelers aan een match verbonden (11 per club);
-- Implementatie: Een trigger `TRG_CHECK_PLAYER_COUNT` op de tabel `POSITION`.
+## Waarom maken wij gebruik van triggers?
 
-### IR2 komt overeen met C2 en BR18
+### Functioneel
 
-<!-- TODO: Hoe doen we dit wanneer er b.v. een nieuwe club wordt aangemaakt, want dan beginnen ze met < 11 spelers... -->
-- Omschrijving: Er zijn minimaal 11 spelers aan een club verbonden;
-- Implementatie: Een trigger `TRG_MINIMUM_PLAYERS_IN_CLUB` op de tabel `PLAYER`.
+Het komt vaak voor dat mensen verkeerde data invoeren zonder dat ze het in de gaten hebben. Dit wil je natuurlijk niet in de database hebben. Om dit te voorkomen hebben we triggers geschreven die de ingevoerde data controleren. Mocht er iets niet correct zijn, dan wordt er een foutmelding getoont. Deze triggers gaan af bij het invoeren, updaten of verwijderen van data.
 
-### IR3 komt overeen met C3 en BR19
+### Technisch
 
-- Omschrijving: Een club heeft altijd precies 1 coach;
-- Implementatie: Een trigger `TRG_ONE_COACH_PER_CLUB` op de tabel `COACH`.
+Een technische reden voor het kiezen van een trigger is dat je kan refereren naar de inserted en deleted tabel. Deze tabellen bevatten de data die wordt toegevoegd of verwijderd, waardoor het makkelijker is om controles uit te voeren. Dit had ook met een stored procedure gekund, maar dan zou je meerdere procedures moeten schrijven voor het invoeren, updaten of verwijderen van data. Dit is niet efficient waardoor triggers een betere oplossing is.
 
-### IR4 komt overeen met C4 en BR16
+### Toelichting TRG_CHECK_PLAYER_COUNT
 
-- Omschrijving: Er zijn maximaal 52 speelrondes per editie van een competitie;
-- Implementatie: Een trigger `TRG_CHECK_MAXIMUM_ROUNDS_OF_EDITION` op de tabel `ROUND`.
+De trigger checkt op inserts en updates, op deze manier worden er bij het toevoegen van spelers ook gekeken naar de huidige hoeveelheid spelers in een club binnen een match. Zo kunnen er per club minimaal 7 spelers of maximaal 11 spelers meedoen aan een wedstrijd. Dit geldt voor zowel de thuis als uit club. (Dus minimaal 14 en max 22 in totaal per wedstrijd voor beide clubs). 
 
-### IR5 komt overeen met C5 en BR17
+#### Alternatief
 
-- Omschrijving: Een rugnummer van een speler moet hoger zijn dan 0 (mag niet 0 zijn) en mag niet hoger zijn dan 99 (mag wel 99 zijn);
-- Implementatie: Een check-constraint `CHK_VALID_JERSEY` op de tabel `PLAYER`.
-
-### IR6 komt overeen met C6 en BR4
-
-- Omschrijving: De startdatum van een speelronde ligt binnen de start- en einddatum van het bijbehorende seizoen;
-- Implementatie: Een check-constraint `CHK_VALID_ROUND_START_DATE` op de tabel `ROUND`. <!-- De startdatum is beschikbaar door de afhankelijkheid. Als dit wordt aangepast, moet de check een trigger worden -->
-
-### IR7 komt overeen met C7 en BR5
-
-- Omschrijving: De startdatum van een speeldag moet voor de startdatum van een opvolgende speelronde zijn, maar hetzelfde of na de startdatum van de gekoppelde speelronde;
-- Implementatie: Een trigger `TRG_CHECK_VALID_MATCHDAY_START_DATE` op de tabel `MATCHDAY`.
-
-### IR8 komt overeen met C8 en BR8
-
-- Omschrijving: De spelers die aan een wedstrijd zijn gekoppeld moeten lid zijn van één van de twee clubs die aan de wedstrijd meedoen;
-- Implementatie: Een trigger `TRG_CHECK_CORRECT_PLAYERS_IN_MATCH` op de tabel `POSITION` en `PLAYER_as_reserve_in_MATCH`.
-
-### IR9 komt overeen met C9 en BR9
-
-- Omschrijving: Een club mag alleen meedoen aan een wedstrijd als ze ook aan de bijbehorende editie meedoen;
-- Implementatie: Een trigger `TRG_CHECK_CLUB_IN_EDITION` op de tabel `MATCH`.
-
-### IR10 komt overeen met C10 en BR10
-
-- Omschrijving: Alleen spelers en coaches mogen een rode of gele kaart krijgen;
-- Implementatie: Een trigger `TRG_PERSON_IS_PLAYER_OR_COACH` op de tabellen `YELLOW_CARD` en `RED_CARD`.
-
-### IR11 komt overeen met C11 en BR11
-
-- Omschrijving: Alleen voor spelende spelers in een wedstrijd worden het aantal schoten, het aantal passes, de wissels, de overtredingen, de corners en of de persoon heeft gescoord bijgehouden;
-- Implementatie: Een trigger `TRG_PERSON_IS_PLAYER` op de tabellen `PASS`, `GOAL`, `SHOT`, `FOUL`, `CORNER` en `SUBSTITUTE`.
-
-### IR12 komt overeen met C12 en BR20
-
-- Omschrijving: Een persoon mag niet jonger zijn dan 15 jaar;
-- Implementatie: Een check-constraint `CHK_PERSON_HAS_VALID_AGE` op de tabel `PERSON`.
-
-## IR13 komt overeen met C13 en BR21
-
-- Omschrijving: Het aantal toeschouwers bij een wedstrijd mag niet groter zijn dan de capaciteit van het stadion waar de wedstrijd wordt gehouden;
-- Implementatie: Een trigger `TRG_VALID_AMOUNT_OF_SPECTATORS` op de tabel `MATCH`.
-
-## IR14 komt overeen met C14 en BR22
-
-- Omschrijving: De minuut in een wedstrijd mag niet negatief zijn;
-- Implementatie: Een check-constraint `CHK_VALID_MINUTE_IN_MATCH` op de tabellen `RED_CARD`, `YELLOW_CARD`, `PASS`, `GOAL`, `SHOT`, `FOUL`, `CORNER` en `SUBSTITUTE`.
-Om een wedstrijd te starten moet er uiteraard 22 spelers op het veld staan, echter worden wedstrijden als vastgesteld en aangemaakt ver voordat de opstelling bekend zijn. Hierom hebben ervoor gekozen het ook mogelijk te 0 tot 22 spelers op te stellen. Met een trigger wordt gecheckt of er wel 22 spelers zijn opgesteld voordat de wedstrijd daadwerkelijk start.
-
-## IR15 komt overeen met diagram en BR24
-
-- Omschrijving: Een persoon moet een speler, coach of scheidsrechter zijn.
-- Implementatie: Een trigger `TRG_PLAYER_MUST_BE_ONE_SUBTYPE` op de tabellen `PLAYER`, `COACH` en `REFEREE`.
-
-# Toelichting Domeinen
-
-|Domein				|Datatype		|Toelichting															|
-|-------------------|---------------|-----------------------------------------------------------------------|
-|PERSON_ID			|bigint			|Automatisch gegenereerd ID												|
-|NAME				|varchar(128)	|																		|
-|DATE				|Date			|																		|
-|CLUB_NAME			|varchar(128)	|																		|
-|CITY_NAME			|varchar(128)	|																		|
-|COUNTRY_NAME		|varchar(128)	|																		|
-|STADIUM_NAME		|varchar(60)	|																		|
-|COMPETITON_NAME	|varchar(128)	|																		|
-|CAPACITY			|bigint			|																		|
-|PERCENTAGE			|numeric(5,2)	|(0-100)																|
-|COUNT				|bigint			|																		|
-|BOOLEAN			|bit			|																		|
-|EVENTY_TYPE		|varchar(128)	|(Red card, Yellow card, Pass, Goal, Shot, Foul, Corner, Substitute)	|
-|MINUTE IN MATCH	|numeric(6,3)	|																		|
-|JERSEY_NUMBER		|numeric(2,0)	|(1-99)                                                    				|
-|POSITION_TYPE		|varchar(128)	|(Aanvaller, Middenvelder, Verdediger, Keeper)							|
-|SEASON_NAME		|char(5)		|Altijd twee getallen met een slash. (bijv.22/21)       				|
+Er zou ook gebruik gemaakt kunnen worden van een cronjob, zo kan er bij de start van een match gekeken worden naar het aantal spelers in een club die meedoen. Dit lijkt erg op onze huidige oplossing, echter wordt hier pas het aantal spelers afgevangen bij de start van een wedstrijd, zo zou er dus nog wel foutieve data in de database kunnen worden geinsert; maar niet foutieve matches worden gestart.
 
 # Toelichting export MSSQL naar MongoDB
 
@@ -594,3 +370,67 @@ db.MOCK_DATA.find({}, { id: 1, first_name: 1, email: 1, gender: 1, ip_address: 1
   ...
 ]
 ```
+
+# Stored Procedures
+
+| Naam                                       | Parameters                                                                                          | Doel                                                                                                                | Geeft terug                                                                                                                                                                                                                                                                                                                                            |
+|--------------------------------------------|-----------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| PROC_GET_MATCH_INFO                        | match_id, season_name, competition_name, start_date, match_day, home_club, out_club                 | Ophalen van matchinfo.                                                                                              | match_id, season_name, competition_name, start_date, match_day, home_club_name, out_club_name, stadium_name, referee_person_id, ball_possession_home, ball_possession_out, spectators, amount_of_goals, amount_of_corners, amount_of_fouls, amount_of_passes, amount_of_yellow_cards, amount_of_red_cards, amount_of_shots, amount_of_substitutions    |
+| PROC_GET_SCORE_EDITION                     | season_name, competition_name                                                                       | Ophalen van score per editie.                                                                                       | rank, competition_name, season_name, club_name, GS (gespeeld), W (gewonnen), G (gelijk gespeeld), L (verloren), DV (doelpunten voor), DT (doelpunten tegen), DS (doelpunten saldo), aantal punten                                                                                                                                                      |
+| PROC_GET_SELECTION_CLUB_OF_EDITION         | club_name, competition_name, season_name                                                            | Ophalen selectie clubs van editie.                                                                                  | person_id, first_name, middle_name, last_name, birth_date                                                                                                                                                                                                                                                                                              |
+| PROC_ADD_MATCHDATA_RED_CARD                | match_id, time, person_id                                                                           | Toevoegen van rode kaarten aan een match.                                                                           | N.V.T.                                                                                                                                                                                                                                                                                                                                                 |
+| PROC_ADD_MATCHDATA_YELLOW_CARD             | match_id, time, person_id                                                                           | Toevoegen van gele kaarten aan een match.                                                                           | N.V.T.                                                                                                                                                                                                                                                                                                                                                 |
+| PROC_ADD_MATCHDATA_PASS                    | match_id, time, person_id, success                                                                  | Toevoegen van passes aan een match.                                                                                 | N.V.T.                                                                                                                                                                                                                                                                                                                                                 |
+| PROC_ADD_MATCHDATA_GOAL                    | match_id, time, person_id                                                                           | Toevoegen van goals aan een match.                                                                                  | N.V.T.                                                                                                                                                                                                                                                                                                                                                 |
+| PROC_ADD_MATCHDATA_SHOT                    | match_id, time, person_id, on_goal                                                                  | Toevoegen van shots aan een match.                                                                                  | N.V.T.                                                                                                                                                                                                                                                                                                                                                 |
+| PROC_ADD_MATCHDATA_FOUL                    | match_id, time, person_id                                                                           | Toevoegen van overtredingen aan een match.                                                                          | N.V.T.                                                                                                                                                                                                                                                                                                                                                 |
+| PROC_ADD_MATCHDATA_CORNER                  | match_id, time, person_id                                                                           | Toevoegen van corners aan een match.                                                                                | N.V.T.                                                                                                                                                                                                                                                                                                                                                 |
+| PROC_ADD_MATCHDATA_SUBSTITUTE              | match_id, time, in_person_id, out_person_id                                                         | Toevoegen van wissels aan een match.                                                                                | N.V.T.                                                                                                                                                                                                                                                                                                                                                 |
+| PROC_ADD_MATCHES_TO_MATCHDAY               | competition_name, season_name, date, games, club_pairs_table, start                                 | Toevoegen van match aan een matchday.                                                                               | N.V.T.                                                                                                                                                                                                                                                                                                                                                 |
+| PROC_GENERATE_ROUND_ROBIN_TOURNAMENT_TABLE | club_names_table                                                                                    | Aanmaken van tournament door middel van een tabel met daarin club namen. Deze tabel wordt meegegeven als parameter. | N.V.T.                                                                                                                                                                                                                                                                                                                                                 |
+| PROC_START_NEW_EDITION                     | competition_name, season_name, club_names_table, date, length, games, amount_of_matchdays_per_round | Starten van een nieuwe editie.                                                                                      | N.V.T.                                                                                                                                                                                                                                                                                                                                                 |
+| PROC_INSERT_NEW_COACH                      | country_name, first_name, last_name, middle_name, birth_date                                        | Toevoegen van nieuwe een nieuwe coach.                                                                                               | N.V.T.
+| PROC_INSERT_NEW_REFEREE                    | country_name, first_name, last_name, middle_name, birth_date                                        | Toevoegen van een nieuwe scheidsrechter.                                                                                      | N.V.T.
+| PROC_INSERT_NEW_PLAYER                     | country_name, first_name, last_name, middle_name, birth_date, club_name, jersey_number              | Toevoegen van een nieuwe speler.                                                                                           | N.V.T.
+
+## Koppeling stored procedures met use cases
+
+| Use case                       | Stored procedure                           |
+|--------------------------------|--------------------------------------------|
+| Ophalen matchinfo              | PROC_GET_MATCH_INFO                        |
+| Ophalen top-lijst              | PROC_GET_SCORE_EDITION                     |
+| Ophalen clubinfo               | PROC_GET_SELECTION_CLUB_OF_EDITION         |
+| Invoeren matchdata             | PROC_ADD_MATCHDATA_RED_CARD                |
+| Invoeren matchdata             | PROC_ADD_MATCHDATA_YELLOW_CARD             |
+| Invoeren matchdata             | PROC_ADD_MATCHDATA_PASS                    |
+| Invoeren matchdata             | PROC_ADD_MATCHDATA_GOAL                    |
+| Invoeren matchdata             | PROC_ADD_MATCHDATA_SHOT                    |
+| Invoeren matchdata             | PROC_ADD_MATCHDATA_FOUL                    |
+| Invoeren matchdata             | PROC_ADD_MATCHDATA_CORNER                  |
+| Invoeren matchdata             | PROC_ADD_MATCHDATA_SUBSTITUTE              |
+| Invoeren matchdata             | PROC_ADD_MATCHES_TO_MATCHDAY               |
+| Start nieuw seizoen competitie | PROC_GENERATE_ROUND_ROBIN_TOURNAMENT_TABLE |
+| Start nieuw seizoen competitie | PROC_START_NEW_EDITION                     |
+| Toevoegen nieuw persoon        | PROC_INSERT_NEW_COACH                      |
+| Toevoegen nieuw persoon        | PROC_INSERT_NEW_REFEREE                    |
+| Toevoegen nieuw persoon        | PROC_INSERT_NEW_PLAYER                     |
+
+## Koppeling stored procedures met views
+
+| Use case                       | View                                       |
+|--------------------------------|--------------------------------------------|
+| Ophalen clubinfo               | VW_SELECT_ALL_PLAYERS_PLAYED_IN_MATCH      |
+| Ophalen top-lijst              | VW_ALL_PLAYERS_EDITIONS                    |
+| Ophalen clubinfo               | VW_CLUB_INFORMATION                        |
+| Ophalen speelrondeinfo         | VW_GET_PLAYROUND_DATA                      |
+| Ophalen tussenstand competitie | VW_GET_INTERIM_SCORE_EDITION               |
+| Ophalen clubinfo               | VW_SHOW_CLUB_INFO                          |
+
+
+## Waarom maken wij gebruik van stored procedures?
+
+### Functioneel
+Er zijn twee grote functionele redenen waarom wij hebben gekozen om stored procedures te gebruiken. De eerste reden is omdat bepaalde acties van gebruikers vaak moeten worden herhaald. Bijvoorbeeld het aanmaken van spelers, hiervoor is het dus handig om een stored procedure te gebruiken. Dit gaat hand in hand met de tweede reden: gebruikersgemak. Het is gemakkelijker en sneller voor een gebruiker om een stored procedure aan te roepen i.p.v. steeds een insert statement uit te schrijven voor het toevoegen van spelers.
+
+### Technisch
+Een technische reden waarom wij hebben gekozen voor het gebruik van stored procedures is dat het execution plan van een stored procedure wordt opgeslagen in de SQL server omgeving. Acties die dus vaak herhaald worden, worden hierdoor sneller omdat de server voorheen al de exeuction plan heeft opgeslagen.

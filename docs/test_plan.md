@@ -1,3 +1,5 @@
+# ***Disclaimer*** | De lay-out van de PDF-versie voor dit document kan verschillen met de markdown versie, voor een accurate weergave zie markdown bestand in [bitbucket](https://isebitbucket.aimsites.nl/projects/S22122A4/repos/football-league-manager/browse/docs).
+
 - [Testplan](#testplan)
 	- [Inleiding](#inleiding)
 	- [Wanneer worden er testen geschreven](#wanneer-worden-er-testen-geschreven)
@@ -7,16 +9,6 @@
 	- [Achteraf](#achteraf)
 
 # Testplan
-
-Aanleiding (Waarom)
-
-Aanpak (Hoe)
-
-Benodigde mensen en middelen (Wie en wat)
-
-Benodigde tijd (planning) (Wat)
-
-Op te leveren producten (Wat)
 
 ## Inleiding
 

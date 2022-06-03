@@ -12,6 +12,13 @@ PRE_TIMEOUT = timedelta( minutes=0, seconds=30 ).seconds
 CONNECTION_URL_MSSQL = "DRIVER={ODBC Driver 17 for SQL Server};SERVER=db_mssql,1433;UID=sa;PWD=Football!;DATABASE=flm"
 CONNECTION_URL_MONGO = "mongodb://mongo:toor@db_mongo:27017"
 
+TABLE_BLACKLIST = [
+	"STADIUM",
+	"COUNTRY",
+	"CITY",
+	"POSITION",
+]
+
 def main():
 	time.sleep(PRE_TIMEOUT)
 
@@ -33,9 +40,13 @@ def main():
 	data = {}
 
 	for table in table:
+		if table in TABLE_BLACKLIST:
+			print(f"{table} is blacklisted, skipping...")
+			continue
+
 		result = ""
 
-		print(f"Retrieving data from {table}")
+		print(f"Retrieving data from {table}...")
 
 		# get all the data in the table as json
 		cursor.execute(f"SELECT * FROM {table} FOR JSON AUTO, INCLUDE_NULL_VALUES")
@@ -52,7 +63,7 @@ def main():
 		data[table] = json.loads(result)
 
 	for table in data:
-		print(f"Recreating \"{table}\"")
+		print(f"Recreating \"{table}\"...")
 
 		# insert all the data into mongo
 		mongo_connection.drop_collection(table)
