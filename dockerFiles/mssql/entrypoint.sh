@@ -3,9 +3,12 @@
 set -m # turn on job control (https://unix.stackexchange.com/a/637004/430375)
 
 function run_sql_files {
+	ee = "fff"
 	echo "=== RUNNING FILES ==="
-	find ./sql-files/ -type f \( -iname "*.sql" -not -iname "CREATE_DATABASE.sql" \) \
-		| sort -n -t / -k 3.1 \
+	if [-n $ee];
+	then find ./sql-files/ -type f \( -iname "*.sql" -not -iname "CREATE_DATABASE.sql" \);
+	else find ./sql-files/ -type f \( -iname "*.sql" -not -iname "CREATE_DATABASE.sql" -not -iname "*-INSERT_*.sql" \); fi 
+	\	| sort -n -t / -k 3.1 \
 		| xargs -I {} sh -c "echo === Executing '{}' === && /opt/mssql-tools/bin/sqlcmd -S 'localhost' -U 'sa' -P 'Football!' -d 'flm' -i {}"
 	echo "=== DONE RUNNING FILES ==="
 }
