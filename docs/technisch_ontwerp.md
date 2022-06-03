@@ -458,19 +458,11 @@ Nadelen:
 - Lastiger om goed te onderhouden, gegevens staan in verschillende databases die vervolgens in de staging area weer gecombineerd zullen moeten worden.
 
 ### Keuze
-Uitendelijk is de eerste optie geïmplementeerd aangezien dit de meest overzichtelijke optie is. 
+Hoewel het toevoegen van events op het eerste oog makkelijker lijkt bij de tweede optie, zullen de events die gebruikers eventueel zelf willen toevoegen waarschijnlijk geen simpele events zijn.
 
+Verder is het toevoegen van niet-simpele events bij zowel optie 1 als 2 lastiger. Optie 3 is maakt het onderhoud an het systeem veel lastiger en lijkt daarom ook geen goede.
 
-### Keuze
-Voor deze opdracht wordt gekozen voor de eerste optie.
-
-Een gedeelte van de nadelen gaan we verhelpen door een stored procedure te schrijven die een wrapper is om de create table.
-
-Die kan de bijbehorende foreign keys en check constraint genereren.
-
-Daarbij komt ook de functionaliteit om extra kolommmen toe te voegen. (Alleen naam en type data)
-
-Als er om meer wordt gevraagd moet de cliënt zelf daarvoor zorgen.
+Optie 1 is uiteindelijk geïmplementeerd aangezien het de meest overizchtelijke optie is en bijna zo goed uitbreidbaar is als optie 2.
 
 ## ADD_NEW_EVENT_TYPE
 
