@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     03/06/2022 10:10:57                          */
+/* Created on:     03/06/2022 12:06:24                          */
 /*==============================================================*/
 
 
@@ -1130,7 +1130,9 @@ go
 /*==============================================================*/
 create table CORNER (
    MATCH_ID             G_IDENTITY           not null,
-   PERSON_ID            PERSON_ID            not null
+   PERSON_ID            PERSON_ID            not null,
+   COMPETITION_NAME     COMPETITION_NAME     not null,
+   TIME                 MINUTE_IN_MATCH      not null
 )
 go
 
@@ -1187,7 +1189,9 @@ go
 /*==============================================================*/
 create table FOUL (
    MATCH_ID             G_IDENTITY           not null,
-   PERSON_ID            PERSON_ID            not null
+   PERSON_ID            PERSON_ID            not null,
+   COMPETITION_NAME     COMPETITION_NAME     not null,
+   TIME                 MINUTE_IN_MATCH      not null
 )
 go
 
@@ -1206,7 +1210,9 @@ go
 /*==============================================================*/
 create table GOAL (
    MATCH_ID             G_IDENTITY           not null,
-   PERSON_ID            PERSON_ID            not null
+   PERSON_ID            PERSON_ID            not null,
+   COMPETITION_NAME     COMPETITION_NAME     not null,
+   TIME                 MINUTE_IN_MATCH      not null
 )
 go
 
@@ -1225,9 +1231,10 @@ go
 /*==============================================================*/
 create table LINEUP (
    PLAYER_PERSON_ID     PERSON_ID            not null,
+   COMPETITION_NAME     COMPETITION_NAME     not null,
    POSITION_TYPE        POSITION             not null,
    MATCH_ID             G_IDENTITY           not null,
-   constraint PK_LINEUP primary key (MATCH_ID, PLAYER_PERSON_ID)
+   constraint PK_LINEUP primary key (COMPETITION_NAME, MATCH_ID, PLAYER_PERSON_ID)
 )
 go
 
@@ -1365,7 +1372,9 @@ go
 create table PASS (
    MATCH_ID             G_IDENTITY           not null,
    PERSON_ID            PERSON_ID            not null,
-   SUCCES               BOOLEAN              not null
+   COMPETITION_NAME     COMPETITION_NAME     not null,
+   SUCCES               BOOLEAN              not null,
+   TIME                 MINUTE_IN_MATCH      not null
 )
 go
 
@@ -1429,8 +1438,9 @@ go
 /*==============================================================*/
 create table PLAYER_AS_RESERVE_IN_MATCH (
    PLAYER_PERSON_ID     PERSON_ID            not null,
+   COMPETITION_NAME     COMPETITION_NAME     not null,
    MATCH_ID             G_IDENTITY           not null,
-   constraint PK_PLAYER_AS_RESERVE_IN_MATCH primary key (MATCH_ID, PLAYER_PERSON_ID)
+   constraint PK_PLAYER_AS_RESERVE_IN_MATCH primary key (COMPETITION_NAME, MATCH_ID, PLAYER_PERSON_ID)
 )
 go
 
@@ -1468,7 +1478,9 @@ go
 /*==============================================================*/
 create table RED_CARD (
    MATCH_ID             G_IDENTITY           not null,
-   PERSON_ID            PERSON_ID            not null
+   PERSON_ID            PERSON_ID            not null,
+   COMPETITION_NAME     COMPETITION_NAME     not null,
+   TIME                 MINUTE_IN_MATCH      not null
 )
 go
 
@@ -1530,7 +1542,9 @@ go
 create table SHOT (
    MATCH_ID             G_IDENTITY           not null,
    PERSON_ID            PERSON_ID            not null,
-   ON_GOAL              BOOLEAN              not null
+   COMPETITION_NAME     COMPETITION_NAME     not null,
+   ON_GOAL              BOOLEAN              not null,
+   TIME                 MINUTE_IN_MATCH      not null
 )
 go
 
@@ -1561,7 +1575,9 @@ create table SUBSTITUTE (
    POSITION_TYPE        POSITION             not null,
    MATCH_ID             G_IDENTITY           not null,
    IN_PERSON_ID         PERSON_ID            not null,
-   OUT_PERSON_ID        PERSON_ID            not null
+   OUT_PERSON_ID        PERSON_ID            not null,
+   COMPETITION_NAME     COMPETITION_NAME     not null,
+   TIME                 MINUTE_IN_MATCH      not null
 )
 go
 
@@ -1600,7 +1616,9 @@ go
 /*==============================================================*/
 create table YELLOW_CARD (
    MATCH_ID             G_IDENTITY           not null,
-   PERSON_ID            PERSON_ID            not null
+   PERSON_ID            PERSON_ID            not null,
+   COMPETITION_NAME     COMPETITION_NAME     not null,
+   TIME                 MINUTE_IN_MATCH      not null
 )
 go
 
