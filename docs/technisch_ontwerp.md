@@ -466,13 +466,9 @@ Optie 1 is uiteindelijk geïmplementeerd aangezien het de meest overizchtelijke 
 
 ## ADD_NEW_EVENT_TYPE
 
-Dit is een procedure waarmee nieuwe event soorten kunnen worden toegevoegd door de cliënt.
+Deze procedure is om aantal redenen gemaakt.
 
-Het heeft de functionaliteit om een nieuwe event tabel aan te maken met de bijbehorende foreign keys en check constraints.
-
-De gebruiker kan extra kolommen toevoegen aan een event.
-
-Er was ook een keuze om alleen de basis kolommen aan te maken, maar er is een grote kans dat de cliënt extra kolommen wil.
+Door het gebruik van deze procedure zullen gebruikers straks vanuit een eventuele front-end zelf niewe events kunnen aanmaken zonder er SQL code in de [[[applicate ofzo?]]] zal staan. Door deze twee lagen meer van elkaar te abstraheren wordt het systeem niet alleen beter onderhoudbaar, maar ook veiliger.
 
 # Constraints
 
