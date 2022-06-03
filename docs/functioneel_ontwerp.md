@@ -966,18 +966,23 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 # Functionele requirements
 
-| Functional Requirements                                                                                    | MoSCoW | Use case                       |
-|------------------------------------------------------------------------------------------------------------|--------|--------------------------------|
-| Bij een lopende competitie mag alleen de speeldatum of speler selectie van een wedstrijd worden veranderd. | M      | Invoeren matchdata             |
-| Een \[analist\] kan de top-lijst via de staging area uitlezen.                                             | M      | Ophalen top-lijst              |
-| Een \[analist\] kan de tussenstand van de competitie via de staging area uitlezen.                         | M      | Ophalen tussenstand competitie |
-| Een \[analist\] kan informatie over clubs via de staging area uitlezen.                                    | M      | Ophalen clubinfo               |
-| Een \[analist\] kan informatie over wedstrijden via de staging area uitlezen.                              | M      | Ophalen matchinfo              |
-| Een \[analist\] kan informatie over speelrondes via de staging area uitlezen.                              | M      | Ophalen speelrondeinfo         |
-| Een \[admin\] kan matchdata invoeren in de database.                                                       | S      | Invoeren matchdata             |
-| Een \[admin\] kan clubinfo updaten.                                                                        | S      | Updaten clubinfo               |
-| Een \[admin\] kan een nieuwe seizoen competitie starten.                                                   | S      | Start nieuw seizoen competitie |
-| Een \[admin\] kan nieuwe personen toevoegen aan de database.                                               | S      | Toevoegen nieuw persoon        |
+| Functional Requirements                                                                                      | MoSCoW | Use case                       |
+|--------------------------------------------------------------------------------------------------------------|--------|--------------------------------|
+| Bij een lopende competitie mag alleen de speeldatum of speler selectie van een wedstrijd worden veranderd    | M      | Invoeren matchdata             |
+| Als \[analist\] wil ik de top-lijst van voetballers met de meeste doelpunten via de staging area uitlezen    | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de top-lijst van voetballers met de meeste gele kaarten via de staging area uitlezen  | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de top-lijst van voetballers met de meeste rode kaarten via de staging area uitlezen  | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de top-lijst van voetballers met de meeste overtredingen via de staging area uitlezen | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de top-lijst van clubs met de meeste corners via de staging area uitlezen             | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de top-lijst van clubs met de meeste schoten op doel via de staging area uitlezen     | M      | Ophalen top-lijst              |
+| Een \[analist\] kan de tussenstand van de competitie via de staging area uitlezen.                           | M      | Ophalen tussenstand competitie |
+| Een \[analist\] kan informatie over clubs via de staging area uitlezen.                                      | M      | Ophalen clubinfo               |
+| Een \[analist\] kan informatie over wedstrijden via de staging area uitlezen.                                | M      | Ophalen matchinfo              |
+| Een \[analist\] kan informatie over speelrondes via de staging area uitlezen.                                | M      | Ophalen speelrondeinfo         |
+| Een \[admin\] kan matchdata invoeren in de database.                                                         | S      | Invoeren matchdata             |
+| Een \[admin\] kan clubinfo updaten.                                                                          | S      | Updaten clubinfo               |
+| Een \[admin\] kan een nieuwe seizoen competitie starten.                                                     | S      | Start nieuw seizoen competitie |
+| Een \[admin\] kan nieuwe personen toevoegen aan de database.                                                 | S      | Toevoegen nieuw persoon        |
 
 ## Constraints
 
