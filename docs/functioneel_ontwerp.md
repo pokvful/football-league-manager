@@ -975,14 +975,14 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 | Als \[analist\] wil ik de top-lijst van voetballers met de meeste overtredingen via de staging area uitlezen | M      | Ophalen top-lijst              |
 | Als \[analist\] wil ik de top-lijst van clubs met de meeste corners via de staging area uitlezen             | M      | Ophalen top-lijst              |
 | Als \[analist\] wil ik de top-lijst van clubs met de meeste schoten op doel via de staging area uitlezen     | M      | Ophalen top-lijst              |
-| Een \[analist\] kan de tussenstand van de competitie via de staging area uitlezen.                           | M      | Ophalen tussenstand competitie |
-| Een \[analist\] kan informatie over clubs via de staging area uitlezen.                                      | M      | Ophalen clubinfo               |
-| Een \[analist\] kan informatie over wedstrijden via de staging area uitlezen.                                | M      | Ophalen matchinfo              |
-| Een \[analist\] kan informatie over speelrondes via de staging area uitlezen.                                | M      | Ophalen speelrondeinfo         |
-| Een \[admin\] kan matchdata invoeren in de database.                                                         | S      | Invoeren matchdata             |
-| Een \[admin\] kan clubinfo updaten.                                                                          | S      | Updaten clubinfo               |
-| Een \[admin\] kan een nieuwe seizoen competitie starten.                                                     | S      | Start nieuw seizoen competitie |
-| Een \[admin\] kan nieuwe personen toevoegen aan de database.                                                 | S      | Toevoegen nieuw persoon        |
+| Als \[analist\] wil ik de tussenstand van de Eredivisie via de staging area uitlezen                         | M      | Ophalen tussenstand competitie |
+| Als \[analist\] wil ik informatie over de club Ajax via de staging area uitlezen                             | M      | Ophalen clubinfo               |
+| Als \[analist\] wil ik informatie over de wedstrijd Ajax - Feyenoord via de staging area uitlezen            | M      | Ophalen matchinfo              |
+| Als \[analist\] wil ik informatie over speelronde 34 van de Eredivisie via de staging area uitlezen          | M      | Ophalen speelrondeinfo         |
+| Als \[admin\] wil ik matchdata invoeren in de database voor de wedstrijd Ajax - Feyenoord                    | S      | Invoeren matchdata             |
+| Als \[admin\] wil ik nieuwe spelers toevoegen voor de club Ajax                                              | S      | Updaten clubinfo               |
+| Als \[admin\] wil ik een nieuwe seizoen voor de Eredivise starten                                            | S      | Start nieuw seizoen competitie |
+| Als \[admin\] wil ik een nieuwe persoon met de naam Chris toevoegen aan de database                          | S      | Toevoegen nieuw persoon        |
 
 ## Constraints
 
