@@ -229,6 +229,18 @@
 
 # Verwoordingen feittypen
 
+In de verwoordingen zijn veel stukken tekst *italic*, **dikgedrukt** of ***italic dikgedrukt***. Dit betekent dat deze stukken tekst bij elkaar horen. Bijvoorbeeld:
+
+> Er is een seizoen <u>19/20</u> die start op <u>**01-01-2020**</u>.
+>
+> ET: SEASON
+>
+> ID: Att Season_name
+>
+> Att **Season_start**
+
+Dit betekend dat `Season_name` verwijst naar `19/20` (beide hebben geen extra styling) en `Season_start` verwijst naar `01-01-2020` omdat beide dikgedrukt zijn.
+
 ## Competitie
 
 Er bestaat een competitie Eredivisie.
