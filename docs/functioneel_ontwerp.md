@@ -996,6 +996,7 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 | Als \[analist\] wil ik informatie over de balbezit van Ajax tegen Feyenoord via de staging area uitlezen          | M      | Ophalen matchinfo              |
 | Als \[analist\] wil ik informatie over de toeschouwers tijdens Ajax - Feyenoord via de staging area uitlezen      | M      | Ophalen matchinfo              |
 | Als \[analist\] wil ik informatie over speelronde 34 van de Eredivisie via de staging area uitlezen               | M      | Ophalen speelrondeinfo         |
+| Als \[analist\] wil ik informatie over de wedstrijd op 12/04/2021 in de Eredivisie via de staging area uitlezen   | M      | Ophalen speelrondeinfo         |
 
 
 ## Constraints
