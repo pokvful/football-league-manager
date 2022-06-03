@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     03/06/2022 10:10:57                          */
+/* Created on:     03/06/2022 11:11:03                          */
 /*==============================================================*/
 
 
@@ -1129,8 +1129,10 @@ go
 /* Table: CORNER                                                */
 /*==============================================================*/
 create table CORNER (
+   EVENT_ID             G_IDENTITY           identity,
    MATCH_ID             G_IDENTITY           not null,
-   PERSON_ID            PERSON_ID            not null
+   PERSON_ID            PERSON_ID            not null,
+   constraint PK_CORNER primary key (EVENT_ID)
 )
 go
 
@@ -1186,8 +1188,10 @@ go
 /* Table: FOUL                                                  */
 /*==============================================================*/
 create table FOUL (
+   EVENT_ID             G_IDENTITY           not null,
    MATCH_ID             G_IDENTITY           not null,
-   PERSON_ID            PERSON_ID            not null
+   PERSON_ID            PERSON_ID            not null,
+   constraint PK_FOUL primary key (EVENT_ID)
 )
 go
 
@@ -1205,8 +1209,10 @@ go
 /* Table: GOAL                                                  */
 /*==============================================================*/
 create table GOAL (
+   EVENT_ID             G_IDENTITY           identity,
    MATCH_ID             G_IDENTITY           not null,
-   PERSON_ID            PERSON_ID            not null
+   PERSON_ID            PERSON_ID            not null,
+   constraint PK_GOAL primary key (EVENT_ID)
 )
 go
 
@@ -1363,9 +1369,11 @@ go
 /* Table: PASS                                                  */
 /*==============================================================*/
 create table PASS (
+   EVENT_ID             G_IDENTITY           not null,
    MATCH_ID             G_IDENTITY           not null,
    PERSON_ID            PERSON_ID            not null,
-   SUCCES               BOOLEAN              not null
+   SUCCES               BOOLEAN              not null,
+   constraint PK_PASS primary key (EVENT_ID)
 )
 go
 
@@ -1467,8 +1475,10 @@ go
 /* Table: RED_CARD                                              */
 /*==============================================================*/
 create table RED_CARD (
+   EVENT_ID             G_IDENTITY           identity,
    MATCH_ID             G_IDENTITY           not null,
-   PERSON_ID            PERSON_ID            not null
+   PERSON_ID            PERSON_ID            not null,
+   constraint PK_RED_CARD primary key (EVENT_ID)
 )
 go
 
@@ -1528,9 +1538,11 @@ go
 /* Table: SHOT                                                  */
 /*==============================================================*/
 create table SHOT (
+   EVENT_ID             G_IDENTITY           identity,
    MATCH_ID             G_IDENTITY           not null,
    PERSON_ID            PERSON_ID            not null,
-   ON_GOAL              BOOLEAN              not null
+   ON_GOAL              BOOLEAN              not null,
+   constraint PK_SHOT primary key (EVENT_ID)
 )
 go
 
@@ -1558,10 +1570,12 @@ go
 /* Table: SUBSTITUTE                                            */
 /*==============================================================*/
 create table SUBSTITUTE (
+   EVENT_ID             G_IDENTITY           identity,
    POSITION_TYPE        POSITION             not null,
    MATCH_ID             G_IDENTITY           not null,
    IN_PERSON_ID         PERSON_ID            not null,
-   OUT_PERSON_ID        PERSON_ID            not null
+   OUT_PERSON_ID        PERSON_ID            not null,
+   constraint PK_SUBSTITUTE primary key (EVENT_ID)
 )
 go
 
@@ -1599,8 +1613,10 @@ go
 /* Table: YELLOW_CARD                                           */
 /*==============================================================*/
 create table YELLOW_CARD (
+   EVENT_ID             G_IDENTITY           identity,
    MATCH_ID             G_IDENTITY           not null,
-   PERSON_ID            PERSON_ID            not null
+   PERSON_ID            PERSON_ID            not null,
+   constraint PK_YELLOW_CARD primary key (EVENT_ID)
 )
 go
 
