@@ -2,6 +2,7 @@
 
 # Functioneel ontwerp
 
+- [***Disclaimer*** | De lay-out van de PDF-versie voor dit document kan verschillen met de markdown versie, voor een accurate weergave zie markdown bestand in bitbucket.](#disclaimer--de-lay-out-van-de-pdf-versie-voor-dit-document-kan-verschillen-met-de-markdown-versie-voor-een-accurate-weergave-zie-markdown-bestand-in-bitbucket)
 - [Functioneel ontwerp](#functioneel-ontwerp)
 - [Use cases](#use-cases)
 - [Fully-Dressed Use-cases](#fully-dressed-use-cases)
@@ -48,10 +49,9 @@
       - [Scheidsrechter](#scheidsrechter)
     - [Aantal toeschouwers](#aantal-toeschouwers)
 - [Business Rules](#business-rules)
-- [Functionele requirements.](#functionele-requirements)
+- [Functionele requirements](#functionele-requirements)
   - [Constraints](#constraints)
     - [C1 komt overeen met BR12](#c1-komt-overeen-met-br12)
-    - [C2 komt overeen met BR18](#c2-komt-overeen-met-br18)
     - [C3 komt overeen met BR19](#c3-komt-overeen-met-br19)
     - [C4 komt overeen met BR16](#c4-komt-overeen-met-br16)
     - [C5 komt overeen met BR17](#c5-komt-overeen-met-br17)
@@ -62,13 +62,21 @@
     - [C10 komt overeen met BR10](#c10-komt-overeen-met-br10)
     - [C11 komt overeen met BR11](#c11-komt-overeen-met-br11)
     - [C12 komt overeen met BR20](#c12-komt-overeen-met-br20)
-      - [C13 komt overeen met BR21](#c13-komt-overeen-met-br21)
-      - [C14 komt overeen met BR22](#c14-komt-overeen-met-br22)
-- [Ontwerp keuzes](#ontwerp-keuzes)
-  - [Entiteit: Persoon](#entiteit-persoon)
-  - [Entiteit: Event](#entiteit-event)
-  - [Entiteit: Position](#entiteit-position)
-  - [Entiteit: Match](#entiteit-match)
+    - [C13 komt overeen met BR21](#c13-komt-overeen-met-br21)
+    - [C14 komt overeen met BR22](#c14-komt-overeen-met-br22)
+    - [C15 komt overeen met BR1](#c15-komt-overeen-met-br1)
+- [Ontwerpkeuzes](#ontwerpkeuzes)
+  - [Person_ID](#person_id)
+  - [Person_type](#person_type)
+  - [Position](#position)
+  - [Matchinfo](#matchinfo)
+  - [Uibreidbaarheid competition](#uibreidbaarheid-competition)
+  - [Matchday & Round](#matchday--round)
+  - [Position](#position-1)
+    - [Alleen begin wedstrijd](#alleen-begin-wedstrijd)
+    - [Positie verzameling](#positie-verzameling)
+    - [Positie ook in wissel](#positie-ook-in-wissel)
+    - [Uiteindelijke keuze posities](#uiteindelijke-keuze-posities)
 - [Rechtenstructuur](#rechtenstructuur)
 - [Toelichting Datakwaliteit](#toelichting-datakwaliteit)
 - [CDM](#cdm)
@@ -87,13 +95,13 @@
   - [Entiteit EDITION](#entiteit-edition)
   - [Entiteit ROUND](#entiteit-round)
   - [Entiteit MATCHDAY](#entiteit-matchday)
-  - [Entiteit MATCH](#entiteit-match-1)
-  - [Entiteit POSITION](#entiteit-position-1)
+  - [Entiteit MATCH](#entiteit-match)
+  - [Entiteit POSITION](#entiteit-position)
   - [Entiteit KEEPER](#entiteit-keeper)
   - [Entiteit DEFENDER](#entiteit-defender)
   - [Entiteit MIDFIELDER](#entiteit-midfielder)
   - [Entiteit ATTACKER](#entiteit-attacker)
-  - [Entiteit EVENT](#entiteit-event-1)
+  - [Entiteit EVENT](#entiteit-event)
   - [Entiteit SUBSTITUTE](#entiteit-substitute)
   - [Entiteit GOAL](#entiteit-goal)
   - [Entiteit RED_CARD](#entiteit-red_card)
@@ -969,12 +977,12 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 | Functional Requirements                                                                                           | MoSCoW | Use case                       |
 |-------------------------------------------------------------------------------------------------------------------|--------|--------------------------------|
 | Bij een lopende competitie mag alleen de speeldatum of speler selectie van een wedstrijd worden veranderd         | M      | Invoeren matchdata             |
-| Als \[admin\] wil ik een doelpunt als matchdata invoeren voor de wedstrijd Ajax - Feyenoord                       | M      | Invoeren matchdata             |
-| Als \[admin\] wil ik een rode kaart als matchdata invoeren voor de wedstrijd Ajax - Feyenoord                     | M      | Invoeren matchdata             |
-| Als \[admin\] wil ik een gele kaart als matchdata invoeren voor de wedstrijd Ajax - Feyenoord                     | M      | Invoeren matchdata             |
-| Als \[admin\] wil ik een overtreding als matchdata invoeren voor de wedstrijd Ajax - Feyenoord                    | M      | Invoeren matchdata             |
-| Als \[admin\] wil ik een corner als matchdata invoeren voor de wedstrijd Ajax - Feyenoord                         | M      | Invoeren matchdata             |
-| Als \[admin\] wil ik een schot als matchdata invoeren voor de wedstrijd Ajax - Feyenoord                          | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een doelpunt in minuut 21 door Ronaldo als matchdata invoeren voor de wedstrijd Manchester United - Chelsea                       | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een rode kaart in minuut 90 voor Messi als matchdata invoeren voor de wedstrijd PSG - Real Madrid                     | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een gele kaart in minuut 2 voor Pepe als matchdata invoeren voor de wedstrijd Porto - Feyenoord                     | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een overtreding in minuut 63 door Pique als matchdata invoeren voor de wedstrijd FC Barcelona - Real Madrid                    | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een corner in minuut 34 door Neymar als matchdata invoeren voor de wedstrijd PSG - Bayern                         | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een schot op doel in minuut 87 door Antony als matchdata invoeren voor de wedstrijd Ajax - Feyenoord                          | M      | Invoeren matchdata             |
 | Als \[admin\] wil ik nieuwe spelers toewijzen aan de club Ajax                                                    | M      | Updaten clubinfo               |
 | Als \[admin\] wil ik een nieuw coach toewijzen aan de club Ajax                                                   | M      | Updaten clubinfo               |
 | Als \[admin\] wil ik een nieuwe seizoen voor de Eredivise starten                                                 | M      | Start nieuw seizoen competitie |
