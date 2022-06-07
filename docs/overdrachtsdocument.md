@@ -67,7 +67,6 @@ docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up --build --f
 Voor ontwikkelaars (geen data persistentie):
 
 ```bash
-docker-compose up --build --force-recreate -d
 docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up --build --force-recreate -d
 ```
 
