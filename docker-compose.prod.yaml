@@ -3,4 +3,4 @@ services:
     environment:
       ENV: PROD
     volumes:
-      - <host directory>:/opt/mssql
+      - ./mnt/mssql:/var/opt/mssql
