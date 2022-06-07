@@ -545,7 +545,7 @@ Predicaat: De speler \<Person_id\> zit in \<*Club_name*\>.
 
 ## Speelronde
 
-Er is een speelronde in het seizoen 19/20 in de competitie Eredivisie die op *01-01-2019* start.
+Er is een speelronde in het seizoen 19/20 in de competitie Eredivisie die op 01-01-2019 start.
 
 Er is een speelronde in het seizoen <u>20/21 in de competitie LaLiga</u> die op <u>*01-01-2020*</u> start.
 
@@ -779,9 +779,9 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 
 ### Rode kaarten
 
-Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 22 gele kaart gekregen in de 30ste minuut.
+Tijdens de voetbalwedstrijd op 15 januari 2019 tussen thuis team Ajax en uit team Feyenoord in de speelronde 13 januari 2019 in het seizoen 19/20 in competitie Eredivise heeft de speler 6 gele kaart gekregen in de 59ste minuut.
 
-Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft de speler <u>*22* gele kaart gekregen in de **30ste** minuut</u>.
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 20/21 in competitie LaLiga</u> heeft de speler <u>*22* gele kaart gekregen in de **30ste** minuut</u>.
 
 ---
 
