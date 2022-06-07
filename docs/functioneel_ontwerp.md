@@ -28,13 +28,17 @@
     - [Reserve](#reserve)
     - [Balbezit UIT](#balbezit-uit)
     - [Balbezit THUIS](#balbezit-thuis)
+    - [Aantal toeschouwers](#aantal-toeschouwers)
   - [Events](#events)
     - [Goals](#goals)
     - [Gele kaarten](#gele-kaarten)
     - [Rode kaarten](#rode-kaarten)
     - [Wissels](#wissels)
-    - [Scheidsrechter](#scheidsrechter)
-    - [Aantal toeschouwers](#aantal-toeschouwers)
+    - [Overtredingen](#overtredingen)
+    - [Hoekschoppen](#hoekschoppen)
+    - [Schoten](#schoten)
+    - [Passes](#passes)
+  - [Scheidsrechter](#scheidsrechter)
 - [Business Rules](#business-rules)
 - [Functionele requirements.](#functionele-requirements)
   - [Constraints](#constraints)
@@ -798,38 +802,37 @@ Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga werdt de speler 33 ingewisseld voor speler 1111 in de 30ste minuut.
 
-Tijdens de voetbalwedstrijd op <u>*4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga*</u> werd de speler <u>**55**</u> ingewisseld voor de speler <u>***66***</u> in de <u>40ste</u> minuut.
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> werd de speler <u>*55* ingewisseld voor de speler **66** in de ***40ste*** minuut</u>.
 
 ---
 
-ET: *MATCH*
+ET: MATCH
 
 MATCH
+
+---
+
+ET: *PLAYER*
+
+*MATCH*
 
 ---
 
 ET: **PLAYER**
 
-MATCH
-
----
-
-ET: ***PLAYER***
-
-MATCH
+**MATCH**
 
 ---
 
 ET: SUBSTITUTE
 
-ID: ET: *MATCH* + ET: **PLAYER** + ET: ***PLAYER*** + Att Time
+SUBTYPE (EVENT)
 
 ---
 
-RT PERSON_out_SUBSTITUTE tussen PERSON en SUBSTITUTE.
-RT PERSON_in_SUBSTITUTE tussen PERSON en SUBSTITUTE.
+RT PERSON_in_SUBSTITUTE tussen *PLAYER*** en SUBSTITUTE.
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> werd de speler \<Person_id\> ingewisseld voor de speler \<Person_id\> in de \<Time\> minuut.
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> werd de speler \<*Person_id*\> ingewisseld voor de speler \<**Person_id**\> in de \<***Time***\> minuut.
 
 ### Overtredingen
 
