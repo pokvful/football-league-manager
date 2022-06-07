@@ -4,10 +4,10 @@
 
 ### Ophalen top-lijst
 
-| Stap | Actie                                                      | Input                                                                             | Expected Output                                                      | Output                                                                           | Geslaagd |
-|------|------------------------------------------------------------|-----------------------------------------------------------------------------------|----------------------------------------------------------------------|----------------------------------------------------------------------------------|----------|
-| 1    | Maak verbinding met de database                            | ```mongosh 127.0.0.1:27017/flm -u mongo -p toor --authenticationDatabase admin``` | ![Database connection](images/test_results/verbinding-resultaat.png) | ![Database connection](images/test_results/verbinding-resultaat.png)             |          |
-| 2    | Voer query uit voor het ophalen van top-lijst rode kaarten | ```db.VW_TOP_LIST_RED_CARD.find()```                                              |                                                                      | ![Ophalen top-lijst result](images/test_results/ophalen-top-lijst-resultaat.png) |          |
+| Stap | Actie                                                      | Input                                                                             | Expected Output                                                                   | Output                                                                           | Geslaagd |
+|------|------------------------------------------------------------|-----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|----------------------------------------------------------------------------------|----------|
+| 1    | Maak verbinding met de database                            | ```mongosh 127.0.0.1:27017/flm -u mongo -p toor --authenticationDatabase admin``` | ![Database connection](images/test_results/verbinding-resultaat.png)              | ![Database connection](images/test_results/verbinding-resultaat.png)             |          |
+| 2    | Voer query uit voor het ophalen van top-lijst rode kaarten | ```db.VW_TOP_LIST_RED_CARD.find()```                                              | ![Ophalen top-lijst expected](images/test_results/ophalen-top-lijst-expected.png) | ![Ophalen top-lijst result](images/test_results/ophalen-top-lijst-resultaat.png) |          |
 
 ### Ophalen tussenstand competitie
 
