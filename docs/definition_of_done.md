@@ -51,6 +51,13 @@ Het technisch ontwerp moet voldoen aan een aantal punten:
 - Voor alle tabellen staan de primary keys genoteerd.
 - Het TO bevat een uitleg van hoe de staging area van van data wordt voorzien.
 
+# Tracebility tussen functioneel en technisch ontwerp
+
+De volgende onderdelen moeten terug te vinden zijn in zowel het functioneel als het technisch ontwerp:
+
+- Business rules die worden toegelicht in het functioneel ontwerp moeten in het technisch ontwerp gebruikt worden voor het uitschrijven van constraints, vervolgens moeten deze constraints worden gebruikt voor het uitschrijven van IR's (integrity rules).
+- Concepten uit het CDM moeten terugkomen in het PDM, kolommen worden toegelicht in het FO en de domeinen in het PDM.
+
 # Testplan
 
 Het testplan moet voldoen aan een aantal punten:

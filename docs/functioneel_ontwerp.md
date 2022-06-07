@@ -40,7 +40,7 @@
     - [Passes](#passes)
   - [Scheidsrechter](#scheidsrechter)
 - [Business Rules](#business-rules)
-- [Functionele requirements.](#functionele-requirements)
+- [Functionele requirements](#functionele-requirements)
   - [Constraints](#constraints)
     - [C1 komt overeen met BR12](#c1-komt-overeen-met-br12)
     - [C3 komt overeen met BR19](#c3-komt-overeen-met-br19)
@@ -105,10 +105,13 @@
 
 # Use cases
 
+## Database
 ![Use case diagram](images/usecase_diagram_nutmeg.png)
 
+## Staging Area
+![Use case diagram](images/UseCase_Staging_Area_Nutmeg.png)
 # Fully-Dressed Use-cases
-<!--- Staging area bij alles nog weggelaten, updaten na onderzoek --->
+
 |Naam               |Ophalen top-lijst|
 |-------------------|------------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
@@ -210,7 +213,7 @@
 |Naam               |Overzetten data	|
 |-------------------|-----------------------|
 |Actors             |Time|
-|Stakeholder        ||
+|Stakeholder        |Staging Area|
 |Preconditie        ||
 |Postconditie       |De gegevens vanuit de ene database zijn overgezet naar de andere database.|
 |Brief Description  |Het overzetten van data gebeurt periodiek en vind elke nacht plaats om 2 uur.|
@@ -220,7 +223,7 @@
 |-------------------|-----------------------|
 |Actors             |NUTMEG Voetbal Admin|
 |Stakeholder        ||
-|Preconditie        | |
+|Preconditie        ||
 |Postconditie       |Er is een nieuw event toegevoegd aan het systeem.|
 |Brief Description  |De Actor maakt een nieuwe event type aan in het systeem, hierbij wordt een naam en optioneel een extra kolom toegevoegd.  |
 |Happy Flow         |1.Actor geeft aan een nieuw event type aan te maken, vervolgens voert de actor een naam in met een extra kolom. <br>2.Het systeem slaat de nieuwe event type op.|
@@ -995,34 +998,55 @@ Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 - BR5 De startdatum van een speeldag moet voor de startdatum van een opvolgende ronde bestaan en moet hetzelfde zijn of na de startdatum van de gekoppelde ronde bestaan;
 - BR6 Een speler die op het veld staat kan een keeper, verdediger, aanvaller of middenvelder zijn;
 - BR7 Een thuis club mag maximaal één keer tegen een uit club spelen binnen een fase van een knockout competitie;
-- BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een spelende club, die zich bevindt in de database;
+- BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een bestaande, spelende club;
 - BR9 Clubs mogen alleen een match spelen als ze meedoen aan de editie;
 - BR10 Gele en rode kaarten mogen alleen worden gegeven aan spelers en coaches;
-- BR11 Voor alleen spelende spelers wordt opgeslagen of ze hebben geschoten, pases hebben gemaakt, zijn gewisseld, overtredingen hebben gemaakt, corners hebben afgenomen of gescored hebben tijdens een voetbalwedstrijd;
+- BR11 Voor alleen spelende spelers wordt bijgehouden of ze hebben geschoten, pases hebben gemaakt, zijn gewisseld, overtredingen hebben gemaakt, corners hebben afgenomen of gescored hebben tijdens een voetbalwedstrijd;
 - BR12 Er moeten 22 spelers op het veld ingedeeld zijn bij een wedstrijd;
-- BR13 Bij welke club een persoon coacht wordt alleen opgeslagen voor coaches;
-- BR14 Bij welke wedstrijden een persoon scheidst wordt alleen opgeslagen voor scheidsrechters;
-- BR15 Of een persoon in de reserve staat bij een wedstrijd wordt alleen opgeslagen voor spelers;
+- BR13 Voor coaches wordt bijgehouden voor welke club wordt gecoached;
+- BR14 Voor scheidsrechters wordt bijgehouden voor welke wedstrijd(en) wordt gescheidst;
+- BR15 Voor spelers wordt bijgehouden wie in reserve staat bij een wedstrijd;
 - BR16 Maximaal 52 speelrondes per editie van een competitie;
 - BR17 Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1;
-- BR18 Minimaal en maximaal 1 coach per club;
-- BR19 Een persoon binnen het systeem mag niet jonger zijn dan 15 jaar;
+- BR18 Er mag minimaal en maximaal 1 coach per club zijn;
+- BR19 Een persoon mag niet jonger zijn dan 15 jaar;
 - BR20 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
-- BR21 Hoeveelste minuut mag niet negatief zijn.
+- BR21 De waarde van de minuten binnen een wedstrijd mag niet negatief zijn.
 
-# Functionele requirements.
+# Functionele requirements
 
-| Functional Requirements                                                                                    | MoSCoW |
-|------------------------------------------------------------------------------------------------------------|--------|
-| Bij een lopende competitie mag alleen de speeldatum of speler selectie van een wedstrijd worden veranderd. | M      |
-| Het moet mogelijk zijn om de tussenstand van een competitie op te halen.                                   | M      |
-| De gegevens moeten bereikbaar zijn via een staging area in JSON formaat.                                   | M      |
-| Een \[analist\] kan inhoudelijke gegevens via de staging area uitlezen.                                    | M      |
-| Het moet mogelijk zijn om een top lijst van een editie te genereren.                                       | S      |
-| Een \[admin\] kan matchdata invoeren in de database.                                                       | S      |
-| Een \[admin\] kan clubinfo updaten.                                                                        | S      |
-| Een \[admin\] kan een nieuwe seizoen competitie starten.                                                   | S      |
-| Een \[admin\] kan nieuwe personen toevoegen aan de database.                                               | S      |
+| Functional Requirements                                                                                                          | MoSCoW | Use case                       |
+|----------------------------------------------------------------------------------------------------------------------------------|--------|--------------------------------|
+| Bij een lopende competitie mag alleen de speeldatum of speler selectie van een wedstrijd worden veranderd                        | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een doelpunt in minuut 21 door Ronaldo als matchdata invoeren voor de wedstrijd Manchester United - Chelsea | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een rode kaart in minuut 90 voor Messi als matchdata invoeren voor de wedstrijd PSG - Real Madrid           | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een gele kaart in minuut 2 voor Pepe als matchdata invoeren voor de wedstrijd Porto - Feyenoord             | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een overtreding in minuut 63 door Pique als matchdata invoeren voor de wedstrijd FC Barcelona - Real Madrid | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een corner in minuut 34 door Neymar als matchdata invoeren voor de wedstrijd PSG - Bayern                   | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een schot op doel in minuut 87 door Antony als matchdata invoeren voor de wedstrijd Ajax - Feyenoord        | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik speler Lionel Messi toewijzen aan de club Ajax                                                              | M      | Updaten clubinfo               |
+| Als \[admin\] wil ik coach Josep Guardiola toewijzen aan de club Ajax                                                            | M      | Updaten clubinfo               |
+| Als \[admin\] wil ik een nieuwe seizoen voor de Eredivise starten                                                                | M      | Start nieuw seizoen competitie |
+| Als \[admin\] wil ik een nieuwe speler met de naam Chris toevoegen                                                               | M      | Toevoegen nieuw persoon        |
+| Als \[admin\] wil ik een nieuwe coach met de naam Michel toevoegen                                                               | M      | Toevoegen nieuw persoon        |
+| Als \[admin\] wil ik een nieuwe scheidsrechter met de naam Henk toevoegen                                                        | M      | Toevoegen nieuw persoon        |
+| Als \[analist\] wil ik de top-lijst van voetballers met de meeste doelpunten in seizoen 2015/2016 uitlezen                       | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de top-lijst van voetballers met de meeste gele kaarten in seizoen 2010/2011 uitlezen                     | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de top-lijst van voetballers met de meeste rode kaarten in seizoen 2022/2023 uitlezen                     | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de top-lijst van voetballers met de meeste overtredingen in seizoen 2021/2022 uitlezen                    | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de top-lijst van clubs met de meeste corners in seizoen 2000/2001 uitlezen                                | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de top-lijst van clubs met de meeste schoten op doel in seizoen 1967/1968 uitlezen                        | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de positie van Ajax in de Erdivisie tijdens seizoen 20/21 uitlezen                                        | M      | Ophalen tussenstand competitie |
+| Als \[analist\] wil ik het aantal doelpunten van Feyenoord in de Erdivisie tijdens het seizoen 16/17 uitlezen                    | M      | Ophalen tussenstand competitie |
+| Als \[analist\] wil ik het aantal gewonnen wedstrijden van Feyenoord in de Erdivisie tijdens het seizoen 10/11 uitlezen          | M      | Ophalen tussenstand competitie |
+| Als \[analist\] wil ik informatie over de spelers van de club Ajax uitlezen                                                      | M      | Ophalen clubinfo               |
+| Als \[analist\] wil ik informatie over de coach van de club Ajax uitlezen                                                        | M      | Ophalen clubinfo               |
+| Als \[analist\] wil ik informatie over de stadion van de club Ajax uitlezen                                                      | M      | Ophalen clubinfo               |
+| Als \[analist\] wil ik informatie over de balbezit van Ajax tegen Feyenoord uitlezen                                             | M      | Ophalen matchinfo              |
+| Als \[analist\] wil ik informatie over de toeschouwers tijdens Ajax - Feyenoord uitlezen                                         | M      | Ophalen matchinfo              |
+| Als \[analist\] wil ik informatie over speelronde 34 van de Eredivisie uitlezen                                                  | M      | Ophalen speelrondeinfo         |
+| Als \[analist\] wil ik informatie over de wedstrijd op 12/04/2021 tussen Feyenoord - Vitesse in de Eredivisie uitlezen           | M      | Ophalen speelrondeinfo         |
+
 
 ## Constraints
 
