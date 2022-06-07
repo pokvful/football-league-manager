@@ -241,7 +241,7 @@ In de verwoordingen zijn veel stukken tekst *italic*, **dikgedrukt** of ***itali
 >
 > Att **Season_start**
 
-Dit betekend dat `Season_name` verwijst naar `19/20` (beide hebben geen extra styling) en `Season_start` verwijst naar `01-01-2020` omdat beide dikgedrukt zijn.
+Dit betekent dat `Season_name` verwijst naar `19/20` (beide hebben geen extra styling) en `Season_start` verwijst naar `01-01-2020` omdat beide dikgedrukt zijn.
 
 ## Competitie
 
