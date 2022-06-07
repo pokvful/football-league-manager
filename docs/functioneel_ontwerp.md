@@ -486,6 +486,8 @@ MATCH
 
 ET: *COACH*
 
+SUBTYPE (PERSON)
+
 *MATCH*
 
 ---
@@ -505,6 +507,8 @@ De speler <u>56</u> heeft rugnummer <u>*14*</u>.
 ---
 
 ET: PLAYER
+
+SUBTYPE (PERSON)
 
 MATCH
 
@@ -962,7 +966,7 @@ Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga was Bas Neijnhuis de scheidsrechter.
 
-Tijdens de voetbalwedstrijd op <u>*4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga*</u> was <u>Danny Makkelie</u> de scheidsrechter.
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> was persoon <u>*12*</u> de scheidsrechter.
 
 ---
 
@@ -972,13 +976,15 @@ MATCH
 
 ---
 
-ET: REFEREE
+ET: *REFEREE*
 
-<!-- FIXME: Afhankelijk van PERSON -->
+SUBTYPE (PERSON)
 
-RT REFEREE_enforcing_MATCH tussen REFEREE en MATCH.
+*MATCH*
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was \<Person_id\> de scheidsrechter.
+RT REFEREE_in_charge_of_MATCH tussen *REFEREE* en MATCH.
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was persoon \<*Person_id*\> de scheidsrechter.
 
 # Business Rules
 
