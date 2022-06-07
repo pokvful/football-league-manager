@@ -255,7 +255,7 @@ ET COMPETITIE
 
 ID: Att Competition_name
 
-Predicate: Er bestaat een competitie \<Competition_name\>.
+Predicaat: Er bestaat een competitie \<Competition_name\>.
 
 ## Seizoen
 
@@ -271,7 +271,7 @@ ID: Att Season_name
 
 Att: *Season_start*
 
-Predicate: Er is een seizoen \<Season_name\> die start op \<*Season_start*\>.
+Predicaat: Er is een seizoen \<Season_name\> die start op \<*Season_start*\>.
 
 ---
 
@@ -287,7 +287,7 @@ MATCH
 
 Att: Season_end
 
-Predicate: Er is een seizoen \<Season_name\> die eindigt op \<*Season_end*\>.
+Predicaat: Er is een seizoen \<Season_name\> die eindigt op \<*Season_end*\>.
 
 ## Editie
 
@@ -309,7 +309,7 @@ RT EDITION_of_COMPETITION tussen EDITION(afhankelijk) en *COMPETITION*.
 
 RT EDITION_in_SEASON tussen EDITION(afhankelijk) en **SEASON**.
 
-Predicate: In seizoen \<**Season_name**\> vond er een editie van de \<*Competion_name*\> plaats.
+Predicaat: In seizoen \<**Season_name**\> vond er een editie van de \<*Competion_name*\> plaats.
 
 ## Clubs
 
@@ -333,7 +333,7 @@ MATCH
 
 RT CLUB_plays_in_EDITION tussen *CLUB* en EDITION.
 
-Predicate: De club \<*Club_name*\> doet mee aan de competitie \<Competion_name\> in het seizoen \<Season_name\>.
+Predicaat: De club \<*Club_name*\> doet mee aan de competitie \<Competion_name\> in het seizoen \<Season_name\>.
 
 ## Land
 
@@ -347,7 +347,7 @@ ET: COUNTRY
 
 ID: Att Country_name
 
-Predicate: Er bestaat een land genaamd \<Country_name\>.
+Predicaat: Er bestaat een land genaamd \<Country_name\>.
 
 ## Thuisstad
 
@@ -373,7 +373,7 @@ ID: Att *City_name* + ET **COUNTRY**
 
 RT: CLUB_in_CITY tussen CLUB en *CITY*.
 
-Predicate: De club \<Club_name\> heeft als thuisstad \<*City_name*\> in \<**Country_name**\>.
+Predicaat: De club \<Club_name\> heeft als thuisstad \<*City_name*\> in \<**Country_name**\>.
 
 ## Stadion
 
@@ -389,7 +389,7 @@ ID: Att Stadium_name
 
 Att *Capacity*
 
-Predicate: Het stadion \<Stadium_name\> bevat \<*Capacity*\> stoelen.
+Predicaat: Het stadion \<Stadium_name\> bevat \<*Capacity*\> stoelen.
 
 ## Personen
 
@@ -405,7 +405,7 @@ ID: Att Person_id
 
 Att *First_name*
 
-Predicate: De persoon \<Person_id\> heeft als naam \<*First_name*\>.
+Predicaat: De persoon \<Person_id\> heeft als naam \<*First_name*\>.
 
 ### Persoon achternaam
 
@@ -419,7 +419,7 @@ MATCH
 
 Att *Last_name*
 
-Predicate: De persoon \<Person_id\> heeft als achternaam \<*Last_name*\>.
+Predicaat: De persoon \<Person_id\> heeft als achternaam \<*Last_name*\>.
 
 ### Persoon middelnaam
 
@@ -435,7 +435,7 @@ MATCH
 
 Att *Middle_name*
 
-Predicate: De persoon \<Person_id\> heeft als tussenvoegsel \<*Middle_name*\>.
+Predicaat: De persoon \<Person_id\> heeft als tussenvoegsel \<*Middle_name*\>.
 
 ### Geboortedatum
 
@@ -449,7 +449,7 @@ MATCH
 
 Att *Birth_date*
 
-Predicate: De persoon \<Person_id\> is geboren op \<*Birth_date*\>.
+Predicaat: De persoon \<Person_id\> is geboren op \<*Birth_date*\>.
 
 ### Nationaliteit
 
@@ -471,7 +471,7 @@ ET: *COUNTRY*
 
 RT PERSON_nationality_of_COUNTRY tussen PERSON en *COUNTRY*.
 
-Predicate: De persoon \<Person_id\> heeft een \<*Country_name*\> paspoort.
+Predicaat: De persoon \<Person_id\> heeft een \<*Country_name*\> paspoort.
 
 ## Coach
 
@@ -497,7 +497,7 @@ SUBTYPE (PERSON)
 
 RT COACH_of_CLUB tussen CLUB en *COACH*.
 
-Predicate: De coach van \<Club_name\> is persoon \<*Person_id*\>.
+Predicaat: De coach van \<Club_name\> is persoon \<*Person_id*\>.
 
 ## Spelers
 
@@ -517,7 +517,7 @@ MATCH
 
 Att *Jersey*
 
-Predicate: De speler \<Person_id\> heeft rugnummer \<*Jersey*\>.
+Predicaat: De speler \<Person_id\> heeft rugnummer \<*Jersey*\>.
 
 ### Speler in club
 
@@ -541,7 +541,7 @@ ET: *CLUB*
 
 RT PLAYER_in_CLUB tussen PLAYER en *CLUB*.
 
-Predicate: De speler \<Person_id\> zit in \<*Club_name*\>.
+Predicaat: De speler \<Person_id\> zit in \<*Club_name*\>.
 
 ## Speelronde
 
@@ -557,7 +557,7 @@ ID: ET: EDITION + Att *Start_date*
 
 MATCH
 
-Predicate: Er is een speelronde in het seizoen \<Season_name\> in de competitie \<Competition_name\> die op \<*Start_date*\> start.
+Predicaat: Er is een speelronde in het seizoen \<Season_name\> in de competitie \<Competition_name\> die op \<*Start_date*\> start.
 
 ## Speeldag
 
@@ -573,7 +573,7 @@ ID: ET: *ROUND* + Att Match_day
 
 *MATCH*
 
-Predicate: Er is een speeldag die valt op \<Match_day\> binnen de speelronde van het seizoen \<*Season_name*\> in de competitie \<*Competition_name*\> die op \<*Start_date*\> start.
+Predicaat: Er is een speeldag die valt op \<Match_day\> binnen de speelronde van het seizoen \<*Season_name*\> in de competitie \<*Competition_name*\> die op \<*Start_date*\> start.
 
 ## Voetbalwedstrijd
 
@@ -595,7 +595,7 @@ RT MATCH_home_CLUB tussen MATCH(afhankelijk) en *CLUB*.
 
 RT MATCH_out_CLUB tussen MATCH(afhankelijk) en **CLUB**.
 
-Predicate: Er is een voetbalwedstrijd op \<Match_day\> in de speelronde van het seizoen \<Season_name\> in de competitie \<Competition_name\> die start op \<Start_date\> tussen thuis team \<*Club_name*\> en uit team \<**Club_name**\>.
+Predicaat: Er is een voetbalwedstrijd op \<Match_day\> in de speelronde van het seizoen \<Season_name\> in de competitie \<Competition_name\> die start op \<Start_date\> tussen thuis team \<*Club_name*\> en uit team \<**Club_name**\>.
 
 ### Positie
 
@@ -625,7 +625,7 @@ RT LINEUP_in_MATCH tussen LINEUP en MATCH.
 
 RT POSITION_in_LINEUP tussen LINEUP en **POSITION**.
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> de positie \<**Position_type**\>.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> de positie \<**Position_type**\>.
 
 ### Reserve
 
@@ -647,7 +647,7 @@ ET: *PLAYER*
 
 RT PLAYER_as_reserve_in_MATCH tussen *PLAYER* en MATCH.
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> begin de speler \<*Speler_id*\> als reserve.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> begin de speler \<*Speler_id*\> als reserve.
 
 ### Balbezit UIT
 
@@ -663,7 +663,7 @@ MATCH
 
 Att *Ball_possession_out*
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<*Ball_possession_out*\> balbezit.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<*Ball_possession_out*\> balbezit.
 
 ### Balbezit THUIS
 
@@ -679,7 +679,7 @@ MATCH
 
 Att *Ball_possession_home*
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het thuis team \<*Ball_possession_home*\> balbezit.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het thuis team \<*Ball_possession_home*\> balbezit.
 
 ### Aantal toeschouwers
 
@@ -695,7 +695,7 @@ MATCH
 
 Att Spectator_count
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was het aantal toeschouwers \<Spectator_count\>.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was het aantal toeschouwers \<Spectator_count\>.
 
 ## Events
 
@@ -715,7 +715,7 @@ RT PERSON_involved_in_EVENT tussen EVENT en **PLAYER**.
 
 RT EVENT_happend_in_MATCH tussen EVENT(afhankelijk) en MATCH.
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> is er in de \<*Time*\>ste minuut iets gebeurd waar speler \<**Person_id**\> iets mee te maken heeft.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> is er in de \<*Time*\>ste minuut iets gebeurd waar speler \<**Person_id**\> iets mee te maken heeft.
 
 ### Goals
 
@@ -745,7 +745,7 @@ MATCH
 
 ---
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft speler \<*Person_id*\> gescoord in de \<*Time*\> minuut.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft speler \<*Person_id*\> gescoord in de \<*Time*\> minuut.
 
 ### Gele kaarten
 
@@ -775,7 +775,7 @@ MATCH
 
 ---
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> gele kaart gekregen in de \<**Time**\> minuut.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> gele kaart gekregen in de \<**Time**\> minuut.
 
 ### Rode kaarten
 
@@ -803,7 +803,7 @@ MATCH
 
 ---
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> rode kaart gekregen in de \<**Time**\> minuut.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> rode kaart gekregen in de \<**Time**\> minuut.
 
 ### Wissels
 
@@ -839,7 +839,7 @@ SUBTYPE (EVENT)
 
 RT PERSON_in_SUBSTITUTE tussen *PLAYER*** en SUBSTITUTE.
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> werd de speler \<*Person_id*\> ingewisseld voor de speler \<**Person_id**\> in de \<***Time***\> minuut.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> werd de speler \<*Person_id*\> ingewisseld voor de speler \<**Person_id**\> in de \<***Time***\> minuut.
 
 ### Overtredingen
 
@@ -869,7 +869,7 @@ MATCH
 
 ---
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> in de \<**Time**\> minuut een overtreding gemaakt.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> in de \<**Time**\> minuut een overtreding gemaakt.
 
 ### Hoekschoppen
 
@@ -899,7 +899,7 @@ MATCH
 
 ---
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> in de \<**Time**\> minuut een hoekschop genomen.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> in de \<**Time**\> minuut een hoekschop genomen.
 
 ### Schoten
 
@@ -931,7 +931,7 @@ Att ***On_goal***
 
 ---
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> in de \<**Time**\> minuut een schot \<***On_goal***\> gemaakt.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> in de \<**Time**\> minuut een schot \<***On_goal***\> gemaakt.
 
 ### Passes
 
@@ -963,7 +963,7 @@ Att ***Success***
 
 ---
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> in de \<**Time**\> minuut \<***Success***\> gepasst naar een andere speler.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> in de \<**Time**\> minuut \<***Success***\> gepasst naar een andere speler.
 
 ## Scheidsrechter
 
@@ -987,7 +987,7 @@ SUBTYPE (PERSON)
 
 RT REFEREE_in_charge_of_MATCH tussen *REFEREE* en MATCH.
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was persoon \<*Person_id*\> de scheidsrechter.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was persoon \<*Person_id*\> de scheidsrechter.
 
 # Business Rules
 
