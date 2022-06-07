@@ -581,7 +581,7 @@ Predicate: Er is een speeldag die valt op \<Match_day\> binnen de speelronde van
 
 Er is een voetbalwedstrijd op 16 maart 2019 in de speelronde van het seizoen 19/20 in de competitie Eredivisie die start op 15 maart 2019 tussen thuis team Ajax en uit team Feyenoord.
 
-Er is een voetbalwedstrijd op <u>5 januari 2020 in de speelronde van het seizoen 20/21 in de competitie LaLiga die start op 3 januari 2020</u> tussen thuis team <u>*FC Barcelona*</u> en uit team <u>**FC Madrid**</u>.
+Er is een voetbalwedstrijd op <u>5 januari 2020 in de speelronde van het seizoen 20/21 in de competitie LaLiga die start op 3 januari 2020 tussen thuis team *FC Barcelona* en uit team **FC Madrid**</u>.
 
 ---
 
@@ -601,23 +601,33 @@ Predicate: Er is een voetbalwedstrijd op \<Match_day\> in de speelronde van het 
 
 ### Positie
 
-Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> heeft de speler <u>21</u> de positie <u>middenvelder</U>.
+Tijdens de voetbalwedstrijd op 16 maart 2019 tussen thuis team Ajax en uit team Feyenoord in de speelronde 15 maart 2019 in het seizoen 19/20 in competitie Eredivisie begint de speler 15 op de positie aanvaller.
+
+Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga begint de speler *21*</u> op de positie <u>**middenvelder**</u>.
 
 ---
 
-ET POSITION
+ET **POSITION**
 
-ID: ET VOETBALWEDSTRIJD + ET PLAYER
-
-MATCH MATCH
+ID: Att: **Position_type**
 
 ---
 
-RT PLAYER_plays_on_POSITION tussen POSITION en PLAYER.
+ET LINEUP
 
-RT POSITION_in_MATCH tussen POSITION en MATCH.
+ID: ET MATCH + ET *PLAYER*
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<Speler_id\> de positie \<Position\>.
+MATCH *MATCH*
+
+---
+
+RT PLAYER_plays_on_LINEUP tussen LINEUP en *PLAYER*.
+
+RT LINEUP_in_MATCH tussen LINEUP en MATCH.
+
+RT POSITION_in_LINEUP tussen LINEUP en **POSITION**.
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> de positie \<**Position_type**\>.
 
 ### Reserve
 
