@@ -6,8 +6,14 @@ To run the database, you need to have [docker](https://docs.docker.com/get-docke
 
 `cd` into this project and run the following command:
 
+If you are a developer
 ```bash
-docker-compose up --build --force-recreate -d
+docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up --build --force-recreate -d
+```
+
+If you want the production environment
+```bash
+docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up --build --force-recreate -d
 ```
 
 When you are done, you can stop the database by running the following command in this directory:

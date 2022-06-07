@@ -1,0 +1,4 @@
+services:
+  db_mssql:
+    environment:
+      ENV: PROD
