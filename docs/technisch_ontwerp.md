@@ -416,7 +416,8 @@ Voor uitleg zie FO
 
 ## Stored procedures
 
-Met het gebruik van stored procedures abstraheren we de aanroepen richting onze database. In plaats van SQL-code direct naar de database sturen zal een eventuele front-end straks een stored procedure in de database aanroepen, je heb dus al nagedacht over al het gedrag wat je van de database verwacht. Buiten dat dit goed is voor security maakt dit het systeem ook overizchtelijker en beter onderhoudbaar.
+Met het gebruik van stored procedures abstraheren we de functionaliteit van onze database. De stored procedures zijn herbuikbaar en uitbreidbaar, we verlagen de koppeling tussen de database en de back-end. 
+Verder wordt het execution plan van een stored procedure opgeslagen in de SQL server omgeving. Acties die dus vaak herhaald worden, worden hierdoor sneller omdat de server voorheen al de exeuction plan heeft opgeslagen.
 
 ## MATCH id
 
