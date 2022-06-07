@@ -325,7 +325,7 @@ ID: Att Club_name
 
 ---
 
-ETT: EDITION
+ET: EDITION
 
 MATCH
 
