@@ -670,6 +670,22 @@ Att *Ball_possession_home*
 
 Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het thuis team \<*Ball_possession_home*\> balbezit.
 
+### Aantal toeschouwers
+
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga was het aantal toeschouwers 40000.
+
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> was het aantal toeschouwers <u>30000</u>.
+
+---
+
+ET: MATCH
+
+MATCH
+
+Att Spectator_count
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was het aantal toeschouwers \<Spectator_count\>.
+
 ## Events
 
 Tijdens de voetbalwedstrijd op 16 maart 2019 tussen thuis team Ajax thuis en uit team Feyenoord uit in de speelronde 15 maart 2019 in het seizoen 19/20 in competitie Eredivisie is er in in de 57ste minuut iets gebeurd waar speler 11 iets mee te maken heeft.
@@ -815,7 +831,23 @@ RT PERSON_in_SUBSTITUTE tussen PERSON en SUBSTITUTE.
 
 Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> werd de speler \<Person_id\> ingewisseld voor de speler \<Person_id\> in de \<Time\> minuut.
 
-### Scheidsrechter
+### Overtredingen
+
+
+
+### Hoekschoppen
+
+
+
+### Schoten
+
+
+
+### Passes
+
+
+
+## Scheidsrechter
 
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga was Bas Neijnhuis de scheidsrechter.
 
@@ -836,23 +868,6 @@ ET: REFEREE
 RT REFEREE_enforcing_MATCH tussen REFEREE en MATCH.
 
 Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was \<Person_id\> de scheidsrechter.
-
-### Aantal toeschouwers
-
-Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga was het aantal toeschouwers 40000.
-
-Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> was het aantal toeschouwers <u>30000</u>.
-
----
-
-ET: MATCH
-
-MATCH
-
-Att Spectator_count
-
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was het aantal toeschouwers \<Spectator_count\>.
-De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 # Business Rules
 
