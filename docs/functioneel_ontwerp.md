@@ -836,7 +836,33 @@ Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 
 ### Overtredingen
 
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 in de 70ste minuut een overtreding gemaakt.
 
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft de speler <u>*22* in de **30ste** minuut een overtreding gemaakt</u>.
+
+---
+
+ET: MATCH
+
+MATCH
+
+---
+
+ET: *PLAYER*
+
+*MATCH*
+
+---
+
+ET: FOUL
+
+SUBTYPE (EVENT)
+
+MATCH
+
+---
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> in de \<**Time**\> minuut een overtreding gemaakt.
 
 ### Hoekschoppen
 
