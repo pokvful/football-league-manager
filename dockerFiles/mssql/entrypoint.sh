@@ -9,7 +9,8 @@ function run_sql_files {
 		find ./ -type f \( -iname "*.sql" -not -iname "CREATE_DATABASE.sql" \)
 	else
 		find ./ -type f \( -iname "*.sql" -not -iname "CREATE_DATABASE.sql" -not -iname "*-INSERT_*.sql" \)
-	fi | sort -n -t / -k 3.1 \
+	fi
+        | sort -n -t / -k 3.1 \
 	| xargs -I {} sh -c "echo === Executing '{}' === && /opt/mssql-tools/bin/sqlcmd -S 'localhost' -U 'sa' -P 'Football!' -d 'flm' -i {}"
 
 	echo "=== DONE RUNNING FILES ==="
