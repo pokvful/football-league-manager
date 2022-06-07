@@ -44,6 +44,14 @@
 
 ### Ophalen speelronde info
 
+#### Test stappen
+
+1. Start MongoDB
+2. Maak verbinding met de database
+3. Voer query uit voor het ophalen van speelronde informatie
+4. Laat informatie over de speelronde als resultaat zien
+5. Verbreek verbinding met de database
+
 ### Ophalen matchday info
 
 ### Invoeren matchdata
