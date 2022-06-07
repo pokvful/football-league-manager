@@ -24,6 +24,14 @@
 
 ### Ophalen clubinfo
 
+#### Test stappen
+
+1. Start MongoDB
+2. Maak verbinding met de database
+3. Voer query uit voor ophalen club informatie
+4. Laat informatie over de club als resultaat zien
+5. Verbreek verbinding met de database
+
 ### Ophalen matchinfo
 
 ### Ophalen speelronde info
