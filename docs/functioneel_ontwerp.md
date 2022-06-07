@@ -677,11 +677,29 @@ Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 
 ## Events
 
+Tijdens de voetbalwedstrijd op 16 maart 2019 tussen thuis team Ajax thuis en uit team Feyenoord uit in de speelronde 15 maart 2019 in het seizoen 19/20 in competitie Eredivisie is er in in de 57ste minuut iets gebeurd waar speler 11 iets mee te maken heeft.
+
+Tijdens de voetbalwedstrijd op <u>*5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga*</u> is er in in de <u>*32ste* minuut iets gebeurd waar speler **32** iets mee te maken heeft</u>.
+
+---
+
+ET: EVENT
+
+ID: ET MATCH + ET **PLAYER** + Att *Time*
+
+MATCH **MATCH**
+
+RT PERSON_involved_in_EVENT tussen EVENT en **PLAYER**.
+
+RT EVENT_happend_in_MATCH tussen EVENT(afhankelijk) en MATCH.
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> is er in de \<*Time*\>ste minuut iets gebeurd waar speler \<**Person_id**\> iets mee te maken heeft.
+
 ### Goals
 
-Tijdens de voetbalwedstrijd op 5 januari 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 januari 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 5 goals gescored.
+Tijdens de voetbalwedstrijd op 5 januari 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 januari 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 5 goals gescoord.
 
-Tijdens de voetbalwedstrijd op <u>*5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga*</u> heeft speler <u>**55**</u> gescoord in de <u>48ste</u> minuut.
+Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga heeft speler *55* gescoord in de 48ste minuut.
 
 ---
 
