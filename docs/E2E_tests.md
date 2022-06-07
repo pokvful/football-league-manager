@@ -8,7 +8,7 @@
 
 1. Start MongoDB
 2. Maak verbinding met de database
-3. Voer query uit voor ophalen top-lijst rode kaarten
+3. Voer query uit voor het ophalen van top-lijst rode kaarten
 4. Laat spelers met de meeste rode kaarten als resultaat zien
 5. Verbeek verbinding met de database
 
@@ -18,7 +18,7 @@
 
 1. Start MongoDB
 2. Maak verbinding met de database
-3. Voer query uit voor ophalen tussenstand competitie
+3. Voer query uit voor het ophalen van tussenstand competitie
 4. Laat de stand van de competitie als resultaat zien
 5. Verbreek verbinding met de database
 
@@ -28,11 +28,19 @@
 
 1. Start MongoDB
 2. Maak verbinding met de database
-3. Voer query uit voor ophalen club informatie
+3. Voer query uit voor het ophalen van club informatie
 4. Laat informatie over de club als resultaat zien
 5. Verbreek verbinding met de database
 
 ### Ophalen matchinfo
+
+#### Test stappen
+
+1. Start MongoDB
+2. Maak verbinding met de database
+3. Voer query uit voor het ophalen van match informatie
+4. Laat informatie over de match als resultaat zien
+5. Verbreek verbinding met de database
 
 ### Ophalen speelronde info
 
