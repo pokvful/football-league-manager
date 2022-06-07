@@ -19,9 +19,6 @@ function run_sql_files {
 
 /opt/mssql/bin/sqlservr "$@" & # start mssqlserver
 
-
-printenv
-
 # run the setup script to create the DB and the schema in the DB. do this in a
 # loop because the timing for when the SQL instance is ready is indeterminate
 for i in {1..60};
@@ -38,5 +35,4 @@ do
 	fi
 
 done
-
 fg %1 # move sqlserver process to foreground

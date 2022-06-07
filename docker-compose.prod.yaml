@@ -2,3 +2,5 @@ services:
   db_mssql:
     environment:
       ENV: PROD
+    volumes:
+      - <host directory>:/opt/mssql

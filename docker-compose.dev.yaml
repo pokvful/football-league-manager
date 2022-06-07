@@ -2,3 +2,5 @@ services:
   db_mssql:
     environment:
       ENV: DEV
+    volumes:
+      - ./dockerFiles/mssql:/data/sql-files
