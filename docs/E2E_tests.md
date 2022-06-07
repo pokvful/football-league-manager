@@ -18,10 +18,10 @@
 
 ### Ophalen clubinfo
 
-| Stap | Actie                                                          | Input                                                                             | Expected Output                                                      | Output                                                                         | Resultaat |
-|------|----------------------------------------------------------------|-----------------------------------------------------------------------------------|----------------------------------------------------------------------|--------------------------------------------------------------------------------|-----------|
-| 1    | Maak verbinding met de database                                | ```mongosh 127.0.0.1:27017/flm -u mongo -p toor --authenticationDatabase admin``` | ![Database connection](images/test_results/verbinding-resultaat.png) | ![Database connection](images/test_results/verbinding-resultaat.png)           |           |
-| 2    | Voer query uit voor het ophalen van club informatie over Eadel | ```db.CLUB.find({CLUB_NAME:"EADEL"})```                                           |                                                                      | ![Ophalen clubinfo result](images/test_results/ophalen-clubinfo-resultaat.png) |           |
+| Stap | Actie                                                          | Input                                                                             | Expected Output                                                               | Output                                                                         | Resultaat |
+|------|----------------------------------------------------------------|-----------------------------------------------------------------------------------|-------------------------------------------------------------------------------|--------------------------------------------------------------------------------|-----------|
+| 1    | Maak verbinding met de database                                | ```mongosh 127.0.0.1:27017/flm -u mongo -p toor --authenticationDatabase admin``` | ![Database connection](images/test_results/verbinding-resultaat.png)          | ![Database connection](images/test_results/verbinding-resultaat.png)           |           |
+| 2    | Voer query uit voor het ophalen van club informatie over Eadel | ```db.CLUB.find({CLUB_NAME:"EADEL"})```                                           | ![Ophalen clubinfo result](images/test_results/ophalen-clubinfo-expected.png) | ![Ophalen clubinfo result](images/test_results/ophalen-clubinfo-resultaat.png) |           |
 
 ### Ophalen matchinfo
 
