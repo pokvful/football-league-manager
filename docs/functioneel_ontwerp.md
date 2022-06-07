@@ -28,15 +28,10 @@
     - [Reserve](#reserve)
     - [Balbezit UIT](#balbezit-uit)
     - [Balbezit THUIS](#balbezit-thuis)
-    - [Overtredingen](#overtredingen)
-    - [Hoekschoppen UIT](#hoekschoppen-uit)
-    - [Hoekschoppen THUIS](#hoekschoppen-thuis)
   - [Events](#events)
     - [Goals](#goals)
     - [Gele kaarten](#gele-kaarten)
     - [Rode kaarten](#rode-kaarten)
-    - [Rode kaarten](#rode-kaarten-1)
-  - [Match day](#match-day)
     - [Wissels](#wissels)
     - [Scheidsrechter](#scheidsrechter)
     - [Aantal toeschouwers](#aantal-toeschouwers)
@@ -723,75 +718,65 @@ MATCH
 
 ---
 
-RT GOAL_scored_by_PERSON tussen GOAL en PERSON.
-
 Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft speler \<*Person_id*\> gescoord in de \<*Time*\> minuut.
 
 ### Gele kaarten
 
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 1 gele kaart gekregen in de 70ste minuut.
 
-Tijdens de voetbalwedstrijd op <u>*4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga*</u> heeft de speler <u>**Jesse Lingard**</u> gele kaart gekregen in <u>30ste minuut</u>.
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft de speler <u>*22* gele kaart gekregen in de **30ste** minuut</u>.
 
 ---
 
-ET: *MATCH*
-
-### Rode kaarten
+ET: MATCH
 
 MATCH
 
 ---
 
-ET: **PLAYER**
+ET: *PLAYER*
 
-MATCH
+*MATCH*
 
 ---
 
 ET: YELLOW_CARD
 
-ID: ET: *MATCH* + ET: **PLAYER** + Att Time
+SUBTYPE (EVENT)
 
 MATCH
 
 ---
 
-RT YELLOW_CARD_for_PERSON tussen YELLOW_CARD en PERSON.
-
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<Person_id\> gele kaart gekregen in \<Time\> minuut.
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> gele kaart gekregen in de \<**Time**\> minuut.
 
 ### Rode kaarten
 
-Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 1 rode kaart gekregen in de 70ste minuut.
-
-## Match day
-
-Tijdens de voetbalwedstrijd op <u>*4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga*</u> heeft de speler <u>**Jesse Lingard**</u> rode kaart gekregen in <u>30ste minuut</u>.
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft de speler <u>*22* gele kaart gekregen in de **30ste** minuut</u>.
 
 ---
 
-ET: *MATCH*
+ET: MATCH
 
 MATCH
 
 ---
 
-ET: **PLAYER**
+ET: *PLAYER*
 
-MATCH
+*MATCH*
 
 ---
 
 ET: RED_CARD
 
-ID: ET: *MATCH* + ET: **PLAYER** + Att Time
+SUBTYPE (EVENT)
+
+MATCH
 
 ---
 
-RT RED_CARD_for_PERSON tussen RED_CARD en PERSON.
-
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<Person_id\> rode kaart gekregen in \<Time\> minuut.
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> rode kaart gekregen in de \<**Time**\> minuut.
 
 ### Wissels
 
