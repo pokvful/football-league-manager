@@ -49,7 +49,6 @@ Anders wordt er mockdata in de database geinsert, wat niet wenselijk is. Daarnaa
 
 ```
 
-
 # Aanbevelingen
 
 - Om ervoor te zorgen dat periodiek data uit de Microsoft SQL Server database wordt omgezet naar JSON en vervolgens wordt overgezet naar MongoDB kan gebruik gemaakt worden van cronjobs.
@@ -59,8 +58,8 @@ Voorbeeld van ongeformateerde JSON:
 
 ```json
 {
-  "club_name": "naam",
-  "referee_person_id": 12
+	"club_name": "naam",
+	"referee_person_id": 12
 }
 ```
 
@@ -68,14 +67,14 @@ Voorbeeld van geformateerde JSON:
 
 ```json
 {
-  "club": {
-    "name": "naam",
-    // ...
+	"club": {
+    	"name": "naam",
+    	// ...
   },
-  "referee": {
-    "id": 12,
-    "naam": "bla",
-    // ...
+  	"referee": {
+    	"id": 12,
+    	"naam": "bla",
+    	// ...
   }
 }
 ```
