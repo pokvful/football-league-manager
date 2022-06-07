@@ -444,7 +444,7 @@ Nadelen:
 - Voor het aanmaken van nieuwe events moeten er nieuwe tabellen aangemaakt worden, dit kan eventueel foutgevoelig zijn.
 
 ### Één event-tabel, children voor complexere events
-Simpele events (waarbij alleen het tijdstip in de wedstrijd en 1 persoon vereist zijn) komen in een parent tabel. Comlexere events zullen een child van EVENT worden, ze erfen de basisattributen over en breiden deze uit.
+Simpele events (waarbij alleen het tijdstip in de wedstrijd en 1 persoon vereist zijn) komen in een parent tabel. Complexere events zullen een child van EVENT worden, ze erfen de basisattributen over en breiden deze uit.
 
 Voordelen:
 - Het toevoegen van simpele events kan makkelijk door admins zelf.
