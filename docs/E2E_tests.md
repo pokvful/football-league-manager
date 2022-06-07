@@ -55,7 +55,12 @@
 #### Test stappen
 
 1. Maak verbinding met MongoDB
-2. Voer query uit voor het ophalen van speelronde informatie
+2. Voer query uit voor het ophalen van speelronde met startdatum 03-01-2000, seizoen 20/21 en competitie Serie A
+
+| Stap | Actie                                                                                                         | Input                                                                                     | Output                                                                           |
+|------|---------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
+| 1    | Maak verbinding met de database                                                                               | mongosh 127.0.0.1:27017/flm -u mongo -p toor --authenticationDatabase admin               | ![Database verbinding](images/test_results/verbinding-resultaat.png)             |
+| 2    | Voer query uit voor het ophalen van speelronde met startdatum 03-01-2000, seizoen 20/21 en competitie Serie A | db.ROUND.find({START_DATE:"2000-01-03", SEASON_NAME:"20/21", COMPETITION_NAME:"Serie A”}) | ![Database verbinding](images/test_results/ophalen-speelrondeinfo-resultaat.png) |
 
 ### Ophalen matchday info
 
