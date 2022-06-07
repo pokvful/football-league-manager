@@ -425,7 +425,7 @@ Door de afhankelijkheden van match zou de orignele primary key maarliefst 6 kolo
 ## EVENT id
 
 Het is niet mogelijk om met de bestaande kolommen een primary key te maken voor EVENT. Hoewel de combinatie van minuut, persoon en type-overtreding op het eerste oog een kandidaat lijkt, gaat dit niet op aangezien het mogelijk is om meerdere overtredingen tegelijkertijd te maken \(p\-29 https://www.knvb.nl/downloads/bestand/4841/spelregels-veldvoetbal-2021-22\).
-Omdat het natuurlijk wel mogelijk moet zijn naar iedere unieke EVENT te refereren is ervoor gekozen de EVENTs van een id te voorzien. 
+Omdat het natuurlijk wel mogelijk moet zijn naar iedere unieke EVENT te refereren, is ervoor gekozen de EVENTs van een id te voorzien. 
 
 ##  Events
 
