@@ -67,7 +67,12 @@
 #### Test stappen
 
 1. Maak verbinding met MongoDB
-2. Voer query uit voor het ophalen van matchday informatie
+2. Voer query uit voor het ophalen van matchday 01-01-2000 in seizoen 18/19 uit competitie Bundesliga
+
+| Stap | Actie                                                                                              | Input                                                                                          | Output                                                                         |
+|------|----------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| 1    | Maak verbinding met de database                                                                    | mongosh 127.0.0.1:27017/flm -u mongo -p toor --authenticationDatabase admin                    | ![Database verbinding](images/test_results/verbinding-resultaat.png)           |
+| 2    | Voer query uit voor het ophalen van matchday 01-01-2000 in seizoen 18/19 uit competitie Bundesliga | db.MATCHDAY.find({MATCH_DAY:"2000-01-01", COMPETITION_NAME:"Bundesliga", SEASON_NAME:"18/19"}) | ![Database verbinding](images/test_results/ophalen-matchdayinfo-resultaat.png) |
 
 ### Invoeren matchdata
 
