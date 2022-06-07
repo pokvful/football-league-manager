@@ -420,12 +420,12 @@ Met het gebruik van stored procedures abstraheren we de aanroepen richting onze 
 
 ## MATCH id
 
-Door de afhankelijkheden van match zou de orignele primary key maarliefst 6 kolommen lang zijn. Event, position en Player_as_Reserve zouden daarnaast ook  afhankelijk zijn van MATCH waardoor deze tabellen ook allemaal de 6 kolommen lange primary key zouden bevatten. Om deze reden is ervoor gekozen om match van een ID te voorzien. De originele identifier staat wel als alternative key in de database opgeslagen zodat verzekert is dat deze waarde ook daadwerkelijk uniek blijft.
+Door de afhankelijkheden van match zou de orignele primary key maarliefst 6 kolommen lang zijn. Event, position en Player_as_Reserve zouden daarnaast ook afhankelijk zijn van MATCH waardoor deze tabellen ook allemaal de 6 kolommen lange primary key zouden bevatten. Om deze reden is ervoor gekozen om match van een ID te voorzien. De originele identifier staat wel als alternative key in de database opgeslagen, zodat verzekerd is dat deze waarde ook daadwerkelijk uniek blijft.
 
 ## EVENT id
 
 Het is niet mogelijk om met de bestaande kolommen een primary key te maken voor EVENT. Hoewel de combinatie van minuut, persoon en type-overtreding op het eerste oog een kandidaat lijkt, gaat dit niet op aangezien het mogelijk is om meerdere overtredingen tegelijkertijd te maken \(p\-29 https://www.knvb.nl/downloads/bestand/4841/spelregels-veldvoetbal-2021-22\).
-Omdat het natuurlijk wel mogelijk moet zijn naar iedere unieke EVENT te refereren is ervoor gekozen de EVENTs van een id te voorzien. 
+Omdat het natuurlijk wel mogelijk moet zijn naar iedere unieke EVENT te refereren, is ervoor gekozen de EVENTs van een id te voorzien. 
 
 ##  Events
 
