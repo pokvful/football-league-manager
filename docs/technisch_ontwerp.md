@@ -416,7 +416,7 @@ Voor uitleg zie FO
 
 ## Stored procedures
 
-Met het gebruik van stored procedures abstraheren we de functionaliteit van onze database. De stored procedures zijn herbuikbaar en uitbreidbaar, we verlagen de koppeling tussen de database en de back-end. 
+Met het gebruik van stored procedures wordt de functionaliteit van de database geabstraheerd. De stored procedures zijn zowel herkbruikaar als uitbreidbaar en de koppeling tussen de back-end en de database wordt verlaagd.
 Verder wordt het execution plan van een stored procedure opgeslagen in de SQL server omgeving. Acties die dus vaak herhaald worden, worden hierdoor sneller omdat de server voorheen al de exeuction plan heeft opgeslagen.
 
 ## MATCH id
@@ -430,48 +430,58 @@ Omdat het natuurlijk wel mogelijk moet zijn naar iedere unieke EVENT te referere
 
 ##  Events
 
-Het vastleggen van events kan op veel verschillende manieren. Om te bepalen wat de beste optie is moet rekening gehouden worden met een vele aspecten, bijvoorbeeld:
+Het vastleggen van events kan op veel verschillende manieren. Om te bepalen wat de beste optie is moet rekening gehouden worden met vele aspecten, bijvoorbeeld:
 - Uitbreidbaarheid. Hoe makkelijk is het om events toe te voegen?
 - Comlexiteit van joins/reads
 - Hoe overzichtelijk en onderhoudbaar is de implementatie
 
 ### Losse tabel voor iedere event
+
 Iedere event krijgt zijn eigen tabel met daarin de informatie die voor dat event belangrijk is.
 
 Voordelen:
-- Toplijsten generen kan voor iedere event met een simpele COUNT(*) FROM <EVENT>, dit houdt de code overzichtelijk en onderhoudbaar.
+
+- Toplijsten generen kan voor iedere event met een simpele `COUNT(*) FROM <EVENT>`, dit houdt de code overzichtelijk en onderhoudbaar.
 
 Nadelen:
+
 - Voor het aanmaken van nieuwe events moeten er nieuwe tabellen aangemaakt worden, dit kan eventueel foutgevoelig zijn.
 
 ### Één event-tabel, children voor complexere events
+
 Simpele events (waarbij alleen het tijdstip in de wedstrijd en 1 persoon vereist zijn) komen in een parent tabel. Complexere events zullen een child van EVENT worden, ze erfen de basisattributen over en breiden deze uit.
 
 Voordelen:
+
 - Het toevoegen van simpele events kan makkelijk door admins zelf.
 
 Nadelen:
+
 - Minder overzichtelijk, sommige events zullen in de EVENT tabel staan terwijl andere EVENTs weer hun eigen tabel krijgen.
 
 ### NoSQL
+
 Events worden bijgehouden in een NoSQL database die geen moeite hebt verschillende aantallen attributen, bijvoorbeeld MongoDB.
 
 Voordelen:
+
 - Geen problemen met verschillende toegevoegde/ontbrekende attributen.
 
 Nadelen:
+
 - Lastiger om goed te onderhouden, gegevens staan in verschillende databases die vervolgens in de staging area weer gecombineerd zullen moeten worden.
 
 ### Keuze
+
 Hoewel het toevoegen van events op het eerste oog makkelijker lijkt bij de tweede optie, zullen de events die gebruikers eventueel zelf willen toevoegen waarschijnlijk geen simpele events zijn.
 
-Verder is het toevoegen van niet-simpele events bij zowel optie 1 als 2 lastiger. Optie 3 is maakt het onderhoud van het systeem veel lastiger en lijkt daarom ook geen goede optie.
+Verder is het toevoegen van niet-simpele events bij zowel optie 1 als 2 lastiger. Optie 3 maakt het onderhoud van het systeem veel lastiger en lijkt daarom ook geen goede optie.
 
 Optie 1 is uiteindelijk geïmplementeerd aangezien het de meest overizchtelijke optie is en bijna zo goed uitbreidbaar is als optie 2.
 
 ## ADD_NEW_EVENT_TYPE
 
-Deze procedure is om aantal redenen gemaakt. Door het gebruik van deze procedure zullen gebruikers straks vanuit een eventuele front-end zelf niewe events kunnen aanmaken zonder er SQL code vanuit de front-end naar de database gestuurd wordt. Door deze twee lagen van elkaar te abstraheren wordt het systeem niet alleen beter onderhoudbaar, maar ook veiliger.
+Met deze procedure kunnen admins nieuwe events toevoegen zonder dat zij kennis hoeven van alle triggers, constraints en relaties die aan events zijn toe gewezen. Alle nodige integriteitsregels worden in de stored procedures afgehandeld.
 
 ## Moment van triggeren TRG_CHECK_PLAYER_COUNT
 
