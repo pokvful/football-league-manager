@@ -629,6 +629,8 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 
 ### Reserve
 
+Tijdens de voetbalwedstrijd op 17 maart 2019 tussen thuis team Ajax thuis en uit team Feyenoord uit in de speelronde 15 maart 2019 in het seizoen 19/20 in competitie Eredivisie begon de speler 7 als reserve.
+
 Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> begon de speler <u>*23*</u> als reserve.
 
 ---
@@ -969,9 +971,9 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 
 ## Scheidsrechter
 
-Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga was Bas Neijnhuis de scheidsrechter.
+Tijdens de voetbalwedstrijd op 16 januari 2019 tussen thuis team Ajax en uit team Feyenoord in de speelronde 14 januari 2019 in het seizoen 19/20 in competitie Eredivisie was persoon 53 de scheidsrechter.
 
-Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> was persoon <u>*12*</u> de scheidsrechter.
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 20/21 in competitie LaLiga</u> was persoon <u>*12*</u> de scheidsrechter.
 
 ---
 
