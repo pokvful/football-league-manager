@@ -545,31 +545,59 @@ RT PLAYER_in_CLUB tussen PLAYER en *CLUB*.
 
 Predicate: De speler \<Person_id\> zit in \<*Club_name*\>.
 
+## Speelronde
+
+Er is een speelronde in het seizoen <u>19/20 in de competitie Eredivisie</u> die op <u>*01-01-2019*</u> start.
+
+Er is een speelronde in het seizoen <u>20/21 in de competitie LaLiga</u> die op <u>*01-01-2020*</u> start.
+
+---
+
+ET: ROUND
+
+ID: ET: EDITION + Att *Start_date*
+
+MATCH
+
+Predicate: Er is een speelronde in het seizoen \<Season_name\> in de competitie \<Competition_name\> die op \<*Start_date*\> start.
+
+## Speeldag
+
+Er is een speeldag die valt op 02-01-2019 binnen de speelronde van het seizoen 19/20 in de competitie Eredivisie die op 01-01-2019 start.
+
+Er is een speeldag die valt op <u>02-01-2020</u> binnen de speelronde van <u>*het seizoen 20/21 in de competitie LaLiga die op 01-01-2020 start*</u>.
+
+---
+
+ET: MATCHDAY
+
+ID: ET: *ROUND* + Att Match_day
+
+*MATCH*
+
+Predicate: Er is een speeldag die valt op \<Match_day\> binnen de speelronde van het seizoen \<*Season_name*\> in de competitie \<*Competition_name*\> die op \<*Start_date*\> start.
+
 ## Voetbalwedstrijd
 
-Er is een voetbalwedstrijd op 5 januari 2020 tussen thuis team Ajax thuis en uit team psv uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie keuken kampioen divisie
+Er is een voetbalwedstrijd op 16 maart 2019 in de speelronde van het seizoen 19/20 in de competitie Eredivisie die start op 15 maart 2019 tussen thuis team Ajax en uit team Feyenoord.
 
-Er is een voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> geweest.
+Er is een voetbalwedstrijd op <u>5 januari 2020 in de speelronde van het seizoen 20/21 in de competitie LaLiga die start op 3 januari 2020</u> tussen thuis team <u>*FC Barcelona*</u> en uit team <u>**FC Madrid**</u>.
 
-<!-- FIXME: -->
+---
+
 ET: MATCH
 
-ID: ET: MATCHDAY
-        ID: ET: GAMEROUNDE + Att Match_day
-                MATCH
+ID: ET MATCHDAY + ET *CLUB* + ET **CLUB**
 
-+ ET: CLUB
-  MATCH
-+ ET:CLUB
-  MATCH
+MATCH *MATCH* **MATCH**
 
-RT VOETBALWEDSTRIJD_SPEELDAG tussen VOETBALWEDSTRIJD(afhankelijk) en MATCHDAY.
+RT MATCH_in_MATCHDAY tussen MATCH(afhankelijk) en MATCHDAY.
 
-RT VOETBALWEDSTRIJD_thuis_CLUB tussen VOETBALWEDSTRIJD(afhankelijk) en CLUB.
+RT MATCH_home_CLUB tussen MATCH(afhankelijk) en *CLUB*.
 
-RT VOETBALWEDSTRIJD_uit_CLUB tussen VOETBALWDSTRIJD(afhankelijk) en CLUB.
+RT MATCH_out_CLUB tussen MATCH(afhankelijk) en **CLUB**.
 
-Predicate: Er is een voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> geweest.
+Predicate: Er is een voetbalwedstrijd op \<Match_day\> in de speelronde van het seizoen \<Season_name\> in de competitie \<Competition_name\> die start op \<Start_date\> tussen thuis team \<*Club_name*\> en uit team \<**Club_name**\>.
 
 ### Positie
 
