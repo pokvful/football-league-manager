@@ -472,6 +472,14 @@ Optie 1 is uiteindelijk geïmplementeerd aangezien het de meest overizchtelijke 
 
 Deze procedure is om aantal redenen gemaakt. Door het gebruik van deze procedure zullen gebruikers straks vanuit een eventuele front-end zelf niewe events kunnen aanmaken zonder er SQL code vanuit de front-end naar de database gestuurd wordt. Door deze twee lagen  van elkaar te abstraheren wordt het systeem niet alleen beter onderhoudbaar, maar ook veiliger.
 
+## Moment van triggeren TRG_CHECK_PLAYER_COUNT
+
+De trigger checkt op inserts en updates, op deze manier worden er bij het toevoegen van spelers ook gekeken naar de huidige hoeveelheid spelers in een club binnen een match. Zo kunnen er per club minimaal 7 spelers of maximaal 11 spelers meedoen aan een wedstrijd. Dit geldt voor zowel de thuis als uit club. (Dus minimaal 14 en max 22 in totaal per wedstrijd voor beide clubs). 
+
+### Alternatief
+
+Er zou ook gebruik gemaakt kunnen worden van een cronjob, zo kan er bij de start van een match gekeken worden naar het aantal spelers in een club die meedoen. Dit lijkt erg op onze huidige oplossing, echter wordt hier pas het aantal spelers afgevangen bij de start van een wedstrijd, zo zou er dus nog wel foutieve data in de database kunnen worden geinsert; maar niet foutieve matches worden gestart.
+
 # Constraints
 
 ## Primary key constraints
@@ -534,24 +542,6 @@ PI: Time + club_name + club_name + match_day + start_date + end_date + competiti
 | IR14   | CHK_VALID_MINUTE_IN_MATCH               | RED_CARD, YELLOW_CARD, PASS, GOAL, SHOT, FOUL, CORNER & SUBSTITUTE | De minuut in een wedstrijd mag niet negatief zijn                                                                                                                                | C14 & BR22       |
 | IR15   | TRG_PLAYER_MUST_BE_ONE_SUBTYPE          | PLAYER, COACH & REFEREE                                            | Een persoon moet een speler, coach of scheidsrechter zijn                                                                                                                        | CDM, PDM & BR24  |
 | IR16   | TRG_NO_UPDATES_ON_CURRENT_EDITION_TABEL | CLUB, MATCH, SEASON, COMPETITION & CLUB_plays_in_EDITION           | Van een lopende competitie mogen alleen de selecties van clubs en de speeldata van wedstrijden aangepast worden                                                                  | C15 & BR1        |
-
-## Waarom maken wij gebruik van triggers?
-
-### Functioneel
-
-Het komt vaak voor dat mensen verkeerde data invoeren zonder dat ze het in de gaten hebben. Dit wil je natuurlijk niet in de database hebben. Om dit te voorkomen hebben we triggers geschreven die de ingevoerde data controleren. Mocht er iets niet correct zijn, dan wordt er een foutmelding getoont. Deze triggers gaan af bij het invoeren, updaten of verwijderen van data.
-
-### Technisch
-
-Een technische reden voor het kiezen van een trigger is dat je kan refereren naar de inserted en deleted tabel. Deze tabellen bevatten de data die wordt toegevoegd of verwijderd, waardoor het makkelijker is om controles uit te voeren. Dit had ook met een stored procedure gekund, maar dan zou je meerdere procedures moeten schrijven voor het invoeren, updaten of verwijderen van data. Dit is niet efficient waardoor triggers een betere oplossing is.
-
-### Toelichting TRG_CHECK_PLAYER_COUNT
-
-De trigger checkt op inserts en updates, op deze manier worden er bij het toevoegen van spelers ook gekeken naar de huidige hoeveelheid spelers in een club binnen een match. Zo kunnen er per club minimaal 7 spelers of maximaal 11 spelers meedoen aan een wedstrijd. Dit geldt voor zowel de thuis als uit club. (Dus minimaal 14 en max 22 in totaal per wedstrijd voor beide clubs). 
-
-#### Alternatief
-
-Er zou ook gebruik gemaakt kunnen worden van een cronjob, zo kan er bij de start van een match gekeken worden naar het aantal spelers in een club die meedoen. Dit lijkt erg op onze huidige oplossing, echter wordt hier pas het aantal spelers afgevangen bij de start van een wedstrijd, zo zou er dus nog wel foutieve data in de database kunnen worden geinsert; maar niet foutieve matches worden gestart.
 
 # Toelichting export MSSQL naar MongoDB
 
