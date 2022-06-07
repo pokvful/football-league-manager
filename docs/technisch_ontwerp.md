@@ -438,7 +438,7 @@ Het vastleggen van events kan op veel verschillende manieren. Om te bepalen wat 
 Iedere event krijgt zijn eigen tabel met daarin de informatie die voor dat event belangrijk is.
 
 Voordelen:
-- Informatie over één type event opvragen kan simpelweg  , handig voor het genereren van toplijsten.
+- Toplijsten generen kan voor iedere event met een simpele COUNT(*) FROM <EVENT>, dit houdt de code overzichtelijk en onderhoudbaar.
 
 Nadelen:
 - Voor het aanmaken van nieuwe events moeten er nieuwe tabellen aangemaakt worden, dit kan eventueel foutgevoelig zijn.
