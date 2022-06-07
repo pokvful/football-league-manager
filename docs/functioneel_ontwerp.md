@@ -545,7 +545,7 @@ Predicaat: De speler \<Person_id\> zit in \<*Club_name*\>.
 
 ## Speelronde
 
-Er is een speelronde in het seizoen <u>19/20 in de competitie Eredivisie</u> die op <u>*01-01-2019*</u> start.
+Er is een speelronde in het seizoen 19/20 in de competitie Eredivisie die op *01-01-2019* start.
 
 Er is een speelronde in het seizoen <u>20/21 in de competitie LaLiga</u> die op <u>*01-01-2020*</u> start.
 
