@@ -18,7 +18,7 @@ Docker Compose is een applicatie om gemakkelijk meerdere containers mee op te st
 Om gebruik te maken van Docker Compose wordt het volgende commando gedraait in de root directory (`/football-league-manager`) van het project: 
 
 ```bash
-docker-compose up --build --force-recreate -d
+docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up --build --force-recreate -d
 ```
 
 ## Gebruik van Docker tijdens ontwikkeling
@@ -31,9 +31,9 @@ Zo is er altijd databaseinhoud om mee te testen en is de database consistent tus
 
 ## Gebruik van Docker na uitrol systeem
 
-Om gebruik te maken van Docker voor het uitrollen van de applicatie moet eerst de volgende aanpassing worden gemaakt aan het bash script. Hiervoor is het volgende aanpassing bedacht: 
+Om gebruik te maken van Docker voor het uitrollen van de applicatie is de volgende aanpassing gemaakt: 
 
-Binnen `entrypoint.sh` staat de volgende code functie:
+Binnen `entrypoint.sh` staat de volgende functie:
 
 ```bash
 function run_sql_files {
