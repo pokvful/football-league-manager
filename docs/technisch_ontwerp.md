@@ -414,6 +414,10 @@ Voor uitleg zie FO
 
 # Ontwerpkeuzes
 
+## Stored procedures
+
+Met het gebruik van stored procedures abstraheren we de aanroepen richting onze database. In plaats van SQL-code direct naar de database sturen zal een eventuele front-end straks een stored procedure in de database aanroepen, je heb dus al nagedacht over al het gedrag wat je van de database verwacht. Buiten dat dit goed is voor security maakt dit het systeem ook overizchtelijker en beter onderhoudbaar.
+
 ## MATCH id
 
 Door de afhankelijkheden van match zou de orignele primary key maarliefst 6 kolommen lang zijn. Event, position en Player_as_Reserve zouden daarnaast ook  afhankelijk zijn van MATCH waardoor deze tabellen ook allemaal de 6 kolommen lange primary key zouden bevatten. Om deze reden is ervoor gekozen om match van een ID te voorzien. De originele identifier staat wel als alternative key in de database opgeslagen zodat verzekert is dat deze waarde ook daadwerkelijk uniek blijft.
@@ -466,9 +470,7 @@ Optie 1 is uiteindelijk geïmplementeerd aangezien het de meest overizchtelijke 
 
 ## ADD_NEW_EVENT_TYPE
 
-Deze procedure is om aantal redenen gemaakt.
-
-Door het gebruik van deze procedure zullen gebruikers straks vanuit een eventuele front-end zelf niewe events kunnen aanmaken zonder er SQL code in de [[[applicate ofzo?]]] zal staan. Door deze twee lagen meer van elkaar te abstraheren wordt het systeem niet alleen beter onderhoudbaar, maar ook veiliger.
+Deze procedure is om aantal redenen gemaakt. Door het gebruik van deze procedure zullen gebruikers straks vanuit een eventuele front-end zelf niewe events kunnen aanmaken zonder er SQL code vanuit de front-end naar de database gestuurd wordt. Door deze twee lagen  van elkaar te abstraheren wordt het systeem niet alleen beter onderhoudbaar, maar ook veiliger.
 
 # Constraints
 
@@ -676,12 +678,3 @@ db.MOCK_DATA.find({}, { id: 1, first_name: 1, email: 1, gender: 1, ip_address: 1
 | Ophalen speelrondeinfo         | VW_GET_PLAYROUND_DATA                      |
 | Ophalen tussenstand competitie | VW_GET_INTERIM_SCORE_EDITION               |
 | Ophalen clubinfo               | VW_SHOW_CLUB_INFO                          |
-
-
-## Waarom maken wij gebruik van stored procedures?
-
-### Functioneel
-Er zijn twee grote functionele redenen waarom wij hebben gekozen om stored procedures te gebruiken. De eerste reden is omdat bepaalde acties van gebruikers vaak moeten worden herhaald. Bijvoorbeeld het aanmaken van spelers, hiervoor is het dus handig om een stored procedure te gebruiken. Dit gaat hand in hand met de tweede reden: gebruikersgemak. Het is gemakkelijker en sneller voor een gebruiker om een stored procedure aan te roepen i.p.v. steeds een insert statement uit te schrijven voor het toevoegen van spelers.
-
-### Technisch
-Een technische reden waarom wij hebben gekozen voor het gebruik van stored procedures is dat het execution plan van een stored procedure wordt opgeslagen in de SQL server omgeving. Acties die dus vaak herhaald worden, worden hierdoor sneller omdat de server voorheen al de exeuction plan heeft opgeslagen.
