@@ -928,7 +928,35 @@ Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 
 ### Passes
 
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 in de 70ste minuut onsuccesvol gepasst naar een andere speler.
 
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft de speler <u>*22* in de **30ste** minuut ***succesvol*** gepasst naar een andere speler</u>.
+
+---
+
+ET: MATCH
+
+MATCH
+
+---
+
+ET: *PLAYER*
+
+*MATCH*
+
+---
+
+ET: SHOT
+
+SUBTYPE (EVENT)
+
+MATCH
+
+Att ***Success***
+
+---
+
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> in de \<**Time**\> minuut \<***Success***\> gepasst naar een andere speler.
 
 ## Scheidsrechter
 
