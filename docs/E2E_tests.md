@@ -21,6 +21,11 @@
 1. Maak verbinding met MongoDB
 2. Voer query uit voor het ophalen van tussenstand competitie
 
+| Stap | Actie                                                      | Input                                                                       | Output                                                                                   |
+|------|------------------------------------------------------------|-----------------------------------------------------------------------------|------------------------------------------------------------------------------------------|
+| 1    | Maak verbinding met de database                            | mongosh 127.0.0.1:27017/flm -u mongo -p toor --authenticationDatabase admin | ![Database verbinding](images/test_results/verbinding-resultaat.png)                     |
+| 2    | Voer query uit voor het ophalen van tussenstand competitie | db.SCORE_EDITIONS.find()                                                    | ![Database verbinding](images/test_results/ophalen-tussenstand-competitie-resultaat.png) |
+
 ### Ophalen clubinfo
 
 #### Test stappen
