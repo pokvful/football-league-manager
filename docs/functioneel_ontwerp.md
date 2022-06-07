@@ -631,7 +631,7 @@ Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 
 ### Reserve
 
-Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> was de speler <u>*1223*</u> reserve.
+Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> begon de speler <u>*23*</u> als reserve.
 
 ---
 
@@ -641,15 +641,15 @@ MATCH
 
 ---
 
-ET: *SPELER*
+ET: *PLAYER*
 
-MATCH
+*MATCH*
 
 ---
 
-RT PLAYER_as_reserve_in_MATCH tussen PLAYER en MATCH.
+RT PLAYER_as_reserve_in_MATCH tussen *PLAYER* en MATCH.
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was de speler \<Speler_id\> reserve.
+Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> begin de speler \<*Speler_id*\> als reserve.
 
 ### Schoten THUIS
 
