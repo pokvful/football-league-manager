@@ -33,20 +33,42 @@ Zo is er altijd databaseinhoud om mee te testen en is de database consistent tus
 
 Om gebruik te maken van Docker voor het uitrollen van de applicatie moet eerst de volgende aanpassing worden gemaakt aan het bash script. Hiervoor is het volgende aanpassing bedacht: 
 
-Binnen `entrypoint.sh` staat de volgende code...
+Binnen `entrypoint.sh` staat de volgende code functie:
 
 ```bash
-if [[ ${ENV} == "DEV" ]]; then
-	find ./ -type f \( -iname "*.sql" -not -iname "CREATE_DATABASE.sql" \)
-else
-	find ./ -type f \( -iname "*.sql" -not -iname "CREATE_DATABASE.sql" -not -iname "*-INSERT_*.sql" \)
-fi | sort -n -t / -k 3.1 \
+function run_sql_files {
+	echo "=== RUNNING FILES ==="
+	find ./sql-files/ -type f \( -iname "*.sql" -not -iname "CREATE_DATABASE.sql" \) \
+		| sort -n -t / -k 3.1 \
+		| xargs -I {} sh -c "echo === Executing '{}' === && /opt/mssql-tools/bin/sqlcmd -S 'localhost' -U 'sa' -P 'Football!' -d 'flm' -i {}"
+	
+	if [[ "$ENV" == "DEV" ]]; then
+		find ./ -type f \( -iname "*.sql" -not -iname "CREATE_DATABASE.sql" \)
+	else
+		find ./ -type f \( -iname "*.sql" -not -iname "CREATE_DATABASE.sql" -not -iname "*-INSERT_*.sql" \)
+	fi
+        | sort -n -t / -k 3.1 \
+        | xargs -I {} sh -c "echo === Executing '{}' === && /opt/mssql-tools/bin/sqlcmd -S 'localhost' -U 'sa' -P 'Football!' -d 'flm' -i {}"
+
+	echo "=== DONE RUNNING FILES ==="
+}
 ```
 
-Anders wordt er mockdata in de database geinsert, wat niet wenselijk is. Daarnaast is de data in de database niet persistent. Elke keer als de docker omgeving opnieuw wordt opgestart door middel van `docker-compose down` en `docker-compose up` wordt de bestaande data verwijderd. Voor het behouden van data kan gebruik gemaakt worden van volumes, deze kunnen op de volgende manier worden toegepast:
+Deze methode insert alleen mock data als `docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up --build --force-recreate -d` wordt aangeroepen en create alleen een database zonder bestaande data als `docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up --build --force-recreate -d` wordt aangeroepen.
+
+Daarnaast is de data in de ontwikkelomgeving database niet persistent. Elke keer als de docker ontwikkelomgeving opnieuw wordt opgestart wordt de data in de database gereset. Voor het behouden van data kan gebruik gemaakt worden van volumes, deze kunnen met het volgende commando worden toegepast:
+
+Voor productie (met data persistentie):
 
 ```bash
+docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up --build --force-recreate -d
+```
 
+Voor ontwikkelaars (geen data persistentie):
+
+```bash
+docker-compose up --build --force-recreate -d
+docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up --build --force-recreate -d
 ```
 
 # Aanbevelingen
