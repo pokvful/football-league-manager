@@ -421,7 +421,7 @@ Att *Last_name*
 
 Predicaat: De persoon \<Person_id\> heeft als achternaam \<*Last_name*\>.
 
-### Persoon middelnaam
+### Persoon tussenvoegsel
 
 De persoon 123 heeft als tussenvoegsel van de.
 
