@@ -464,13 +464,13 @@ Nadelen:
 ### Keuze
 Hoewel het toevoegen van events op het eerste oog makkelijker lijkt bij de tweede optie, zullen de events die gebruikers eventueel zelf willen toevoegen waarschijnlijk geen simpele events zijn.
 
-Verder is het toevoegen van niet-simpele events bij zowel optie 1 als 2 lastiger. Optie 3 is maakt het onderhoud an het systeem veel lastiger en lijkt daarom ook geen goede.
+Verder is het toevoegen van niet-simpele events bij zowel optie 1 als 2 lastiger. Optie 3 is maakt het onderhoud van het systeem veel lastiger en lijkt daarom ook geen goede optie.
 
 Optie 1 is uiteindelijk geïmplementeerd aangezien het de meest overizchtelijke optie is en bijna zo goed uitbreidbaar is als optie 2.
 
 ## ADD_NEW_EVENT_TYPE
 
-Deze procedure is om aantal redenen gemaakt. Door het gebruik van deze procedure zullen gebruikers straks vanuit een eventuele front-end zelf niewe events kunnen aanmaken zonder er SQL code vanuit de front-end naar de database gestuurd wordt. Door deze twee lagen  van elkaar te abstraheren wordt het systeem niet alleen beter onderhoudbaar, maar ook veiliger.
+Deze procedure is om aantal redenen gemaakt. Door het gebruik van deze procedure zullen gebruikers straks vanuit een eventuele front-end zelf niewe events kunnen aanmaken zonder er SQL code vanuit de front-end naar de database gestuurd wordt. Door deze twee lagen van elkaar te abstraheren wordt het systeem niet alleen beter onderhoudbaar, maar ook veiliger.
 
 ## Moment van triggeren TRG_CHECK_PLAYER_COUNT
 
