@@ -219,6 +219,27 @@ De trigger checkt op inserts en updates, op deze manier worden er bij het toevoe
 
 Er zou ook gebruik gemaakt kunnen worden van een cronjob, zo kan er bij de start van een match gekeken worden naar het aantal spelers in een club die meedoen. Dit lijkt erg op onze huidige oplossing, echter wordt hier pas het aantal spelers afgevangen bij de start van een wedstrijd, zo zou er dus nog wel foutieve data in de database kunnen worden geinsert; maar niet foutieve matches worden gestart.
 
+## Match_type
+
+In de database zit er een verschil tussen een normale match en een match van een ko competitie.
+Hiervoor zijn de volgende oplossingen bedacht.
+
+### Losse tabellen
+
+Een optie is om een losse MATCH en KO-MATCH tabel aan te maken. Hierbij komt een normale match niet in de knel.
+Wel is er dan een probleem met dat events verwijzen naar matches. (wat opgelost kan worden door een extra koppeltabel)
+Een boel triggers moeten aangepast worden omdat ze moeten kijken in MATCH en KO-MATCH, ook moeten sommige triggers nog een keer worden gezet op KO-MATCH. 
+
+### Een tabel
+
+Wanneer er één samengevoegde tabel is, dan hoeven de triggers niet te worden herschreven.
+De matches kunnen verwijzen naar andere matches.
+
+### Parent tabel met child tabel
+
+De perfecte van alle werelden.
+(eigenlijk niet ik wil ze samenvoegen)
+
 # Constraints
 
 ## Primary key constraints
