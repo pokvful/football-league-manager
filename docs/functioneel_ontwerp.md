@@ -1019,7 +1019,7 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 - BR22 Voor coaches wordt bijgehouden welke actieve of gespeelde wedstrijden zij hebben gecoached;
 - BR23 Knockout toernooien hebben 16 deelnemende clubs;
 - BR24 Speelrondes kunnen de volgende namen hebben: Finale, Halve Finale. Kwartfinale of Achtste Finale;
-- BR25 Iedere naam voor een speelronde kan maar een keer per editie van een knockout toernooi voorkomen;
+- BR25 Iedere naam van een speelronde kan maar een keer per editie van een knockout toernooi voorkomen;
 
 # Functionele requirements
 
