@@ -221,19 +221,22 @@ Er zou ook gebruik gemaakt kunnen worden van een cronjob, zo kan er bij de start
 
 ## Match_type
 
-In de database zit er een verschil tussen een normale match en een match van een ko competitie.
+Binnen het systeem bestaan twee soorten matches, matches in een knockout toernooi en matches in een nationale competitie. Aangezien deze twee soorten matches verschillende relaties vereisen moet er goed nagedacht worden over de implementatie de matches.
+
 Hiervoor zijn de volgende oplossingen bedacht.
 
 ### Losse tabellen
 
-Een optie is om een losse MATCH en KO-MATCH tabel aan te maken. Hierbij komt een normale match niet in de knel.
-Wel is er dan een probleem met dat events verwijzen naar matches. (wat opgelost kan worden door een extra koppeltabel)
-Een boel triggers moeten aangepast worden omdat ze moeten kijken in MATCH en KO-MATCH, ook moeten sommige triggers nog een keer worden gezet op KO-MATCH. 
+Een optie is om voor zowel MATCH als KO_MATCH een losse tabel aan te maken. Met deze implementatie hoeft er niks aangepast te worden aan de huidige MATCH tabel
+
+Echter loop je dan wel tegen een probleem aan met de events. De foreign keys zullen vanuit event naar twee verschillende tabellen moeten verwijzen, dat kan natuurlijk niet. Dit kan opgelost worden met een koppeltabel.
+
+Vervolgens zullen de triggers van MATCH nog wel aangepast moeten worden en ook zullen er triggers aan KO-MATCH toegevoegd moeten worden.
 
 ### Één tabel
 
-Wanneer er één samengevoegde tabel is, dan hoeven de triggers niet te worden herschreven.
-De matches kunnen verwijzen naar andere matches.
+Wanneer je ervoor kiest om alle matches in één tabel te stoppen hoef je de triggers van MATCH niet aan te passen. KO-matches zullen foreign keys krijgen naar de voorgaande wedstrijden. Reguliere matches zullen een nutteloze verwijzingen naar zichzelf krijgen aangezien de foreign key niet leeg kan zijn.
+
 
 
 # Constraints
