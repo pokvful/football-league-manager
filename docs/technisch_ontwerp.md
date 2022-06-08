@@ -228,7 +228,7 @@ Hiervoor zijn de volgende oplossingen bedacht.
 
 Een optie is om voor zowel MATCH als KO_MATCH een losse tabel aan te maken. Met deze implementatie hoeft er niks aangepast te worden aan de huidige MATCH tabel
 Wel is er dan een probleem met dat events verwijzen naar matches. (wat opgelost kan worden door een extra koppeltabel)
-Een boel triggers moeten aangepast worden omdat ze moeten kijken in MATCH en KO-MATCH, ook moeten sommige triggers nog een keer worden gezet op KO-MATCH. 
+Vervolgens zullen de triggers van MATCH nog wel aangepast moeten worden en ook zullen er triggers aan KO-MATCH toegevoegd moeten worden.
 
 ### Één tabel
 
