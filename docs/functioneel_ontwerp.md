@@ -43,7 +43,6 @@
 - [Functionele requirements](#functionele-requirements)
   - [Constraints](#constraints)
     - [C1 komt overeen met BR12](#c1-komt-overeen-met-br12)
-    - [C3 komt overeen met BR19](#c3-komt-overeen-met-br19)
     - [C4 komt overeen met BR16](#c4-komt-overeen-met-br16)
     - [C5 komt overeen met BR17](#c5-komt-overeen-met-br17)
     - [C6 komt overeen met BR4](#c6-komt-overeen-met-br4)
@@ -1058,11 +1057,6 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 
 - Betreft: ET `POSITION`;
 - Specificatie: Er zijn minimaal 7 en maximaal 11 spelers per club opgesteld wanneer een wedstrijd start.
-
-### C3 komt overeen met BR19
-
-- Betreft: ET `COACH` en ET `CLUB`;
-- Specificatie: Minimaal en maximaal 1 coach per club.
 
 ### C4 komt overeen met BR16
 
