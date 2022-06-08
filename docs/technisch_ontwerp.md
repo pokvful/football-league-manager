@@ -417,7 +417,7 @@ Voor uitleg zie FO
 ## Stored procedures
 
 Met het gebruik van stored procedures wordt de functionaliteit van de database geabstraheerd. De stored procedures zijn zowel herkbruikaar als uitbreidbaar en de koppeling tussen de back-end en de database wordt verlaagd.
-Verder wordt het execution plan van een stored procedure opgeslagen in de SQL server omgeving. Acties die dus vaak herhaald worden, worden hierdoor sneller omdat de server voorheen al de exeuction plan heeft opgeslagen.
+Verder wordt het execution plan van een stored procedure opgeslagen in de SQL server omgeving. Acties die dus vaak herhaald worden, worden hierdoor sneller omdat de server voorheen al het exeuction plan heeft opgeslagen.
 
 ## MATCH id
 
