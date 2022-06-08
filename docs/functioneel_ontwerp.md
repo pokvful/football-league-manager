@@ -198,6 +198,17 @@
 |Brief Description  |Actor haalt de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde op.|
 |Happy Flow         |1.Actor geeft aan de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde te willen zien. <br> 2.Systeem toont van de seizoen, competitie alle start datum, club out en club thuis en de aantal goals die gemaakt zijn door de spelende clubs.|
 
+## Ophalen brackets KO
+
+| Naam | Ophalen brackets KO |
+|---|---|
+| Actors | Data-analist Klant |
+| Stakeholder | |
+| Preconditie | |
+| Postconditie | Systeem toont ronde nummer, ronde naam en gespeelde wedstrijden (uit en thuis club, uitslag). |
+| Brief Description | Actor haalt alle brackets van de Knock Out wedstrijden op. |
+| Happy Flow | 1. Actor geeft te kennen dat hij alle brackets van de Knock Out wedstrijden wilt ophalen.<br>2. Systeem geeft alle brackets van de Knock Out wedstrijden terug. |
+
 ## Invoeren matchdata
 
 
