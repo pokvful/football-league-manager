@@ -485,7 +485,7 @@ Met deze procedure kunnen admins nieuwe events toevoegen zonder dat zij kennis h
 
 ## Moment van triggeren TRG_CHECK_PLAYER_COUNT
 
-De trigger checkt op inserts en updates, op deze manier worden er bij het toevoegen van spelers ook gekeken naar de huidige hoeveelheid spelers in een club binnen een match. Zo kunnen er per club minimaal 7 spelers of maximaal 11 spelers meedoen aan een wedstrijd. Dit geldt voor zowel de thuis als uit club. (Dus minimaal 14 en max 22 in totaal per wedstrijd voor beide clubs). 
+De trigger checkt op inserts en updates, op deze manier worden er bij het toevoegen van spelers ook gekeken naar de huidige hoeveelheid spelers in een club binnen een match. Zo kunnen er per club minimaal 7 spelers en maximaal 11 spelers meedoen aan een wedstrijd. Dit geldt voor zowel de thuis als uit club (dus minimaal 14 en maximaal 22 in totaal per wedstrijd voor beide clubs). 
 
 ### Alternatief
 
