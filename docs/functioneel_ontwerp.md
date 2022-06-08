@@ -1058,26 +1058,29 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 
 # Business Rules
 
-- BR1 Van een lopende competitie mag alleen de selectie clubs en de speeldatum van een wedstrijd worden aangepast;
-- BR2 Een thuis club mag maximaal één keer tegen een uit club spelen binnen een competitie seizoen;
+- BR1 Van een lopende editie mogen alleen de selecties van clubs en de speeldata van wedstrijden aangepast worden;
+- BR2 Een thuis club mag maximaal één keer tegen een uit club spelen binnen een editie;
 - BR3 De startdatum van een ronde moet lager zijn dan de einddatum van het bijhorende seizoen;
 - BR4 De datum van een speeldag moet na de gekoppelde startdatum van de speelronde liggen;
 - BR5 De startdatum van een speeldag moet voor de startdatum van een opvolgende ronde bestaan en moet hetzelfde zijn of na de startdatum van de gekoppelde ronde bestaan;
 - BR6 Een speler die op het veld staat kan een keeper, verdediger, aanvaller of middenvelder zijn;
-- BR7 Een thuis club mag maximaal één keer tegen een uit club spelen binnen een fase van een knockout competitie;
+- BR7 Een thuis club mag maximaal één keer tegen een uit club spelen binnen een fase van een knockout toernooi;
 - BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een bestaande, spelende club;
-- BR9 Clubs mogen alleen een match spelen als ze meedoen aan de editie;
+- BR9 Clubs mogen alleen een match spelen als ze meedoen aan een lopende editie of een knockout toernooi;
 - BR10 Gele en rode kaarten mogen alleen worden gegeven aan spelers en coaches;
-- BR11 Voor alleen spelende spelers wordt bijgehouden of ze hebben geschoten, pases hebben gemaakt, zijn gewisseld, overtredingen hebben gemaakt, corners hebben afgenomen of gescored hebben tijdens een voetbalwedstrijd;
-- BR12 Er moeten 22 spelers op het veld ingedeeld zijn bij een wedstrijd;
-- BR13 Voor coaches wordt bijgehouden voor welke club wordt gecoached;
-- BR14 Voor scheidsrechters wordt bijgehouden voor welke wedstrijd(en) wordt gescheidst;
-- BR15 Voor spelers wordt bijgehouden wie in reserve staat bij een wedstrijd;
-- BR17 Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1;
+- BR11 Alleen spelende spelers wordt bijgehouden of ze hebben geschoten, pases hebben gemaakt, zijn gewisseld, overtredingen hebben gemaakt, corners hebben afgenomen of gescored hebben tijdens een voetbalwedstrijd;
+- BR12 Er moeten minimaal 7 spelers en maximaal 11 spelers per team opgesteld staan aan het begin van een wedstrijd;
+- BR13 Voor coaches wordt bijgehouden welke club zij op dit moment coachen;
+- BR14 Voor scheidsrechters wordt bijgehouden welke wedstrijden zij hebben gefloten of gaan fluiten;
+- BR15 Reserves worden per wedstrijd bijgehouden voor alle gespeelde of actieve wedstrijden.
+- BR17 Een rugnummer van een speler mag niet hoger zijn dan 99 en niet lagen zijn dan 1;
 - BR18 Er mag minimaal en maximaal 1 coach per club zijn;
 - BR19 Een persoon mag niet jonger zijn dan 15 jaar;
 - BR20 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
 - BR21 De waarde van de minuten binnen een wedstrijd mag niet negatief zijn.
+- BR22 Voor coaches wordt bijgehouden welke actieve of gespeelde wedstrijden zij hebben gecoached;
+- BR23 Knockout toernooien hebben 16 deelnemende clubs;
+- BR24 Speelrondes kunnen de volgende namen hebben: Finale, Halve Finale. Kwartfinale of Achtste Finale;
 
 # Functionele requirements
 
@@ -1120,7 +1123,7 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 ### C1 komt overeen met BR12
 
 - Betreft: ET `POSITION`;
-- Specificatie: Er zijn minimaal 7 en maximaal 11 spelers per club opgesteld wanneer een wedstrijd start.
+- Specificatie: Er zijn minimaal 7 en maximaal 11 spelers per club opgesteld staan wanneer een wedstrijd start.
 
 ### C4 komt overeen met BR16
 
@@ -1181,6 +1184,13 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 - Betreft: ET `EDITITE`, ET `CLUB`, ET `PLAYER` en de Att `Match_day`van de ET `MATCHDAY`;
 - Specificatie: Tijdens een lopende competitie mogen alleen de selecties van de clubs en de matchdays aangepast worden
 
+### C16 komt overeen met BR23
+- Betreft: ET `EDITITE`, ET `CLUB`;
+- Specificatie: Knockout toernooien hebben 16 deelnemende clubs
+
+### C17 komt overeen met BR24
+- Betreft: Att round_name, ET `EDITIE`
+- Specificatie: Speelrondes kunnen de volgende namen hebben: Finale, Halve Finale. Kwartfinale of Achtste Finale
 
 # Ontwerpkeuzes
 
