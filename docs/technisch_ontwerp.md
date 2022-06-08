@@ -281,7 +281,6 @@ PI: Time + club_name + club_name + match_day + start_date + end_date + competiti
 | IR15   | TRG_PLAYER_MUST_BE_ONE_SUBTYPE          | PLAYER, COACH & REFEREE                                            | Een persoon moet een speler, coach of scheidsrechter zijn                                                                                                                        | CDM, PDM & BR24  |
 | IR16   | TRG_NO_UPDATES_ON_CURRENT_EDITION_TABEL | CLUB, MATCH, SEASON, COMPETITION & CLUB_plays_in_EDITION           | Van een lopende competitie mogen alleen de selecties van clubs en de speeldata van wedstrijden aangepast worden                                                                  | C15 & BR1        |
 | IR17   | TRG_MAX_16_CLUBS_KNOCKOUT | CLUB_plays_in_EDITION															|Knockout toernooien hebben 16 deelnemende clubs																																|C16 & BR23
-| IR18   | CHK_KNOCKOUT_ROUND_NAME | ROUND																				|Speelrondes kunnen de volgende namen hebben: Finale, Halve Finale. Kwartfinale of Achtste Finale																					| C17 & BR24        |
 
 # Toelichting export MSSQL naar MongoDB
 
