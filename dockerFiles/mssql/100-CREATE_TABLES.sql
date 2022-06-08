@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     08/06/2022 13:35:22                          */
+/* Created on:     08/06/2022 13:58:52                          */
 /*==============================================================*/
 
 
@@ -1910,7 +1910,6 @@ go
 alter table COACH
    add constraint FK_COACH_IS_A_PERS_PERSON foreign key (PERSON_ID)
       references PERSON (PERSON_ID)
-         on update cascade
 go
 
 alter table COMPETITION
@@ -1970,13 +1969,11 @@ go
 alter table KO_MATCH
    add constraint FK_KO_MATCH_BRACKET_L_KO_MATCH foreign key (BRACKET_LEFT)
       references KO_MATCH (MATCH_ID)
-         on update cascade
 go
 
 alter table KO_MATCH
    add constraint FK_KO_MATCH_BRACKET_R_KO_MATCH foreign key (BRACKET_RIGHT)
       references KO_MATCH (MATCH_ID)
-         on update cascade
 go
 
 alter table KO_MATCH
@@ -2006,7 +2003,6 @@ go
 alter table MATCH
    add constraint FK_MATCH_MATCH_HOM_CLUB foreign key (HOME_CLUB_NAME)
       references CLUB (CLUB_NAME)
-         on update cascade
 go
 
 alter table MATCH
@@ -2024,7 +2020,6 @@ go
 alter table MATCH
    add constraint FK_MATCH_MATCH_OUT_CLUB foreign key (OUT_CLUB_NAME)
       references CLUB (CLUB_NAME)
-         on update cascade
 go
 
 alter table MATCH
@@ -2036,7 +2031,6 @@ go
 alter table MATCH
    add constraint FK_MATCH_THE_TYPE__COMPETIT foreign key (MATCH_TYPE)
       references COMPETITION_TYPE (COMPETITION_TYPE)
-         on update cascade
 go
 
 alter table MATCHDAY
@@ -2060,19 +2054,16 @@ go
 alter table PERSON
    add constraint FK_PERSON_PERSON_NA_COUNTRY foreign key (COUNTRY_NAME)
       references COUNTRY (COUNTRY_NAME)
-         on update cascade
 go
 
 alter table PLAYER
    add constraint FK_PLAYER_IS_A_PERS_PERSON foreign key (PERSON_ID)
       references PERSON (PERSON_ID)
-         on update cascade
 go
 
 alter table PLAYER
    add constraint FK_PLAYER_PLAYER_IN_CLUB foreign key (CLUB_NAME)
       references CLUB (CLUB_NAME)
-         on update cascade
 go
 
 alter table PLAYER_AS_RESERVE_IN_MATCH
@@ -2102,7 +2093,6 @@ go
 alter table REFEREE
    add constraint FK_REFEREE_IS_A_PERS_PERSON foreign key (PERSON_ID)
       references PERSON (PERSON_ID)
-         on update cascade
 go
 
 alter table ROUND
@@ -2138,7 +2128,6 @@ go
 alter table SUBSTITUTE
    add constraint FK_SUBSTITU_PERSON_IN_PERSON2 foreign key (PERSON_IN_ID)
       references PERSON (PERSON_ID)
-         on update cascade
 go
 
 alter table SUBSTITUTE
