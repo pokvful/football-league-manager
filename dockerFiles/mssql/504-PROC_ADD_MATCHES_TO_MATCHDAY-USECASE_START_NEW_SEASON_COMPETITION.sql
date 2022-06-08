@@ -9,13 +9,6 @@ CREATE OR ALTER PROCEDURE ADD_MATCHES_TO_MATCHDAY -- Only for internal use.
 AS
 BEGIN
 	SET NOCOUNT ON
-	DECLARE @savepoint varchar(128) =	CAST(OBJECT_NAME(@@PROCID) as varchar(125)) + 
-										CAST(@@NESTLEVEL AS varchar(3))
-	declare @startTranCount int = @@trancount;
-	begin try
-		begin transaction
-		save transaction @savepoint
-
 	DECLARE @maxMatches INT = @start + @gamesPerMatchday
 	WHILE (@start < @maxMatches)
 	BEGIN
@@ -25,29 +18,16 @@ BEGIN
 		IF @homeclub IS NULL
 			BREAK;
 
-		INSERT INTO MATCH (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY, HOME_CLUB_NAME, OUT_CLUB_NAME, STADIUM_NAME)
+		DECLARE @randomReferee PERSON_ID = (SELECT TOP(1) PERSON_ID FROM REFEREE ORDER BY NEWID())
+
+		INSERT INTO MATCH (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY, HOME_CLUB_NAME, OUT_CLUB_NAME, STADIUM_NAME, REFEREE_PERSON_ID)
 		VALUES
-		(@seasonname, @competitionname, @round, @matchday, @homeclub, @outclub, (SELECT STADIUM_NAME FROM CLUB WHERE CLUB_NAME = @homeclub))
+		(@seasonname, @competitionname, @round, @matchday, @homeclub, @outclub, (SELECT STADIUM_NAME FROM CLUB WHERE CLUB_NAME = @homeclub), @randomReferee)
 
 		SET @start = @start + 1
 	END
 
-	COMMIT TRAN
-	end try
-	begin catch
-		if XACT_STATE() = -1 and @startTranCount = 0
-		begin 
-			rollback transaction
-		end
-		else
-		begin
-			if XACT_STATE() = 1
-			begin 
-				rollback transaction @savepoint;
-				commit transaction;
-			end;
-		end;
-	end catch;
+
 END
 GO
 -- From internet https://stackoverflow.com/questions/48099486/sql-server-round-robin-tournament/48101665#48101665 
@@ -200,6 +180,5 @@ BEGIN
 			END
 			SET @generatedRound = @generatedRound + 1
 		END
-
 END
 GO
