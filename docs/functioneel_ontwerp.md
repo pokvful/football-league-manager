@@ -1127,6 +1127,22 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 - Betreft: ET `EDITITE`, ET `CLUB`, ET `PLAYER` en de Att `Match_day`van de ET `MATCHDAY`;
 - Specificatie: Tijdens een lopende competitie mogen alleen de selecties van de clubs en de matchdays aangepast worden
 
+### C16 komt overeen met BR23
+- Betreft:
+- Specificatie:
+
+### C17 komt overeen met BR24
+- Betreft: ET `EDITITE`, ET `CLUB`;
+- Specificatie: Knockout toernooien hebben 16 deelnemende clubs
+
+### C18 komt overeen met BR25
+- Betreft:
+- Specificatie:
+
+- BR23 Knockout toernooien hebben 16 deelnemende clubs;
+- BR24 Speelrondes kunnen de volgende namen hebben: Finale, Halve Finale. Kwartfinale of Achtste Finale;
+- BR25 Iedere naam van een speelronde kan maar een keer per editie van een knockout toernooi voorkomen;
+
 
 # Ontwerpkeuzes
 
