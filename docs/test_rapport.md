@@ -21,7 +21,7 @@ Het doel van dit document is om een duidelijk overzicht te geven van het testpro
 
 # Algemeen overzicht resultaten unittests
 
-|No |Test Case Name                                                                                                                          |Dur(ms)|Results|
+|No |Test Case Name                                                                                                                          |Dur(ms)|Resul| |
 |---|----------------------------------------------------------------------------------------------------------------------------------------|-------|-------|
 |1  |[test_ADD_PLAYER_CLUB].[test player added with middle name]                                                                             |     78|Success|
 |2  |[test_ADD_PLAYER_CLUB].[test player added without middle name]                                                                          |     58|Success|
@@ -81,7 +81,9 @@ Het doel van dit document is om een duidelijk overzicht te geven van het testpro
 |56 |[test_PROC_ADD_MATCHDATA].[test_PROC_ADD_MATCHDATA_Add_Pass_No_Exception]                                                               |     77|Success|
 |57 |[test_PROC_ADD_MATCHDATA].[test_PROC_ADD_MATCHDATA_Add_Red_Card_No_Exception]                                                           |    131|Success|
 |58 |[test_PROC_ADD_MATCHDATA].[test_PROC_ADD_MATCHDATA_Add_Shot_No_Exception]                                                               |     73|Success|
-|59 |[test_PROC_ADD_MATCHDATA].[test_PROC_ADD_MATCHDATA_Add_Substitute_No_Exception]                                                         |     57|Success|
+|59 |[test_PROC_ADD_MATCHDATA].[test_PROC_ADD_MATCHDATA_Add_Substitute_No_Exception]                                                         |     61|Success|
+|60 |[test_PROC_ADD_MATCHDATA].[test_PROC_ADD_MATCHDATA_Add_Yellow_Card_No_Exception]                                                        |     66|Success|
+|61 |[test_PROC_INSERT_NEW_PERSON].[test_PROC_INSERT_NEW_COACH_VALID_DATA_COACH]                                                             |     57|Success|
 |62 |[test_PROC_INSERT_NEW_PERSON].[test_PROC_INSERT_NEW_PLAYER_VALID_DATA_PLAYER]                                                           |     66|Success|
 |63 |[test_PROC_INSERT_NEW_PERSON].[test_PROC_INSERT_NEW_REFEREE_VALID_DATA_REFEREE]                                                         |     78|Success|
 |64 |[test_SHOW_MATCH_INFO].[test test view]                                                                                                 |    172|Success|
