@@ -9,12 +9,15 @@ CREATE OR ALTER PROCEDURE ADD_MATCHES_TO_MATCHDAY -- Only for internal use.
 AS
 BEGIN
 	SET NOCOUNT ON
-	DECLARE @savepoint varchar(128) =	CAST(OBJECT_NAME(@@PROCID) as varchar(125)) + 
-										CAST(@@NESTLEVEL AS varchar(3))
-	declare @startTranCount int = @@trancount;
-	begin try
-		begin transaction
-		save transaction @savepoint
+	DECLARE @savepoint VARCHAR(128) =	CAST(OBJECT_NAME(@@PROCID) AS VARCHAR(125)) + 
+										CAST(@@NESTLEVEL AS VARCHAR(3))
+	DECLARE @startTranCount INT = @@TRANCOUNT;
+	IF @startTranCount > 0  
+		SAVE TRANSACTION @savepoint
+	ELSE
+		BEGIN TRANSACTION
+
+	BEGIN TRY
 
 	DECLARE @maxMatches INT = @start + @gamesPerMatchday
 	WHILE (@start < @maxMatches)
@@ -34,20 +37,21 @@ BEGIN
 
 	COMMIT TRAN
 	end try
-	begin catch
-		if XACT_STATE() = -1 and @startTranCount = 0
-		begin 
-			rollback transaction
-		end
-		else
-		begin
-			if XACT_STATE() = 1
-			begin 
-				rollback transaction @savepoint;
-				commit transaction;
-			end;
-		end;
-	end catch;
+	BEGIN CATCH
+			IF XACT_STATE() = -1 OR  @startTranCount = 0
+			BEGIN 
+				ROLLBACK TRANSACTION
+			END
+			ELSE
+			BEGIN
+				IF XACT_STATE() = 1
+				BEGIN 
+					ROLLBACK TRANSACTION @savepoint;
+				END;
+			END;
+			THROW
+
+	END CATCH
 END
 GO
 -- From internet https://stackoverflow.com/questions/48099486/sql-server-round-robin-tournament/48101665#48101665 
@@ -173,6 +177,8 @@ BEGIN
 		BEGIN
 			DECLARE @startDateRound DATE = DATEADD(day, @generatedRound * (@lengthRound + 1), @startDateCompetition)
 
+			PRINT 'generate round'
+
 			INSERT INTO [ROUND] (SEASON_NAME, COMPETITION_NAME, START_DATE)
 			VALUES (@seasonname, @competitionname, @startDateRound)
 
@@ -180,6 +186,10 @@ BEGIN
 			WHILE(@amountOfGeneratedMatchdaysInRound < @amountOfMatchdaysPerRound) -- Loops for matchdays in round
 			BEGIN -- Strategy first match is on start round and the rest are spread evenly
 				
+				PRINT '@amountOfGeneratedMatchdays >= @amountMatchdays'
+				PRINT @amountOfGeneratedMatchdays
+				PRINT @amountMatchdays
+
 				IF @amountOfGeneratedMatchdays >= @amountMatchdays
 					BREAK;
 				
