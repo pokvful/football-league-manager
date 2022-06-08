@@ -230,9 +230,9 @@
 |Actors             |NUTMEG Voetbal Admin|
 |Stakeholder        |Data-analist Klant|
 |Preconditie        ||
-|Postconditie       |De juiste clubs zijn gedegradeerd/gepromoveert. Een nieuw seizoen is gestart.|
+|Postconditie       |Een nieuw seizoen is gestart.|
 |Brief Description  |Actor update de correcte clubs in de nieuwe editie, start vervolgens een leeg seizoen (lege matches, speeldrondes en een nieuwe editie).|
-|Happy Flow         |1. Actor geeft aan welke clubs gedegradeerd/gepromoveert worden <br> 2. Systeem verwerkt de gegevens <br> 3. Actor geeft aan een nieuwe seizoen comeptitie te starten met de gegevens startdatum, speelrondes, aantal rondes per dag en de clubs die mee doen aan de competitie <br> 4.Systeem maakt nieuwe editie met de gegevens, competitie naam, season naam, lijst met clubs, start datum, lengte van een ronde, games per dag en aantal matches per ronde|
+|Happy Flow         |1. Actor geeft aan een nieuwe seizoen comeptitie te starten met de gegevens startdatum, speelrondes, aantal rondes per dag en de clubs die mee doen aan de competitie <br> 2.Systeem maakt nieuwe editie met de gegevens, competitie naam, season naam, lijst met clubs, start datum, lengte van een ronde, games per dag en aantal matches per ronde|
 |Alternative Flow	| 1A. Actor geeft aan een nieuwe seizoen comeptitie te starten met de verkeerde gegevens startdatum, speelrondes, aantal rondes per dag en de clubs die mee doen aan de competitie <br> 2A. Systeem geeft een error bericht.|
 
 ## Toevoegen nieuwe persoon
@@ -246,6 +246,18 @@
 |Brief Description  |Actor zet een nieuw coach, scheidsrechter of speler in het systeem met de gegevens land, voornaam, achternaam, middelnaam, geboorte datum en voor de speler de Jersey nummer.|
 |Happy Flow         |1.Actor geeft aan een nieuwe coach op te willen slaan in het systeem en geeft aan land, voornaam, achternaam, middelnaam en geboorte datum in te voeren. <br>2.Nieuw persoon wordt opgeslagen in de database.|
 |Alternative Flow	|2A.Systeem geeft aan dat informatie onvolledig is  <br> 3A.Ga terug naar stap 1|
+
+## Start nieuw seizoen KO
+
+| Naam | Start nieuw seizoen KO |
+|---|---|
+| Actors | NUTMEG Voetbal Admin |
+| Stakeholder | Data-analist Klant |
+| Preconditie | |
+| Postconditie | Een nieuw KO seizoen is gestart en de eerste ronde is vooraf random ingevuld aan de hand van de opgegeven clubs. |
+| Brief Description | De actor kan een nieuw Knock Out seizoen starten met voorgevulde brackets. |
+| Happy Flow | 1. Actor geeft te kennen dat hij 16 verschillende clubs heeft ingevoerd.<br>2. Systeem genereerd de brackets van de eerste ronde, waar de aangegeven clubs random over worden verdeeld en slaat dit op.<br>3. Systeem geeft aan dat het succesvol is verwerkt. |
+| Alternative Flow | 1A. Systeem merkt dat de Actor niet 16 clubs heeft opgegeven.<br>2A. Systeem geeft een error terug dat er niet precies 16 clubs zijn opgegeven, terwijl dit wel verplicht is. |
 
 ## Overzetten data
 
