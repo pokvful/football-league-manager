@@ -1304,7 +1304,7 @@ In de domestic league entiteit staan alle competities die ook poul wedstrijden z
 In de entiteit SEASON worden alle seizoenen vastgelegd.
 
 | Attribuut | Omschrijving |
-|---|---|<!-- Dit was bij de IR aangepast naar begin en eind datum -->
+|---|---|
 | Start\_date | De startdatum van het seizoen |
 | End\_date | De einddatum van het seizoen |
 
