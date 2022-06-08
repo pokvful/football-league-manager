@@ -1,0 +1,6 @@
+services:
+  db_mssql:
+    environment:
+      ENV: PROD
+    volumes:
+      - ./mnt/mssql:/var/opt/mssql

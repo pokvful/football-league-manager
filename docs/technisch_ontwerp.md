@@ -79,13 +79,14 @@
 
 | Niet-functionele eisen                                                                                             | Categorieën  |
 |--------------------------------------------------------------------------------------------------------------------|--------------|
-| Data-analisten lezen alleen data uit vanuit de MongoDB staging area, zo wordt de load op de SQL Server verlicht    | Performance  |
+| Data-analisten van NUTMEG lezen alleen data uit vanuit de MongoDB staging area, zo wordt de load op de SQL Server verlicht    | Performance  |
 | Administrators van NUTMEG hebben volledige CRUD rechten op zowel de SQL Server als MongoDB database                | Security     |
 | Data-analisten hebben alleen lees rechten en lezen data exclusief uit vanuit de staging area                       | Security     |
-| De data wordt alleen in het Nederlands opgeslagen                                                                  | Localization |
+| De data in de MSSQL database wordt alleen in het Nederlands opgeslagen                                             | Localization |
 | Tabelnamen, constraints, triggers, views en procedures in SQL Server worden in het Engels geschreven               | Localization |
 | Data-analisten kunnen via de MongoDB shell data uitlezen                                                           | Usability    |
 | Iedere dag dient er om 02:00 een kopie van de SQL Server database overgezet te worden naar de MongoDB staging area | Reliability  |
+| De gegevens moeten bereikbaar zijn via een staging area in JSON formaat.                                           | Usability    |
 
 # Deployment diagram
 
@@ -113,282 +114,9 @@ De client interact met de MongoDB staging area, dit is ook hoe de uiteindelijke 
 
 Binnen de SQL Server container draait een Microsoft SQL Server 2018 Server image. Vanaf deze node wordt alle data geleverd die gebruikt kan worden in de staging area. Deze node staat niet per direct in verbinding met de MongoDB node. Dit heeft als reden dat alle data eerst omgezet moet worden naar JSON die vervolgens MongoDB weer kan gebruiken om data mee te importeren.
 
-## Docker Compose
-
-Docker Compose is een applicatie om gemakkelijk meerdere containers mee op te starten. Dit bestand is te vinden onder `docker-compose.yaml`.
-
-Om gebruik te maken van Docker Compose wordt het volgende commando gedraait in de root directory (`/football-league-manager`) van het project: 
-
-```bash
-docker-compose up --build --force-recreate -d
-```
-
-## Gebruik van Docker
-
-Tijdens de ontwikkeling van het project wordt gebruik gemaakt van Docker; dit heeft als reden dat we door middel van Docker de omgeving van de applicatie kunnen wegabstraheren. Op deze manier hoeven wij ons zelf niet druk te maken over het installeren en onderhouden van installaties van bijvoorbeeld SQL Server en/of Linux.
-
-Wij gebruiken Docker zo dat elke keer zodra de containers worden opgestart, alle data in de database wordt gereset. Dit houdt in dat alle mockdata scripts opnieuw worden gedraaid en de bestaande data in de docker omgeving wordt verwijderd. Zo beginnen we elke keer met een schone database. Het voordeel hiervan is dat op elk moment de database hetzelfde is zoals gedefinieerd in de SQL bestanden.
-
-Zo is er altijd databaseinhoud om mee te testen en is de database consistent tussen de verschillende ontwikkelaars. Als iemand een schema, view of een procedure aanpast wordt deze wijziging meegecommit met de code. Zo lopen versies nooit uit elkaar.
-
 # PDM
 
 ![Het PDM.](images/pdm_no_ko.png)
-
-# Beschrijving Tabellen en Kolommen
-
-## Tabel: PERSON
-
-Deze tabel bevat alle informatie van personen in de database.
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-| Person_id| Unieke persoonsnummer |
-| Country_name| Naam van nationaliteit|
-|First_name | Voornaam van persoon|
-|Last_name| Achternaam van persoon|
-|Middle_name| Tussenvoegsel van persoon|
-|Birth_date| Wanneer de persoon is geboren|
-
-## Tabel: REFEREE
-
-Deze tabel bevat alle personen die ook scheidsrechters zijn.
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Person_id| Unieke persoonsnummer|
-
-## Tabel: COACH
-
-Deze tabel bevat alle personen die ook coaches zijn.
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Person_id| Unieke persoonsnummer|
-|Club_name|De naam van de club waar deze coach werkt|
-
-## Tabel: PLAYER
-
-Deze tabel bevat alle personen die ook spelers zijn.
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Person_id | Unieke persoonsnummer|
-|Club_name|Naam van de club waarin deze speler speelt|
-|Jersey|Rugnummer van deze speler|
-
-## Tabel: COUNTRY
-
-Deze tabel bevat alle landen.
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Country_name| Naam van het desbetrefende land|
-
-## Tabel: CITY
-
-Deze tabel bevat alle steden.
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Country_name|Het land waarin deze stad ligt|
-|City_name|De naam van deze stad|
-
-## Tabel: STADIUM
-
-Deze tabel bevat alle stadions
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Stadium_name|Naam van dit stadion|
-|Capacity|Het max aantal personen die in dit stadion kunnen|
-
-## Tabel: CLUB
-
-Deze tabel bevat alle clubs die wedstrijden kunnen spelen.
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Club_name|Unieke naam van deze club|
-|Stadium_name|Naam van het stadion van deze club|
-|Country_name|Land waarin deze club ligt|
-|City_name| Stad waarin deze club ligt|
-
-## Tabel: SEASON
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Season_name|Unieke naam van een bepaald speel seizoen|
-
-## Tabel: DOMESTIC_LEAGUE 
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Competition_name|Unieke naam van deze competitie|
-
-## Tabel: EDITION
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Season_name|Naam van het seizoen van deze editie|
-|Competition_name|Naam van de competitie die deze editie heeft|
-
-## Tabel: ROUND
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Season_name|Naam van het seizoen waarin deze ronde wordt gespeeld|
-|Competition_name|Naam van de competitie waarin deze ronde wordt gespeeld|
-|Start_date|Startdatum van deze specifieke ronde|
-
-## Tabel: CLUB_plays_in_EDITION
-
-In deze tabel staat welke clubs participeren in een specifieke editie.
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Season_name|Naam van het seizoen waarin een club speelt|
-|Competition_name|Naam van de competitie waarin een club speelt|
-|Club_name|Naam van de club die in een editie speelt|
-
-## Tabel: MATCHDAY
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Season_name|Naam van het seizoen waarin deze speeldag wordt gespeeld|
-|Competition_name|Naam van de competitie waarin deze speeldag wordt gespeeld|
-|Start_date|Startdatum van de ronde waarin deze speeldag wordt gespeeld|
-|Match_day|Een unieke speeldag datum|
-
-## Tabel: MATCH
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Match_id|Unieke gegenereerde id waarde van een wedstrijd|
-|Season_name|Naam van het seizoen waarin deze wedstrijd wordt gespeeld|
-|Competition_name|Naam van de competitie waarin deze competitie wordt gespeeld|
-|Start_date|Startdatum van de ronde waarin deze wedstrijd wordt gespeeld|
-|Match_day|Datum van de westrijd|
-|Home_club_name|Naam van de thuisclub die deze wedstrijd speelt|
-|Out_club_name|Naam van de uitclub die deze wedstrijd speelt|
-|Referee_person_id|Id verwijzing naar de scheids van deze wedstrijd|
-|Ball_possession_home|Hoeveel de thuisclub de bal in bezit heeft in procenten|
-|Ball_possession_out|Hoeveel de uitclub de bal in bezit heeft in procenten|
-|Spectators|Aantal toeschouwers die naar deze wedstrijd zijn geweest|
-
-## Tabel: POSITION
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Player_person_id|Unieke id van een persoon dat speler is|
-|Match_id|Unieke id van de wedstrijd|
-|Position_type|Geeft aan op welke positie een speler staat op het veld bij de wedstrijd (aanvaller, verdediger etc.)|
-
-## Tabel: PLAYER_as_reserve_in_MATCH
-
-In dit tabel staan alle spelers die in de reserve staan bij een bepaalde wedstrijd.
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Player_person_id|Unieke id van een persoon dat speler is|
-|Match_id|Unieke id van de wedstrijd|
-
-## Tabel: SUBSTITUTE
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
-|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
-|In_person_id|Unieke id van de persoon die nu op het veld gaat staan|
-|Out_person_id|Unieke id van de persoon die nu uit het veld gaat|
-
-## Tabel: CORNER
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
-|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
-|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
-
-## Tabel: FOUL
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
-|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
-|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
-
-## Tabel: SHOT
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
-|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
-|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
-|On_goal|Hiermee wordt aangegeven of het schot naar het doel is geschoten|
-
-## Tabel: GOAL
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
-|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
-|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
-
-## Tabel: PASS
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
-|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
-|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
-|Succes|Hiermee wordt aangegeven dat de paas is aangekomen|
-
-## Tabel: YELLOW_CARD
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
-|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
-|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
-
-## Tabel: RED_CARD
-
-Voor uitleg zie FO
-
-|*Kolom*|*Omschrijving*|
-|-------|--------------|
-|Match_id|Unieke id van de wedstrijd waarin dit is gebeurt|
-|Time|Geeft aan in welke minuut deze gebeurtenis is gebeurt|
-|Person_id|Id van de persoon die deze gebeurtenis veroorzaakt|
 
 # Toelichting Domeinen
 
@@ -414,65 +142,82 @@ Voor uitleg zie FO
 
 # Ontwerpkeuzes
 
+## Stored procedures
+
+Met het gebruik van stored procedures wordt de functionaliteit van de database geabstraheerd. De stored procedures zijn herkbruikaar en toegevoegde functionaliteit is overzichtelijk terug te vinden. Dit maakt het systeem beter uitbreidbaar en het verlaagd de koppeling tussen de database en de back-end.
+Verder wordt het execution plan van een stored procedure opgeslagen in de MSSQL Server-omgeving. Acties die vaak herhaald worden kunnen hierdoor sneller uitgevoerd worden.
+
 ## MATCH id
 
-Door de afhankelijkheden van match zou de orignele primary key maarliefst 6 kolommen lang zijn. Event, position en Player_as_Reserve zouden daarnaast ook  afhankelijk zijn van match waardoor deze tabellen ook allemaal de 6 kolommen lange primary key zouden bevatten. Om deze reden is ervoor gekozen om match van een ID te voorzien.
-
-## PERSON id
-
-Om een persoon van een daadwerkelijk van een unieke identifier te voorzien moeten niet alleen de naam en de achternaam gebruikt worden, maar ook de geboortedatum, zelfs met deze waarden is er echter nog een nihiele kans dat de waarden niet uniek zijn. Daarnaast wordt de primary key van Person in maar liefst 3 andere tabellen gebruikt. Om deze redenen is ervoor gekozen om Person een uniek ID te geven.
+Door de afhankelijkheden van match zou de orignele primary key maarliefst 6 kolommen lang zijn. Event, position en Player_as_Reserve zouden daarnaast ook afhankelijk zijn van MATCH waardoor deze tabellen ook allemaal de 6 kolommen lange primary key zouden bevatten. Om deze reden is ervoor gekozen om match van een ID te voorzien. De originele identifier staat wel als alternative key in de database opgeslagen, zodat verzekerd is dat deze waarde ook daadwerkelijk uniek blijft.
 
 ## EVENT id
 
-Doordat events geen PK hebben maar wel gerefereerd moeten kunnen worden, krijgen ze een gegenereerde id. Hoewel de combinatie van minuut, persoon en type overtreding in eerste instantie een potentiële pk lijkt te zijn, voldoet deze niet. Zo is het mogelijk meerdere overtredingen tegelijkertijd te maken. \(p\-29 https://www.knvb.nl/downloads/bestand/4841/spelregels-veldvoetbal-2021-22\)
+Het is niet mogelijk om met de bestaande kolommen een primary key te maken voor EVENT. Hoewel de combinatie van minuut, persoon en type-overtreding op het eerste oog een kandidaat lijkt, gaat dit niet op aangezien het mogelijk is om meerdere overtredingen tegelijkertijd te maken \(p\-29 https://www.knvb.nl/downloads/bestand/4841/spelregels-veldvoetbal-2021-22\).
+Omdat het natuurlijk wel mogelijk moet zijn naar iedere unieke EVENT te refereren, is ervoor gekozen de EVENTs van een id te voorzien. 
 
 ##  Events
 
-Om de events te structuren bij een wedstrijd moeten er keuzes worden gemaakt. Daarbij moet er met meerdere aspecten rekening worden gehouden. 
+Het vastleggen van events kan op veel verschillende manieren. Om te bepalen wat de beste optie is moet rekening gehouden worden met vele aspecten, bijvoorbeeld:
+- Uitbreidbaarheid. Hoe makkelijk is het om events toe te voegen?
+- Hoe complex zijn joins/reads voor het genereren van de top-lijsten?
+- Hoe overzichtelijk en onderhoudbaar is de implementatie?
 
-- Het moet in het tijdschema/budget passen van het development team.
-- Hoe uitbreidbaar is het voor de opdrachtgever om meer events toe te voegen.
+### Losse tabel voor iedere event
 
-### Losse tabellen
+Iedere event krijgt zijn eigen tabel met daarin de informatie die voor dat event belangrijk is.
 
-Voordeel: Vanuit powerdesigner is het gemakkelijk te genereren.
+Voordelen:
 
-Nadeel: Wanneer een event wordt toegevoegd moet er niet alleen een create table script geschreven worden. Triggers, check constraints, etc. moeten ook worden overgenomen.
+- Toplijsten generen kan voor iedere event met een simpele `COUNT(*) FROM <EVENT>`, dit houdt de code overzichtelijk en onderhoudbaar.
+
+Nadelen:
+
+- Voor het aanmaken van nieuwe events moeten er nieuwe tabellen aangemaakt worden, dit kan eventueel foutgevoelig zijn.
+
+### Één event-tabel, children voor complexere events
+
+Simpele events (waarbij alleen het tijdstip in de wedstrijd en 1 persoon vereist zijn) komen in een parent tabel. Complexere events zullen een child van EVENT worden, ze erfen de basisattributen over en breiden deze uit.
+
+Voordelen:
+
+- Het toevoegen van simpele events kan makkelijk door admins zelf.
+
+Nadelen:
+
+- Minder overzichtelijk, sommige events zullen in de EVENT tabel staan terwijl andere EVENTs weer hun eigen tabel krijgen.
 
 ### NoSQL
 
-Voordeel: Het toevoegen van nieuwe soorten events is simpeler, zeker wanneer nieuwe events meer informatie hebben.
+Events worden bijgehouden in een NoSQL database die geen moeite hebt verschillende aantallen attributen, bijvoorbeeld MongoDB.
 
-Nadeel: Veel development overhead. De gegevens staan niet in één database, maar verspreid over verschillende databases die in de staging area gecombineerd moeten worden.
+Voordelen:
 
-### Parent met children tabellen
-De laatste te behandelen manier is om een tabel te hebben van alle type events. Je hebt de parent tabel events waarin alle events worden gerigistreerd met welke type.
-Voor de types die extra informatie willen opslaan krijgen zij een eigen tabel die verwijst naar parent tabel.
+- Geen problemen met verschillende toegevoegde/ontbrekende attributen.
 
-Voordeel: Nieuwe soorten van simpele (minuut, persoon, match) events kunnen worden toegevoegd met één insert in de type events tabel.
+Nadelen:
 
-Nadeel: Meer development tijd. Voor events die meer informatie willen opslaan moet nieuwe tabellen worden aangemaakt met triggers erop.
+- Lastiger om goed te onderhouden, gegevens staan in verschillende databases die vervolgens in de staging area weer gecombineerd zullen moeten worden.
 
 ### Keuze
-Voor deze opdracht wordt gekozen voor de eerste optie.
 
-Een gedeelte van de nadelen gaan we verhelpen door een stored procedure te schrijven die een wrapper is om de create table.
+Hoewel het toevoegen van events op het eerste oog makkelijker lijkt bij de tweede optie, zullen de events die gebruikers eventueel zelf willen toevoegen waarschijnlijk geen simpele events zijn.
 
-Die kan de bijbehorende foreign keys en check constraint genereren.
+Verder is het toevoegen van niet-simpele events bij zowel optie 1 als 2 lastiger. Optie 3 maakt het onderhoud van het systeem veel lastiger en lijkt daarom ook geen goede optie.
 
-Daarbij komt ook de functionaliteit om extra kolommmen toe te voegen. (Alleen naam en type data)
-
-Als er om meer wordt gevraagd moet de cliënt zelf daarvoor zorgen.
+Optie 1 is uiteindelijk geïmplementeerd aangezien het de meest overizchtelijke optie is en bijna zo goed uitbreidbaar is als optie 2.
 
 ## ADD_NEW_EVENT_TYPE
 
-Dit is een procedure waarmee nieuwe event soorten kunnen worden toegevoegd door de cliënt.
+Met deze procedure kunnen admins nieuwe events toevoegen zonder dat zij kennis hoeven te hebben van alle triggers, constraints en relaties die aan events zijn toe gewezen. Alle nodige integriteitsregels worden in de stored procedures afgehandeld.
 
-Het heeft de functionaliteit om een nieuwe event tabel aan te maken met de bijbehorende foreign keys en check constraints.
+## Moment van triggeren TRG_CHECK_PLAYER_COUNT
 
-De gebruiker kan extra kolommen toevoegen aan een event.
+De trigger checkt op inserts en updates, op deze manier worden er bij het toevoegen van spelers ook gekeken naar de huidige hoeveelheid spelers in een club binnen een match. Zo kunnen er per club minimaal 7 spelers en maximaal 11 spelers meedoen aan een wedstrijd. Dit geldt voor zowel de thuis als uit club (dus minimaal 14 en maximaal 22 in totaal per wedstrijd voor beide clubs). 
 
-Er was ook een keuze om alleen de basis kolommen aan te maken, maar er is een grote kans dat de cliënt extra kolommen wil.
+### Alternatief
+
+Er zou ook gebruik gemaakt kunnen worden van een cronjob, zo kan er bij de start van een match gekeken worden naar het aantal spelers in een club die meedoen. Dit lijkt erg op onze huidige oplossing, echter wordt hier pas het aantal spelers afgevangen bij de start van een wedstrijd, zo zou er dus nog wel foutieve data in de database kunnen worden geinsert; maar niet foutieve matches worden gestart.
 
 # Constraints
 
@@ -536,24 +281,6 @@ PI: Time + club_name + club_name + match_day + start_date + end_date + competiti
 | IR14   | CHK_VALID_MINUTE_IN_MATCH               | RED_CARD, YELLOW_CARD, PASS, GOAL, SHOT, FOUL, CORNER & SUBSTITUTE | De minuut in een wedstrijd mag niet negatief zijn                                                                                                                                | C14 & BR22       |
 | IR15   | TRG_PLAYER_MUST_BE_ONE_SUBTYPE          | PLAYER, COACH & REFEREE                                            | Een persoon moet een speler, coach of scheidsrechter zijn                                                                                                                        | CDM, PDM & BR24  |
 | IR16   | TRG_NO_UPDATES_ON_CURRENT_EDITION_TABEL | CLUB, MATCH, SEASON, COMPETITION & CLUB_plays_in_EDITION           | Van een lopende competitie mogen alleen de selecties van clubs en de speeldata van wedstrijden aangepast worden                                                                  | C15 & BR1        |
-
-## Waarom maken wij gebruik van triggers?
-
-### Functioneel
-
-Het komt vaak voor dat mensen verkeerde data invoeren zonder dat ze het in de gaten hebben. Dit wil je natuurlijk niet in de database hebben. Om dit te voorkomen hebben we triggers geschreven die de ingevoerde data controleren. Mocht er iets niet correct zijn, dan wordt er een foutmelding getoont. Deze triggers gaan af bij het invoeren, updaten of verwijderen van data.
-
-### Technisch
-
-Een technische reden voor het kiezen van een trigger is dat je kan refereren naar de inserted en deleted tabel. Deze tabellen bevatten de data die wordt toegevoegd of verwijderd, waardoor het makkelijker is om controles uit te voeren. Dit had ook met een stored procedure gekund, maar dan zou je meerdere procedures moeten schrijven voor het invoeren, updaten of verwijderen van data. Dit is niet efficient waardoor triggers een betere oplossing is.
-
-### Toelichting TRG_CHECK_PLAYER_COUNT
-
-De trigger checkt op inserts en updates, op deze manier worden er bij het toevoegen van spelers ook gekeken naar de huidige hoeveelheid spelers in een club binnen een match. Zo kunnen er per club minimaal 7 spelers of maximaal 11 spelers meedoen aan een wedstrijd. Dit geldt voor zowel de thuis als uit club. (Dus minimaal 14 en max 22 in totaal per wedstrijd voor beide clubs). 
-
-#### Alternatief
-
-Er zou ook gebruik gemaakt kunnen worden van een cronjob, zo kan er bij de start van een match gekeken worden naar het aantal spelers in een club die meedoen. Dit lijkt erg op onze huidige oplossing, echter wordt hier pas het aantal spelers afgevangen bij de start van een wedstrijd, zo zou er dus nog wel foutieve data in de database kunnen worden geinsert; maar niet foutieve matches worden gestart.
 
 # Toelichting export MSSQL naar MongoDB
 
@@ -680,12 +407,3 @@ db.MOCK_DATA.find({}, { id: 1, first_name: 1, email: 1, gender: 1, ip_address: 1
 | Ophalen speelrondeinfo         | VW_GET_PLAYROUND_DATA                      |
 | Ophalen tussenstand competitie | VW_GET_INTERIM_SCORE_EDITION               |
 | Ophalen clubinfo               | VW_SHOW_CLUB_INFO                          |
-
-
-## Waarom maken wij gebruik van stored procedures?
-
-### Functioneel
-Er zijn twee grote functionele redenen waarom wij hebben gekozen om stored procedures te gebruiken. De eerste reden is omdat bepaalde acties van gebruikers vaak moeten worden herhaald. Bijvoorbeeld het aanmaken van spelers, hiervoor is het dus handig om een stored procedure te gebruiken. Dit gaat hand in hand met de tweede reden: gebruikersgemak. Het is gemakkelijker en sneller voor een gebruiker om een stored procedure aan te roepen i.p.v. steeds een insert statement uit te schrijven voor het toevoegen van spelers.
-
-### Technisch
-Een technische reden waarom wij hebben gekozen voor het gebruik van stored procedures is dat het execution plan van een stored procedure wordt opgeslagen in de SQL server omgeving. Acties die dus vaak herhaald worden, worden hierdoor sneller omdat de server voorheen al de exeuction plan heeft opgeslagen.

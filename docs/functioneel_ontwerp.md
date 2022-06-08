@@ -2,56 +2,47 @@
 
 # Functioneel ontwerp
 
-- [Functioneel ontwerp](#functioneel-ontwerp)
 - [Use cases](#use-cases)
 - [Fully-Dressed Use-cases](#fully-dressed-use-cases)
 - [Verwoordingen feittypen](#verwoordingen-feittypen)
   - [Competitie](#competitie)
-    - [Naam](#naam)
+  - [Seizoen](#seizoen)
   - [Editie](#editie)
-    - [Clubs](#clubs)
-    - [Thuisstad](#thuisstad)
-    - [Stadion](#stadion)
-    - [Personen](#personen)
+  - [Clubs](#clubs)
+  - [Land](#land)
+  - [Thuisstad](#thuisstad)
+  - [Stadion](#stadion)
+  - [Personen](#personen)
     - [Persoon achternaam](#persoon-achternaam)
     - [Persoon middelnaam](#persoon-middelnaam)
     - [Geboortedatum](#geboortedatum)
     - [Nationaliteit](#nationaliteit)
-    - [Land van stad](#land-van-stad)
-    - [Coach](#coach)
-    - [Spelers](#spelers)
-      - [Rugnummer, voornaam en achternaam](#rugnummer-voornaam-en-achternaam)
+  - [Coach](#coach)
+  - [Spelers](#spelers)
+    - [Rugnummer](#rugnummer)
     - [Speler in club](#speler-in-club)
+  - [Speelronde](#speelronde)
+  - [Speeldag](#speeldag)
   - [Voetbalwedstrijd](#voetbalwedstrijd)
     - [Positie](#positie)
     - [Reserve](#reserve)
-    - [Schoten THUIS](#schoten-thuis)
-    - [Schoten UIT](#schoten-uit)
-    - [Schoten op doel THUIS](#schoten-op-doel-thuis)
-    - [Schoten op doel UIT](#schoten-op-doel-uit)
     - [Balbezit UIT](#balbezit-uit)
     - [Balbezit THUIS](#balbezit-thuis)
-    - [Aantal passes THUIS](#aantal-passes-thuis)
-    - [Aantal passes UIT](#aantal-passes-uit)
-    - [Precisie passes THUIS](#precisie-passes-thuis)
-    - [Preciesie passes UIT](#preciesie-passes-uit)
-    - [Overtredingen](#overtredingen)
-    - [Hoekschoppen UIT](#hoekschoppen-uit)
-    - [Hoekschoppen THUIS](#hoekschoppen-thuis)
+    - [Aantal toeschouwers](#aantal-toeschouwers)
   - [Events](#events)
     - [Goals](#goals)
     - [Gele kaarten](#gele-kaarten)
     - [Rode kaarten](#rode-kaarten)
-    - [Rode kaarten](#rode-kaarten-1)
-  - [Match day](#match-day)
     - [Wissels](#wissels)
-      - [Scheidsrechter](#scheidsrechter)
-    - [Aantal toeschouwers](#aantal-toeschouwers)
+    - [Overtredingen](#overtredingen)
+    - [Hoekschoppen](#hoekschoppen)
+    - [Schoten](#schoten)
+    - [Passes](#passes)
+  - [Scheidsrechter](#scheidsrechter)
 - [Business Rules](#business-rules)
-- [Functionele requirements.](#functionele-requirements)
+- [Functionele requirements](#functionele-requirements)
   - [Constraints](#constraints)
     - [C1 komt overeen met BR12](#c1-komt-overeen-met-br12)
-    - [C2 komt overeen met BR18](#c2-komt-overeen-met-br18)
     - [C3 komt overeen met BR19](#c3-komt-overeen-met-br19)
     - [C4 komt overeen met BR16](#c4-komt-overeen-met-br16)
     - [C5 komt overeen met BR17](#c5-komt-overeen-met-br17)
@@ -62,13 +53,21 @@
     - [C10 komt overeen met BR10](#c10-komt-overeen-met-br10)
     - [C11 komt overeen met BR11](#c11-komt-overeen-met-br11)
     - [C12 komt overeen met BR20](#c12-komt-overeen-met-br20)
-      - [C13 komt overeen met BR21](#c13-komt-overeen-met-br21)
-      - [C14 komt overeen met BR22](#c14-komt-overeen-met-br22)
-- [Ontwerp keuzes](#ontwerp-keuzes)
-  - [Entiteit: Persoon](#entiteit-persoon)
-  - [Entiteit: Event](#entiteit-event)
-  - [Entiteit: Position](#entiteit-position)
-  - [Entiteit: Match](#entiteit-match)
+    - [C13 komt overeen met BR21](#c13-komt-overeen-met-br21)
+    - [C14 komt overeen met BR22](#c14-komt-overeen-met-br22)
+    - [C15 komt overeen met BR1](#c15-komt-overeen-met-br1)
+- [Ontwerpkeuzes](#ontwerpkeuzes)
+  - [Person_ID](#person_id)
+  - [Person_type](#person_type)
+  - [Position](#position)
+  - [Matchinfo](#matchinfo)
+  - [Uibreidbaarheid competition](#uibreidbaarheid-competition)
+  - [Matchday & Round](#matchday--round)
+  - [Position](#position-1)
+    - [Alleen begin wedstrijd](#alleen-begin-wedstrijd)
+    - [Positie verzameling](#positie-verzameling)
+    - [Positie ook in wissel](#positie-ook-in-wissel)
+    - [Uiteindelijke keuze posities](#uiteindelijke-keuze-posities)
 - [Rechtenstructuur](#rechtenstructuur)
 - [Toelichting Datakwaliteit](#toelichting-datakwaliteit)
 - [CDM](#cdm)
@@ -87,13 +86,13 @@
   - [Entiteit EDITION](#entiteit-edition)
   - [Entiteit ROUND](#entiteit-round)
   - [Entiteit MATCHDAY](#entiteit-matchday)
-  - [Entiteit MATCH](#entiteit-match-1)
-  - [Entiteit POSITION](#entiteit-position-1)
+  - [Entiteit MATCH](#entiteit-match)
+  - [Entiteit POSITION](#entiteit-position)
   - [Entiteit KEEPER](#entiteit-keeper)
   - [Entiteit DEFENDER](#entiteit-defender)
   - [Entiteit MIDFIELDER](#entiteit-midfielder)
   - [Entiteit ATTACKER](#entiteit-attacker)
-  - [Entiteit EVENT](#entiteit-event-1)
+  - [Entiteit EVENT](#entiteit-event)
   - [Entiteit SUBSTITUTE](#entiteit-substitute)
   - [Entiteit GOAL](#entiteit-goal)
   - [Entiteit RED_CARD](#entiteit-red_card)
@@ -106,10 +105,13 @@
 
 # Use cases
 
+## Database
 ![Use case diagram](images/usecase_diagram_nutmeg.png)
 
+## Staging Area
+![Use case diagram](images/UseCase_Staging_Area_Nutmeg.png)
 # Fully-Dressed Use-cases
-<!--- Staging area bij alles nog weggelaten, updaten na onderzoek --->
+
 |Naam               |Ophalen top-lijst|
 |-------------------|------------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
@@ -211,7 +213,7 @@
 |Naam               |Overzetten data	|
 |-------------------|-----------------------|
 |Actors             |Time|
-|Stakeholder        ||
+|Stakeholder        |Staging Area|
 |Preconditie        ||
 |Postconditie       |De gegevens vanuit de ene database zijn overgezet naar de andere database.|
 |Brief Description  |Het overzetten van data gebeurt periodiek en vind elke nacht plaats om 2 uur.|
@@ -221,7 +223,7 @@
 |-------------------|-----------------------|
 |Actors             |NUTMEG Voetbal Admin|
 |Stakeholder        ||
-|Preconditie        | |
+|Preconditie        ||
 |Postconditie       |Er is een nieuw event toegevoegd aan het systeem.|
 |Brief Description  |De Actor maakt een nieuwe event type aan in het systeem, hierbij wordt een naam en optioneel een extra kolom toegevoegd.  |
 |Happy Flow         |1.Actor geeft aan een nieuw event type aan te maken, vervolgens voert de actor een naam in met een extra kolom. <br>2.Het systeem slaat de nieuwe event type op.|
@@ -229,9 +231,19 @@
 
 # Verwoordingen feittypen
 
-## Competitie
+In de verwoordingen zijn veel stukken tekst *italic*, **dikgedrukt** of ***italic dikgedrukt***. Dit betekent dat deze stukken tekst bij elkaar horen. Bijvoorbeeld:
 
-### Naam
+> Er is een seizoen <u>19/20</u> die start op <u>**01-01-2020**</u>.
+>
+> ET: SEASON
+>
+> ID: Att Season_name
+>
+> Att **Season_start**
+
+Dit betekent dat `Season_name` verwijst naar `19/20` (beide hebben geen extra styling) en `Season_start` verwijst naar `01-01-2020` omdat beide dikgedrukt zijn.
+
+## Competitie
 
 Er bestaat een competitie Eredivisie.
 
@@ -241,15 +253,15 @@ Er bestaat een competitie <u>Champions League</u>.
 
 ET COMPETITIE
 
-ID: Att Name
+ID: Att Competition_name
 
-Predicate: Er bestaat een competitie \<Name\>.
+Predicaat: Er bestaat een competitie \<Competition_name\>.
 
-## Editie
+## Seizoen
 
-In seizoen 17/18 vond er een editie van de eredivisie plaats.
+Er is een seizoen 19/20 die start op 01-01-2019.
 
-In seizoen *<u>19/20</u> vond er een editie van de <u>WK</u>* plaats.
+Er is een seizoen <u>19/20</u> die start op <u>*01-01-2020*</u>.
 
 ---
 
@@ -257,23 +269,49 @@ ET: SEASON
 
 ID: Att Season_name
 
+Att: *Season_start*
+
+Predicaat: Er is een seizoen \<Season_name\> die start op \<*Season_start*\>.
+
 ---
 
-ET: *EDITION*
+Er is een seizoen 18/19 die eindigt op 30-10-2020.
 
-ID: ET SEASON + ET COMPETITION
+Er is een seizoen <u>19/20</u> die eindigt op <u>30-10-2021</u>.
+
+---
+
+ET: SEASON
+
+MATCH
+
+Att: Season_end
+
+Predicaat: Er is een seizoen \<Season_name\> die eindigt op \<*Season_end*\>.
+
+## Editie
+
+In seizoen 17/18 vond er een editie van de eredivisie plaats.
+
+In seizoen <u>**19/20**</u> vond er een editie van de <u>*WK*</u> plaats.
+
+---
+
+ET: EDITION
+
+ID: ET **SEASON** + ET *COMPETITION*
 
 MATCH MATCH
 
 ---
 
-RT EDITION_of_COMPETITION tussen EDITION(afhankelijk) en COMPETITION.
+RT EDITION_of_COMPETITION tussen EDITION(afhankelijk) en *COMPETITION*.
 
-RT EDITION_in_SEASON tussen EDITION(afhankelijk) en SEASON.
+RT EDITION_in_SEASON tussen EDITION(afhankelijk) en **SEASON**.
 
-Predicate: In seizoen \<Season_name\> vond er een editie van de \<Name\> plaats.
+Predicaat: In seizoen \<**Season_name**\> vond er een editie van de \<*Competion_name*\> plaats.
 
-### Clubs
+## Clubs
 
 De club Manchester United doet mee aan de competitie Eredivisie in het seizoen 17/18.
 
@@ -283,49 +321,65 @@ De club <u>*Vitesse*</u> doet mee aan de competitie <u>Eredivisie in het seizoen
 
 ET *CLUB*
 
-ID: Att Name
+ID: Att Club_name
 
 ---
 
-ETT: EDITION
+ET: EDITION
 
 MATCH
 
 ---
 
-RT CLUB_plays_in_EDITION tussen CLUB en EDITION.
+RT CLUB_plays_in_EDITION tussen *CLUB* en EDITION.
 
-Predicate: \<Name\> doet mee aan de competitie \<Competion_name\>.
+Predicaat: De club \<*Club_name*\> doet mee aan de competitie \<Competion_name\> in het seizoen \<Season_name\>.
 
-### Thuisstad
+## Land
+
+Er bestaat een land genaamd Duitsland.
+
+Er bestaat een land genaamd <u>Nederland</u>.
+
+---
+
+ET: COUNTRY
+
+ID: Att Country_name
+
+Predicaat: Er bestaat een land genaamd \<Country_name\>.
+
+## Thuisstad
 
 De club Manchester United heeft als thuisstad Manchester.
 
-De club <u>Vitesse</u> heeft als thuisstad <u>*Arnhem*</u>.
+De club <u>Vitesse</u> heeft als thuisstad <u>*Arnhem* in **Nederland**</u>.
 
 ---
 
 ET CLUB
 
-Att Club_name
+MATCH
 
 ---
 
 ET *CITY*
 
-ID: Att City_name
+ID: Att *City_name* + ET **COUNTRY**
+
+**MATCH**
 
 ---
 
-RT: CLUB_in_CITY tussen CLUB en CITY.
+RT: CLUB_in_CITY tussen CLUB en *CITY*.
 
-Predicate: De club \<Club_name\> heeft als thuisstad \<City_name\>.
+Predicaat: De club \<Club_name\> heeft als thuisstad \<*City_name*\> in \<**Country_name**\>.
 
-### Stadion
+## Stadion
 
 Het stadion Old Trafford bevat 47.140 stoelen.
 
-Het stadion <u>Gelredome</u> bevat <u>28.000</u> stoelen.
+Het stadion <u>Gelredome</u> bevat <u>*28.000*</u> stoelen.
 
 ---
 
@@ -333,15 +387,15 @@ ET: STADIUM
 
 ID: Att Stadium_name
 
-Att Capacity
+Att *Capacity*
 
-Predicate: Het stadion \<Stadium_name\> bevat \<Capacity\> stoelen.
+Predicaat: Het stadion \<Stadium_name\> bevat \<*Capacity*\> stoelen.
 
-### Personen
+## Personen
 
 De persoon 45 heeft als voornaam henk.
 
-De persoon <u>7</u> heeft als naam <u>Elmar</u>.
+De persoon <u>7</u> heeft als naam <u>*Elmar*</u>.
 
 ---
 
@@ -349,29 +403,29 @@ ET: PERSON
 
 ID: Att Person_id
 
-Att First_name
+Att *First_name*
 
-Predicate: De persoon \<Person_id\> heeft als naam \<First_name\>.
+Predicaat: De persoon \<Person_id\> heeft als naam \<*First_name*\>.
 
 ### Persoon achternaam
 
 De persoon 7 heeft als achternaam Wiese.
 
-De persoon <u>45</u> heeft als achternaam <u>Boss</u>.
+De persoon <u>45</u> heeft als achternaam <u>*Boss*</u>.
 
 ET: PERSON
 
 MATCH
 
-Att Last_name
+Att *Last_name*
 
-Predicate: De persoon \<Person_id\> heeft als achternaam \<Last_name\>.
+Predicaat: De persoon \<Person_id\> heeft als achternaam \<*Last_name*\>.
 
-### Persoon middelnaam
+### Persoon tussenvoegsel
 
 De persoon 123 heeft als tussenvoegsel van de.
 
-De persoon <u>45</u> heeft als tussenvoegsel <u>de</u>.
+De persoon <u>45</u> heeft als tussenvoegsel <u>*de*</u>.
 
 ---
 
@@ -379,29 +433,29 @@ ET: PERSON
 
 MATCH
 
-Att Middle_name
+Att *Middle_name*
 
-Predicate: De persoon \<Person_id\> heeft als tussenvoegsel \<Middle_name\>.
+Predicaat: De persoon \<Person_id\> heeft als tussenvoegsel \<*Middle_name*\>.
 
 ### Geboortedatum
 
 De persoon 11 is geboren op 11 februari 1996.
 
-De persoon <u>364524144</u> is geboren op <u>8 Maart 1929</u>.
+De persoon <u>364524144</u> is geboren op <u>*8 Maart 1929*</u>.
 
 ET: PERSON
 
 MATCH
 
-Att Birth_date
+Att *Birth_date*
 
-Predicate: De persoon \<Person_id\> is geboren op \<Birth_date\>.
+Predicaat: De persoon \<Person_id\> is geboren op \<*Birth_date*\>.
 
 ### Nationaliteit
 
 De persoon 11 heeft een nederlandse paspoort.
 
-De persoon <u>122343</u> heeft een <u>*Zuid-Africa*</u> paspoort
+De persoon <u>122343</u> heeft een <u>*Zuid-Afrika*</u> paspoort.
 
 ET: PERSON
 
@@ -411,43 +465,19 @@ MATCH
 
 ET: *COUNTRY*
 
-ID: Att Country_name
+*MATCH*
 
 ---
 
-RT PERSON_nationality_of_COUNTRY tussen PERSON en COUNTRY.
+RT PERSON_nationality_of_COUNTRY tussen PERSON en *COUNTRY*.
 
-Predicate: De persoon \<Person_id\> heeft een \<Country_name\> paspoort.
+Predicaat: De persoon \<Person_id\> heeft een \<*Country_name*\> paspoort.
 
-### Land van stad
-
-De stad Amsterdam ligt in het land Nederland.
-
-De stad <u>Londen</u> ligt in het land <u>*Engeland*</u>.
-
----
-
-ET: CITY
-
-MATCH
-
----
-
-ET: *COUNTRY*
-
-MATCH
-
----
-
-RT CITY_located_in_COUNTRY tussen CITY en COUNTRY.
-
-Predicate: De stad \<City_name\> ligt in het land \<Country_name\>.
-
-### Coach
+## Coach
 
 De coach van Manchester United is persoon 3.
 
-De coach van <u>Vitesse</u> is persoon <u>9876</u>.
+De coach van <u>Vitesse</u> is persoon <u>*9876*</u>.
 
 ---
 
@@ -457,35 +487,41 @@ MATCH
 
 ---
 
-ET: COACH
+ET: *COACH*
 
-MATCH
+SUBTYPE (PERSON)
+
+*MATCH*
 
 ---
 
-RT COACH_of_CLUB tussen CLUB en COACH.
+RT COACH_of_CLUB tussen CLUB en *COACH*.
 
-Predicate: De coach van \<Club_name\> is persoon \<Person_id\>.
+Predicaat: De coach van \<Club_name\> is persoon \<*Person_id*\>.
 
-### Spelers
+## Spelers
 
-#### Rugnummer, voornaam en achternaam
+### Rugnummer
 
 De speler 90 heeft rugnummer 26.
 
-De speler <u>56</u> heeft rugnummer <u>14</u>.
+De speler <u>56</u> heeft rugnummer <u>*14*</u>.
 
 ---
 
 ET: PLAYER
 
-Att Jersey
+SUBTYPE (PERSON)
 
-Predicate: De speler \<Person_id\> heeft rugnummer \<Jersey\>.
+MATCH
+
+Att *Jersey*
+
+Predicaat: De speler \<Person_id\> heeft rugnummer \<*Jersey*\>.
 
 ### Speler in club
 
-De speler <u>12</u> zit in club <u>Ajax</u>.
+De speler 12 zit in club Ajax.
 
 De speler <u>1234132412</u> zit in <u>*PSV*</u>.
 
@@ -499,63 +535,103 @@ MATCH
 
 ET: *CLUB*
 
-MATCH
+*MATCH*
 
 ---
 
-RT PLAYER_in_CLUB tussen PLAYER en CLUB.
+RT PLAYER_in_CLUB tussen PLAYER en *CLUB*.
 
-Predicate: De speler \<Person_id\> zit in \<Club_name\>.
+Predicaat: De speler \<Person_id\> zit in \<*Club_name*\>.
+
+## Speelronde
+
+Er is een speelronde in het seizoen 19/20 in de competitie Eredivisie die op 01-01-2019 start.
+
+Er is een speelronde in het seizoen <u>20/21 in de competitie LaLiga</u> die op <u>*01-01-2020*</u> start.
+
+---
+
+ET: ROUND
+
+ID: ET: EDITION + Att *Start_date*
+
+MATCH
+
+Predicaat: Er is een speelronde in het seizoen \<Season_name\> in de competitie \<Competition_name\> die op \<*Start_date*\> start.
+
+## Speeldag
+
+Er is een speeldag die valt op 02-01-2019 binnen de speelronde van het seizoen 19/20 in de competitie Eredivisie die op 01-01-2019 start.
+
+Er is een speeldag die valt op <u>02-01-2020</u> binnen de speelronde van <u>*het seizoen 20/21 in de competitie LaLiga die op 01-01-2020 start*</u>.
+
+---
+
+ET: MATCHDAY
+
+ID: ET: *ROUND* + Att Match_day
+
+*MATCH*
+
+Predicaat: Er is een speeldag die valt op \<Match_day\> binnen de speelronde van het seizoen \<*Season_name*\> in de competitie \<*Competition_name*\> die op \<*Start_date*\> start.
 
 ## Voetbalwedstrijd
 
-Er is een voetbalwedstrijd op 5 januari 2020 tussen thuis team Ajax thuis en uit team psv uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie keuken kampioen divisie
+Er is een voetbalwedstrijd op 16 maart 2019 in de speelronde van het seizoen 19/20 in de competitie Eredivisie die start op 15 maart 2019 tussen thuis team Ajax en uit team Feyenoord.
 
-Er is een voetbalwedstrijd op <u>5 januari 2020</u> tussen thuis team <u>FC Barcelona</u> thuis en uit team <u>FC Madrid</u> uit in de speelronde <u>3 januari 2020</u> in het seizoen <u>20/21</u> in competitie <u>LaLiga</u> geweest.
+Er is een voetbalwedstrijd op <u>5 januari 2020 in de speelronde van het seizoen 20/21 in de competitie LaLiga die start op 3 januari 2020 tussen thuis team *FC Barcelona* en uit team **FC Madrid**</u>.
 
-<!-- FIXME: -->
+---
+
 ET: MATCH
 
-ID: ET: MATCHDAY
-        ID: ET: GAMEROUNDE + Att Match_day
-                MATCH
+ID: ET MATCHDAY + ET *CLUB* + ET **CLUB**
 
-+ ET: CLUB
-  MATCH
-+ ET:CLUB
-  MATCH
+MATCH *MATCH* **MATCH**
 
-RT VOETBALWEDSTRIJD_SPEELDAG tussen VOETBALWEDSTRIJD(afhankelijk) en MATCHDAY.
+RT MATCH_in_MATCHDAY tussen MATCH(afhankelijk) en MATCHDAY.
 
-RT VOETBALWEDSTRIJD_thuis_CLUB tussen VOETBALWEDSTRIJD(afhankelijk) en CLUB.
+RT MATCH_home_CLUB tussen MATCH(afhankelijk) en *CLUB*.
 
-RT VOETBALWEDSTRIJD_uit_CLUB tussen VOETBALWDSTRIJD(afhankelijk) en CLUB.
+RT MATCH_out_CLUB tussen MATCH(afhankelijk) en **CLUB**.
 
-Predicate: Er is een voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> geweest.
+Predicaat: Er is een voetbalwedstrijd op \<Match_day\> in de speelronde van het seizoen \<Season_name\> in de competitie \<Competition_name\> die start op \<Start_date\> tussen thuis team \<*Club_name*\> en uit team \<**Club_name**\>.
 
 ### Positie
 
-Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> heeft de speler <u>21</u> de positie <u>middenvelder</U>.
+Tijdens de voetbalwedstrijd op 16 maart 2019 tussen thuis team Ajax en uit team Feyenoord in de speelronde 15 maart 2019 in het seizoen 19/20 in competitie Eredivisie begint de speler 15 op de positie aanvaller.
+
+Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga begint de speler *21*</u> op de positie <u>**middenvelder**</u>.
 
 ---
 
-ET POSITION
+ET **POSITION**
 
-ID: ET VOETBALWEDSTRIJD + ET PLAYER
-
-MATCH MATCH
+ID: Att: **Position_type**
 
 ---
 
-RT PLAYER_plays_on_POSITION tussen POSITION en PLAYER.
+ET LINEUP
 
-RT POSITION_in_MATCH tussen POSITION en MATCH.
+ID: ET MATCH + ET *PLAYER*
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<Speler_id\> de positie \<Position\>.
+MATCH *MATCH*
+
+---
+
+RT PLAYER_plays_on_LINEUP tussen LINEUP en *PLAYER*.
+
+RT LINEUP_in_MATCH tussen LINEUP en MATCH.
+
+RT POSITION_in_LINEUP tussen LINEUP en **POSITION**.
+
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> de positie \<**Position_type**\>.
 
 ### Reserve
 
-Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> was de speler <u>*1223*</u> reserve.
+Tijdens de voetbalwedstrijd op 17 maart 2019 tussen thuis team Ajax thuis en uit team Feyenoord uit in de speelronde 15 maart 2019 in het seizoen 19/20 in competitie Eredivisie begon de speler 7 als reserve.
+
+Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> begon de speler <u>*23*</u> als reserve.
 
 ---
 
@@ -565,77 +641,21 @@ MATCH
 
 ---
 
-ET: *SPELER*
+ET: *PLAYER*
 
-MATCH
-
----
-
-RT PLAYER_as_reserve_in_MATCH tussen PLAYER en MATCH.
-
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was de speler \<Speler_id\> reserve.
-
-### Schoten THUIS
-
-Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> heeft het thuis team <u>5</u> goals gemaakt.
+*MATCH*
 
 ---
 
-ET: MATCH
+RT PLAYER_as_reserve_in_MATCH tussen *PLAYER* en MATCH.
 
-MATCH
-
-Att Shots_home
-
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het thuis team \<Shots_home\> goals gemaakt.
-
-### Schoten UIT
-
-Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> heeft het uit team <u>5</u> goals gemaakt.
-
----
-
-ET: MATCH
-
-MATCH
-
-Att Shots_out
-
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<Shots_out\> goals gemaakt.
-
-### Schoten op doel THUIS
-
-Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> heeft het thuis team <u>5</u> schoten op doel gemaakt.
-
----
-
-ET: MATCH
-
-MATCH
-
-Att Shots_on_goal_home
-
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het thuis team \<Shots_on_goal_home\> schoten op doel gemaakt.
-
-### Schoten op doel UIT
-
-Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> heeft het uit team <u>5</u> schoten op doel gemaakt.
-
----
-
-ET: MATCH
-
-MATCH
-
-Att Shots_on_goal_out
-
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<Shots_on_goal_out\> schoten op doel gemaakt.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> begin de speler \<*Speler_id*\> als reserve.
 
 ### Balbezit UIT
 
 Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft de uit team 36 balbezit
 
-Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft het uit team <u>32%</u> balbezit.
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft het uit team <u>*32%*</u> balbezit.
 
 ---
 
@@ -643,15 +663,15 @@ ET: MATCH
 
 MATCH
 
-Att Ball_possession_out
+Att *Ball_possession_out*
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<Ball_possession_out\> balbezit.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<*Ball_possession_out*\> balbezit.
 
 ### Balbezit THUIS
 
 Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft de thuis team 36 balbezit
 
-Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft het thuis team <u>68%</u> balbezit.
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft het thuis team <u>*68%*</u> balbezit.
 
 ---
 
@@ -659,31 +679,15 @@ ET: MATCH
 
 MATCH
 
-Att Ball_possession_home
+Att *Ball_possession_home*
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het thuis team \<Ball_possession_home\> balbezit.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het thuis team \<*Ball_possession_home*\> balbezit.
 
-### Aantal passes THUIS
+### Aantal toeschouwers
 
-Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft het thuis team 874 passes gemaakt.
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga was het aantal toeschouwers 40000.
 
-Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft het thuis team <u>947</U> passes gemaakt.
-
----
-
-ET: MATCH
-
-MATCH
-
-Att Pass_count_home
-
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het thuis team \<Pass_count_home\> passes gemaakt.
-
-### Aantal passes UIT
-
-Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft het uit team 434 passes gemaakt.
-
-Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft het uit team <u>823</U> passes gemaakt.
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> was het aantal toeschouwers <u>30000</u>.
 
 ---
 
@@ -691,100 +695,35 @@ ET: MATCH
 
 MATCH
 
-Att Pass_count_out
+Att Spectator_count
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<Pass_count_out\> passes gemaakt.
-
-### Precisie passes THUIS
-
-Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft het thuis team 65% passes precisie
-
-Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft het thuis team <u>77%</u> passes precisie.
-
----
-
-ET: MATCH
-
-MATCH
-
-Att Pass_accuracy_home
-
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het thuis team \<Pass_accuracy_home\> passes precisie.
-
-### Preciesie passes UIT
-Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft het uit team 35% passes precisie
-
-Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft het uit team <u>33%</u> passes precisie.
-
----
-
-ET: MATCH
-
-MATCH
-
-Att Pass_accuracy_out
-
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<Pass_accuracy_out\> passes precisie.
-
-### Overtredingen
-
-Tijdens de voetbalwedstrijd op 3 februari 2014 tussen thuis team ajax en uit psv in de speelronde 1 februari 2014 in het seizoen 14/15 in competitie keuken kampioen divisie heeft de speler 55 een speler getackeld in  de 12de minuut.
-
-Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft de speler <u>Son Heung-min</u> een speler getackeld in  de <u>70ste</u> minuut.
-
----
-
-ET: MATCH
-
-MATCH
-
-ET: Player_Name
-
-MATCH
-
-Att Time
-
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<Person_id\> een speler getackeld in de \<Time\> minuut.
-
-### Hoekschoppen UIT
-
-Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team ajax en uit team PSV in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 23 hoekschoppen gemaakt.
-
-Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft het uit team <u>26</u> hoekschoppen gemaakt.
-
----
-
-ET: MATCH
-
-MATCH
-
-Att Corners_out
-
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft het uit team \<Corners_out\> hoekschoppen gemaakt.
-
-### Hoekschoppen THUIS
-
-Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team ajax en uit team PSV in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de thuis team 23 hoekschoppen gemaakt.
-
-Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft de thuis team <u>36</u> hoekschoppen gemaakt.
-
----
-
-ET: MATCH
-
-MATCH
-
-Att Corners_home
-
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de thuis team \<Corners_home\> hoekschoppen gemaakt.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was het aantal toeschouwers \<Spectator_count\>.
 
 ## Events
 
+Tijdens de voetbalwedstrijd op 16 maart 2019 tussen thuis team Ajax thuis en uit team Feyenoord uit in de speelronde 15 maart 2019 in het seizoen 19/20 in competitie Eredivisie is er in in de 57ste minuut iets gebeurd waar speler 11 iets mee te maken heeft.
+
+Tijdens de voetbalwedstrijd op <u>*5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga*</u> is er in in de <u>*32ste* minuut iets gebeurd waar speler **32** iets mee te maken heeft</u>.
+
+---
+
+ET: EVENT
+
+ID: ET MATCH + ET **PLAYER** + Att *Time*
+
+MATCH **MATCH**
+
+RT PERSON_involved_in_EVENT tussen EVENT en **PLAYER**.
+
+RT EVENT_happend_in_MATCH tussen EVENT(afhankelijk) en MATCH.
+
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> is er in de \<*Time*\>ste minuut iets gebeurd waar speler \<**Person_id**\> iets mee te maken heeft.
+
 ### Goals
 
-Tijdens de voetbalwedstrijd op 5 januari 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 januari 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 5 goals gescored.
+Tijdens de voetbalwedstrijd op 5 januari 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 januari 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 5 goals gescoord.
 
-Tijdens de voetbalwedstrijd op <u>*5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga*</u> heeft speler <u>**55**</u> gescoord in de <u>48ste</u> minuut.
+Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> heeft speler <u>*55* gescoord in de *48ste* minuut</u>.
 
 ---
 
@@ -802,144 +741,19 @@ MATCH
 
 ET: GOAL
 
-ID: ET: *MATCH* + ET: **PLAYER** + Att Time
+SUBTYPE (EVENT)
+
+MATCH
 
 ---
 
-RT GOAL_scored_by_PERSON tussen GOAL en PERSON.
-
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft speler \<Person_id\> gescoord in de \<Time\> minuut.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft speler \<*Person_id*\> gescoord in de \<*Time*\> minuut.
 
 ### Gele kaarten
 
 Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 1 gele kaart gekregen in de 70ste minuut.
 
-Tijdens de voetbalwedstrijd op <u>*4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga*</u> heeft de speler <u>**Jesse Lingard**</u> gele kaart gekregen in <u>30ste minuut</u>.
-
----
-
-ET: *MATCH*
-
-### Rode kaarten
-
-MATCH
-
----
-
-ET: **PLAYER**
-
-MATCH
-
----
-
-ET: YELLOW_CARD
-
-ID: ET: *MATCH* + ET: **PLAYER** + Att Time
-
-MATCH
-
----
-
-RT YELLOW_CARD_for_PERSON tussen YELLOW_CARD en PERSON.
-
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<Person_id\> gele kaart gekregen in \<Time\> minuut.
-
-### Rode kaarten
-
-Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 1 rode kaart gekregen in de 70ste minuut.
-
-## Match day
-
-Tijdens de voetbalwedstrijd op <u>*4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga*</u> heeft de speler <u>**Jesse Lingard**</u> rode kaart gekregen in <u>30ste minuut</u>.
-
----
-
-ET: *MATCH*
-
-MATCH
-
----
-
-ET: **PLAYER**
-
-MATCH
-
----
-
-ET: RED_CARD
-
-ID: ET: *MATCH* + ET: **PLAYER** + Att Time
-
----
-
-RT RED_CARD_for_PERSON tussen RED_CARD en PERSON.
-
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<Person_id\> rode kaart gekregen in \<Time\> minuut.
-
-### Wissels
-
-Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga werdt de speler 33 ingewisseld voor speler 1111 in de 30ste minuut.
-
-Tijdens de voetbalwedstrijd op <u>*4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga*</u> werd de speler <u>**55**</u> ingewisseld voor de speler <u>***66***</u> in de <u>40ste</u> minuut.
-
----
-
-ET: *MATCH*
-
-MATCH
-
----
-
-ET: **PLAYER**
-
-MATCH
-
----
-
-ET: ***PLAYER***
-
-MATCH
-
----
-
-ET: SUBSTITUTE
-
-ID: ET: *MATCH* + ET: **PLAYER** + ET: ***PLAYER*** + Att Time
-
----
-
-RT PERSON_out_SUBSTITUTE tussen PERSON en SUBSTITUTE.
-RT PERSON_in_SUBSTITUTE tussen PERSON en SUBSTITUTE.
-
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> werd de speler \<Person_id\> ingewisseld voor de speler \<Person_id\> in de \<Time\> minuut.
-
-#### Scheidsrechter
-
-Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga was Bas Neijnhuis de scheidsrechter.
-
-Tijdens de voetbalwedstrijd op <u>*4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga*</u> was <u>Danny Makkelie</u> de scheidsrechter.
-
----
-
-ET: *MATCH*
-
-MATCH
-
----
-
-ET: REFEREE
-
-<!-- FIXME: Afhankelijk van PERSON -->
-
-RT REFEREE_enforcing_MATCH tussen REFEREE en MATCH.
-
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was \<Person_id\> de scheidsrechter.
-
-### Aantal toeschouwers
-
-Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga was het aantal toeschouwers 40000.
-
-Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> was het aantal toeschouwers <u>30000</u>.
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft de speler <u>*22* gele kaart gekregen in de **30ste** minuut</u>.
 
 ---
 
@@ -947,10 +761,237 @@ ET: MATCH
 
 MATCH
 
-Att Spectator_count
+---
 
-Predicate: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was het aantal toeschouwers \<Spectator_count\>.
-De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
+ET: *PLAYER*
+
+*MATCH*
+
+---
+
+ET: YELLOW_CARD
+
+SUBTYPE (EVENT)
+
+MATCH
+
+---
+
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> gele kaart gekregen in de \<**Time**\> minuut.
+
+### Rode kaarten
+
+Tijdens de voetbalwedstrijd op 15 januari 2019 tussen thuis team Ajax en uit team Feyenoord in de speelronde 13 januari 2019 in het seizoen 19/20 in competitie Eredivise heeft de speler 6 gele kaart gekregen in de 59ste minuut.
+
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 20/21 in competitie LaLiga</u> heeft de speler <u>*22* gele kaart gekregen in de **30ste** minuut</u>.
+
+---
+
+ET: MATCH
+
+MATCH
+
+---
+
+ET: *PLAYER*
+
+*MATCH*
+
+---
+
+ET: RED_CARD
+
+SUBTYPE (EVENT)
+
+MATCH
+
+---
+
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> rode kaart gekregen in de \<**Time**\> minuut.
+
+### Wissels
+
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga werdt de speler 33 ingewisseld voor speler 1111 in de 30ste minuut.
+
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> werd de speler <u>*55* ingewisseld voor de speler **66** in de ***40ste*** minuut</u>.
+
+---
+
+ET: MATCH
+
+MATCH
+
+---
+
+ET: *PLAYER*
+
+*MATCH*
+
+---
+
+ET: **PLAYER**
+
+**MATCH**
+
+---
+
+ET: SUBSTITUTE
+
+SUBTYPE (EVENT)
+
+---
+
+RT PERSON_in_SUBSTITUTE tussen *PLAYER*** en SUBSTITUTE.
+
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> werd de speler \<*Person_id*\> ingewisseld voor de speler \<**Person_id**\> in de \<***Time***\> minuut.
+
+### Overtredingen
+
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 in de 70ste minuut een overtreding gemaakt.
+
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft de speler <u>*22* in de **30ste** minuut een overtreding gemaakt</u>.
+
+---
+
+ET: MATCH
+
+MATCH
+
+---
+
+ET: *PLAYER*
+
+*MATCH*
+
+---
+
+ET: FOUL
+
+SUBTYPE (EVENT)
+
+MATCH
+
+---
+
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> in de \<**Time**\> minuut een overtreding gemaakt.
+
+### Hoekschoppen
+
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 in de 70ste minuut een hoekschop genomen.
+
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft de speler <u>*22* in de **30ste** minuut een hoekschop genomen</u>.
+
+---
+
+ET: MATCH
+
+MATCH
+
+---
+
+ET: *PLAYER*
+
+*MATCH*
+
+---
+
+ET: FOUL
+
+SUBTYPE (EVENT)
+
+MATCH
+
+---
+
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> in de \<**Time**\> minuut een hoekschop genomen.
+
+### Schoten
+
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 in de 70ste minuut een schot welke niet op goal is gemaakt.
+
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft de speler <u>*22* in de **30ste** minuut een schot ***welke wel op goal is*** gemaakt</u>.
+
+---
+
+ET: MATCH
+
+MATCH
+
+---
+
+ET: *PLAYER*
+
+*MATCH*
+
+---
+
+ET: SHOT
+
+SUBTYPE (EVENT)
+
+MATCH
+
+Att ***On_goal***
+
+---
+
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> in de \<**Time**\> minuut een schot \<***On_goal***\> gemaakt.
+
+### Passes
+
+Tijdens de voetbalwedstrijd op 4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga heeft de speler 55 in de 70ste minuut onsuccesvol gepasst naar een andere speler.
+
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 19/20 in competitie LaLiga</u> heeft de speler <u>*22* in de **30ste** minuut ***succesvol*** gepasst naar een andere speler</u>.
+
+---
+
+ET: MATCH
+
+MATCH
+
+---
+
+ET: *PLAYER*
+
+*MATCH*
+
+---
+
+ET: SHOT
+
+SUBTYPE (EVENT)
+
+MATCH
+
+Att ***Success***
+
+---
+
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft de speler \<*Person_id*\> in de \<**Time**\> minuut \<***Success***\> gepasst naar een andere speler.
+
+## Scheidsrechter
+
+Tijdens de voetbalwedstrijd op 16 januari 2019 tussen thuis team Ajax en uit team Feyenoord in de speelronde 14 januari 2019 in het seizoen 19/20 in competitie Eredivisie was persoon 53 de scheidsrechter.
+
+Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 maart 2020 in het seizoen 20/21 in competitie LaLiga</u> was persoon <u>*12*</u> de scheidsrechter.
+
+---
+
+ET: *MATCH*
+
+MATCH
+
+---
+
+ET: *REFEREE*
+
+SUBTYPE (PERSON)
+
+*MATCH*
+
+RT REFEREE_in_charge_of_MATCH tussen *REFEREE* en MATCH.
+
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was persoon \<*Person_id*\> de scheidsrechter.
 
 # Business Rules
 
@@ -961,34 +1002,56 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 - BR5 De startdatum van een speeldag moet voor de startdatum van een opvolgende ronde bestaan en moet hetzelfde zijn of na de startdatum van de gekoppelde ronde bestaan;
 - BR6 Een speler die op het veld staat kan een keeper, verdediger, aanvaller of middenvelder zijn;
 - BR7 Een thuis club mag maximaal één keer tegen een uit club spelen binnen een fase van een knockout competitie;
-- BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een spelende club, die zich bevindt in de database;
+- BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een bestaande, spelende club;
 - BR9 Clubs mogen alleen een match spelen als ze meedoen aan de editie;
 - BR10 Gele en rode kaarten mogen alleen worden gegeven aan spelers en coaches;
-- BR11 Voor alleen spelende spelers wordt opgeslagen of ze hebben geschoten, pases hebben gemaakt, zijn gewisseld, overtredingen hebben gemaakt, corners hebben afgenomen of gescored hebben tijdens een voetbalwedstrijd;
+- BR11 Voor alleen spelende spelers wordt bijgehouden of ze hebben geschoten, pases hebben gemaakt, zijn gewisseld, overtredingen hebben gemaakt, corners hebben afgenomen of gescored hebben tijdens een voetbalwedstrijd;
 - BR12 Er moeten 22 spelers op het veld ingedeeld zijn bij een wedstrijd;
-- BR13 Bij welke club een persoon coacht wordt alleen opgeslagen voor coaches;
-- BR14 Bij welke wedstrijden een persoon scheidst wordt alleen opgeslagen voor scheidsrechters;
-- BR15 Of een persoon in de reserve staat bij een wedstrijd wordt alleen opgeslagen voor spelers;
+- BR13 Voor coaches wordt bijgehouden voor welke club wordt gecoached;
+- BR14 Voor scheidsrechters wordt bijgehouden voor welke wedstrijd(en) wordt gescheidst;
+- BR15 Voor spelers wordt bijgehouden wie in reserve staat bij een wedstrijd;
 - BR16 Maximaal 52 speelrondes per editie van een competitie;
 - BR17 Een rugnummer van een speler mag niet hoger zijn dan 99 en kleiner zijn dan 1;
-- BR18 Minimaal en maximaal 1 coach per club;
-- BR19 Een persoon binnen het systeem mag niet jonger zijn dan 15 jaar;
+- BR18 Er mag minimaal en maximaal 1 coach per club zijn;
+- BR19 Een persoon mag niet jonger zijn dan 15 jaar;
 - BR20 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
-- BR21 Hoeveelste minuut mag niet negatief zijn.
+- BR21 De waarde van de minuten binnen een wedstrijd mag niet negatief zijn.
 
-# Functionele requirements.
+# Functionele requirements
 
-| Functional Requirements                                                                                    | MoSCoW |
-|------------------------------------------------------------------------------------------------------------|--------|
-| Bij een lopende competitie mag alleen de speeldatum of speler selectie van een wedstrijd worden veranderd. | M      |
-| Het moet mogelijk zijn om de tussenstand van een competitie op te halen.                                   | M      |
-| De gegevens moeten bereikbaar zijn via een staging area in JSON formaat.                                   | M      |
-| Een \[analist\] kan inhoudelijke gegevens via de staging area uitlezen.                                    | M      |
-| Het moet mogelijk zijn om een top lijst van een editie te genereren.                                       | S      |
-| Een \[admin\] kan matchdata invoeren in de database.                                                       | S      |
-| Een \[admin\] kan clubinfo updaten.                                                                        | S      |
-| Een \[admin\] kan een nieuwe seizoen competitie starten.                                                   | S      |
-| Een \[admin\] kan nieuwe personen toevoegen aan de database.                                               | S      |
+| Functional Requirements                                                                                                          | MoSCoW | Use case                       |
+|----------------------------------------------------------------------------------------------------------------------------------|--------|--------------------------------|
+| Bij een lopende competitie mag alleen de speeldatum of speler selectie van een wedstrijd worden veranderd                        | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een doelpunt in minuut 21 door Ronaldo als matchdata invoeren voor de wedstrijd Manchester United - Chelsea | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een rode kaart in minuut 90 voor Messi als matchdata invoeren voor de wedstrijd PSG - Real Madrid           | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een gele kaart in minuut 2 voor Pepe als matchdata invoeren voor de wedstrijd Porto - Feyenoord             | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een overtreding in minuut 63 door Pique als matchdata invoeren voor de wedstrijd FC Barcelona - Real Madrid | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een corner in minuut 34 door Neymar als matchdata invoeren voor de wedstrijd PSG - Bayern                   | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik een schot op doel in minuut 87 door Antony als matchdata invoeren voor de wedstrijd Ajax - Feyenoord        | M      | Invoeren matchdata             |
+| Als \[admin\] wil ik speler Lionel Messi toewijzen aan de club Ajax                                                              | M      | Updaten clubinfo               |
+| Als \[admin\] wil ik coach Josep Guardiola toewijzen aan de club Ajax                                                            | M      | Updaten clubinfo               |
+| Als \[admin\] wil ik een nieuwe seizoen voor de Eredivise starten                                                                | M      | Start nieuw seizoen competitie |
+| Als \[admin\] wil ik een nieuwe speler met de naam Chris toevoegen                                                               | M      | Toevoegen nieuw persoon        |
+| Als \[admin\] wil ik een nieuwe coach met de naam Michel toevoegen                                                               | M      | Toevoegen nieuw persoon        |
+| Als \[admin\] wil ik een nieuwe scheidsrechter met de naam Henk toevoegen                                                        | M      | Toevoegen nieuw persoon        |
+| Als \[admin\] wil ik een knock-out tournament seizoen kunnen starten.															  | S      | Start nieuw seizoen KO         |
+| Als \[analist\] wil ik de top-lijst van voetballers met de meeste doelpunten in seizoen 2015/2016 uitlezen                       | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de top-lijst van voetballers met de meeste gele kaarten in seizoen 2010/2011 uitlezen                     | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de top-lijst van voetballers met de meeste rode kaarten in seizoen 2022/2023 uitlezen                     | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de top-lijst van voetballers met de meeste overtredingen in seizoen 2021/2022 uitlezen                    | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de top-lijst van clubs met de meeste corners in seizoen 2000/2001 uitlezen                                | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de top-lijst van clubs met de meeste schoten op doel in seizoen 1967/1968 uitlezen                        | M      | Ophalen top-lijst              |
+| Als \[analist\] wil ik de positie van Ajax in de Erdivisie tijdens seizoen 20/21 uitlezen                                        | M      | Ophalen tussenstand competitie |
+| Als \[analist\] wil ik het aantal doelpunten van Feyenoord in de Erdivisie tijdens het seizoen 16/17 uitlezen                    | M      | Ophalen tussenstand competitie |
+| Als \[analist\] wil ik het aantal gewonnen wedstrijden van Feyenoord in de Erdivisie tijdens het seizoen 10/11 uitlezen          | M      | Ophalen tussenstand competitie |
+| Als \[analist\] wil ik informatie over de spelers van de club Ajax uitlezen                                                      | M      | Ophalen clubinfo               |
+| Als \[analist\] wil ik informatie over de coach van de club Ajax uitlezen                                                        | M      | Ophalen clubinfo               |
+| Als \[analist\] wil ik informatie over de stadion van de club Ajax uitlezen                                                      | M      | Ophalen clubinfo               |
+| Als \[analist\] wil ik informatie over de balbezit van Ajax tegen Feyenoord uitlezen                                             | M      | Ophalen matchinfo              |
+| Als \[analist\] wil ik informatie over de toeschouwers tijdens Ajax - Feyenoord uitlezen                                         | M      | Ophalen matchinfo              |
+| Als \[analist\] wil ik informatie over speelronde 34 van de Eredivisie uitlezen                                                  | M      | Ophalen speelrondeinfo         |
+| Als \[analist\] wil ik informatie over de wedstrijd op 12/04/2021 tussen Feyenoord - Vitesse in de Eredivisie uitlezen           | M      | Ophalen speelrondeinfo         |
+| Als \[analist\] wil ik informatie over brackets voor een knock-out tournament           											| S      | Ophalen brackets KO            |
 
 ## Constraints
 
@@ -1063,7 +1126,6 @@ De speler Jesse Lingard heeft in 14 wedstrijden gespeeld.
 
 
 # Ontwerpkeuzes
-
 
 In dit hoofdstuk zijn de ontwerpkeuzes te vinden die tijdens het opstellen van het CDM aan bod kwamen. Per ontwerpkeuze worden zowel de gekozen implementatie als alternatieve implementaties beschreven. 
 
@@ -1242,7 +1304,7 @@ In de domestic league entiteit staan alle competities die ook poul wedstrijden z
 In de entiteit SEASON worden alle seizoenen vastgelegd.
 
 | Attribuut | Omschrijving |
-|---|---|<!-- Dit was bij de IR aangepast naar begin en eind datum -->
+|---|---|
 | Start\_date | De startdatum van het seizoen |
 | End\_date | De einddatum van het seizoen |
 
