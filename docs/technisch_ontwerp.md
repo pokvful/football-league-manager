@@ -221,7 +221,8 @@ Er zou ook gebruik gemaakt kunnen worden van een cronjob, zo kan er bij de start
 
 ## Match_type
 
-In de database zit er een verschil tussen een normale match en een match van een ko competitie.
+Binnen het systeem bestaan twee soorten matches, matches in een knockout toernooi en matches in een nationale competitie. Aangezien deze twee soorten matches verschillende relaties vereisen moet er goed nagedacht worden over de implementatie de matches.
+
 Hiervoor zijn de volgende oplossingen bedacht.
 
 ### Losse tabellen
