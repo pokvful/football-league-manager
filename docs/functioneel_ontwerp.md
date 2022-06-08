@@ -1009,7 +1009,6 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 - BR13 Voor coaches wordt bijgehouden welke club zij op dit moment coachen;
 - BR14 Voor scheidsrechters wordt bijgehouden welke wedstrijden zij hebben gefloten of gaan fluiten;
 - BR15 Reserves worden per wedstrijd bijgehouden voor alle gespeelde of actieve wedstrijden.
-- BR16 Edities hebben maximaal 52 speelrondes;
 - BR17 Een rugnummer van een speler mag niet hoger zijn dan 99 en niet lagen zijn dan 1;
 - BR18 Er mag minimaal en maximaal 1 coach per club zijn;
 - BR19 Een persoon mag niet jonger zijn dan 15 jaar;
