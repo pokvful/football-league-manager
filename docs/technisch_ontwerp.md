@@ -235,7 +235,8 @@ Vervolgens zullen de triggers van MATCH nog wel aangepast moeten worden en ook z
 
 ### Één tabel
 
-Wanneer er één samengevoegde tabel is, dan hoeven de triggers niet te worden herschreven.
+Wanneer je ervoor kiest om alle matches in één tabel te stoppen hoef je de triggers van MATCH niet aan te passen. KO-matches zullen foreign keys krijgen naar de voorgaande wedstrijden. Reguliere matches zullen een nutteloze verwijzingen naar zichzelf krijgen aangezien de foreign key niet leeg kan zijn.
+
 
 
 # Constraints
