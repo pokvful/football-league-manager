@@ -1126,7 +1126,6 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 
 # Ontwerpkeuzes
 
-
 In dit hoofdstuk zijn de ontwerpkeuzes te vinden die tijdens het opstellen van het CDM aan bod kwamen. Per ontwerpkeuze worden zowel de gekozen implementatie als alternatieve implementaties beschreven. 
 
 ## Person_ID

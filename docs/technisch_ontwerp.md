@@ -142,65 +142,82 @@ Binnen de SQL Server container draait een Microsoft SQL Server 2018 Server image
 
 # Ontwerpkeuzes
 
+## Stored procedures
+
+Met het gebruik van stored procedures wordt de functionaliteit van de database geabstraheerd. De stored procedures zijn herkbruikaar en toegevoegde functionaliteit is overzichtelijk terug te vinden. Dit maakt het systeem beter uitbreidbaar en het verlaagd de koppeling tussen de database en de back-end.
+Verder wordt het execution plan van een stored procedure opgeslagen in de MSSQL Server-omgeving. Acties die vaak herhaald worden kunnen hierdoor sneller uitgevoerd worden.
+
 ## MATCH id
 
-Door de afhankelijkheden van match zou de orignele primary key maarliefst 6 kolommen lang zijn. Event, position en Player_as_Reserve zouden daarnaast ook  afhankelijk zijn van match waardoor deze tabellen ook allemaal de 6 kolommen lange primary key zouden bevatten. Om deze reden is ervoor gekozen om match van een ID te voorzien.
-
-## PERSON id
-
-Om een persoon van een daadwerkelijk van een unieke identifier te voorzien moeten niet alleen de naam en de achternaam gebruikt worden, maar ook de geboortedatum, zelfs met deze waarden is er echter nog een nihiele kans dat de waarden niet uniek zijn. Daarnaast wordt de primary key van Person in maar liefst 3 andere tabellen gebruikt. Om deze redenen is ervoor gekozen om Person een uniek ID te geven.
+Door de afhankelijkheden van match zou de orignele primary key maarliefst 6 kolommen lang zijn. Event, position en Player_as_Reserve zouden daarnaast ook afhankelijk zijn van MATCH waardoor deze tabellen ook allemaal de 6 kolommen lange primary key zouden bevatten. Om deze reden is ervoor gekozen om match van een ID te voorzien. De originele identifier staat wel als alternative key in de database opgeslagen, zodat verzekerd is dat deze waarde ook daadwerkelijk uniek blijft.
 
 ## EVENT id
 
-Doordat events geen PK hebben maar wel gerefereerd moeten kunnen worden, krijgen ze een gegenereerde id. Hoewel de combinatie van minuut, persoon en type overtreding in eerste instantie een potentiële pk lijkt te zijn, voldoet deze niet. Zo is het mogelijk meerdere overtredingen tegelijkertijd te maken. \(p\-29 https://www.knvb.nl/downloads/bestand/4841/spelregels-veldvoetbal-2021-22\)
+Het is niet mogelijk om met de bestaande kolommen een primary key te maken voor EVENT. Hoewel de combinatie van minuut, persoon en type-overtreding op het eerste oog een kandidaat lijkt, gaat dit niet op aangezien het mogelijk is om meerdere overtredingen tegelijkertijd te maken \(p\-29 https://www.knvb.nl/downloads/bestand/4841/spelregels-veldvoetbal-2021-22\).
+Omdat het natuurlijk wel mogelijk moet zijn naar iedere unieke EVENT te refereren, is ervoor gekozen de EVENTs van een id te voorzien. 
 
 ##  Events
 
-Om de events te structuren bij een wedstrijd moeten er keuzes worden gemaakt. Daarbij moet er met meerdere aspecten rekening worden gehouden. 
+Het vastleggen van events kan op veel verschillende manieren. Om te bepalen wat de beste optie is moet rekening gehouden worden met vele aspecten, bijvoorbeeld:
+- Uitbreidbaarheid. Hoe makkelijk is het om events toe te voegen?
+- Hoe complex zijn joins/reads voor het genereren van de top-lijsten?
+- Hoe overzichtelijk en onderhoudbaar is de implementatie?
 
-- Het moet in het tijdschema/budget passen van het development team.
-- Hoe uitbreidbaar is het voor de opdrachtgever om meer events toe te voegen.
+### Losse tabel voor iedere event
 
-### Losse tabellen
+Iedere event krijgt zijn eigen tabel met daarin de informatie die voor dat event belangrijk is.
 
-Voordeel: Vanuit powerdesigner is het gemakkelijk te genereren.
+Voordelen:
 
-Nadeel: Wanneer een event wordt toegevoegd moet er niet alleen een create table script geschreven worden. Triggers, check constraints, etc. moeten ook worden overgenomen.
+- Toplijsten generen kan voor iedere event met een simpele `COUNT(*) FROM <EVENT>`, dit houdt de code overzichtelijk en onderhoudbaar.
+
+Nadelen:
+
+- Voor het aanmaken van nieuwe events moeten er nieuwe tabellen aangemaakt worden, dit kan eventueel foutgevoelig zijn.
+
+### Één event-tabel, children voor complexere events
+
+Simpele events (waarbij alleen het tijdstip in de wedstrijd en 1 persoon vereist zijn) komen in een parent tabel. Complexere events zullen een child van EVENT worden, ze erfen de basisattributen over en breiden deze uit.
+
+Voordelen:
+
+- Het toevoegen van simpele events kan makkelijk door admins zelf.
+
+Nadelen:
+
+- Minder overzichtelijk, sommige events zullen in de EVENT tabel staan terwijl andere EVENTs weer hun eigen tabel krijgen.
 
 ### NoSQL
 
-Voordeel: Het toevoegen van nieuwe soorten events is simpeler, zeker wanneer nieuwe events meer informatie hebben.
+Events worden bijgehouden in een NoSQL database die geen moeite hebt verschillende aantallen attributen, bijvoorbeeld MongoDB.
 
-Nadeel: Veel development overhead. De gegevens staan niet in één database, maar verspreid over verschillende databases die in de staging area gecombineerd moeten worden.
+Voordelen:
 
-### Parent met children tabellen
-De laatste te behandelen manier is om een tabel te hebben van alle type events. Je hebt de parent tabel events waarin alle events worden gerigistreerd met welke type.
-Voor de types die extra informatie willen opslaan krijgen zij een eigen tabel die verwijst naar parent tabel.
+- Geen problemen met verschillende toegevoegde/ontbrekende attributen.
 
-Voordeel: Nieuwe soorten van simpele (minuut, persoon, match) events kunnen worden toegevoegd met één insert in de type events tabel.
+Nadelen:
 
-Nadeel: Meer development tijd. Voor events die meer informatie willen opslaan moet nieuwe tabellen worden aangemaakt met triggers erop.
+- Lastiger om goed te onderhouden, gegevens staan in verschillende databases die vervolgens in de staging area weer gecombineerd zullen moeten worden.
 
 ### Keuze
-Voor deze opdracht wordt gekozen voor de eerste optie.
 
-Een gedeelte van de nadelen gaan we verhelpen door een stored procedure te schrijven die een wrapper is om de create table.
+Hoewel het toevoegen van events op het eerste oog makkelijker lijkt bij de tweede optie, zullen de events die gebruikers eventueel zelf willen toevoegen waarschijnlijk geen simpele events zijn.
 
-Die kan de bijbehorende foreign keys en check constraint genereren.
+Verder is het toevoegen van niet-simpele events bij zowel optie 1 als 2 lastiger. Optie 3 maakt het onderhoud van het systeem veel lastiger en lijkt daarom ook geen goede optie.
 
-Daarbij komt ook de functionaliteit om extra kolommmen toe te voegen. (Alleen naam en type data)
-
-Als er om meer wordt gevraagd moet de cliënt zelf daarvoor zorgen.
+Optie 1 is uiteindelijk geïmplementeerd aangezien het de meest overizchtelijke optie is en bijna zo goed uitbreidbaar is als optie 2.
 
 ## ADD_NEW_EVENT_TYPE
 
-Dit is een procedure waarmee nieuwe event soorten kunnen worden toegevoegd door de cliënt.
+Met deze procedure kunnen admins nieuwe events toevoegen zonder dat zij kennis hoeven te hebben van alle triggers, constraints en relaties die aan events zijn toe gewezen. Alle nodige integriteitsregels worden in de stored procedures afgehandeld.
 
-Het heeft de functionaliteit om een nieuwe event tabel aan te maken met de bijbehorende foreign keys en check constraints.
+## Moment van triggeren TRG_CHECK_PLAYER_COUNT
 
-De gebruiker kan extra kolommen toevoegen aan een event.
+De trigger checkt op inserts en updates, op deze manier worden er bij het toevoegen van spelers ook gekeken naar de huidige hoeveelheid spelers in een club binnen een match. Zo kunnen er per club minimaal 7 spelers en maximaal 11 spelers meedoen aan een wedstrijd. Dit geldt voor zowel de thuis als uit club (dus minimaal 14 en maximaal 22 in totaal per wedstrijd voor beide clubs). 
 
-Er was ook een keuze om alleen de basis kolommen aan te maken, maar er is een grote kans dat de cliënt extra kolommen wil.
+### Alternatief
+
+Er zou ook gebruik gemaakt kunnen worden van een cronjob, zo kan er bij de start van een match gekeken worden naar het aantal spelers in een club die meedoen. Dit lijkt erg op onze huidige oplossing, echter wordt hier pas het aantal spelers afgevangen bij de start van een wedstrijd, zo zou er dus nog wel foutieve data in de database kunnen worden geinsert; maar niet foutieve matches worden gestart.
 
 # Constraints
 
@@ -264,24 +281,6 @@ PI: Time + club_name + club_name + match_day + start_date + end_date + competiti
 | IR14   | CHK_VALID_MINUTE_IN_MATCH               | RED_CARD, YELLOW_CARD, PASS, GOAL, SHOT, FOUL, CORNER & SUBSTITUTE | De minuut in een wedstrijd mag niet negatief zijn                                                                                                                                | C14 & BR22       |
 | IR15   | TRG_PLAYER_MUST_BE_ONE_SUBTYPE          | PLAYER, COACH & REFEREE                                            | Een persoon moet een speler, coach of scheidsrechter zijn                                                                                                                        | CDM, PDM & BR24  |
 | IR16   | TRG_NO_UPDATES_ON_CURRENT_EDITION_TABEL | CLUB, MATCH, SEASON, COMPETITION & CLUB_plays_in_EDITION           | Van een lopende competitie mogen alleen de selecties van clubs en de speeldata van wedstrijden aangepast worden                                                                  | C15 & BR1        |
-
-## Waarom maken wij gebruik van triggers?
-
-### Functioneel
-
-Het komt vaak voor dat mensen verkeerde data invoeren zonder dat ze het in de gaten hebben. Dit wil je natuurlijk niet in de database hebben. Om dit te voorkomen hebben we triggers geschreven die de ingevoerde data controleren. Mocht er iets niet correct zijn, dan wordt er een foutmelding getoont. Deze triggers gaan af bij het invoeren, updaten of verwijderen van data.
-
-### Technisch
-
-Een technische reden voor het kiezen van een trigger is dat je kan refereren naar de inserted en deleted tabel. Deze tabellen bevatten de data die wordt toegevoegd of verwijderd, waardoor het makkelijker is om controles uit te voeren. Dit had ook met een stored procedure gekund, maar dan zou je meerdere procedures moeten schrijven voor het invoeren, updaten of verwijderen van data. Dit is niet efficient waardoor triggers een betere oplossing is.
-
-### Toelichting TRG_CHECK_PLAYER_COUNT
-
-De trigger checkt op inserts en updates, op deze manier worden er bij het toevoegen van spelers ook gekeken naar de huidige hoeveelheid spelers in een club binnen een match. Zo kunnen er per club minimaal 7 spelers of maximaal 11 spelers meedoen aan een wedstrijd. Dit geldt voor zowel de thuis als uit club. (Dus minimaal 14 en max 22 in totaal per wedstrijd voor beide clubs). 
-
-#### Alternatief
-
-Er zou ook gebruik gemaakt kunnen worden van een cronjob, zo kan er bij de start van een match gekeken worden naar het aantal spelers in een club die meedoen. Dit lijkt erg op onze huidige oplossing, echter wordt hier pas het aantal spelers afgevangen bij de start van een wedstrijd, zo zou er dus nog wel foutieve data in de database kunnen worden geinsert; maar niet foutieve matches worden gestart.
 
 # Toelichting export MSSQL naar MongoDB
 
@@ -408,12 +407,3 @@ db.MOCK_DATA.find({}, { id: 1, first_name: 1, email: 1, gender: 1, ip_address: 1
 | Ophalen speelrondeinfo         | VW_GET_PLAYROUND_DATA                      |
 | Ophalen tussenstand competitie | VW_GET_INTERIM_SCORE_EDITION               |
 | Ophalen clubinfo               | VW_SHOW_CLUB_INFO                          |
-
-
-## Waarom maken wij gebruik van stored procedures?
-
-### Functioneel
-Er zijn twee grote functionele redenen waarom wij hebben gekozen om stored procedures te gebruiken. De eerste reden is omdat bepaalde acties van gebruikers vaak moeten worden herhaald. Bijvoorbeeld het aanmaken van spelers, hiervoor is het dus handig om een stored procedure te gebruiken. Dit gaat hand in hand met de tweede reden: gebruikersgemak. Het is gemakkelijker en sneller voor een gebruiker om een stored procedure aan te roepen i.p.v. steeds een insert statement uit te schrijven voor het toevoegen van spelers.
-
-### Technisch
-Een technische reden waarom wij hebben gekozen voor het gebruik van stored procedures is dat het execution plan van een stored procedure wordt opgeslagen in de SQL server omgeving. Acties die dus vaak herhaald worden, worden hierdoor sneller omdat de server voorheen al de exeuction plan heeft opgeslagen.
