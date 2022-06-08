@@ -62,8 +62,8 @@
 
 ### Start nieuw seizoen competitie
 
+-- werkt momenteel nog niet..
+
 ### Toevoegen nieuw persoon
 
 ### Toevoegen nieuw event type
-
-### Overzetten data
