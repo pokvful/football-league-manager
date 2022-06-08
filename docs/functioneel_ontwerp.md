@@ -995,15 +995,15 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 
 # Business Rules
 
-- BR1 Van een lopende competitie mag alleen de selectie clubs en de speeldatum van een wedstrijd worden aangepast;
-- BR2 Een thuis club mag maximaal één keer tegen een uit club spelen binnen een competitie seizoen;
+- BR1 Van een lopende editie mogen alleen de selecties van clubs en de speeldata van wedstrijden aangepast worden;
+- BR2 Een thuis club mag maximaal één keer tegen een uit club spelen binnen een editie;
 - BR3 De startdatum van een ronde moet lager zijn dan de einddatum van het bijhorende seizoen;
 - BR4 De datum van een speeldag moet na de gekoppelde startdatum van de speelronde liggen;
 - BR5 De startdatum van een speeldag moet voor de startdatum van een opvolgende ronde bestaan en moet hetzelfde zijn of na de startdatum van de gekoppelde ronde bestaan;
 - BR6 Een speler die op het veld staat kan een keeper, verdediger, aanvaller of middenvelder zijn;
-- BR7 Een thuis club mag maximaal één keer tegen een uit club spelen binnen een fase van een knockout competitie;
+- BR7 Een thuis club mag maximaal één keer tegen een uit club spelen binnen een fase van een knockout toernooi;
 - BR8 Een speler die in een wedstrijd speelt moet op dat moment lid zijn van een bestaande, spelende club;
-- BR9 Clubs mogen alleen een match spelen als ze meedoen aan de editie;
+- BR9 Clubs mogen alleen een match spelen als ze meedoen aan een lopende editie of een knockout toernooi;
 - BR10 Gele en rode kaarten mogen alleen worden gegeven aan spelers en coaches;
 - BR11 Voor alleen spelende spelers wordt bijgehouden of ze hebben geschoten, pases hebben gemaakt, zijn gewisseld, overtredingen hebben gemaakt, corners hebben afgenomen of gescored hebben tijdens een voetbalwedstrijd;
 - BR12 Er moeten 22 spelers op het veld ingedeeld zijn bij een wedstrijd;
@@ -1016,6 +1016,7 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 - BR19 Een persoon mag niet jonger zijn dan 15 jaar;
 - BR20 Aantal toeschouwers mag niet groter zijn dan de capaciteit van een stadion;
 - BR21 De waarde van de minuten binnen een wedstrijd mag niet negatief zijn.
+- BR22 
 
 # Functionele requirements
 
