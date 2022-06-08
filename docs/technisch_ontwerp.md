@@ -226,7 +226,7 @@ Hiervoor zijn de volgende oplossingen bedacht.
 
 ### Losse tabellen
 
-Een optie is om een losse MATCH en KO-MATCH tabel aan te maken. Hierbij komt een normale match niet in de knel.
+Een optie is om voor zowel MATCH als KO_MATCH een losse tabel aan te maken. Met deze implementatie hoeft er niks aangepast te worden aan de huidige MATCH tabel
 Wel is er dan een probleem met dat events verwijzen naar matches. (wat opgelost kan worden door een extra koppeltabel)
 Een boel triggers moeten aangepast worden omdat ze moeten kijken in MATCH en KO-MATCH, ook moeten sommige triggers nog een keer worden gezet op KO-MATCH. 
 
