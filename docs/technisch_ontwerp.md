@@ -79,10 +79,10 @@
 
 | Niet-functionele eisen                                                                                             | Categorieën  |
 |--------------------------------------------------------------------------------------------------------------------|--------------|
-| Data-analisten lezen alleen data uit vanuit de MongoDB staging area, zo wordt de load op de SQL Server verlicht    | Performance  |
+| Data-analisten van NUTMEG lezen alleen data uit vanuit de MongoDB staging area, zo wordt de load op de SQL Server verlicht    | Performance  |
 | Administrators van NUTMEG hebben volledige CRUD rechten op zowel de SQL Server als MongoDB database                | Security     |
 | Data-analisten hebben alleen lees rechten en lezen data exclusief uit vanuit de staging area                       | Security     |
-| De data wordt alleen in het Nederlands opgeslagen                                                                  | Localization |
+| De data in de MSSQL database wordt alleen in het Nederlands opgeslagen                                             | Localization |
 | Tabelnamen, constraints, triggers, views en procedures in SQL Server worden in het Engels geschreven               | Localization |
 | Data-analisten kunnen via de MongoDB shell data uitlezen                                                           | Usability    |
 | Iedere dag dient er om 02:00 een kopie van de SQL Server database overgezet te worden naar de MongoDB staging area | Reliability  |
@@ -268,7 +268,6 @@ PI: Time + club_name + club_name + match_day + start_date + end_date + competiti
 | Nummer | Naam                                    | Tabel                                                              | Omschrijving                                                                                                                                                                     | Komt overeen met |
 |--------|-----------------------------------------|--------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|
 | IR1    | TRG_CHECK_PLAYER_COUNT                  | POSITION                                                           | Er zijn minimaal 7 en maximaal 11 spelers per club opgesteld wanneer een wedstrijd start                                                                                         | C1 & BR12        |
-| IR3    | TRG_CHECK_MAXIMUM_ROUNDS_OF_EDITION     | ROUND                                                              | Er mogen binnen een editie niet meer dan 52 rondes zitten, want een editie duurt een jaar (52 weken)                                                                             | C3 & BR19        |
 | IR5    | CHK_VALID_JERSEY                        | PLAYER                                                             | Een rugnummer van een speler moet hoger zijn dan 0 (mag niet 0 zijn) en mag niet hoger zijn dan 99 (mag wel 99 zijn)                                                             | C5 & BR17        |
 | IR6    | CHK_VALID_ROUND_START_DATE              | ROUND                                                              | De startdatum van een speelronde ligt binnen de start- en einddatum van het bijbehorende seizoen                                                                                 | C6 & BR4         |
 | IR7    | TRG_CHECK_VALID_MATCHDAY_START_DATE     | MATCHDAY                                                           | De startdatum van een speeldag moet voor de startdatum van een opvolgende speelronde zijn, maar hetzelfde of na de startdatum van de gekoppelde speelronde                       | C7 & BR5         |

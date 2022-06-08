@@ -43,7 +43,6 @@
 - [Functionele requirements](#functionele-requirements)
   - [Constraints](#constraints)
     - [C1 komt overeen met BR12](#c1-komt-overeen-met-br12)
-    - [C3 komt overeen met BR19](#c3-komt-overeen-met-br19)
     - [C4 komt overeen met BR16](#c4-komt-overeen-met-br16)
     - [C5 komt overeen met BR17](#c5-komt-overeen-met-br17)
     - [C6 komt overeen met BR4](#c6-komt-overeen-met-br4)
@@ -1037,6 +1036,7 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 | Als \[admin\] wil ik een nieuwe speler met de naam Chris toevoegen                                                               | M      | Toevoegen nieuw persoon        |
 | Als \[admin\] wil ik een nieuwe coach met de naam Michel toevoegen                                                               | M      | Toevoegen nieuw persoon        |
 | Als \[admin\] wil ik een nieuwe scheidsrechter met de naam Henk toevoegen                                                        | M      | Toevoegen nieuw persoon        |
+| Als \[admin\] wil ik een knock-out tournament seizoen kunnen starten.															  | S      | Start nieuw seizoen KO         |
 | Als \[analist\] wil ik de top-lijst van voetballers met de meeste doelpunten in seizoen 2015/2016 uitlezen                       | M      | Ophalen top-lijst              |
 | Als \[analist\] wil ik de top-lijst van voetballers met de meeste gele kaarten in seizoen 2010/2011 uitlezen                     | M      | Ophalen top-lijst              |
 | Als \[analist\] wil ik de top-lijst van voetballers met de meeste rode kaarten in seizoen 2022/2023 uitlezen                     | M      | Ophalen top-lijst              |
@@ -1053,7 +1053,7 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 | Als \[analist\] wil ik informatie over de toeschouwers tijdens Ajax - Feyenoord uitlezen                                         | M      | Ophalen matchinfo              |
 | Als \[analist\] wil ik informatie over speelronde 34 van de Eredivisie uitlezen                                                  | M      | Ophalen speelrondeinfo         |
 | Als \[analist\] wil ik informatie over de wedstrijd op 12/04/2021 tussen Feyenoord - Vitesse in de Eredivisie uitlezen           | M      | Ophalen speelrondeinfo         |
-
+| Als \[analist\] wil ik informatie over brackets voor een knock-out tournament           											| S      | Ophalen brackets KO            |
 
 ## Constraints
 
@@ -1061,11 +1061,6 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 
 - Betreft: ET `POSITION`;
 - Specificatie: Er zijn minimaal 7 en maximaal 11 spelers per club opgesteld staan wanneer een wedstrijd start.
-
-### C3 komt overeen met BR19
-
-- Betreft: ET `COACH` en ET `CLUB`;
-- Specificatie: Minimaal en maximaal 1 coach per club.
 
 ### C4 komt overeen met BR16
 
