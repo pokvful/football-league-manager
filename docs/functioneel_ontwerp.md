@@ -268,7 +268,7 @@
 | Preconditie | |
 | Postconditie | Een nieuw KO seizoen is gestart en de eerste ronde is vooraf random ingevuld aan de hand van de opgegeven clubs. |
 | Brief Description | De actor kan een nieuw Knock Out seizoen starten met voorgevulde brackets. |
-| Happy Flow | 1. Actor geeft te kennen dat hij 16 verschillende clubs heeft ingevoerd.<br>2. Systeem genereerd de brackets van de eerste ronde, waar de aangegeven clubs random over worden verdeeld en slaat dit op.<br>3. Systeem geeft aan dat het succesvol is verwerkt. |
+| Happy Flow | 1. Actor geeft te kennen dat hij 16 verschillende clubs heeft ingevoerd.<br>2. Systeem genereert de brackets van de eerste ronde, waar de aangegeven clubs random over worden verdeeld en slaat dit op.<br>3. Systeem geeft aan dat het succesvol is verwerkt. |
 | Alternative Flow | 1A. Systeem merkt dat de Actor niet 16 clubs heeft opgegeven.<br>2A. Systeem geeft een error terug dat er niet precies 16 clubs zijn opgegeven, terwijl dit wel verplicht is. |
 
 ## Overzetten data
