@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     08/06/2022 13:58:52                          */
+/* Created on:     08/06/2022 15:20:22                          */
 /*==============================================================*/
 
 
@@ -118,27 +118,6 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('KO_MATCH') and o.name = 'FK_KO_MATCH_BRACKET_L_KO_MATCH')
-alter table KO_MATCH
-   drop constraint FK_KO_MATCH_BRACKET_L_KO_MATCH
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('KO_MATCH') and o.name = 'FK_KO_MATCH_BRACKET_R_KO_MATCH')
-alter table KO_MATCH
-   drop constraint FK_KO_MATCH_BRACKET_R_KO_MATCH
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('KO_MATCH') and o.name = 'FK_KO_MATCH_TYPE_OF_M_MATCH')
-alter table KO_MATCH
-   drop constraint FK_KO_MATCH_TYPE_OF_M_MATCH
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
    where r.fkeyid = object_id('LINEUP') and o.name = 'FK_LINEUP_LINEUPS_I_MATCH')
 alter table LINEUP
    drop constraint FK_LINEUP_LINEUPS_I_MATCH
@@ -156,6 +135,20 @@ if exists (select 1
    where r.fkeyid = object_id('LINEUP') and o.name = 'FK_LINEUP_POSITION__POSITION')
 alter table LINEUP
    drop constraint FK_LINEUP_POSITION__POSITION
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('MATCH') and o.name = 'FK_MATCH_FK_BRACKE_MATCH2')
+alter table MATCH
+   drop constraint FK_MATCH_FK_BRACKE_MATCH2
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('MATCH') and o.name = 'FK_MATCH_FK_BRACKE_MATCH')
+alter table MATCH
+   drop constraint FK_MATCH_FK_BRACKE_MATCH
 go
 
 if exists (select 1
@@ -188,16 +181,16 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('MATCH') and o.name = 'FK_MATCH_REFEREE_I_REFEREE')
+   where r.fkeyid = object_id('MATCH') and o.name = 'FK_MATCH_MATCH_TYP_COMPETIT')
 alter table MATCH
-   drop constraint FK_MATCH_REFEREE_I_REFEREE
+   drop constraint FK_MATCH_MATCH_TYP_COMPETIT
 go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('MATCH') and o.name = 'FK_MATCH_THE_TYPE__COMPETIT')
+   where r.fkeyid = object_id('MATCH') and o.name = 'FK_MATCH_REFEREE_I_REFEREE')
 alter table MATCH
-   drop constraint FK_MATCH_THE_TYPE__COMPETIT
+   drop constraint FK_MATCH_REFEREE_I_REFEREE
 go
 
 if exists (select 1
@@ -550,13 +543,6 @@ if exists (select 1
            where  id = object_id('GOAL')
             and   type = 'U')
    drop table GOAL
-go
-
-if exists (select 1
-            from  sysobjects
-           where  id = object_id('KO_MATCH')
-            and   type = 'U')
-   drop table KO_MATCH
 go
 
 if exists (select 1
@@ -1409,17 +1395,6 @@ create nonclustered index EVENT_HAPPENED_IN_MATCH3_FK on GOAL (MATCH_ID ASC)
 go
 
 /*==============================================================*/
-/* Table: KO_MATCH                                              */
-/*==============================================================*/
-create table KO_MATCH (
-   MATCH_ID             G_IDENTITY           not null,
-   BRACKET_RIGHT        G_IDENTITY           null,
-   BRACKET_LEFT         G_IDENTITY           null,
-   constraint PK_KO_MATCH primary key (MATCH_ID)
-)
-go
-
-/*==============================================================*/
 /* Table: LINEUP                                                */
 /*==============================================================*/
 create table LINEUP (
@@ -1464,7 +1439,7 @@ go
 /* Table: MATCH                                                 */
 /*==============================================================*/
 create table MATCH (
-   MATCH_ID             G_IDENTITY           not null,
+   MATCH_ID             G_IDENTITY           identity,
    SEASON_NAME          SEASON_NAME          not null,
    COMPETITION_NAME     COMPETITION_NAME     not null,
    START_DATE           DATE                 not null,
@@ -1473,10 +1448,12 @@ create table MATCH (
    OUT_CLUB_NAME        CLUB_NAME            not null,
    STADIUM_NAME         STADIUM_NAME         not null,
    REFEREE_PERSON_ID    PERSON_ID            not null,
+   BRACKET_RIGHT        G_IDENTITY           null,
+   BRACKET_LEFT         G_IDENTITY           null,
+   MATCH_TYPE           COMPETITION_TYPE     null,
    BALL_POSSESSION_HOME PERCENTAGE           null,
    BALL_POSSESSION_OUT  PERCENTAGE           null,
    SPECTATORS           COUNT                null,
-   MATCH_TYPE           COMPETITION_TYPE     not null,
    constraint PK_MATCH primary key (MATCH_ID),
    constraint AK_AK_MATCH_MATCH unique (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY, HOME_CLUB_NAME, OUT_CLUB_NAME)
 )
@@ -1966,22 +1943,6 @@ alter table GOAL
          on update cascade
 go
 
-alter table KO_MATCH
-   add constraint FK_KO_MATCH_BRACKET_L_KO_MATCH foreign key (BRACKET_LEFT)
-      references KO_MATCH (MATCH_ID)
-go
-
-alter table KO_MATCH
-   add constraint FK_KO_MATCH_BRACKET_R_KO_MATCH foreign key (BRACKET_RIGHT)
-      references KO_MATCH (MATCH_ID)
-go
-
-alter table KO_MATCH
-   add constraint FK_KO_MATCH_TYPE_OF_M_MATCH foreign key (MATCH_ID)
-      references MATCH (MATCH_ID)
-         on update cascade
-go
-
 alter table LINEUP
    add constraint FK_LINEUP_LINEUPS_I_MATCH foreign key (MATCH_ID)
       references MATCH (MATCH_ID)
@@ -1997,6 +1958,18 @@ go
 alter table LINEUP
    add constraint FK_LINEUP_POSITION__POSITION foreign key (POSITION_TYPE)
       references POSITION (POSITION_TYPE)
+         on update cascade
+go
+
+alter table MATCH
+   add constraint FK_MATCH_FK_BRACKE_MATCH2 foreign key (BRACKET_LEFT)
+      references MATCH (MATCH_ID)
+         on update cascade
+go
+
+alter table MATCH
+   add constraint FK_MATCH_FK_BRACKE_MATCH foreign key (BRACKET_RIGHT)
+      references MATCH (MATCH_ID)
          on update cascade
 go
 
@@ -2023,14 +1996,14 @@ alter table MATCH
 go
 
 alter table MATCH
-   add constraint FK_MATCH_REFEREE_I_REFEREE foreign key (REFEREE_PERSON_ID)
-      references REFEREE (PERSON_ID)
-         on update cascade
+   add constraint FK_MATCH_MATCH_TYP_COMPETIT foreign key (MATCH_TYPE)
+      references COMPETITION_TYPE (COMPETITION_TYPE)
 go
 
 alter table MATCH
-   add constraint FK_MATCH_THE_TYPE__COMPETIT foreign key (MATCH_TYPE)
-      references COMPETITION_TYPE (COMPETITION_TYPE)
+   add constraint FK_MATCH_REFEREE_I_REFEREE foreign key (REFEREE_PERSON_ID)
+      references REFEREE (PERSON_ID)
+         on update cascade
 go
 
 alter table MATCHDAY
