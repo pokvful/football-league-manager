@@ -62,7 +62,12 @@
 
 ### Start nieuw seizoen competitie
 
--- werkt momenteel nog niet..
+| Stap | Actie                                                                         | Input                                                                                                       | Expected Output                                                                  | Output                                                                           | Resultaat |
+|------|-------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|----------------------------------------------------------------------------------|-----------|
+| 1    | Maak verbinding met de database                                               | ```docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up --build --force-recreate -d```       | ![Database connection](images/test_results/docker-verbinding-resultaat.png)      | ![Database connection](images/test_results/docker-verbinding-resultaat.png)      | Geslaagd  |
+| 2    | Declareer een variabele @teams met type clubNamesTable en vul hem met 4 teams | ```DECLARE @teams clubNamesTable; INSERT INTO @teams VALUES ('Eadel'), ('Fadeo'), ('Feedmix'), ('Quimm')``` | Commands completed successfully                                                  | Commands completed successfully                                                  | Geslaagd  |
+| 3    | Lees @teams uit en controleer of het gevuld is met de gekozen teams           | ```SELECT * FROM @teams```                                                                                  | ![Invoeren matchdata result](images/test_results/tabel-teams-resultaat.png)      | ![Invoeren matchdata result](images/test_results/tabel-teams-resultaat.png)      | Geslaagd  |
+| 4    | Lees de tabel club en controleer of het invoeren is gelukt                    | ```SELECT * FROM CLUB WHERE CLUB_NAME = 'Eadel'```                                                          | ![Invoeren matchdata result](images/test_results/updaten-clubinfo-resultaat.png) | ![Invoeren matchdata result](images/test_results/updaten-clubinfo-resultaat.png) | Geslaagd  |
 
 ### Toevoegen nieuw persoon
 
