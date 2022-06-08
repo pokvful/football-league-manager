@@ -66,4 +66,10 @@
 
 ### Toevoegen nieuw persoon
 
+| Stap | Actie                                                                    | Input                                                                                                 | Expected Output                                                                         | Output                                                                                  | Resultaat |
+|------|--------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|-----------|
+| 1    | Maak verbinding met de database                                          | ```docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up --build --force-recreate -d``` | ![Database connection](images/test_results/docker-verbinding-resultaat.png)             | ![Database connection](images/test_results/docker-verbinding-resultaat.png)             | Geslaagd  |
+| 2    | Voer query uit voor het invoeren van een nieuw persoon met de naam Oktay | ```INSERT INTO PERSON VALUES ('Afghanistan', 'Oktay', 'Yatko', null, '1978-04-10')```                 | Commands completed successfully                                                         | Commands completed successfully                                                         | Geslaagd  |
+| 3    | Lees de tabel person en controleer of het invoeren is gelukt             | ```SELECT * FROM PERSON WHERE FIRST_NAME = 'Oktay'```                                                 | ![Invoeren matchdata result](images/test_results/toevoegen-nieuw-persoon-resultaat.png) | ![Invoeren matchdata result](images/test_results/toevoegen-nieuw-persoon-resultaat.png) | Geslaagd  |
+
 ### Toevoegen nieuw event type
