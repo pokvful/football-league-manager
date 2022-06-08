@@ -230,15 +230,11 @@ Een optie is om een losse MATCH en KO-MATCH tabel aan te maken. Hierbij komt een
 Wel is er dan een probleem met dat events verwijzen naar matches. (wat opgelost kan worden door een extra koppeltabel)
 Een boel triggers moeten aangepast worden omdat ze moeten kijken in MATCH en KO-MATCH, ook moeten sommige triggers nog een keer worden gezet op KO-MATCH. 
 
-### Een tabel
+### Één tabel
 
 Wanneer er één samengevoegde tabel is, dan hoeven de triggers niet te worden herschreven.
 De matches kunnen verwijzen naar andere matches.
 
-### Parent tabel met child tabel
-
-De perfecte van alle werelden.
-(eigenlijk niet ik wil ze samenvoegen)
 
 # Constraints
 
