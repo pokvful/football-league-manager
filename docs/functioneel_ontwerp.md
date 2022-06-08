@@ -1132,7 +1132,7 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 
 ### C17 komt overeen met BR24
 - Betreft: Att round_name   ET `EDITIE`
-- Specificatie: Speelrondes kunnen de volgende namen hebben: Finale, Halve Finale. Kwartfinale of Achtste Finale;
+- Specificatie: Speelrondes kunnen de volgende namen hebben: Finale, Halve Finale. Kwartfinale of Achtste Finale
 
 # Ontwerpkeuzes
 
