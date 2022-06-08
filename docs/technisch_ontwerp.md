@@ -481,7 +481,7 @@ Optie 1 is uiteindelijk geïmplementeerd aangezien het de meest overizchtelijke 
 
 ## ADD_NEW_EVENT_TYPE
 
-Met deze procedure kunnen admins nieuwe events toevoegen zonder dat zij kennis hoeven van alle triggers, constraints en relaties die aan events zijn toe gewezen. Alle nodige integriteitsregels worden in de stored procedures afgehandeld.
+Met deze procedure kunnen admins nieuwe events toevoegen zonder dat zij kennis hoeven te hebben van alle triggers, constraints en relaties die aan events zijn toe gewezen. Alle nodige integriteitsregels worden in de stored procedures afgehandeld.
 
 ## Moment van triggeren TRG_CHECK_PLAYER_COUNT
 
