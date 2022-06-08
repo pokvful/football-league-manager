@@ -228,7 +228,8 @@ Hiervoor zijn de volgende oplossingen bedacht.
 ### Losse tabellen
 
 Een optie is om voor zowel MATCH als KO_MATCH een losse tabel aan te maken. Met deze implementatie hoeft er niks aangepast te worden aan de huidige MATCH tabel
-Wel is er dan een probleem met dat events verwijzen naar matches. (wat opgelost kan worden door een extra koppeltabel)
+Echter loop je dan wel tegen een probleem aan met de events. De foreign keys zullen vanuit event naar twee verschillende tabellen moeten verwijzen, dat kan natuurlijk niet. Dit kan opgelost worden met een koppeltabel.
+
 Vervolgens zullen de triggers van MATCH nog wel aangepast moeten worden en ook zullen er triggers aan KO-MATCH toegevoegd moeten worden.
 
 ### Één tabel
