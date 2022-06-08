@@ -238,7 +238,7 @@ Het doel van dit document is om een duidelijk overzicht te geven van het testpro
 |160|[TRG_CHECK_ALL_EVENTS].[Test SUBSTITUTE_IN only for one player played in match and is reserve, should succeed]                          |    130|Success|
 |161|[TRG_CHECK_ALL_EVENTS].[Test SUBSTITUTE_OUT only for one player played in match and is reserve, should fail]                            |     97|Success|
 
-## Conclusie
+# Conclusie
 
 Op basis van de bovenstaande testresultaten is de conclusie dat de huidige database genoeg code coverage (80%+) dekt voor een succesvolle uitrol naar productie. Alle code is getest op minimaal één success scenario en minimaal één edge-case. Er wordt gecontroleerd of de afgesproken exceptions gegooid worden wanneer ze moeten, daarbij ook dat ze niet een exception throwen wanneer dat niet moet.
 

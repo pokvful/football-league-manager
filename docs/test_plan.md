@@ -24,7 +24,7 @@ In dit document wordt beschreven hoe, wat en waarover testen geschreven worden.
 
 Daarnaast worden er testen geschreven om te controleren of de bestaande gebruikers dezelfde rechten hebben als zijn afgesproken in het TO.
 
-# Waarover worden de testen geschreven
+# Waarvoor worden de testen geschreven
 
 Alle code is getest op minimaal één success scenario en minimaal één edge-case.
 
