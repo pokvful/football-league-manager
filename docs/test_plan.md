@@ -91,4 +91,4 @@ END
 
 Nadat de code is getest met behulp van de geschreven unit tests en een slagings percentage van 100% heeft behaald. Verder wordt er gekeken naar de eenvoudigheid van de test, de test moet makkelijk te onderhouden zijn. 
 
-Op het laatst worden de tests gereviewed en gecontroleerd op de defintion of done. Als de tests worden goedgekeurd wordt in het testrapport het bewijs van het slagen van de tests neergezet en wordt de testresultaten opgeleverd. 
+Als laatste worden de tests gereviewd en gecontroleerd op de definition of done. Als de tests worden goedgekeurd wordt in het testrapport het bewijs van het slagen van de tests neergezet en worden de testresultaten opgeleverd. 
