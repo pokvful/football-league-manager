@@ -18,9 +18,9 @@ In dit document wordt beschreven hoe, wat en waarover testen geschreven worden.
 
 # Wanneer worden er testen geschreven?
 
-- Voor dit project worden alleen unit tests geschreven.
-- Deze unit tests worden geschreven voor iedere stored procedure, trigger en check-constraint dat in dit project wordt gemaakt in MSSQL Server.
-- Deze testen worden gemaakt nadat de code zelf is geschreven om de code te testen.
+- Voor dit project worden unittests en E2E (End-to-End) testen geschreven.
+- Unittests worden geschreven voor iedere stored procedure, trigger en check-constraint dat in dit project wordt gemaakt in MSSQL Server.
+- Unittests worden gemaakt nadat de code zelf is geschreven om de code te testen.
 
 Daarnaast worden er testen geschreven om te controleren of de bestaande gebruikers dezelfde rechten hebben zoals beschreven in het TO.
 
@@ -31,8 +31,7 @@ Alle code is getest op minimaal één success scenario en minimaal één edge-ca
 Als voorbeeld met de check: leeftijd >= 18
 
 - Het successcenario moet passen wanneer de leeftijd 25 is.
-- Het failurescenario moet falen wanneer de leeftijd 15 is.
-- De edgecase moet falen wanneer de leeftijd 18 is.
+- De edgecase moet falen wanneer de leeftijd lager is dan 18.
 
 Er wordt gecontroleerd of de afgesproken exceptions gegooid worden wanneer ze moeten, daarbij wordt ook gecontroleerd of er exceptions gegooid worden wanneer dat juist niet moet.
 
@@ -89,6 +88,4 @@ END
 
 # Test volledigheid
 
-Nadat de code is getest met behulp van de geschreven unit tests en een slagings percentage van 100% heeft behaald. Verder wordt er gekeken naar de eenvoudigheid van de test, de test moet makkelijk te onderhouden zijn. 
-
-Als laatste worden de tests gereviewd en gecontroleerd op de definition of done. Als de tests worden goedgekeurd wordt in het testrapport het bewijs van het slagen van de tests neergezet en worden de testresultaten opgeleverd. 
+Om testvolledigheid te controleren worden eerst alle unittests uitgevoerd om te kijken of het slagingspercentage 100% is. Zodra dit het geval is worden de resultaten van de testen in het testrapport uitgewerkt met bewijs van het slagen van de tests.
