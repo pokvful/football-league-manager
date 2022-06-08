@@ -19,7 +19,7 @@ In dit document wordt beschreven hoe, wat en waarover testen geschreven worden.
 # Wanneer worden er testen geschreven?
 
 - Voor dit project worden alleen unit tests geschreven.
-- Deze unit tests worden geschreven voor iedere stored procedure, trigger en check-constraint dat in dit project wordt gemaakt in MSSQL Server.
+- Deze unit tests worden geschreven voor iedere stored procedure, trigger en check-constraint die in dit project worden gemaakt in MSSQL Server.
 - Deze testen worden gemaakt nadat de code zelf is geschreven om de code te testen.
 
 Daarnaast worden er testen geschreven om te controleren of de bestaande gebruikers dezelfde rechten hebben zoals beschreven in het TO.
