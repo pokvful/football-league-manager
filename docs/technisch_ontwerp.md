@@ -432,8 +432,8 @@ Omdat het natuurlijk wel mogelijk moet zijn naar iedere unieke EVENT te referere
 
 Het vastleggen van events kan op veel verschillende manieren. Om te bepalen wat de beste optie is moet rekening gehouden worden met vele aspecten, bijvoorbeeld:
 - Uitbreidbaarheid. Hoe makkelijk is het om events toe te voegen?
-- Hoe complex zijn joins/reads voor het genereren van de top-lijsten
-- Hoe overzichtelijk en onderhoudbaar is de implementatie
+- Hoe complex zijn joins/reads voor het genereren van de top-lijsten?
+- Hoe overzichtelijk en onderhoudbaar is de implementatie?
 
 ### Losse tabel voor iedere event
 
