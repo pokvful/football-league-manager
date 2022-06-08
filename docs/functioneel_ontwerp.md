@@ -3,7 +3,21 @@
 # Functioneel ontwerp
 
 - [Use cases](#use-cases)
+  - [Database](#database)
+  - [Staging Area](#staging-area)
 - [Fully-Dressed Use-cases](#fully-dressed-use-cases)
+  - [Ophalen top-lijst](#ophalen-top-lijst)
+  - [Ophalen tussenstand competitie](#ophalen-tussenstand-competitie)
+  - [Ophalen clubinfo](#ophalen-clubinfo)
+  - [Ophalen matchinfo](#ophalen-matchinfo)
+  - [Ophalen matchdayinfo](#ophalen-matchdayinfo)
+  - [Ophalen speelrondeinfo](#ophalen-speelrondeinfo)
+  - [Invoeren matchdata](#invoeren-matchdata)
+  - [Updaten clubinfo](#updaten-clubinfo)
+  - [Start nieuw seizoen nationale competitie](#start-nieuw-seizoen-nationale-competitie)
+  - [Toevoegen nieuwe persoon](#toevoegen-nieuwe-persoon)
+  - [Overzetten data](#overzetten-data)
+  - [Toevoegen event type](#toevoegen-event-type)
 - [Verwoordingen feittypen](#verwoordingen-feittypen)
   - [Competitie](#competitie)
   - [Seizoen](#seizoen)
@@ -14,7 +28,7 @@
   - [Stadion](#stadion)
   - [Personen](#personen)
     - [Persoon achternaam](#persoon-achternaam)
-    - [Persoon middelnaam](#persoon-middelnaam)
+    - [Persoon tussenvoegsel](#persoon-tussenvoegsel)
     - [Geboortedatum](#geboortedatum)
     - [Nationaliteit](#nationaliteit)
   - [Coach](#coach)
@@ -106,11 +120,16 @@
 # Use cases
 
 ## Database
+
 ![Use case diagram](images/usecase_diagram_nutmeg.png)
 
 ## Staging Area
+
 ![Use case diagram](images/UseCase_Staging_Area_Nutmeg.png)
+
 # Fully-Dressed Use-cases
+
+## Ophalen top-lijst
 
 |Naam               |Ophalen top-lijst|
 |-------------------|------------------------------|
@@ -120,6 +139,8 @@
 |Postconditie       |Systeem toont de gewenste top-lijst|
 |Brief Description  |Actor haalt een top-lijst met gewenste informatiebehoefte op uit het systeem|
 |Happy Flow         |1.Actor geeft aan een toplijst van event gele kaart op te halen <br> 2.Systeem toont de top-lijst van gele kaarten|
+
+## Ophalen tussenstand competitie
 
 |Naam               |Ophalen tussenstand competitie|
 |-------------------|-----------------------------|
@@ -131,6 +152,8 @@
 |Happy Flow         |1.Actor geeft aan de tussenstand van een competitie op te willen halen. <br> 2.Systeem toont de tussenstand.|
 |Alternatieve Flow  |1A.Actor geeft aan een niet bestaande seizoen en competitie te hebben geselecteerd<br>2A. Systeem toont een lege lijst.|
 
+## Ophalen clubinfo
+
 |Naam               |Ophalen clubinfo|
 |-------------------|-------------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
@@ -139,6 +162,8 @@
 |Postconditie       |Systeem toont de informatie Club naam, Stadium naam, land naam, stad naam en de caoch van de gewenste club.|
 |Brief Description  |Actor haalt het team, de coach, de thuisstad, het stadion en de capaciteit van het stadion van een gewenste club op.|
 |Happy Flow         |1.Actor geeft aan informatie over een gewenste club te willen zien <br> 2.Systeem toont clubinformatie over de gewenste club.|
+
+## Ophalen matchinfo
 
 |Naam               |Ophalen matchinfo									|
 |-------------------|---------------------------------------------------|
@@ -150,6 +175,8 @@
 |Happy Flow         |1.Actor geeft aan informatie over een gewenste match te willen zien<br> 2.Systeem toont de informatie goals, hoekschop, overtreding, passes, gele kaart ,rode kaart, schoten en vervanging van de gewenste match.|
 |Alternatieve Flow  |2A.Systeem geeft aan dat de match niet bestaat.|
 
+## Ophalen matchdayinfo
+
 |Naam               |Ophalen matchdayinfo									|
 |-------------------|---------------------------------------------------|
 |Actors             |Data-analist Klant / NUTMEG Voetbal Admin|
@@ -157,8 +184,10 @@
 |Preconditie        ||
 |Postconditie       |Systeem toont de informatie van de gewenste matchday.|
 |Brief Description  |Actor haalt per dag wie gespeeld heeft op de dag en wat de standen zijn tussen de clubs|
-|Happy Flow         |1.Actor geeft aan informatie over de gewenste dag te willen zien<br>2.| Systeem toont de informatie wedstrijden, goals per wedstrijd per club en de duur van de wedstrijden.
+|Happy Flow         |1.Actor geeft aan informatie over de gewenste dag te willen zien<br>2. Systeem toont de informatie wedstrijden, goals per wedstrijd per club en de duur van de wedstrijden. |
 |Alternatieve Flow  |2A.Systeem geeft aan dat de matchday niet bestaat.|
+
+## Ophalen speelrondeinfo
 
 |Naam               |Ophalen speelrondeinfo	|
 |-------------------|-------------------------------------|
@@ -168,6 +197,8 @@
 |Postconditie       |Systeem toont de informatie van de gewenste speelronde.|
 |Brief Description  |Actor haalt de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde op.|
 |Happy Flow         |1.Actor geeft aan de uitslagen en speeldagen van wedstrijden tijdens een gewenste speelronde te willen zien. <br> 2.Systeem toont van de seizoen, competitie alle start datum, club out en club thuis en de aantal goals die gemaakt zijn door de spelende clubs.|
+
+## Invoeren matchdata
 
 
 |Naam               |Invoeren matchdata	|
@@ -180,6 +211,8 @@
 |Happy Flow         |1.Actor geeft aan de matchdata: goal, hoekschop, overtreding, passes, gele kaart, rode kaart, schoten en wie met wie is vervangen op te willen slaan in de database<br> 2.Systeem slaat de match data op in de database.|
 |Alternatieve Flow  |2A.Systeem geeft aan dat de ingevoerde waarde van balbezit/passprecisie niet tussen 0-100 is. <br> 3A.Ga terug naar stap 1 <br> - <br> 2B.Systeem geeft aan dat speler gekoppeld aan een event/pass/corner/overtreding/schot(op doel) niet in het is correcte team zit. <br> 3B.Ga terug naar stap 1 <br> - <br> 2C.Systeem geeft aan dat speler niet opgesteld is tijdens de wedstrijd. <br> 3C.Ga terug naar stap 1.|
 
+## Updaten clubinfo
+
 |Naam               |Updaten clubinfo	|
 |-------------------|-------------------------------------------------------------------------------|
 |Actors             |NUTMEG Voetbal Admin|
@@ -190,7 +223,9 @@
 |Happy Flow         |1.Actor geeft aan de informatie van club geüpdatet moet worden en geeft aan nieuwe informatie, team, coach, thuisstad, stadion en stdioncapaciteit in te willen voeren. 2.Systeem update de informatie.|
 |Alternative FLow	|2A.Systeem geeft aan dat een speler/coach die moet worden toegevoegd nog bij een ander team ingeschreven staat. <br>3A. Ga terug naar stap 1.|
 
-|Naam               |Start nieuw seizoen competitie	|
+## Start nieuw seizoen nationale competitie
+
+|Naam               |Start nieuw seizoen nationale competitie	|
 |-------------------|-------------------------------------------------------------------------------|
 |Actors             |NUTMEG Voetbal Admin|
 |Stakeholder        |Data-analist Klant|
@@ -199,6 +234,8 @@
 |Brief Description  |Actor update de correcte clubs in de nieuwe editie, start vervolgens een leeg seizoen (lege matches, speeldrondes en een nieuwe editie).|
 |Happy Flow         |1. Actor geeft aan welke clubs gedegradeerd/gepromoveert worden <br> 2. Systeem verwerkt de gegevens <br> 3. Actor geeft aan een nieuwe seizoen comeptitie te starten met de gegevens startdatum, speelrondes, aantal rondes per dag en de clubs die mee doen aan de competitie <br> 4.Systeem maakt nieuwe editie met de gegevens, competitie naam, season naam, lijst met clubs, start datum, lengte van een ronde, games per dag en aantal matches per ronde|
 |Alternative Flow	| 1A. Actor geeft aan een nieuwe seizoen comeptitie te starten met de verkeerde gegevens startdatum, speelrondes, aantal rondes per dag en de clubs die mee doen aan de competitie <br> 2A. Systeem geeft een error bericht.|
+
+## Toevoegen nieuwe persoon
 
 |Naam               |Toevoegen nieuwe persoon	|
 |-------------------|-----------------------|
@@ -210,6 +247,8 @@
 |Happy Flow         |1.Actor geeft aan een nieuwe coach op te willen slaan in het systeem en geeft aan land, voornaam, achternaam, middelnaam en geboorte datum in te voeren. <br>2.Nieuw persoon wordt opgeslagen in de database.|
 |Alternative Flow	|2A.Systeem geeft aan dat informatie onvolledig is  <br> 3A.Ga terug naar stap 1|
 
+## Overzetten data
+
 |Naam               |Overzetten data	|
 |-------------------|-----------------------|
 |Actors             |Time|
@@ -218,6 +257,8 @@
 |Postconditie       |De gegevens vanuit de ene database zijn overgezet naar de andere database.|
 |Brief Description  |Het overzetten van data gebeurt periodiek en vind elke nacht plaats om 2 uur.|
 |Happy Flow         |1. Actor geeft aan dat het tijd is om de data over te zetten. <br>2. Systeem zet data om van de ene database naar de andere database.|
+
+## Toevoegen event type
 
 |Naam               |Toevoegen event type	|
 |-------------------|-----------------------|
@@ -1030,7 +1071,7 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 | Als \[admin\] wil ik een schot op doel in minuut 87 door Antony als matchdata invoeren voor de wedstrijd Ajax - Feyenoord        | M      | Invoeren matchdata             |
 | Als \[admin\] wil ik speler Lionel Messi toewijzen aan de club Ajax                                                              | M      | Updaten clubinfo               |
 | Als \[admin\] wil ik coach Josep Guardiola toewijzen aan de club Ajax                                                            | M      | Updaten clubinfo               |
-| Als \[admin\] wil ik een nieuwe seizoen voor de Eredivise starten                                                                | M      | Start nieuw seizoen competitie |
+| Als \[admin\] wil ik een nieuwe seizoen voor de Eredivise starten                                                                | M      | Start nieuw seizoen nationale competitie |
 | Als \[admin\] wil ik een nieuwe speler met de naam Chris toevoegen                                                               | M      | Toevoegen nieuw persoon        |
 | Als \[admin\] wil ik een nieuwe coach met de naam Michel toevoegen                                                               | M      | Toevoegen nieuw persoon        |
 | Als \[admin\] wil ik een nieuwe scheidsrechter met de naam Henk toevoegen                                                        | M      | Toevoegen nieuw persoon        |
