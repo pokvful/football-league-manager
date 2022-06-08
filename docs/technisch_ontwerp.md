@@ -233,7 +233,6 @@ Vervolgens zullen de triggers van MATCH nog wel aangepast moeten worden en ook z
 ### Één tabel
 
 Wanneer er één samengevoegde tabel is, dan hoeven de triggers niet te worden herschreven.
-De matches kunnen verwijzen naar andere matches.
 
 
 # Constraints
