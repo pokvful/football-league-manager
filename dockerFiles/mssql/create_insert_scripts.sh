@@ -4,7 +4,7 @@
 sed -E "s/CITY \\(Country_name, City_name\\) values \\(('[[:alnum:][:blank:][:punct:]]+'), '[[:alnum:][:blank:][:punct:]]+'\\);\$/COUNTRY (Country_name) values (\1);/" ./201-INSERT_CITY.sql > ./200-INSERT_COUNTRY.sql
 
 # Copy the DOMESTIC_LEAGUE content to the COMPETITION table (competition_type is a default, because we don't mock for KO)
-sed -E "s/DOMESTIC_LEAGUE \\(Competition_name\) values \\(('[[:alnum:][:blank:][:punct:]]+')\\);\$/COMPETITION (Competition_name) values (\1, 'Nationale Competitie');/" ./204-INSERT_DOMESTIC_LEAGUE.sql > ./203-INSERT_COMPETITION.sql
+sed -E "s/DOMESTIC_LEAGUE \\(Competition_name\) values \\(('[[:alnum:][:blank:][:punct:]]+')\\);\$/COMPETITION (Competition_name, Competition_type) values (\1, 'Nationale Competitie');/" ./204-INSERT_DOMESTIC_LEAGUE.sql > ./203-INSERT_COMPETITION.sql
 
 # Create a EDITION table
 edition_result="set nocount on;"
