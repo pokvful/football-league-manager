@@ -1056,6 +1056,32 @@ RT REFEREE_in_charge_of_MATCH tussen *REFEREE* en MATCH.
 
 Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was persoon \<*Person_id*\> de scheidsrechter.
 
+## Knockout Round
+
+Tijdens de knockout wedstrijd op 31 mei 2021 spelen in de zestiende ronde Real Madrid en FC Barcelona de finale
+
+Tijdens de knockout wedstrijd op <u>31 mei 2021 spelen in de zestiende ronde Real Madrid en FC Barcelona de finale</u>
+
+---
+
+ET: MATCH
+
+MATCH
+
+---
+
+ET: KO_ROUND
+
+ID: Att Round_nr
+
+Att: Round_name
+
+SUBTYPE (ROUND)
+
+RT TYPE_OF_ROUND tussen KO_ROUND en ROUND.
+
+Predicaat: Tijdens de knockout wedstrijd op \<Start_date\> spelen in de \<Round_nr\> \<Club_name\> en \<Club_name\> de \<Round_name\>
+
 # Business Rules
 
 - BR1 Van een lopende editie mogen alleen de selecties van clubs en de speeldata van wedstrijden aangepast worden;
