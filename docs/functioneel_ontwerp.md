@@ -1516,7 +1516,3 @@ In de entiteit CORNER staan alle momenten wanneer een speler een corner heeft ui
 ## Entiteit FOUL
 
 In de entiteit FOUL staan alle momenten wanneer een speler een overtreding heeft gemaakt in een wedstrijd.
-
-# Testplan
-
-Staat in bijlage Testplan.
