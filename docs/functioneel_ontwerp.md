@@ -1,7 +1,9 @@
-# ***Disclaimer*** | De lay-out van de PDF-versie voor dit document kan verschillen met de markdown versie, voor een accurate weergave zie markdown bestand in [bitbucket](https://isebitbucket.aimsites.nl/projects/S22122A4/repos/football-league-manager/browse/docs).
+***Disclaimer*** | De lay-out van de PDF-versie voor dit document kan verschillen met de markdown versie, voor een accurate weergave zie markdown bestand in [bitbucket](https://isebitbucket.aimsites.nl/projects/S22122A4/repos/football-league-manager/browse/docs).
 
 # Functioneel ontwerp
 
+
+- [Functioneel ontwerp](#functioneel-ontwerp)
 - [Use cases](#use-cases)
   - [Database](#database)
   - [Staging Area](#staging-area)
@@ -12,10 +14,12 @@
   - [Ophalen matchinfo](#ophalen-matchinfo)
   - [Ophalen matchdayinfo](#ophalen-matchdayinfo)
   - [Ophalen speelrondeinfo](#ophalen-speelrondeinfo)
+  - [Ophalen brackets KO](#ophalen-brackets-ko)
   - [Invoeren matchdata](#invoeren-matchdata)
   - [Updaten clubinfo](#updaten-clubinfo)
   - [Start nieuw seizoen nationale competitie](#start-nieuw-seizoen-nationale-competitie)
   - [Toevoegen nieuwe persoon](#toevoegen-nieuwe-persoon)
+  - [Start nieuw seizoen KO](#start-nieuw-seizoen-ko)
   - [Overzetten data](#overzetten-data)
   - [Toevoegen event type](#toevoegen-event-type)
 - [Verwoordingen feittypen](#verwoordingen-feittypen)
@@ -69,6 +73,8 @@
     - [C13 komt overeen met BR21](#c13-komt-overeen-met-br21)
     - [C14 komt overeen met BR22](#c14-komt-overeen-met-br22)
     - [C15 komt overeen met BR1](#c15-komt-overeen-met-br1)
+    - [C16 komt overeen met BR23](#c16-komt-overeen-met-br23)
+    - [C17 komt overeen met BR24](#c17-komt-overeen-met-br24)
 - [Ontwerpkeuzes](#ontwerpkeuzes)
   - [Person_ID](#person_id)
   - [Person_type](#person_type)
@@ -958,7 +964,7 @@ ET: *PLAYER*
 
 ---
 
-ET: FOUL
+ET: CORNER
 
 SUBTYPE (EVENT)
 
@@ -1020,7 +1026,7 @@ ET: *PLAYER*
 
 ---
 
-ET: SHOT
+ET: PASS
 
 SUBTYPE (EVENT)
 
