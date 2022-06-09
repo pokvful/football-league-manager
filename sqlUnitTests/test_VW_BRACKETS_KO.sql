@@ -13,6 +13,7 @@ BEGIN
 
 	INSERT INTO COMPETITION (COMPETITION_NAME, COMPETITION_TYPE)
 	VALUES ('compko', 'Knockout')
+
 	EXEC ('	INSERT INTO GOALS_MATCHES (MATCH_ID, HOME_CLUB_NAME, OUT_CLUB_NAME, HOME_GOALS, OUT_GOALS) 
 			VALUES (1, ''henry'', ''yrneh'', 20, 5) ')
 
@@ -41,3 +42,19 @@ BEGIN
 END
 GO
 EXEC tSQLt.Run 'test_VW_BRACKETS_KO.[test 1 ko competition]'
+GO
+CREATE OR ALTER PROCEDURE test_VW_BRACKETS_KO.[test filters normal matches out] AS
+BEGIN
+	INSERT INTO [MATCH] (MATCH_ID, SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY) 
+	VALUES (2, '20/21', 'normies', GETDATE(), GETDATE())
+
+	INSERT INTO COMPETITION (COMPETITION_NAME, COMPETITION_TYPE)
+	VALUES ('normies', 'Nationale competitie')
+
+	INSERT INTO test_VW_BRACKETS_KO.expected
+	VALUES (1, 1, 'finale', 'henry', 'yrneh', 20, 5)
+	
+	EXEC tSQLt.AssertEqualsTable 'test_VW_BRACKETS_KO.expected', 'VW_BRACKETS_KO'
+END
+GO
+EXEC tSQLt.Run 'test_VW_BRACKETS_KO.[test filters normal matches out]'
