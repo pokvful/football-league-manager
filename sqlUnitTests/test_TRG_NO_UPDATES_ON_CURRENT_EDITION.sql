@@ -276,33 +276,6 @@ END;
 
 GO
 
-CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in COMPETITION during a current edition FAILING]
-AS
-BEGIN
-	EXEC tSQLt.FakeTable @TableName='dbo.COMPETITION'
-	EXEC tSQLt.FakeTable @TableName='dbo.EDITION';
-	EXEC tSQLt.FakeTable @TableName='dbo.SEASON';
-
-	INSERT INTO COMPETITION (COMPETITION_NAME)
-	VALUES ('Eredivisie')
-
-	INSERT INTO EDITION (SEASON_NAME, COMPETITION_NAME)
-	VALUES ('21/22', 'Eredivisie')
-
-	INSERT INTO SEASON (SEASON_NAME, SEASON_START, SEASON_END)
-	VALUES ('21/22', DATEADD(year, -1, GETDATE()), DATEADD(year, 1, GETDATE()))
-
-	EXEC tSQLt.ApplyTrigger 'dbo.COMPETITION', 'TRG_NO_UPDATES_ON_CURRENT_EDITION_COMPETITION';
-
-	EXEC tSQLt.ExpectException;
-
-	UPDATE COMPETITION
-    SET COMPETITION_NAME = 'Jupiler League'
-    WHERE COMPETITION_NAME = 'Eredivisie'
-END;
-
-GO
-
 CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in COMPETITION during a current edition PASSING]
 AS
 BEGIN
@@ -384,6 +357,6 @@ BEGIN
     WHERE CLUB_NAME = 'Ajax'
 END;
 
-GO 
+GO
 
 EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges]';
