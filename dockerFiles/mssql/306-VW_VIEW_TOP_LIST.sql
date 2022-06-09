@@ -23,14 +23,17 @@ AS (
 )
 INSERT INTO @result (code)
 	SELECT
-		'CREATE OR ALTER VIEW VW_TOP_LIST_' + table_name + '
+		'CREATE OR ALTER VIEW [VW_TOP_LIST_' + table_name + ']
 		AS
 		SELECT
-			DENSE_RANK() OVER( ORDER BY COUNT(MATCH_ID) DESC ) AS ''RANK'',
-			' + column_name + ' AS PERSON_ID,
-			COUNT(MATCH_ID) AS ''COUNT''
-			FROM ' + table_name + '
-			GROUP BY ' + column_name + ';'
+			DENSE_RANK() OVER( ORDER BY COUNT(E.MATCH_ID) DESC ) AS ''RANK'',
+			E.[' + column_name + '] AS PERSON_ID,
+			C.COMPETITION_TYPE,
+			COUNT(E.MATCH_ID) AS ''COUNT''
+			FROM [' + table_name + '] E
+			JOIN MATCH M on M.MATCH_ID = E.MATCH_ID
+			JOIN COMPETITION C on C.COMPETITION_NAME = M.COMPETITION_NAME
+			GROUP BY [' + column_name + '], C.COMPETITION_TYPE;'
 		FROM tables;
 
 DECLARE @code VARCHAR(MAX);
