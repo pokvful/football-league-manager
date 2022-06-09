@@ -149,7 +149,7 @@ def generate_events(matches, players, reserves): # {{{
 
 			event_results.append( event( match[0], match_players, match_reserves ) )
 
-	with open("219-INSERT_EVENTS.sql", "w") as file:
+	with open("220-INSERT_EVENTS.sql", "w") as file:
 		file.write( "set nocount on;\ncommit transaction;\n/* z ← don't remove this (see https://isebitbucket.aimsites.nl/projects/S22122A4/repos/football-league-manager/pull-requests/88/overview) */ begin transaction;\n" )
 		file.write( "\n".join(event_results) )
 # }}}
