@@ -419,11 +419,12 @@ db.MOCK_DATA.find({}, { id: 1, first_name: 1, email: 1, gender: 1, ip_address: 1
 
 ## Koppeling stored procedures met views
 
-| Use case                       | View                                       |
-|--------------------------------|--------------------------------------------|
-| Ophalen clubinfo               | VW_SELECT_ALL_PLAYERS_PLAYED_IN_MATCH      |
-| Ophalen top-lijst              | VW_ALL_PLAYERS_EDITIONS                    |
-| Ophalen clubinfo               | VW_CLUB_INFORMATION                        |
-| Ophalen speelrondeinfo         | VW_GET_PLAYROUND_DATA                      |
-| Ophalen tussenstand competitie | VW_GET_INTERIM_SCORE_EDITION               |
-| Ophalen clubinfo               | VW_SHOW_CLUB_INFO                          |
+| Use case                       | View                                  |
+|--------------------------------|---------------------------------------|
+| Ophalen clubinfo               | VW_SELECT_ALL_PLAYERS_PLAYED_IN_MATCH |
+| Ophalen top-lijst              | VW_ALL_PLAYERS_EDITIONS               |
+| Ophalen clubinfo               | VW_CLUB_INFORMATION                   |
+| Ophalen speelrondeinfo         | VW_GET_PLAYROUND_DATA                 |
+| Ophalen tussenstand competitie | VW_GET_INTERIM_SCORE_EDITION          |
+| Ophalen clubinfo               | VW_SHOW_CLUB_INFO                     |
+| Ophalen brackets KO            | VW_VIEW_BRACKETS_KO                   |
