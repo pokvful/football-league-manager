@@ -78,3 +78,5 @@ python3 ./generate-events.py
 ```
 
 After this, you can enjoy waiting five minutes for MSSQL to start up 🤡
+
+And connect to localhost,14330 if you have .env file with DATABASE_PORT_MSSQL=14330
