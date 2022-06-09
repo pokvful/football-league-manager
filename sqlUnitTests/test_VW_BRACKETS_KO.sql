@@ -49,7 +49,7 @@ BEGIN
 	VALUES (2, '20/21', 'normies', GETDATE(), GETDATE())
 
 	INSERT INTO COMPETITION (COMPETITION_NAME, COMPETITION_TYPE)
-	VALUES ('normies', 'Nationale competitie')
+	VALUES ('normies', 'Nationale Competitie')
 
 	INSERT INTO test_VW_BRACKETS_KO.expected
 	VALUES (1, 1, 'finale', 'henry', 'yrneh', 20, 5)
