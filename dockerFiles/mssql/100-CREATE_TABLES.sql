@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     08/06/2022 15:20:22                          */
+/* Created on:     09/06/2022 09:29:39                          */
 /*==============================================================*/
 
 
@@ -139,16 +139,16 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('MATCH') and o.name = 'FK_MATCH_FK_BRACKE_MATCH2')
+   where r.fkeyid = object_id('MATCH') and o.name = 'FK_MATCH_FK_BRACKE_MATCH')
 alter table MATCH
-   drop constraint FK_MATCH_FK_BRACKE_MATCH2
+   drop constraint FK_MATCH_FK_BRACKE_MATCH
 go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('MATCH') and o.name = 'FK_MATCH_FK_BRACKE_MATCH')
+   where r.fkeyid = object_id('MATCH') and o.name = 'FK_MATCH_FK_BRACKE_MATCH2')
 alter table MATCH
-   drop constraint FK_MATCH_FK_BRACKE_MATCH
+   drop constraint FK_MATCH_FK_BRACKE_MATCH2
 go
 
 if exists (select 1
@@ -914,10 +914,6 @@ if exists(select 1 from systypes where name='COUNTRY_NAME')
    drop type COUNTRY_NAME
 go
 
-if exists(select 1 from systypes where name='DATE')
-   drop type DATE
-go
-
 if exists(select 1 from systypes where name='G_IDENTITY')
    drop type G_IDENTITY
 go
@@ -966,8 +962,12 @@ if exists(select 1 from systypes where name='STADIUM_NAME')
    drop type STADIUM_NAME
 go
 
-if exists(select 1 from systypes where name='TIME')
-   drop type TIME
+if exists(select 1 from systypes where name='_DATE_')
+   drop type _DATE_
+go
+
+if exists(select 1 from systypes where name='_TIME_')
+   drop type _TIME_
 go
 
 /*==============================================================*/
@@ -1024,13 +1024,6 @@ go
 /*==============================================================*/
 create type COUNTRY_NAME
    from varchar(128)
-go
-
-/*==============================================================*/
-/* Domain: DATE                                                 */
-/*==============================================================*/
-create type DATE
-   from datetime
 go
 
 /*==============================================================*/
@@ -1118,10 +1111,17 @@ create type STADIUM_NAME
 go
 
 /*==============================================================*/
-/* Domain: TIME                                                 */
+/* Domain: _DATE_                                               */
 /*==============================================================*/
-create type TIME
-   from datetime
+create type _DATE_
+   from date
+go
+
+/*==============================================================*/
+/* Domain: _TIME_                                               */
+/*==============================================================*/
+create type _TIME_
+   from time
 go
 
 /*==============================================================*/
@@ -1152,7 +1152,7 @@ create table CLUB (
    STADIUM_NAME         STADIUM_NAME         not null,
    COUNTRY_NAME         COUNTRY_NAME         not null,
    CITY_NAME            CITY_NAME            not null,
-   PERSON_ID            PERSON_ID            not null,
+   COACH_PERSON_ID      PERSON_ID            not null,
    constraint PK_CLUB primary key (CLUB_NAME)
 )
 go
@@ -1442,8 +1442,8 @@ create table MATCH (
    MATCH_ID             G_IDENTITY           identity,
    SEASON_NAME          SEASON_NAME          not null,
    COMPETITION_NAME     COMPETITION_NAME     not null,
-   START_DATE           DATE                 not null,
-   MATCH_DAY            DATE                 not null,
+   START_DATE           _DATE_               not null,
+   MATCH_DAY            _DATE_               not null,
    HOME_CLUB_NAME       CLUB_NAME            not null,
    OUT_CLUB_NAME        CLUB_NAME            not null,
    STADIUM_NAME         STADIUM_NAME         not null,
@@ -1518,8 +1518,8 @@ go
 create table MATCHDAY (
    SEASON_NAME          SEASON_NAME          not null,
    COMPETITION_NAME     COMPETITION_NAME     not null,
-   START_DATE           DATE                 not null,
-   MATCH_DAY            DATE                 not null,
+   START_DATE           _DATE_               not null,
+   MATCH_DAY            _DATE_               not null,
    constraint PK_MATCHDAY primary key (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY)
 )
 go
@@ -1578,7 +1578,7 @@ create table PERSON (
    FIRST_NAME           NAME                 not null,
    LAST_NAME            NAME                 not null,
    MIDDLE_NAME          NAME                 null,
-   BIRTH_DATE           DATE                 not null,
+   BIRTH_DATE           _DATE_               not null,
    constraint PK_PERSON primary key (PERSON_ID)
 )
 go
@@ -1690,7 +1690,7 @@ go
 create table ROUND (
    SEASON_NAME          SEASON_NAME          not null,
    COMPETITION_NAME     COMPETITION_NAME     not null,
-   START_DATE           DATE                 not null,
+   START_DATE           _DATE_               not null,
    ROUND_NR             ROUND_NR             null,
    ROUND_NAME           ROUND_NAME           null,
    constraint PK_ROUND primary key (SEASON_NAME, COMPETITION_NAME, START_DATE)
@@ -1713,8 +1713,8 @@ go
 /*==============================================================*/
 create table SEASON (
    SEASON_NAME          SEASON_NAME          not null,
-   SEASON_START         DATE                 not null,
-   SEASON_END           DATE                 not null,
+   SEASON_START         _DATE_               not null,
+   SEASON_END           _DATE_               not null,
    constraint PK_SEASON primary key (SEASON_NAME)
 )
 go
@@ -1861,7 +1861,7 @@ alter table CLUB
 go
 
 alter table CLUB
-   add constraint FK_CLUB_COACH_OF__COACH foreign key (PERSON_ID)
+   add constraint FK_CLUB_COACH_OF__COACH foreign key (COACH_PERSON_ID)
       references COACH (PERSON_ID)
          on update cascade
 go
@@ -1962,13 +1962,13 @@ alter table LINEUP
 go
 
 alter table MATCH
-   add constraint FK_MATCH_FK_BRACKE_MATCH2 foreign key (BRACKET_LEFT)
+   add constraint FK_MATCH_FK_BRACKE_MATCH foreign key (BRACKET_LEFT)
       references MATCH (MATCH_ID)
          on update cascade
 go
 
 alter table MATCH
-   add constraint FK_MATCH_FK_BRACKE_MATCH foreign key (BRACKET_RIGHT)
+   add constraint FK_MATCH_FK_BRACKE_MATCH2 foreign key (BRACKET_RIGHT)
       references MATCH (MATCH_ID)
          on update cascade
 go
