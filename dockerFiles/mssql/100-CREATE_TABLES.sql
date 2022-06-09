@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     09/06/2022 09:29:39                          */
+/* Created on:     09/06/2022 09:54:55                          */
 /*==============================================================*/
 
 
@@ -139,16 +139,16 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('MATCH') and o.name = 'FK_MATCH_FK_BRACKE_MATCH')
+   where r.fkeyid = object_id('MATCH') and o.name = 'FK_BRACKET_LEFT')
 alter table MATCH
-   drop constraint FK_MATCH_FK_BRACKE_MATCH
+   drop constraint FK_BRACKET_LEFT
 go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('MATCH') and o.name = 'FK_MATCH_FK_BRACKE_MATCH2')
+   where r.fkeyid = object_id('MATCH') and o.name = 'FK_BRACKET_RIGHT')
 alter table MATCH
-   drop constraint FK_MATCH_FK_BRACKE_MATCH2
+   drop constraint FK_BRACKET_RIGHT
 go
 
 if exists (select 1
@@ -1962,15 +1962,13 @@ alter table LINEUP
 go
 
 alter table MATCH
-   add constraint FK_MATCH_FK_BRACKE_MATCH foreign key (BRACKET_LEFT)
+   add constraint FK_BRACKET_LEFT foreign key (BRACKET_LEFT)
       references MATCH (MATCH_ID)
-         on update cascade
 go
 
 alter table MATCH
-   add constraint FK_MATCH_FK_BRACKE_MATCH2 foreign key (BRACKET_RIGHT)
+   add constraint FK_BRACKET_RIGHT foreign key (BRACKET_RIGHT)
       references MATCH (MATCH_ID)
-         on update cascade
 go
 
 alter table MATCH
