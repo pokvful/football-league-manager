@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     09/06/2022 10:31:52                          */
+/* Created on:     09/06/2022 10:38:21                          */
 /*==============================================================*/
 
 
@@ -1750,7 +1750,7 @@ create table SUBSTITUTE (
    MATCH_ID             G_IDENTITY           not null,
    POSITION_TYPE        POSITION_TYPE        not null,
    IN_PERSON_ID         PERSON_ID            not null,
-   OUT_PERSON_OUT       PERSON_ID            not null,
+   OUT_PERSON_ID        PERSON_ID            not null,
    TIME                 MINUTE_IN_MATCH      not null,
    constraint PK_SUBSTITUTE primary key (EVENT_ID)
 )
@@ -1783,7 +1783,7 @@ go
 
 
 
-create nonclustered index PERSON_INVOLVED_IN_EVENT4_FK on SUBSTITUTE (OUT_PERSON_OUT ASC)
+create nonclustered index PERSON_INVOLVED_IN_EVENT4_FK on SUBSTITUTE (OUT_PERSON_ID ASC)
 go
 
 /*==============================================================*/
@@ -2071,7 +2071,7 @@ alter table SUBSTITUTE
 go
 
 alter table SUBSTITUTE
-   add constraint FK_SUBSTITU_PERSON_IN_PERSON foreign key (OUT_PERSON_OUT)
+   add constraint FK_SUBSTITU_PERSON_IN_PERSON foreign key (OUT_PERSON_ID)
       references PERSON (PERSON_ID)
          on update cascade
 go
