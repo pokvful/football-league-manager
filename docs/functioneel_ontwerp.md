@@ -792,11 +792,11 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 
 Tijdens de voetbalwedstrijd op 5 januari 2020 tussen thuis team FC Barcelona en uit team FC Madrid in de speelronde 3 januari 2020 in het seizoen 19/20 in competitie LaLiga heeft het uit team 5 goals gescoord.
 
-Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> heeft speler <u>*55* gescoord in de *48ste* minuut</u>.
+Tijdens de voetbalwedstrijd op <u>5 januari 2020 tussen thuis team FC Barcelona thuis en uit team FC Madrid uit in de speelronde 3 januari 2020 in het seizoen 20/21 in competitie LaLiga</u> heeft speler <u>**55** gescoord in de *48ste* minuut</u>.
 
 ---
 
-ET: *MATCH*
+ET: MATCH
 
 MATCH
 
@@ -804,7 +804,7 @@ MATCH
 
 ET: **PLAYER**
 
-MATCH
+**MATCH**
 
 ---
 
@@ -816,7 +816,7 @@ MATCH
 
 ---
 
-Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft speler \<*Person_id*\> gescoord in de \<*Time*\> minuut.
+Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> thuis en uit team \<Club_name\> uit in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> heeft speler \<**Person_id**\> gescoord in de \<*Time*\> minuut.
 
 ### Gele kaarten
 

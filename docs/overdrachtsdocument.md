@@ -97,8 +97,3 @@ Voorbeeld van geformateerde JSON:
 
 Formateren kan door middel van de SQL statement: `FOR JSON PATH` (hiervoor moet elke kolom in de SELECT een alias krijgen).
 
-# Hier eventueel een kopje over de implementatie van knock-out tournament
-
-*Dit kopje alleen uitwerken als we de implementatie van het knock-out tournament niet optijd afkrijgen.
-
-
