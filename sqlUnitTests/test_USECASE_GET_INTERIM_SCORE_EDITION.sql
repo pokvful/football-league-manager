@@ -31,7 +31,7 @@ BEGIN
 	(55, 'club2'), (56, 'club2'), (70, 'club1'), (20, 'club3'), (5, 'club4')
 
 	INSERT INTO COMPETITION (COMPETITION_NAME, COMPETITION_TYPE)
-	VALUES ('comp', 'Nationale Kampioenschap'), ('comp2', 'Nationale Kampioenschap') ,('knockcomp', 'Knockout')
+	VALUES ('comp', 'Nationale competitie'), ('comp2', 'Nationale competitie') ,('knockcomp', 'Knockout')
 
 	DROP TABLE IF EXISTS test_GET_SCORE_EDITION.expected 
 
@@ -204,11 +204,6 @@ BEGIN
 	(3, 'comp2','20/21', 'bb'	, 4, 0, 2, 2, 0, 3, -3, 2)
 
 	EXEC tSQLt.AssertEqualsTable 'test_GET_SCORE_EDITION.expected', 'SCORE_EDITIONS'
-
-	
-	SELECT * FROM GOALS_MATCHES
-	SELECT * FROM GOALS_CLUB_MATCH
-	SELECT * FROM SCORE_EDITIONS
 END
 GO
 EXEC tSQLt.Run 'test_GET_SCORE_EDITION.[test 3 competitions one KO which shouldn''t show]'
