@@ -3,8 +3,8 @@
 # Extract countries from the city create script, so we always have the correct countries
 sed -E "s/CITY \\(Country_name, City_name\\) values \\(('[[:alnum:][:blank:][:punct:]]+'), '[[:alnum:][:blank:][:punct:]]+'\\);\$/COUNTRY (Country_name) values (\1);/" ./201-INSERT_CITY.sql > ./200-INSERT_COUNTRY.sql
 
-# Copy the DOMESTIC_LEAGUE content to the COMPETITION table
-sed -E "s/DOMESTIC_LEAGUE \\(Competition_name\) values \\(('[[:alnum:][:blank:][:punct:]]+')\\);\$/COMPETITION (Competition_name) values (\1);/" ./203-INSERT_DOMESTIC_LEAGUE.sql > ./202-INSERT_COMPETITION.sql
+# Copy the DOMESTIC_LEAGUE content to the COMPETITION table (competition_type is a default, because we don't mock for KO)
+sed -E "s/DOMESTIC_LEAGUE \\(Competition_name\) values \\(('[[:alnum:][:blank:][:punct:]]+')\\);\$/COMPETITION (Competition_name, Competition_type) values (\1, 'Nationale Competitie');/" ./204-INSERT_DOMESTIC_LEAGUE.sql > ./203-INSERT_COMPETITION.sql
 
 # Create a EDITION table
 edition_result="set nocount on;"
@@ -12,10 +12,10 @@ edition_result="set nocount on;"
 while read -r competition; do
 	while read -r season; do
 		edition_result="$edition_result"'\n'"insert into EDITION (Season_name, Competition_name) values ($season, $competition);"
-	done < <(tail -n +2 ./204-INSERT_SEASONS.sql | sed -E "s/.+\\(('[^']+').+/\1/")
-done < <(tail -n +2 ./202-INSERT_COMPETITION.sql | sed -E "s/.+\\(('[^']+').+/\1/")
+	done < <(tail -n +2 ./205-INSERT_SEASONS.sql | sed -E "s/.+\\(('[^']+').+/\1/")
+done < <(tail -n +2 ./203-INSERT_COMPETITION.sql | sed -E "s/.+\\(('[^']+').+/\1/")
 
-echo -e $edition_result > ./210-INSERT_EDITION.sql
+echo -e $edition_result > ./211-INSERT_EDITION.sql
 
 # Create a CLUB_plays_in_EDITION table
 plays_in_edition_result="set nocount on;"
@@ -23,10 +23,10 @@ plays_in_edition_result="set nocount on;"
 while read -r edition; do
 	while read -r club; do
 		plays_in_edition_result="$plays_in_edition_result"'\n'"insert into CLUB_plays_in_EDITION (Club_name, Season_name, Competition_name) values ($club, $edition);"
-	done < <(tail -n +2 ./208-INSERT_CLUBS.sql | sed -E "s/.+\\(('[^']+').+/\1/")
-done < <(tail -n +2 ./210-INSERT_EDITION.sql | sed -E "s/.+\\(('[^)]+').+/\1/")
+	done < <(tail -n +2 ./209-INSERT_CLUBS.sql | sed -E "s/.+\\(('[^']+').+/\1/")
+done < <(tail -n +2 ./211-INSERT_EDITION.sql | sed -E "s/.+\\(('[^)]+').+/\1/")
 
-echo -e $plays_in_edition_result > ./212-INSERT_CLUBS_THAT_PLAY_IN_EDITION.sql
+echo -e $plays_in_edition_result > ./213-INSERT_CLUBS_THAT_PLAY_IN_EDITION.sql
 
 # loop over all insert files in this directory
 for file in ./*-INSERT_*.sql; do
