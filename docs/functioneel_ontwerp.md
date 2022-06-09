@@ -1058,9 +1058,9 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 
 ## Knockout Round
 
-Tijdens de knockout wedstrijd op 31 mei 2021 spelen in de zestiende ronde Real Madrid en FC Barcelona de finale
+Tijdens de knockout ronde op 31 mei 2021 spelen in de zestiende ronde Real Madrid en FC Barcelona de finale
 
-Tijdens de knockout wedstrijd op <u>01 april 2022 spelen in de achtste ronde Ajax en Feyenoord de halve finale</u>
+Tijdens de knockout ronde op <u>01 april 2022 spelen in de achtste ronde Ajax en Feyenoord de halve finale</u>
 
 ---
 
@@ -1081,6 +1081,28 @@ SUBTYPE (ROUND)
 RT TYPE_OF_ROUND tussen KO_ROUND en ROUND.
 
 Predicaat: Tijdens de knockout wedstrijd op \<Start_date\> spelen in de \<Round_nr\> \<Club_name\> en \<Club_name\> de \<Round_name\>
+
+## Knockout Match
+
+Tijdens de knockout wedstrijd op 31 mei 2021 spelen in de zestiende ronde Real Madrid van de linker bracket en FC Barcelona van de rechter bracket de finale
+
+Tijdens de knockout wedstrijd op <u>01 april 2022 spelen in de achtste ronde Ajax van de linker bracket en Feyenoord van de rechter bracket de halve finale</u>
+
+---
+
+ET: MATCH
+
+MATCH
+
+---
+
+ET: KO_MATCH
+
+SUBTYPE (MATCH)
+
+RT TYPE_OF_MATCH tussen KO_MATCH en MATCH.
+
+Predicaat: Tijdens de knockout wedstrijd op \<Start_date\> spelen in de \<Round_nr\> \<Club_name\> van de linker bracket en \<Club_name\> van de rechter bracket de \<Round_name\>
 
 # Business Rules
 
