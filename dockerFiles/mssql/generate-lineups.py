@@ -91,11 +91,11 @@ def generate_positions(matches, players): # {{{
 				}
 			) )
 
-	with open("216-INSERT_LINEUP.sql", "w") as file:
+	with open("218-INSERT_LINEUP.sql", "w") as file:
 		file.write( "set nocount on;\ncommit transaction;\n/* z ← don't remove this (see https://isebitbucket.aimsites.nl/projects/S22122A4/repos/football-league-manager/pull-requests/88/overview) */ begin transaction;\n" )
 		file.write( "\n".join(result_positions) )
 
-	with open("217-INSERT_RESERVES.sql", "w") as file:
+	with open("219-INSERT_RESERVES.sql", "w") as file:
 		file.write( "set nocount on;\ncommit transaction;\n/* z ← don't remove this (see https://isebitbucket.aimsites.nl/projects/S22122A4/repos/football-league-manager/pull-requests/88/overview) */ begin transaction;\n" )
 		file.write( "\n".join(result_reserves) )
 # }}}

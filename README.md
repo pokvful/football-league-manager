@@ -6,8 +6,14 @@ To run the database, you need to have [docker](https://docs.docker.com/get-docke
 
 `cd` into this project and run the following command:
 
+If you are a developer
 ```bash
-docker-compose up --build --force-recreate -d
+docker-compose -f docker-compose.yaml -f docker-compose.dev.yaml up --build --force-recreate -d
+```
+
+If you want the production environment
+```bash
+docker-compose -f docker-compose.yaml -f docker-compose.prod.yaml up --build --force-recreate -d
 ```
 
 When you are done, you can stop the database by running the following command in this directory:
@@ -64,7 +70,7 @@ cd dockerFiles/mssql/
 ./create_insert_scripts.sh
 # spin up the docker containers
 python3 ./generate-matches-matchdays-rounds.py
-python3 ./generate-positions.py
+python3 ./generate-lineups.py
 ./create_insert_scripts.sh # run this one more time, so everything is sorted correctly
 # restart the docker containers
 python3 ./generate-events.py
@@ -72,3 +78,5 @@ python3 ./generate-events.py
 ```
 
 After this, you can enjoy waiting five minutes for MSSQL to start up 🤡
+
+And connect to localhost,14330 if you have .env file with DATABASE_PORT_MSSQL=14330

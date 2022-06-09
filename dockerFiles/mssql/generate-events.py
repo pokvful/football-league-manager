@@ -5,6 +5,13 @@ A very beautiful script to generate event scripts
 import random
 import pyodbc
 
+POSITIONS = [
+    "KEEPER",
+    "DEFENDER",
+    "ATTACKER",
+    "MIDFIELDER",
+]
+
 def format_sql(table, dict):
 	columns = [ key for key, value in dict.items() ]
 	values = [ str(value) for key, value in dict.items() ]
@@ -101,6 +108,8 @@ def event_CORNER(match_id, players, reserves): # {{{
 # }}}
 
 def event_SUBSTITUTE(match_id, players, reserves): # {{{
+	position = random.choice(POSITIONS)
+
 	return format_sql(
 		"SUBSTITUTE",
 		{
@@ -108,6 +117,7 @@ def event_SUBSTITUTE(match_id, players, reserves): # {{{
 			"[Time]": round( random.uniform(0, 95), 3 ),
 			"In_person_id": random.choice(reserves)[0],
 			"Out_person_id": random.choice(players)[0],
+			"Position_type": f"'{position}'",
 		},
 	)
 # }}}
@@ -139,7 +149,7 @@ def generate_events(matches, players, reserves): # {{{
 
 			event_results.append( event( match[0], match_players, match_reserves ) )
 
-	with open("218-INSERT_EVENTS.sql", "w") as file:
+	with open("220-INSERT_EVENTS.sql", "w") as file:
 		file.write( "set nocount on;\ncommit transaction;\n/* z ← don't remove this (see https://isebitbucket.aimsites.nl/projects/S22122A4/repos/football-league-manager/pull-requests/88/overview) */ begin transaction;\n" )
 		file.write( "\n".join(event_results) )
 # }}}

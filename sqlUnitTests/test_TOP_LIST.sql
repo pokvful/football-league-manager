@@ -12,6 +12,37 @@ BEGIN
 	EXECUTE tSQLt.FakeTable 'dbo.FOUL';
 	EXECUTE tSQLt.FakeTable 'dbo.CORNER';
 	EXECUTE tSQLt.FakeTable 'dbo.SUBSTITUTE';
+	EXECUTE tSQLt.FakeTable 'dbo.MATCH';
+	EXECUTE tSQLt.FakeTable 'dbo.COMPETITION';
+
+	INSERT INTO MATCH (MATCH_ID, COMPETITION_NAME)
+		VALUES (1,'21/22'),
+			(2,'21/22'),
+			(3,'21/22'),
+			(10,'21/22'),
+			(11,'21/22'),
+			(12,'21/22'),
+			(20,'21/22'),
+			(21,'21/22'),
+			(22,'21/22'),
+			(30,'21/22'),
+			(31,'21/22'),
+			(32,'21/22'),
+			(40,'21/22'),
+			(41,'21/22'),
+			(42,'21/22'),
+			(50,'21/22'),
+			(51,'21/22'),
+			(52,'21/22'),
+			(60,'21/22'),
+			(61,'21/22'),
+			(62,'21/22'),
+			(70,'21/22'),
+			(71,'21/22'),
+			(72,'21/22');
+
+	INSERT INTO COMPETITION (COMPETITION_NAME, COMPETITION_TYPE)
+		VALUES ('21/22', 'Nationale Competitie');
 
 	INSERT INTO RED_CARD (MATCH_ID, PERSON_ID)
 		VALUES (1, 1),
@@ -105,12 +136,14 @@ BEGIN
 	CREATE TABLE test_TOP_LIST.expected (
 		[RANK] INT NOT NULL,
 		PERSON_ID INT NOT NULL,
+		COMPETITION_TYPE varchar(100),
 		[COUNT] INT NOT NULL
 	);
 
 	CREATE TABLE test_TOP_LIST.actual (
 		[RANK] INT NOT NULL,
 		PERSON_ID INT NOT NULL,
+		COMPETITION_TYPE varchar(100),
 		[COUNT] INT NOT NULL
 	);
 END;
@@ -120,9 +153,9 @@ CREATE OR ALTER PROCEDURE test_TOP_LIST.[test VW_TOP_LIST_RED_CARD returns the c
 AS
 BEGIN
 	INSERT INTO test_TOP_LIST.expected
-		VALUES (1, 1, 5),
-			(2, 2, 3),
-			(3, 3, 1);
+		VALUES (1, 1, 'Nationale Competitie', 5),
+			(2, 2, 'Nationale Competitie', 3),
+			(3, 3, 'Nationale Competitie', 1);
 
 	INSERT INTO test_TOP_LIST.actual
 		SELECT *
@@ -136,9 +169,9 @@ CREATE OR ALTER PROCEDURE test_TOP_LIST.[test VW_TOP_LIST_YELLOW_CARD returns th
 AS
 BEGIN
 	INSERT INTO test_TOP_LIST.expected
-		VALUES (1, 10, 5),
-			(2, 11, 4),
-			(3, 12, 1);
+		VALUES (1, 10,'Nationale Competitie' , 5),
+			(2, 11, 'Nationale Competitie', 4),
+			(3, 12, 'Nationale Competitie', 1);
 
 	INSERT INTO test_TOP_LIST.actual
 		SELECT *
@@ -152,9 +185,9 @@ CREATE OR ALTER PROCEDURE test_TOP_LIST.[test VW_TOP_LIST_PASS returns the corre
 AS
 BEGIN
 	INSERT INTO test_TOP_LIST.expected
-		VALUES (1, 21, 5),
-			(2, 20, 4),
-			(3, 22, 2);
+		VALUES (1, 21, 'Nationale Competitie', 5),
+			(2, 20, 'Nationale Competitie', 4),
+			(3, 22, 'Nationale Competitie', 2);
 
 	INSERT INTO test_TOP_LIST.actual
 		SELECT *
@@ -168,9 +201,9 @@ CREATE OR ALTER PROCEDURE test_TOP_LIST.[test VW_TOP_LIST_GOAL returns the corre
 AS
 BEGIN
 	INSERT INTO test_TOP_LIST.expected
-		VALUES (1, 31, 4),
-			(2, 30, 3),
-			(2, 32, 3);
+		VALUES (1, 31, 'Nationale Competitie', 4),
+			(2, 30, 'Nationale Competitie', 3),
+			(2, 32, 'Nationale Competitie', 3);
 
 	INSERT INTO test_TOP_LIST.actual
 		SELECT *
@@ -184,9 +217,9 @@ CREATE OR ALTER PROCEDURE test_TOP_LIST.[test VW_TOP_LIST_SHOT returns the corre
 AS
 BEGIN
 	INSERT INTO test_TOP_LIST.expected
-		VALUES (1, 42, 4),
-			(2, 40, 3),
-			(3, 41, 2);
+		VALUES (1, 42, 'Nationale Competitie', 4),
+			(2, 40, 'Nationale Competitie', 3),
+			(3, 41, 'Nationale Competitie',2);
 
 	INSERT INTO test_TOP_LIST.actual
 		SELECT *
@@ -200,9 +233,9 @@ CREATE OR ALTER PROCEDURE test_TOP_LIST.[test VW_TOP_LIST_FOUL returns the corre
 AS
 BEGIN
 	INSERT INTO test_TOP_LIST.expected
-		VALUES (1, 52, 4),
-			(2, 50, 3),
-			(3, 51, 2);
+		VALUES (1, 52, 'Nationale Competitie', 4),
+			(2, 50, 'Nationale Competitie', 3),
+			(3, 51, 'Nationale Competitie', 2);
 
 	INSERT INTO test_TOP_LIST.actual
 		SELECT *
@@ -216,9 +249,9 @@ CREATE OR ALTER PROCEDURE test_TOP_LIST.[test VW_TOP_LIST_CORNER returns the cor
 AS
 BEGIN
 	INSERT INTO test_TOP_LIST.expected
-		VALUES (1, 60, 3),
-			(2, 61, 2),
-			(3, 62, 1);
+		VALUES (1, 60, 'Nationale Competitie', 3),
+			(2, 61, 'Nationale Competitie', 2),
+			(3, 62, 'Nationale Competitie', 1);
 
 	INSERT INTO test_TOP_LIST.actual
 		SELECT *
@@ -232,9 +265,9 @@ CREATE OR ALTER PROCEDURE test_TOP_LIST.[test VW_TOP_LIST_SUBSTITUTE returns the
 AS
 BEGIN
 	INSERT INTO test_TOP_LIST.expected
-		VALUES (1, 72, 3),
-			(2, 71, 2),
-			(3, 70, 1);
+		VALUES (1, 72, 'Nationale Competitie', 3),
+			(2, 71, 'Nationale Competitie', 2),
+			(3, 70, 'Nationale Competitie', 1);
 
 	INSERT INTO test_TOP_LIST.actual
 		SELECT *
