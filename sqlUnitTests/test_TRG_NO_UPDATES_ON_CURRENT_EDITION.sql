@@ -1,10 +1,15 @@
 EXEC tSQLt.NewTestClass 'test_IR16_CurrentEditionChanges'
+
 GO
 
 CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in season during a current edition FAILING]
 AS
 BEGIN
 	EXEC tSQLt.FakeTable @TableName='dbo.SEASON';
+	EXEC tSQLt.FakeTable @TableName='dbo.COMPETITION'
+
+	INSERT INTO COMPETITION (COMPETITION_NAME, COMPETITION_TYPE)
+	VALUES ('Eredivise', 'Nationale competitie')
 
 	INSERT INTO SEASON (SEASON_NAME, SEASON_START, SEASON_END)
 	VALUES ('21/22', DATEADD(year, -1, GETDATE()), DATEADD(year, 1, GETDATE()))
@@ -17,9 +22,6 @@ BEGIN
 	SET SEASON_NAME = '50/51'
 	WHERE SEASON_NAME = '21/22'
 END;
-GO
-
-EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in season during a current edition FAILING]'
 GO
 
 CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in season during a current edition PASSING]
@@ -40,9 +42,6 @@ BEGIN
 END;
 GO
 
-EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in season during a current edition PASSING]'
-GO
-
 CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in CLUB during a current edition FAILING]
 AS
 BEGIN
@@ -52,7 +51,7 @@ BEGIN
 	EXEC tSQLt.FakeTable @TableName='dbo.SEASON';
 
 	INSERT INTO CLUB (CLUB_NAME, STADIUM_NAME)
-	VALUES ('Ajax', 'Amsterdam ArenA')
+	VALUES ('Ajax', 'Amsterdam Arena')
 
 	INSERT INTO CLUB_PLAYS_IN_EDITION (CLUB_NAME, SEASON_NAME, COMPETITION_NAME)
 	VALUES ('Ajax', '21/22', 'Eredivisie')
@@ -77,9 +76,6 @@ BEGIN
 END;
 GO
 
-EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in CLUB during a current edition FAILING]'
-GO
-
 CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in CLUB during a current edition PASSING]
 AS
 BEGIN
@@ -89,7 +85,7 @@ BEGIN
 	EXEC tSQLt.FakeTable @TableName='dbo.SEASON';
 
 	INSERT INTO CLUB (CLUB_NAME, STADIUM_NAME)
-	VALUES ('Ajax', 'Amsterdam ArenA')
+	VALUES ('Ajax', 'Amsterdam Arena')
 
 	INSERT INTO CLUB_PLAYS_IN_EDITION (CLUB_NAME, SEASON_NAME, COMPETITION_NAME)
 	VALUES ('Ajax', '24/25', 'Eredivisie')
@@ -112,9 +108,6 @@ BEGIN
     SET STADIUM_NAME = 'Johan Cruyf Arena'
     WHERE CLUB_NAME = 'Ajax'
 END;
-GO
-
-EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in CLUB during a current edition PASSING]'
 GO
 
 CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition PASSING CURRENT SEASON]
@@ -156,9 +149,6 @@ BEGIN
 END;
 GO
 
-EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition PASSING CURRENT SEASON]'
-GO
-
 CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition FAILING CURRENT SEASON]
 AS
 BEGIN
@@ -198,9 +188,6 @@ BEGIN
 END;
 GO
 
-EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition FAILING CURRENT SEASON]'
-GO
-
 CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition PASSING ALTERABLE COLUMN]
 AS
 BEGIN
@@ -209,7 +196,6 @@ BEGIN
 	EXEC tSQLt.FakeTable @TableName='dbo.ROUND';
 	EXEC tSQLt.FakeTable @TableName='dbo.EDITION';
 	EXEC tSQLt.FakeTable @TableName='dbo.SEASON';
-
 
 	INSERT INTO MATCH (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY, HOME_CLUB_NAME, BALL_POSSESSION_HOME)
 	VALUES ('21/22', 'Eredivisie', '02-02-2021', '02-02-2021', 'Ajax', null)
@@ -239,9 +225,6 @@ BEGIN
     SET BALL_POSSESSION_HOME = 50
     WHERE HOME_CLUB_NAME = 'Ajax'
 END;
-GO
-
-EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition PASSING ALTERABLE COLUMN]'
 GO
 
 CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition FAILING ON DELETE]
@@ -281,9 +264,6 @@ BEGIN
 END;
 GO
 
-EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition FAILING ON DELETE]'
-GO
-
 CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition FAILING ON UPDATE]
 AS
 BEGIN
@@ -292,7 +272,6 @@ BEGIN
 	EXEC tSQLt.FakeTable @TableName='dbo.ROUND';
 	EXEC tSQLt.FakeTable @TableName='dbo.EDITION';
 	EXEC tSQLt.FakeTable @TableName='dbo.SEASON';
-
 
 	INSERT INTO MATCH (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY, HOME_CLUB_NAME, BALL_POSSESSION_HOME)
 	VALUES ('21/22', 'Eredivisie', '02-02-2021', '02-02-2021', 'Ajax', 50)
@@ -324,9 +303,6 @@ BEGIN
 END;
 GO
 
-EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in MATCH during a current edition FAILING ON UPDATE]'
-GO
-
 CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in COMPETITION during a current edition FAILING]
 AS
 BEGIN
@@ -334,8 +310,8 @@ BEGIN
 	EXEC tSQLt.FakeTable @TableName='dbo.EDITION';
 	EXEC tSQLt.FakeTable @TableName='dbo.SEASON';
 
-	INSERT INTO COMPETITION (COMPETITION_NAME)
-	VALUES ('Eredivisie')
+	INSERT INTO COMPETITION (COMPETITION_NAME, COMPETITION_TYPE)
+	VALUES ('Eredivisie', 'Nationale competitie')
 
 	INSERT INTO EDITION (SEASON_NAME, COMPETITION_NAME)
 	VALUES ('21/22', 'Eredivisie')
@@ -356,9 +332,6 @@ BEGIN
 END;
 GO
 
-EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in COMPETITION during a current edition FAILING]'
-GO
-
 CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in COMPETITION during a current edition PASSING]
 AS
 BEGIN
@@ -366,8 +339,8 @@ BEGIN
 	EXEC tSQLt.FakeTable @TableName='dbo.EDITION';
 	EXEC tSQLt.FakeTable @TableName='dbo.SEASON';
 
-	INSERT INTO COMPETITION (COMPETITION_NAME)
-	VALUES ('Eredivisie')
+	INSERT INTO COMPETITION (COMPETITION_NAME, COMPETITION_TYPE)
+	VALUES ('Eredivisie', 'Nationale competitie')
 
 	INSERT INTO EDITION (SEASON_NAME, COMPETITION_NAME)
 	VALUES ('99/99', 'Eredivisie')
@@ -388,16 +361,17 @@ BEGIN
 END;
 GO
 
-EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in COMPETITION during a current edition PASSING]'
-GO 
-
 CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in CLUB_PLAYS_IN_EDITION during a current edition PASSING]
 AS
 BEGIN
 
+	EXEC tSQLt.FakeTable @TableName='dbo.COMPETITION'
 	EXEC tSQLt.FakeTable @TableName='dbo.CLUB_PLAYS_IN_EDITION'
 	EXEC tSQLt.FakeTable @TableName='dbo.EDITION';
 	EXEC tSQLt.FakeTable @TableName='dbo.SEASON';
+
+	INSERT INTO COMPETITION (COMPETITION_NAME, COMPETITION_TYPE)
+	VALUES ('Eredivisie', 'Nationale Competitie')
 
 	INSERT INTO CLUB_PLAYS_IN_EDITION (CLUB_NAME, SEASON_NAME, COMPETITION_NAME)
 	VALUES ('Ajax', '99/99', 'Eredivisie')
@@ -409,7 +383,6 @@ BEGIN
 	VALUES ('99/99', DATEADD(year, 80, GETDATE()), DATEADD(year, 81, GETDATE()))
 
 	EXEC tSQLt.ApplyTrigger 'dbo.CLUB_PLAYS_IN_EDITION', 'TRG_NO_UPDATES_ON_CURRENT_EDITION_CIE';
-
 	EXEC tSQLt.ApplyConstraint 'dbo.EDITION', 'FK_EDITION_EDITION_I_SEASON'
 	EXEC tSQLt.ApplyConstraint 'dbo.CLUB_PLAYS_IN_EDITION', 'FK_CLUB_PLA_CLUB_PLAY_EDITION'
 
@@ -419,18 +392,20 @@ BEGIN
     SET CLUB_NAME = 'PSV'
     WHERE CLUB_NAME = 'Ajax'
 END;
-GO
 
-EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in CLUB_PLAYS_IN_EDITION during a current edition PASSING]'
 GO 
 
 CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in CLUB_PLAYS_IN_EDITION during a current edition FAILING]
 AS
 BEGIN
 
+	EXEC tSQLt.FakeTable @TableName='dbo.COMPETITION';
 	EXEC tSQLt.FakeTable @TableName='dbo.CLUB_PLAYS_IN_EDITION'
 	EXEC tSQLt.FakeTable @TableName='dbo.EDITION';
 	EXEC tSQLt.FakeTable @TableName='dbo.SEASON';
+
+	INSERT INTO COMPETITION (COMPETITION_NAME, COMPETITION_TYPE)
+	VALUES ('Eredivisie', 'Nationale Competitie')
 
 	INSERT INTO CLUB_PLAYS_IN_EDITION (CLUB_NAME, SEASON_NAME, COMPETITION_NAME)
 	VALUES ('Ajax', '21/22', 'Eredivisie')
@@ -452,8 +427,49 @@ BEGIN
     SET CLUB_NAME = 'PSV'
     WHERE CLUB_NAME = 'Ajax'
 END;
+
+GO 
+
+CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if KO competition_type does not work on COMPETITION]
+AS
+BEGIN
+
+	EXEC tSQLt.FakeTable @TableName='dbo.COMPETITION';
+
+	INSERT INTO COMPETITION (COMPETITION_NAME, COMPETITION_TYPE)
+	VALUES ('Eredivisie', 'Knockout')
+
+	EXEC tSQLt.ApplyTrigger 'dbo.COMPETITION', 'TRG_NO_UPDATES_ON_CURRENT_EDITION_COMPETITION';
+
+	EXEC tSQLt.ExpectException;
+
+	UPDATE COMPETITION
+    SET COMPETITION_NAME = 'Banaan'
+    WHERE COMPETITION_NAME = 'Eredivisie'
+END; 
+
 GO
 
-EXEC tSQLt.Run '[test_IR16_CurrentEditionChanges].[Test that checks if changes get prevented in CLUB_PLAYS_IN_EDITION during a current edition FAILING]'
-GO 
+CREATE OR ALTER PROCEDURE [test_IR16_CurrentEditionChanges].[Test that checks if KO competition_type does not work on MATCH]
+AS
+BEGIN
+
+	EXEC tSQLt.FakeTable @TableName='dbo.COMPETITION';
+	EXEC tSQLt.FakeTable @TableName='dbo.MATCH';
+
+	INSERT INTO COMPETITION (COMPETITION_NAME, COMPETITION_TYPE)
+	VALUES ('Eredivisie', 'Knockout')
+
+	EXEC tSQLt.ApplyTrigger 'dbo.MATCH', 'TRG_NO_UPDATES_ON_CURRENT_EDITION_MATCH';
+
+	EXEC tSQLt.ExpectException;
+
+	UPDATE MATCH 
+    SET SEASON_NAME = '18/19'
+    WHERE SEASON_NAME = '20/21'
+END;
+
+GO
+
+EXEC tSQLT.Run '[test_IR16_CurrentEditionChanges]'
 

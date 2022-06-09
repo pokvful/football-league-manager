@@ -11,20 +11,18 @@ BEGIN
 		FROM inserted i
 		JOIN CLUB_PLAYS_IN_EDITION CPIE on i.CLUB_NAME = CPIE.CLUB_NAME
 		JOIN EDITION E on CPIE.SEASON_NAME = E.SEASON_NAME and CPIE.COMPETITION_NAME = E.COMPETITION_NAME
-		JOIN COMPETITION C on E.Competition_name = C.competition_name
+		JOIN COMPETITION C on E.COMPETITION_NAME = C.COMPETITION_NAME
 		JOIN SEASON S on E.SEASON_NAME = S.SEASON_NAME
 		WHERE S.SEASON_END > GETDATE() AND S.SEASON_START < GETDATE()
-		AND C.competition_type = 'Competition'
 	)
 	OR EXISTS(
 		SELECT 1
 		FROM deleted d
 		JOIN CLUB_PLAYS_IN_EDITION CPIE on d.CLUB_NAME = CPIE.CLUB_NAME
 		JOIN EDITION E on CPIE.SEASON_NAME = E.SEASON_NAME and CPIE.COMPETITION_NAME = E.COMPETITION_NAME
-		JOIN COMPETITION C on E.Competition_name = C.competition_name
+		JOIN COMPETITION C on E.COMPETITION_NAME = C.COMPETITION_NAME
 		JOIN SEASON S on E.SEASON_NAME = S.SEASON_NAME
 		WHERE S.SEASON_END > GETDATE() AND S.SEASON_START < GETDATE()
-		AND C.competition_type = 'Competition'
 	)
 		THROW 50000, 'Season is still active, cannot alter data', 1
 END
@@ -45,10 +43,10 @@ BEGIN
 			JOIN MATCHDAY M2 on M2.SEASON_NAME = i.SEASON_NAME and M2.COMPETITION_NAME = i.COMPETITION_NAME and M2.START_DATE = i.START_DATE and M2.MATCH_DAY = i.MATCH_DAY
 			JOIN ROUND R2 on M2.SEASON_NAME = R2.SEASON_NAME and M2.COMPETITION_NAME = R2.COMPETITION_NAME and M2.START_DATE = R2.START_DATE
 			JOIN EDITION E on R2.SEASON_NAME = E.SEASON_NAME and R2.COMPETITION_NAME = E.COMPETITION_NAME
-			JOIN COMPETITION C on E.Competition_name = C.competition_name
+			JOIN COMPETITION C on E.COMPETITION_NAME = C.COMPETITION_NAME
 			JOIN SEASON S on E.SEASON_NAME = S.SEASON_NAME
 			WHERE S.SEASON_END > GETDATE() AND S.SEASON_START < GETDATE()
-			AND C.competition_type = 'Competition'
+			AND C.competition_type = 'Nationale competitie'
 		)
 			THROW 50000, 'Season is still active, cannot alter data', 1
 	ELSE
@@ -58,10 +56,10 @@ BEGIN
 			JOIN MATCHDAY M2 on M2.SEASON_NAME = d.SEASON_NAME and M2.COMPETITION_NAME = d.COMPETITION_NAME and M2.START_DATE = d.START_DATE and M2.MATCH_DAY = d.MATCH_DAY
 			JOIN ROUND R2 on M2.SEASON_NAME = R2.SEASON_NAME and M2.COMPETITION_NAME = R2.COMPETITION_NAME and M2.START_DATE = R2.START_DATE
 			JOIN EDITION E on R2.SEASON_NAME = E.SEASON_NAME and R2.COMPETITION_NAME = E.COMPETITION_NAME
-			JOIN COMPETITION C on E.Competition_name = C.competition_name
+			JOIN COMPETITION C on E.COMPETITION_NAME = C.COMPETITION_NAME
 			JOIN SEASON S on E.SEASON_NAME = S.SEASON_NAME
 			WHERE S.SEASON_END > GETDATE() AND S.SEASON_START < GETDATE()
-			AND C.competition_type = 'Competition'
+			AND C.competition_type = 'Nationale competitie'
 		)
 			THROW 50000, 'Season is still active, cannot alter data', 1
 END
@@ -77,17 +75,13 @@ BEGIN
 
 	IF EXISTS(
 		SELECT 1
-		FROM inserted I
-		JOIN COMPETITION C on E.Competition_name = C.competition_name		
+		FROM inserted i	
 		WHERE SEASON_END > GETDATE() AND SEASON_START < GETDATE()
-		AND C.competition_type = 'Competition'
 	)
 	OR EXISTS(
 		SELECT 1
-		FROM deleted D
-		JOIN COMPETITION C on D.Competition_name = C.competition_name		
+		FROM deleted d	
 		WHERE SEASON_END > GETDATE() AND SEASON_START < GETDATE()
-		AND C.competition_type = 'Competition'
 	)
 		THROW 50000, 'Season is still active, cannot alter data', 1
 END
@@ -98,8 +92,6 @@ AFTER UPDATE, DELETE ,INSERT
 AS
 BEGIN
 	IF @@rowcount = 0
-		RETURN
-	SET NOCOUNT ON
 
 	IF EXISTS(
 		SELECT 1
@@ -108,7 +100,7 @@ BEGIN
 		JOIN COMPETITION C on E.Competition_name = C.competition_name
 		JOIN SEASON S on E.SEASON_NAME = S.SEASON_NAME
 		WHERE SEASON_END > GETDATE() AND SEASON_START < GETDATE()
-		AND C.competition_type = 'Competition'
+		AND C.competition_type = 'Nationale competitie'
 	)
 	OR EXISTS(
 		SELECT 1
@@ -117,7 +109,7 @@ BEGIN
 		JOIN COMPETITION C on E.Competition_name = C.competition_name
 		JOIN SEASON S on E.SEASON_NAME = S.SEASON_NAME
 		WHERE SEASON_END > GETDATE() AND SEASON_START < GETDATE()
-		AND C.competition_type = 'Competition'
+		AND C.competition_type = 'Nationale competitie'
 	)
 		THROW 50000, 'Season is still active, cannot alter data', 1
 END
@@ -138,7 +130,6 @@ BEGIN
 		JOIN COMPETITION C on E.Competition_name = C.competition_name
 		JOIN SEASON S on E.SEASON_NAME = S.SEASON_NAME
 		WHERE SEASON_END > GETDATE() AND SEASON_START < GETDATE()
-		AND C.competition_type = 'Competition'
 	)
 	OR EXISTS(
 		SELECT 1
@@ -147,7 +138,6 @@ BEGIN
 		JOIN COMPETITION C on E.Competition_name = C.competition_name
 		JOIN SEASON S on E.SEASON_NAME = S.SEASON_NAME
 		WHERE SEASON_END > GETDATE() AND SEASON_START < GETDATE()
-		AND C.competition_type = 'Competition'
 	)
 		THROW 50000, 'Season is still active, cannot alter data', 1
 END
