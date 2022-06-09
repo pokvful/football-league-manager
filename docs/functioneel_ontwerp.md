@@ -1094,11 +1094,14 @@ MATCH
 
 ---
 
-ET: KO_MATCH
+ET: *KO_MATCH*
 
 SUBTYPE (MATCH)
 
-Predicaat: Tijdens de knockout wedstrijd op \<Start_date\> spelen in de \<Round_nr\> \<Club_name\> van de linker bracket en \<Club_name\> van de rechter bracket de \<Round_name\>
+RT Bracket_left tussen *KO_MATCH* en KO_MATCH
+RT Bracket_right tussen *KO_MATCH* en KO_MATCH
+
+Predicaat: Tijdens de knockout wedstrijd op \<*Start_date*\> spelen in de \<Round_nr\> \<Club_name\> van de linker bracket en \<Club_name\> van de rechter bracket de \<Round_name\>
 
 # Business Rules
 
