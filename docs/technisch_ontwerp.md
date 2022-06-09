@@ -219,6 +219,26 @@ De trigger checkt op inserts en updates, op deze manier worden er bij het toevoe
 
 Er zou ook gebruik gemaakt kunnen worden van een cronjob, zo kan er bij de start van een match gekeken worden naar het aantal spelers in een club die meedoen. Dit lijkt erg op onze huidige oplossing, echter wordt hier pas het aantal spelers afgevangen bij de start van een wedstrijd, zo zou er dus nog wel foutieve data in de database kunnen worden geinsert; maar niet foutieve matches worden gestart.
 
+## Match_type
+
+Binnen het systeem bestaan twee soorten matches, matches in een knockout toernooi en matches in een nationale competitie. Aangezien deze twee soorten matches verschillende relaties vereisen moet er goed nagedacht worden over de implementatie de matches.
+
+Hiervoor zijn de volgende oplossingen bedacht.
+
+### Losse tabellen
+
+Een optie is om voor zowel MATCH als KO_MATCH een losse tabel aan te maken. Met deze implementatie hoeft er niks aangepast te worden aan de huidige MATCH tabel
+
+Echter loop je dan wel tegen een probleem aan met de events. De foreign keys zullen vanuit event naar twee verschillende tabellen moeten verwijzen, dat kan natuurlijk niet. Dit kan opgelost worden met een koppeltabel.
+
+Vervolgens zullen de triggers van MATCH nog wel aangepast moeten worden en ook zullen er triggers aan KO-MATCH toegevoegd moeten worden.
+
+### Één tabel
+
+Wanneer je ervoor kiest om alle matches in één tabel te stoppen hoef je de triggers van MATCH niet aan te passen. KO-matches zullen foreign keys krijgen naar de voorgaande wedstrijden. Reguliere matches zullen een nutteloze verwijzingen naar zichzelf krijgen aangezien de foreign key niet leeg kan zijn.
+
+
+
 # Constraints
 
 ## Primary key constraints

@@ -4,7 +4,7 @@ set -m # turn on job control (https://unix.stackexchange.com/a/637004/430375)
 
 function run_sql_files {
 	echo "=== RUNNING FILES ==="
-	
+
 	if [[ "$ENV" == "DEV" ]]; then
 		find ./ -type f \( -iname "*.sql" -not -iname "CREATE_DATABASE.sql" \)
 	else

@@ -117,15 +117,15 @@ def generate_rounds_and_matchdays(club_pairs, editions, match_count): # {{{
 
 			amount_of_generated_rounds += 1
 
-	with open("213-INSERT_ROUNDS.sql", "w") as file:
+	with open("214-INSERT_ROUNDS.sql", "w") as file:
 		file.write( "set nocount on;\ncommit transaction;\n/* z ← don't remove this (see https://isebitbucket.aimsites.nl/projects/S22122A4/repos/football-league-manager/pull-requests/88/overview) */ begin transaction;\n" )
 		file.write( "\n".join(result_rounds) )
 
-	with open("214-INSERT_MATCHDAYS.sql", "w") as file:
+	with open("215-INSERT_MATCHDAYS.sql", "w") as file:
 		file.write( "set nocount on;\ncommit transaction;\n/* z ← don't remove this (see https://isebitbucket.aimsites.nl/projects/S22122A4/repos/football-league-manager/pull-requests/88/overview) */ begin transaction;\n" )
 		file.write( "\n".join(result_matchdays) )
 
-	with open("215-INSERT_MATCHES.sql", "w") as file:
+	with open("216-INSERT_MATCHES.sql", "w") as file:
 		file.write( "set nocount on;\nset identity_insert MATCH on;\ncommit transaction;\n/* z ← don't remove this (see https://isebitbucket.aimsites.nl/projects/S22122A4/repos/football-league-manager/pull-requests/88/overview) */ begin transaction;\n" )
 		file.write( "\n".join(result_matches) )
 # }}}
