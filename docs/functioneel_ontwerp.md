@@ -1040,7 +1040,7 @@ Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en
 
 ---
 
-ET: *MATCH*
+ET: MATCH
 
 MATCH
 
