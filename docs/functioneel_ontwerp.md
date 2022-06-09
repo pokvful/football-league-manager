@@ -1078,7 +1078,7 @@ Att: **Round_name**
 
 SUBTYPE (ROUND)
 
-Predicaat: Tijdens de knockout wedstrijd op \<Start_date\> spelen in de \<Round_nr\> \<Club_name\> en \<Club_name\> de \<Round_name\>
+Predicaat: Tijdens de knockout wedstrijd op \<Start_date\> spelen in de \<*Round_nr*\> \<Club_name\> en \<Club_name\> de \<**Round_name**\>
 
 ## Knockout Match
 
