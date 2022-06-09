@@ -1040,7 +1040,7 @@ Tijdens de voetbalwedstrijd op <u>4 maart 2020 tussen thuis team FC Barcelona en
 
 ---
 
-ET: *MATCH*
+ET: MATCH
 
 MATCH
 
@@ -1055,6 +1055,53 @@ SUBTYPE (PERSON)
 RT REFEREE_in_charge_of_MATCH tussen *REFEREE* en MATCH.
 
 Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club_name\> en uit team \<Club_name\> in de speelronde \<Start_date\> in het seizoen \<Season_name\> in competitie \<Competition_name\> was persoon \<*Person_id*\> de scheidsrechter.
+
+## Knockout Round
+
+Tijdens de knockout ronde op 31 mei 2021 spelen in de zestiende ronde Real Madrid en FC Barcelona de finale
+
+Tijdens de knockout ronde op <u>01 april 2022 spelen in de *achtste ronde* Ajax en Feyenoord de **halve finale**</u>
+
+---
+
+ET: MATCH
+
+MATCH
+
+---
+
+ET: *KO_ROUND*
+
+ID: Att *Round_nr*
+
+Att: **Round_name**
+
+SUBTYPE (ROUND)
+
+Predicaat: Tijdens de knockout wedstrijd op \<Start_date\> spelen in de \<*Round_nr*\> \<Club_name\> en \<Club_name\> de \<**Round_name**\>
+
+## Knockout Match
+
+Tijdens de knockout wedstrijd op 31 mei 2021 spelen in de zestiende ronde Real Madrid van de linker bracket en FC Barcelona van de rechter bracket de finale
+
+Tijdens de knockout wedstrijd op <u>01 april 2022 spelen in de achtste ronde Ajax van de linker bracket en Feyenoord van de rechter bracket de halve finale</u>
+
+---
+
+ET: MATCH
+
+MATCH
+
+---
+
+ET: *KO_MATCH*
+
+SUBTYPE (MATCH)
+
+RT Bracket_left tussen *KO_MATCH* en KO_MATCH
+RT Bracket_right tussen *KO_MATCH* en KO_MATCH
+
+Predicaat: Tijdens de knockout wedstrijd op \<*Start_date*\> spelen in de \<Round_nr\> \<Club_name\> van de linker bracket en \<Club_name\> van de rechter bracket de \<Round_name\>
 
 # Business Rules
 
