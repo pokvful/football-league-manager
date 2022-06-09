@@ -1060,7 +1060,7 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 
 Tijdens de knockout wedstrijd op 31 mei 2021 spelen in de zestiende ronde Real Madrid en FC Barcelona de finale
 
-Tijdens de knockout wedstrijd op <u>31 mei 2021 spelen in de zestiende ronde Real Madrid en FC Barcelona de finale</u>
+Tijdens de knockout wedstrijd op <u>01 april 2022 spelen in de achtste ronde Ajax en Feyenoord de halve finale</u>
 
 ---
 
