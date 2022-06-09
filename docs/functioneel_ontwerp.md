@@ -1080,7 +1080,6 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 - BR21 De waarde van de minuten binnen een wedstrijd mag niet negatief zijn.
 - BR22 Voor coaches wordt bijgehouden welke actieve of gespeelde wedstrijden zij hebben gecoached;
 - BR23 Knockout toernooien hebben 16 deelnemende clubs;
-- BR24 Speelrondes kunnen de volgende namen hebben: Finale, Halve Finale. Kwartfinale of Achtste Finale;
 
 # Functionele requirements
 
@@ -1187,10 +1186,6 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 ### C16 komt overeen met BR23
 - Betreft: ET `EDITITE`, ET `CLUB`;
 - Specificatie: Knockout toernooien hebben 16 deelnemende clubs
-
-### C17 komt overeen met BR24
-- Betreft: Att round_name, ET `EDITIE`
-- Specificatie: Speelrondes kunnen de volgende namen hebben: Finale, Halve Finale. Kwartfinale of Achtste Finale
 
 # Ontwerpkeuzes
 
