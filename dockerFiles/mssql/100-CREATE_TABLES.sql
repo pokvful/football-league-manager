@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     03/06/2022 12:47:57                          */
+/* Created on:     09/06/2022 10:42:47                          */
 /*==============================================================*/
 
 
@@ -55,6 +55,13 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('COMPETITION') and o.name = 'FK_COMPETIT_COMPETITI_COMPETIT')
+alter table COMPETITION
+   drop constraint FK_COMPETIT_COMPETITI_COMPETIT
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
    where r.fkeyid = object_id('CORNER') and o.name = 'FK_CORNER_EVENT_HAP_MATCH')
 alter table CORNER
    drop constraint FK_CORNER_EVENT_HAP_MATCH
@@ -65,13 +72,6 @@ if exists (select 1
    where r.fkeyid = object_id('CORNER') and o.name = 'FK_CORNER_PERSON_IN_PERSON')
 alter table CORNER
    drop constraint FK_CORNER_PERSON_IN_PERSON
-go
-
-if exists (select 1
-   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('DOMESTIC_LEAGUE') and o.name = 'FK_DOMESTIC_TYPE_OF_C_COMPETIT')
-alter table DOMESTIC_LEAGUE
-   drop constraint FK_DOMESTIC_TYPE_OF_C_COMPETIT
 go
 
 if exists (select 1
@@ -139,6 +139,20 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('MATCH') and o.name = 'FK_BRACKET_LEFT')
+alter table MATCH
+   drop constraint FK_BRACKET_LEFT
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('MATCH') and o.name = 'FK_BRACKET_RIGHT')
+alter table MATCH
+   drop constraint FK_BRACKET_RIGHT
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
    where r.fkeyid = object_id('MATCH') and o.name = 'FK_MATCH_MATCH_HOM_CLUB')
 alter table MATCH
    drop constraint FK_MATCH_MATCH_HOM_CLUB
@@ -163,6 +177,13 @@ if exists (select 1
    where r.fkeyid = object_id('MATCH') and o.name = 'FK_MATCH_MATCH_OUT_CLUB')
 alter table MATCH
    drop constraint FK_MATCH_MATCH_OUT_CLUB
+go
+
+if exists (select 1
+   from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
+   where r.fkeyid = object_id('MATCH') and o.name = 'FK_MATCH_MATCH_TYP_COMPETIT')
+alter table MATCH
+   drop constraint FK_MATCH_MATCH_TYP_COMPETIT
 go
 
 if exists (select 1
@@ -279,16 +300,16 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('SUBSTITUTE') and o.name = 'FK_SUBSTITU_PERSON_OUT_PERSON')
+   where r.fkeyid = object_id('SUBSTITUTE') and o.name = 'FK_SUBSTITU_PERSON_IN_PERSON')
 alter table SUBSTITUTE
-   drop constraint FK_SUBSTITU_PERSON_OUT_PERSON
+   drop constraint FK_SUBSTITU_PERSON_IN_PERSON
 go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('SUBSTITUTE') and o.name = 'FK_SUBSTITU_PERSON_IN_PERSON')
+   where r.fkeyid = object_id('SUBSTITUTE') and o.name = 'FK_SUBSTITU_PERSON_IN_PERSON2')
 alter table SUBSTITUTE
-   drop constraint FK_SUBSTITU_PERSON_IN_PERSON
+   drop constraint FK_SUBSTITU_PERSON_IN_PERSON2
 go
 
 if exists (select 1
@@ -347,15 +368,6 @@ if exists (select 1
 go
 
 if exists (select 1
-            from  sysindexes
-           where  id    = object_id('CLUB')
-            and   name  = 'COACH_OF_CLUB2_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index CLUB.COACH_OF_CLUB2_FK
-go
-
-if exists (select 1
             from  sysobjects
            where  id = object_id('CLUB')
             and   type = 'U')
@@ -395,10 +407,35 @@ if exists (select 1
 go
 
 if exists (select 1
+            from  sysindexes
+           where  id    = object_id('COMPETITION')
+            and   name  = 'COMPETITION_TYPE_OF_COMPETITION_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index COMPETITION.COMPETITION_TYPE_OF_COMPETITION_FK
+go
+
+if exists (select 1
             from  sysobjects
            where  id = object_id('COMPETITION')
             and   type = 'U')
    drop table COMPETITION
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('COMPETITION_TYPE')
+            and   type = 'U')
+   drop table COMPETITION_TYPE
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('CORNER')
+            and   name  = 'EVENT_HAPPENED_IN_MATCH7_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index CORNER.EVENT_HAPPENED_IN_MATCH7_FK
 go
 
 if exists (select 1
@@ -425,10 +462,12 @@ if exists (select 1
 go
 
 if exists (select 1
-            from  sysobjects
-           where  id = object_id('DOMESTIC_LEAGUE')
-            and   type = 'U')
-   drop table DOMESTIC_LEAGUE
+            from  sysindexes
+           where  id    = object_id('EDITION')
+            and   name  = 'EDITION_OF_COMPETITION_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index EDITION.EDITION_OF_COMPETITION_FK
 go
 
 if exists (select 1
@@ -450,6 +489,15 @@ go
 if exists (select 1
             from  sysindexes
            where  id    = object_id('FOUL')
+            and   name  = 'EVENT_HAPPENED_IN_MATCH8_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index FOUL.EVENT_HAPPENED_IN_MATCH8_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('FOUL')
             and   name  = 'PERSON_INVOLVED_IN_EVENT8_FK'
             and   indid > 0
             and   indid < 255)
@@ -461,6 +509,15 @@ if exists (select 1
            where  id = object_id('FOUL')
             and   type = 'U')
    drop table FOUL
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('GOAL')
+            and   name  = 'EVENT_HAPPENED_IN_MATCH3_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index GOAL.EVENT_HAPPENED_IN_MATCH3_FK
 go
 
 if exists (select 1
@@ -482,6 +539,15 @@ go
 if exists (select 1
             from  sysindexes
            where  id    = object_id('LINEUP')
+            and   name  = 'PLAYER_PLAYS_ON_LINEUP_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index LINEUP.PLAYER_PLAYS_ON_LINEUP_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('LINEUP')
             and   name  = 'POSITION_IN_LINEUP_FK'
             and   indid > 0
             and   indid < 255)
@@ -491,19 +557,10 @@ go
 if exists (select 1
             from  sysindexes
            where  id    = object_id('LINEUP')
-            and   name  = 'POSITIONS_IN_MATCH_FK'
+            and   name  = 'LINEUPS_IN_MATCH_FK'
             and   indid > 0
             and   indid < 255)
-   drop index LINEUP.POSITIONS_IN_MATCH_FK
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('LINEUP')
-            and   name  = 'PLAYER_PLAYS_ON_POSITION_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index LINEUP.PLAYER_PLAYS_ON_POSITION_FK
+   drop index LINEUP.LINEUPS_IN_MATCH_FK
 go
 
 if exists (select 1
@@ -584,6 +641,15 @@ go
 if exists (select 1
             from  sysindexes
            where  id    = object_id('PASS')
+            and   name  = 'EVENT_HAPPENED_IN_MATCH5_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index PASS.EVENT_HAPPENED_IN_MATCH5_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('PASS')
             and   name  = 'PERSON_INVOLVED_IN_EVENT5_FK'
             and   indid > 0
             and   indid < 255)
@@ -639,15 +705,6 @@ if exists (select 1
 go
 
 if exists (select 1
-            from  sysindexes
-           where  id    = object_id('PLAYER_AS_RESERVE_IN_MATCH')
-            and   name  = 'PLAYER_AS_RESERVE_IN_MATCH_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index PLAYER_AS_RESERVE_IN_MATCH.PLAYER_AS_RESERVE_IN_MATCH_FK
-go
-
-if exists (select 1
             from  sysobjects
            where  id = object_id('PLAYER_AS_RESERVE_IN_MATCH')
             and   type = 'U')
@@ -659,6 +716,15 @@ if exists (select 1
            where  id = object_id('POSITION')
             and   type = 'U')
    drop table POSITION
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('RED_CARD')
+            and   name  = 'EVENT_HAPPENED_IN_MATCH_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index RED_CARD.EVENT_HAPPENED_IN_MATCH_FK
 go
 
 if exists (select 1
@@ -710,6 +776,15 @@ go
 if exists (select 1
             from  sysindexes
            where  id    = object_id('SHOT')
+            and   name  = 'EVENT_HAPPENED_IN_MATCH6_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index SHOT.EVENT_HAPPENED_IN_MATCH6_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('SHOT')
             and   name  = 'PERSON_INVOLVED_IN_EVENT6_FK'
             and   indid > 0
             and   indid < 255)
@@ -728,6 +803,15 @@ if exists (select 1
            where  id = object_id('STADIUM')
             and   type = 'U')
    drop table STADIUM
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('SUBSTITUTE')
+            and   name  = 'EVENT_HAPPENED_IN_MATCH4_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index SUBSTITUTE.EVENT_HAPPENED_IN_MATCH4_FK
 go
 
 if exists (select 1
@@ -767,6 +851,15 @@ go
 if exists (select 1
             from  sysindexes
            where  id    = object_id('YELLOW_CARD')
+            and   name  = 'EVENT_HAPPENED_IN_MATCH2_FK'
+            and   indid > 0
+            and   indid < 255)
+   drop index YELLOW_CARD.EVENT_HAPPENED_IN_MATCH2_FK
+go
+
+if exists (select 1
+            from  sysindexes
+           where  id    = object_id('YELLOW_CARD')
             and   name  = 'PERSON_INVOLVED_IN_EVENT2_FK'
             and   indid > 0
             and   indid < 255)
@@ -800,16 +893,16 @@ if exists(select 1 from systypes where name='COMPETITION_NAME')
    drop type COMPETITION_NAME
 go
 
+if exists(select 1 from systypes where name='COMPETITION_TYPE')
+   drop type COMPETITION_TYPE
+go
+
 if exists(select 1 from systypes where name='COUNT')
    drop type COUNT
 go
 
 if exists(select 1 from systypes where name='COUNTRY_NAME')
    drop type COUNTRY_NAME
-go
-
-if exists(select 1 from systypes where name='EVENT_TYPE')
-   drop type EVENT_TYPE
 go
 
 if exists(select 1 from systypes where name='G_IDENTITY')
@@ -840,12 +933,16 @@ if exists(select 1 from systypes where name='PERSON_TYPE')
    drop type PERSON_TYPE
 go
 
-if exists(select 1 from systypes where name='POSITION')
-   drop type POSITION
+if exists(select 1 from systypes where name='POSITION_TYPE')
+   drop type POSITION_TYPE
 go
 
-if exists(select 1 from systypes where name='POSITION_PLAYER')
-   drop type POSITION_PLAYER
+if exists(select 1 from systypes where name='ROUND_NAME')
+   drop type ROUND_NAME
+go
+
+if exists(select 1 from systypes where name='ROUND_NR')
+   drop type ROUND_NR
 go
 
 if exists(select 1 from systypes where name='SEASON_NAME')
@@ -900,6 +997,13 @@ create type COMPETITION_NAME
 go
 
 /*==============================================================*/
+/* Domain: COMPETITION_TYPE                                     */
+/*==============================================================*/
+create type COMPETITION_TYPE
+   from varchar(128)
+go
+
+/*==============================================================*/
 /* Domain: COUNT                                                */
 /*==============================================================*/
 create type COUNT
@@ -914,17 +1018,10 @@ create type COUNTRY_NAME
 go
 
 /*==============================================================*/
-/* Domain: EVENT_TYPE                                           */
-/*==============================================================*/
-create type EVENT_TYPE
-   from varchar(128)
-go
-
-/*==============================================================*/
 /* Domain: G_IDENTITY                                           */
 /*==============================================================*/
 create type G_IDENTITY
-   from bigint
+   from int
 go
 
 /*==============================================================*/
@@ -970,17 +1067,24 @@ create type PERSON_TYPE
 go
 
 /*==============================================================*/
-/* Domain: POSITION                                             */
+/* Domain: POSITION_TYPE                                        */
 /*==============================================================*/
-create type POSITION
+create type POSITION_TYPE
    from varchar(128)
 go
 
 /*==============================================================*/
-/* Domain: POSITION_PLAYER                                      */
+/* Domain: ROUND_NAME                                           */
 /*==============================================================*/
-create type POSITION_PLAYER
+create type ROUND_NAME
    from varchar(128)
+go
+
+/*==============================================================*/
+/* Domain: ROUND_NR                                             */
+/*==============================================================*/
+create type ROUND_NR
+   from int
 go
 
 /*==============================================================*/
@@ -1042,16 +1146,6 @@ create table CLUB (
    COACH_PERSON_ID      PERSON_ID            not null,
    constraint PK_CLUB primary key (CLUB_NAME)
 )
-go
-
-/*==============================================================*/
-/* Index: COACH_OF_CLUB2_FK                                     */
-/*==============================================================*/
-
-
-
-
-create nonclustered index COACH_OF_CLUB2_FK on CLUB (COACH_PERSON_ID ASC)
 go
 
 /*==============================================================*/
@@ -1121,7 +1215,27 @@ go
 /*==============================================================*/
 create table COMPETITION (
    COMPETITION_NAME     COMPETITION_NAME     not null,
+   COMPETITION_TYPE     COMPETITION_TYPE     not null,
    constraint PK_COMPETITION primary key (COMPETITION_NAME)
+)
+go
+
+/*==============================================================*/
+/* Index: COMPETITION_TYPE_OF_COMPETITION_FK                    */
+/*==============================================================*/
+
+
+
+
+create nonclustered index COMPETITION_TYPE_OF_COMPETITION_FK on COMPETITION (COMPETITION_TYPE ASC)
+go
+
+/*==============================================================*/
+/* Table: COMPETITION_TYPE                                      */
+/*==============================================================*/
+create table COMPETITION_TYPE (
+   COMPETITION_TYPE     COMPETITION_TYPE     not null,
+   constraint PK_COMPETITION_TYPE primary key (COMPETITION_TYPE)
 )
 go
 
@@ -1129,10 +1243,10 @@ go
 /* Table: CORNER                                                */
 /*==============================================================*/
 create table CORNER (
-   EVENT_ID             G_IDENTITY           identity,
-   MATCH_ID             G_IDENTITY           not null,
    PERSON_ID            PERSON_ID            not null,
+   MATCH_ID             G_IDENTITY           not null,
    TIME                 MINUTE_IN_MATCH      not null,
+   EVENT_ID             G_IDENTITY           identity,
    constraint PK_CORNER primary key (EVENT_ID)
 )
 go
@@ -1148,20 +1262,21 @@ create nonclustered index PERSON_INVOLVED_IN_EVENT7_FK on CORNER (PERSON_ID ASC)
 go
 
 /*==============================================================*/
+/* Index: EVENT_HAPPENED_IN_MATCH7_FK                           */
+/*==============================================================*/
+
+
+
+
+create nonclustered index EVENT_HAPPENED_IN_MATCH7_FK on CORNER (MATCH_ID ASC)
+go
+
+/*==============================================================*/
 /* Table: COUNTRY                                               */
 /*==============================================================*/
 create table COUNTRY (
    COUNTRY_NAME         COUNTRY_NAME         not null,
    constraint PK_COUNTRY primary key (COUNTRY_NAME)
-)
-go
-
-/*==============================================================*/
-/* Table: DOMESTIC_LEAGUE                                       */
-/*==============================================================*/
-create table DOMESTIC_LEAGUE (
-   COMPETITION_NAME     COMPETITION_NAME     not null,
-   constraint PK_DOMESTIC_LEAGUE primary key (COMPETITION_NAME)
 )
 go
 
@@ -1186,13 +1301,23 @@ create nonclustered index EDITION_IN_SEASON_FK on EDITION (SEASON_NAME ASC)
 go
 
 /*==============================================================*/
+/* Index: EDITION_OF_COMPETITION_FK                             */
+/*==============================================================*/
+
+
+
+
+create nonclustered index EDITION_OF_COMPETITION_FK on EDITION (COMPETITION_NAME ASC)
+go
+
+/*==============================================================*/
 /* Table: FOUL                                                  */
 /*==============================================================*/
 create table FOUL (
-   EVENT_ID             G_IDENTITY           identity,
-   MATCH_ID             G_IDENTITY           not null,
    PERSON_ID            PERSON_ID            not null,
+   MATCH_ID             G_IDENTITY           not null,
    TIME                 MINUTE_IN_MATCH      not null,
+   EVENT_ID             G_IDENTITY           identity,
    constraint PK_FOUL primary key (EVENT_ID)
 )
 go
@@ -1208,13 +1333,23 @@ create nonclustered index PERSON_INVOLVED_IN_EVENT8_FK on FOUL (PERSON_ID ASC)
 go
 
 /*==============================================================*/
+/* Index: EVENT_HAPPENED_IN_MATCH8_FK                           */
+/*==============================================================*/
+
+
+
+
+create nonclustered index EVENT_HAPPENED_IN_MATCH8_FK on FOUL (MATCH_ID ASC)
+go
+
+/*==============================================================*/
 /* Table: GOAL                                                  */
 /*==============================================================*/
 create table GOAL (
-   EVENT_ID             G_IDENTITY           identity,
-   MATCH_ID             G_IDENTITY           not null,
    PERSON_ID            PERSON_ID            not null,
+   MATCH_ID             G_IDENTITY           not null,
    TIME                 MINUTE_IN_MATCH      not null,
+   EVENT_ID             G_IDENTITY           identity,
    constraint PK_GOAL primary key (EVENT_ID)
 )
 go
@@ -1230,34 +1365,34 @@ create nonclustered index PERSON_INVOLVED_IN_EVENT3_FK on GOAL (PERSON_ID ASC)
 go
 
 /*==============================================================*/
+/* Index: EVENT_HAPPENED_IN_MATCH3_FK                           */
+/*==============================================================*/
+
+
+
+
+create nonclustered index EVENT_HAPPENED_IN_MATCH3_FK on GOAL (MATCH_ID ASC)
+go
+
+/*==============================================================*/
 /* Table: LINEUP                                                */
 /*==============================================================*/
 create table LINEUP (
    PLAYER_PERSON_ID     PERSON_ID            not null,
-   POSITION_TYPE        POSITION             not null,
    MATCH_ID             G_IDENTITY           not null,
-   constraint PK_LINEUP primary key (MATCH_ID, PLAYER_PERSON_ID)
+   POSITION_TYPE        POSITION_TYPE        not null,
+   constraint PK_LINEUP primary key (PLAYER_PERSON_ID, MATCH_ID)
 )
 go
 
 /*==============================================================*/
-/* Index: PLAYER_PLAYS_ON_POSITION_FK                           */
+/* Index: LINEUPS_IN_MATCH_FK                                   */
 /*==============================================================*/
 
 
 
 
-create nonclustered index PLAYER_PLAYS_ON_POSITION_FK on LINEUP (PLAYER_PERSON_ID ASC)
-go
-
-/*==============================================================*/
-/* Index: POSITIONS_IN_MATCH_FK                                 */
-/*==============================================================*/
-
-
-
-
-create nonclustered index POSITIONS_IN_MATCH_FK on LINEUP (MATCH_ID ASC)
+create nonclustered index LINEUPS_IN_MATCH_FK on LINEUP (MATCH_ID ASC)
 go
 
 /*==============================================================*/
@@ -1268,6 +1403,16 @@ go
 
 
 create nonclustered index POSITION_IN_LINEUP_FK on LINEUP (POSITION_TYPE ASC)
+go
+
+/*==============================================================*/
+/* Index: PLAYER_PLAYS_ON_LINEUP_FK                             */
+/*==============================================================*/
+
+
+
+
+create nonclustered index PLAYER_PLAYS_ON_LINEUP_FK on LINEUP (PLAYER_PERSON_ID ASC)
 go
 
 /*==============================================================*/
@@ -1283,11 +1428,14 @@ create table MATCH (
    OUT_CLUB_NAME        CLUB_NAME            not null,
    STADIUM_NAME         STADIUM_NAME         not null,
    REFEREE_PERSON_ID    PERSON_ID            not null,
+   BRACKET_RIGHT        G_IDENTITY           null,
+   BRACKET_LEFT         G_IDENTITY           null,
+   MATCH_TYPE           COMPETITION_TYPE     null,
    BALL_POSSESSION_HOME PERCENTAGE           null,
    BALL_POSSESSION_OUT  PERCENTAGE           null,
    SPECTATORS           COUNT                null,
    constraint PK_MATCH primary key (MATCH_ID),
-   constraint AK_AK_2_MATCH unique (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY, HOME_CLUB_NAME, OUT_CLUB_NAME)
+   constraint AK_AK_MATCH_MATCH unique (SEASON_NAME, COMPETITION_NAME, START_DATE, MATCH_DAY, HOME_CLUB_NAME, OUT_CLUB_NAME)
 )
 go
 
@@ -1372,11 +1520,11 @@ go
 /* Table: PASS                                                  */
 /*==============================================================*/
 create table PASS (
-   EVENT_ID             G_IDENTITY           identity,
-   MATCH_ID             G_IDENTITY           not null,
    PERSON_ID            PERSON_ID            not null,
-   SUCCES               BOOLEAN              not null,
+   MATCH_ID             G_IDENTITY           not null,
    TIME                 MINUTE_IN_MATCH      not null,
+   SUCCES               BOOLEAN              not null,
+   EVENT_ID             G_IDENTITY           identity,
    constraint PK_PASS primary key (EVENT_ID)
 )
 go
@@ -1389,6 +1537,16 @@ go
 
 
 create nonclustered index PERSON_INVOLVED_IN_EVENT5_FK on PASS (PERSON_ID ASC)
+go
+
+/*==============================================================*/
+/* Index: EVENT_HAPPENED_IN_MATCH5_FK                           */
+/*==============================================================*/
+
+
+
+
+create nonclustered index EVENT_HAPPENED_IN_MATCH5_FK on PASS (MATCH_ID ASC)
 go
 
 /*==============================================================*/
@@ -1440,20 +1598,10 @@ go
 /* Table: PLAYER_AS_RESERVE_IN_MATCH                            */
 /*==============================================================*/
 create table PLAYER_AS_RESERVE_IN_MATCH (
-   PLAYER_PERSON_ID     PERSON_ID            not null,
    MATCH_ID             G_IDENTITY           not null,
+   PLAYER_PERSON_ID     PERSON_ID            not null,
    constraint PK_PLAYER_AS_RESERVE_IN_MATCH primary key (MATCH_ID, PLAYER_PERSON_ID)
 )
-go
-
-/*==============================================================*/
-/* Index: PLAYER_AS_RESERVE_IN_MATCH_FK                         */
-/*==============================================================*/
-
-
-
-
-create nonclustered index PLAYER_AS_RESERVE_IN_MATCH_FK on PLAYER_AS_RESERVE_IN_MATCH (PLAYER_PERSON_ID ASC)
 go
 
 /*==============================================================*/
@@ -1470,7 +1618,7 @@ go
 /* Table: POSITION                                              */
 /*==============================================================*/
 create table POSITION (
-   POSITION_TYPE        POSITION             not null,
+   POSITION_TYPE        POSITION_TYPE        not null,
    constraint PK_POSITION primary key (POSITION_TYPE)
 )
 go
@@ -1479,10 +1627,10 @@ go
 /* Table: RED_CARD                                              */
 /*==============================================================*/
 create table RED_CARD (
-   EVENT_ID             G_IDENTITY           identity,
-   MATCH_ID             G_IDENTITY           not null,
    PERSON_ID            PERSON_ID            not null,
+   MATCH_ID             G_IDENTITY           not null,
    TIME                 MINUTE_IN_MATCH      not null,
+   EVENT_ID             G_IDENTITY           identity,
    constraint PK_RED_CARD primary key (EVENT_ID)
 )
 go
@@ -1495,6 +1643,16 @@ go
 
 
 create nonclustered index PERSON_INVOLVED_IN_EVENT_FK on RED_CARD (PERSON_ID ASC)
+go
+
+/*==============================================================*/
+/* Index: EVENT_HAPPENED_IN_MATCH_FK                            */
+/*==============================================================*/
+
+
+
+
+create nonclustered index EVENT_HAPPENED_IN_MATCH_FK on RED_CARD (MATCH_ID ASC)
 go
 
 /*==============================================================*/
@@ -1513,6 +1671,8 @@ create table ROUND (
    SEASON_NAME          SEASON_NAME          not null,
    COMPETITION_NAME     COMPETITION_NAME     not null,
    START_DATE           _DATE_               not null,
+   ROUND_NR             ROUND_NR             null,
+   ROUND_NAME           ROUND_NAME           null,
    constraint PK_ROUND primary key (SEASON_NAME, COMPETITION_NAME, START_DATE)
 )
 go
@@ -1543,11 +1703,11 @@ go
 /* Table: SHOT                                                  */
 /*==============================================================*/
 create table SHOT (
-   EVENT_ID             G_IDENTITY           identity,
-   MATCH_ID             G_IDENTITY           not null,
    PERSON_ID            PERSON_ID            not null,
-   ON_GOAL              BOOLEAN              not null,
+   MATCH_ID             G_IDENTITY           not null,
    TIME                 MINUTE_IN_MATCH      not null,
+   ON_GOAL              BOOLEAN              not null,
+   EVENT_ID             G_IDENTITY           identity,
    constraint PK_SHOT primary key (EVENT_ID)
 )
 go
@@ -1560,6 +1720,16 @@ go
 
 
 create nonclustered index PERSON_INVOLVED_IN_EVENT6_FK on SHOT (PERSON_ID ASC)
+go
+
+/*==============================================================*/
+/* Index: EVENT_HAPPENED_IN_MATCH6_FK                           */
+/*==============================================================*/
+
+
+
+
+create nonclustered index EVENT_HAPPENED_IN_MATCH6_FK on SHOT (MATCH_ID ASC)
 go
 
 /*==============================================================*/
@@ -1577,8 +1747,8 @@ go
 /*==============================================================*/
 create table SUBSTITUTE (
    EVENT_ID             G_IDENTITY           identity,
-   POSITION_TYPE        POSITION             not null,
    MATCH_ID             G_IDENTITY           not null,
+   POSITION_TYPE        POSITION_TYPE        not null,
    IN_PERSON_ID         PERSON_ID            not null,
    OUT_PERSON_ID        PERSON_ID            not null,
    TIME                 MINUTE_IN_MATCH      not null,
@@ -1617,13 +1787,23 @@ create nonclustered index PERSON_INVOLVED_IN_EVENT4_FK on SUBSTITUTE (OUT_PERSON
 go
 
 /*==============================================================*/
+/* Index: EVENT_HAPPENED_IN_MATCH4_FK                           */
+/*==============================================================*/
+
+
+
+
+create nonclustered index EVENT_HAPPENED_IN_MATCH4_FK on SUBSTITUTE (MATCH_ID ASC)
+go
+
+/*==============================================================*/
 /* Table: YELLOW_CARD                                           */
 /*==============================================================*/
 create table YELLOW_CARD (
-   EVENT_ID             G_IDENTITY           identity,
-   MATCH_ID             G_IDENTITY           not null,
    PERSON_ID            PERSON_ID            not null,
+   MATCH_ID             G_IDENTITY           not null,
    TIME                 MINUTE_IN_MATCH      not null,
+   EVENT_ID             G_IDENTITY           identity,
    constraint PK_YELLOW_CARD primary key (EVENT_ID)
 )
 go
@@ -1636,6 +1816,16 @@ go
 
 
 create nonclustered index PERSON_INVOLVED_IN_EVENT2_FK on YELLOW_CARD (PERSON_ID ASC)
+go
+
+/*==============================================================*/
+/* Index: EVENT_HAPPENED_IN_MATCH2_FK                           */
+/*==============================================================*/
+
+
+
+
+create nonclustered index EVENT_HAPPENED_IN_MATCH2_FK on YELLOW_CARD (MATCH_ID ASC)
 go
 
 alter table CITY
@@ -1653,6 +1843,7 @@ go
 alter table CLUB
    add constraint FK_CLUB_COACH_OF__COACH foreign key (COACH_PERSON_ID)
       references COACH (PERSON_ID)
+         on update cascade
 go
 
 alter table CLUB
@@ -1676,6 +1867,11 @@ go
 alter table COACH
    add constraint FK_COACH_IS_A_PERS_PERSON foreign key (PERSON_ID)
       references PERSON (PERSON_ID)
+go
+
+alter table COMPETITION
+   add constraint FK_COMPETIT_COMPETITI_COMPETIT foreign key (COMPETITION_TYPE)
+      references COMPETITION_TYPE (COMPETITION_TYPE)
          on update cascade
 go
 
@@ -1688,12 +1884,6 @@ go
 alter table CORNER
    add constraint FK_CORNER_PERSON_IN_PERSON foreign key (PERSON_ID)
       references PERSON (PERSON_ID)
-         on update cascade
-go
-
-alter table DOMESTIC_LEAGUE
-   add constraint FK_DOMESTIC_TYPE_OF_C_COMPETIT foreign key (COMPETITION_NAME)
-      references COMPETITION (COMPETITION_NAME)
          on update cascade
 go
 
@@ -1736,6 +1926,7 @@ go
 alter table LINEUP
    add constraint FK_LINEUP_LINEUPS_I_MATCH foreign key (MATCH_ID)
       references MATCH (MATCH_ID)
+         on update cascade
 go
 
 alter table LINEUP
@@ -1748,6 +1939,16 @@ alter table LINEUP
    add constraint FK_LINEUP_POSITION__POSITION foreign key (POSITION_TYPE)
       references POSITION (POSITION_TYPE)
          on update cascade
+go
+
+alter table MATCH
+   add constraint FK_BRACKET_LEFT foreign key (BRACKET_LEFT)
+      references MATCH (MATCH_ID)
+go
+
+alter table MATCH
+   add constraint FK_BRACKET_RIGHT foreign key (BRACKET_RIGHT)
+      references MATCH (MATCH_ID)
 go
 
 alter table MATCH
@@ -1764,11 +1965,17 @@ go
 alter table MATCH
    add constraint FK_MATCH_MATCH_IN__STADIUM foreign key (STADIUM_NAME)
       references STADIUM (STADIUM_NAME)
+         on update cascade
 go
 
 alter table MATCH
    add constraint FK_MATCH_MATCH_OUT_CLUB foreign key (OUT_CLUB_NAME)
       references CLUB (CLUB_NAME)
+go
+
+alter table MATCH
+   add constraint FK_MATCH_MATCH_TYP_COMPETIT foreign key (MATCH_TYPE)
+      references COMPETITION_TYPE (COMPETITION_TYPE)
 go
 
 alter table MATCH
@@ -1803,18 +2010,17 @@ go
 alter table PLAYER
    add constraint FK_PLAYER_IS_A_PERS_PERSON foreign key (PERSON_ID)
       references PERSON (PERSON_ID)
-         on update cascade
 go
 
 alter table PLAYER
    add constraint FK_PLAYER_PLAYER_IN_CLUB foreign key (CLUB_NAME)
       references CLUB (CLUB_NAME)
-         on update cascade
 go
 
 alter table PLAYER_AS_RESERVE_IN_MATCH
    add constraint FK_PLAYER_A_PLAYER_AS_PLAYER foreign key (PLAYER_PERSON_ID)
       references PLAYER (PERSON_ID)
+         on update cascade
 go
 
 alter table PLAYER_AS_RESERVE_IN_MATCH
@@ -1865,12 +2071,13 @@ alter table SUBSTITUTE
 go
 
 alter table SUBSTITUTE
-   add constraint FK_SUBSTITU_PERSON_OUT_PERSON foreign key (OUT_PERSON_ID)
+   add constraint FK_SUBSTITU_PERSON_IN_PERSON foreign key (OUT_PERSON_ID)
       references PERSON (PERSON_ID)
+         on update cascade
 go
 
 alter table SUBSTITUTE
-   add constraint FK_SUBSTITU_PERSON_IN_PERSON foreign key (IN_PERSON_ID)
+   add constraint FK_SUBSTITU_PERSON_IN_PERSON2 foreign key (IN_PERSON_ID)
       references PERSON (PERSON_ID)
 go
 
