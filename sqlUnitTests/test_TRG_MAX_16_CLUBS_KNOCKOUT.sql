@@ -7,9 +7,10 @@ BEGIN
 	EXECUTE tSQLt.FakeTable 'dbo.COMPETITION';
 	EXECUTE tSQLt.FakeTable 'dbo.CLUB_PLAYS_IN_EDITION';
 
-	INSERT INTO dbo.COMPETITION (COMPETITION_NAME)
-		VALUES ('MooieCompetitie'),
-			('AndereMooieCompetitie');
+	INSERT INTO dbo.COMPETITION (COMPETITION_NAME, COMPETITION_TYPE)
+		VALUES ('MooieCompetitie', 'Knockout'),
+			('AndereMooieCompetitie', 'Knockout'),
+			('GeenKnockoutCompetitie', 'Iets Anders');
 
 	EXECUTE tSQLt.ApplyTrigger 'dbo.CLUB_PLAYS_IN_EDITION', 'TRG_MAX_16_CLUBS_KNOCKOUT';
 END
@@ -99,8 +100,23 @@ BEGIN
 			('Club16', 'AndereMooieCompetitie', 'SEAS2'),
 			('Club17', 'AndereMooieCompetitie', 'SEAS2'),
 			('Club18', 'AndereMooieCompetitie', 'SEAS2');
-
 END;
+GO -- }}}
+
+CREATE OR ALTER PROCEDURE test_TRG_MAX_16_CLUBS_KNOCKOUT.[test TRG_MAX_16_CLUBS_KNOCKOUT does not block club insertion when competition is not a Knockout] -- {{{
+AS
+BEGIN
+	EXECUTE tSQLt.ExpectNoException;
+
+	INSERT INTO CLUB_PLAYS_IN_EDITION (CLUB_NAME, COMPETITION_NAME, SEASON_NAME)
+		VALUES
+			('Club1', 'GeenKnockoutCompetitie', 'SEAS1'),
+			('Club2', 'GeenKnockoutCompetitie', 'SEAS1'),
+			('Club1', 'GeenKnockoutCompetitie', 'SEAS2'),
+			('Club2', 'GeenKnockoutCompetitie', 'SEAS2'),
+			('Club3', 'GeenKnockoutCompetitie', 'SEAS2'),
+			('Club4', 'GeenKnockoutCompetitie', 'SEAS2');
+END
 GO -- }}}
 
 EXECUTE tSQLt.Run 'test_TRG_MAX_16_CLUBS_KNOCKOUT';
