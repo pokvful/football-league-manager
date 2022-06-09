@@ -46,7 +46,7 @@ BEGIN
 			JOIN COMPETITION C on E.COMPETITION_NAME = C.COMPETITION_NAME
 			JOIN SEASON S on E.SEASON_NAME = S.SEASON_NAME
 			WHERE S.SEASON_END > GETDATE() AND S.SEASON_START < GETDATE()
-			AND C.competition_type = 'Nationale competitie'
+		AND C.competition_type = 'Nationale competitie'
 		)
 			THROW 50000, 'Season is still active, cannot alter data', 1
 	ELSE
@@ -59,7 +59,7 @@ BEGIN
 			JOIN COMPETITION C on E.COMPETITION_NAME = C.COMPETITION_NAME
 			JOIN SEASON S on E.SEASON_NAME = S.SEASON_NAME
 			WHERE S.SEASON_END > GETDATE() AND S.SEASON_START < GETDATE()
-			AND C.competition_type = 'Nationale competitie'
+		AND C.competition_type = 'Nationale competitie'
 		)
 			THROW 50000, 'Season is still active, cannot alter data', 1
 END
@@ -92,7 +92,9 @@ AFTER UPDATE, DELETE ,INSERT
 AS
 BEGIN
 	IF @@rowcount = 0
-
+		RETURN
+	SET NOCOUNT ON
+	
 	IF EXISTS(
 		SELECT 1
 		FROM inserted i
