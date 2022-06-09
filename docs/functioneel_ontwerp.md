@@ -1060,7 +1060,7 @@ Predicaat: Tijdens de voetbalwedstrijd op \<Match_day\> tussen thuis team \<Club
 
 Tijdens de knockout ronde op 31 mei 2021 spelen in de zestiende ronde Real Madrid en FC Barcelona de finale
 
-Tijdens de knockout ronde op <u>01 april 2022 spelen in de achtste ronde Ajax en Feyenoord de halve finale</u>
+Tijdens de knockout ronde op <u>01 april 2022 spelen in de *achtste ronde* Ajax en Feyenoord de **halve finale**</u>
 
 ---
 
@@ -1072,9 +1072,9 @@ MATCH
 
 ET: KO_ROUND
 
-ID: Att Round_nr
+ID: Att *Round_nr*
 
-Att: Round_name
+Att: **Round_name**
 
 SUBTYPE (ROUND)
 
