@@ -31,7 +31,7 @@ BEGIN
 	(55, 'club2'), (56, 'club2'), (70, 'club1'), (20, 'club3'), (5, 'club4')
 
 	INSERT INTO COMPETITION (COMPETITION_NAME, COMPETITION_TYPE)
-	VALUES ('comp', 'Nationale competitie'), ('comp2', 'Nationale competitie') ,('knockcomp', 'Knockout')
+	VALUES ('comp', 'Nationale Competitie'), ('comp2', 'Nationale Competitie') ,('knockcomp', 'Knockout')
 
 	DROP TABLE IF EXISTS test_GET_SCORE_EDITION.expected 
 
