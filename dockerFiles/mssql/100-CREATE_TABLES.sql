@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     09/06/2022 09:54:55                          */
+/* Created on:     09/06/2022 10:11:03                          */
 /*==============================================================*/
 
 
@@ -1573,7 +1573,7 @@ go
 /* Table: PERSON                                                */
 /*==============================================================*/
 create table PERSON (
-   PERSON_ID            PERSON_ID            not null,
+   PERSON_ID            PERSON_ID            identity,
    COUNTRY_NAME         COUNTRY_NAME         not null,
    FIRST_NAME           NAME                 not null,
    LAST_NAME            NAME                 not null,
@@ -1650,7 +1650,7 @@ create table RED_CARD (
    PERSON_ID            PERSON_ID            not null,
    MATCH_ID             G_IDENTITY           not null,
    TIME                 MINUTE_IN_MATCH      not null,
-   EVENT_ID             G_IDENTITY           not null,
+   EVENT_ID             G_IDENTITY           identity,
    constraint PK_RED_CARD primary key (EVENT_ID)
 )
 go
@@ -1823,7 +1823,7 @@ create table YELLOW_CARD (
    PERSON_ID            PERSON_ID            not null,
    MATCH_ID             G_IDENTITY           not null,
    TIME                 MINUTE_IN_MATCH      not null,
-   EVENT_ID             G_IDENTITY           not null,
+   EVENT_ID             G_IDENTITY           identity,
    constraint PK_YELLOW_CARD primary key (EVENT_ID)
 )
 go
