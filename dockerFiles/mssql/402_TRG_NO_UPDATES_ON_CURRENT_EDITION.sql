@@ -26,6 +26,7 @@ BEGIN
 	)
 		THROW 50000, 'Season is still active, cannot alter data', 1
 END
+
 GO
 
 CREATE or ALTER TRIGGER TRG_NO_UPDATES_ON_CURRENT_EDITION_MATCH ON MATCH
@@ -37,8 +38,9 @@ BEGIN
 	SET NOCOUNT ON
 
 	IF (UPDATE(HOME_CLUB_NAME) OR UPDATE(OUT_CLUB_NAME) OR UPDATE(STADIUM_NAME) OR UPDATE(REFEREE_PERSON_ID))
+
 		IF EXISTS(
-			SELECT *
+			SELECT 1
 			FROM inserted i
 			JOIN MATCHDAY M2 on M2.SEASON_NAME = i.SEASON_NAME and M2.COMPETITION_NAME = i.COMPETITION_NAME and M2.START_DATE = i.START_DATE and M2.MATCH_DAY = i.MATCH_DAY
 			JOIN ROUND R2 on M2.SEASON_NAME = R2.SEASON_NAME and M2.COMPETITION_NAME = R2.COMPETITION_NAME and M2.START_DATE = R2.START_DATE
@@ -46,12 +48,13 @@ BEGIN
 			JOIN COMPETITION C on E.COMPETITION_NAME = C.COMPETITION_NAME
 			JOIN SEASON S on E.SEASON_NAME = S.SEASON_NAME
 			WHERE S.SEASON_END > GETDATE() AND S.SEASON_START < GETDATE()
-		AND C.competition_type = 'Nationale competitie'
+			OR C.competition_type = 'Nationale competitie'
 		)
 			THROW 50000, 'Season is still active, cannot alter data', 1
+		
 	ELSE
 		IF EXISTS(
-			SELECT *
+			SELECT 1
 			FROM deleted d
 			JOIN MATCHDAY M2 on M2.SEASON_NAME = d.SEASON_NAME and M2.COMPETITION_NAME = d.COMPETITION_NAME and M2.START_DATE = d.START_DATE and M2.MATCH_DAY = d.MATCH_DAY
 			JOIN ROUND R2 on M2.SEASON_NAME = R2.SEASON_NAME and M2.COMPETITION_NAME = R2.COMPETITION_NAME and M2.START_DATE = R2.START_DATE
@@ -59,10 +62,11 @@ BEGIN
 			JOIN COMPETITION C on E.COMPETITION_NAME = C.COMPETITION_NAME
 			JOIN SEASON S on E.SEASON_NAME = S.SEASON_NAME
 			WHERE S.SEASON_END > GETDATE() AND S.SEASON_START < GETDATE()
-		AND C.competition_type = 'Nationale competitie'
+			OR C.competition_type = 'Nationale competitie'
 		)
 			THROW 50000, 'Season is still active, cannot alter data', 1
 END
+
 GO
 
 CREATE or ALTER TRIGGER TRG_NO_UPDATES_ON_CURRENT_EDITION_SEASON ON SEASON
@@ -85,6 +89,7 @@ BEGIN
 	)
 		THROW 50000, 'Season is still active, cannot alter data', 1
 END
+
 GO
 
 CREATE or ALTER TRIGGER TRG_NO_UPDATES_ON_CURRENT_EDITION_COMPETITION ON COMPETITION
@@ -102,7 +107,7 @@ BEGIN
 		JOIN COMPETITION C on E.Competition_name = C.competition_name
 		JOIN SEASON S on E.SEASON_NAME = S.SEASON_NAME
 		WHERE SEASON_END > GETDATE() AND SEASON_START < GETDATE()
-		AND C.competition_type = 'Nationale competitie'
+		OR C.competition_type = 'Nationale competitie'
 	)
 	OR EXISTS(
 		SELECT 1
@@ -111,10 +116,11 @@ BEGIN
 		JOIN COMPETITION C on E.Competition_name = C.competition_name
 		JOIN SEASON S on E.SEASON_NAME = S.SEASON_NAME
 		WHERE SEASON_END > GETDATE() AND SEASON_START < GETDATE()
-		AND C.competition_type = 'Nationale competitie'
+		OR C.competition_type = 'Nationale competitie'
 	)
 		THROW 50000, 'Season is still active, cannot alter data', 1
 END
+
 GO
 
 CREATE or ALTER TRIGGER TRG_NO_UPDATES_ON_CURRENT_EDITION_CIE ON CLUB_PLAYS_IN_EDITION
@@ -143,4 +149,4 @@ BEGIN
 	)
 		THROW 50000, 'Season is still active, cannot alter data', 1
 END
-GO
+
