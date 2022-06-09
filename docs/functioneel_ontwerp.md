@@ -1078,8 +1078,6 @@ Att: **Round_name**
 
 SUBTYPE (ROUND)
 
-RT TYPE_OF_ROUND tussen KO_ROUND en ROUND.
-
 Predicaat: Tijdens de knockout wedstrijd op \<Start_date\> spelen in de \<Round_nr\> \<Club_name\> en \<Club_name\> de \<Round_name\>
 
 ## Knockout Match
@@ -1099,8 +1097,6 @@ MATCH
 ET: KO_MATCH
 
 SUBTYPE (MATCH)
-
-RT TYPE_OF_MATCH tussen KO_MATCH en MATCH.
 
 Predicaat: Tijdens de knockout wedstrijd op \<Start_date\> spelen in de \<Round_nr\> \<Club_name\> van de linker bracket en \<Club_name\> van de rechter bracket de \<Round_name\>
 
