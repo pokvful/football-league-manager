@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     09/06/2022 10:11:03                          */
+/* Created on:     09/06/2022 10:17:26                          */
 /*==============================================================*/
 
 
@@ -397,15 +397,6 @@ if exists (select 1
            where  id = object_id('CLUB_PLAYS_IN_EDITION')
             and   type = 'U')
    drop table CLUB_PLAYS_IN_EDITION
-go
-
-if exists (select 1
-            from  sysindexes
-           where  id    = object_id('COACH')
-            and   name  = 'COACH_OF_CLUB_FK'
-            and   indid > 0
-            and   indid < 255)
-   drop index COACH.COACH_OF_CLUB_FK
 go
 
 if exists (select 1
@@ -1215,19 +1206,8 @@ go
 /*==============================================================*/
 create table COACH (
    PERSON_ID            PERSON_ID            not null,
-   CLUB_NAME            CLUB_NAME            not null,
    constraint PK_COACH primary key (PERSON_ID)
 )
-go
-
-/*==============================================================*/
-/* Index: COACH_OF_CLUB_FK                                      */
-/*==============================================================*/
-
-
-
-
-create nonclustered index COACH_OF_CLUB_FK on COACH (CLUB_NAME ASC)
 go
 
 /*==============================================================*/
@@ -1650,7 +1630,7 @@ create table RED_CARD (
    PERSON_ID            PERSON_ID            not null,
    MATCH_ID             G_IDENTITY           not null,
    TIME                 MINUTE_IN_MATCH      not null,
-   EVENT_ID             G_IDENTITY           identity,
+   EVENT_ID             G_IDENTITY           not null,
    constraint PK_RED_CARD primary key (EVENT_ID)
 )
 go
@@ -1823,7 +1803,7 @@ create table YELLOW_CARD (
    PERSON_ID            PERSON_ID            not null,
    MATCH_ID             G_IDENTITY           not null,
    TIME                 MINUTE_IN_MATCH      not null,
-   EVENT_ID             G_IDENTITY           identity,
+   EVENT_ID             G_IDENTITY           not null,
    constraint PK_YELLOW_CARD primary key (EVENT_ID)
 )
 go
