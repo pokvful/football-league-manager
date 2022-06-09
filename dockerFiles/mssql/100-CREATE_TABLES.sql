@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2014                    */
-/* Created on:     09/06/2022 10:17:26                          */
+/* Created on:     09/06/2022 10:31:52                          */
 /*==============================================================*/
 
 
@@ -1749,8 +1749,8 @@ create table SUBSTITUTE (
    EVENT_ID             G_IDENTITY           identity,
    MATCH_ID             G_IDENTITY           not null,
    POSITION_TYPE        POSITION_TYPE        not null,
-   PERSON_IN_ID         PERSON_ID            not null,
-   PERSON_OUT_ID        PERSON_ID            not null,
+   IN_PERSON_ID         PERSON_ID            not null,
+   OUT_PERSON_OUT       PERSON_ID            not null,
    TIME                 MINUTE_IN_MATCH      not null,
    constraint PK_SUBSTITUTE primary key (EVENT_ID)
 )
@@ -1763,7 +1763,7 @@ go
 
 
 
-create nonclustered index PERSON_IN_SUBSTITUTE_FK on SUBSTITUTE (PERSON_IN_ID ASC)
+create nonclustered index PERSON_IN_SUBSTITUTE_FK on SUBSTITUTE (IN_PERSON_ID ASC)
 go
 
 /*==============================================================*/
@@ -1783,7 +1783,7 @@ go
 
 
 
-create nonclustered index PERSON_INVOLVED_IN_EVENT4_FK on SUBSTITUTE (PERSON_OUT_ID ASC)
+create nonclustered index PERSON_INVOLVED_IN_EVENT4_FK on SUBSTITUTE (OUT_PERSON_OUT ASC)
 go
 
 /*==============================================================*/
@@ -2071,13 +2071,13 @@ alter table SUBSTITUTE
 go
 
 alter table SUBSTITUTE
-   add constraint FK_SUBSTITU_PERSON_IN_PERSON foreign key (PERSON_OUT_ID)
+   add constraint FK_SUBSTITU_PERSON_IN_PERSON foreign key (OUT_PERSON_OUT)
       references PERSON (PERSON_ID)
          on update cascade
 go
 
 alter table SUBSTITUTE
-   add constraint FK_SUBSTITU_PERSON_IN_PERSON2 foreign key (PERSON_IN_ID)
+   add constraint FK_SUBSTITU_PERSON_IN_PERSON2 foreign key (IN_PERSON_ID)
       references PERSON (PERSON_ID)
 go
 
