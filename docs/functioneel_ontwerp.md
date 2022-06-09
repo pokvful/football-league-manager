@@ -1070,7 +1070,7 @@ MATCH
 
 ---
 
-ET: KO_ROUND
+ET: *KO_ROUND*
 
 ID: Att *Round_nr*
 
