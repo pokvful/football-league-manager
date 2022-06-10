@@ -87,7 +87,7 @@ Binnen de SQL Server container draait een Microsoft SQL Server 2018 Server image
 
 # PDM
 
-![Het PDM.](images/pdm_no_ko.png)
+![Het PDM.](images/pdm_with_ko.png)
 
 # Toelichting Domeinen
 
