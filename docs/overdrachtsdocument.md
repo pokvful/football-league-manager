@@ -7,7 +7,6 @@
 	- [Gebruik van Docker tijdens ontwikkeling](#gebruik-van-docker-tijdens-ontwikkeling)
 	- [Gebruik van Docker na uitrol systeem](#gebruik-van-docker-na-uitrol-systeem)
 - [Aanbevelingen](#aanbevelingen)
-- [Hier eventueel een kopje over de implementatie van knock-out tournament](#hier-eventueel-een-kopje-over-de-implementatie-van-knock-out-tournament)
 
 # Gebruik van Docker
 

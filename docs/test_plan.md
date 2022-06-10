@@ -4,7 +4,7 @@
 
 - [Inleiding](#inleiding)
 - [Wanneer worden er testen geschreven?](#wanneer-worden-er-testen-geschreven)
-- [Waarover worden de testen geschreven](#waarover-worden-de-testen-geschreven)
+- [Waarvoor worden de testen geschreven](#waarvoor-worden-de-testen-geschreven)
 - [Wat niet getest wordt](#wat-niet-getest-wordt)
 - [Benodigdheden](#benodigdheden)
 - [Hoe worden de testen geschreven.](#hoe-worden-de-testen-geschreven)

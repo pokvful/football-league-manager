@@ -2,8 +2,6 @@
 
 # Functioneel ontwerp
 
-
-- [Functioneel ontwerp](#functioneel-ontwerp)
 - [Use cases](#use-cases)
   - [Database](#database)
   - [Staging Area](#staging-area)
@@ -57,6 +55,8 @@
     - [Schoten](#schoten)
     - [Passes](#passes)
   - [Scheidsrechter](#scheidsrechter)
+  - [Knockout Round](#knockout-round)
+  - [Knockout Match](#knockout-match)
 - [Business Rules](#business-rules)
 - [Functionele requirements](#functionele-requirements)
   - [Constraints](#constraints)
@@ -74,7 +74,6 @@
     - [C14 komt overeen met BR22](#c14-komt-overeen-met-br22)
     - [C15 komt overeen met BR1](#c15-komt-overeen-met-br1)
     - [C16 komt overeen met BR23](#c16-komt-overeen-met-br23)
-    - [C17 komt overeen met BR24](#c17-komt-overeen-met-br24)
 - [Ontwerpkeuzes](#ontwerpkeuzes)
   - [Person_ID](#person_id)
   - [Person_type](#person_type)
@@ -120,7 +119,6 @@
   - [Entiteit SHOT](#entiteit-shot)
   - [Entiteit  CORNER](#entiteit--corner)
   - [Entiteit FOUL](#entiteit-foul)
-- [Testplan](#testplan)
 
 # Use cases
 

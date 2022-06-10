@@ -1,17 +1,23 @@
 # ***Disclaimer*** | De lay-out van de PDF-versie voor dit document kan verschillen met de markdown versie, voor een accurate weergave zie markdown bestand in [bitbucket](https://isebitbucket.aimsites.nl/projects/S22122A4/repos/football-league-manager/browse/docs).
 
-# Testrapport
-- [Testrapport](#testrapport)
-  - [Doel van het document](#doel-van-het-document)
-  - [Uitwerking testen](#uitwerking-testen)
-    - [test_ALTER_CLUB_INFO](#test_alter_club_info)
-    - [test_CHK_PERSON_HAS_VALID_AGE](#test_chk_person_has_valid_age)
-    - [test_CHK_VALID_JERSEY](#test_chk_valid_jersey)
-    - [test_PROC_INSERT_NEW_PERSON](#test_proc_insert_new_person)
-    - [test_SHOW_CLUB_INFO](#test_show_club_info)
-    - [test_TGR_CHECK_ALL_EVENTS](#test_tgr_check_all_events)
-  - [ALL unittest resultaten](#all-unittest-resultaten)
-  - [Conclusie](#conclusie)
+- [Doel van het document](#doel-van-het-document)
+- [Uitwerking testen](#uitwerking-testen)
+- [Algemeen overzicht resultaten unittests](#algemeen-overzicht-resultaten-unittests)
+- [End-to-End testing](#end-to-end-testing)
+  - [Ophalen top-lijst](#ophalen-top-lijst)
+  - [Ophalen tussenstand competitie](#ophalen-tussenstand-competitie)
+  - [Ophalen clubinfo](#ophalen-clubinfo)
+  - [Ophalen matchinfo](#ophalen-matchinfo)
+  - [Ophalen speelronde info](#ophalen-speelronde-info)
+  - [Ophalen matchday info](#ophalen-matchday-info)
+  - [Invoeren matchdata](#invoeren-matchdata)
+  - [Updaten clubinfo](#updaten-clubinfo)
+  - [Start nieuw seizoen competitie](#start-nieuw-seizoen-competitie)
+  - [Toevoegen nieuw persoon](#toevoegen-nieuw-persoon)
+  - [Toevoegen nieuw event type](#toevoegen-nieuw-event-type)
+- [Insert op basis van feittypen](#insert-op-basis-van-feittypen)
+- [Conclusie](#conclusie)
+
 # Doel van het document
 
 Het doel van dit document is om een duidelijk overzicht te geven van het testproces voor de football league manager database. 
