@@ -1339,7 +1339,7 @@ Relevante keuzes betreft het includeren of uitsluiten van feiten in het schema s
 
 # CDM
 
-![Het CDM.](images/cdm_no_ko.png)
+![Het CDM.](images/cdm_with_ko.png)
 
 # Onderbouwing concepten CDM
 
