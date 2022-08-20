@@ -1,5 +1,7 @@
 # Football League Manager
 
+Database for storing and analysing football statistics, project developed with a group of 6 people during my second school year of the HAN. 
+
 # Starting the database
 
 To run the database, you need to have [docker](https://docs.docker.com/get-docker/) and [docker-compose](https://docs.docker.com/compose/install/) installed.
